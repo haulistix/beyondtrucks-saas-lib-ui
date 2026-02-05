@@ -1,0 +1,11 @@
+@use './font.scss' as *;
+
+.el-menu {
+  @include body-md;
+
+  .el-sub-menu,
+  .el-menu-item {
+    margin-bottom: 8px;
+    position: relative;
+  }
+}

@@ -1,0 +1,39 @@
+@use './font.scss' as *;
+
+.el-pager {
+  gap: 4px;
+
+  li {
+    font-weight: 600;
+    color: var(--color-text-primary);
+
+    &.is-active {
+      background-color: var(--color-gray-100);
+    }
+  }
+}
+
+.pagination-select {
+  .el-select__placeholder {
+    font-size: var(--p-font-size-400);
+    font-weight: var(--p-font-weight-semibold);
+  }
+}
+
+.el-pagination__jump {
+  & ~ .el-pagination__sizes {
+    margin-left: 20px;
+  }
+
+  .el-input__wrapper {
+    padding: 0;
+  }
+}
+
+.pagination-select-wrap.el-popper.is-light {
+  width: 120px;
+
+  .el-select-dropdown {
+    width: 100%;
+  }
+}

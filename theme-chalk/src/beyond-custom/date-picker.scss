@@ -1,0 +1,93 @@
+.date-picker-popover {
+  &.el-popper.is-light {
+    box-shadow: var(--shadow-300);
+  }
+
+  .el-radio-group + .el-picker-panel {
+    border-top: 1px solid var(--color-gray-100);
+    padding-top: 10px;
+  }
+
+  .el-picker-panel {
+    border-radius: 0;
+    font-weight: 400;
+
+    .el-date-picker__header {
+      height: 48px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .el-radio-group {
+    display: flex;
+    margin: 12px 0;
+    height: 24px;
+
+    .el-radio-button {
+      flex: 1;
+
+      &.is-active {
+        .el-radio-button__inner {
+          background-color: var(--color-gray-100);
+          color: #0e171f;
+          box-shadow: none;
+          border-color: #c1ccd6;
+        }
+      }
+    }
+
+    .el-radio-button__inner {
+      width: 100%;
+      border-color: #c1ccd6;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &:has(.has-sidebar) {
+    .el-radio-group {
+      margin-left: 126px;
+    }
+
+    .el-date-picker__header {
+      padding-left: 8px;
+    }
+  }
+
+  .el-date-picker__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > div {
+      display: flex;
+      align-items: center;
+    }
+
+    .el-date-picker__custom-now-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .el-date-picker__prev-btn {
+      display: flex;
+      align-items: center;
+    }
+
+    .el-date-picker__next-btn {
+      display: flex;
+      align-items: center;
+    }
+
+    .el-button {
+      margin-left: 0 !important;
+    }
+  }
+}
+
+.el-picker-panel *[slot='sidebar'],
+.el-picker-panel__sidebar {
+  top: 1px;
+  bottom: 1px;
+}

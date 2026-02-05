@@ -1,0 +1,38 @@
+@use './font.scss' as *;
+
+.el-tag {
+  border-style: none;
+  .el-tag__close {
+    margin-left: 3px;
+  }
+  .icon-plus {
+    font-size: var(--p-font-size-550);
+  }
+  &.el-tag--large {
+    @include body-md-medium;
+  }
+  &.el-tag--gray {
+    color: var(--color-gray-700);
+    background-color: var(--color-gray-100);
+  }
+  &.el-tag--blue {
+    color: var(--color-blue-700);
+    background-color: var(--color-blue-200);
+  }
+  &.el-tag--cyan {
+    color: var(--color-cyan-700);
+    background-color: var(--color-cyan-200);
+  }
+  &.el-tag--green {
+    color: var(--color-green-700);
+    background-color: var(--color-green-200);
+  }
+  &.el-tag--orange {
+    color: var(--color-orange-800);
+    background-color: var(--color-orange-50);
+  }
+  &.el-tag--red {
+    color: var(--color-red-700);
+    background-color: var(--color-red-200);
+  }
+}

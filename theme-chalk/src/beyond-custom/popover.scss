@@ -1,0 +1,32 @@
+@use './font.scss' as *;
+
+.menu-popper.el-popover.el-popper {
+  padding: 16px 14px 14px;
+  box-shadow: var(--shadow-300);
+  border-radius: 4px;
+  border: none;
+
+  .sub-wrap {
+    .title {
+      @include heading-heading-md;
+      padding-left: 8px;
+      color: #000;
+    }
+  }
+}
+
+.el-popper.is-light[role='tooltip'] {
+  min-height: 32px;
+  box-shadow: var(--shadow-200);
+  color: #0e171f;
+  font-size: var(--p-font-size-400);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-500);
+  border: none;
+  display: flex;
+  align-items: center;
+
+  .el-button + .el-button {
+    margin-left: 4px;
+  }
+}

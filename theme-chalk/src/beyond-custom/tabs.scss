@@ -1,0 +1,69 @@
+@use './font.scss' as *;
+
+.el-tabs {
+
+  .el-tabs__item {
+    color: var(--color-gray-700);
+    font-weight: 500;
+
+    .el-icon:last-child {
+      width: 16px !important;
+      height: 16px !important;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.tabOnlyIcon {
+      width: 38px;
+    }
+
+    &.is-closable {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .tab-count {
+      margin-left: 6px;
+      border-radius: 4px;
+      background-color: var(--color-gray-100);
+      font-size: 11px;
+      width: 21px;
+      height: 18px;
+      color: #3e5463;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        margin-left: 0;
+      }
+    }
+
+    i {
+      vertical-align: middle;
+    }
+
+    svg {
+      font-size: 12px;
+      color: var(--color-gray-800);
+    }
+
+    span {
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
+    &.is-active, &:hover {
+      svg {
+        font-size: 14px;
+        color: var(--color-gray-800);
+      }
+
+      span {
+        color: var(--color-gray-990);
+      }
+    }
+  }
+}

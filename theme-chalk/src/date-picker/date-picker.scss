@@ -1,0 +1,120 @@
+@use '../common/var' as *;
+@use '../mixins/mixins' as *;
+@use '../mixins/var' as *;
+@use './picker-panel.scss';
+@use './utils.scss' as *;
+
+@include b(date-picker) {
+  @include set-component-css-var('datepicker', $datepicker);
+}
+
+.el-popper.is-light.date-picker-popover {
+  border-radius: 8px;
+  padding: 16px;
+  border: none;
+}
+
+@include b(date-picker) {
+  width: 280px;
+
+  &.has-sidebar.has-time {
+    width: 434px;
+  }
+
+  &.has-sidebar {
+    width: 406px;
+  }
+
+  &.has-time .#{$namespace}-picker-panel__body-wrapper {
+    position: relative;
+  }
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  @include e(editor-wrap) {
+    position: relative;
+    display: table-cell;
+    padding: 0 5px;
+  }
+
+  @include e(time-header) {
+    position: relative;
+    border-bottom: 1px solid getCssVar('datepicker-inner-border-color');
+    font-size: 12px;
+    padding: 8px 5px 5px;
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @include e(header) {
+    text-align: center;
+    font-weight: 600;
+    padding: 9px 0;
+
+    @include m(bordered) {
+      margin-bottom: 0;
+      padding-bottom: 12px;
+      border-bottom: solid 1px getCssVar('border-color-lighter');
+
+      & + .#{$namespace}-picker-panel__content {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @include e(header-label) {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 5px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    color: getCssVar('text-color', 'primary');
+
+    &:hover {
+      color: getCssVar('datepicker-hover-text-color');
+    }
+    &:focus-visible {
+      outline: none;
+      color: getCssVar('datepicker-hover-text-color');
+    }
+
+    &.active {
+      color: getCssVar('datepicker-active-color');
+    }
+  }
+
+  @include e(prev-btn) {
+    float: left;
+  }
+
+  @include e(next-btn) {
+    //float: right;
+  }
+
+  @include e(time-wrap) {
+    padding: 10px;
+    text-align: center;
+  }
+
+  @include e(time-label) {
+    float: left;
+    cursor: pointer;
+    line-height: 30px;
+    margin-left: 10px;
+  }
+
+  .#{$namespace}-time-panel {
+    position: absolute;
+  }
+
+  @include when(disabled) {
+    @include e(header-label) {
+      @include disable;
+    }
+  }
+}

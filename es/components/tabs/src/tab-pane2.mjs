@@ -1,0 +1,23 @@
+import { buildProps } from '../../../utils/vue/props/runtime.mjs';
+
+const tabPaneProps = buildProps({
+  tabPaneClass: {
+    type: String
+  },
+  label: {
+    type: String,
+    default: ""
+  },
+  name: {
+    type: [String, Number]
+  },
+  closable: {
+    type: Boolean,
+    default: void 0
+  },
+  disabled: Boolean,
+  lazy: Boolean
+});
+
+export { tabPaneProps };
+//# sourceMappingURL=tab-pane2.mjs.map

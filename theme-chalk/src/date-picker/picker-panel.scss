@@ -1,0 +1,143 @@
+@use '../mixins/mixins' as *;
+@use '../common/var' as *;
+@use './utils.scss' as *;
+
+@include b(picker-panel) {
+  color: getCssVar('text-color', 'primary');
+  background: getCssVar('bg-color', 'overlay');
+  border-radius: getCssVarWithDefault(
+    ('popper', 'border-radius'),
+    getCssVar('border-radius-base')
+  );
+  line-height: 30px;
+
+  .#{$namespace}-time-panel {
+    margin: 5px 0;
+    border: solid 1px getCssVar('datepicker-border-color');
+    background-color: getCssVar('bg-color', 'overlay');
+    box-shadow: getCssVar('box-shadow-light');
+  }
+
+  @include e((body, body-wrapper)) {
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+
+  @include e(content) {
+    position: relative;
+    .date-picker-table-header {
+      border-top: 1px solid var(--color-gray-100);
+
+      th {
+        padding: 8px 0;
+        font-size: 12px;
+        line-height: 16px;
+        color: #7a909e;
+        font-weight: 400;
+      }
+    }
+  }
+
+  @include e(footer) {
+    border-top: 1px solid getCssVar('datepicker-inner-border-color');
+    padding: 4px 12px;
+    text-align: right;
+    background-color: getCssVar('bg-color', 'overlay');
+    position: relative;
+    font-size: 0;
+  }
+
+  @include e(shortcut) {
+    display: block;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    line-height: 30px;
+    font-size: 13px;
+    color: getCssVar('datepicker-text-color');
+    text-align: left;
+    outline: none;
+    cursor: pointer;
+    padding-left: 16px;
+
+    &:hover {
+      background-color: var(--color-gray-100);
+    }
+
+    &.active {
+      background-color: #e6f1fe;
+      color: getCssVar('datepicker-active-color');
+    }
+  }
+
+  @include e(btn) {
+    border: 1px solid getCssVar('fill-color', 'darker');
+    color: getCssVar('text-color', 'primary');
+    line-height: 24px;
+    border-radius: 2px;
+    padding: 0 20px;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    font-size: 12px;
+
+    &[disabled] {
+      color: getCssVar('text-color', 'disabled');
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(icon-btn) {
+    @include when(disabled) {
+      @include disable;
+    }
+
+    & .#{$namespace}-icon {
+      cursor: pointer;
+      font-size: inherit;
+      margin-left: 0 !important;
+    }
+  }
+
+  @include e(link-btn) {
+    vertical-align: middle;
+  }
+
+  @include when(disabled) {
+    @include e(prev-btn) {
+      @include disable;
+    }
+    @include e(next-btn) {
+      @include disable;
+    }
+    @include e(icon-btn) {
+      @include disable;
+    }
+    @include e(shortcut) {
+      @include disable;
+    }
+  }
+}
+
+.#{$namespace}-picker-panel *[slot='sidebar'],
+.#{$namespace}-picker-panel__sidebar {
+  position: absolute;
+  top: 0;
+  left: 1px;
+  bottom: 0;
+  width: 110px;
+  border-right: 1px solid var(--color-gray-100);
+  box-sizing: border-box;
+  padding-top: 6px;
+  overflow: auto;
+}
+
+.#{$namespace}-picker-panel
+*[slot='sidebar']
++ .#{$namespace}-picker-panel__body,
+.#{$namespace}-picker-panel__sidebar + .#{$namespace}-picker-panel__body {
+  margin-left: 126px;
+}

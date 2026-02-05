@@ -1,0 +1,43 @@
+@use './font.scss' as *;
+
+.el-dialog {
+  .el-dialog__header {
+    background-color: var(--color-cloudy-gray-50);
+  }
+  .el-dialog__title {
+    color: var(--color-gray-990);
+  }
+  .el-dialog__body {
+    @include body-md;
+  }
+  .el-dialog__title {
+    &.error,
+    &.warning {
+      .el-icon {
+        margin-right: 6px;
+      }
+    }
+    &.error {
+      .el-icon {
+        > svg > path {
+          fill: var(--color-red-600);
+        }
+      }
+    }
+    &.warning {
+      .el-icon {
+        > svg > path {
+          fill: var(--color-yellow-400);
+        }
+      }
+    }
+  }
+
+  .hints {
+    color: var(--color-gray-500);
+    @include body-md;
+    .header {
+      font-weight: var(--p-font-weight-bold);
+    }
+  }
+}

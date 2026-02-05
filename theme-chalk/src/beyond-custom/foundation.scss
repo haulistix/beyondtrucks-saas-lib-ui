@@ -1,0 +1,234 @@
+:root {
+  --el-transition-duration: 0.15s;
+  --el-border-color-base: #e3e8ee;
+  --el-color-primary: #ff5b05;
+  --el-color-info: #090f14;
+  --el-button-text-color: #0e171f;
+  --el-button-danger-hover-color: #eb5100;
+  --animate-duration: 1s;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
+  --el-border-color: #dfe7f1;
+  --el-table-index: 1;
+
+
+  // font family
+  --p-font-weight-regular: 400;
+  --p-font-weight-medium: 500;
+  --p-font-weight-semibold: 600;
+  --p-font-weight-bold: 700;
+  // letter-spacing
+  --p-font-letter-spacing-densest: -0.5px;
+  --p-font-letter-spacing-denser: -0.3px;
+  --p-font-letter-spacing-dense: -0.2px;
+  --p-font-letter-spacing-normal: 0;
+  // font size
+  --p-font-size-300: 11px;
+  --p-font-size-400: 12px;
+  --p-font-size-500: 13px;
+  --p-font-size-550: 14px;
+  --p-font-size-600: 16px;
+  --p-font-size-650: 20px;
+  --p-font-size-800: 24px;
+  --p-font-size-1000: 30px;
+  --p-font-size-1200: 36px;
+  --p-font-size-1500: 48px;
+  // line-height
+  --p-font-line-height-300: 14px;
+  --p-font-line-height-400: 16px;
+  --p-font-line-height-500: 20px;
+  --p-font-line-height-600: 24px;
+  --p-font-line-height-800: 32px;
+  --p-font-line-height-1000: 40px;
+  --p-font-line-height-1200: 48px;
+  --p-font-line-height-1500: 52px;
+
+
+  /*color*/
+  --white: #fff;
+  --black: #000;
+  --color-teal-100: #ebf5f4;
+  --color-teal-200: #beebe7;
+  --color-teal-300: #86d9d4;
+  --color-teal-400: #4ebfb9;
+  --color-teal-500: #279c9c;
+  --color-teal-600: #167b7d;
+  --color-teal-700: #155c5e;
+  --color-teal-800: #124241;
+  --color-teal-900: #102e2d;
+  --color-blue-100: #f0f4fa;
+  --color-blue-200: #d4e4fa;
+  --color-blue-300: #adccf7;
+  --color-blue-400: #75b1ff;
+  --color-blue-500: #3d8df5;
+  --color-blue-600: #186ade;
+  --color-blue-700: #0d4ea6;
+  --color-blue-800: #103a75;
+  --color-blue-900: #11294d;
+  --color-blue-990: #0d1826;
+  --color-cloudy-gray-50: #f2f7f7;
+  --color-cloudy-gray-100: #e2eaea;
+  --color-cloudy-gray-200: #d3ddde;
+  --color-cloudy-gray-300: #b7c2c4;
+  --color-cloudy-gray-400: #9ca8aa;
+  --color-cloudy-gray-500: #828e91;
+  --color-cloudy-gray-600: #697579;
+  --color-cloudy-gray-700: #505d62;
+  --color-cloudy-gray-800: #3a464c;
+  --color-cloudy-gray-900: #243037;
+  --color-cloudy-gray-990: #0e171f;
+  --color-cloudy-gray-999: #090f14;
+  --color-cyan-50: #f6fffe;
+  --color-cyan-100: #ebf5f4;
+  --color-cyan-200: #c7e8ed;
+  --color-cyan-300: #81d8e5;
+  --color-cyan-400: #45bcd1;
+  --color-cyan-500: #159ab2;
+  --color-cyan-600: #067a91;
+  --color-cyan-700: #09596b;
+  --color-cyan-800: #0c424d;
+  --color-cyan-900: #102d33;
+  --color-gray-10: #fafafa;
+  --color-gray-50: #f2f5f7;
+  --color-gray-100: #e7ecef;
+  --color-gray-200: #dce3e8;
+  --color-gray-300: #c1ccd6;
+  --color-gray-400: #9fb1bd;
+  --color-gray-500: #7a909e;
+  --color-gray-600: #5b7282;
+  --color-gray-700: #3e5463;
+  --color-gray-800: #2a3f4d;
+  --color-gray-900: #1c2b36;
+  --color-gray-990: #0e171f;
+  --color-gray-999: #090f14;
+  --color-green-100: #ebf7ed;
+  --color-green-200: #c7ebd1;
+  --color-green-300: #88dba8;
+  --color-green-400: #43c478;
+  --color-green-500: #16a163;
+  --color-green-600: #077d55;
+  --color-green-700: #075e45;
+  --color-green-800: #094536;
+  --color-green-900: #092e25;
+  --color-green-990: #081a15;
+  --color-lime-50: #f6fdec;
+  --color-lime-100: #ebf7da;
+  --color-lime-200: #d5f0b1;
+  --color-lime-300: #aad971;
+  --color-lime-400: #78bf39;
+  --color-lime-500: #52a31d;
+  --color-lime-600: #3c7d0e;
+  --color-lime-700: #2e5c0e;
+  --color-lime-800: #254211;
+  --color-lime-900: #1c2e10;
+  --color-lime-990: #121a0d;
+  --color-orange-10: #fff2ea;
+  --color-orange-25: #ffece0;
+  --color-orange-50: #ffdeca;
+  --color-orange-100: #ffd3b8;
+  --color-orange-200: #ffc5a1;
+  --color-orange-300: #ffb181;
+  --color-orange-400: #ff9757;
+  --color-orange-500: #ff761f;
+  --color-orange-600: #ff5b05;
+  --color-orange-700: #eb5100;
+  --color-orange-800: #b04300;
+  --color-orange-900: #953900;
+  --color-orange-990: #722c00;
+  --color-purple-100: #f7f2fc;
+  --color-purple-200: #eadcfc;
+  --color-purple-300: #dabefa;
+  --color-purple-400: #c89afc;
+  --color-purple-500: #ac71f0;
+  --color-purple-600: #8f49de;
+  --color-purple-700: #6b30ab;
+  --color-purple-800: #4c277d;
+  --color-purple-900: #331f4d;
+  --color-purple-990: #1c1229;
+  --color-red-100: #fcf3f2;
+  --color-red-200: #fadcd9;
+  --color-red-300: #fabbb4;
+  --color-red-400: #fc9086;
+  --color-red-500: #fa5343;
+  --color-red-600: #d91f11;
+  --color-red-700: #a1160a;
+  --color-red-800: #75160c;
+  --color-red-900: #4f150f;
+  --color-yellow-100: #faf6cf;
+  --color-yellow-200: #f7e379;
+  --color-yellow-300: #f5c518;
+  --color-yellow-400: #d9a514;
+  --color-yellow-500: #b3870e;
+  --color-yellow-600: #946613;
+  --color-yellow-700: #70491c;
+  --color-yellow-800: #54341f;
+  --color-yellow-900: #38251b;
+  --color-yellow-990: #1c1613;
+  --color-pink-100: #fcf0f8;
+  --color-pink-200: #f7daed;
+  --color-pink-300: #f7b7e2;
+  --color-pink-400: #fa87d4;
+  --color-pink-500: #ed4cb7;
+  --color-pink-600: #cc1d92;
+  --color-pink-700: #961574;
+  --color-pink-800: #6b155a;
+  --color-pink-900: #47153f;
+  --color-pink-990: #241020;
+
+  /*label color*/
+  --color-bg-surface-tab-surface: #d8e3ea;
+  --color-text-tertiary: #5b7282;
+  --color-text-primary: #0e171f;
+  --color-text-disabled: #c1ccd6;
+  --color-text-placeholder: #95b3C0;
+  --color-border-divider: #e5ecef;
+  --color-primary: #ff761f;
+  --color-BBCDD8: #BBCDD8;
+  --color-critical: #c10000;
+  --color-labelColor: #697386;
+  --color-disabledColor: #f0f5f7;
+  --color-E2EAEA: #e2eaea;
+  --color-placeholder: #9fb1bd;
+  --color-dateBlue: rgba(12, 108, 243, 0.2);
+  --color-fcf6c6: #fcf6c6;
+  --background-accent: #f3f3f6;
+
+  //shadow
+  --shadow-100: 1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  -1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  0 -1px 0 0 rgba(0, 0, 0, 0.17) inset,
+  0 1px 0 0 rgba(204, 204, 204, 0.5) inset,
+  0 1px 0 0 rgba(26, 26, 26, 0.07);
+
+  --shadow-200: 1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  -1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  0 -1px 0 0 rgba(0, 0, 0, 0.17) inset,
+  0 1px 0 0 rgba(204, 204, 204, 0.5) inset,
+  0 3px 1px -1px rgba(26, 26, 26, 0.07);
+
+  --shadow-300: 1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  -1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  0 -1px 0 0 rgba(0, 0, 0, 0.17) inset,
+  0 1px 0 0 rgba(204, 204, 204, 0.5) inset,
+  0 4px 6px -2px rgba(26, 26, 26, 0.2);
+
+  --shadow-400: 1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  -1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  0 -1px 0 0 rgba(0, 0, 0, 0.17) inset,
+  0 1px 0 0 rgba(204, 204, 204, 0.5) inset,
+  0 8px 16px -4px rgba(26, 26, 26, 0.22);
+
+  --shadow-500: 1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  -1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  0 -1px 0 0 rgba(0, 0, 0, 0.17) inset,
+  0 1px 0 0 rgba(204, 204, 204, 0.5) inset,
+  0 12px 20px -8px rgba(26, 26, 26, 0.24);
+
+  --shadow-600: 1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+  -1px 0 0 0 rgba(0, 0, 0, 0.17) inset,
+  0 -1px 0 0 rgba(0, 0, 0, 0.17) inset,
+  0 1px 0 0 rgba(204, 204, 204, 0.5) inset,
+  0 20px 20px -8px rgba(26, 26, 26, 0.28);
+
+  --shadow-border-focus: 0 0 0 2px rgba(36, 48, 55, 0.8);
+}

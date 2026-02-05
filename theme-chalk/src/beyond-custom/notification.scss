@@ -1,0 +1,29 @@
+@use './common.scss' as *;
+
+.el-notification--success--wrapper {
+  background-color: var(--color-lime-50);
+  border-color: var(--color-lime-300);
+}
+.el-notification--warning--wrapper {
+  background-color: var(--color-yellow-100);
+  border-color: var(--color-yellow-300);
+}
+.el-notification--info--wrapper {
+  background-color: var(--color-gray-50);
+  border-color: var(--color-gray-300);
+}
+.el-notification--error--wrapper {
+  background-color: var(--color-red-100);
+  border-color: var(--color-red-300);
+}
+.el-notification {
+  .el-notification__icon {
+    font-size: var(--p-font-size-600);
+  }
+}
+.el-notification__group {
+  margin-left: 10px;
+  .el-button {
+    @include button-custom-hover-active;
+  }
+}

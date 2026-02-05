@@ -1,0 +1,190 @@
+@use '../common/var' as *;
+@use '../mixins/mixins' as *;
+
+@include b(date-table) {
+  font-size: 12px;
+  user-select: none;
+
+  @include when(week-mode) {
+    .#{$namespace}-date-table__row {
+      &:hover {
+        background-color: getCssVar('datepicker-inrange-bg-color');
+
+        td.available:hover {
+          color: getCssVar('datepicker-text-color');
+        }
+
+        td:first-child .#{$namespace}-date-table-cell {
+          margin-left: 5px;
+          border-top-left-radius: 15px;
+          border-bottom-left-radius: 15px;
+        }
+
+        td:last-child .#{$namespace}-date-table-cell {
+          margin-right: 5px;
+          border-top-right-radius: 15px;
+          border-bottom-right-radius: 15px;
+        }
+      }
+
+      &.current {
+        background-color: getCssVar('datepicker-inrange-bg-color');
+
+        .#{$namespace}-date-table-cell {
+          color: getCssVar('text-color', 'brand');
+        }
+
+        .start-date .el-date-table-cell__text,
+        .end-date .el-date-table-cell__text {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  td {
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+
+    @include b(date-table-cell) {
+      height: 30px;
+      padding: 3px 0;
+      box-sizing: border-box;
+      @include b(date-table-cell__text) {
+        width: 24px;
+        height: 24px;
+        font-size: 13px;
+        display: block;
+        margin: 0 auto;
+        line-height: 24px;
+        position: absolute;
+        left: 50%;
+        font-weight: 500;
+        transform: translateX(-50%);
+      }
+    }
+
+    &.next-month,
+    &.prev-month {
+      color: getCssVar('datepicker-off-text-color');
+    }
+
+    &.today {
+      position: relative;
+      border: 1px solid getCssVar('color-primary');
+
+      .#{$namespace}-date-table-cell__text {
+        color: getCssVar('text-color', 'brand');
+      }
+
+      &.start-date .#{$namespace}-date-table-cell__text,
+      &.end-date .#{$namespace}-date-table-cell__text {
+        color: $color-white;
+      }
+    }
+
+    &.available:hover {
+      background-color: getCssVar('color-primary');
+
+      .#{$namespace}-date-table-cell__text {
+        color: #fff;
+      }
+    }
+
+    &.in-range {
+      background-color: getCssVar('datepicker-inrange-bg-color');
+      color: getCssVar('text-color', 'brand');
+    }
+
+    &.current:not(.disabled) {
+      background-color: getCssVar('datepicker-active-color');
+
+      .#{$namespace}-date-table-cell__text {
+        color: $color-white;
+      }
+
+      &:focus-visible {
+        .#{$namespace}-date-table-cell__text {
+          outline: 2px solid getCssVar('datepicker-active-color');
+          outline-offset: 1px;
+        }
+      }
+    }
+
+    &.start-date {
+      background-color: getCssVar('color-primary');
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    &.end-date {
+      background-color: getCssVar('color-primary');
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    &.start-date .#{$namespace}-date-table-cell,
+    &.end-date .#{$namespace}-date-table-cell {
+      color: $color-white;
+    }
+
+    &.start-date .#{$namespace}-date-table-cell__text,
+    &.end-date .#{$namespace}-date-table-cell__text {
+      background-color: getCssVar('datepicker-active-color');
+    }
+
+    &.start-date .#{$namespace}-date-table-cell {
+      margin-left: 5px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+    &.end-date .#{$namespace}-date-table-cell {
+      margin-right: 5px;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+
+    &.disabled {
+      background-color: #e7ecef;
+
+      .#{$namespace}-date-table-cell {
+        cursor: not-allowed;
+        color: #c1ccd6;
+      }
+    }
+
+    &.selected .#{$namespace}-date-table-cell {
+      margin-left: 5px;
+      margin-right: 5px;
+      border-radius: 15px;
+    }
+
+    &.selected .#{$namespace}-date-table-cell__text {
+      background-color: getCssVar('datepicker-active-color');
+      color: $color-white;
+      border-radius: 15px;
+    }
+
+    &.week {
+      font-size: 80%;
+      color: getCssVar('datepicker-header-text-color');
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  th {
+    color: getCssVar('datepicker-header-text-color');
+    font-weight: 400;
+    width: 40px;
+    border-bottom: solid 1px var(--color-gray-100);
+    border-top: solid 1px var(--color-gray-100);
+  }
+}

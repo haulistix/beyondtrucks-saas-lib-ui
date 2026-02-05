@@ -1,0 +1,167 @@
+// heading
+.heading-heading-4xl {
+  font-weight: var(--p-font-weight-bold);
+  font-size: var(--p-font-size-1500);
+  line-height: var(--p-font-line-height-1500);
+}
+.heading-heading-3xl {
+  font-weight: var(--p-font-weight-bold);
+  font-size: var(--p-font-size-1200);
+  line-height: var(--p-font-line-height-1200);
+}
+.heading-heading-xxl {
+  font-weight: var(--p-font-weight-bold);
+  font-size: var(--p-font-size-1000);
+  line-height: var(--p-font-line-height-1000);
+}
+.heading-heading-xl {
+  font-weight: var(--p-font-weight-bold);
+  font-size: var(--p-font-size-800);
+  line-height: var(--p-font-line-height-800);
+}
+.heading-heading-lg {
+  font-weight: var(--p-font-weight-bold);
+  font-size: var(--p-font-size-650);
+  line-height: var(--p-font-line-height-600);
+}
+@mixin heading-heading-md {
+  font-weight: var(--p-font-weight-semibold);
+  font-size: var(--p-font-size-600);
+  line-height: var(--p-font-line-height-600);
+}
+.heading-heading-md {
+  @include heading-heading-md;
+}
+@mixin heading-heading-sm {
+  font-weight: var(--p-font-weight-semibold);
+  font-size: var(--p-font-size-550);
+  line-height: var(--p-font-line-height-500);
+}
+.heading-heading-sm {
+  @include heading-heading-sm;
+}
+
+@mixin heading-heading-xsm {
+  font-weight: var(--p-font-weight-semibold);
+  font-size: var(--p-font-size-500);
+  line-height: var(--p-font-line-height-500);
+}
+.heading-heading-xsm {
+  @include heading-heading-xsm;
+}
+
+// body/body-md
+@mixin body-md {
+  font-size: var(--p-font-size-550);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-500);
+}
+.body-md {
+  @include body-md;
+}
+
+.body-md-underline {
+  @include body-md;
+  text-decoration-line: underline;
+}
+
+@mixin body-md-medium {
+  font-size: var(--p-font-size-550);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-500);
+}
+.body-md-medium {
+  @include body-md-medium;
+}
+
+.body-md-medium-underline {
+  @include body-md-medium;
+  text-decoration-line: underline;
+}
+
+.body-md-semibold {
+  font-size: var(--p-font-size-550);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-font-line-height-500);
+}
+
+.body-md-bold {
+  font-size: var(--p-font-size-550);
+  font-weight: var(--p-font-weight-bold);
+  line-height: var(--p-font-line-height-500);
+}
+.body-md-numeric {
+  @include body-md;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.body-md-medium-numeric {
+  font-size: var(--p-font-size-550);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-500);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.body-md-semibold-numeric {
+  font-size: var(--p-font-size-550);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-font-line-height-500);
+}
+
+// body/body-sm
+@mixin body-sm {
+  font-size: var(--p-font-size-500);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-500);
+}
+.body-sm {
+  @include body-sm;
+}
+.body-sm-underline {
+  @include body-sm;
+  text-decoration-line: underline;
+}
+
+@mixin body-sm-medium {
+  font-size: var(--p-font-size-500);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-500);
+}
+
+.body-sm-medium {
+  @include body-sm-medium;
+}
+
+.body-sm-semibold {
+  font-size: var(--p-font-size-500);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-font-line-height-500);
+}
+
+// body/body-xs
+.body-xs {
+  font-size: var(--p-font-size-400);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-400);
+}
+
+.body-xs-semibold {
+  font-size: var(--p-font-size-400);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-font-line-height-400);
+}
+
+// body/body-xxs
+.body-xxs {
+  font-size: var(--p-font-size-300);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-300);
+}
+.body-xxs-medium {
+  font-size: var(--p-font-size-300);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-300);
+}
+.body-xxs-semibold {
+  font-size: var(--p-font-size-300);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-font-line-height-300);
+}

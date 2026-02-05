@@ -1,0 +1,154 @@
+@use './font.scss' as *;
+
+.select-add-tip {
+  font-size: 13px;
+  color: #9FB1BD;
+  padding: 8px 16px;
+  border-bottom: 1px solid #E7ECEF;
+}
+
+.el-select {
+  border: none;
+
+  .trans-input {
+    .el-input__inner::placeholder {
+      color: transparent;
+    }
+  }
+
+  .select-all-tag {
+    font-size: 13px;
+    color: #0E171F;
+  }
+
+  .el-select__placeholder {
+    font-size: var(--p-font-size-500);
+  }
+
+  .el-select__prefix,
+  .el-select__suffix {
+    color: var(--color-gray-800);
+  }
+
+  .el-select__wrapper {
+    &.is-disabled {
+      border-color: var(--color-gray-100);
+      box-shadow: none;
+    }
+
+    .prefix-label {
+      &.float-label {
+        left: 28px;
+        top: 9px;
+      }
+    }
+
+    &.is-focused {
+      .prefix-label {
+        &.float-label {
+          left: 12px;
+        }
+      }
+    }
+
+    &:has(.el-select__placeholder) {
+      .prefix-label {
+        &.float-label {
+          left: 12px;
+        }
+      }
+    }
+  }
+
+  .el-select__selection {
+    .el-tag {
+      border-radius: var(--raidus-300);
+      background-color: var(--color-gray-100);
+    }
+  }
+}
+
+.el-select-dropdown {
+  margin: 0 1px;
+
+  .el-select-group__title {
+    height: 24px;
+    color: var(--color-gray-990);
+    font-weight: var(--p-font-weight-semibold);
+    font-size: var(--p-font-size-500);
+    line-height: 24px;
+  }
+
+  .el-select-group__wrap {
+    .el-divider {
+      border-color: var(--color-gray-100);
+      margin: 8px 0;
+    }
+  }
+}
+
+.el-popper.is-light.optionPopperClass {
+  max-width: 220px;
+
+  span {
+    width: 100%;
+  }
+}
+
+
+.el-popper.is-light[role=tooltip].el-select__popper {
+  padding: 8px 0;
+  border-radius: 8px;
+  border: none;
+  box-shadow: var(--shadow-300);
+  font-size: var(--p-font-size-500);
+  font-weight: var(--p-font-weight-regular);
+
+  .el-select-dropdown__item {
+    &:hover {
+      background-color: var(--color-gray-50);
+    }
+
+    .tip {
+      margin-left: 8px;
+    }
+  }
+
+  .select-all-item {
+    color: #5B7282;
+    font-size: 13px;
+    padding: 8px 16px;
+    line-height: 20px;
+    border-bottom: 1px solid #E7ECEF;
+  }
+
+  .option-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-icon {
+      width: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-content {
+      width: calc(100% - 20px);
+      display: flex;
+      align-items: center;
+
+      .select-label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .select-margin {
+        margin-left: 8px;
+      }
+    }
+  }
+}

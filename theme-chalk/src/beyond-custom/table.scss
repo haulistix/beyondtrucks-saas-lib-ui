@@ -1,0 +1,137 @@
+@use './font.scss' as *;
+
+.el-table {
+  border-bottom: 1px solid #e7ecef;
+
+  .el-table__header-wrapper {
+    border-bottom: none;
+    border-top: 1px solid #c1ccd6;
+  }
+
+  thead {
+    th {
+      .cell {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    th.is-sortable {
+      cursor: unset !important;
+
+      .cell {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .icon-wrap {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 20px;
+          height: 20px;
+
+          .el-icon.icon-arrow {
+            font-size: 12px;
+            cursor: pointer;
+          }
+        }
+
+      }
+
+      .sort-caret-custom {
+        &.el-button {
+          padding: 5px 6px;
+          font-size: var(--p-font-size-550);
+        }
+
+        .icon-arrow {
+          margin-left: 0;
+
+          path {
+            fill: var(--color-gray-300);
+          }
+        }
+      }
+
+      &.ascending {
+        .icon-top {
+          display: block;
+        }
+
+        .icon-arrow {
+          transform: rotate(180deg);
+
+          path {
+            fill: var(--color-orange-600);
+          }
+        }
+      }
+
+      &.descending {
+        .icon-bottom {
+          display: block;
+        }
+
+        .icon-arrow {
+          path {
+            fill: var(--color-orange-600);
+          }
+        }
+      }
+    }
+  }
+}
+
+.el-table--border {
+  .el-table__cell {
+    &:has(.el-input) {
+      padding: 0;
+
+      .cell {
+        padding: 0;
+      }
+
+      .el-input__wrapper {
+        border-radius: 0;
+        height: 100%;
+      }
+
+      .el-input__inner {
+        height: 40px;
+      }
+    }
+  }
+
+  .el-table__body-wrapper {
+    .el-table__cell {
+      border-right: none;
+
+      &:has(.editable-table-cell) {
+        &:hover {
+          border: 1px solid var(--color-gray-300);
+        }
+      }
+    }
+  }
+
+  .el-table__cell.el-table-column--selection {
+    border-right: none;
+  }
+
+  .el-icon {
+    &.warning {
+      path {
+        fill: var(--color-yellow-400);
+      }
+    }
+  }
+}
+
+.el-table.is-scrolling-left.el-table--border {
+  .el-table__body-wrapper {
+    .el-table-fixed-column--left.is-last-column.el-table__cell {
+      border-right: none;
+    }
+  }
+}

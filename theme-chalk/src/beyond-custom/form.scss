@@ -1,0 +1,23 @@
+.el-form-item {
+  &.is-error {
+    .el-input__wrapper {
+      background-color: var(--color-red-100);
+      border-color: var(--color-red-800);
+    }
+
+    .el-input__validateIcon {
+      color: var(--color-red-600);
+    }
+
+    .el-input {
+      .error-icon {
+        cursor: pointer;
+        margin-right: 8px;
+      }
+
+      .el-input__clear, {
+        margin-right: 0;
+      }
+    }
+  }
+}

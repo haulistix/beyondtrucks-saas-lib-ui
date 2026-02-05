@@ -1,0 +1,121 @@
+@use '../mixins/mixins' as *;
+@use '../common/var' as *;
+
+@include b(year-table) {
+  font-size: 12px;
+  margin: -1px;
+  border-collapse: collapse;
+
+  .#{$namespace}-icon {
+    color: getCssVar('datepicker', 'icon-color');
+  }
+  tr {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    td {
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+
+      @include b(date-table-cell) {
+        height: 44px;
+        width: 86px;
+        box-sizing: border-box;
+        border: 1px solid #c1ccd6;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          background-color: var(--color-orange-600);
+          border-color: transparent;
+
+          .el-date-table-cell__text {
+            color: #fff !important;
+          }
+        }
+      }
+
+      &.today {
+        .#{$namespace}-date-table-cell {
+          border: 1px solid var(--color-orange-700);
+
+          .#{$namespace}-date-table-cell__text {
+            color: var(--color-orange-700);
+          }
+        }
+
+        &.start-date .#{$namespace}-date-table-cell__text,
+        &.end-date .#{$namespace}-date-table-cell__text {
+          color: $color-white;
+        }
+      }
+
+      &.disabled
+      .#{$namespace}-date-table-cell {
+        border-color: var(--color-gray-100);
+        background-color: var(--color-gray-100);
+
+        .#{$namespace}-date-table-cell__text {
+          cursor: not-allowed;
+          color: #c1ccd6 !important;
+        }
+      }
+
+
+      @include b(date-table-cell__text) {
+        width: 60px;
+        height: 36px;
+        display: block;
+        line-height: 36px;
+        color: var(--color-gray-990);
+        margin: 0 auto;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      &.in-range .#{$namespace}-date-table-cell {
+        background-color: getCssVar('datepicker-inrange-bg-color');
+        border-color: transparent;
+
+        .el-date-table-cell__text {
+          color: #eb5100;
+        }
+      }
+
+      &.start-date .#{$namespace}-date-table-cell,
+      &.end-date .#{$namespace}-date-table-cell {
+        color: $color-white;
+      }
+
+      &.start-date .#{$namespace}-date-table-cell,
+      &.end-date .#{$namespace}-date-table-cell {
+        background-color: #ff5b05;
+
+        .#{$namespace}-date-table-cell__text {
+          color: $color-white;
+        }
+      }
+
+      &.current:not(.disabled) .#{$namespace}-date-table-cell {
+        background-color: var(--color-orange-600);
+        border-color: transparent;
+
+        .el-date-table-cell__text {
+          color: #fff;
+        }
+      }
+
+      &:focus-visible {
+        outline: none;
+
+        .#{$namespace}-date-table-cell__text {
+          outline: 2px solid getCssVar('datepicker-active-color');
+          outline-offset: 1px;
+        }
+      }
+    }
+  }
+}

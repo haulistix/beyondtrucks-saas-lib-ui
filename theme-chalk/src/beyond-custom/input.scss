@@ -1,0 +1,124 @@
+@use '../mixins/mixins' as *;
+
+.el-input {
+  --el-border-color-custom: var(--color-gray-300);
+
+  &:not(.el-input--large,.el-input--small) {
+    .el-input__suffix {
+      padding-right: 8px;
+    }
+  }
+
+
+  .el-input__inner {
+    color: var(--color-gray-990);
+  }
+
+  .el-input__prefix-inner,
+  .el-input__suffix-inner {
+    color: var(--color-gray-800);
+  }
+
+  &.is-disabled {
+    border-color: var(--color-gray-100);
+
+    .el-input__wrapper {
+      box-shadow: none;
+      border-color: var(--color-gray-100);
+    }
+  }
+}
+
+.el-textarea {
+  --el-border-color-custom: var(--color-gray-300);
+
+  .pre-star-item {
+    position: absolute;
+    display: block;
+    width: 12px;
+    height: 12px;
+    top: 13px;
+    left: 4px;
+    color: var(--el-color-error);
+    text-align: center;
+
+  }
+
+  &.is-disabled {
+    border-color: var(--color-gray-100);
+
+    .el-textarea__inner {
+      box-shadow: none;
+      border-color: var(--color-gray-100);
+    }
+
+    .float-label {
+      background-color: transparent;
+    }
+  }
+
+  .float-label.has-value {
+    @include float-label-value
+  }
+
+  .el-textarea__inner {
+
+    &.is-focus {
+      ~ .float-label {
+        transform: translateY(-15px);
+      }
+    }
+  }
+
+  // textarea-prefix
+  &:has(.textarea-prefix) {
+    .el-textarea__inner {
+      padding-left: 32px;
+    }
+
+    .textarea-prefix {
+      position: absolute;
+      left: 12px;
+      top: 10px;
+    }
+
+    .float-label {
+      left: 26px;
+    }
+
+    .el-textarea__inner {
+      &.is-focus {
+        ~ .float-label {
+          transform: translate(-20px, -15px);
+        }
+      }
+    }
+
+    .float-label.has-value {
+      transform: translate(-20px, -15px);
+    }
+  }
+
+  .error-icon {
+    position: absolute;
+    right: 8px;
+    top: 10px;
+  }
+
+  // textarea-suffix
+  &:has(.textarea-suffix) {
+    .el-textarea__inner {
+      padding-right: 23px;
+    }
+
+    .textarea-suffix {
+      position: absolute;
+      right: 8px;
+      top: 10px;
+    }
+  }
+}
+
+.el-input__prefix ~ .float-label {
+  left: 28px;
+}

@@ -1,0 +1,8 @@
+@use './font.scss' as *;
+
+.time-picker-item {
+  .el-select-dropdown__item {
+    font-weight: 400;
+    color: var(--color-gray-990);
+  }
+}

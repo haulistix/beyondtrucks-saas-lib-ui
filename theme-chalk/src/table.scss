@@ -145,7 +145,6 @@
   }
 
   .#{$namespace}-table__cell {
-    padding: map.get($table-padding, 'default');
     min-width: 0;
     box-sizing: border-box;
     text-overflow: ellipsis;
@@ -153,6 +152,12 @@
     position: relative;
     text-align: left;
     z-index: getCssVar('table-index');
+
+    .cell-height {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
 
     @include when(center) {
       text-align: center;
@@ -190,7 +195,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      max-width: 88px;
+      flex: 1;
     }
 
     &.#{$namespace}-tooltip {

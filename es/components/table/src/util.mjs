@@ -10,6 +10,37 @@ const getCell = function(event) {
   var _a;
   return (_a = event.target) == null ? void 0 : _a.closest("td");
 };
+const getThCell = function(event) {
+  var _a;
+  return (_a = event.target) == null ? void 0 : _a.closest("th");
+};
+const isGreaterThan = (a, b, epsilon = 0.03) => {
+  return a - b > epsilon;
+};
+const getPadding = (el) => {
+  const style = window.getComputedStyle(el, null);
+  const paddingLeft = Number.parseInt(style.paddingLeft, 10) || 0;
+  const paddingRight = Number.parseInt(style.paddingRight, 10) || 0;
+  const paddingTop = Number.parseInt(style.paddingTop, 10) || 0;
+  const paddingBottom = Number.parseInt(style.paddingBottom, 10) || 0;
+  return {
+    left: paddingLeft,
+    right: paddingRight,
+    top: paddingTop,
+    bottom: paddingBottom
+  };
+};
+const toggleRowClassByCell = (rowSpan, event, toggle) => {
+  var _a;
+  let node = (_a = event == null ? void 0 : event.target) == null ? void 0 : _a.parentNode;
+  while (rowSpan > 1) {
+    node = node == null ? void 0 : node.nextSibling;
+    if (!node || node.nodeName !== "TR")
+      break;
+    toggle(node, "hover-row hover-fixed-row");
+    rowSpan--;
+  }
+};
 const orderBy = function(array, sortKey, reverse, sortMethod, sortBy) {
   if (!sortKey && !sortMethod && (!sortBy || isArray(sortBy) && !sortBy.length)) {
     return array;
@@ -435,5 +466,5 @@ const ensurePosition = (style, key) => {
   }
 };
 
-export { compose, createTablePopper, ensurePosition, getCell, getColumnByCell, getColumnById, getColumnByKey, getFixedColumnOffset, getFixedColumnsClass, getKeysMap, getRowIdentity, isFixedColumn, mergeOptions, orderBy, parseHeight, parseMinWidth, parseWidth, removePopper, toggleRowStatus, walkTreeNode };
+export { compose, createTablePopper, ensurePosition, getCell, getColumnByCell, getColumnById, getColumnByKey, getFixedColumnOffset, getFixedColumnsClass, getKeysMap, getPadding, getRowIdentity, getThCell, isFixedColumn, isGreaterThan, mergeOptions, orderBy, parseHeight, parseMinWidth, parseWidth, removePopper, toggleRowClassByCell, toggleRowStatus, walkTreeNode };
 //# sourceMappingURL=util.mjs.map

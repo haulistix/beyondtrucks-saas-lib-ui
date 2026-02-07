@@ -514,7 +514,7 @@ $select-item-height: () !default;
 $select-item-height: map.merge(
     (
       'large': 24px,
-      'default': 24px,
+      'default': 23px,
       'small': 20px,
     ),
     $select-item-height

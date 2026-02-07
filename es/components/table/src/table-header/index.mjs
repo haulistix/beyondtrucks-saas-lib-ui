@@ -80,6 +80,7 @@ var TableHeader = defineComponent({
       updateFixedColumnStyle();
     });
     const {
+      handleCellMouseEnter,
       handleHeaderClick,
       handleHeaderContextMenu,
       handleMouseDown,
@@ -111,6 +112,7 @@ var TableHeader = defineComponent({
       getHeaderCellClass,
       getHeaderCellStyle,
       handleHeaderClick,
+      handleCellMouseEnter,
       handleHeaderContextMenu,
       handleMouseDown,
       handleMouseMove,
@@ -135,6 +137,7 @@ var TableHeader = defineComponent({
       getHeaderRowClass,
       getHeaderRowStyle,
       handleHeaderClick,
+      handleCellMouseEnter,
       handleHeaderContextMenu,
       handleMouseDown,
       handleMouseMove,
@@ -167,6 +170,7 @@ var TableHeader = defineComponent({
         key: `${column.id}-thead`,
         rowspan: column.rowSpan,
         style: getHeaderCellStyle(rowIndex, cellIndex, subColumns, column),
+        onMouseenter: ($event) => handleCellMouseEnter($event, column),
         onClick: ($event) => {
           var _a;
           if ((_a = $event.currentTarget) == null ? void 0 : _a.classList.contains("noclick")) {

@@ -1,12 +1,9 @@
 import { inject, ref, h } from 'vue';
 import { debounce } from 'lodash-unified';
-import { getCell, getColumnByCell, removePopper, createTablePopper } from '../util.mjs';
+import { getCell, getColumnByCell, toggleRowClassByCell, removePopper, getPadding, isGreaterThan, createTablePopper } from '../util.mjs';
 import { TABLE_INJECTION_KEY } from '../tokens.mjs';
-import { hasClass, addClass, removeClass } from '../../../../utils/dom/style.mjs';
+import { addClass, hasClass, removeClass } from '../../../../utils/dom/style.mjs';
 
-function isGreaterThan(a, b, epsilon = 0.03) {
-  return a - b > epsilon;
-}
 function useEvents(props) {
   const parent = inject(TABLE_INJECTION_KEY);
   const tooltipContent = ref("");
@@ -46,30 +43,6 @@ function useEvents(props) {
     var _a;
     (_a = props.store) == null ? void 0 : _a.commit("setHoverRow", null);
   }, 30);
-  const getPadding = (el) => {
-    const style = window.getComputedStyle(el, null);
-    const paddingLeft = Number.parseInt(style.paddingLeft, 10) || 0;
-    const paddingRight = Number.parseInt(style.paddingRight, 10) || 0;
-    const paddingTop = Number.parseInt(style.paddingTop, 10) || 0;
-    const paddingBottom = Number.parseInt(style.paddingBottom, 10) || 0;
-    return {
-      left: paddingLeft,
-      right: paddingRight,
-      top: paddingTop,
-      bottom: paddingBottom
-    };
-  };
-  const toggleRowClassByCell = (rowSpan, event, toggle) => {
-    var _a;
-    let node = (_a = event == null ? void 0 : event.target) == null ? void 0 : _a.parentNode;
-    while (rowSpan > 1) {
-      node = node == null ? void 0 : node.nextSibling;
-      if (!node || node.nodeName !== "TR")
-        break;
-      toggle(node, "hover-row hover-fixed-row");
-      rowSpan--;
-    }
-  };
   const handleCellMouseEnter = (event, row, tooltipOptions) => {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     if (!parent)

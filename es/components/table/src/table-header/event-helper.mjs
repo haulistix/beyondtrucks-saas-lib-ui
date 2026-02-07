@@ -1,13 +1,49 @@
 import { getCurrentInstance, inject, ref } from 'vue';
+import { getThCell, getColumnByCell, toggleRowClassByCell, getPadding, isGreaterThan, createTablePopper, removePopper } from '../util.mjs';
 import { isNull } from 'lodash-unified';
 import { TABLE_INJECTION_KEY } from '../tokens.mjs';
-import { isClient } from '@vueuse/core';
 import { addClass, hasClass, removeClass } from '../../../../utils/dom/style.mjs';
+import { isClient } from '@vueuse/core';
 import { isElement } from '../../../../utils/types.mjs';
 
 function useEvent(props, emit) {
   const instance = getCurrentInstance();
   const parent = inject(TABLE_INJECTION_KEY);
+  const handleCellMouseEnter = (event, row) => {
+    var _a, _b, _c, _d, _e, _f;
+    if (!parent)
+      return;
+    const table = parent;
+    const cell = getThCell(event);
+    const namespace = (_a = table == null ? void 0 : table.vnode.el) == null ? void 0 : _a.dataset.prefix;
+    let column = null;
+    if (cell) {
+      column = getColumnByCell({
+        columns: (_c = (_b = props.store) == null ? void 0 : _b.states.columns.value) != null ? _c : []
+      }, cell, namespace);
+      if (!column)
+        return;
+      if (cell.rowSpan > 1) {
+        toggleRowClassByCell(cell.rowSpan, event, addClass);
+      }
+    }
+    const cellChild = event.target.querySelector(".cell");
+    if (!cellChild.childNodes.length)
+      return;
+    const range = document.createRange();
+    range.setStart(cellChild, 0);
+    range.setEnd(cellChild, cellChild.childNodes.length);
+    const { width: rangeWidth, height: rangeHeight } = range.getBoundingClientRect();
+    const { width: cellChildWidth, height: cellChildHeight } = cellChild.getBoundingClientRect();
+    const { top, left, right, bottom } = getPadding(cellChild);
+    const horizontalPadding = left + right;
+    const verticalPadding = top + bottom;
+    if (isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth)) {
+      createTablePopper({ effect: "light" }, (_d = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _d : "", row, column, cell, table);
+    } else if (((_e = removePopper) == null ? void 0 : _e.trigger) === cell) {
+      (_f = removePopper) == null ? void 0 : _f();
+    }
+  };
   const handleFilterClick = (event) => {
     event.stopPropagation();
     return;
@@ -167,6 +203,7 @@ function useEvent(props, emit) {
     parent == null ? void 0 : parent.store.commit("changeSortCondition");
   };
   return {
+    handleCellMouseEnter,
     handleHeaderClick,
     handleHeaderContextMenu,
     handleMouseDown,

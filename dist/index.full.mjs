@@ -47607,6 +47607,37 @@ const getCell = function(event) {
   var _a;
   return (_a = event.target) == null ? void 0 : _a.closest("td");
 };
+const getThCell = function(event) {
+  var _a;
+  return (_a = event.target) == null ? void 0 : _a.closest("th");
+};
+const isGreaterThan = (a, b, epsilon = 0.03) => {
+  return a - b > epsilon;
+};
+const getPadding = (el) => {
+  const style = window.getComputedStyle(el, null);
+  const paddingLeft = Number.parseInt(style.paddingLeft, 10) || 0;
+  const paddingRight = Number.parseInt(style.paddingRight, 10) || 0;
+  const paddingTop = Number.parseInt(style.paddingTop, 10) || 0;
+  const paddingBottom = Number.parseInt(style.paddingBottom, 10) || 0;
+  return {
+    left: paddingLeft,
+    right: paddingRight,
+    top: paddingTop,
+    bottom: paddingBottom
+  };
+};
+const toggleRowClassByCell = (rowSpan, event, toggle) => {
+  var _a;
+  let node = (_a = event == null ? void 0 : event.target) == null ? void 0 : _a.parentNode;
+  while (rowSpan > 1) {
+    node = node == null ? void 0 : node.nextSibling;
+    if (!node || node.nodeName !== "TR")
+      break;
+    toggle(node, "hover-row hover-fixed-row");
+    rowSpan--;
+  }
+};
 const orderBy = function(array, sortKey, reverse, sortMethod, sortBy) {
   if (!sortKey && !sortMethod && (!sortBy || isArray$1(sortBy) && !sortBy.length)) {
     return array;
@@ -49594,6 +49625,41 @@ const TABLE_INJECTION_KEY = Symbol("ElTable");
 function useEvent(props, emit) {
   const instance = getCurrentInstance();
   const parent = inject(TABLE_INJECTION_KEY);
+  const handleCellMouseEnter = (event, row) => {
+    var _a, _b, _c, _d, _e, _f;
+    if (!parent)
+      return;
+    const table = parent;
+    const cell = getThCell(event);
+    const namespace = (_a = table == null ? void 0 : table.vnode.el) == null ? void 0 : _a.dataset.prefix;
+    let column = null;
+    if (cell) {
+      column = getColumnByCell({
+        columns: (_c = (_b = props.store) == null ? void 0 : _b.states.columns.value) != null ? _c : []
+      }, cell, namespace);
+      if (!column)
+        return;
+      if (cell.rowSpan > 1) {
+        toggleRowClassByCell(cell.rowSpan, event, addClass);
+      }
+    }
+    const cellChild = event.target.querySelector(".cell");
+    if (!cellChild.childNodes.length)
+      return;
+    const range = document.createRange();
+    range.setStart(cellChild, 0);
+    range.setEnd(cellChild, cellChild.childNodes.length);
+    const { width: rangeWidth, height: rangeHeight } = range.getBoundingClientRect();
+    const { width: cellChildWidth, height: cellChildHeight } = cellChild.getBoundingClientRect();
+    const { top, left, right, bottom } = getPadding(cellChild);
+    const horizontalPadding = left + right;
+    const verticalPadding = top + bottom;
+    if (isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth)) {
+      createTablePopper({ effect: "light" }, (_d = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _d : "", row, column, cell, table);
+    } else if (((_e = removePopper) == null ? void 0 : _e.trigger) === cell) {
+      (_f = removePopper) == null ? void 0 : _f();
+    }
+  };
   const handleFilterClick = (event) => {
     event.stopPropagation();
     return;
@@ -49753,6 +49819,7 @@ function useEvent(props, emit) {
     parent == null ? void 0 : parent.store.commit("changeSortCondition");
   };
   return {
+    handleCellMouseEnter,
     handleHeaderClick,
     handleHeaderContextMenu,
     handleMouseDown,
@@ -49995,6 +50062,7 @@ var TableHeader = defineComponent({
       updateFixedColumnStyle();
     });
     const {
+      handleCellMouseEnter,
       handleHeaderClick,
       handleHeaderContextMenu,
       handleMouseDown,
@@ -50026,6 +50094,7 @@ var TableHeader = defineComponent({
       getHeaderCellClass,
       getHeaderCellStyle,
       handleHeaderClick,
+      handleCellMouseEnter,
       handleHeaderContextMenu,
       handleMouseDown,
       handleMouseMove,
@@ -50050,6 +50119,7 @@ var TableHeader = defineComponent({
       getHeaderRowClass,
       getHeaderRowStyle,
       handleHeaderClick,
+      handleCellMouseEnter,
       handleHeaderContextMenu,
       handleMouseDown,
       handleMouseMove,
@@ -50082,6 +50152,7 @@ var TableHeader = defineComponent({
         key: `${column.id}-thead`,
         rowspan: column.rowSpan,
         style: getHeaderCellStyle(rowIndex, cellIndex, subColumns, column),
+        onMouseenter: ($event) => handleCellMouseEnter($event, column),
         onClick: ($event) => {
           var _a;
           if ((_a = $event.currentTarget) == null ? void 0 : _a.classList.contains("noclick")) {
@@ -50133,9 +50204,6 @@ var TableHeader = defineComponent({
   }
 });
 
-function isGreaterThan(a, b, epsilon = 0.03) {
-  return a - b > epsilon;
-}
 function useEvents(props) {
   const parent = inject(TABLE_INJECTION_KEY);
   const tooltipContent = ref("");
@@ -50175,30 +50243,6 @@ function useEvents(props) {
     var _a;
     (_a = props.store) == null ? void 0 : _a.commit("setHoverRow", null);
   }, 30);
-  const getPadding = (el) => {
-    const style = window.getComputedStyle(el, null);
-    const paddingLeft = Number.parseInt(style.paddingLeft, 10) || 0;
-    const paddingRight = Number.parseInt(style.paddingRight, 10) || 0;
-    const paddingTop = Number.parseInt(style.paddingTop, 10) || 0;
-    const paddingBottom = Number.parseInt(style.paddingBottom, 10) || 0;
-    return {
-      left: paddingLeft,
-      right: paddingRight,
-      top: paddingTop,
-      bottom: paddingBottom
-    };
-  };
-  const toggleRowClassByCell = (rowSpan, event, toggle) => {
-    var _a;
-    let node = (_a = event == null ? void 0 : event.target) == null ? void 0 : _a.parentNode;
-    while (rowSpan > 1) {
-      node = node == null ? void 0 : node.nextSibling;
-      if (!node || node.nodeName !== "TR")
-        break;
-      toggle(node, "hover-row hover-fixed-row");
-      rowSpan--;
-    }
-  };
   const handleCellMouseEnter = (event, row, tooltipOptions) => {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     if (!parent)
@@ -50396,7 +50440,9 @@ const _sfc_main$y = /* @__PURE__ */ defineComponent({
         colspan: __props.colspan,
         rowspan: __props.rowspan
       }, [
-        renderSlot(_ctx.$slots, "default")
+        createElementVNode("div", { class: "cell-height" }, [
+          renderSlot(_ctx.$slots, "default")
+        ])
       ], 8, ["colspan", "rowspan"]);
     };
   }

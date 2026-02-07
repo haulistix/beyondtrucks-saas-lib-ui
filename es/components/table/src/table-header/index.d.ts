@@ -67,6 +67,7 @@ declare const _default: import("vue").DefineComponent<{
     getHeaderCellClass: (rowIndex: number, columnIndex: number, row: any, column: import("../table-column/defaults.js").TableColumnCtx<any>) => string;
     getHeaderCellStyle: (rowIndex: number, columnIndex: number, row: any, column: import("../table-column/defaults.js").TableColumnCtx<any>) => import("vue").CSSProperties;
     handleHeaderClick: (event: Event, column: import("../table-column/defaults.js").TableColumnCtx<any>) => void;
+    handleCellMouseEnter: (event: MouseEvent, row: any) => void;
     handleHeaderContextMenu: (event: Event, column: import("../table-column/defaults.js").TableColumnCtx<any>) => void;
     handleMouseDown: (event: MouseEvent, column: import("../table-column/defaults.js").TableColumnCtx<any>) => void;
     handleMouseMove: (event: MouseEvent, column: import("../table-column/defaults.js").TableColumnCtx<any>) => void;

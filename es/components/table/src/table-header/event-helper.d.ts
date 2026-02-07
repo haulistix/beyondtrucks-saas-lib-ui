@@ -3,6 +3,7 @@ import type { TableHeaderProps } from '.';
 import type { TableColumnCtx } from '../table-column/defaults';
 import type { DefaultRow, TableSortOrder } from '../table/defaults';
 declare function useEvent<T extends DefaultRow>(props: TableHeaderProps<T>, emit: EmitFn<string[]>): {
+    handleCellMouseEnter: (event: MouseEvent, row: T) => void;
     handleHeaderClick: (event: Event, column: TableColumnCtx<T>) => void;
     handleHeaderContextMenu: (event: Event, column: TableColumnCtx<T>) => void;
     handleMouseDown: (event: MouseEvent, column: TableColumnCtx<T>) => void;

@@ -13,6 +13,15 @@ type RemovePopperFn = (() => void) & {
     vm?: VNode;
 };
 export declare const getCell: (event: Event) => HTMLTableCellElement | null;
+export declare const getThCell: (event: Event) => HTMLTableCellElement | null;
+export declare const isGreaterThan: (a: number, b: number, epsilon?: number) => boolean;
+export declare const getPadding: (el: HTMLElement) => {
+    left: number;
+    right: number;
+    top: number;
+    bottom: number;
+};
+export declare const toggleRowClassByCell: (rowSpan: number, event: MouseEvent, toggle: (el: Element, cls: string) => void) => void;
 export declare const orderBy: <T extends DefaultRow>(array: T[], sortKey: string | null, reverse: string | number | null, sortMethod: TableColumnCtx<T>["sortMethod"] | null, sortBy: string | string[] | ((a: T, index: number, array?: T[]) => string)) => T[];
 export declare const getColumnById: <T extends DefaultRow>(table: {
     columns: TableColumnCtx<T>[];

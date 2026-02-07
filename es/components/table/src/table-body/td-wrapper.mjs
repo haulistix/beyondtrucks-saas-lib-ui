@@ -1,4 +1,4 @@
-import { defineComponent, openBlock, createElementBlock, renderSlot } from 'vue';
+import { defineComponent, openBlock, createElementBlock, createElementVNode, renderSlot } from 'vue';
 import _export_sfc from '../../../../_virtual/plugin-vue_export-helper.mjs';
 
 const __default__ = defineComponent({
@@ -22,7 +22,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         colspan: __props.colspan,
         rowspan: __props.rowspan
       }, [
-        renderSlot(_ctx.$slots, "default")
+        createElementVNode("div", { class: "cell-height" }, [
+          renderSlot(_ctx.$slots, "default")
+        ])
       ], 8, ["colspan", "rowspan"]);
     };
   }

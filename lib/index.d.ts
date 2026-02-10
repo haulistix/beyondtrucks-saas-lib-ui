@@ -292,6 +292,7 @@ declare const __VLS_component_14: DefineComponent<{
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly isActive: BooleanConstructor;
     readonly type: EpPropFinalized<StringConstructor, "" | "text" | "default" | "filled" | "error" | "primary" | "success" | "warning" | "info" | "danger", unknown, "", boolean>;
     readonly icon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
@@ -334,6 +335,7 @@ declare const __VLS_component_14: DefineComponent<{
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly isActive: BooleanConstructor;
     readonly type: EpPropFinalized<StringConstructor, "" | "text" | "default" | "filled" | "error" | "primary" | "success" | "warning" | "info" | "danger", unknown, "", boolean>;
     readonly icon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
@@ -369,10 +371,11 @@ declare const __VLS_component_14: DefineComponent<{
     readonly loading: boolean;
     readonly autofocus: boolean;
     readonly tag: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
-    readonly plain: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly nativeType: EpPropMergeType<StringConstructor, "button" | "reset" | "submit", unknown>;
     readonly loadingIcon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
+    readonly plain: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly autoInsertSpace: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly isActive: boolean;
 }>;
 declare const __VLS_component_15: DefineComponent<{
     readonly size: {
@@ -9367,9 +9370,9 @@ declare const __VLS_component_89: DefineComponent<{
     readonly onClose: () => void;
     readonly duration: number;
     readonly showClose: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly plain: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly customClass: string;
     readonly dangerouslyUseHTMLString: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly plain: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly grouping: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly repeatNum: number;
     readonly onLabelClick: Function;
@@ -11570,6 +11573,7 @@ export declare const buttonProps: {
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly isActive: BooleanConstructor;
     readonly type: EpPropFinalized<StringConstructor, "" | "text" | "default" | "filled" | "error" | "primary" | "success" | "warning" | "info" | "danger", unknown, "", boolean>;
     readonly icon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
@@ -15100,6 +15104,7 @@ declare const _default_73: DefineComponent<{
     };
     multiple: BooleanConstructor;
     multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    filterMaxLength: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: PropType<string>;
         readonly required: false;
@@ -15391,6 +15396,7 @@ declare const _default_73: DefineComponent<{
     };
     multiple: BooleanConstructor;
     multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    filterMaxLength: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: PropType<string>;
         readonly required: false;
@@ -15511,6 +15517,7 @@ declare const _default_73: DefineComponent<{
     defaultFirstOption: boolean;
     remote: boolean;
     addItem: boolean;
+    filterMaxLength: number;
     remoteShowSuffix: boolean;
 }>;
 declare const _default_74: DefineComponent<{
@@ -23973,6 +23980,7 @@ export declare const selectProps: {
     };
     multiple: BooleanConstructor;
     multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    filterMaxLength: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: PropType<string>;
         readonly required: false;

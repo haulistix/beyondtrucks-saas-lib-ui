@@ -4,7 +4,7 @@ import { dropdownMenuProps } from './dropdown.mjs';
 import { useDropdown } from './useDropdown.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { ROVING_FOCUS_GROUP_INJECTION_KEY } from '../../roving-focus-group/src/tokens.mjs';
-import { ROVING_FOCUS_COLLECTION_INJECTION_KEY as COLLECTION_INJECTION_KEY } from '../../roving-focus-group/src/roving-focus-group.mjs';
+import { ROVING_FOCUS_COLLECTION_INJECTION_KEY as COLLECTION_INJECTION_KEY } from '../../roving-focus-group/src/roving-focus-group2.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { composeRefs } from '../../../utils/vue/refs.mjs';
 import { composeEventHandlers, getEventCode } from '../../../utils/dom/event.mjs';

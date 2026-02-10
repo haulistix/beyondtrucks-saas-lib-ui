@@ -302,8 +302,8 @@ const _sfc_main = defineComponent({
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_icon = resolveComponent("el-icon");
-  const _component_el_input = resolveComponent("el-input");
   const _component_el_button = resolveComponent("el-button");
+  const _component_el_input = resolveComponent("el-input");
   const _component_el_focus_trap = resolveComponent("el-focus-trap");
   const _component_el_overlay = resolveComponent("el-overlay");
   return openBlock(), createBlock(Transition, {
@@ -365,31 +365,34 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                       }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true),
                       createElementVNode("span", null, toDisplayString(_ctx.title), 1)
                     ], 2),
-                    _ctx.showClose ? (openBlock(), createElementBlock("button", {
+                    _ctx.showClose ? (openBlock(), createBlock(_component_el_button, {
                       key: 0,
-                      type: "button",
-                      class: normalizeClass(_ctx.ns.e("headerbtn")),
+                      type: "text",
+                      class: normalizeClass(["icon-button", _ctx.ns.e("headerbtn")]),
                       "aria-label": _ctx.t("el.messagebox.close"),
                       onClick: ($event) => _ctx.handleAction(_ctx.distinguishCancelAndClose ? "close" : "cancel"),
                       onKeydown: withKeys(withModifiers(($event) => _ctx.handleAction(_ctx.distinguishCancelAndClose ? "close" : "cancel"), ["prevent"]), ["enter"])
-                    }, [
-                      createVNode(_component_el_icon, {
-                        class: normalizeClass(_ctx.ns.e("close")),
-                        size: "24px"
-                      }, {
-                        default: withCtx(() => [
-                          (openBlock(), createElementBlock("svg", {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "25",
-                            height: "24",
-                            viewBox: "0 0 25 24"
-                          }, [
-                            createElementVNode("path", { d: "M19.2068 6.70685L17.7928 5.29285L12.4998 10.5858L7.20685 5.29285L5.79285 6.70685L11.0858 11.9998L5.79285 17.2928L7.20685 18.7068L12.4998 13.4138L17.7928 18.7068L19.2068 17.2928L13.9138 11.9998L19.2068 6.70685Z" })
-                          ]))
-                        ]),
-                        _: 1
-                      }, 8, ["class"])
-                    ], 42, ["aria-label", "onClick", "onKeydown"])) : createCommentVNode("v-if", true)
+                    }, {
+                      default: withCtx(() => [
+                        createVNode(_component_el_icon, {
+                          class: normalizeClass(_ctx.ns.e("close")),
+                          size: "24px"
+                        }, {
+                          default: withCtx(() => [
+                            (openBlock(), createElementBlock("svg", {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "25",
+                              height: "24",
+                              viewBox: "0 0 25 24"
+                            }, [
+                              createElementVNode("path", { d: "M19.2068 6.70685L17.7928 5.29285L12.4998 10.5858L7.20685 5.29285L5.79285 6.70685L11.0858 11.9998L5.79285 17.2928L7.20685 18.7068L12.4998 13.4138L17.7928 18.7068L19.2068 17.2928L13.9138 11.9998L19.2068 6.70685Z" })
+                            ]))
+                          ]),
+                          _: 1
+                        }, 8, ["class"])
+                      ]),
+                      _: 1
+                    }, 8, ["class", "aria-label", "onClick", "onKeydown"])) : createCommentVNode("v-if", true)
                   ], 2)) : createCommentVNode("v-if", true),
                   createElementVNode("div", {
                     id: _ctx.contentId,

@@ -11,6 +11,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly isActive: BooleanConstructor;
     readonly type: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "text" | "default" | "filled" | "error" | "primary" | "success" | "warning" | "info" | "danger", unknown, "", boolean>;
     readonly icon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;
@@ -53,6 +54,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly isActive: BooleanConstructor;
     readonly type: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "text" | "default" | "filled" | "error" | "primary" | "success" | "warning" | "info" | "danger", unknown, "", boolean>;
     readonly icon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;
@@ -88,10 +90,11 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly loading: boolean;
     readonly autofocus: boolean;
     readonly tag: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>;
-    readonly plain: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly nativeType: import("element-plus/es/utils").EpPropMergeType<StringConstructor, "button" | "reset" | "submit", unknown>;
     readonly loadingIcon: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>;
+    readonly plain: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly autoInsertSpace: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly isActive: boolean;
 }>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;

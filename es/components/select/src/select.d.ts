@@ -52,6 +52,7 @@ export declare const selectProps: {
     };
     multiple: BooleanConstructor;
     multipleLimit: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    filterMaxLength: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: import("vue").PropType<string>;
         readonly required: false;

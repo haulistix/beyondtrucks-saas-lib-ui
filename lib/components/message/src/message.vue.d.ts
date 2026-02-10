@@ -110,9 +110,9 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly onClose: () => void;
     readonly duration: number;
     readonly showClose: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly plain: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly customClass: string;
     readonly dangerouslyUseHTMLString: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly plain: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly grouping: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly repeatNum: number;
     readonly onLabelClick: Function;

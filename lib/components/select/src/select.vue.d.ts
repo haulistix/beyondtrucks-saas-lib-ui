@@ -47,6 +47,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     multiple: BooleanConstructor;
     multipleLimit: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    filterMaxLength: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: import("vue").PropType<string>;
         readonly required: false;
@@ -338,6 +339,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     multiple: BooleanConstructor;
     multipleLimit: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    filterMaxLength: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: import("vue").PropType<string>;
         readonly required: false;
@@ -458,6 +460,7 @@ declare const _default: import("vue").DefineComponent<{
     defaultFirstOption: boolean;
     remote: boolean;
     addItem: boolean;
+    filterMaxLength: number;
     remoteShowSuffix: boolean;
 }>;
 export default _default;

@@ -27,7 +27,7 @@ function useEvent(props, emit) {
         toggleRowClassByCell(cell.rowSpan, event, addClass);
       }
     }
-    const cellChild = event.target.querySelector(".cell");
+    const cellChild = event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
     if (!cellChild.childNodes.length)
       return;
     const range = document.createRange();
@@ -38,7 +38,8 @@ function useEvent(props, emit) {
     const { top, left, right, bottom } = getPadding(cellChild);
     const horizontalPadding = left + right;
     const verticalPadding = top + bottom;
-    if (isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth)) {
+    const limitWidth = rangeWidth + horizontalPadding;
+    if (isGreaterThan(limitWidth, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth)) {
       createTablePopper({ effect: "light" }, (_d = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _d : "", row, column, cell, table);
     } else if (((_e = removePopper) == null ? void 0 : _e.trigger) === cell) {
       (_f = removePopper) == null ? void 0 : _f();
@@ -74,7 +75,7 @@ function useEvent(props, emit) {
       const tableLeft = tableEl == null ? void 0 : tableEl.getBoundingClientRect().left;
       const columnEl = (_b = (_a = instance == null ? void 0 : instance.vnode) == null ? void 0 : _a.el) == null ? void 0 : _b.querySelector(`th.${column.id}`);
       const columnRect = columnEl.getBoundingClientRect();
-      const minLeft = columnRect.left - tableLeft + 90;
+      const minLeft = columnRect.left - tableLeft + 88;
       addClass(columnEl, "noclick");
       dragState.value = {
         startMouseLeft: event.clientX,

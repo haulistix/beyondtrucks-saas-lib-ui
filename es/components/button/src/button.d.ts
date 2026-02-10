@@ -9,6 +9,7 @@ export declare const buttonProps: {
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly isActive: BooleanConstructor;
     readonly type: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "text" | "default" | "filled" | "error" | "primary" | "success" | "warning" | "info" | "danger", unknown, "", boolean>;
     readonly icon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;

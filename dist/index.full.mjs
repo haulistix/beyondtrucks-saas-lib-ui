@@ -17038,20 +17038,16 @@ const _sfc_main$2i = /* @__PURE__ */ defineComponent({
               default: withCtx(() => [
                 createVNode(unref(ElIcon), {
                   class: "error-icon",
-                  color: "#D91F11"
+                  color: "#A1160A"
                 }, {
                   default: withCtx(() => [
                     (openBlock(), createElementBlock("svg", {
                       xmlns: "http://www.w3.org/2000/svg",
                       width: "12",
-                      height: "11",
-                      viewBox: "0 0 12 11"
+                      height: "12",
+                      viewBox: "0 0 12 12"
                     }, [
-                      createElementVNode("path", {
-                        "fill-rule": "evenodd",
-                        "clip-rule": "evenodd",
-                        d: "M0 10.5H12L6 0L0 10.5ZM6.5 8.5H5.5V7.5H6.5V8.5ZM6.5 6.5H5.5V4.5H6.5V6.5Z"
-                      })
+                      createElementVNode("path", { d: "M6.00041 1C8.00045 1 6.75037 5.25 6.75037 5.25C6.75037 5.25 10.1112 2.75 11.0004 4.5C11.8896 6.25 7.25037 6.75 7.25037 6.75C7.25037 6.75 10.7186 9.88284 9.25035 10.9496C7.78208 12.0164 6.00037 7.5 6.00037 7.5C6.00037 7.5 4.23586 12.0164 2.76759 10.9496C1.29932 9.88283 4.75037 6.75 4.75037 6.75C4.75037 6.75 0.250258 6.25 1.00035 4.5C1.75045 2.75 5.25037 5.25 5.25037 5.25C5.25037 5.25 4.00037 1 6.00041 1Z" })
                     ]))
                   ]),
                   _: 1
@@ -17123,20 +17119,16 @@ const _sfc_main$2i = /* @__PURE__ */ defineComponent({
             default: withCtx(() => [
               createVNode(unref(ElIcon), {
                 class: "error-icon",
-                color: "#D91F11"
+                color: "#A1160A"
               }, {
                 default: withCtx(() => [
                   (openBlock(), createElementBlock("svg", {
                     xmlns: "http://www.w3.org/2000/svg",
                     width: "12",
-                    height: "11",
-                    viewBox: "0 0 12 11"
+                    height: "12",
+                    viewBox: "0 0 12 12"
                   }, [
-                    createElementVNode("path", {
-                      "fill-rule": "evenodd",
-                      "clip-rule": "evenodd",
-                      d: "M0 10.5H12L6 0L0 10.5ZM6.5 8.5H5.5V7.5H6.5V8.5ZM6.5 6.5H5.5V4.5H6.5V6.5Z"
-                    })
+                    createElementVNode("path", { d: "M6.00041 1C8.00045 1 6.75037 5.25 6.75037 5.25C6.75037 5.25 10.1112 2.75 11.0004 4.5C11.8896 6.25 7.25037 6.75 7.25037 6.75C7.25037 6.75 10.7186 9.88284 9.25035 10.9496C7.78208 12.0164 6.00037 7.5 6.00037 7.5C6.00037 7.5 4.23586 12.0164 2.76759 10.9496C1.29932 9.88283 4.75037 6.75 4.75037 6.75C4.75037 6.75 0.250258 6.25 1.00035 4.5C1.75045 2.75 5.25037 5.25 5.25037 5.25C5.25037 5.25 4.00037 1 6.00041 1Z" })
                   ]))
                 ]),
                 _: 1
@@ -18733,6 +18725,7 @@ const buttonNativeTypes = ["button", "submit", "reset"];
 const buttonProps = buildProps({
   size: useSizeProp,
   disabled: Boolean,
+  isActive: Boolean,
   type: {
     type: String,
     values: buttonTypes,
@@ -33059,30 +33052,33 @@ const _sfc_main$1n = /* @__PURE__ */ defineComponent({
               createTextVNode(" " + toDisplayString(_ctx.title), 1)
             ], 10, ["aria-level"])
           ]),
-          _ctx.showClose ? (openBlock(), createElementBlock("button", {
+          _ctx.showClose ? (openBlock(), createBlock(ElButton$1, {
             key: 0,
             "aria-label": unref(t)("el.dialog.close"),
-            class: normalizeClass(unref(ns).e("headerbtn")),
-            type: "button",
+            class: normalizeClass([unref(ns).e("headerbtn"), "icon-button"]),
+            type: "text",
             onClick: ($event) => _ctx.$emit("close")
-          }, [
-            createVNode(unref(ElIcon), {
-              class: normalizeClass(unref(ns).e("close")),
-              size: "24px"
-            }, {
-              default: withCtx(() => [
-                (openBlock(), createElementBlock("svg", {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "25",
-                  height: "24",
-                  viewBox: "0 0 25 24"
-                }, [
-                  createElementVNode("path", { d: "M19.2068 6.70685L17.7928 5.29285L12.4998 10.5858L7.20685 5.29285L5.79285 6.70685L11.0858 11.9998L5.79285 17.2928L7.20685 18.7068L12.4998 13.4138L17.7928 18.7068L19.2068 17.2928L13.9138 11.9998L19.2068 6.70685Z" })
-                ]))
-              ]),
-              _: 1
-            }, 8, ["class"])
-          ], 10, ["aria-label", "onClick"])) : createCommentVNode("v-if", true)
+          }, {
+            default: withCtx(() => [
+              createVNode(unref(ElIcon), {
+                class: normalizeClass(unref(ns).e("close")),
+                size: "24px"
+              }, {
+                default: withCtx(() => [
+                  (openBlock(), createElementBlock("svg", {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "25",
+                    height: "24",
+                    viewBox: "0 0 25 24"
+                  }, [
+                    createElementVNode("path", { d: "M19.2068 6.70685L17.7928 5.29285L12.4998 10.5858L7.20685 5.29285L5.79285 6.70685L11.0858 11.9998L5.79285 17.2928L7.20685 18.7068L12.4998 13.4138L17.7928 18.7068L19.2068 17.2928L13.9138 11.9998L19.2068 6.70685Z" })
+                  ]))
+                ]),
+                _: 1
+              }, 8, ["class"])
+            ]),
+            _: 1
+          }, 8, ["aria-label", "class", "onClick"])) : createCommentVNode("v-if", true)
         ], 6),
         createElementVNode("div", {
           id: unref(bodyId),
@@ -39429,6 +39425,10 @@ const selectProps = buildProps({
     type: Number,
     default: 0
   },
+  filterMaxLength: {
+    type: Number,
+    default: 99
+  },
   placeholder: {
     type: String
   },
@@ -39950,6 +39950,7 @@ function _sfc_render$9(_ctx, _cache) {
                   class: normalizeClass([_ctx.nsSelect.e("input"), _ctx.nsSelect.is(_ctx.selectSize)]),
                   disabled: _ctx.selectDisabled,
                   autocomplete: _ctx.autocomplete,
+                  maxlength: _ctx.filterMaxLength,
                   style: normalizeStyle(_ctx.inputStyle),
                   tabindex: _ctx.tabindex,
                   role: "combobox",
@@ -39973,7 +39974,7 @@ function _sfc_render$9(_ctx, _cache) {
                   onCompositionend: _ctx.handleCompositionEnd,
                   onInput: _ctx.onInput,
                   onClick: withModifiers(_ctx.toggleMenu, ["stop"])
-                }, null, 46, ["id", "onUpdate:modelValue", "name", "disabled", "autocomplete", "tabindex", "readonly", "aria-activedescendant", "aria-controls", "aria-expanded", "aria-label", "onKeydown", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onInput", "onClick"]), [
+                }, null, 46, ["id", "onUpdate:modelValue", "name", "disabled", "autocomplete", "maxlength", "tabindex", "readonly", "aria-activedescendant", "aria-controls", "aria-expanded", "aria-label", "onKeydown", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onInput", "onClick"]), [
                   [vModelText, _ctx.states.inputValue]
                 ]),
                 _ctx.filterable ? (openBlock(), createElementBlock("span", {
@@ -40054,20 +40055,16 @@ function _sfc_render$9(_ctx, _cache) {
                 default: withCtx(() => [
                   createVNode(_component_el_icon, {
                     class: "error-icon",
-                    color: "#D91F11"
+                    color: "#A1160A"
                   }, {
                     default: withCtx(() => [
                       (openBlock(), createElementBlock("svg", {
                         xmlns: "http://www.w3.org/2000/svg",
                         width: "12",
-                        height: "11",
-                        viewBox: "0 0 12 11"
+                        height: "12",
+                        viewBox: "0 0 12 12"
                       }, [
-                        createElementVNode("path", {
-                          "fill-rule": "evenodd",
-                          "clip-rule": "evenodd",
-                          d: "M0 10.5H12L6 0L0 10.5ZM6.5 8.5H5.5V7.5H6.5V8.5ZM6.5 6.5H5.5V4.5H6.5V6.5Z"
-                        })
+                        createElementVNode("path", { d: "M6.00041 1C8.00045 1 6.75037 5.25 6.75037 5.25C6.75037 5.25 10.1112 2.75 11.0004 4.5C11.8896 6.25 7.25037 6.75 7.25037 6.75C7.25037 6.75 10.7186 9.88284 9.25035 10.9496C7.78208 12.0164 6.00037 7.5 6.00037 7.5C6.00037 7.5 4.23586 12.0164 2.76759 10.9496C1.29932 9.88283 4.75037 6.75 4.75037 6.75C4.75037 6.75 0.250258 6.25 1.00035 4.5C1.75045 2.75 5.25037 5.25 5.25037 5.25C5.25037 5.25 4.00037 1 6.00041 1Z" })
                       ]))
                     ]),
                     _: 1
@@ -45433,20 +45430,16 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
                 default: withCtx(() => [
                   createVNode(_component_el_icon, {
                     class: "error-icon",
-                    color: "#D91F11"
+                    color: "#A1160A"
                   }, {
                     default: withCtx(() => [
                       (openBlock(), createElementBlock("svg", {
                         xmlns: "http://www.w3.org/2000/svg",
                         width: "12",
-                        height: "11",
-                        viewBox: "0 0 12 11"
+                        height: "12",
+                        viewBox: "0 0 12 12"
                       }, [
-                        createElementVNode("path", {
-                          "fill-rule": "evenodd",
-                          "clip-rule": "evenodd",
-                          d: "M0 10.5H12L6 0L0 10.5ZM6.5 8.5H5.5V7.5H6.5V8.5ZM6.5 6.5H5.5V4.5H6.5V6.5Z"
-                        })
+                        createElementVNode("path", { d: "M6.00041 1C8.00045 1 6.75037 5.25 6.75037 5.25C6.75037 5.25 10.1112 2.75 11.0004 4.5C11.8896 6.25 7.25037 6.75 7.25037 6.75C7.25037 6.75 10.7186 9.88284 9.25035 10.9496C7.78208 12.0164 6.00037 7.5 6.00037 7.5C6.00037 7.5 4.23586 12.0164 2.76759 10.9496C1.29932 9.88283 4.75037 6.75 4.75037 6.75C4.75037 6.75 0.250258 6.25 1.00035 4.5C1.75045 2.75 5.25037 5.25 5.25037 5.25C5.25037 5.25 4.00037 1 6.00041 1Z" })
                       ]))
                     ]),
                     _: 1
@@ -49643,7 +49636,7 @@ function useEvent(props, emit) {
         toggleRowClassByCell(cell.rowSpan, event, addClass);
       }
     }
-    const cellChild = event.target.querySelector(".cell");
+    const cellChild = event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
     if (!cellChild.childNodes.length)
       return;
     const range = document.createRange();
@@ -49654,7 +49647,8 @@ function useEvent(props, emit) {
     const { top, left, right, bottom } = getPadding(cellChild);
     const horizontalPadding = left + right;
     const verticalPadding = top + bottom;
-    if (isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth)) {
+    const limitWidth = rangeWidth + horizontalPadding;
+    if (isGreaterThan(limitWidth, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth)) {
       createTablePopper({ effect: "light" }, (_d = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _d : "", row, column, cell, table);
     } else if (((_e = removePopper) == null ? void 0 : _e.trigger) === cell) {
       (_f = removePopper) == null ? void 0 : _f();
@@ -49690,7 +49684,7 @@ function useEvent(props, emit) {
       const tableLeft = tableEl == null ? void 0 : tableEl.getBoundingClientRect().left;
       const columnEl = (_b = (_a = instance == null ? void 0 : instance.vnode) == null ? void 0 : _a.el) == null ? void 0 : _b.querySelector(`th.${column.id}`);
       const columnRect = columnEl.getBoundingClientRect();
-      const minLeft = columnRect.left - tableLeft + 90;
+      const minLeft = columnRect.left - tableLeft + 88;
       addClass(columnEl, "noclick");
       dragState.value = {
         startMouseLeft: event.clientX,
@@ -65850,8 +65844,8 @@ const _sfc_main$1 = defineComponent({
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_icon = resolveComponent("el-icon");
-  const _component_el_input = resolveComponent("el-input");
   const _component_el_button = resolveComponent("el-button");
+  const _component_el_input = resolveComponent("el-input");
   const _component_el_focus_trap = resolveComponent("el-focus-trap");
   const _component_el_overlay = resolveComponent("el-overlay");
   return openBlock(), createBlock(Transition, {
@@ -65913,31 +65907,34 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                       }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true),
                       createElementVNode("span", null, toDisplayString(_ctx.title), 1)
                     ], 2),
-                    _ctx.showClose ? (openBlock(), createElementBlock("button", {
+                    _ctx.showClose ? (openBlock(), createBlock(_component_el_button, {
                       key: 0,
-                      type: "button",
-                      class: normalizeClass(_ctx.ns.e("headerbtn")),
+                      type: "text",
+                      class: normalizeClass(["icon-button", _ctx.ns.e("headerbtn")]),
                       "aria-label": _ctx.t("el.messagebox.close"),
                       onClick: ($event) => _ctx.handleAction(_ctx.distinguishCancelAndClose ? "close" : "cancel"),
                       onKeydown: withKeys(withModifiers(($event) => _ctx.handleAction(_ctx.distinguishCancelAndClose ? "close" : "cancel"), ["prevent"]), ["enter"])
-                    }, [
-                      createVNode(_component_el_icon, {
-                        class: normalizeClass(_ctx.ns.e("close")),
-                        size: "24px"
-                      }, {
-                        default: withCtx(() => [
-                          (openBlock(), createElementBlock("svg", {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "25",
-                            height: "24",
-                            viewBox: "0 0 25 24"
-                          }, [
-                            createElementVNode("path", { d: "M19.2068 6.70685L17.7928 5.29285L12.4998 10.5858L7.20685 5.29285L5.79285 6.70685L11.0858 11.9998L5.79285 17.2928L7.20685 18.7068L12.4998 13.4138L17.7928 18.7068L19.2068 17.2928L13.9138 11.9998L19.2068 6.70685Z" })
-                          ]))
-                        ]),
-                        _: 1
-                      }, 8, ["class"])
-                    ], 42, ["aria-label", "onClick", "onKeydown"])) : createCommentVNode("v-if", true)
+                    }, {
+                      default: withCtx(() => [
+                        createVNode(_component_el_icon, {
+                          class: normalizeClass(_ctx.ns.e("close")),
+                          size: "24px"
+                        }, {
+                          default: withCtx(() => [
+                            (openBlock(), createElementBlock("svg", {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "25",
+                              height: "24",
+                              viewBox: "0 0 25 24"
+                            }, [
+                              createElementVNode("path", { d: "M19.2068 6.70685L17.7928 5.29285L12.4998 10.5858L7.20685 5.29285L5.79285 6.70685L11.0858 11.9998L5.79285 17.2928L7.20685 18.7068L12.4998 13.4138L17.7928 18.7068L19.2068 17.2928L13.9138 11.9998L19.2068 6.70685Z" })
+                            ]))
+                          ]),
+                          _: 1
+                        }, 8, ["class"])
+                      ]),
+                      _: 1
+                    }, 8, ["class", "aria-label", "onClick", "onKeydown"])) : createCommentVNode("v-if", true)
                   ], 2)) : createCommentVNode("v-if", true),
                   createElementVNode("div", {
                     id: _ctx.contentId,

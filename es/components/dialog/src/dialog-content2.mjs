@@ -1,4 +1,5 @@
 import { defineComponent, inject, computed, openBlock, createElementBlock, unref, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createBlock, withCtx, createVNode, createCommentVNode, createTextVNode, toDisplayString } from 'vue';
+import ElButton from '../../button/src/button.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { WarnTriangleFilled, WarningFilled } from '@element-plus/icons-vue';
 import { dialogInjectionKey } from './constants.mjs';
@@ -88,30 +89,33 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               createTextVNode(" " + toDisplayString(_ctx.title), 1)
             ], 10, ["aria-level"])
           ]),
-          _ctx.showClose ? (openBlock(), createElementBlock("button", {
+          _ctx.showClose ? (openBlock(), createBlock(ElButton, {
             key: 0,
             "aria-label": unref(t)("el.dialog.close"),
-            class: normalizeClass(unref(ns).e("headerbtn")),
-            type: "button",
+            class: normalizeClass([unref(ns).e("headerbtn"), "icon-button"]),
+            type: "text",
             onClick: ($event) => _ctx.$emit("close")
-          }, [
-            createVNode(unref(ElIcon), {
-              class: normalizeClass(unref(ns).e("close")),
-              size: "24px"
-            }, {
-              default: withCtx(() => [
-                (openBlock(), createElementBlock("svg", {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "25",
-                  height: "24",
-                  viewBox: "0 0 25 24"
-                }, [
-                  createElementVNode("path", { d: "M19.2068 6.70685L17.7928 5.29285L12.4998 10.5858L7.20685 5.29285L5.79285 6.70685L11.0858 11.9998L5.79285 17.2928L7.20685 18.7068L12.4998 13.4138L17.7928 18.7068L19.2068 17.2928L13.9138 11.9998L19.2068 6.70685Z" })
-                ]))
-              ]),
-              _: 1
-            }, 8, ["class"])
-          ], 10, ["aria-label", "onClick"])) : createCommentVNode("v-if", true)
+          }, {
+            default: withCtx(() => [
+              createVNode(unref(ElIcon), {
+                class: normalizeClass(unref(ns).e("close")),
+                size: "24px"
+              }, {
+                default: withCtx(() => [
+                  (openBlock(), createElementBlock("svg", {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "25",
+                    height: "24",
+                    viewBox: "0 0 25 24"
+                  }, [
+                    createElementVNode("path", { d: "M19.2068 6.70685L17.7928 5.29285L12.4998 10.5858L7.20685 5.29285L5.79285 6.70685L11.0858 11.9998L5.79285 17.2928L7.20685 18.7068L12.4998 13.4138L17.7928 18.7068L19.2068 17.2928L13.9138 11.9998L19.2068 6.70685Z" })
+                  ]))
+                ]),
+                _: 1
+              }, 8, ["class"])
+            ]),
+            _: 1
+          }, 8, ["aria-label", "class", "onClick"])) : createCommentVNode("v-if", true)
         ], 6),
         createElementVNode("div", {
           id: unref(bodyId),

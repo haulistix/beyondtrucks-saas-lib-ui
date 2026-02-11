@@ -120,14 +120,9 @@
 
   .#{$namespace}-range__close-icon {
     font-size: 14px;
-    color: getCssVar('text-color', 'placeholder');
     height: inherit;
     width: unset;
     cursor: pointer;
-
-    &:hover {
-      color: getCssVar('input-clear-hover-color');
-    }
 
     svg {
       vertical-align: middle;
@@ -153,7 +148,6 @@
     color: var(--el-input-placeholder-color);
     background: linear-gradient(to bottom, #fff 58%, transparent 42%);
     vertical-align: middle;
-    position: absolute;
     display: block;
     left: 26px;
     padding: 0 4px;

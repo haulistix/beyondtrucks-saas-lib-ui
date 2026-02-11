@@ -14659,11 +14659,11 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
     });
     provide(formItemContextKey, context);
     onMounted(() => {
-      var _a, _b, _c;
+      var _a, _b, _c, _d;
       if (props.prop) {
         formContext == null ? void 0 : formContext.addField(context);
         initialValue = clone(fieldValue.value);
-        if (isRequired.value && props.alwaysShowError && isEmpty(initialValue) && (((_a = formItemContent.value) == null ? void 0 : _a.querySelector(".el-input")) || ((_b = formItemContent.value) == null ? void 0 : _b.querySelector(".el-textarea")) || ((_c = formItemContent.value) == null ? void 0 : _c.querySelector(".el-date-editor")))) {
+        if (isRequired.value && props.alwaysShowError && isEmpty(initialValue) && (((_a = formItemContent.value) == null ? void 0 : _a.querySelector(".el-input")) || ((_b = formItemContent.value) == null ? void 0 : _b.querySelector(".el-textarea")) || ((_c = formItemContent.value) == null ? void 0 : _c.querySelector(".el-date-editor")) || ((_d = formItemContent.value) == null ? void 0 : _d.querySelector(".el-select")))) {
           const currentRule = normalizedRules.value.find((rule) => rule.required);
           setValidationState("error");
           validateMessage.value = (currentRule == null ? void 0 : currentRule.message) ? currentRule == null ? void 0 : currentRule.message : "Required";
@@ -21150,7 +21150,18 @@ const _sfc_main$25 = /* @__PURE__ */ defineComponent({
                   onClick: onClearIconClick
                 }, {
                   default: withCtx(() => [
-                    (openBlock(), createBlock(resolveDynamicComponent(_ctx.clearIcon)))
+                    (openBlock(), createElementBlock("svg", {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "12",
+                      height: "12",
+                      viewBox: "0 0 12 12",
+                      fill: "none"
+                    }, [
+                      createElementVNode("path", {
+                        d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                        fill: "#2A3F4D"
+                      })
+                    ]))
                   ]),
                   _: 1
                 }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
@@ -21264,7 +21275,18 @@ const _sfc_main$25 = /* @__PURE__ */ defineComponent({
                   onClick: onClearIconClick
                 }, {
                   default: withCtx(() => [
-                    (openBlock(), createBlock(resolveDynamicComponent(_ctx.clearIcon)))
+                    (openBlock(), createElementBlock("svg", {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "12",
+                      height: "12",
+                      viewBox: "0 0 12 12",
+                      fill: "none"
+                    }, [
+                      createElementVNode("path", {
+                        d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                        fill: "#2A3F4D"
+                      })
+                    ]))
                   ]),
                   _: 1
                 }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true)
@@ -39841,6 +39863,7 @@ function _sfc_render$9(_ctx, _cache) {
                       effect: _ctx.tagEffect,
                       "disable-transitions": "",
                       style: normalizeStyle(_ctx.tagStyle),
+                      round: "",
                       onClose: ($event) => _ctx.deleteTag($event, item)
                     }, {
                       default: withCtx(() => [
@@ -39882,7 +39905,8 @@ function _sfc_render$9(_ctx, _cache) {
                         type: _ctx.tagType,
                         effect: _ctx.tagEffect,
                         "disable-transitions": "",
-                        style: normalizeStyle(_ctx.collapseTagStyle)
+                        style: normalizeStyle(_ctx.collapseTagStyle),
+                        round: ""
                       }, {
                         default: withCtx(() => [
                           createElementVNode("span", {
@@ -39910,7 +39934,8 @@ function _sfc_render$9(_ctx, _cache) {
                             type: _ctx.tagType,
                             effect: _ctx.tagEffect,
                             "disable-transitions": "",
-                            onClose: ($event) => _ctx.deleteTag($event, item)
+                            onClose: ($event) => _ctx.deleteTag($event, item),
+                            round: ""
                           }, {
                             default: withCtx(() => [
                               createElementVNode("span", {

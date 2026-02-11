@@ -91,11 +91,6 @@ $tag-icon-span-gap: map.merge(
     flex-shrink: 0;
     color: #5b7282;
 
-    &:hover {
-      color: #fff;
-      background-color: var(--color-gray-900);
-    }
-
     &:active {
       color: getCssVar('color-white');
       background-color: getCssVar('tag-active-color');
@@ -110,8 +105,8 @@ $tag-icon-span-gap: map.merge(
   justify-content: center;
   align-items: center;
   vertical-align: middle;
-  height: map.get($tag-height, 'small');
-  padding: 2px map.get($tag-padding, 'default') - $border-width;
+  height: 18px;
+  padding: 1px map.get($tag-padding, 'default') - $border-width;
   font-weight: 500;
   font-size: getCssVar('tag-font-size');
   line-height: 16px;
@@ -135,11 +130,6 @@ $tag-icon-span-gap: map.merge(
   .#{$namespace}-tag__close {
     flex-shrink: 0;
     color: #5b7282;
-
-    &:hover {
-      color: #fff;
-      background-color: var(--color-gray-900);
-    }
   }
 
   @each $type in $types {

@@ -243,14 +243,16 @@ $E: null;
   color: var(--color-gray-700);
   transform: translateY(-15px);
   transition: transform .1s ease;
-  background: linear-gradient(to bottom, #fff 51%, transparent 49%);
+  background: linear-gradient(to bottom, #fff 52%, transparent 48%);
   font-size: 13px;
 }
 
 @mixin select-float-label {
-  font-size: 13px;
+  left: 8px;
+  padding: 0 4px;
   color: var(--color-gray-700);
-  transform: translateY(-15px);
+  transform: translateY(-16px);
   transition: transform .1s ease;
-  background: linear-gradient(to bottom, #fff 51%, transparent 49%);
+  background: linear-gradient(to bottom, #fff 9px, transparent 7px);
+  font-size: 13px;
 }

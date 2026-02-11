@@ -30,10 +30,9 @@
     cursor: pointer;
     text-align: left;
     font-size: 14px;
-    padding: map.get($select-wrapper-padding, 'default');
+    padding: 0 12px 0 8px;
     gap: map.get($select-item-gap, 'default');
     min-height: map.get($input-height, 'default');
-    line-height: map.get($select-item-height, 'default');
     border-radius: getCssVar('border-radius-custom');
     background-color: getCssVar('fill-color', 'blank');
     transition: getCssVar('transition', 'duration');
@@ -62,7 +61,6 @@
       white-space: nowrap;
       line-height: 16px;
       max-width: calc(100% - 34px);
-      top: 9px;
       left: 12px;
     }
     @include when(filterable) {
@@ -215,7 +213,6 @@
   }
 
   @include e(placeholder) {
-    font-weight: 500;
     position: absolute;
     z-index: -1;
     display: block;

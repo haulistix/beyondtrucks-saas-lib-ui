@@ -4,7 +4,7 @@ import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { useProps } from '../../select-v2/src/useProps.mjs';
-import Option from './option2.mjs';
+import Option from './option.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
 import { useSelect } from './useSelect.mjs';
 import { selectKey } from './token.mjs';
@@ -257,6 +257,7 @@ function _sfc_render(_ctx, _cache) {
                       effect: _ctx.tagEffect,
                       "disable-transitions": "",
                       style: normalizeStyle(_ctx.tagStyle),
+                      round: "",
                       onClose: ($event) => _ctx.deleteTag($event, item)
                     }, {
                       default: withCtx(() => [
@@ -298,7 +299,8 @@ function _sfc_render(_ctx, _cache) {
                         type: _ctx.tagType,
                         effect: _ctx.tagEffect,
                         "disable-transitions": "",
-                        style: normalizeStyle(_ctx.collapseTagStyle)
+                        style: normalizeStyle(_ctx.collapseTagStyle),
+                        round: ""
                       }, {
                         default: withCtx(() => [
                           createElementVNode("span", {
@@ -326,7 +328,8 @@ function _sfc_render(_ctx, _cache) {
                             type: _ctx.tagType,
                             effect: _ctx.tagEffect,
                             "disable-transitions": "",
-                            onClose: ($event) => _ctx.deleteTag($event, item)
+                            onClose: ($event) => _ctx.deleteTag($event, item),
+                            round: ""
                           }, {
                             default: withCtx(() => [
                               createElementVNode("span", {

@@ -22,7 +22,7 @@
   }
 
   .el-select__placeholder {
-    font-size: var(--p-font-size-500);
+    font-size: 14px;
   }
 
   .el-select__prefix,
@@ -62,7 +62,7 @@
 
   .el-select__selection {
     .el-tag {
-      border-radius: var(--raidus-300);
+      border-radius: 10px;
       background-color: var(--color-gray-100);
     }
   }

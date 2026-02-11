@@ -41,7 +41,6 @@
   .float-label {
     position: absolute;
     left: 12px;
-    top: 9px;
     color: getCssVarWithDefault(
         'input-placeholder-color',
         map.get($input, 'placeholder-color')
@@ -54,6 +53,7 @@
     line-height: 16px;
     max-width: calc(100% - 36px);
     font-size: 14px;
+    top: 8px;
   }
 
   @include e(inner) {
@@ -154,7 +154,7 @@
   @include css-var-from-global('input-height', 'component-size');
   font-weight: 400;
   position: relative;
-  font-size: getCssVar('font-size', 'small');
+  font-size: 14px;
   display: inline-flex;
   width: getCssVar('input-width');
   line-height: getCssVar('input-height');

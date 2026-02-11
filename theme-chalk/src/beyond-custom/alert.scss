@@ -1,0 +1,33 @@
+.el-alert {
+  --el-alert-padding: 14px 20px;
+
+  &.el-alert--warning.is-light {
+    --el-alert-bg-color: var(--color-yellow-100);
+    color: var(--color-gray-990);
+
+    .el-alert__icon {
+      color: var(--color-yellow-400);
+    }
+  }
+
+  &.el-alert--error.is-light {
+    --el-alert-bg-color: var(--color-red-100);
+    color: var(--color-gray-990);
+
+    .el-alert__icon {
+      color: var(--color-red-700);
+    }
+  }
+
+  &.el-alert--success.is-light {
+    --el-alert-bg-color: var(--color-lime-50);
+    color: var(--color-gray-990);
+  }
+
+  &.el-alert--info.is-light {
+    --el-alert-bg-color: var(--color-blue-100);
+    color: var(--color-gray-990);
+  }
+
+}
+

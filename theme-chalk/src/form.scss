@@ -210,15 +210,15 @@ $form-item-label-top-margin-bottom: map.merge(
   }
 
   @include when(error) {
+    .#{$namespace}-textarea__inner {
+      border-color: var(--color-gray-500);
+    }
     .#{$namespace}-input__wrapper,
-    .#{$namespace}-textarea__inner,
     .#{$namespace}-select__wrapper,
     .#{$namespace}-input-tag__wrapper {
       &,
-      &:hover,
-      &:focus,
-      &.is-focus {
-        border-color: var(--color-red-800);
+      &:hover {
+        border-color: var(--color-gray-500);
       }
     }
     .#{$namespace}-input__wrapper,
@@ -250,12 +250,8 @@ $form-item-label-top-margin-bottom: map.merge(
     .#{$namespace}-input__validateIcon {
       color: getCssVar('color-error');
     }
-    .el-input__wrapper.pre-star-item:before,
-    .el-select__wrapper.pre-star-item:before {
-      content: '';
-    }
     .float-label {
-      @include float-label-value
+      @include float-label-error
     }
     .el-input--large {
       .float-label {

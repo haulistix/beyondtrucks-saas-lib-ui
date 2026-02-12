@@ -76,7 +76,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
     };
     readonly readonly: BooleanConstructor;
     readonly floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly preStar: BooleanConstructor;
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;
@@ -210,7 +209,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
     };
     readonly readonly: BooleanConstructor;
     readonly floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly preStar: BooleanConstructor;
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;
@@ -271,7 +269,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly rows: number;
     readonly inputmode: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     readonly isHoverSuffix: boolean;
-    readonly preStar: boolean;
     readonly clearable: boolean;
     readonly showPassword: boolean;
     readonly showWordLimit: boolean;

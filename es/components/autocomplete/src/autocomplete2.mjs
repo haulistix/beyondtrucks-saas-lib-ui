@@ -8,7 +8,7 @@ import { ElTooltip } from '../../tooltip/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { autocompleteProps, autocompleteEmits } from './autocomplete.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
-import { inputProps } from '../../input/src/input2.mjs';
+import { inputProps } from '../../input/src/input.mjs';
 import { useFormDisabled } from '../../form/src/hooks/use-form-common-props.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { useId } from '../../../hooks/use-id/index.mjs';
@@ -434,7 +434,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             }, mergeProps(unref(passInputProps), _ctx.$attrs), {
               "model-value": _ctx.modelValue,
               "always-show-suffix": _ctx.alwaysShowSuffix,
-              "pre-star": _ctx.preStar,
               disabled: unref(disabled),
               onInput: handleInput,
               onChange: handleChange,
@@ -470,7 +469,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                   renderSlot(_ctx.$slots, "suffix")
                 ])
               } : void 0
-            ]), 1040, ["is-hover-suffix", "model-value", "always-show-suffix", "pre-star", "disabled"])
+            ]), 1040, ["is-hover-suffix", "model-value", "always-show-suffix", "disabled"])
           ], 14, ["aria-expanded", "aria-owns"])
         ]),
         _: 3

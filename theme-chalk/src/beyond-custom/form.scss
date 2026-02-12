@@ -2,12 +2,12 @@
   &.is-error {
     .el-input__wrapper {
       background-color: var(--color-red-100);
-      border-color: var(--color-red-800);
+      border-color: var(--color-gray-500);
     }
 
     .el-select__wrapper {
       background-color: var(--color-red-100);
-      border-color: var(--color-red-800);
+      border-color: var(--color-gray-500);
     }
 
     .el-input__validateIcon {

@@ -95,7 +95,7 @@
 
     &:focus {
       outline: none;
-      border-color: getCssVar('color-primary');
+      border-color: getCssVar('color-primary') !important;
 
       & ~ .float-label {
         @include float-label-value
@@ -223,13 +223,6 @@
     transition: getCssVar('transition-box-shadow');
     transform: translate3d(0, 0, 0);
     border: 1px solid getCssVar('border-color-light');
-    &.pre-star-item:before {
-      position: absolute;
-      left: 6px;
-      font-size: 12px;
-      content: '*';
-      color: getCssVar('color-error');
-    }
     .float-label {
       position: absolute;
       left: 12px;

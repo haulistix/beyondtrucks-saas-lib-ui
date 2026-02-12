@@ -57,7 +57,6 @@ declare const _default: import("vue").DefineComponent<{
     defaultFirstOption: BooleanConstructor;
     reserveKeyword: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
-    preStar: BooleanConstructor;
     addShowTip: StringConstructor;
     haveAll: {
         readonly type: import("vue").PropType<string>;
@@ -349,7 +348,6 @@ declare const _default: import("vue").DefineComponent<{
     defaultFirstOption: BooleanConstructor;
     reserveKeyword: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
-    preStar: BooleanConstructor;
     addShowTip: StringConstructor;
     haveAll: {
         readonly type: import("vue").PropType<string>;
@@ -442,7 +440,6 @@ declare const _default: import("vue").DefineComponent<{
     autocomplete: string;
     floatLabel: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    preStar: boolean;
     clearable: boolean;
     valueKey: string;
     debounce: number;

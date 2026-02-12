@@ -62,7 +62,6 @@ export declare const selectProps: {
     defaultFirstOption: BooleanConstructor;
     reserveKeyword: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
-    preStar: BooleanConstructor;
     addShowTip: StringConstructor;
     haveAll: {
         readonly type: import("vue").PropType<string>;

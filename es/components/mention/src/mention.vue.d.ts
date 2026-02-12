@@ -197,7 +197,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
     };
     readonly: BooleanConstructor;
     floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    preStar: BooleanConstructor;
     clearable: BooleanConstructor;
     clearIcon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;
@@ -432,7 +431,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
     };
     readonly: BooleanConstructor;
     floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    preStar: BooleanConstructor;
     clearable: BooleanConstructor;
     clearIcon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;
@@ -496,7 +494,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
     rows: number;
     inputmode: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     isHoverSuffix: boolean;
-    preStar: boolean;
     clearable: boolean;
     showPassword: boolean;
     showWordLimit: boolean;

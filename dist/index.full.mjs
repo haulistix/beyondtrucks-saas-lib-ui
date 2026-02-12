@@ -16427,7 +16427,6 @@ const inputProps = buildProps({
     type: Boolean,
     default: true
   },
-  preStar: Boolean,
   clearable: Boolean,
   clearIcon: {
     type: iconPropType,
@@ -16602,10 +16601,8 @@ const _sfc_main$2i = /* @__PURE__ */ defineComponent({
     ]);
     const wrapperKls = computed(() => [
       nsInput.e("wrapper"),
-      nsInput.is("focus", isFocused.value),
-      props.preStar && !isFocused.value && !textLength.value ? "pre-star-item" : ""
+      nsInput.is("focus", isFocused.value)
     ]);
-    const teatareaStar = computed(() => props.preStar && !isFocused.value && !textLength.value && !validateState.value);
     const { form: elForm, formItem: elFormItem } = useFormItem();
     const { inputId } = useFormItemInputId(props, {
       formItemContext: elFormItem
@@ -17093,24 +17090,20 @@ const _sfc_main$2i = /* @__PURE__ */ defineComponent({
             onChange: handleChange,
             onKeydown: handleKeydown
           }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"]),
-          unref(teatareaStar) ? (openBlock(), createElementBlock("span", {
-            key: 0,
-            class: "pre-star-item"
-          }, "*")) : createCommentVNode("v-if", true),
           _ctx.$slots.textareaPrefix ? (openBlock(), createElementBlock("span", {
-            key: 1,
+            key: 0,
             class: "textarea-prefix"
           }, [
             renderSlot(_ctx.$slots, "textareaPrefix")
           ])) : createCommentVNode("v-if", true),
           _ctx.$slots.textareaSuffix ? (openBlock(), createElementBlock("span", {
-            key: 2,
+            key: 1,
             class: "textarea-suffix"
           }, [
             renderSlot(_ctx.$slots, "textareaSuffix")
           ])) : createCommentVNode("v-if", true),
           unref(validateError) ? (openBlock(), createBlock(Tooltip, {
-            key: 3,
+            key: 2,
             content: unref(validateMsg),
             effect: "light",
             placement: "top",
@@ -17137,12 +17130,12 @@ const _sfc_main$2i = /* @__PURE__ */ defineComponent({
             _: 1
           }, 8, ["content"])) : createCommentVNode("v-if", true),
           _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
-            key: 4,
+            key: 3,
             class: normalizeClass(["float-label", { "has-value": !unref(isEmpty)(_ctx.modelValue) }]),
             onClick: handleTextareaFocus
           }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
           unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
-            key: 5,
+            key: 4,
             style: normalizeStyle(countStyle.value),
             class: normalizeClass([
               unref(nsInput).e("count"),
@@ -18170,7 +18163,6 @@ const _sfc_main$2e = /* @__PURE__ */ defineComponent({
             }, mergeProps(unref(passInputProps), _ctx.$attrs), {
               "model-value": _ctx.modelValue,
               "always-show-suffix": _ctx.alwaysShowSuffix,
-              "pre-star": _ctx.preStar,
               disabled: unref(disabled),
               onInput: handleInput,
               onChange: handleChange,
@@ -18206,7 +18198,7 @@ const _sfc_main$2e = /* @__PURE__ */ defineComponent({
                   renderSlot(_ctx.$slots, "suffix")
                 ])
               } : void 0
-            ]), 1040, ["is-hover-suffix", "model-value", "always-show-suffix", "pre-star", "disabled"])
+            ]), 1040, ["is-hover-suffix", "model-value", "always-show-suffix", "disabled"])
           ], 14, ["aria-expanded", "aria-owns"])
         ]),
         _: 3
@@ -39463,7 +39455,6 @@ const selectProps = buildProps({
     type: Boolean,
     default: true
   },
-  preStar: Boolean,
   addShowTip: String,
   haveAll: {
     type: String
@@ -39815,8 +39806,7 @@ function _sfc_render$9(_ctx, _cache) {
               _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
               _ctx.nsSelect.is("filterable", _ctx.filterable),
               _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-              _ctx.nsSelect.is("value", _ctx.hasModelValue),
-              _ctx.preStar && !_ctx.isFocused && !_ctx.hasModelValue ? "pre-star-item" : ""
+              _ctx.nsSelect.is("value", _ctx.hasModelValue)
             ]),
             onClick: withModifiers(_ctx.toggleMenu, ["prevent"])
           }, [
@@ -39934,8 +39924,8 @@ function _sfc_render$9(_ctx, _cache) {
                             type: _ctx.tagType,
                             effect: _ctx.tagEffect,
                             "disable-transitions": "",
-                            onClose: ($event) => _ctx.deleteTag($event, item),
-                            round: ""
+                            round: "",
+                            onClose: ($event) => _ctx.deleteTag($event, item)
                           }, {
                             default: withCtx(() => [
                               createElementVNode("span", {
@@ -43811,10 +43801,6 @@ const selectV2Props = buildProps({
     type: Boolean,
     default: true
   },
-  preStar: {
-    type: Boolean,
-    default: true
-  },
   automaticDropdown: Boolean,
   clearable: Boolean,
   clearIcon: {
@@ -45191,8 +45177,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
               _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
               _ctx.nsSelect.is("filterable", _ctx.filterable),
               _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-              _ctx.nsSelect.is("value", _ctx.hasModelValue),
-              _ctx.preStar && !_ctx.isFocused && !_ctx.hasModelValue ? "pre-star-item" : ""
+              _ctx.nsSelect.is("value", _ctx.hasModelValue)
             ]),
             onClick: withModifiers(_ctx.toggleMenu, ["prevent"])
           }, [

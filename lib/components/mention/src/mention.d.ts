@@ -196,7 +196,6 @@ export declare const mentionProps: {
     };
     readonly: BooleanConstructor;
     floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    preStar: BooleanConstructor;
     clearable: BooleanConstructor;
     clearIcon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;

@@ -11,7 +11,6 @@ export declare const selectV2Props: {
     readonly allowCreate: BooleanConstructor;
     readonly autocomplete: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list") | ((new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list"))[], unknown, unknown, "none", boolean>;
     readonly floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly preStar: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly automaticDropdown: BooleanConstructor;
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {

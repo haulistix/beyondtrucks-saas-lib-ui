@@ -5,7 +5,6 @@ declare const _default: import("vue").DefineComponent<{
     readonly allowCreate: BooleanConstructor;
     readonly autocomplete: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list") | ((new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list"))[], unknown, unknown, "none", boolean>;
     readonly floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly preStar: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly automaticDropdown: BooleanConstructor;
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
@@ -362,7 +361,6 @@ declare const _default: import("vue").DefineComponent<{
     readonly allowCreate: BooleanConstructor;
     readonly autocomplete: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list") | ((new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list"))[], unknown, unknown, "none", boolean>;
     readonly floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly preStar: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly automaticDropdown: BooleanConstructor;
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
@@ -606,7 +604,6 @@ declare const _default: import("vue").DefineComponent<{
     readonly autocomplete: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list") | ((new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list"))[], unknown, unknown>;
     readonly floatLabel: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly preStar: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: boolean;
     readonly valueKey: string;
     readonly debounce: number;

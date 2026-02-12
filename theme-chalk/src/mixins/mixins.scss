@@ -237,6 +237,10 @@ $E: null;
   }
 }
 
+@mixin float-label-error {
+  background: transparent;
+}
+
 @mixin float-label-value {
   left: 8px;
   padding: 0 4px;

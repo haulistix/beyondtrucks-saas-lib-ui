@@ -38,13 +38,6 @@
     transition: getCssVar('transition', 'duration');
     transform: translate3d(0, 0, 0);
     border: 1px solid getCssVar('border-color-light');
-    &.pre-star-item:before {
-      position: absolute;
-      left: 4px;
-      font-size: 12px;
-      content: '*';
-      color: getCssVar('color-error');
-    }
     &:hover {
       border-color: #7a909e;
     }
@@ -68,7 +61,7 @@
     }
 
     @include when(focused) {
-      border-color: getCssVar('color-primary');
+      border-color: getCssVar('color-primary') !important;
       .select-visible.float-label {
         @include select-float-label
       }

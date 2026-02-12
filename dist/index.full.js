@@ -16431,7 +16431,6 @@
       type: Boolean,
       default: true
     },
-    preStar: Boolean,
     clearable: Boolean,
     clearIcon: {
       type: iconPropType,
@@ -16606,10 +16605,8 @@
       ]);
       const wrapperKls = vue.computed(() => [
         nsInput.e("wrapper"),
-        nsInput.is("focus", isFocused.value),
-        props.preStar && !isFocused.value && !textLength.value ? "pre-star-item" : ""
+        nsInput.is("focus", isFocused.value)
       ]);
-      const teatareaStar = vue.computed(() => props.preStar && !isFocused.value && !textLength.value && !validateState.value);
       const { form: elForm, formItem: elFormItem } = useFormItem();
       const { inputId } = useFormItemInputId(props, {
         formItemContext: elFormItem
@@ -17097,24 +17094,20 @@
               onChange: handleChange,
               onKeydown: handleKeydown
             }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"]),
-            vue.unref(teatareaStar) ? (vue.openBlock(), vue.createElementBlock("span", {
-              key: 0,
-              class: "pre-star-item"
-            }, "*")) : vue.createCommentVNode("v-if", true),
             _ctx.$slots.textareaPrefix ? (vue.openBlock(), vue.createElementBlock("span", {
-              key: 1,
+              key: 0,
               class: "textarea-prefix"
             }, [
               vue.renderSlot(_ctx.$slots, "textareaPrefix")
             ])) : vue.createCommentVNode("v-if", true),
             _ctx.$slots.textareaSuffix ? (vue.openBlock(), vue.createElementBlock("span", {
-              key: 2,
+              key: 1,
               class: "textarea-suffix"
             }, [
               vue.renderSlot(_ctx.$slots, "textareaSuffix")
             ])) : vue.createCommentVNode("v-if", true),
             vue.unref(validateError) ? (vue.openBlock(), vue.createBlock(Tooltip, {
-              key: 3,
+              key: 2,
               content: vue.unref(validateMsg),
               effect: "light",
               placement: "top",
@@ -17141,12 +17134,12 @@
               _: 1
             }, 8, ["content"])) : vue.createCommentVNode("v-if", true),
             _ctx.floatLabel && _ctx.placeholder ? (vue.openBlock(), vue.createElementBlock("span", {
-              key: 4,
+              key: 3,
               class: vue.normalizeClass(["float-label", { "has-value": !vue.unref(isEmpty)(_ctx.modelValue) }]),
               onClick: handleTextareaFocus
             }, vue.toDisplayString(_ctx.placeholder), 3)) : vue.createCommentVNode("v-if", true),
             vue.unref(isWordLimitVisible) ? (vue.openBlock(), vue.createElementBlock("span", {
-              key: 5,
+              key: 4,
               style: vue.normalizeStyle(countStyle.value),
               class: vue.normalizeClass([
                 vue.unref(nsInput).e("count"),
@@ -18174,7 +18167,6 @@
               }, vue.mergeProps(vue.unref(passInputProps), _ctx.$attrs), {
                 "model-value": _ctx.modelValue,
                 "always-show-suffix": _ctx.alwaysShowSuffix,
-                "pre-star": _ctx.preStar,
                 disabled: vue.unref(disabled),
                 onInput: handleInput,
                 onChange: handleChange,
@@ -18210,7 +18202,7 @@
                     vue.renderSlot(_ctx.$slots, "suffix")
                   ])
                 } : void 0
-              ]), 1040, ["is-hover-suffix", "model-value", "always-show-suffix", "pre-star", "disabled"])
+              ]), 1040, ["is-hover-suffix", "model-value", "always-show-suffix", "disabled"])
             ], 14, ["aria-expanded", "aria-owns"])
           ]),
           _: 3
@@ -39467,7 +39459,6 @@
       type: Boolean,
       default: true
     },
-    preStar: Boolean,
     addShowTip: String,
     haveAll: {
       type: String
@@ -39819,8 +39810,7 @@
                 _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
                 _ctx.nsSelect.is("filterable", _ctx.filterable),
                 _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-                _ctx.nsSelect.is("value", _ctx.hasModelValue),
-                _ctx.preStar && !_ctx.isFocused && !_ctx.hasModelValue ? "pre-star-item" : ""
+                _ctx.nsSelect.is("value", _ctx.hasModelValue)
               ]),
               onClick: vue.withModifiers(_ctx.toggleMenu, ["prevent"])
             }, [
@@ -39938,8 +39928,8 @@
                               type: _ctx.tagType,
                               effect: _ctx.tagEffect,
                               "disable-transitions": "",
-                              onClose: ($event) => _ctx.deleteTag($event, item),
-                              round: ""
+                              round: "",
+                              onClose: ($event) => _ctx.deleteTag($event, item)
                             }, {
                               default: vue.withCtx(() => [
                                 vue.createElementVNode("span", {
@@ -43815,10 +43805,6 @@
       type: Boolean,
       default: true
     },
-    preStar: {
-      type: Boolean,
-      default: true
-    },
     automaticDropdown: Boolean,
     clearable: Boolean,
     clearIcon: {
@@ -45195,8 +45181,7 @@
                 _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
                 _ctx.nsSelect.is("filterable", _ctx.filterable),
                 _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-                _ctx.nsSelect.is("value", _ctx.hasModelValue),
-                _ctx.preStar && !_ctx.isFocused && !_ctx.hasModelValue ? "pre-star-item" : ""
+                _ctx.nsSelect.is("value", _ctx.hasModelValue)
               ]),
               onClick: vue.withModifiers(_ctx.toggleMenu, ["prevent"])
             }, [

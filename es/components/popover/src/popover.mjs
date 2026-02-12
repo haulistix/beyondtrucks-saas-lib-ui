@@ -1,6 +1,6 @@
 import { dropdownProps } from '../../dropdown/src/dropdown2.mjs';
 import { buildProps } from '../../../utils/vue/props/runtime.mjs';
-import { useTooltipTriggerProps } from '../../tooltip/src/trigger.mjs';
+import { useTooltipTriggerProps } from '../../tooltip/src/trigger2.mjs';
 import { useTooltipContentProps } from '../../tooltip/src/content.mjs';
 import { isBoolean } from '../../../utils/types.mjs';
 

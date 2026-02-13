@@ -253,16 +253,6 @@ $form-item-label-top-margin-bottom: map.merge(
     .float-label {
       @include float-label-error
     }
-    .el-input--large {
-      .float-label {
-        transform: translateY(-19px);
-      }
-    }
-    .el-input--small {
-      .float-label {
-        transform: translateY(-11px);
-      }
-    }
   }
 
   @include m(feedback) {

@@ -40,7 +40,7 @@ $button-icon-span-gap: map.merge(
   -webkit-appearance: none;
   background-color: getCssVar('button', 'bg-color');
   border: getCssVar('border');
-  border-color: getCssVar('button', 'border-color');
+  border-color: var(--color-cloudy-gray-300);
 
   &:hover {
     color: getCssVar('button', 'hover', 'text-color');

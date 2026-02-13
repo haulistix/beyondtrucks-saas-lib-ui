@@ -123,10 +123,10 @@ declare const _default: import("vue").DefineComponent<{
     readonly appendSizeTo: StringConstructor;
 }>> & {
     onChange?: ((currentPage: number, pageSize: number) => any) | undefined;
+    "onCurrent-change"?: ((val: number) => any) | undefined;
     "onUpdate:current-page"?: ((val: number) => any) | undefined;
     "onUpdate:page-size"?: ((val: number) => any) | undefined;
     "onSize-change"?: ((val: number) => any) | undefined;
-    "onCurrent-change"?: ((val: number) => any) | undefined;
     "onPrev-click"?: ((val: number) => any) | undefined;
     "onNext-click"?: ((val: number) => any) | undefined;
 }, {

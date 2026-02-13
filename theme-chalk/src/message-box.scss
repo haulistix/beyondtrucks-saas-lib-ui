@@ -59,7 +59,7 @@
   }
 
   @include e(header) {
-    background-color: #f2f7f7;
+    background-color: var(--color-gray-10);
     padding: 16px;
     display: flex;
     justify-content: space-between;

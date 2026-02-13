@@ -1,6 +1,6 @@
 import { defineComponent, useAttrs, useSlots, computed, shallowRef, ref, watch, nextTick, onMounted, toRef, openBlock, createElementBlock, normalizeClass, unref, normalizeStyle, createCommentVNode, Fragment, renderSlot, createElementVNode, createBlock, withCtx, resolveDynamicComponent, mergeProps, toDisplayString, withModifiers, createVNode } from 'vue';
 import { ElIcon } from '../../icon/index.mjs';
-import Tooltip from '../../tooltip/src/tooltip2.mjs';
+import Tooltip from '../../tooltip/src/tooltip.mjs';
 import { useResizeObserver, isClient } from '@vueuse/core';
 import { isNil } from 'lodash-unified';
 import { inputProps, inputEmits } from './input.mjs';

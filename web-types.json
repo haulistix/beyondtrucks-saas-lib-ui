@@ -12976,7 +12976,7 @@
               "description": "type of Tag",
               "doc-url": "https://element-plus.org/en-US/component/tag.html#tag-attributes",
               "type": [
-                "'primary' | 'success' | 'info' | 'warning' | 'danger'"
+                "'primary' | 'success' | 'info' | 'warning' | 'danger' | 'gray' |  'blue'|  'cyan'| 'green'| 'orange'| 'red'"
               ],
               "default": "primary"
             },

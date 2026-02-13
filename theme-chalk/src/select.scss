@@ -30,7 +30,7 @@
     cursor: pointer;
     text-align: left;
     font-size: 14px;
-    padding: 0 12px 0 8px;
+    padding: 0 12px;
     gap: map.get($select-item-gap, 'default');
     min-height: map.get($input-height, 'default');
     border-radius: getCssVar('border-radius-custom');
@@ -213,6 +213,7 @@
     font-size: 12px;
     transform: translateY(-50%);
     width: 100%;
+    line-height: 16px;
     @include utils-ellipsis;
     color: var(
         #{getCssVarName('input-text-color')},

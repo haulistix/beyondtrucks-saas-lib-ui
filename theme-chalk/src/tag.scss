@@ -12,12 +12,12 @@ $tag-border-width: 1px;
 
 $tag-icon-span-gap: () !default;
 $tag-icon-span-gap: map.merge(
-  (
-    'large': 8px,
-    'default': 6px,
-    'small': 4px,
-  ),
-  $tag-icon-span-gap
+    (
+      'large': 8px,
+      'default': 6px,
+      'small': 4px,
+    ),
+    $tag-icon-span-gap
 );
 
 @function returnVarList($var, $type: 'primary') {
@@ -33,38 +33,38 @@ $tag-icon-span-gap: map.merge(
 // false mean --el-color-white
 @mixin genTheme($backgroundColorWeight, $borderColorWeight, $hoverColorWeight) {
   @include css-var-from-global(
-    ('tag', 'bg-color'),
-    returnVarList($backgroundColorWeight)
+        ('tag', 'bg-color'),
+      returnVarList($backgroundColorWeight)
   );
   @include css-var-from-global(
-    ('tag', 'border-color'),
-    returnVarList($borderColorWeight)
+        ('tag', 'border-color'),
+      returnVarList($borderColorWeight)
   );
   @include css-var-from-global(
-    ('tag', 'hover-color'),
-    returnVarList($hoverColorWeight)
+        ('tag', 'hover-color'),
+      returnVarList($hoverColorWeight)
   );
   @include css-var-from-global(
-    ('tag', 'active-color'),
-    returnVarList('light-3')
+        ('tag', 'active-color'),
+      returnVarList('light-3')
   );
   @each $type in $types {
     &.#{bem('tag', '', $type)} {
       @include css-var-from-global(
-        ('tag', 'bg-color'),
-        returnVarList($backgroundColorWeight, $type)
+            ('tag', 'bg-color'),
+          returnVarList($backgroundColorWeight, $type)
       );
       @include css-var-from-global(
-        ('tag', 'border-color'),
-        returnVarList($borderColorWeight, $type)
+            ('tag', 'border-color'),
+          returnVarList($borderColorWeight, $type)
       );
       @include css-var-from-global(
-        ('tag', 'hover-color'),
-        returnVarList($hoverColorWeight, $type)
+            ('tag', 'hover-color'),
+          returnVarList($hoverColorWeight, $type)
       );
       @include css-var-from-global(
-        ('tag', 'active-color'),
-        returnVarList('light-3', $type)
+            ('tag', 'active-color'),
+          returnVarList('light-3', $type)
       );
     }
   }
@@ -93,7 +93,7 @@ $tag-icon-span-gap: map.merge(
 
     &:active {
       color: getCssVar('color-white');
-      background-color: getCssVar('tag-active-color');
+      background-color: var(--color-gray-900);
     }
   }
 
@@ -180,8 +180,8 @@ $tag-icon-span-gap: map.merge(
       height: map.get($tag-height, $size);
 
       @include set-css-var-value(
-        'icon-size',
-        #{map.get($tag-icon-size, $size)}
+          'icon-size',
+          #{map.get($tag-icon-size, $size)}
       );
 
       .#{$namespace}-tag__close {

@@ -14875,10 +14875,10 @@ declare const _default_62: DefineComponent<{
     readonly appendSizeTo: StringConstructor;
 }>> & {
     onChange?: ((currentPage: number, pageSize: number) => any) | undefined;
+    "onCurrent-change"?: ((val: number) => any) | undefined;
     "onUpdate:current-page"?: ((val: number) => any) | undefined;
     "onUpdate:page-size"?: ((val: number) => any) | undefined;
     "onSize-change"?: ((val: number) => any) | undefined;
-    "onCurrent-change"?: ((val: number) => any) | undefined;
     "onPrev-click"?: ((val: number) => any) | undefined;
     "onNext-click"?: ((val: number) => any) | undefined;
 }, {
@@ -17215,7 +17215,7 @@ declare const _default_84: DefineComponent<{
     * @description whether to allow drag the last column
     */
     allowDragLastColumn: boolean;
-}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "header-click" | "header-contextmenu" | "header-dragend" | "selection-change" | "sort-change" | "filter-change" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "header-click" | "header-contextmenu" | "header-dragend" | "selection-change" | "sort-change" | "filter-change" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     data: {
         type: PropType<any[]>;
         default: () => never[];
@@ -17323,12 +17323,12 @@ declare const _default_84: DefineComponent<{
     "onExpand-change"?: ((...args: any[]) => any) | undefined;
     "onCurrent-change"?: ((...args: any[]) => any) | undefined;
     "onSelect-all"?: ((...args: any[]) => any) | undefined;
-    "onHeader-click"?: ((...args: any[]) => any) | undefined;
-    "onHeader-contextmenu"?: ((...args: any[]) => any) | undefined;
-    "onHeader-dragend"?: ((...args: any[]) => any) | undefined;
     "onSelection-change"?: ((...args: any[]) => any) | undefined;
     "onSort-change"?: ((...args: any[]) => any) | undefined;
     "onFilter-change"?: ((...args: any[]) => any) | undefined;
+    "onHeader-click"?: ((...args: any[]) => any) | undefined;
+    "onHeader-contextmenu"?: ((...args: any[]) => any) | undefined;
+    "onHeader-dragend"?: ((...args: any[]) => any) | undefined;
     "onCell-mouse-enter"?: ((...args: any[]) => any) | undefined;
     "onCell-mouse-leave"?: ((...args: any[]) => any) | undefined;
     "onCell-contextmenu"?: ((...args: any[]) => any) | undefined;

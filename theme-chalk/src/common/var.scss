@@ -1224,7 +1224,7 @@ $drawer: () !default;
 $drawer: map.merge(
     (
       'bg-color':getCssVar('bg-color'),
-      'padding-primary': 24px 32px,
+      'padding-primary': 24px,
     ),
     $drawer
 );

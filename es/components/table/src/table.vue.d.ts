@@ -745,7 +745,7 @@ declare const _default: import("vue").DefineComponent<{
      * @description whether to allow drag the last column
      */
     allowDragLastColumn: boolean;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "header-click" | "header-contextmenu" | "header-dragend" | "selection-change" | "sort-change" | "filter-change" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "header-click" | "header-contextmenu" | "header-dragend" | "selection-change" | "sort-change" | "filter-change" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     data: {
         type: import("vue").PropType<any[]>;
         default: () => never[];
@@ -853,12 +853,12 @@ declare const _default: import("vue").DefineComponent<{
     "onExpand-change"?: ((...args: any[]) => any) | undefined;
     "onCurrent-change"?: ((...args: any[]) => any) | undefined;
     "onSelect-all"?: ((...args: any[]) => any) | undefined;
-    "onHeader-click"?: ((...args: any[]) => any) | undefined;
-    "onHeader-contextmenu"?: ((...args: any[]) => any) | undefined;
-    "onHeader-dragend"?: ((...args: any[]) => any) | undefined;
     "onSelection-change"?: ((...args: any[]) => any) | undefined;
     "onSort-change"?: ((...args: any[]) => any) | undefined;
     "onFilter-change"?: ((...args: any[]) => any) | undefined;
+    "onHeader-click"?: ((...args: any[]) => any) | undefined;
+    "onHeader-contextmenu"?: ((...args: any[]) => any) | undefined;
+    "onHeader-dragend"?: ((...args: any[]) => any) | undefined;
     "onCell-mouse-enter"?: ((...args: any[]) => any) | undefined;
     "onCell-mouse-leave"?: ((...args: any[]) => any) | undefined;
     "onCell-contextmenu"?: ((...args: any[]) => any) | undefined;

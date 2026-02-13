@@ -32,9 +32,11 @@ declare const _default: import("vue").DefineComponent<{
         cssVarBlockName: (name: string) => string;
     };
     contentId: import("vue").Ref<string>;
+    showTip: import("vue").Ref<boolean>;
     hoverItem: () => void;
     selectOptionClick: () => void;
     getLabel: (option: import("./select.types").Option) => any;
+    handleCellMouseEnter: (event: MouseEvent) => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     hover: (index?: number) => index is number;
     select: (val: import("./select.types").Option, index?: number) => boolean;

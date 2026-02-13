@@ -5617,13 +5617,19 @@
     "description": "whether Tab is lazily rendered, default: false.\n\n[Docs](https://element-plus.org/en-US/component/tabs.html#tab-pane-attributes)"
   },
   "el-tag/type": {
-    "type": "'primary' | 'success' | 'info' | 'warning' | 'danger'",
+    "type": "'primary' | 'success' | 'info' | 'warning' | 'danger' | 'gray' |  'blue'|  'cyan'| 'green'| 'orange'| 'red'",
     "options": [
       "primary",
       "success",
       "info",
       "warning",
-      "danger"
+      "danger",
+      "gray",
+      "blue",
+      "cyan",
+      "green",
+      "orange",
+      "red"
     ],
     "description": "type of Tag, default: primary.\n\n[Docs](https://element-plus.org/en-US/component/tag.html#tag-attributes)"
   },

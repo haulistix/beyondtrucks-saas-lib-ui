@@ -14502,6 +14502,11 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
     const isGroup = computed(() => {
       return !labelFor.value && hasLabel.value;
     });
+    const isDisabled = computed(() => {
+      var _a;
+      const ele = (_a = formItemContent.value) == null ? void 0 : _a.querySelector(".is-disabled");
+      return !!ele;
+    });
     const isNested = !!parentFormItemContext;
     const fieldValue = computed(() => {
       const model = formContext == null ? void 0 : formContext.model;
@@ -14663,7 +14668,7 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
       if (props.prop) {
         formContext == null ? void 0 : formContext.addField(context);
         initialValue = clone(fieldValue.value);
-        if (isRequired.value && props.alwaysShowError && isEmpty(initialValue) && (((_a = formItemContent.value) == null ? void 0 : _a.querySelector(".el-input")) || ((_b = formItemContent.value) == null ? void 0 : _b.querySelector(".el-textarea")) || ((_c = formItemContent.value) == null ? void 0 : _c.querySelector(".el-date-editor")) || ((_d = formItemContent.value) == null ? void 0 : _d.querySelector(".el-select")))) {
+        if (!isDisabled.value && isRequired.value && props.alwaysShowError && isEmpty(initialValue) && (((_a = formItemContent.value) == null ? void 0 : _a.querySelector(".el-input")) || ((_b = formItemContent.value) == null ? void 0 : _b.querySelector(".el-textarea")) || ((_c = formItemContent.value) == null ? void 0 : _c.querySelector(".el-date-editor")) || ((_d = formItemContent.value) == null ? void 0 : _d.querySelector(".el-select")))) {
           const currentRule = normalizedRules.value.find((rule) => rule.required);
           setValidationState("error");
           validateMessage.value = (currentRule == null ? void 0 : currentRule.message) ? currentRule == null ? void 0 : currentRule.message : "Required";
@@ -40022,7 +40027,7 @@ function _sfc_render$9(_ctx, _cache) {
             }, [
               createTextVNode(toDisplayString(_ctx.labelSuffix) + " ", 1),
               _ctx.$slots.info ? renderSlot(_ctx.$slots, "info", { key: 0 }) : createCommentVNode("v-if", true),
-              _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.validateError ? (openBlock(), createBlock(_component_el_icon, {
+              _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.validateError && !_ctx.$slots.info ? (openBlock(), createBlock(_component_el_icon, {
                 key: 1,
                 class: normalizeClass([_ctx.nsSelect.e("caret"), _ctx.nsSelect.e("icon"), _ctx.iconReverse])
               }, {

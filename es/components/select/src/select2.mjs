@@ -4,7 +4,7 @@ import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { useProps } from '../../select-v2/src/useProps.mjs';
-import Option from './option2.mjs';
+import Option from './option.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
 import { useSelect } from './useSelect.mjs';
 import { selectKey } from './token.mjs';
@@ -426,7 +426,7 @@ function _sfc_render(_ctx, _cache) {
             }, [
               createTextVNode(toDisplayString(_ctx.labelSuffix) + " ", 1),
               _ctx.$slots.info ? renderSlot(_ctx.$slots, "info", { key: 0 }) : createCommentVNode("v-if", true),
-              _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.validateError ? (openBlock(), createBlock(_component_el_icon, {
+              _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.validateError && !_ctx.$slots.info ? (openBlock(), createBlock(_component_el_icon, {
                 key: 1,
                 class: normalizeClass([_ctx.nsSelect.e("caret"), _ctx.nsSelect.e("icon"), _ctx.iconReverse])
               }, {

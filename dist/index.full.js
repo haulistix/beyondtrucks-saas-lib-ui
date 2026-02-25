@@ -38481,6 +38481,7 @@
     name: COMPONENT_NAME$b,
     componentName: COMPONENT_NAME$b,
     components: {
+      ElCheckbox,
       ElIcon,
       ElTooltip
     },
@@ -38512,6 +38513,7 @@
       const { visible, hover } = vue.toRefs(states);
       const vm = vue.getCurrentInstance().proxy;
       select.onOptionCreate(vm);
+      const multiple = vue.computed(() => select.props.multiple);
       vue.onBeforeUnmount(() => {
         const key = vm.value;
         vue.nextTick(() => {
@@ -38565,6 +38567,7 @@
         disabled.value = !(isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth));
       };
       return {
+        multiple,
         ns,
         id,
         containerKls,
@@ -38586,6 +38589,7 @@
     }
   });
   function _sfc_render$c(_ctx, _cache) {
+    const _component_el_checkbox = vue.resolveComponent("el-checkbox");
     const _component_el_tooltip = vue.resolveComponent("el-tooltip");
     const _component_el_icon = vue.resolveComponent("el-icon");
     return vue.withDirectives((vue.openBlock(), vue.createElementBlock("li", {
@@ -38600,6 +38604,11 @@
     }, [
       vue.renderSlot(_ctx.$slots, "default", {}, () => [
         vue.createElementVNode("div", { class: "option-wrap" }, [
+          _ctx.multiple ? (vue.openBlock(), vue.createBlock(_component_el_checkbox, {
+            key: 0,
+            modelValue: _ctx.itemSelected,
+            "onUpdate:modelValue": ($event) => _ctx.itemSelected = $event
+          }, null, 8, ["modelValue", "onUpdate:modelValue"])) : vue.createCommentVNode("v-if", true),
           vue.createVNode(_component_el_tooltip, {
             ref: "tooltipRef",
             effect: "light",
@@ -38621,7 +38630,10 @@
             }),
             _: 3
           }, 8, ["disabled", "content", "placement"]),
-          vue.withDirectives(vue.createElementVNode("div", { class: "option-wrap-icon" }, [
+          _ctx.itemSelected && !_ctx.multiple ? (vue.openBlock(), vue.createElementBlock("div", {
+            key: 1,
+            class: "option-wrap-icon"
+          }, [
             vue.createVNode(_component_el_icon, {
               size: "16px",
               color: "#2A3F4D"
@@ -38638,9 +38650,7 @@
               ]),
               _: 1
             })
-          ], 512), [
-            [vue.vShow, _ctx.itemSelected]
-          ])
+          ])) : vue.createCommentVNode("v-if", true)
         ])
       ])
     ], 42, ["id", "aria-disabled", "aria-selected", "onMousemove", "onClick", "onMouseenter"])), [
@@ -39776,7 +39786,11 @@
     const _directive_click_outside = vue.resolveDirective("click-outside");
     return vue.withDirectives((vue.openBlock(), vue.createElementBlock("div", {
       ref: "selectRef",
-      class: vue.normalizeClass([_ctx.nsSelect.b(), _ctx.nsSelect.m(_ctx.selectSize)]),
+      class: vue.normalizeClass([
+        _ctx.nsSelect.b(),
+        _ctx.nsSelect.m(_ctx.selectSize),
+        _ctx.multiple && _ctx.isFocused ? "multi-select" : ""
+      ]),
       [vue.toHandlerKey(_ctx.mouseEnterEventName)]: ($event) => _ctx.states.inputHovering = true,
       onMouseleave: ($event) => _ctx.states.inputHovering = false
     }, [

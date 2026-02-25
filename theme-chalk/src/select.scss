@@ -30,7 +30,7 @@
     cursor: pointer;
     text-align: left;
     font-size: 14px;
-    padding: 0 12px;
+    padding: 6px 12px;
     gap: map.get($select-item-gap, 'default');
     min-height: map.get($input-height, 'default');
     border-radius: getCssVar('border-radius-custom');
@@ -55,6 +55,7 @@
       line-height: 16px;
       max-width: calc(100% - 34px);
       left: 12px;
+      top: 8px  ;
     }
     @include when(filterable) {
       cursor: text;
@@ -64,6 +65,9 @@
       border-color: getCssVar('color-primary') !important;
       .select-visible.float-label {
         @include select-float-label
+      }
+      .el-select__selection.is-near {
+        flex-wrap: wrap;
       }
     }
     @include when(value) {
@@ -176,7 +180,8 @@
     gap: map.get($select-item-gap, 'default');
 
     @include when(near) {
-      //margin-left: map.get($select-near-margin-left, 'default');
+      flex-wrap: unset;
+      overflow: hidden;
     }
 
     .#{$namespace}-tag {

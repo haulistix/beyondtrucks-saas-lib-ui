@@ -15525,6 +15525,7 @@ declare const _default_74: DefineComponent<{
     placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
 }, {
+    multiple: ComputedRef<boolean>;
     ns: {
         namespace: ComputedRef<string>;
         b: (blockSuffix?: string) => string;

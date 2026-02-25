@@ -38477,6 +38477,7 @@ const _sfc_main$Z = defineComponent({
   name: COMPONENT_NAME$b,
   componentName: COMPONENT_NAME$b,
   components: {
+    ElCheckbox,
     ElIcon,
     ElTooltip
   },
@@ -38508,6 +38509,7 @@ const _sfc_main$Z = defineComponent({
     const { visible, hover } = toRefs(states);
     const vm = getCurrentInstance().proxy;
     select.onOptionCreate(vm);
+    const multiple = computed(() => select.props.multiple);
     onBeforeUnmount(() => {
       const key = vm.value;
       nextTick(() => {
@@ -38561,6 +38563,7 @@ const _sfc_main$Z = defineComponent({
       disabled.value = !(isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth));
     };
     return {
+      multiple,
       ns,
       id,
       containerKls,
@@ -38582,6 +38585,7 @@ const _sfc_main$Z = defineComponent({
   }
 });
 function _sfc_render$c(_ctx, _cache) {
+  const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
   return withDirectives((openBlock(), createElementBlock("li", {
@@ -38596,6 +38600,11 @@ function _sfc_render$c(_ctx, _cache) {
   }, [
     renderSlot(_ctx.$slots, "default", {}, () => [
       createElementVNode("div", { class: "option-wrap" }, [
+        _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
+          key: 0,
+          modelValue: _ctx.itemSelected,
+          "onUpdate:modelValue": ($event) => _ctx.itemSelected = $event
+        }, null, 8, ["modelValue", "onUpdate:modelValue"])) : createCommentVNode("v-if", true),
         createVNode(_component_el_tooltip, {
           ref: "tooltipRef",
           effect: "light",
@@ -38617,7 +38626,10 @@ function _sfc_render$c(_ctx, _cache) {
           }),
           _: 3
         }, 8, ["disabled", "content", "placement"]),
-        withDirectives(createElementVNode("div", { class: "option-wrap-icon" }, [
+        _ctx.itemSelected && !_ctx.multiple ? (openBlock(), createElementBlock("div", {
+          key: 1,
+          class: "option-wrap-icon"
+        }, [
           createVNode(_component_el_icon, {
             size: "16px",
             color: "#2A3F4D"
@@ -38634,9 +38646,7 @@ function _sfc_render$c(_ctx, _cache) {
             ]),
             _: 1
           })
-        ], 512), [
-          [vShow, _ctx.itemSelected]
-        ])
+        ])) : createCommentVNode("v-if", true)
       ])
     ])
   ], 42, ["id", "aria-disabled", "aria-selected", "onMousemove", "onClick", "onMouseenter"])), [
@@ -39772,7 +39782,11 @@ function _sfc_render$9(_ctx, _cache) {
   const _directive_click_outside = resolveDirective("click-outside");
   return withDirectives((openBlock(), createElementBlock("div", {
     ref: "selectRef",
-    class: normalizeClass([_ctx.nsSelect.b(), _ctx.nsSelect.m(_ctx.selectSize)]),
+    class: normalizeClass([
+      _ctx.nsSelect.b(),
+      _ctx.nsSelect.m(_ctx.selectSize),
+      _ctx.multiple && _ctx.isFocused ? "multi-select" : ""
+    ]),
     [toHandlerKey(_ctx.mouseEnterEventName)]: ($event) => _ctx.states.inputHovering = true,
     onMouseleave: ($event) => _ctx.states.inputHovering = false
   }, [

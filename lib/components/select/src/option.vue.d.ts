@@ -16,6 +16,7 @@ declare const _default: import("vue").DefineComponent<{
     placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
 }, {
+    multiple: import("vue").ComputedRef<boolean>;
     ns: {
         namespace: import("vue").ComputedRef<string>;
         b: (blockSuffix?: string) => string;

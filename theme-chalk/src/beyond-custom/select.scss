@@ -1,4 +1,13 @@
+@use 'sass:map';
 @use './font.scss' as *;
+
+@use '../mixins/mixins' as *;
+@use '../mixins/utils' as *;
+@use '../mixins/var' as *;
+@use '../common/var' as *;
+@use '../select-dropdown.scss';
+@use '../option.scss';
+@use '../option-group.scss';
 
 .select-add-tip {
   font-size: 13px;
@@ -9,6 +18,17 @@
 
 .el-select {
   border: none;
+
+  &.multi-select {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+
+    .el-select__wrapper {
+      border: none;
+      box-shadow: var(--shadow-300);
+    }
+  }
 
   .trans-input {
     .el-input__inner::placeholder {
@@ -127,6 +147,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .el-checkbox {
+      margin-right: 8px;
+    }
 
     &-icon {
       width: 16px;

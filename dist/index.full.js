@@ -40022,7 +40022,7 @@
                     textContent: vue.toDisplayString(_ctx.states.inputValue)
                   }, null, 10, ["textContent"])) : vue.createCommentVNode("v-if", true)
                 ], 2),
-                !_ctx.floatLabel || _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (vue.openBlock(), vue.createElementBlock("div", {
+                !_ctx.floatLabel && !_ctx.states.inputValue || _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (vue.openBlock(), vue.createElementBlock("div", {
                   key: 1,
                   class: vue.normalizeClass([
                     _ctx.nsSelect.e("selected-item"),

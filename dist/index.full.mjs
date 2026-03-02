@@ -40018,7 +40018,7 @@ function _sfc_render$9(_ctx, _cache) {
                   textContent: toDisplayString(_ctx.states.inputValue)
                 }, null, 10, ["textContent"])) : createCommentVNode("v-if", true)
               ], 2),
-              !_ctx.floatLabel || _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (openBlock(), createElementBlock("div", {
+              !_ctx.floatLabel && !_ctx.states.inputValue || _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (openBlock(), createElementBlock("div", {
                 key: 1,
                 class: normalizeClass([
                   _ctx.nsSelect.e("selected-item"),

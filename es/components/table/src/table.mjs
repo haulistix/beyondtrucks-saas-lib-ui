@@ -78,6 +78,7 @@ const _sfc_main = defineComponent({
       toggleAllSelection,
       toggleRowExpansion,
       clearSort,
+      updateSort,
       sort,
       updateKeyChildren
     } = useUtils(store);
@@ -150,6 +151,7 @@ const _sfc_main = defineComponent({
       clearFilter,
       toggleAllSelection,
       toggleRowExpansion,
+      updateSort,
       clearSort,
       doLayout,
       sort,

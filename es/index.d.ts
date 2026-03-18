@@ -16763,6 +16763,48 @@ declare const _default_84: DefineComponent<{
                 sortOrder: Ref<string | number | null>;
                 hoverRow: Ref<any>;
             }, column: TableColumnCtx<any>, parent: TableColumnCtx<any>, updateColumnOrder: () => void): void;
+            sortUpdate(states: {
+                _currentRowKey: Ref<string | null>;
+                currentRow: Ref<any>;
+                expandRowKeys: Ref<string[]>;
+                treeData: Ref<Record<string, TreeData_2>>;
+                indent: Ref<number>;
+                lazy: Ref<boolean>;
+                lazyTreeNodeMap: Ref<Record<string, any[]>>;
+                lazyColumnIdentifier: Ref<string>;
+                childrenColumnName: Ref<string>;
+                checkStrictly: Ref<boolean>;
+                expandRows: Ref<any[]>;
+                defaultExpandAll: Ref<boolean>;
+                tableSize: Ref<any>;
+                rowKey: Ref<string | null>;
+                data: Ref<any[]>;
+                _data: Ref<any[]>;
+                isComplex: Ref<boolean>;
+                _columns: Ref<TableColumnCtx<any>[]>;
+                originColumns: Ref<TableColumnCtx<any>[]>;
+                columns: Ref<TableColumnCtx<any>[]>;
+                fixedColumns: Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: Ref<TableColumnCtx<any>[]>;
+                leafColumns: Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: Ref<TableColumnCtx<any>[]>;
+                updateOrderFns: (() => void)[];
+                leafColumnsLength: Ref<number>;
+                fixedLeafColumnsLength: Ref<number>;
+                rightFixedLeafColumnsLength: Ref<number>;
+                isAllSelected: Ref<boolean>;
+                selection: Ref<any[]>;
+                reserveSelection: Ref<boolean>;
+                selectOnIndeterminate: Ref<boolean>;
+                selectable: Ref<((row: any, index: number) => boolean) | null>;
+                filters: Ref<StoreFilter>;
+                filteredData: Ref<any[] | null>;
+                sortingColumn: Ref<TableColumnCtx<any> | null>;
+                sortProp: Ref<string | null>;
+                sortOrder: Ref<string | number | null>;
+                hoverRow: Ref<any>;
+            }, options: Sort): void;
             sort(states: {
                 _currentRowKey: Ref<string | null>;
                 currentRow: Ref<any>;
@@ -17017,7 +17059,7 @@ declare const _default_84: DefineComponent<{
                 hoverRow: Ref<any>;
             }, row: any): void;
         };
-        commit: (name: "sort" | "setData" | "insertColumn" | "updateColumnOrder" | "removeColumn" | "changeSortCondition" | "filterChange" | "toggleAllSelection" | "rowSelectedChanged" | "setHoverRow" | "setCurrentRow", ...args: any[]) => void;
+        commit: (name: "sort" | "setData" | "insertColumn" | "updateColumnOrder" | "removeColumn" | "sortUpdate" | "changeSortCondition" | "filterChange" | "toggleAllSelection" | "rowSelectedChanged" | "setHoverRow" | "setCurrentRow", ...args: any[]) => void;
         updateTableScrollY: () => void;
         assertRowKey: () => void;
         updateColumns: () => void;
@@ -17163,6 +17205,10 @@ declare const _default_84: DefineComponent<{
     * @description used in expandable Table or tree Table, toggle if a certain row is expanded. With the second parameter, you can directly set if this row is expanded or collapsed
     */
     toggleRowExpansion: (row: any, expanded?: boolean) => void;
+    /**
+    * @description update sorting, restore data to the original order
+    */
+    updateSort: (options: Sort) => void;
     /**
     * @description clear sorting, restore data to the original order
     */
@@ -21189,6 +21235,48 @@ declare class HelperStore<T extends DefaultRow> {
                 sortOrder: Ref<string | number | null>;
                 hoverRow: Ref<T | null>;
             }, column: TableColumnCtx<T>, parent: TableColumnCtx<T>, updateColumnOrder: () => void): void;
+            sortUpdate(states: {
+                _currentRowKey: Ref<string | null>;
+                currentRow: Ref<T | null>;
+                expandRowKeys: Ref<string[]>;
+                treeData: Ref<Record<string, TreeData_2>>;
+                indent: Ref<number>;
+                lazy: Ref<boolean>;
+                lazyTreeNodeMap: Ref<Record<string, T[]>>;
+                lazyColumnIdentifier: Ref<string>;
+                childrenColumnName: Ref<string>;
+                checkStrictly: Ref<boolean>;
+                expandRows: Ref<T[]>;
+                defaultExpandAll: Ref<boolean>;
+                tableSize: Ref<any>;
+                rowKey: Ref<string | null>;
+                data: Ref<T[]>;
+                _data: Ref<T[]>;
+                isComplex: Ref<boolean>;
+                _columns: Ref<TableColumnCtx<T>[]>;
+                originColumns: Ref<TableColumnCtx<T>[]>;
+                columns: Ref<TableColumnCtx<T>[]>;
+                fixedColumns: Ref<TableColumnCtx<T>[]>;
+                rightFixedColumns: Ref<TableColumnCtx<T>[]>;
+                leafColumns: Ref<TableColumnCtx<T>[]>;
+                fixedLeafColumns: Ref<TableColumnCtx<T>[]>;
+                rightFixedLeafColumns: Ref<TableColumnCtx<T>[]>;
+                updateOrderFns: (() => void)[];
+                leafColumnsLength: Ref<number>;
+                fixedLeafColumnsLength: Ref<number>;
+                rightFixedLeafColumnsLength: Ref<number>;
+                isAllSelected: Ref<boolean>;
+                selection: Ref<T[]>;
+                reserveSelection: Ref<boolean>;
+                selectOnIndeterminate: Ref<boolean>;
+                selectable: Ref<((row: T, index: number) => boolean) | null>;
+                filters: Ref<StoreFilter>;
+                filteredData: Ref<T[] | null>;
+                sortingColumn: Ref<TableColumnCtx<T> | null>;
+                sortProp: Ref<string | null>;
+                sortOrder: Ref<string | number | null>;
+                hoverRow: Ref<T | null>;
+            }, options: Sort): void;
             sort(states: {
                 _currentRowKey: Ref<string | null>;
                 currentRow: Ref<T | null>;
@@ -21443,7 +21531,7 @@ declare class HelperStore<T extends DefaultRow> {
                 hoverRow: Ref<T | null>;
             }, row: T): void;
         };
-        commit: (name: "sort" | "setData" | "insertColumn" | "updateColumnOrder" | "removeColumn" | "changeSortCondition" | "filterChange" | "toggleAllSelection" | "rowSelectedChanged" | "setHoverRow" | "setCurrentRow", ...args: any[]) => void;
+        commit: (name: "sort" | "setData" | "insertColumn" | "updateColumnOrder" | "removeColumn" | "sortUpdate" | "changeSortCondition" | "filterChange" | "toggleAllSelection" | "rowSelectedChanged" | "setHoverRow" | "setCurrentRow", ...args: any[]) => void;
         updateTableScrollY: () => void;
         assertRowKey: () => void;
         updateColumns: () => void;

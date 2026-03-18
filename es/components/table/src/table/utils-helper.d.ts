@@ -1,5 +1,5 @@
 import type { Store } from '../store';
-import type { DefaultRow } from './defaults';
+import type { DefaultRow, Sort } from './defaults';
 declare function useUtils<T extends DefaultRow>(store: Store<T>): {
     setCurrentRow: (row: T) => void;
     getSelectionRows: () => T[];
@@ -11,5 +11,6 @@ declare function useUtils<T extends DefaultRow>(store: Store<T>): {
     clearSort: () => void;
     sort: (prop: string, order: string) => void;
     updateKeyChildren: (key: string, data: T[]) => void;
+    updateSort: (options: Sort) => void;
 };
 export default useUtils;

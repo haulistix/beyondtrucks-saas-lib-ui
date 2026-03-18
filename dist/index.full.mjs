@@ -49039,6 +49039,16 @@ function useStore() {
         instance.store.scheduleLayout();
       }
     },
+    sortUpdate(states, options) {
+      const { prop, order } = options;
+      if (prop) {
+        const column = unref(states.columns).find((column2) => column2.property === prop);
+        if (column) {
+          column.order = order;
+          instance.store.updateSort(column, prop, order);
+        }
+      }
+    },
     sort(states, options) {
       const { prop, order, init } = options;
       if (prop) {
@@ -51073,6 +51083,9 @@ function useUtils(store) {
   const clearSort = () => {
     store.clearSort();
   };
+  const updateSort = (options) => {
+    store.commit("sortUpdate", options);
+  };
   const sort = (prop, order) => {
     store.commit("sort", { prop, order });
   };
@@ -51089,7 +51102,8 @@ function useUtils(store) {
     toggleRowExpansion,
     clearSort,
     sort,
-    updateKeyChildren
+    updateKeyChildren,
+    updateSort
   };
 }
 
@@ -51589,6 +51603,7 @@ const _sfc_main$x = defineComponent({
       toggleAllSelection,
       toggleRowExpansion,
       clearSort,
+      updateSort,
       sort,
       updateKeyChildren
     } = useUtils(store);
@@ -51661,6 +51676,7 @@ const _sfc_main$x = defineComponent({
       clearFilter,
       toggleAllSelection,
       toggleRowExpansion,
+      updateSort,
       clearSort,
       doLayout,
       sort,

@@ -292,6 +292,48 @@ declare const _default: import("vue").DefineComponent<{
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
             }, column: import("./table-column/defaults").TableColumnCtx<any>, parent: import("./table-column/defaults").TableColumnCtx<any>, updateColumnOrder: () => void): void;
+            sortUpdate(states: {
+                _currentRowKey: import("vue").Ref<string | null>;
+                currentRow: import("vue").Ref<any>;
+                expandRowKeys: import("vue").Ref<string[]>;
+                treeData: import("vue").Ref<Record<string, import("./store/tree").TreeData>>;
+                indent: import("vue").Ref<number>;
+                lazy: import("vue").Ref<boolean>;
+                lazyTreeNodeMap: import("vue").Ref<Record<string, any[]>>;
+                lazyColumnIdentifier: import("vue").Ref<string>;
+                childrenColumnName: import("vue").Ref<string>;
+                checkStrictly: import("vue").Ref<boolean>;
+                expandRows: import("vue").Ref<any[]>;
+                defaultExpandAll: import("vue").Ref<boolean>;
+                tableSize: import("vue").Ref<any>;
+                rowKey: import("vue").Ref<string | null>;
+                data: import("vue").Ref<any[]>;
+                _data: import("vue").Ref<any[]>;
+                isComplex: import("vue").Ref<boolean>;
+                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                updateOrderFns: (() => void)[];
+                leafColumnsLength: import("vue").Ref<number>;
+                fixedLeafColumnsLength: import("vue").Ref<number>;
+                rightFixedLeafColumnsLength: import("vue").Ref<number>;
+                isAllSelected: import("vue").Ref<boolean>;
+                selection: import("vue").Ref<any[]>;
+                reserveSelection: import("vue").Ref<boolean>;
+                selectOnIndeterminate: import("vue").Ref<boolean>;
+                selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
+                filters: import("vue").Ref<import("./store").StoreFilter>;
+                filteredData: import("vue").Ref<any[] | null>;
+                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortProp: import("vue").Ref<string | null>;
+                sortOrder: import("vue").Ref<string | number | null>;
+                hoverRow: import("vue").Ref<any>;
+            }, options: import("./table/defaults").Sort): void;
             sort(states: {
                 _currentRowKey: import("vue").Ref<string | null>;
                 currentRow: import("vue").Ref<any>;
@@ -546,7 +588,7 @@ declare const _default: import("vue").DefineComponent<{
                 hoverRow: import("vue").Ref<any>;
             }, row: any): void;
         };
-        commit: (name: "sort" | "setData" | "insertColumn" | "updateColumnOrder" | "removeColumn" | "changeSortCondition" | "filterChange" | "toggleAllSelection" | "rowSelectedChanged" | "setHoverRow" | "setCurrentRow", ...args: any[]) => void;
+        commit: (name: "sort" | "setData" | "insertColumn" | "updateColumnOrder" | "removeColumn" | "sortUpdate" | "changeSortCondition" | "filterChange" | "toggleAllSelection" | "rowSelectedChanged" | "setHoverRow" | "setCurrentRow", ...args: any[]) => void;
         updateTableScrollY: () => void;
         assertRowKey: () => void;
         updateColumns: () => void;
@@ -692,6 +734,10 @@ declare const _default: import("vue").DefineComponent<{
      * @description used in expandable Table or tree Table, toggle if a certain row is expanded. With the second parameter, you can directly set if this row is expanded or collapsed
      */
     toggleRowExpansion: (row: any, expanded?: boolean) => void;
+    /**
+     * @description update sorting, restore data to the original order
+     */
+    updateSort: (options: import("./table/defaults").Sort) => void;
     /**
      * @description clear sorting, restore data to the original order
      */

@@ -24,6 +24,9 @@ function useUtils(store) {
   const clearSort = () => {
     store.clearSort();
   };
+  const updateSort = (options) => {
+    store.commit("sortUpdate", options);
+  };
   const sort = (prop, order) => {
     store.commit("sort", { prop, order });
   };
@@ -40,7 +43,8 @@ function useUtils(store) {
     toggleRowExpansion,
     clearSort,
     sort,
-    updateKeyChildren
+    updateKeyChildren,
+    updateSort
   };
 }
 

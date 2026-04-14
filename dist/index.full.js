@@ -40045,8 +40045,9 @@
               }, [
                 vue.createTextVNode(vue.toDisplayString(_ctx.labelSuffix) + " ", 1),
                 _ctx.$slots.info ? vue.renderSlot(_ctx.$slots, "info", { key: 0 }) : vue.createCommentVNode("v-if", true),
+                _ctx.$slots.suffixBeforeIcon ? vue.renderSlot(_ctx.$slots, "suffixBeforeIcon", { key: 1 }) : vue.createCommentVNode("v-if", true),
                 _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.validateError && !_ctx.$slots.info ? (vue.openBlock(), vue.createBlock(_component_el_icon, {
-                  key: 1,
+                  key: 2,
                   class: vue.normalizeClass([_ctx.nsSelect.e("caret"), _ctx.nsSelect.e("icon"), _ctx.iconReverse])
                 }, {
                   default: vue.withCtx(() => [
@@ -40062,7 +40063,7 @@
                   _: 1
                 }, 8, ["class"])) : vue.createCommentVNode("v-if", true),
                 _ctx.showClearBtn && _ctx.clearIcon ? (vue.openBlock(), vue.createBlock(_component_el_icon, {
-                  key: 2,
+                  key: 3,
                   class: vue.normalizeClass([
                     _ctx.nsSelect.e("caret"),
                     _ctx.nsSelect.e("icon"),
@@ -40082,8 +40083,9 @@
                   ]),
                   _: 1
                 }, 8, ["class", "onClick"])) : vue.createCommentVNode("v-if", true),
+                _ctx.$slots.suffixAfterIcon ? vue.renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : vue.createCommentVNode("v-if", true),
                 _ctx.validateError ? (vue.openBlock(), vue.createBlock(_component_el_tooltip, {
-                  key: 3,
+                  key: 5,
                   content: _ctx.validateMsg,
                   effect: "light",
                   placement: "top",
@@ -40110,7 +40112,7 @@
                   _: 1
                 }, 8, ["content"])) : vue.createCommentVNode("v-if", true),
                 _ctx.validateState && _ctx.validateIcon ? (vue.openBlock(), vue.createBlock(_component_el_icon, {
-                  key: 4,
+                  key: 6,
                   class: vue.normalizeClass([
                     _ctx.nsInput.e("icon"),
                     _ctx.nsInput.e("validateIcon"),

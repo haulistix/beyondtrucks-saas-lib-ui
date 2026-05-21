@@ -50366,6 +50366,7 @@
         if (cell.rowSpan > 1) {
           toggleRowClassByCell(cell.rowSpan, event, addClass);
         }
+        addClass(event.target, "cell-hover");
         const hoverState = table.hoverState = {
           cell,
           column,
@@ -50404,6 +50405,7 @@
       if (cell.rowSpan > 1) {
         toggleRowClassByCell(cell.rowSpan, event, removeClass);
       }
+      removeClass(event.target, "cell-hover");
       const oldHoverState = parent == null ? void 0 : parent.hoverState;
       parent == null ? void 0 : parent.emit("cell-mouse-leave", oldHoverState == null ? void 0 : oldHoverState.row, oldHoverState == null ? void 0 : oldHoverState.column, oldHoverState == null ? void 0 : oldHoverState.cell, event);
     };

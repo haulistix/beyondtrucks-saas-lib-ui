@@ -3,6 +3,12 @@
 .el-table {
   border-bottom: 1px solid #e7ecef;
 
+  &.quick-table {
+    .cell-hover {
+      border: 1px solid var(--color-gray-500) !important;
+    }
+  }
+
   .el-table__header-wrapper {
     border-bottom: none;
     border-top: 1px solid #c1ccd6;

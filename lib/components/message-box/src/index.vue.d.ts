@@ -2198,13 +2198,13 @@ declare const _default: import("vue").DefineComponent<{
     center: boolean;
     overflow: boolean;
     container: string;
+    closeOnClickModal: boolean;
+    modal: boolean;
     draggable: boolean;
     showClose: boolean;
     headerBackgroundColor: string;
-    closeOnClickModal: boolean;
     closeOnPressEscape: boolean;
     lockScroll: boolean;
-    modal: boolean;
     reverseBtn: boolean;
     closeOnHashChange: boolean;
     roundButton: boolean;

@@ -1,1 +1,2 @@
-# beyondtrucks-saas 2.0
+- 💪 Vue 3 Composition API
+- 🔥 Written in TypeScript

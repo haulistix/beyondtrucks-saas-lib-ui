@@ -1,5 +1,5 @@
 import TableLayout from './table-layout';
-import type { Table } from './table/defaults';
+import type { DefaultRow, Table } from './table/defaults';
 declare const _default: import("vue").DefineComponent<{
     data: {
         type: import("vue").PropType<any[]>;
@@ -77,6 +77,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     scrollbarAlwaysOn: BooleanConstructor;
     flexible: BooleanConstructor;
+    editable: BooleanConstructor;
     showOverflowTooltip: import("vue").PropType<import("./table/defaults").TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: import("vue").PropType<any>;
@@ -757,6 +758,12 @@ declare const _default: import("vue").DefineComponent<{
     t: import("element-plus/es/hooks").Translator;
     setDragVisible: (visible: boolean) => void;
     context: Table<any>;
+    editingRow: import("vue").Ref<any>;
+    activeEditableCell: import("vue").Ref<any>;
+    startRowEdit: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
+    clearEditingRow: () => void;
+    applyEditingRow: () => any;
+    hasEditingRow: import("vue").ComputedRef<boolean>;
     computedSumText: import("vue").ComputedRef<string>;
     computedEmptyText: import("vue").ComputedRef<string>;
     tableLayout: import("vue").ComputedRef<("fixed" | "auto") | undefined>;
@@ -791,7 +798,7 @@ declare const _default: import("vue").DefineComponent<{
      * @description whether to allow drag the last column
      */
     allowDragLastColumn: boolean;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     data: {
         type: import("vue").PropType<any[]>;
         default: () => never[];
@@ -868,6 +875,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     scrollbarAlwaysOn: BooleanConstructor;
     flexible: BooleanConstructor;
+    editable: BooleanConstructor;
     showOverflowTooltip: import("vue").PropType<import("./table/defaults").TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: import("vue").PropType<any>;
@@ -913,6 +921,7 @@ declare const _default: import("vue").DefineComponent<{
     "onRow-click"?: ((...args: any[]) => any) | undefined;
     "onRow-contextmenu"?: ((...args: any[]) => any) | undefined;
     "onRow-dblclick"?: ((...args: any[]) => any) | undefined;
+    "onEditable-cell-active-change"?: ((...args: any[]) => any) | undefined;
 }, {
     data: any[];
     style: import("vue").CSSProperties;
@@ -923,6 +932,7 @@ declare const _default: import("vue").DefineComponent<{
     onDragstart: any;
     lazy: boolean;
     fit: boolean;
+    editable: boolean;
     scrollbarAlwaysOn: boolean;
     allowDragLastColumn: boolean;
     treeProps: import("./table/defaults").TreeProps | undefined;

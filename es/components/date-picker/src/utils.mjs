@@ -8,6 +8,40 @@ const isValidRange = (range) => {
   const [left, right] = range;
   return dayjs.isDayjs(left) && dayjs.isDayjs(right) && dayjs(left).isValid() && dayjs(right).isValid() && left.isSameOrBefore(right);
 };
+const normalizePartialRange = (range) => {
+  const [startDate, endDate] = range;
+  const normalizedStartDate = startDate != null ? startDate : void 0;
+  const normalizedEndDate = endDate != null ? endDate : void 0;
+  if (normalizedStartDate && normalizedEndDate && normalizedStartDate.isAfter(normalizedEndDate)) {
+    return [normalizedEndDate, normalizedStartDate];
+  }
+  return [normalizedStartDate, normalizedEndDate];
+};
+const isValidPartialRange = (range, disabledDate) => {
+  const [startDate, endDate] = normalizePartialRange(range);
+  if (!startDate && !endDate)
+    return false;
+  if (startDate && !startDate.isValid())
+    return false;
+  if (endDate && !endDate.isValid())
+    return false;
+  if (startDate && (disabledDate == null ? void 0 : disabledDate(startDate.toDate())))
+    return false;
+  if (endDate && (disabledDate == null ? void 0 : disabledDate(endDate.toDate())))
+    return false;
+  return true;
+};
+const getPartialRangePayload = (range) => {
+  const [startDate, endDate] = normalizePartialRange(range);
+  return {
+    dayRange: [startDate, endDate],
+    pickRange: [startDate != null ? startDate : null, endDate != null ? endDate : null],
+    dateRange: [
+      startDate ? startDate.toDate() : null,
+      endDate ? endDate.toDate() : null
+    ]
+  };
+};
 const getDefaultValue = (defaultValue, { lang, step = 1, unit, unlinkPanels }) => {
   let start;
   if (isArray(defaultValue)) {
@@ -116,5 +150,5 @@ const correctlyParseUserInput = (value, format, lang, defaultFormat) => {
   return dayjs(value, format).locale(lang);
 };
 
-export { buildPickerTable, correctlyParseUserInput, datesInMonth, getDefaultValue, getValidDateOfMonth, getValidDateOfYear, isValidRange };
+export { buildPickerTable, correctlyParseUserInput, datesInMonth, getDefaultValue, getPartialRangePayload, getValidDateOfMonth, getValidDateOfYear, isValidPartialRange, isValidRange, normalizePartialRange };
 //# sourceMappingURL=utils.mjs.map

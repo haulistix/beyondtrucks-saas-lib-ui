@@ -1,7 +1,7 @@
 import { dropdownProps } from '../../dropdown/src/dropdown.mjs';
 import { buildProps } from '../../../utils/vue/props/runtime.mjs';
 import { useTooltipTriggerProps } from '../../tooltip/src/trigger2.mjs';
-import { useTooltipContentProps } from '../../tooltip/src/content.mjs';
+import { useTooltipContentProps } from '../../tooltip/src/content2.mjs';
 import { isBoolean } from '../../../utils/types.mjs';
 
 const popoverProps = buildProps({
@@ -26,6 +26,10 @@ const popoverProps = buildProps({
   },
   teleported: useTooltipContentProps.teleported,
   appendTo: useTooltipContentProps.appendTo,
+  zIndex: useTooltipContentProps.zIndex,
+  modal: useTooltipContentProps.modal,
+  modalClass: useTooltipContentProps.modalClass,
+  closeOnClickModal: useTooltipContentProps.closeOnClickModal,
   title: String,
   width: {
     type: [String, Number],
@@ -33,7 +37,7 @@ const popoverProps = buildProps({
   },
   offset: {
     type: Number,
-    default: void 0
+    default: 4
   },
   showAfter: {
     type: Number,

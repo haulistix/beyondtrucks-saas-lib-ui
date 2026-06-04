@@ -14,6 +14,7 @@ function useRender(props) {
   const {
     handleDoubleClick,
     handleClick,
+    handleCellClick,
     handleContextMenu,
     handleMouseEnter,
     handleMouseLeave,
@@ -120,7 +121,10 @@ function useRender(props) {
         class: getCellClass($index, cellIndex, row, column, colspan - 1),
         key: `${patchKey}${baseKey}`,
         rowspan,
+        cellIndex,
+        columnIndex: $index,
         colspan,
+        onClick: ($event) => handleCellClick($event, row, column, $index, cellIndex),
         onMouseenter: ($event) => handleCellMouseEnter($event, row, mergedTooltipOptions),
         onMouseleave: handleCellMouseLeave
       }, {

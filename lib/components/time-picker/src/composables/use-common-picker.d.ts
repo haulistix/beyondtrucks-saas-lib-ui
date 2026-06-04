@@ -16,6 +16,7 @@ export declare const useCommonPicker: <P extends CommonPickerProps, E extends Co
         getDefaultValue?: (() => DayOrDays) | undefined;
         panelReady?: boolean | undefined;
         handleClear?: (() => void) | undefined;
+        handleClosePick?: (() => void) | undefined;
         handleFocusPicker?: (() => void) | undefined;
     }>;
     pickerVisible: import("vue").Ref<boolean>;

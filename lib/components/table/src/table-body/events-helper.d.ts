@@ -1,9 +1,11 @@
+import type { TableColumnCtx } from '../table-column/defaults';
 import type { TableBodyProps } from './defaults';
 import type { TableOverflowTooltipOptions } from '../util';
 import type { DefaultRow } from '../table/defaults';
 declare function useEvents<T extends DefaultRow>(props: Partial<TableBodyProps<T>>): {
     handleDoubleClick: (event: Event, row: T) => void;
     handleClick: (event: Event, row: T) => void;
+    handleCellClick: (event: Event, row: T, column: TableColumnCtx<T>, rowIndex: number, cellIndex: number) => void;
     handleContextMenu: (event: Event, row: T) => void;
     handleMouseEnter: import("lodash").DebouncedFunc<(index: number) => void>;
     handleMouseLeave: import("lodash").DebouncedFunc<() => void>;

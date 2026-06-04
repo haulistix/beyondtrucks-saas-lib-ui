@@ -130,11 +130,11 @@ declare const _default: import("vue").DefineComponent<{
     readonly clearable: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly shortcuts: unknown[];
     readonly showNow: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly showFooter: boolean;
     readonly showWeekNumber: boolean;
     readonly arrowControl: boolean;
     readonly unlinkPanels: boolean;
     readonly isRange: boolean;
     readonly showConfirm: boolean;
-    readonly showFooter: boolean;
 }>;
 export default _default;

@@ -1,4 +1,4 @@
-import { defineComponent, inject, toRef, ref, watch, computed, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, renderSlot, Fragment, renderList, toDisplayString, createCommentVNode, createVNode, withDirectives, withCtx, createBlock, createTextVNode } from 'vue';
+import { defineComponent, inject, toRef, useSlots, ref, watch, computed, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, renderSlot, Fragment, renderList, toDisplayString, createCommentVNode, createVNode, withDirectives, withCtx, createBlock, createTextVNode } from 'vue';
 import dayjs from 'dayjs';
 import { ElButton } from '../../../button/index.mjs';
 import { ElInput } from '../../../input/index.mjs';
@@ -35,13 +35,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const props = __props;
     const pickerBase = inject(PICKER_BASE_INJECTION_KEY);
     const isDefaultFormat = inject(ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY);
-    const { disabledDate, cellClassName, defaultTime, clearable, isFooter, isOk } = pickerBase.props;
+    const { disabledDate, cellClassName, defaultTime, clearable, isOk } = pickerBase.props;
     const format = toRef(pickerBase.props, "format");
     const shortcuts = toRef(pickerBase.props, "shortcuts");
     const defaultValue = toRef(pickerBase.props, "defaultValue");
     const cycle = toRef(pickerBase.props, "cycle");
     const settDefaultDate = toRef(pickerBase.props, "settDefaultDate");
     const cycleType = toRef(pickerBase.props, "cycleType");
+    const showFooter = toRef(pickerBase.props, "showFooter");
+    const slots = useSlots();
     const { lang } = useLocale();
     const leftDate = ref(dayjs().locale(lang.value));
     const rightDate = ref(dayjs().locale(lang.value).add(1, unit));
@@ -212,6 +214,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       getSelectingDate: void 0
     });
     const handleRangePick = (val, close = true) => {
+      var _a;
       const min_ = val.minDate;
       const max_ = val.maxDate;
       const minDate_ = formatEmit(min_, 0);
@@ -225,7 +228,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       emit("calendar-change", [min_.toDate(), max_ && max_.toDate()]);
       maxDate.value = maxDate_;
       minDate.value = minDate_;
-      if (!close || showTime.value)
+      if (!close || showTime.value || ((_a = slots.option) == null ? void 0 : _a.call(slots)))
         return;
       handleRangeConfirm();
     };
@@ -350,6 +353,22 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       return correctlyParseUserInput(value, format.value, lang.value, isDefaultFormat);
     };
     function onParsedValueChanged(minDate2, maxDate2) {
+      const today = dayjs().locale(lang.value);
+      const includesToday = minDate2 && maxDate2 && !today.isBefore(minDate2, "day") && !today.isAfter(maxDate2, "day");
+      if (includesToday) {
+        leftDate.value = today;
+        if (props.unlinkPanels && maxDate2) {
+          const currentYear = today.year();
+          const currentMonth = today.month();
+          rightDate.value = currentYear === maxDate2.year() && currentMonth === maxDate2.month() ? maxDate2.add(1, unit) : maxDate2;
+        } else {
+          rightDate.value = leftDate.value.add(1, unit);
+          if (maxDate2) {
+            rightDate.value = rightDate.value.hour(maxDate2.hour()).minute(maxDate2.minute()).second(maxDate2.second());
+          }
+        }
+        return;
+      }
       if (props.unlinkPanels && maxDate2) {
         const minDateYear = (minDate2 == null ? void 0 : minDate2.year()) || 0;
         const minDateMonth = (minDate2 == null ? void 0 : minDate2.month()) || 0;
@@ -366,6 +385,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     emit("set-picker-option", ["isValidValue", isValidValue]);
     emit("set-picker-option", ["parseUserInput", parseUserInput]);
     emit("set-picker-option", ["handleClear", handleClear]);
+    emit("set-picker-option", [
+      "handleClosePick",
+      () => {
+        if (isValidRange([minDate.value, maxDate.value])) {
+          handleRangeConfirm(false);
+        }
+      }
+    ]);
     emit("set-picker-option", ["formatToString", formatToString]);
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
@@ -397,6 +424,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               }, toDisplayString(shortcut.text), 11, ["onClick"]);
             }), 128))
           ], 2)) : createCommentVNode("v-if", true),
+          renderSlot(_ctx.$slots, "option"),
           createElementVNode("div", {
             class: normalizeClass(unref(ppNs).e("body"))
           }, [
@@ -794,14 +822,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             ], 2)
           ], 2)
         ], 2),
-        unref(showTime) || ["week", "custom"].includes(unref(cycleType)) || unref(isFooter) ? (openBlock(), createElementBlock("div", {
+        unref(showFooter) && (unref(showTime) || ["week", "custom"].includes(unref(cycleType)) || unref(clearable) || unref(isOk)) ? (openBlock(), createElementBlock("div", {
           key: 0,
           class: normalizeClass(unref(ppNs).e("footer"))
         }, [
           unref(clearable) ? (openBlock(), createBlock(unref(ElButton), {
             key: 0,
-            text: "",
-            size: "small",
             class: normalizeClass(unref(ppNs).e("link-btn")),
             onClick: handleClear
           }, {

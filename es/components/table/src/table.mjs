@@ -1,5 +1,5 @@
-import { defineComponent, getCurrentInstance, provide, computed, onBeforeUnmount, resolveComponent, resolveDirective, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, withDirectives, createVNode, createCommentVNode, withCtx, createBlock, createTextVNode, toDisplayString, vShow } from 'vue';
-import { debounce } from 'lodash-unified';
+import { defineComponent, getCurrentInstance, provide, ref, computed, onBeforeUnmount, toRaw, resolveComponent, resolveDirective, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, withDirectives, createVNode, createCommentVNode, withCtx, createBlock, createTextVNode, toDisplayString, vShow } from 'vue';
+import { debounce, cloneDeep } from 'lodash-unified';
 import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { createStore } from './store/helper.mjs';
 import TableLayout from './table-layout.mjs';
@@ -52,6 +52,7 @@ const _sfc_main = defineComponent({
     "current-change",
     "header-dragend",
     "expand-change",
+    "editable-cell-active-change",
     "scroll"
   ],
   setup(props) {
@@ -61,6 +62,49 @@ const _sfc_main = defineComponent({
     provide(TABLE_INJECTION_KEY, table);
     const store = createStore(table, props);
     table.store = store;
+    const editingRow = ref(null);
+    const activeEditableCell = ref(null);
+    const startRowEdit = (row, prop, rowIndex, cellIndex) => {
+      var _a, _b;
+      const current = editingRow.value;
+      if ((current == null ? void 0 : current.row) === row) {
+        editingRow.value = {
+          ...current,
+          prop,
+          rowIndex,
+          cellIndex
+        };
+        return;
+      }
+      editingRow.value = {
+        row,
+        prop,
+        rowIndex,
+        cellIndex,
+        draft: cloneDeep(toRaw(row))
+      };
+      activeEditableCell.value = editingRow.value ? {
+        row: (_a = editingRow.value) == null ? void 0 : _a.row,
+        prop: (_b = editingRow.value) == null ? void 0 : _b.prop,
+        rowIndex: editingRow.value.rowIndex,
+        cellIndex: editingRow.value.cellIndex
+      } : null;
+    };
+    const clearEditingRow = () => {
+      editingRow.value = null;
+      activeEditableCell.value = null;
+    };
+    const applyEditingRow = () => {
+      if (!editingRow.value)
+        return null;
+      Object.assign(editingRow.value.row, editingRow.value.draft);
+      return editingRow.value;
+    };
+    table.editingRow = editingRow;
+    table.activeEditableCell = activeEditableCell;
+    table.startRowEdit = startRowEdit;
+    table.clearEditingRow = clearEditingRow;
+    table.applyEditingRow = applyEditingRow;
     const layout = new TableLayout({
       store: table.store,
       table,
@@ -110,6 +154,7 @@ const _sfc_main = defineComponent({
       doLayout,
       debouncedUpdateLayout
     };
+    const hasEditingRow = computed(() => !!editingRow.value);
     const computedSumText = computed(() => {
       var _a;
       return (_a = props.sumText) != null ? _a : t("el.table.sumText");
@@ -159,6 +204,12 @@ const _sfc_main = defineComponent({
       t,
       setDragVisible,
       context: table,
+      editingRow,
+      activeEditableCell,
+      startRowEdit,
+      clearEditingRow,
+      applyEditingRow,
+      hasEditingRow,
       computedSumText,
       computedEmptyText,
       tableLayout,
@@ -187,6 +238,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         [_ctx.ns.m("striped")]: _ctx.stripe,
         [_ctx.ns.m("border")]: _ctx.border || _ctx.isGroup,
         [_ctx.ns.m("hidden")]: _ctx.isHidden,
+        [_ctx.ns.is("row-editing")]: _ctx.hasEditingRow,
         [_ctx.ns.m("group")]: _ctx.isGroup,
         [_ctx.ns.m("fluid-height")]: _ctx.maxHeight,
         [_ctx.ns.m("scrollable-x")]: _ctx.layout.scrollX.value,

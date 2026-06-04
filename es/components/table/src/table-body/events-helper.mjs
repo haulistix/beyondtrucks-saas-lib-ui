@@ -1,4 +1,4 @@
-import { inject, ref, h } from 'vue';
+import { inject, ref, h, nextTick } from 'vue';
 import { debounce } from 'lodash-unified';
 import { getCell, getColumnByCell, toggleRowClassByCell, removePopper, getPadding, isGreaterThan, createTablePopper } from '../util.mjs';
 import { TABLE_INJECTION_KEY } from '../tokens.mjs';
@@ -8,6 +8,11 @@ function useEvents(props) {
   const parent = inject(TABLE_INJECTION_KEY);
   const tooltipContent = ref("");
   const tooltipTrigger = ref(h("div"));
+  const isRowEditLocked = (row) => {
+    var _a;
+    const editingRow = (_a = parent == null ? void 0 : parent.editingRow) == null ? void 0 : _a.value;
+    return (parent == null ? void 0 : parent.props.editable) && !!editingRow && editingRow.row !== row;
+  };
   const handleEvent = (event, row, name) => {
     var _a, _b, _c;
     const table = parent;
@@ -25,19 +30,47 @@ function useEvents(props) {
     table == null ? void 0 : table.emit(`row-${name}`, row, column, event);
   };
   const handleDoubleClick = (event, row) => {
+    if (isRowEditLocked(row))
+      return;
     handleEvent(event, row, "dblclick");
+  };
+  const handleCellClick = (event, row, column, rowIndex, cellIndex) => {
+    var _a, _b, _c;
+    if (isRowEditLocked(row) || !(parent == null ? void 0 : parent.props.editable))
+      return;
+    if (((_b = (_a = parent == null ? void 0 : parent.editingRow) == null ? void 0 : _a.value) == null ? void 0 : _b.row) === row)
+      return;
+    const cell = getCell(event);
+    const editableCell = cell == null ? void 0 : cell.querySelector(".editable-table-cell");
+    if (cell && column && editableCell) {
+      (_c = parent.startRowEdit) == null ? void 0 : _c.call(parent, row, column.property, rowIndex, cellIndex);
+      nextTick(() => {
+        editableCell.dispatchEvent(new CustomEvent("editable-cell-focus", {
+          bubbles: false
+        }));
+      });
+    }
   };
   const handleClick = (event, row) => {
     var _a;
+    if (isRowEditLocked(row))
+      return;
     (_a = props.store) == null ? void 0 : _a.commit("setCurrentRow", row);
     handleEvent(event, row, "click");
   };
   const handleContextMenu = (event, row) => {
+    if (isRowEditLocked(row))
+      return;
     handleEvent(event, row, "contextmenu");
   };
   const handleMouseEnter = debounce((index) => {
-    var _a;
-    (_a = props.store) == null ? void 0 : _a.commit("setHoverRow", index);
+    var _a, _b, _c, _d;
+    const row = (_b = (_a = props.store) == null ? void 0 : _a.states.data.value) == null ? void 0 : _b[index];
+    if (row && isRowEditLocked(row)) {
+      (_c = props.store) == null ? void 0 : _c.commit("setHoverRow", null);
+      return;
+    }
+    (_d = props.store) == null ? void 0 : _d.commit("setHoverRow", index);
   }, 30);
   const handleMouseLeave = debounce(() => {
     var _a;
@@ -46,6 +79,8 @@ function useEvents(props) {
   const handleCellMouseEnter = (event, row, tooltipOptions) => {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     if (!parent)
+      return;
+    if (isRowEditLocked(row))
       return;
     const table = parent;
     const cell = getCell(event);
@@ -107,6 +142,7 @@ function useEvents(props) {
   return {
     handleDoubleClick,
     handleClick,
+    handleCellClick,
     handleContextMenu,
     handleMouseEnter,
     handleMouseLeave,

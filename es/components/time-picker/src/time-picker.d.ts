@@ -4,6 +4,7 @@ declare const _default: import("vue").DefineComponent<{
      */
     isRange: BooleanConstructor;
     showNow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    showFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     showWeekNumber: BooleanConstructor;
     ariaLabel: StringConstructor;
     emptyValues: ArrayConstructor;
@@ -63,7 +64,7 @@ declare const _default: import("vue").DefineComponent<{
     floatLabel: StringConstructor;
     cycleType: StringConstructor;
     isOk: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    isFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     format: StringConstructor;
     valueFormat: StringConstructor;
@@ -111,6 +112,7 @@ declare const _default: import("vue").DefineComponent<{
      */
     isRange: BooleanConstructor;
     showNow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    showFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     showWeekNumber: BooleanConstructor;
     ariaLabel: StringConstructor;
     emptyValues: ArrayConstructor;
@@ -170,7 +172,7 @@ declare const _default: import("vue").DefineComponent<{
     floatLabel: StringConstructor;
     cycleType: StringConstructor;
     isOk: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    isFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     format: StringConstructor;
     valueFormat: StringConstructor;
@@ -226,17 +228,18 @@ declare const _default: import("vue").DefineComponent<{
     fallbackPlacements: import("element-plus").Placement[];
     popperOptions: Partial<import("element-plus").Options>;
     popperClass: string;
+    teleported: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     prefixIcon: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>;
     validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     clearable: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     automaticDropdown: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     cycle: number;
     isOk: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    isFooter: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     editable: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     rangeSeparator: string;
     shortcuts: unknown[];
     showNow: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    showFooter: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     showWeekNumber: boolean;
     arrowControl: boolean;
     unlinkPanels: boolean;

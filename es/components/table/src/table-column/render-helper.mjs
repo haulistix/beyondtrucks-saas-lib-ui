@@ -127,7 +127,9 @@ function useRender(props, slots, owner) {
         const prefix = treeCellPrefix(data, shouldCreatePlaceholder);
         const props2 = {
           class: "cell",
-          style: {}
+          style: {},
+          rowIndex: data.$index,
+          cellIndex: data.cellIndex
         };
         if (column.showOverflowTooltip) {
           props2.class = `${props2.class} ${unref(ns.namespace)}-tooltip`;

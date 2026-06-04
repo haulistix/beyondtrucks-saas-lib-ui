@@ -31,7 +31,7 @@ export declare const messageDefaults: Mutable<{
     readonly type: "info";
     readonly plain: false;
     readonly center: false;
-    readonly offset: 16;
+    readonly offset: 4;
     readonly placement: undefined;
     readonly zIndex: 0;
     readonly grouping: false;
@@ -71,7 +71,7 @@ export declare const messageProps: {
     readonly showClose: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
     readonly type: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "error" | "primary" | "success" | "warning" | "info", unknown, "info", boolean>;
     readonly plain: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
-    readonly offset: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 16, boolean>;
+    readonly offset: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "top" | "bottom" | "top-left" | "top-right" | "bottom-left" | "bottom-right", unknown, undefined, boolean>;
     readonly zIndex: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly grouping: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;

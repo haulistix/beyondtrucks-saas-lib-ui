@@ -2659,16 +2659,16 @@ declare const __VLS_component_39: DefineComponent<{
     readonly modelValue: boolean;
     readonly ariaLevel: string;
     readonly appendTo: EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>;
+    readonly closeOnClickModal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly modal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly alignCenter: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly draggable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly showClose: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly headerBackgroundColor: string;
     readonly headerType: EpPropMergeType<(new (...args: any[]) => HeaderType) | (() => HeaderType) | ((new (...args: any[]) => HeaderType) | (() => HeaderType))[], unknown, unknown>;
     readonly fullscreen: boolean;
-    readonly closeOnClickModal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly closeOnPressEscape: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly lockScroll: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly modal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly openDelay: number;
     readonly closeDelay: number;
     readonly headerAriaLevel: string;
@@ -3157,16 +3157,16 @@ declare const __VLS_component_41: DefineComponent<{
     readonly modelValue: boolean;
     readonly ariaLevel: string;
     readonly appendTo: EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>;
+    readonly closeOnClickModal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly modal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly alignCenter: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly draggable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly showClose: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly headerBackgroundColor: string;
     readonly headerType: EpPropMergeType<(new (...args: any[]) => HeaderType) | (() => HeaderType) | ((new (...args: any[]) => HeaderType) | (() => HeaderType))[], unknown, unknown>;
     readonly fullscreen: boolean;
-    readonly closeOnClickModal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly closeOnPressEscape: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly lockScroll: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly modal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly openDelay: number;
     readonly closeDelay: number;
     readonly headerAriaLevel: string;
@@ -3997,6 +3997,9 @@ declare const __VLS_component_5: DefineComponent<{
     visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
     transition: StringConstructor;
     teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    modal: BooleanConstructor;
+    modalClass: StringConstructor;
+    closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     loop: BooleanConstructor;
     style: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
@@ -4236,7 +4239,7 @@ declare const __VLS_component_5: DefineComponent<{
     boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
     gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
     popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
@@ -4352,6 +4355,9 @@ declare const __VLS_component_5: DefineComponent<{
     visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
     transition: StringConstructor;
     teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    modal: BooleanConstructor;
+    modalClass: StringConstructor;
+    closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     loop: BooleanConstructor;
     style: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
@@ -4591,7 +4597,7 @@ declare const __VLS_component_5: DefineComponent<{
     boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
     gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
     popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
@@ -4634,8 +4640,10 @@ declare const __VLS_component_5: DefineComponent<{
     triggerKeys: string[];
     focusOnTarget: boolean;
     teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    closeOnClickModal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     rawContent: boolean;
     persistent: boolean;
+    modal: boolean;
     showArrow: boolean;
 }>;
 declare const __VLS_component_50: DefineComponent<{
@@ -5733,6 +5741,716 @@ declare const __VLS_component_67: DefineComponent<{
     readonly inlinePrompt: boolean;
 }>;
 declare const __VLS_component_68: DefineComponent<{
+    cellData: {
+        type: PropType<{
+            row: DefaultRow;
+            cellIndex: number;
+            rowIndex: number;
+        }>;
+        required: true;
+    };
+    property: {
+        type: StringConstructor;
+        required: true;
+    };
+    displayKey: StringConstructor;
+    clearable: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    isNumber: {
+        type: PropType<NumericLimit>;
+        default: boolean;
+    };
+    editor: {
+        type: PropType<"input" | "select">;
+        default: string;
+    };
+    inputProps: {
+        type: PropType<Record<string, any>>;
+        default: () => {};
+    };
+    selectProps: {
+        type: PropType<Record<string, any>>;
+        default: () => {};
+    };
+    selectKey: {
+        type: PropType<string[]>;
+        default: () => string[];
+    };
+    options: {
+        type: PropType<any[]>;
+        default: () => never[];
+    };
+}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    change: (...args: any[]) => void;
+    blur: (...args: any[]) => void;
+    "visible-change": (...args: any[]) => void;
+    "on-submit": (...args: any[]) => void;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    cellData: {
+        type: PropType<{
+            row: DefaultRow;
+            cellIndex: number;
+            rowIndex: number;
+        }>;
+        required: true;
+    };
+    property: {
+        type: StringConstructor;
+        required: true;
+    };
+    displayKey: StringConstructor;
+    clearable: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    isNumber: {
+        type: PropType<NumericLimit>;
+        default: boolean;
+    };
+    editor: {
+        type: PropType<"input" | "select">;
+        default: string;
+    };
+    inputProps: {
+        type: PropType<Record<string, any>>;
+        default: () => {};
+    };
+    selectProps: {
+        type: PropType<Record<string, any>>;
+        default: () => {};
+    };
+    selectKey: {
+        type: PropType<string[]>;
+        default: () => string[];
+    };
+    options: {
+        type: PropType<any[]>;
+        default: () => never[];
+    };
+}>> & {
+    onChange?: ((...args: any[]) => any) | undefined;
+    onBlur?: ((...args: any[]) => any) | undefined;
+    "onVisible-change"?: ((...args: any[]) => any) | undefined;
+    "onOn-submit"?: ((...args: any[]) => any) | undefined;
+}, {
+    options: any[];
+    clearable: boolean;
+    editor: "input" | "select";
+    isNumber: NumericLimit;
+    inputProps: Record<string, any>;
+    selectProps: Record<string, any>;
+    selectKey: string[];
+}>;
+declare const __VLS_component_69: DefineComponent<{
+    row: {
+        type: PropType<DefaultRow>;
+        required: true;
+    };
+    beforeSave: {
+        type: PropType<(payload: DefaultRow) => Promise<void> | void>;
+        default: undefined;
+    };
+}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    save: (payload: DefaultRow) => void;
+    cancel: (payload: {
+        row: DefaultRow;
+        draft: DefaultRow;
+    }) => void;
+    "save-error": (error: unknown) => void;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    row: {
+        type: PropType<DefaultRow>;
+        required: true;
+    };
+    beforeSave: {
+        type: PropType<(payload: DefaultRow) => Promise<void> | void>;
+        default: undefined;
+    };
+}>> & {
+    onCancel?: ((payload: {
+        row: DefaultRow;
+        draft: DefaultRow;
+    }) => any) | undefined;
+    onSave?: ((payload: DefaultRow) => any) | undefined;
+    "onSave-error"?: ((error: unknown) => any) | undefined;
+}, {
+    beforeSave: (payload: DefaultRow) => Promise<void> | void;
+}>;
+declare const __VLS_component_7: DefineComponent<{
+    readonly ariaLabel: StringConstructor;
+    readonly appendTo: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly rawContent: BooleanConstructor;
+    readonly persistent: BooleanConstructor;
+    readonly visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
+    readonly transition: StringConstructor;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly modal: BooleanConstructor;
+    readonly modalClass: StringConstructor;
+    readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly disabled: BooleanConstructor;
+    readonly loop: BooleanConstructor;
+    readonly id: StringConstructor;
+    readonly style: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly className: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly pure: BooleanConstructor;
+    readonly focusOnShow: BooleanConstructor;
+    readonly trapping: BooleanConstructor;
+    readonly popperClass: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly popperStyle: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly referenceEl: {
+        readonly type: PropType<HTMLElement>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly triggerTargetEl: {
+        readonly type: PropType<HTMLElement>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly stopPopperMouseEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly virtualTriggering: BooleanConstructor;
+    readonly zIndex: NumberConstructor;
+    readonly arrowOffset: EpPropFinalized<NumberConstructor, unknown, unknown, 5, boolean>;
+    readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
+    readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
+    readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
+    readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
+    readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
+    readonly showAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly hideAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 200, boolean>;
+    readonly autoClose: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+}, {
+    /**
+    * @description el-popper-content component instance
+    */
+    contentRef: Ref<PopperContentInstance | undefined>;
+    /**
+    * @description validate current focus event is trigger inside el-popper-content
+    */
+    isFocusInsideContent: (event?: FocusEvent) => boolean | undefined;
+}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly ariaLabel: StringConstructor;
+    readonly appendTo: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly rawContent: BooleanConstructor;
+    readonly persistent: BooleanConstructor;
+    readonly visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
+    readonly transition: StringConstructor;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly modal: BooleanConstructor;
+    readonly modalClass: StringConstructor;
+    readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly disabled: BooleanConstructor;
+    readonly loop: BooleanConstructor;
+    readonly id: StringConstructor;
+    readonly style: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly className: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly pure: BooleanConstructor;
+    readonly focusOnShow: BooleanConstructor;
+    readonly trapping: BooleanConstructor;
+    readonly popperClass: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly popperStyle: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly referenceEl: {
+        readonly type: PropType<HTMLElement>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly triggerTargetEl: {
+        readonly type: PropType<HTMLElement>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly stopPopperMouseEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly virtualTriggering: BooleanConstructor;
+    readonly zIndex: NumberConstructor;
+    readonly arrowOffset: EpPropFinalized<NumberConstructor, unknown, unknown, 5, boolean>;
+    readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
+    readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
+    readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
+    readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
+    readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
+    readonly showAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly hideAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 200, boolean>;
+    readonly autoClose: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+}>>, {
+    readonly disabled: boolean;
+    readonly content: string;
+    readonly offset: number;
+    readonly visible: EpPropMergeType<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown>;
+    readonly placement: EpPropMergeType<StringConstructor, Placement, unknown>;
+    readonly strategy: EpPropMergeType<StringConstructor, "fixed" | "absolute", unknown>;
+    readonly effect: EpPropMergeType<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown>;
+    readonly showAfter: number;
+    readonly hideAfter: number;
+    readonly autoClose: number;
+    readonly virtualTriggering: boolean;
+    readonly loop: boolean;
+    readonly arrowOffset: number;
+    readonly boundariesPadding: number;
+    readonly fallbackPlacements: Placement[];
+    readonly gpuAcceleration: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly popperOptions: Partial<Options>;
+    readonly enterable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly stopPopperMouseEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly pure: boolean;
+    readonly focusOnShow: boolean;
+    readonly trapping: boolean;
+    readonly teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly closeOnClickModal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly rawContent: boolean;
+    readonly persistent: boolean;
+    readonly modal: boolean;
+}>;
+declare const __VLS_component_70: DefineComponent<{
     readonly tabPaneClass: {
         readonly type: PropType<string>;
         readonly required: false;
@@ -5778,7 +6496,7 @@ declare const __VLS_component_68: DefineComponent<{
     readonly closable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly lazy: boolean;
 }>;
-declare const __VLS_component_69: DefineComponent<{
+declare const __VLS_component_71: DefineComponent<{
     readonly type: EpPropFinalized<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown, "primary", boolean>;
     readonly closable: BooleanConstructor;
     readonly disableTransitions: BooleanConstructor;
@@ -5820,571 +6538,7 @@ declare const __VLS_component_69: DefineComponent<{
     readonly disableTransitions: boolean;
     readonly hit: boolean;
 }>;
-declare const __VLS_component_7: DefineComponent<{
-    readonly ariaLabel: StringConstructor;
-    readonly appendTo: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly rawContent: BooleanConstructor;
-    readonly persistent: BooleanConstructor;
-    readonly visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
-    readonly transition: StringConstructor;
-    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly disabled: BooleanConstructor;
-    readonly loop: BooleanConstructor;
-    readonly id: StringConstructor;
-    readonly style: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly className: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
-    readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly pure: BooleanConstructor;
-    readonly focusOnShow: BooleanConstructor;
-    readonly trapping: BooleanConstructor;
-    readonly popperClass: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly popperStyle: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly referenceEl: {
-        readonly type: PropType<HTMLElement>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly triggerTargetEl: {
-        readonly type: PropType<HTMLElement>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly stopPopperMouseEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly virtualTriggering: BooleanConstructor;
-    readonly zIndex: NumberConstructor;
-    readonly arrowOffset: EpPropFinalized<NumberConstructor, unknown, unknown, 5, boolean>;
-    readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
-    readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
-    readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
-    readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
-    readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
-    readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
-    readonly showAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
-    readonly hideAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 200, boolean>;
-    readonly autoClose: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
-}, {
-    /**
-    * @description el-popper-content component instance
-    */
-    contentRef: Ref<PopperContentInstance | undefined>;
-    /**
-    * @description validate current focus event is trigger inside el-popper-content
-    */
-    isFocusInsideContent: (event?: FocusEvent) => boolean | undefined;
-}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
-    readonly ariaLabel: StringConstructor;
-    readonly appendTo: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly rawContent: BooleanConstructor;
-    readonly persistent: BooleanConstructor;
-    readonly visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
-    readonly transition: StringConstructor;
-    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly disabled: BooleanConstructor;
-    readonly loop: BooleanConstructor;
-    readonly id: StringConstructor;
-    readonly style: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly className: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
-    readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly pure: BooleanConstructor;
-    readonly focusOnShow: BooleanConstructor;
-    readonly trapping: BooleanConstructor;
-    readonly popperClass: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | (string | {
-            [x: string]: boolean;
-        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly popperStyle: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly referenceEl: {
-        readonly type: PropType<HTMLElement>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly triggerTargetEl: {
-        readonly type: PropType<HTMLElement>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly stopPopperMouseEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly virtualTriggering: BooleanConstructor;
-    readonly zIndex: NumberConstructor;
-    readonly arrowOffset: EpPropFinalized<NumberConstructor, unknown, unknown, 5, boolean>;
-    readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
-    readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
-    readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
-    readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
-    readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
-    readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
-    readonly showAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
-    readonly hideAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 200, boolean>;
-    readonly autoClose: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
-}>>, {
-    readonly disabled: boolean;
-    readonly content: string;
-    readonly offset: number;
-    readonly visible: EpPropMergeType<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown>;
-    readonly placement: EpPropMergeType<StringConstructor, Placement, unknown>;
-    readonly strategy: EpPropMergeType<StringConstructor, "fixed" | "absolute", unknown>;
-    readonly effect: EpPropMergeType<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown>;
-    readonly showAfter: number;
-    readonly hideAfter: number;
-    readonly autoClose: number;
-    readonly virtualTriggering: boolean;
-    readonly loop: boolean;
-    readonly arrowOffset: number;
-    readonly boundariesPadding: number;
-    readonly fallbackPlacements: Placement[];
-    readonly gpuAcceleration: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly popperOptions: Partial<Options>;
-    readonly enterable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly stopPopperMouseEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly pure: boolean;
-    readonly focusOnShow: boolean;
-    readonly trapping: boolean;
-    readonly teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly rawContent: boolean;
-    readonly persistent: boolean;
-}>;
-declare const __VLS_component_70: DefineComponent<{
+declare const __VLS_component_72: DefineComponent<{
     readonly type: EpPropFinalized<StringConstructor, "" | "primary" | "success" | "warning" | "info" | "danger", unknown, "", boolean>;
     readonly size: EpPropFinalized<StringConstructor, "" | "small" | "default" | "large", unknown, "", boolean>;
     readonly truncated: BooleanConstructor;
@@ -6418,8 +6572,9 @@ declare const __VLS_component_70: DefineComponent<{
     readonly tag: string;
     readonly truncated: boolean;
 }>;
-declare const __VLS_component_71: DefineComponent<{
+declare const __VLS_component_73: DefineComponent<{
     readonly showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -6496,7 +6651,7 @@ declare const __VLS_component_71: DefineComponent<{
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -6584,6 +6739,7 @@ declare const __VLS_component_71: DefineComponent<{
     "visible-change": (...args: any[]) => void;
 }, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     readonly showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -6660,7 +6816,7 @@ declare const __VLS_component_71: DefineComponent<{
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -6737,23 +6893,24 @@ declare const __VLS_component_71: DefineComponent<{
     readonly fallbackPlacements: Placement[];
     readonly popperOptions: Partial<Options>;
     readonly popperClass: string;
+    readonly teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly prefixIcon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
     readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly automaticDropdown: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly cycle: number;
     readonly isOk: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly isFooter: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly editable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly rangeSeparator: string;
     readonly shortcuts: unknown[];
     readonly showNow: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly showFooter: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly showWeekNumber: boolean;
     readonly arrowControl: boolean;
     readonly unlinkPanels: boolean;
     readonly isRange: boolean;
 }>;
-declare const __VLS_component_72: DefineComponent<{
+declare const __VLS_component_74: DefineComponent<{
     readonly timestamp: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly hideTimestamp: BooleanConstructor;
     readonly center: BooleanConstructor;
@@ -6793,7 +6950,7 @@ declare const __VLS_component_72: DefineComponent<{
     readonly hideTimestamp: boolean;
     readonly hollow: boolean;
 }>;
-declare const __VLS_component_73: DefineComponent<{
+declare const __VLS_component_75: DefineComponent<{
     readonly data: EpPropFinalized<(new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]) | ((new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]))[], unknown, unknown, () => never[], boolean>;
     readonly titles: EpPropFinalized<(new (...args: any[]) => [
         string,
@@ -6935,7 +7092,7 @@ declare const __VLS_component_73: DefineComponent<{
     readonly rightDefaultChecked: TransferKey[];
     readonly targetOrder: EpPropMergeType<StringConstructor, "push" | "unshift" | "original", unknown>;
 }>;
-declare const __VLS_component_74: DefineComponent<{
+declare const __VLS_component_76: DefineComponent<{
     readonly data: EpPropFinalized<(new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]) | ((new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]))[], unknown, unknown, () => never[], boolean>;
     readonly optionRender: {
         readonly type: PropType<(option: TransferDataItem) => VNode | VNode[]>;
@@ -6997,7 +7154,7 @@ declare const __VLS_component_74: DefineComponent<{
     readonly filterable: boolean;
     readonly defaultChecked: TransferKey[];
 }>;
-declare const __VLS_component_75: DefineComponent<{
+declare const __VLS_component_77: DefineComponent<{
     readonly data: EpPropFinalized<(new (...args: any[]) => TreeData_3) | (() => TreeData_3) | ((new (...args: any[]) => TreeData_3) | (() => TreeData_3))[], unknown, unknown, () => [
     ], boolean>;
     readonly emptyText: {
@@ -7152,7 +7309,7 @@ declare const __VLS_component_75: DefineComponent<{
     readonly expandOnClickNode: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly highlightCurrent: boolean;
 }>;
-declare const __VLS_component_76: DefineComponent<{
+declare const __VLS_component_78: DefineComponent<{
     readonly beforeUpload: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
         (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
         new (): any;
@@ -7417,7 +7574,7 @@ declare const __VLS_component_76: DefineComponent<{
     readonly onSuccess: (response: any, uploadFile: UploadFile, uploadFiles: UploadFiles) => void;
     readonly onExceed: (files: File[], uploadFiles: UploadUserFile[]) => void;
 }>;
-declare const __VLS_component_77: DefineComponent<{
+declare const __VLS_component_79: DefineComponent<{
     readonly beforeUpload: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
         (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
         new (): any;
@@ -7630,65 +7787,6 @@ declare const __VLS_component_77: DefineComponent<{
     readonly onSuccess: (response: any, rawFile: UploadRawFile) => unknown;
     readonly onExceed: (files: File[], uploadFiles: UploadUserFile[]) => void;
     readonly onStart: (rawFile: UploadRawFile, isEnd: boolean) => void;
-}>;
-declare const __VLS_component_78: DefineComponent<{
-    readonly files: EpPropFinalized<(new (...args: any[]) => UploadFiles) | (() => UploadFiles) | ((new (...args: any[]) => UploadFiles) | (() => UploadFiles))[], unknown, unknown, () => never[], boolean>;
-    readonly disabled: BooleanConstructor;
-    readonly handlePreview: EpPropFinalized<(new (...args: any[]) => (uploadFile: UploadFile) => void) | (() => (uploadFile: UploadFile) => void) | {
-        (): (uploadFile: UploadFile) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (uploadFile: UploadFile) => void) | (() => (uploadFile: UploadFile) => void) | {
-        (): (uploadFile: UploadFile) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly listType: EpPropFinalized<StringConstructor, "picture" | "text" | "picture-card", unknown, "text", boolean>;
-    readonly crossorigin: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => "" | "anonymous" | "use-credentials") | (() => "" | "anonymous" | "use-credentials") | ((new (...args: any[]) => "" | "anonymous" | "use-credentials") | (() => "" | "anonymous" | "use-credentials"))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    remove: (file: UploadFile) => void;
-}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
-    readonly files: EpPropFinalized<(new (...args: any[]) => UploadFiles) | (() => UploadFiles) | ((new (...args: any[]) => UploadFiles) | (() => UploadFiles))[], unknown, unknown, () => never[], boolean>;
-    readonly disabled: BooleanConstructor;
-    readonly handlePreview: EpPropFinalized<(new (...args: any[]) => (uploadFile: UploadFile) => void) | (() => (uploadFile: UploadFile) => void) | {
-        (): (uploadFile: UploadFile) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (uploadFile: UploadFile) => void) | (() => (uploadFile: UploadFile) => void) | {
-        (): (uploadFile: UploadFile) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly listType: EpPropFinalized<StringConstructor, "picture" | "text" | "picture-card", unknown, "text", boolean>;
-    readonly crossorigin: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => "" | "anonymous" | "use-credentials") | (() => "" | "anonymous" | "use-credentials") | ((new (...args: any[]) => "" | "anonymous" | "use-credentials") | (() => "" | "anonymous" | "use-credentials"))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-}>> & {
-    onRemove?: ((file: UploadFile) => any) | undefined;
-}, {
-    readonly disabled: boolean;
-    readonly listType: EpPropMergeType<StringConstructor, "picture" | "text" | "picture-card", unknown>;
-    readonly files: UploadFiles;
-    readonly handlePreview: (uploadFile: UploadFile) => void;
-}>;
-declare const __VLS_component_79: DefineComponent<{
-    readonly disabled: BooleanConstructor;
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    file: (file: File[]) => void;
-}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
-    readonly disabled: BooleanConstructor;
-}>> & {
-    onFile?: ((file: File[]) => any) | undefined;
-}, {
-    readonly disabled: boolean;
 }>;
 declare const __VLS_component_8: DefineComponent<{
     readonly loop: BooleanConstructor;
@@ -7935,7 +8033,7 @@ declare const __VLS_component_8: DefineComponent<{
     readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
     readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
     readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
@@ -8207,7 +8305,7 @@ declare const __VLS_component_8: DefineComponent<{
     readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
     readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
     readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
@@ -8237,6 +8335,65 @@ declare const __VLS_component_8: DefineComponent<{
     readonly trapping: boolean;
 }>;
 declare const __VLS_component_80: DefineComponent<{
+    readonly files: EpPropFinalized<(new (...args: any[]) => UploadFiles) | (() => UploadFiles) | ((new (...args: any[]) => UploadFiles) | (() => UploadFiles))[], unknown, unknown, () => never[], boolean>;
+    readonly disabled: BooleanConstructor;
+    readonly handlePreview: EpPropFinalized<(new (...args: any[]) => (uploadFile: UploadFile) => void) | (() => (uploadFile: UploadFile) => void) | {
+        (): (uploadFile: UploadFile) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (uploadFile: UploadFile) => void) | (() => (uploadFile: UploadFile) => void) | {
+        (): (uploadFile: UploadFile) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly listType: EpPropFinalized<StringConstructor, "picture" | "text" | "picture-card", unknown, "text", boolean>;
+    readonly crossorigin: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => "" | "anonymous" | "use-credentials") | (() => "" | "anonymous" | "use-credentials") | ((new (...args: any[]) => "" | "anonymous" | "use-credentials") | (() => "" | "anonymous" | "use-credentials"))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    remove: (file: UploadFile) => void;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly files: EpPropFinalized<(new (...args: any[]) => UploadFiles) | (() => UploadFiles) | ((new (...args: any[]) => UploadFiles) | (() => UploadFiles))[], unknown, unknown, () => never[], boolean>;
+    readonly disabled: BooleanConstructor;
+    readonly handlePreview: EpPropFinalized<(new (...args: any[]) => (uploadFile: UploadFile) => void) | (() => (uploadFile: UploadFile) => void) | {
+        (): (uploadFile: UploadFile) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (uploadFile: UploadFile) => void) | (() => (uploadFile: UploadFile) => void) | {
+        (): (uploadFile: UploadFile) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly listType: EpPropFinalized<StringConstructor, "picture" | "text" | "picture-card", unknown, "text", boolean>;
+    readonly crossorigin: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => "" | "anonymous" | "use-credentials") | (() => "" | "anonymous" | "use-credentials") | ((new (...args: any[]) => "" | "anonymous" | "use-credentials") | (() => "" | "anonymous" | "use-credentials"))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+}>> & {
+    onRemove?: ((file: UploadFile) => any) | undefined;
+}, {
+    readonly disabled: boolean;
+    readonly listType: EpPropMergeType<StringConstructor, "picture" | "text" | "picture-card", unknown>;
+    readonly files: UploadFiles;
+    readonly handlePreview: (uploadFile: UploadFile) => void;
+}>;
+declare const __VLS_component_81: DefineComponent<{
+    readonly disabled: BooleanConstructor;
+}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    file: (file: File[]) => void;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly disabled: BooleanConstructor;
+}>> & {
+    onFile?: ((file: File[]) => any) | undefined;
+}, {
+    readonly disabled: boolean;
+}>;
+declare const __VLS_component_82: DefineComponent<{
     readonly zIndex: EpPropFinalized<NumberConstructor, unknown, unknown, 9, boolean>;
     readonly rotate: EpPropFinalized<NumberConstructor, unknown, unknown, -22, boolean>;
     readonly width: NumberConstructor;
@@ -8315,7 +8472,7 @@ declare const __VLS_component_80: DefineComponent<{
         number
     ];
 }>;
-declare const __VLS_component_81: DefineComponent<{
+declare const __VLS_component_83: DefineComponent<{
     modelValue: BooleanConstructor;
     current: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     showArrow: BooleanConstructor;
@@ -8434,7 +8591,7 @@ declare const __VLS_component_81: DefineComponent<{
     current: number;
     targetAreaClickable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-declare const __VLS_component_82: DefineComponent<{
+declare const __VLS_component_84: DefineComponent<{
     target: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement | (() => HTMLElement | null)) | (() => string | HTMLElement | (() => HTMLElement | null) | null) | ((new (...args: any[]) => string | HTMLElement | (() => HTMLElement | null)) | (() => string | HTMLElement | (() => HTMLElement | null) | null))[], unknown, unknown>>;
         readonly required: false;
@@ -8545,7 +8702,7 @@ declare const __VLS_component_82: DefineComponent<{
     showArrow: boolean;
     showClose: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-declare const __VLS_component_83: DefineComponent<{
+declare const __VLS_component_85: DefineComponent<{
     container: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement | Window) | (() => string | HTMLElement | Window | null) | ((new (...args: any[]) => string | HTMLElement | Window) | (() => string | HTMLElement | Window | null))[], unknown, unknown>>;
         readonly required: false;
@@ -8590,14 +8747,14 @@ declare const __VLS_component_83: DefineComponent<{
     bound: number;
     selectScrollTop: boolean;
 }>;
-declare const __VLS_component_84: DefineComponent<{
+declare const __VLS_component_86: DefineComponent<{
     title: StringConstructor;
     href: StringConstructor;
 }, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     title: StringConstructor;
     href: StringConstructor;
 }>>, {}>;
-declare const __VLS_component_85: DefineComponent<{
+declare const __VLS_component_87: DefineComponent<{
     ariaLabel: StringConstructor;
     direction: EpPropFinalized<(new (...args: any[]) => "horizontal" | "vertical") | (() => "horizontal" | "vertical") | ((new (...args: any[]) => "horizontal" | "vertical") | (() => "horizontal" | "vertical"))[], unknown, unknown, string, boolean>;
     options: EpPropFinalized<(new (...args: any[]) => Option_3[]) | (() => Option_3[]) | ((new (...args: any[]) => Option_3[]) | (() => Option_3[]))[], unknown, unknown, () => never[], boolean>;
@@ -8646,7 +8803,7 @@ declare const __VLS_component_85: DefineComponent<{
     options: Option_3[];
     validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-declare const __VLS_component_86: DefineComponent<{
+declare const __VLS_component_88: DefineComponent<{
     options: EpPropFinalized<(new (...args: any[]) => MentionOption[]) | (() => MentionOption[]) | ((new (...args: any[]) => MentionOption[]) | (() => MentionOption[]))[], unknown, unknown, () => never[], boolean>;
     prefix: EpPropFinalized<(new (...args: any[]) => string | string[]) | (() => string | string[]) | ((new (...args: any[]) => string | string[]) | (() => string | string[]))[], unknown, unknown, string, boolean>;
     split: EpPropFinalized<StringConstructor, unknown, unknown, string, boolean>;
@@ -9165,7 +9322,7 @@ declare const __VLS_component_86: DefineComponent<{
     filterOption: EpPropMergeType<(new (...args: any[]) => false | ((pattern: string, option: MentionOption) => boolean)) | (() => false | ((pattern: string, option: MentionOption) => boolean)) | ((new (...args: any[]) => false | ((pattern: string, option: MentionOption) => boolean)) | (() => false | ((pattern: string, option: MentionOption) => boolean)))[], unknown, unknown>;
     whole: boolean;
 }>;
-declare const __VLS_component_87: DefineComponent<{
+declare const __VLS_component_89: DefineComponent<{
     readonly layout: EpPropFinalized<StringConstructor, "horizontal" | "vertical", unknown, "horizontal", boolean>;
     readonly lazy: BooleanConstructor;
 }, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
@@ -9185,7 +9342,52 @@ declare const __VLS_component_87: DefineComponent<{
     readonly layout: EpPropMergeType<StringConstructor, "horizontal" | "vertical", unknown>;
     readonly lazy: boolean;
 }>;
-declare const __VLS_component_88: DefineComponent<{
+declare const __VLS_component_9: DefineComponent<{
+    readonly size: EpPropFinalized<readonly [
+        NumberConstructor,
+        StringConstructor
+    ], "" | "small" | "default" | "large", number, "", boolean>;
+    readonly shape: EpPropFinalized<StringConstructor, "circle" | "square", unknown, "circle", boolean>;
+    readonly icon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly src: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly alt: StringConstructor;
+    readonly srcSet: StringConstructor;
+    readonly fit: EpPropFinalized<(new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty) | ((new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty))[], unknown, unknown, "cover", boolean>;
+}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    error: (evt: Event) => void;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly size: EpPropFinalized<readonly [
+        NumberConstructor,
+        StringConstructor
+    ], "" | "small" | "default" | "large", number, "", boolean>;
+    readonly shape: EpPropFinalized<StringConstructor, "circle" | "square", unknown, "circle", boolean>;
+    readonly icon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly src: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly alt: StringConstructor;
+    readonly srcSet: StringConstructor;
+    readonly fit: EpPropFinalized<(new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty) | ((new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty))[], unknown, unknown, "cover", boolean>;
+}>> & {
+    onError?: ((evt: Event) => any) | undefined;
+}, {
+    readonly size: EpPropMergeType<readonly [
+        NumberConstructor,
+        StringConstructor
+    ], "" | "small" | "default" | "large", number>;
+    readonly shape: EpPropMergeType<StringConstructor, "circle" | "square", unknown>;
+    readonly src: string;
+    readonly fit: EpPropMergeType<(new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty) | ((new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty))[], unknown, unknown>;
+}>;
+declare const __VLS_component_90: DefineComponent<{
     readonly min: {
         readonly type: PropType<EpPropMergeType<readonly [
             StringConstructor,
@@ -9253,7 +9455,7 @@ declare const __VLS_component_88: DefineComponent<{
     readonly resizable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly collapsible: boolean;
 }>;
-declare const __VLS_component_89: DefineComponent<{
+declare const __VLS_component_91: DefineComponent<{
     readonly customClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly center: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
     readonly alert: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
@@ -9286,7 +9488,7 @@ declare const __VLS_component_89: DefineComponent<{
     readonly showClose: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
     readonly type: EpPropFinalized<StringConstructor, "error" | "primary" | "success" | "warning" | "info", unknown, "info", boolean>;
     readonly plain: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 16, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: EpPropFinalized<StringConstructor, "top" | "bottom" | "top-left" | "top-right" | "bottom-left" | "bottom-right", unknown, undefined, boolean>;
     readonly zIndex: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly grouping: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
@@ -9330,7 +9532,7 @@ declare const __VLS_component_89: DefineComponent<{
     readonly showClose: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
     readonly type: EpPropFinalized<StringConstructor, "error" | "primary" | "success" | "warning" | "info", unknown, "info", boolean>;
     readonly plain: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 16, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: EpPropFinalized<StringConstructor, "top" | "bottom" | "top-left" | "top-right" | "bottom-left" | "bottom-right", unknown, undefined, boolean>;
     readonly zIndex: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly grouping: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
@@ -9368,52 +9570,7 @@ declare const __VLS_component_89: DefineComponent<{
     readonly repeatNum: number;
     readonly onLabelClick: Function;
 }>;
-declare const __VLS_component_9: DefineComponent<{
-    readonly size: EpPropFinalized<readonly [
-        NumberConstructor,
-        StringConstructor
-    ], "" | "small" | "default" | "large", number, "", boolean>;
-    readonly shape: EpPropFinalized<StringConstructor, "circle" | "square", unknown, "circle", boolean>;
-    readonly icon: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly src: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly alt: StringConstructor;
-    readonly srcSet: StringConstructor;
-    readonly fit: EpPropFinalized<(new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty) | ((new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty))[], unknown, unknown, "cover", boolean>;
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    error: (evt: Event) => void;
-}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
-    readonly size: EpPropFinalized<readonly [
-        NumberConstructor,
-        StringConstructor
-    ], "" | "small" | "default" | "large", number, "", boolean>;
-    readonly shape: EpPropFinalized<StringConstructor, "circle" | "square", unknown, "circle", boolean>;
-    readonly icon: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly src: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly alt: StringConstructor;
-    readonly srcSet: StringConstructor;
-    readonly fit: EpPropFinalized<(new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty) | ((new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty))[], unknown, unknown, "cover", boolean>;
-}>> & {
-    onError?: ((evt: Event) => any) | undefined;
-}, {
-    readonly size: EpPropMergeType<readonly [
-        NumberConstructor,
-        StringConstructor
-    ], "" | "small" | "default" | "large", number>;
-    readonly shape: EpPropMergeType<StringConstructor, "circle" | "square", unknown>;
-    readonly src: string;
-    readonly fit: EpPropMergeType<(new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty) | ((new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty))[], unknown, unknown>;
-}>;
-declare const __VLS_component_90: DefineComponent<{
+declare const __VLS_component_92: DefineComponent<{
     readonly customClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly dangerouslyUseHTMLString: BooleanConstructor;
     readonly duration: EpPropFinalized<NumberConstructor, unknown, unknown, 4500, boolean>;
@@ -9542,7 +9699,7 @@ declare const __VLS_component_90: DefineComponent<{
     readonly dangerouslyUseHTMLString: boolean;
     readonly onLabelClick: Function;
 }>;
-declare const __VLS_component_91: DefineComponent<{
+declare const __VLS_component_93: DefineComponent<{
     readonly trigger: EpPropFinalized<(new (...args: any[]) => "click" | "focus" | "contextmenu" | "hover" | TooltipTriggerType[]) | (() => Arrayable<TooltipTriggerType>) | ((new (...args: any[]) => "click" | "focus" | "contextmenu" | "hover" | TooltipTriggerType[]) | (() => Arrayable<TooltipTriggerType>))[], unknown, unknown, "hover", boolean>;
     readonly triggerKeys: EpPropFinalized<(new (...args: any[]) => string[]) | (() => string[]) | ((new (...args: any[]) => string[]) | (() => string[]))[], unknown, unknown, () => string[], boolean>;
     readonly placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], unknown, unknown, "bottom", boolean>;
@@ -9681,12 +9838,16 @@ declare const __VLS_component_91: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly zIndex: NumberConstructor;
+    readonly modal: BooleanConstructor;
+    readonly modalClass: StringConstructor;
+    readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly title: StringConstructor;
     readonly width: EpPropFinalized<readonly [
         StringConstructor,
         NumberConstructor
     ], unknown, unknown, 150, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly showAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly hideAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 200, boolean>;
     readonly autoClose: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
@@ -9848,12 +10009,16 @@ declare const __VLS_component_91: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly zIndex: NumberConstructor;
+    readonly modal: BooleanConstructor;
+    readonly modalClass: StringConstructor;
+    readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly title: StringConstructor;
     readonly width: EpPropFinalized<readonly [
         StringConstructor,
         NumberConstructor
     ], unknown, unknown, 150, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly showAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly hideAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 200, boolean>;
     readonly autoClose: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
@@ -9891,7 +10056,9 @@ declare const __VLS_component_91: DefineComponent<{
     readonly enterable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly triggerKeys: string[];
     readonly teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly closeOnClickModal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly persistent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly modal: boolean;
     readonly showArrow: boolean;
 }>;
 declare function __VLS_template(): {
@@ -10367,10 +10534,26 @@ declare function __VLS_template_67(): {
     "inactive-action"?(_: {}): any;
 };
 declare function __VLS_template_68(): {
-    default?(_: {}): any;
+    editor?(_: {
+        modelValue: any;
+        value: any;
+        cellData: {
+            row: DefaultRow;
+            cellIndex: number;
+            rowIndex: number;
+        };
+        property: string;
+        editor: "input" | "select";
+        isEditing: true;
+        options: any[];
+        inputProps: Record<string, any>;
+        selectProps: Record<string, any>;
+        updateModelValue: (value: any) => void;
+        commitValue: () => void;
+        submitEditing: (value?: any) => void;
+    }): any;
 };
 declare function __VLS_template_69(): {
-    default?(_: {}): any;
     default?(_: {}): any;
 };
 declare function __VLS_template_7(): {
@@ -10381,6 +10564,13 @@ declare function __VLS_template_70(): {
     default?(_: {}): any;
 };
 declare function __VLS_template_71(): {
+    default?(_: {}): any;
+    default?(_: {}): any;
+};
+declare function __VLS_template_72(): {
+    default?(_: {}): any;
+};
+declare function __VLS_template_73(): {
     open?(_: {}): any;
     "range-separator"?(_: {}): any;
     default?(_: {
@@ -10412,24 +10602,24 @@ declare function __VLS_template_71(): {
         onPick: any;
     }): any;
 };
-declare function __VLS_template_72(): {
+declare function __VLS_template_74(): {
     dot?(_: {}): any;
     default?(_: {}): any;
 };
-declare function __VLS_template_73(): {
+declare function __VLS_template_75(): {
     empty?(_: {}): any;
     default?(_: {}): any;
 };
-declare function __VLS_template_74(): {
+declare function __VLS_template_76(): {
     "left-empty"?(_: {}): any;
     "left-footer"?(_: {}): any;
     "right-empty"?(_: {}): any;
     "right-footer"?(_: {}): any;
 };
-declare function __VLS_template_75(): {
+declare function __VLS_template_77(): {
     empty?(_: {}): any;
 };
-declare function __VLS_template_76(): {
+declare function __VLS_template_78(): {
     file?(_: {
         file: UploadFile;
         index: number;
@@ -10445,18 +10635,8 @@ declare function __VLS_template_76(): {
     default?(_: {}): any;
     tip?(_: {}): any;
 };
-declare function __VLS_template_77(): {
-    default?(_: {}): any;
-    default?(_: {}): any;
-};
-declare function __VLS_template_78(): {
-    default?(_: {
-        file: UploadFile;
-        index: number;
-    }): any;
-    append?(_: {}): any;
-};
 declare function __VLS_template_79(): {
+    default?(_: {}): any;
     default?(_: {}): any;
 };
 declare function __VLS_template_8(): {
@@ -10472,40 +10652,42 @@ declare function __VLS_template_8(): {
     footer?(_: {}): any;
 };
 declare function __VLS_template_80(): {
-    default?(_: {}): any;
+    default?(_: {
+        file: UploadFile;
+        index: number;
+    }): any;
+    append?(_: {}): any;
 };
 declare function __VLS_template_81(): {
+    default?(_: {}): any;
+};
+declare function __VLS_template_82(): {
+    default?(_: {}): any;
+};
+declare function __VLS_template_83(): {
     default?(_: {}): any;
     indicators?(_: {
         current: number;
         total: number;
     }): any;
 };
-declare function __VLS_template_82(): {
+declare function __VLS_template_84(): {
     header?(_: {}): any;
     default?(_: {}): any;
 };
-declare function __VLS_template_83(): {
+declare function __VLS_template_85(): {
     default?(_: {}): any;
 };
-declare function __VLS_template_84(): {
+declare function __VLS_template_86(): {
     default?(_: {}): any;
     "sub-link"?(_: {}): any;
 };
-declare function __VLS_template_85(): {
+declare function __VLS_template_87(): {
     default?(_: {
         item: any;
     }): any;
 };
-declare function __VLS_template_86(): Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>;
-declare function __VLS_template_87(): {
-    default?(_: {}): any;
-};
-declare function __VLS_template_88(): {
-    default?(_: {}): any;
-    "start-collapsible"?(_: {}): any;
-    "end-collapsible"?(_: {}): any;
-};
+declare function __VLS_template_88(): Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>;
 declare function __VLS_template_89(): {
     default?(_: {}): any;
 };
@@ -10514,8 +10696,16 @@ declare function __VLS_template_9(): {
 };
 declare function __VLS_template_90(): {
     default?(_: {}): any;
+    "start-collapsible"?(_: {}): any;
+    "end-collapsible"?(_: {}): any;
 };
 declare function __VLS_template_91(): {
+    default?(_: {}): any;
+};
+declare function __VLS_template_92(): {
+    default?(_: {}): any;
+};
+declare function __VLS_template_93(): {
     reference?(_: {}): any;
     default?(_: {}): any;
 };
@@ -10974,7 +11164,23 @@ declare type __VLS_WithTemplateSlots_91<T, S> = T & {
         $slots: S;
     };
 };
+declare type __VLS_WithTemplateSlots_92<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};
+declare type __VLS_WithTemplateSlots_93<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};
 export declare type Action = "confirm" | "close" | "cancel";
+declare type ActiveEditableCell<T extends DefaultRow> = Nullable<{
+    row: T;
+    prop?: string;
+    rowIndex: number;
+    cellIndex: number;
+}>;
 export declare type AffixEmits = typeof affixEmits;
 export declare const affixEmits: {
     scroll: ({ scrollTop, fixed }: {
@@ -11028,7 +11234,7 @@ export declare const anchorEmits: {
     change: (href: string) => boolean;
     click: (e: MouseEvent, href?: string) => boolean;
 };
-export declare type AnchorInstance = InstanceType<typeof _default_105> & unknown;
+export declare type AnchorInstance = InstanceType<typeof _default_107> & unknown;
 export declare type AnchorProps = ExtractPropTypes<typeof anchorProps>;
 export declare const anchorProps: {
     container: {
@@ -12553,7 +12759,7 @@ export declare type ColumnStyle<T> = CSSProperties | ((data: {
     row: T;
     rowIndex: number;
 }) => CSSProperties);
-export declare const CommonPicker: __VLS_WithTemplateSlots_71<typeof __VLS_component_71, ReturnType<typeof __VLS_template_71>>;
+export declare const CommonPicker: __VLS_WithTemplateSlots_73<typeof __VLS_component_73, ReturnType<typeof __VLS_template_73>>;
 declare type CommonPickerContext = ReturnType<typeof useCommonPicker>;
 declare type CommonPickerEmits = (event: "update:modelValue" | "calendar-change" | "panel-change", ...args: any[]) => void;
 declare interface CommonPickerProps {
@@ -13067,7 +13273,7 @@ declare type DatePickerExpose = {
 export declare type DatePickerInstance = ComponentPublicInstance<DatePickerProps, DatePickerExpose>;
 export declare type DatePickerProps = ExtractPropTypes<typeof datePickerProps>;
 export declare const datePickerProps: {
-    readonly type: EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
+    readonly type: EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
     readonly typeList: EpPropFinalized<{
         (arrayLength: number): SelectType[];
         (...items: SelectType[]): SelectType[];
@@ -13083,6 +13289,7 @@ export declare const datePickerProps: {
         readonly [Symbol.species]: ArrayConstructor;
     }, unknown, unknown, () => never[], boolean>;
     readonly showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -13159,7 +13366,7 @@ export declare const datePickerProps: {
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -13227,6 +13434,8 @@ export declare const datePickTypes: readonly [
     "datetime",
     "datetimerange",
     "daterange",
+    "datestartrange",
+    "dateendrange",
     "monthrange",
     "yearrange"
 ];
@@ -13254,8 +13463,10 @@ declare const _default_11: __VLS_WithTemplateSlots_11<typeof __VLS_component_11,
 declare const _default_110: __VLS_WithTemplateSlots_88<typeof __VLS_component_88, ReturnType<typeof __VLS_template_88>>;
 declare const _default_111: __VLS_WithTemplateSlots_89<typeof __VLS_component_89, ReturnType<typeof __VLS_template_89>>;
 declare const _default_112: __VLS_WithTemplateSlots_90<typeof __VLS_component_90, ReturnType<typeof __VLS_template_90>>;
-declare const _default_113: ObjectDirective;
-declare const _default_114: __VLS_WithTemplateSlots_91<typeof __VLS_component_91, ReturnType<typeof __VLS_template_91>>;
+declare const _default_113: __VLS_WithTemplateSlots_91<typeof __VLS_component_91, ReturnType<typeof __VLS_template_91>>;
+declare const _default_114: __VLS_WithTemplateSlots_92<typeof __VLS_component_92, ReturnType<typeof __VLS_template_92>>;
+declare const _default_115: ObjectDirective;
+declare const _default_116: __VLS_WithTemplateSlots_93<typeof __VLS_component_93, ReturnType<typeof __VLS_template_93>>;
 declare const _default_12: __VLS_WithTemplateSlots_12<typeof __VLS_component_12, ReturnType<typeof __VLS_template_12>>;
 declare const _default_13: __VLS_WithTemplateSlots_13<typeof __VLS_component_13, ReturnType<typeof __VLS_template_13>>;
 declare const _default_14: __VLS_WithTemplateSlots_14<typeof __VLS_component_14, ReturnType<typeof __VLS_template_14>>;
@@ -13801,7 +14012,7 @@ declare const _default_38: __VLS_WithTemplateSlots_36<typeof __VLS_component_36,
 declare const _default_39: __VLS_WithTemplateSlots_37<typeof __VLS_component_37, ReturnType<typeof __VLS_template_37>>;
 declare const _default_4: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, ReturnType<typeof __VLS_template_8>>;
 declare const _default_40: DefineComponent<{
-    readonly type: EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
+    readonly type: EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
     readonly typeList: EpPropFinalized<{
         (arrayLength: number): SelectType[];
         (...items: SelectType[]): SelectType[];
@@ -13817,6 +14028,7 @@ declare const _default_40: DefineComponent<{
         readonly [Symbol.species]: ArrayConstructor;
     }, unknown, unknown, () => never[], boolean>;
     readonly showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -13893,7 +14105,7 @@ declare const _default_40: DefineComponent<{
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -13948,7 +14160,7 @@ declare const _default_40: DefineComponent<{
     };
     readonly isRange: BooleanConstructor;
 }, () => JSX.Element, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, "update:modelValue"[], "update:modelValue", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
-    readonly type: EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
+    readonly type: EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
     readonly typeList: EpPropFinalized<{
         (arrayLength: number): SelectType[];
         (...items: SelectType[]): SelectType[];
@@ -13964,6 +14176,7 @@ declare const _default_40: DefineComponent<{
         readonly [Symbol.species]: ArrayConstructor;
     }, unknown, unknown, () => never[], boolean>;
     readonly showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -14040,7 +14253,7 @@ declare const _default_40: DefineComponent<{
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -14099,7 +14312,7 @@ declare const _default_40: DefineComponent<{
 }, {
     readonly disabled: boolean;
     readonly tabindex: EpPropMergeType<(new (...args: any[]) => string | number) | (() => string | number) | ((new (...args: any[]) => string | number) | (() => string | number))[], unknown, unknown>;
-    readonly type: EpPropMergeType<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown>;
+    readonly type: EpPropMergeType<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown>;
     readonly placeholder: string;
     readonly modelValue: EpPropMergeType<(new (...args: any[]) => string | number | Date | string[] | number[] | Date[]) | (() => ModelValueType) | ((new (...args: any[]) => string | number | Date | string[] | number[] | Date[]) | (() => ModelValueType))[], unknown, unknown>;
     readonly placement: EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown>;
@@ -14108,17 +14321,18 @@ declare const _default_40: DefineComponent<{
     readonly fallbackPlacements: Placement[];
     readonly popperOptions: Partial<Options>;
     readonly popperClass: string;
+    readonly teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly prefixIcon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
     readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly automaticDropdown: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly cycle: number;
     readonly isOk: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly isFooter: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly editable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly rangeSeparator: string;
     readonly shortcuts: unknown[];
     readonly showNow: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly showFooter: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly showWeekNumber: boolean;
     readonly arrowControl: boolean;
     readonly unlinkPanels: boolean;
@@ -14286,6 +14500,12 @@ declare const _default_45: DefineComponent<{
         __epPropKey: true;
     };
     readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly appendTo: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly persistent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
 }, {
     t: Translator;
@@ -14481,6 +14701,12 @@ declare const _default_45: DefineComponent<{
         __epPropKey: true;
     };
     readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly appendTo: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly persistent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
 }>> & {
     onClick?: ((...args: any[]) => any) | undefined;
@@ -15820,7 +16046,7 @@ declare const _default_76: DefineComponent<{
     readonly valueKey: EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
     readonly scrollbarAlwaysOn: BooleanConstructor;
     readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly showArrow: BooleanConstructor;
     readonly placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, "bottom-start", boolean>;
     readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, readonly [
@@ -16187,7 +16413,7 @@ declare const _default_76: DefineComponent<{
     readonly valueKey: EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
     readonly scrollbarAlwaysOn: BooleanConstructor;
     readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly showArrow: BooleanConstructor;
     readonly placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, "bottom-start", boolean>;
     readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, readonly [
@@ -16548,6 +16774,7 @@ declare const _default_84: DefineComponent<{
     };
     scrollbarAlwaysOn: BooleanConstructor;
     flexible: BooleanConstructor;
+    editable: BooleanConstructor;
     showOverflowTooltip: PropType<TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: PropType<any>;
@@ -17228,6 +17455,12 @@ declare const _default_84: DefineComponent<{
     t: Translator;
     setDragVisible: (visible: boolean) => void;
     context: Table<any>;
+    editingRow: Ref<any>;
+    activeEditableCell: Ref<any>;
+    startRowEdit: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
+    clearEditingRow: () => void;
+    applyEditingRow: () => any;
+    hasEditingRow: ComputedRef<boolean>;
     computedSumText: ComputedRef<string>;
     computedEmptyText: ComputedRef<string>;
     tableLayout: ComputedRef<("fixed" | "auto") | undefined>;
@@ -17262,7 +17495,7 @@ declare const _default_84: DefineComponent<{
     * @description whether to allow drag the last column
     */
     allowDragLastColumn: boolean;
-}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     data: {
         type: PropType<any[]>;
         default: () => never[];
@@ -17339,6 +17572,7 @@ declare const _default_84: DefineComponent<{
     };
     scrollbarAlwaysOn: BooleanConstructor;
     flexible: BooleanConstructor;
+    editable: BooleanConstructor;
     showOverflowTooltip: PropType<TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: PropType<any>;
@@ -17384,6 +17618,7 @@ declare const _default_84: DefineComponent<{
     "onRow-click"?: ((...args: any[]) => any) | undefined;
     "onRow-contextmenu"?: ((...args: any[]) => any) | undefined;
     "onRow-dblclick"?: ((...args: any[]) => any) | undefined;
+    "onEditable-cell-active-change"?: ((...args: any[]) => any) | undefined;
 }, {
     data: any[];
     style: CSSProperties;
@@ -17394,6 +17629,7 @@ declare const _default_84: DefineComponent<{
     onDragstart: any;
     lazy: boolean;
     fit: boolean;
+    editable: boolean;
     scrollbarAlwaysOn: boolean;
     allowDragLastColumn: boolean;
     treeProps: TreeProps | undefined;
@@ -17534,7 +17770,9 @@ declare const _default_85: DefineComponent<{
     filterMultiple: boolean;
 }>;
 declare const _default_86: __VLS_WithTemplateSlots_68<typeof __VLS_component_68, ReturnType<typeof __VLS_template_68>>;
-declare const _default_87: DefineComponent<{
+declare const _default_87: __VLS_WithTemplateSlots_69<typeof __VLS_component_69, ReturnType<typeof __VLS_template_69>>;
+declare const _default_88: __VLS_WithTemplateSlots_70<typeof __VLS_component_70, ReturnType<typeof __VLS_template_70>>;
+declare const _default_89: DefineComponent<{
     readonly tabs: EpPropFinalized<(new (...args: any[]) => {
         uid: number;
         getVnode: () => VNode;
@@ -17758,15 +17996,16 @@ declare const _default_87: DefineComponent<{
         [key: number]: HTMLDivElement;
     };
 }>;
-declare const _default_88: __VLS_WithTemplateSlots_69<typeof __VLS_component_69, ReturnType<typeof __VLS_template_69>>;
-declare const _default_89: __VLS_WithTemplateSlots_70<typeof __VLS_component_70, ReturnType<typeof __VLS_template_70>>;
 declare const _default_9: __VLS_WithTemplateSlots_9<typeof __VLS_component_9, ReturnType<typeof __VLS_template_9>>;
-declare const _default_90: DefineComponent<{
+declare const _default_90: __VLS_WithTemplateSlots_71<typeof __VLS_component_71, ReturnType<typeof __VLS_template_71>>;
+declare const _default_91: __VLS_WithTemplateSlots_72<typeof __VLS_component_72, ReturnType<typeof __VLS_template_72>>;
+declare const _default_92: DefineComponent<{
     /**
     * @description whether to pick a time range
     */
     isRange: BooleanConstructor;
     showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     showWeekNumber: BooleanConstructor;
     ariaLabel: StringConstructor;
     emptyValues: ArrayConstructor;
@@ -17843,7 +18082,7 @@ declare const _default_90: DefineComponent<{
     floatLabel: StringConstructor;
     cycleType: StringConstructor;
     isOk: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    isFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     popperClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     format: StringConstructor;
     valueFormat: StringConstructor;
@@ -17903,6 +18142,7 @@ declare const _default_90: DefineComponent<{
     */
     isRange: BooleanConstructor;
     showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     showWeekNumber: BooleanConstructor;
     ariaLabel: StringConstructor;
     emptyValues: ArrayConstructor;
@@ -17979,7 +18219,7 @@ declare const _default_90: DefineComponent<{
     floatLabel: StringConstructor;
     cycleType: StringConstructor;
     isOk: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    isFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     popperClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     format: StringConstructor;
     valueFormat: StringConstructor;
@@ -18047,23 +18287,24 @@ declare const _default_90: DefineComponent<{
     fallbackPlacements: Placement[];
     popperOptions: Partial<Options>;
     popperClass: string;
+    teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     prefixIcon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
     validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     automaticDropdown: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     cycle: number;
     isOk: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    isFooter: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     editable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     rangeSeparator: string;
     shortcuts: unknown[];
     showNow: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    showFooter: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     showWeekNumber: boolean;
     arrowControl: boolean;
     unlinkPanels: boolean;
     isRange: boolean;
 }>;
-declare const _default_91: DefineComponent<{
+declare const _default_93: DefineComponent<{
     readonly emptyValues: ArrayConstructor;
     readonly valueOnClear: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown, undefined, boolean>;
     readonly format: EpPropFinalized<StringConstructor, unknown, unknown, "HH:mm", boolean>;
@@ -18193,10 +18434,10 @@ declare const _default_91: DefineComponent<{
     readonly step: string;
     readonly includeEndTime: boolean;
 }>;
-declare const _default_92: __VLS_WithTemplateSlots_72<typeof __VLS_component_72, ReturnType<typeof __VLS_template_72>>;
-declare const _default_93: __VLS_WithTemplateSlots_73<typeof __VLS_component_73, ReturnType<typeof __VLS_template_74>>;
-declare const _default_94: __VLS_WithTemplateSlots_74<typeof __VLS_component_74, ReturnType<typeof __VLS_template_73>>;
-declare const _default_95: DefineComponent<{
+declare const _default_94: __VLS_WithTemplateSlots_74<typeof __VLS_component_74, ReturnType<typeof __VLS_template_74>>;
+declare const _default_95: __VLS_WithTemplateSlots_75<typeof __VLS_component_75, ReturnType<typeof __VLS_template_76>>;
+declare const _default_96: __VLS_WithTemplateSlots_76<typeof __VLS_component_76, ReturnType<typeof __VLS_template_75>>;
+declare const _default_97: DefineComponent<{
     data: {
         type: PropType<TreeData>;
         default: () => never[];
@@ -18741,13 +18982,11 @@ declare const _default_95: DefineComponent<{
     expandOnClickNode: boolean;
     highlightCurrent: boolean;
 }>;
-declare const _default_96: DefineComponent<any, () => VNode<RendererNode, RendererElement, {
+declare const _default_98: DefineComponent<any, () => VNode<RendererNode, RendererElement, {
     [key: string]: any;
 }>, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<any>, {} | {
     [x: string]: any;
 }>;
-declare const _default_97: __VLS_WithTemplateSlots_75<typeof __VLS_component_75, ReturnType<typeof __VLS_template_75>>;
-declare const _default_98: __VLS_WithTemplateSlots_76<typeof __VLS_component_76, ReturnType<typeof __VLS_template_76>>;
 declare const _default_99: __VLS_WithTemplateSlots_77<typeof __VLS_component_77, ReturnType<typeof __VLS_template_77>>;
 export declare const DEFAULT_DIALOG_TRANSITION = "dialog-fade";
 export declare const DEFAULT_EMPTY_VALUES: (string | null | undefined)[];
@@ -18764,6 +19003,8 @@ export declare const DEFAULT_FORMATS_DATEPICKER: {
     monthrange: string;
     yearrange: string;
     daterange: string;
+    datestartrange: string;
+    dateendrange: string;
     datetimerange: string;
 };
 export declare const DEFAULT_FORMATS_TIME = "HH:mm:ss";
@@ -19252,6 +19493,12 @@ export declare const dropdownProps: {
         __epPropKey: true;
     };
     readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly appendTo: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly persistent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
 };
 export declare const DynamicSizeGrid: DefineComponent<{
@@ -19667,6 +19914,12 @@ export declare const DynamicSizeList: DefineComponent<{
     readonly initScrollOffset: number;
 }>;
 export declare type DynamicSizeListInstance = InstanceType<typeof DynamicSizeList> & unknown;
+declare type EditingRow<T extends DefaultRow> = Nullable<{
+    row: T;
+    prop?: string;
+    columnId?: string;
+    draft: T;
+}>;
 export declare const Effect: {
     readonly LIGHT: "light";
     readonly DARK: "dark";
@@ -19677,10 +19930,10 @@ declare const effects: readonly [
 ];
 export declare const ElAffix: SFCWithInstall<typeof _default_2>;
 export declare const ElAlert: SFCWithInstall<typeof _default_3>;
-export declare const ElAnchor: SFCWithInstall<typeof _default_105> & {
-    AnchorLink: typeof _default_106;
+export declare const ElAnchor: SFCWithInstall<typeof _default_107> & {
+    AnchorLink: typeof _default_108;
 };
-export declare const ElAnchorLink: SFCWithInstall<typeof _default_106>;
+export declare const ElAnchorLink: SFCWithInstall<typeof _default_108>;
 export declare const ElAside: SFCWithInstall<typeof _default_35>;
 export declare const ElAutocomplete: SFCWithInstall<typeof _default_4>;
 export declare const ElAutoResizer: SFCWithInstall<typeof AutoResizer>;
@@ -19809,7 +20062,7 @@ export declare const ElLoadingService: {
     _context: AppContext | null;
 };
 export declare const ElMain: SFCWithInstall<typeof _default_38>;
-export declare const ElMention: SFCWithInstall<typeof _default_108>;
+export declare const ElMention: SFCWithInstall<typeof _default_110>;
 export declare const ElMenu: SFCWithInstall<typeof _default_57> & {
     MenuItem: typeof _default_58;
     MenuItemGroup: typeof _default_59;
@@ -19965,10 +20218,10 @@ export declare interface ElPaginationContext {
 }
 export declare const elPaginationKey: InjectionKey<ElPaginationContext>;
 export declare const ElPopconfirm: SFCWithInstall<typeof _default_63>;
-export declare const ElPopover: SFCWithInstall<typeof _default_114> & {
+export declare const ElPopover: SFCWithInstall<typeof _default_116> & {
     directive: typeof ElPopoverDirective;
 };
-export declare const ElPopoverDirective: SFCWithInstall<typeof _default_113>;
+export declare const ElPopoverDirective: SFCWithInstall<typeof _default_115>;
 export declare const ElPopper: SFCWithInstall<typeof _default_7>;
 export declare const ElPopperArrow: DefineComponent<{}, {
     /**
@@ -20179,10 +20432,10 @@ export declare const ElSkeleton: SFCWithInstall<typeof _default_77> & {
 export declare const ElSkeletonItem: SFCWithInstall<typeof _default_78>;
 export declare const ElSlider: SFCWithInstall<typeof _default_79>;
 export declare const ElSpace: SFCWithInstall<typeof Space>;
-export declare const ElSplitter: SFCWithInstall<typeof _default_109> & {
-    SplitPanel: typeof _default_110;
+export declare const ElSplitter: SFCWithInstall<typeof _default_111> & {
+    SplitPanel: typeof _default_112;
 };
-export declare const ElSplitterPanel: SFCWithInstall<typeof _default_110>;
+export declare const ElSplitterPanel: SFCWithInstall<typeof _default_112>;
 export declare const ElStatistic: SFCWithInstall<typeof _default_80>;
 export declare const ElStep: SFCWithInstall<typeof _default_82>;
 export declare const ElSteps: SFCWithInstall<typeof _default_81> & {
@@ -20192,21 +20445,25 @@ export declare const ElSubMenu: SFCWithInstall<typeof _default_60>;
 export declare const ElSwitch: SFCWithInstall<typeof _default_83>;
 export declare const ElTable: SFCWithInstall<typeof _default_84> & {
     TableColumn: typeof _default_85;
+    TableEditableCell: typeof _default_86;
+    TableEditableRowActions: typeof _default_87;
 };
 export declare const ElTableColumn: SFCWithInstall<typeof _default_85>;
+export declare const ElTableEditableCell: SFCWithInstall<typeof _default_86>;
+export declare const ElTableEditableRowActions: SFCWithInstall<typeof _default_87>;
 export declare const ElTableV2: SFCWithInstall<typeof TableV2>;
-export declare const ElTabPane: SFCWithInstall<typeof _default_86>;
+export declare const ElTabPane: SFCWithInstall<typeof _default_88>;
 export declare const ElTabs: SFCWithInstall<typeof Tabs> & {
-    TabPane: typeof _default_86;
+    TabPane: typeof _default_88;
 };
-export declare const ElTag: SFCWithInstall<typeof _default_88>;
-export declare const ElText: SFCWithInstall<typeof _default_89>;
+export declare const ElTag: SFCWithInstall<typeof _default_90>;
+export declare const ElText: SFCWithInstall<typeof _default_91>;
 export declare const ElTimeline: SFCWithInstall<typeof Timeline> & {
-    TimelineItem: typeof _default_92;
+    TimelineItem: typeof _default_94;
 };
-export declare const ElTimelineItem: SFCWithInstall<typeof _default_92>;
-export declare const ElTimePicker: SFCWithInstall<typeof _default_90>;
-export declare const ElTimeSelect: SFCWithInstall<typeof _default_91>;
+export declare const ElTimelineItem: SFCWithInstall<typeof _default_94>;
+export declare const ElTimePicker: SFCWithInstall<typeof _default_92>;
+export declare const ElTimeSelect: SFCWithInstall<typeof _default_93>;
 export declare const ElTooltip: SFCWithInstall<typeof _default_6>;
 export declare type ElTooltipContentProps = ExtractPropTypes<typeof useTooltipContentProps>;
 export declare type ElTooltipContentPropsPublic = __ExtractPublicPropTypes<typeof useTooltipContentProps>;
@@ -20228,16 +20485,16 @@ export declare type ElTooltipProps = ExtractPropTypes<typeof useTooltipProps>;
 export declare type ElTooltipPropsPublic = __ExtractPublicPropTypes<typeof useTooltipProps>;
 export declare type ElTooltipTriggerProps = ExtractPropTypes<typeof useTooltipTriggerProps>;
 export declare type ElTooltipTriggerPropsPublic = __ExtractPublicPropTypes<typeof useTooltipTriggerProps>;
-export declare const ElTour: SFCWithInstall<typeof _default_103> & {
-    TourStep: typeof _default_104;
+export declare const ElTour: SFCWithInstall<typeof _default_105> & {
+    TourStep: typeof _default_106;
 };
-export declare const ElTourStep: SFCWithInstall<typeof _default_104>;
-export declare const ElTransfer: SFCWithInstall<typeof _default_93>;
-export declare const ElTree: SFCWithInstall<typeof _default_95>;
-export declare const ElTreeSelect: SFCWithInstall<typeof _default_96>;
-export declare const ElTreeV2: SFCWithInstall<typeof _default_97>;
-export declare const ElUpload: SFCWithInstall<typeof _default_98>;
-export declare const ElWatermark: SFCWithInstall<typeof _default_102>;
+export declare const ElTourStep: SFCWithInstall<typeof _default_106>;
+export declare const ElTransfer: SFCWithInstall<typeof _default_95>;
+export declare const ElTree: SFCWithInstall<typeof _default_97>;
+export declare const ElTreeSelect: SFCWithInstall<typeof _default_98>;
+export declare const ElTreeV2: SFCWithInstall<typeof _default_99>;
+export declare const ElUpload: SFCWithInstall<typeof _default_100>;
+export declare const ElWatermark: SFCWithInstall<typeof _default_104>;
 export declare interface ElZIndexInjectionContext {
     current: number;
 }
@@ -21659,7 +21916,7 @@ export declare const iconProps: {
 };
 export declare type IconPropsPublic = __ExtractPublicPropTypes<typeof iconProps>;
 export declare const ID_INJECTION_KEY: InjectionKey<ElIdInjectionContext>;
-declare type IDatePickerType = "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange";
+declare type IDatePickerType = "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange";
 export declare interface IElDropdownInstance {
     instance?: ComponentInternalInstance;
     dropdownSize?: ComputedRef<string>;
@@ -22240,7 +22497,7 @@ export declare const mentionEmits: {
     focus: (evt: FocusEvent) => boolean;
     blur: (evt: FocusEvent) => boolean;
 };
-export declare type MentionInstance = InstanceType<typeof _default_108> & unknown;
+export declare type MentionInstance = InstanceType<typeof _default_110> & unknown;
 export declare type MentionOption = {
     value?: string;
     label?: string;
@@ -22660,7 +22917,7 @@ export declare const messageDefaults: Mutable<{
     readonly type: "info";
     readonly plain: false;
     readonly center: false;
-    readonly offset: 16;
+    readonly offset: 4;
     readonly placement: undefined;
     readonly zIndex: 0;
     readonly grouping: false;
@@ -22682,7 +22939,7 @@ export declare interface MessageHandler {
      */
     close: () => void;
 }
-export declare type MessageInstance = InstanceType<typeof _default_111> & unknown;
+export declare type MessageInstance = InstanceType<typeof _default_113> & unknown;
 export declare type MessageOptions = Partial<Mutable<Omit<MessageProps, "id"> & {
     appendTo?: HTMLElement | string;
 }>>;
@@ -22738,7 +22995,7 @@ export declare const messageProps: {
     readonly showClose: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
     readonly type: EpPropFinalized<StringConstructor, "error" | "primary" | "success" | "warning" | "info", unknown, "info", boolean>;
     readonly plain: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 16, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: EpPropFinalized<StringConstructor, "top" | "bottom" | "top-left" | "top-right" | "bottom-left" | "bottom-right", unknown, undefined, boolean>;
     readonly zIndex: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly grouping: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
@@ -22830,7 +23087,7 @@ export declare const notificationEmits: {
 export declare interface NotificationHandle {
     close: () => void;
 }
-export declare type NotificationInstance = InstanceType<typeof _default_112> & unknown;
+export declare type NotificationInstance = InstanceType<typeof _default_114> & unknown;
 declare type NotificationOptions_2 = Omit<NotificationProps, "id" | "onClose"> & {
     /**
      * @description set the root element for the notification, default to `document.body`
@@ -22927,6 +23184,9 @@ export declare type NotifyTypedFn = (options?: NotificationParamsTyped, appConte
  * @see {@link https://github.com/sindresorhus/meta/discussions/7}
  */
 export declare type Nullable<T> = T | null;
+declare type NumericLimit = boolean | number | {
+    place?: number;
+};
 declare type onRowRenderedParams = {
     rowCacheStart: number;
     rowCacheEnd: number;
@@ -23125,6 +23385,7 @@ export declare interface PickerOptions {
     getDefaultValue: () => DayOrDays;
     panelReady: boolean;
     handleClear: () => void;
+    handleClosePick?: () => void;
     handleFocusPicker?: () => void;
 }
 export { Placement };
@@ -23181,7 +23442,7 @@ export declare const popoverEmits: {
     "after-enter": () => boolean;
     "after-leave": () => boolean;
 };
-export declare type PopoverInstance = InstanceType<typeof _default_114> & unknown;
+export declare type PopoverInstance = InstanceType<typeof _default_116> & unknown;
 export declare type PopoverProps = ExtractPropTypes<typeof popoverProps>;
 export declare const popoverProps: {
     readonly trigger: EpPropFinalized<(new (...args: any[]) => "click" | "focus" | "contextmenu" | "hover" | TooltipTriggerType[]) | (() => Arrayable<TooltipTriggerType>) | ((new (...args: any[]) => "click" | "focus" | "contextmenu" | "hover" | TooltipTriggerType[]) | (() => Arrayable<TooltipTriggerType>))[], unknown, unknown, "hover", boolean>;
@@ -23322,12 +23583,16 @@ export declare const popoverProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly zIndex: NumberConstructor;
+    readonly modal: BooleanConstructor;
+    readonly modalClass: StringConstructor;
+    readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly title: StringConstructor;
     readonly width: EpPropFinalized<readonly [
         StringConstructor,
         NumberConstructor
     ], unknown, unknown, 150, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly showAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly hideAfter: EpPropFinalized<NumberConstructor, unknown, unknown, 200, boolean>;
     readonly autoClose: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
@@ -23412,7 +23677,7 @@ export declare const popperContentProps: {
     readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
     readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
     readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
@@ -23423,7 +23688,7 @@ export declare const popperCoreConfigProps: {
     readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
     readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
     readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
@@ -23938,7 +24203,7 @@ export declare const segmentedEmits: {
     "update:modelValue": (val: any) => val is string | number | boolean;
     change: (val: any) => val is string | number | boolean;
 };
-export declare type SegmentedInstance = InstanceType<typeof _default_107> & unknown;
+export declare type SegmentedInstance = InstanceType<typeof _default_109> & unknown;
 export declare type SegmentedProps = ExtractPropTypes<typeof segmentedProps>;
 export declare const segmentedProps: {
     ariaLabel: StringConstructor;
@@ -24361,7 +24626,7 @@ declare const selectV2Props: {
     readonly valueKey: EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
     readonly scrollbarAlwaysOn: BooleanConstructor;
     readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly showArrow: BooleanConstructor;
     readonly placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, "bottom-start", boolean>;
     readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, readonly [
@@ -24705,8 +24970,8 @@ export declare const spaceProps: {
     };
 };
 export declare type SpacePropsPublic = __ExtractPublicPropTypes<typeof spaceProps>;
-export declare type SplitterInstance = InstanceType<typeof _default_109> & unknown;
-export declare type SplitterPanelInstance = InstanceType<typeof _default_110> & unknown;
+export declare type SplitterInstance = InstanceType<typeof _default_111> & unknown;
+export declare type SplitterPanelInstance = InstanceType<typeof _default_112> & unknown;
 export declare type SplitterPanelProps = ExtractPropTypes<typeof splitterPanelProps>;
 export declare const splitterPanelProps: {
     readonly min: {
@@ -24954,7 +25219,7 @@ export declare const switchProps: {
     };
 };
 export declare type SwitchPropsPublic = __ExtractPublicPropTypes<typeof switchProps>;
-export declare type TabBarInstance = InstanceType<typeof _default_87> & unknown;
+export declare type TabBarInstance = InstanceType<typeof _default_89> & unknown;
 export declare type TabBarProps = ExtractPropTypes<typeof tabBarProps>;
 export declare const tabBarProps: {
     readonly tabs: EpPropFinalized<(new (...args: any[]) => {
@@ -25057,6 +25322,11 @@ export declare type TabBarPropsPublic = __ExtractPublicPropTypes<typeof tabBarPr
 export declare interface Table<T extends DefaultRow = any> extends ComponentInternalInstance {
     $ready: boolean;
     hoverState?: HoverState<T> | null;
+    editingRow?: Ref<EditingRow<T>>;
+    activeEditableCell?: Ref<ActiveEditableCell<T>>;
+    startRowEdit?: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
+    clearEditingRow?: () => void;
+    applyEditingRow?: () => EditingRow<T>;
     renderExpanded: RenderExpanded<T>;
     store: Store<T>;
     layout: TableLayout<T>;
@@ -25439,6 +25709,7 @@ export declare interface TableProps<T extends DefaultRow> {
     tableLayout?: Layout;
     scrollbarAlwaysOn?: boolean;
     flexible?: boolean;
+    editable?: boolean;
     showOverflowTooltip?: boolean | TableOverflowTooltipOptions;
     tooltipFormatter?: TableOverflowTooltipFormatter<T>;
     appendFilterPanelTo?: string;
@@ -26445,7 +26716,7 @@ export declare const tabNavProps: {
     readonly stretch: BooleanConstructor;
 };
 export declare type TabNavPropsPublic = __ExtractPublicPropTypes<typeof tabNavProps>;
-export declare type TabPaneInstance = InstanceType<typeof _default_86> & unknown;
+export declare type TabPaneInstance = InstanceType<typeof _default_88> & unknown;
 export declare type TabPaneName = string | number;
 export declare type TabPaneProps = ExtractPropTypes<typeof tabPaneProps>;
 export declare const tabPaneProps: {
@@ -26636,7 +26907,7 @@ export declare const tagEmits: {
     close: (evt: MouseEvent) => boolean;
     click: (evt: MouseEvent) => boolean;
 };
-export declare type TagInstance = InstanceType<typeof _default_88> & unknown;
+export declare type TagInstance = InstanceType<typeof _default_90> & unknown;
 export declare type TagProps = ExtractPropTypes<typeof tagProps>;
 export declare const tagProps: {
     readonly type: EpPropFinalized<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown, "primary", boolean>;
@@ -26696,7 +26967,7 @@ declare const Timeline: DefineComponent<{}, () => VNode<RendererNode, RendererEl
 }>, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, EmitsOptions, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{}>>, {}>;
 export declare const TIMELINE_INJECTION_KEY = "timeline";
 export declare type TimelineInstance = InstanceType<typeof Timeline> & unknown;
-export declare type TimelineItemInstance = InstanceType<typeof _default_92> & unknown;
+export declare type TimelineItemInstance = InstanceType<typeof _default_94> & unknown;
 export declare type TimelineItemProps = ExtractPropTypes<typeof timelineItemProps>;
 export declare const timelineItemProps: {
     readonly timestamp: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -26723,6 +26994,7 @@ export declare type TimeList = [
 export declare type TimePickerDefaultProps = ExtractPropTypes<typeof timePickerDefaultProps>;
 export declare const timePickerDefaultProps: {
     readonly showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -26799,7 +27071,7 @@ export declare const timePickerDefaultProps: {
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -26956,7 +27228,7 @@ export declare const TimePickPanel: DefineComponent<{
     readonly format: string;
     readonly actualVisible: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-export declare type TimeSelectInstance = InstanceType<typeof _default_91> & unknown;
+export declare type TimeSelectInstance = InstanceType<typeof _default_93> & unknown;
 export declare type TimeSelectProps = ExtractPropTypes<typeof timeSelectProps>;
 export declare const timeSelectProps: {
     readonly emptyValues: ArrayConstructor;
@@ -27052,7 +27324,7 @@ export declare interface TourGap {
     ];
     radius?: number;
 }
-export declare type TourInstance = InstanceType<typeof _default_103> & unknown;
+export declare type TourInstance = InstanceType<typeof _default_105> & unknown;
 export declare type TourMask = boolean | {
     style?: CSSProperties;
     color?: string;
@@ -27200,9 +27472,9 @@ export declare interface TransferFormat {
     noChecked?: string;
     hasChecked?: string;
 }
-export declare type TransferInstance = InstanceType<typeof _default_93> & unknown;
+export declare type TransferInstance = InstanceType<typeof _default_95> & unknown;
 export declare type TransferKey = string | number;
-declare type TransferPanelInstance = InstanceType<typeof _default_94> & unknown;
+declare type TransferPanelInstance = InstanceType<typeof _default_96> & unknown;
 export declare type TransferProps = ExtractPropTypes<typeof transferProps>;
 export declare const transferProps: {
     readonly data: EpPropFinalized<(new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]) | ((new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]))[], unknown, unknown, () => never[], boolean>;
@@ -27324,7 +27596,7 @@ export declare const treeEmits: {
     "node-drag-enter": (draggingNode: Node_2, dropNode: Node_2, evt: DragEvent) => DragEvent;
     "node-drag-over": (draggingNode: Node_2, dropNode: Node_2, evt: DragEvent) => DragEvent;
 };
-export declare type TreeInstance = InstanceType<typeof _default_95> & unknown;
+export declare type TreeInstance = InstanceType<typeof _default_97> & unknown;
 export declare type TreeKey = string | number;
 declare type TreeKey_2 = string | number;
 export declare interface TreeNode {
@@ -27456,7 +27728,7 @@ export declare interface TreeStoreOptions {
     defaultExpandAll: boolean;
     filterNodeMethod?: FilterNodeMethodFunction;
 }
-export declare type TreeV2Instance = InstanceType<typeof _default_97> & unknown;
+export declare type TreeV2Instance = InstanceType<typeof _default_99> & unknown;
 declare const triggers: readonly [
     "click",
     "contextmenu",
@@ -27513,7 +27785,7 @@ export declare const uploadBaseProps: {
     readonly disabled: BooleanConstructor;
     readonly limit: NumberConstructor;
 };
-export declare type UploadContentInstance = InstanceType<typeof _default_99> & unknown;
+export declare type UploadContentInstance = InstanceType<typeof _default_101> & unknown;
 export declare type UploadContentProps = ExtractPropTypes<typeof uploadContentProps>;
 export declare const uploadContentProps: {
     readonly beforeUpload: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
@@ -27620,7 +27892,7 @@ export declare type UploadDraggerEmits = typeof uploadDraggerEmits;
 export declare const uploadDraggerEmits: {
     file: (file: File[]) => boolean;
 };
-export declare type UploadDraggerInstance = InstanceType<typeof _default_101> & unknown;
+export declare type UploadDraggerInstance = InstanceType<typeof _default_103> & unknown;
 export declare type UploadDraggerProps = ExtractPropTypes<typeof uploadDraggerProps>;
 export declare const uploadDraggerProps: {
     readonly disabled: BooleanConstructor;
@@ -27648,12 +27920,12 @@ export declare interface UploadHooks {
     onError: (error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => void;
     onExceed: (files: File[], uploadFiles: UploadUserFile[]) => void;
 }
-export declare type UploadInstance = InstanceType<typeof _default_98> & unknown;
+export declare type UploadInstance = InstanceType<typeof _default_100> & unknown;
 export declare type UploadListEmits = typeof uploadListEmits;
 export declare const uploadListEmits: {
     remove: (file: UploadFile) => boolean;
 };
-export declare type UploadListInstance = InstanceType<typeof _default_100> & unknown;
+export declare type UploadListInstance = InstanceType<typeof _default_102> & unknown;
 export declare type UploadListProps = ExtractPropTypes<typeof uploadListProps>;
 export declare const uploadListProps: {
     readonly files: EpPropFinalized<(new (...args: any[]) => UploadFiles) | (() => UploadFiles) | ((new (...args: any[]) => UploadFiles) | (() => UploadFiles))[], unknown, unknown, () => never[], boolean>;
@@ -27873,6 +28145,7 @@ declare const useCommonPicker: <P extends CommonPickerProps, E extends CommonPic
         getDefaultValue?: (() => DayOrDays) | undefined;
         panelReady?: boolean | undefined;
         handleClear?: (() => void) | undefined;
+        handleClosePick?: (() => void) | undefined;
         handleFocusPicker?: (() => void) | undefined;
     }>;
     pickerVisible: Ref<boolean>;
@@ -28329,7 +28602,7 @@ export declare const usePopperContentProps: {
     readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
     readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
     readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
@@ -28341,7 +28614,7 @@ export declare const usePopperCoreConfigProps: {
     readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
     readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
     readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
@@ -28555,6 +28828,9 @@ export declare const useTooltipContentProps: {
     readonly visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
     readonly transition: StringConstructor;
     readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly modal: BooleanConstructor;
+    readonly modalClass: StringConstructor;
+    readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly disabled: BooleanConstructor;
     readonly loop: BooleanConstructor;
     readonly id: StringConstructor;
@@ -28798,7 +29074,7 @@ export declare const useTooltipContentProps: {
     readonly boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
     readonly gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    readonly offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     readonly placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
     readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     readonly strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
@@ -28885,6 +29161,9 @@ export declare const useTooltipProps: {
     visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
     transition: StringConstructor;
     teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    modal: BooleanConstructor;
+    modalClass: StringConstructor;
+    closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     loop: BooleanConstructor;
     style: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
@@ -29124,7 +29403,7 @@ export declare const useTooltipProps: {
     boundariesPadding: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, undefined, boolean>;
     gpuAcceleration: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    offset: EpPropFinalized<NumberConstructor, unknown, unknown, 12, boolean>;
+    offset: EpPropFinalized<NumberConstructor, unknown, unknown, 4, boolean>;
     placement: EpPropFinalized<StringConstructor, Placement, unknown, "bottom", boolean>;
     popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     strategy: EpPropFinalized<StringConstructor, "fixed" | "absolute", unknown, "absolute", boolean>;
@@ -29499,7 +29778,7 @@ export declare interface WatermarkFontType {
     textAlign?: "start" | "end" | "left" | "right" | "center";
     textBaseline?: "top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom";
 }
-export declare type WatermarkInstance = InstanceType<typeof _default_102> & unknown;
+export declare type WatermarkInstance = InstanceType<typeof _default_104> & unknown;
 export declare type WatermarkProps = ExtractPropTypes<typeof watermarkProps>;
 export declare const watermarkProps: {
     readonly zIndex: EpPropFinalized<NumberConstructor, unknown, unknown, 9, boolean>;

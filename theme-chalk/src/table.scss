@@ -203,6 +203,78 @@
     }
   }
 
+  .editable-table-cell {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    &.is-click {
+      border-color: var(--color-gray-500);
+    }
+
+    &__text {
+      width: 100%;
+      min-height: 32px;
+      border: 1px solid transparent;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 32px;
+      vertical-align: middle;
+    }
+
+    .#{$namespace}-input,
+    .#{$namespace}-select {
+      width: 100%;
+    }
+  }
+
+  td.#{$namespace}-table__cell:has(.editable-table-cell) {
+    .cell {
+      overflow: visible;
+    }
+
+    &.cell-hover:hover {
+      .editable-table-cell {
+        &:not(.is-editing) {
+          background-color: var(--color-gray-50);
+          border-color: var(--color-gray-500);
+        }
+
+        &__text {
+          padding: 0 12px;
+          border-radius: 8px;
+          background-color: #fff;
+          border-color: var(--color-gray-300);
+        }
+      }
+    }
+  }
+
+  &.is-row-editing {
+    td.#{$namespace}-table__cell:has(.editable-table-cell):hover {
+      .editable-table-cell:not(.is-editing) {
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+  }
+
+  .editable-row-actions {
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+
+    .el-button > span > .el-icon {
+      margin-left: 0;
+    }
+  }
+
   tr {
     background-color: getCssVar('table-tr-bg-color');
 

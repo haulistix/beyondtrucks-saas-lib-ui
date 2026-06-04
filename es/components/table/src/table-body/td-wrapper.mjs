@@ -14,18 +14,27 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     rowspan: {
       type: Number,
       default: 1
+    },
+    cellIndex: {
+      type: Number,
+      default: 0
+    },
+    rowIndex: {
+      type: Number,
+      default: 0
     }
   },
   setup(__props) {
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("td", {
         colspan: __props.colspan,
-        rowspan: __props.rowspan
+        rowspan: __props.rowspan,
+        "data-cellIndex": __props.rowIndex + "-" + __props.cellIndex
       }, [
         createElementVNode("div", { class: "cell-height" }, [
           renderSlot(_ctx.$slots, "default")
         ])
-      ], 8, ["colspan", "rowspan"]);
+      ], 8, ["colspan", "rowspan", "data-cellIndex"]);
     };
   }
 });

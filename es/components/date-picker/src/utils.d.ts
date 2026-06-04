@@ -4,7 +4,15 @@ import type { Dayjs } from 'dayjs';
 import type { DateCell } from './date-picker.type';
 import type { DisabledDateType } from './props/shared';
 type DayRange = [Dayjs | undefined, Dayjs | undefined];
+type PartialDateRange = [Date | null, Date | null];
 export declare const isValidRange: (range: DayRange) => boolean;
+export declare const normalizePartialRange: (range: Array<Dayjs | null>) => [Dayjs | undefined, Dayjs | undefined];
+export declare const isValidPartialRange: (range: Array<Dayjs | null>, disabledDate?: DisabledDateType) => boolean;
+export declare const getPartialRangePayload: (range: any) => {
+    dayRange: [Dayjs | undefined, Dayjs | undefined];
+    pickRange: [Dayjs | null, Dayjs | null];
+    dateRange: PartialDateRange;
+};
 type GetDefaultValueParams = {
     lang: string;
     step?: number;

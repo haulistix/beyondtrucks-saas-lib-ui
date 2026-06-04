@@ -62,7 +62,7 @@ const makeList = (total, method) => {
   return arr;
 };
 const dayOrDaysToDate = (dayOrDays) => {
-  return isArray(dayOrDays) ? dayOrDays.map((d) => d.toDate()) : dayOrDays.toDate();
+  return isArray(dayOrDays) ? dayOrDays.map((d) => d ? d.toDate() : d) : dayOrDays.toDate();
 };
 
 export { buildTimeList, dateEquals, dayOrDaysToDate, extractDateFormat, extractTimeFormat, formatter, makeList, parseDate, rangeArr, valueEquals };

@@ -74,6 +74,7 @@ var defaultProps = {
   },
   scrollbarAlwaysOn: Boolean,
   flexible: Boolean,
+  editable: Boolean,
   showOverflowTooltip: [Boolean, Object],
   rowDraggable: {
     type: [Function, Boolean],

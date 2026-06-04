@@ -2,12 +2,20 @@ import DatePickPanel from './date-picker-com/panel-date-pick.mjs';
 import DateRangePickPanel from './date-picker-com/panel-date-range.mjs';
 import MonthRangePickPanel from './date-picker-com/panel-month-range.mjs';
 import YearRangePickPanel from './date-picker-com/panel-year-range.mjs';
+import DateStartRangePickPanel from './date-picker-com/panel-start-range.mjs';
+import DateEndRangePickPanel from './date-picker-com/panel-end-range.mjs';
 
 const getPanel = function(type) {
   switch (type) {
     case "daterange":
     case "datetimerange": {
       return DateRangePickPanel;
+    }
+    case "datestartrange": {
+      return DateStartRangePickPanel;
+    }
+    case "dateendrange": {
+      return DateEndRangePickPanel;
     }
     case "monthrange": {
       return MonthRangePickPanel;

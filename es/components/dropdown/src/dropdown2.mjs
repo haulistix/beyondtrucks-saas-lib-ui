@@ -165,6 +165,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       disabled: _ctx.disabled,
       transition: `${_ctx.ns.namespace.value}-zoom-in-top`,
       teleported: _ctx.teleported,
+      "append-to": _ctx.appendTo,
       pure: "",
       "focus-on-target": "",
       persistent: _ctx.persistent,
@@ -213,7 +214,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           }, 8, ["id", "tabindex"])
         ])
       } : void 0
-    ]), 1032, ["role", "effect", "popper-options", "placement", "popper-class", "popper-style", "trigger", "trigger-keys", "trigger-target-el", "show-arrow", "show-after", "hide-after", "virtual-ref", "virtual-triggering", "disabled", "transition", "teleported", "persistent", "onBeforeShow", "onShow", "onBeforeHide"]),
+    ]), 1032, ["role", "effect", "popper-options", "placement", "popper-class", "popper-style", "trigger", "trigger-keys", "trigger-target-el", "show-arrow", "show-after", "hide-after", "virtual-ref", "virtual-triggering", "disabled", "transition", "teleported", "append-to", "persistent", "onBeforeShow", "onShow", "onBeforeHide"]),
     _ctx.splitButton ? (openBlock(), createBlock(_component_el_button_group, { key: 0 }, {
       default: withCtx(() => [
         createVNode(_component_el_button, mergeProps({ ref: "referenceElementRef" }, _ctx.buttonProps, {

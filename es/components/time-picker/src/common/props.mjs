@@ -28,9 +28,9 @@ const timePickerDefaultProps = buildProps({
     type: Boolean,
     default: true
   },
-  isFooter: {
+  teleported: {
     type: Boolean,
-    default: false
+    default: true
   },
   popperClass: {
     type: String,
@@ -121,6 +121,10 @@ const timePickerDefaultProps = buildProps({
   ...useEmptyValuesProps,
   ...useAriaProps(["ariaLabel"]),
   showNow: {
+    type: Boolean,
+    default: true
+  },
+  showFooter: {
     type: Boolean,
     default: true
   },

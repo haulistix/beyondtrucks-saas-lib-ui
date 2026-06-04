@@ -13,6 +13,7 @@ export type GetDisabledMinutes = (hour: number, role: string, comparingDate?: Da
 export type GetDisabledSeconds = (hour: number, minute: number, role: string, comparingDate?: Dayjs) => number[];
 export declare const timePickerDefaultProps: {
     readonly showNow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -72,7 +73,7 @@ export declare const timePickerDefaultProps: {
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -126,6 +127,7 @@ export interface PickerOptions {
     getDefaultValue: () => DayOrDays;
     panelReady: boolean;
     handleClear: () => void;
+    handleClosePick?: () => void;
     handleFocusPicker?: () => void;
 }
 export declare const timePickerRangeTriggerProps: {

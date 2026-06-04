@@ -29,7 +29,6 @@
   @include e(content) {
     position: relative;
     .date-picker-table-header {
-      border-top: 1px solid var(--color-gray-100);
 
       th {
         padding: 8px 0;
@@ -42,8 +41,7 @@
   }
 
   @include e(footer) {
-    border-top: 1px solid getCssVar('datepicker-inner-border-color');
-    padding: 4px 12px;
+    padding: 10px 0 0;
     text-align: right;
     background-color: getCssVar('bg-color', 'overlay');
     position: relative;

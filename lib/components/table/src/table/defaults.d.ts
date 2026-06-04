@@ -35,6 +35,18 @@ type HoverState<T extends DefaultRow> = Nullable<{
     column: TableColumnCtx<T>;
     row: T;
 }>;
+type EditingRow<T extends DefaultRow> = Nullable<{
+    row: T;
+    prop?: string;
+    columnId?: string;
+    draft: T;
+}>;
+type ActiveEditableCell<T extends DefaultRow> = Nullable<{
+    row: T;
+    prop?: string;
+    rowIndex: number;
+    cellIndex: number;
+}>;
 type RIS<T extends DefaultRow> = {
     row: T;
     $index: number;
@@ -49,6 +61,11 @@ type SummaryMethod<T extends DefaultRow> = (data: {
 interface Table<T extends DefaultRow = any> extends ComponentInternalInstance {
     $ready: boolean;
     hoverState?: HoverState<T> | null;
+    editingRow?: Ref<EditingRow<T>>;
+    activeEditableCell?: Ref<ActiveEditableCell<T>>;
+    startRowEdit?: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
+    clearEditingRow?: () => void;
+    applyEditingRow?: () => EditingRow<T>;
     renderExpanded: RenderExpanded<T>;
     store: Store<T>;
     layout: TableLayout<T>;
@@ -130,6 +147,7 @@ interface TableProps<T extends DefaultRow> {
     tableLayout?: Layout;
     scrollbarAlwaysOn?: boolean;
     flexible?: boolean;
+    editable?: boolean;
     showOverflowTooltip?: boolean | TableOverflowTooltipOptions;
     tooltipFormatter?: TableOverflowTooltipFormatter<T>;
     appendFilterPanelTo?: string;
@@ -356,6 +374,10 @@ declare const _default: {
      */
     flexible: BooleanConstructor;
     /**
+     * @description whether editable cells can enter edit mode by clicking the table cell
+     */
+    editable: BooleanConstructor;
+    /**
      * @description whether to hide extra content and show them in a tooltip when hovering on the cell.It will affect all the table columns
      */
     showOverflowTooltip: PropType<TableProps<any>["showOverflowTooltip"]>;
@@ -397,4 +419,4 @@ declare const _default: {
     nativeScrollbar: BooleanConstructor;
 };
 export default _default;
-export type { SummaryMethod, Table, TableProps, TableRefs, ColumnCls, ColumnStyle, CellCls, CellStyle, DefaultRow, TreeNode, RenderRowData, Sort, Filter, TableColumnCtx, TreeProps, TableTooltipData, TableSortOrder, RenderExpanded, };
+export type { SummaryMethod, Table, TableProps, TableRefs, ColumnCls, ColumnStyle, CellCls, CellStyle, DefaultRow, TreeNode, RenderRowData, Sort, Filter, EditingRow, TableColumnCtx, TreeProps, TableTooltipData, TableSortOrder, RenderExpanded, };

@@ -1,5 +1,9 @@
 import 'element-plus/es/components/base/style/css';
 import 'element-plus/theme-chalk/el-table.css';
+import 'element-plus/es/components/button/style/css';
 import 'element-plus/es/components/checkbox/style/css';
+import 'element-plus/es/components/icon/style/css';
 import 'element-plus/es/components/tooltip/style/css';
 import 'element-plus/es/components/scrollbar/style/css';
+import 'element-plus/es/components/input/style/css';
+import 'element-plus/es/components/select/style/css';

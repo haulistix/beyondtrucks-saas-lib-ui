@@ -40,9 +40,9 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly disabled: boolean;
     readonly border: boolean;
     readonly visible: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly showFooter: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly unlinkPanels: boolean;
     readonly showConfirm: boolean;
-    readonly showFooter: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;

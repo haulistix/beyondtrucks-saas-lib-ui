@@ -28,6 +28,7 @@ declare function __VLS_template(): {
 };
 declare const __VLS_component: import("vue").DefineComponent<{
     readonly showNow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -87,7 +88,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -163,6 +164,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     "visible-change": (...args: any[]) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     readonly showNow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -222,7 +224,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -287,17 +289,18 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly fallbackPlacements: import("@popperjs/core").Placement[];
     readonly popperOptions: Partial<Options>;
     readonly popperClass: string;
+    readonly teleported: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly prefixIcon: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>;
     readonly validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly automaticDropdown: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly cycle: number;
     readonly isOk: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly isFooter: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly editable: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly rangeSeparator: string;
     readonly shortcuts: unknown[];
     readonly showNow: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly showFooter: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly showWeekNumber: boolean;
     readonly arrowControl: boolean;
     readonly unlinkPanels: boolean;

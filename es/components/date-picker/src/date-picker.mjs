@@ -118,7 +118,8 @@ var DatePicker = defineComponent({
             "prev-month": slots["prev-month"],
             "next-month": slots["next-month"],
             "prev-year": slots["prev-year"],
-            "next-year": slots["next-year"]
+            "next-year": slots["next-year"],
+            option: slots["option"]
           })]);
         },
         "range-separator": slots["range-separator"],

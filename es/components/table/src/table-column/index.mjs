@@ -121,7 +121,8 @@ var ElTableColumn = defineComponent({
       const renderDefault = (_b = (_a = this.$slots).default) == null ? void 0 : _b.call(_a, {
         row: {},
         column: {},
-        $index: -1
+        $index: -1,
+        cellIndex: -1
       });
       const children = [];
       if (isArray(renderDefault)) {

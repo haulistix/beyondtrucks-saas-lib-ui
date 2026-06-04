@@ -119,7 +119,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       if (!valueEquals(props.modelValue, input)) {
         let formatted;
         if (isArray(input)) {
-          formatted = input.map((item) => formatter(item, props.valueFormat, lang.value));
+          formatted = input.map((item) => item ? formatter(item, props.valueFormat, lang.value) : item);
         } else if (input) {
           formatted = formatter(input, props.valueFormat, lang.value);
         }
@@ -151,7 +151,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       pickerVisible.value = visible;
       let result;
       if (isArray(date)) {
-        result = date.map((_) => _.toDate());
+        result = date.map((_) => _ ? _.toDate() : _);
       } else {
         result = date ? date.toDate() : date;
       }
@@ -199,7 +199,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           }
         }
       }
-      if (isArray(dayOrDays) && dayOrDays.some((day) => !day)) {
+      const isPartialRangeType = props.type === "datestartrange" || props.type === "dateendrange";
+      if (isArray(dayOrDays) && (dayOrDays.every((day) => !day) || !isPartialRangeType && dayOrDays.some((day) => !day))) {
         dayOrDays = [];
       }
       return dayOrDays;
@@ -289,7 +290,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       const inputEl = unrefElement(inputRef);
       if (unrefedPopperEl && (e.target === unrefedPopperEl || e.composedPath().includes(unrefedPopperEl)) || e.target === inputEl || inputEl && e.composedPath().includes(inputEl))
         return;
-      pickerVisible.value = false;
     });
     onBeforeUnmount(() => {
       stophandle == null ? void 0 : stophandle();
@@ -319,7 +319,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const formatToString = (value) => {
       if (!value)
         return null;
-      const res = isArray(value) ? value.map((_) => _.format(props.format)) : value.format(props.format);
+      const res = isArray(value) ? value.map((_) => _ ? _.format(props.format) : "") : value.format(props.format);
       return res;
     };
     const isValidValue = (value) => {
@@ -332,7 +332,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       emitKeydown(event);
       if (code === EVENT_CODE.esc) {
         if (pickerVisible.value === true) {
-          pickerVisible.value = false;
           event.preventDefault();
           event.stopPropagation();
         }
@@ -361,7 +360,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           pickerVisible.value = true;
         } else if (userInput.value === null || userInput.value === "" || isValidValue(parseUserInputToDayjs(displayValue.value))) {
           handleChange();
-          pickerVisible.value = false;
         }
         event.preventDefault();
         event.stopPropagation();
@@ -472,7 +470,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         trigger: "click"
       }, _ctx.$attrs, {
         role: "dialog",
-        teleported: "",
+        teleported: _ctx.teleported,
         transition: `${unref(nsDate).namespace.value}-zoom-in-top`,
         "popper-class": [
           `${unref(nsDate).namespace.value}-picker__popper`,
@@ -708,7 +706,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           })
         ]),
         _: 3
-      }, 16, ["visible", "transition", "popper-class", "popper-options", "fallback-placements", "placement"]);
+      }, 16, ["visible", "teleported", "transition", "popper-class", "popper-options", "fallback-placements", "placement"]);
     };
   }
 });

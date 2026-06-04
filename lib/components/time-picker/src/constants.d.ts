@@ -18,6 +18,8 @@ export declare const DEFAULT_FORMATS_DATEPICKER: {
     monthrange: string;
     yearrange: string;
     daterange: string;
+    datestartrange: string;
+    dateendrange: string;
     datetimerange: string;
 };
 export type TimeUnit = (typeof timeUnits)[number];

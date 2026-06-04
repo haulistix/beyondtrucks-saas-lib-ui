@@ -1,6 +1,6 @@
 import { type SingleOrRange } from 'element-plus/es/components/time-picker';
 declare const _default: import("vue").DefineComponent<{
-    readonly type: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType))[], unknown, unknown, "date", boolean>;
+    readonly type: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType))[], unknown, unknown, "date", boolean>;
     readonly typeList: import("element-plus/es/utils").EpPropFinalized<{
         (arrayLength: number): import("./props/date-picker").SelectType[];
         (...items: import("./props/date-picker").SelectType[]): import("./props/date-picker").SelectType[];
@@ -16,6 +16,7 @@ declare const _default: import("vue").DefineComponent<{
         readonly [Symbol.species]: ArrayConstructor;
     }, unknown, unknown, () => never[], boolean>;
     readonly showNow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -75,7 +76,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -118,7 +119,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     readonly isRange: BooleanConstructor;
 }, () => JSX.Element, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:modelValue"[], "update:modelValue", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    readonly type: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType))[], unknown, unknown, "date", boolean>;
+    readonly type: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType))[], unknown, unknown, "date", boolean>;
     readonly typeList: import("element-plus/es/utils").EpPropFinalized<{
         (arrayLength: number): import("./props/date-picker").SelectType[];
         (...items: import("./props/date-picker").SelectType[]): import("./props/date-picker").SelectType[];
@@ -134,6 +135,7 @@ declare const _default: import("vue").DefineComponent<{
         readonly [Symbol.species]: ArrayConstructor;
     }, unknown, unknown, () => never[], boolean>;
     readonly showNow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -193,7 +195,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;
@@ -240,7 +242,7 @@ declare const _default: import("vue").DefineComponent<{
 }, {
     readonly disabled: boolean;
     readonly tabindex: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => string | number) | (() => string | number) | ((new (...args: any[]) => string | number) | (() => string | number))[], unknown, unknown>;
-    readonly type: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType))[], unknown, unknown>;
+    readonly type: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => import("./date-picker.type").IDatePickerType))[], unknown, unknown>;
     readonly placeholder: string;
     readonly modelValue: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => string | number | Date | string[] | number[] | Date[]) | (() => import("element-plus/es/components/time-picker").ModelValueType) | ((new (...args: any[]) => string | number | Date | string[] | number[] | Date[]) | (() => import("element-plus/es/components/time-picker").ModelValueType))[], unknown, unknown>;
     readonly placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
@@ -249,17 +251,18 @@ declare const _default: import("vue").DefineComponent<{
     readonly fallbackPlacements: import("element-plus").Placement[];
     readonly popperOptions: Partial<import("element-plus").Options>;
     readonly popperClass: string;
+    readonly teleported: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly prefixIcon: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>;
     readonly validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly automaticDropdown: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly cycle: number;
     readonly isOk: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly isFooter: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly editable: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly rangeSeparator: string;
     readonly shortcuts: unknown[];
     readonly showNow: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly showFooter: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly showWeekNumber: boolean;
     readonly arrowControl: boolean;
     readonly unlinkPanels: boolean;

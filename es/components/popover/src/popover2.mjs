@@ -87,6 +87,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         "append-to": _ctx.appendTo,
         persistent: _ctx.persistent,
         "gpu-acceleration": unref(gpuAcceleration),
+        "z-index": _ctx.zIndex,
+        modal: _ctx.modal,
+        "modal-class": _ctx.modalClass,
+        "close-on-click-modal": _ctx.closeOnClickModal,
         "onUpdate:visible": unref(onUpdateVisible),
         onBeforeShow: beforeEnter,
         onBeforeHide: beforeLeave,
@@ -107,7 +111,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           _ctx.$slots.reference ? renderSlot(_ctx.$slots, "reference", { key: 0 }) : createCommentVNode("v-if", true)
         ]),
         _: 3
-      }, 16, ["trigger", "trigger-keys", "placement", "disabled", "visible", "transition", "popper-options", "tabindex", "content", "offset", "show-after", "hide-after", "auto-close", "show-arrow", "aria-label", "effect", "enterable", "popper-class", "popper-style", "teleported", "append-to", "persistent", "gpu-acceleration", "onUpdate:visible"]);
+      }, 16, ["trigger", "trigger-keys", "placement", "disabled", "visible", "transition", "popper-options", "tabindex", "content", "offset", "show-after", "hide-after", "auto-close", "show-arrow", "aria-label", "effect", "enterable", "popper-class", "popper-style", "teleported", "append-to", "persistent", "gpu-acceleration", "z-index", "modal", "modal-class", "close-on-click-modal", "onUpdate:visible"]);
     };
   }
 });

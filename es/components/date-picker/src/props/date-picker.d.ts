@@ -6,7 +6,7 @@ export type SelectType = {
     label: string;
 };
 export declare const datePickerProps: {
-    readonly type: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
+    readonly type: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
     readonly typeList: import("element-plus/es/utils").EpPropFinalized<{
         (arrayLength: number): SelectType[];
         (...items: SelectType[]): SelectType[];
@@ -22,6 +22,7 @@ export declare const datePickerProps: {
         readonly [Symbol.species]: ArrayConstructor;
     }, unknown, unknown, () => never[], boolean>;
     readonly showNow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -81,7 +82,7 @@ export declare const datePickerProps: {
     readonly floatLabel: StringConstructor;
     readonly cycleType: StringConstructor;
     readonly isOk: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly isFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
+    readonly teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly format: StringConstructor;
     readonly valueFormat: StringConstructor;

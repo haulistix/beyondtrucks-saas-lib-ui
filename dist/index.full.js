@@ -16210,7 +16210,7 @@
           stopHandle == null ? void 0 : stopHandle();
         } else {
           ariaHidden.value = false;
-          void updateContentZIndex();
+          updateContentZIndex();
           stopHandle = onClickOutside(popperContentRef, () => {
             if (vue.unref(controlled))
               return;
@@ -16226,7 +16226,7 @@
         flush: "post"
       });
       vue.watch(() => props.zIndex, () => {
-        void updateContentZIndex();
+        updateContentZIndex();
       });
       vue.watch(() => props.content, () => {
         var _a2, _b;

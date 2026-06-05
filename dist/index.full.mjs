@@ -16206,7 +16206,7 @@ const _sfc_main$2o = /* @__PURE__ */ defineComponent({
         stopHandle == null ? void 0 : stopHandle();
       } else {
         ariaHidden.value = false;
-        void updateContentZIndex();
+        updateContentZIndex();
         stopHandle = onClickOutside(popperContentRef, () => {
           if (unref(controlled))
             return;
@@ -16222,7 +16222,7 @@ const _sfc_main$2o = /* @__PURE__ */ defineComponent({
       flush: "post"
     });
     watch(() => props.zIndex, () => {
-      void updateContentZIndex();
+      updateContentZIndex();
     });
     watch(() => props.content, () => {
       var _a2, _b;

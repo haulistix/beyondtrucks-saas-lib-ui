@@ -14753,17 +14753,17 @@ declare const _default_46: DefineComponent<{
     handlePointerLeave: (event: PointerEvent) => void;
     propsAndAttrs: ComputedRef<{
         disabled: boolean;
+        icon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown> | undefined;
+        onClick: ((...args: any[]) => any) | undefined;
+        onPointermove: ((...args: any[]) => any) | undefined;
+        onPointerleave: ((...args: any[]) => any) | undefined;
         command: EpPropMergeType<readonly [
             ObjectConstructor,
             StringConstructor,
             NumberConstructor
         ], unknown, unknown>;
         divided: boolean;
-        icon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown> | undefined;
         textValue: string | undefined;
-        onClick: ((...args: any[]) => any) | undefined;
-        onPointermove: ((...args: any[]) => any) | undefined;
-        onPointerleave: ((...args: any[]) => any) | undefined;
     }>;
 }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("click" | "pointerleave" | "pointermove")[], "click" | "pointerleave" | "pointermove", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     readonly command: EpPropFinalized<readonly [

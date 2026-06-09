@@ -88,10 +88,10 @@
     }
 
     &.available:hover {
-      background-color: getCssVar('color-primary');
+      background-color: var(--color-gray-50);
 
-      .#{$namespace}-date-table-cell__text {
-        color: #fff;
+      .el-date-table-cell__text {
+        color: var(--color-gray-990) !important;
       }
     }
 
@@ -134,7 +134,6 @@
 
     &.start-date .#{$namespace}-date-table-cell__text,
     &.end-date .#{$namespace}-date-table-cell__text {
-      background-color: getCssVar('datepicker-active-color');
 
       &::after {
         position: absolute;

@@ -15,13 +15,13 @@ declare const _default: import("vue").DefineComponent<{
     handlePointerLeave: (event: PointerEvent) => void;
     propsAndAttrs: import("vue").ComputedRef<{
         disabled: boolean;
-        command: import("element-plus/es/utils").EpPropMergeType<readonly [ObjectConstructor, StringConstructor, NumberConstructor], unknown, unknown>;
-        divided: boolean;
         icon: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown> | undefined;
-        textValue: string | undefined;
         onClick: ((...args: any[]) => any) | undefined;
         onPointermove: ((...args: any[]) => any) | undefined;
         onPointerleave: ((...args: any[]) => any) | undefined;
+        command: import("element-plus/es/utils").EpPropMergeType<readonly [ObjectConstructor, StringConstructor, NumberConstructor], unknown, unknown>;
+        divided: boolean;
+        textValue: string | undefined;
     }>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "pointerleave" | "pointermove")[], "click" | "pointerleave" | "pointermove", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     readonly command: import("element-plus/es/utils").EpPropFinalized<readonly [ObjectConstructor, StringConstructor, NumberConstructor], unknown, unknown, () => {}, boolean>;

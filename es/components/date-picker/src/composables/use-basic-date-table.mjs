@@ -195,6 +195,10 @@ const useBasicDateTable = (props, emit) => {
       return;
     focusWithClick = false;
   };
+  const handleMouseLeave = () => {
+    lastRow.value = void 0;
+    lastColumn.value = void 0;
+  };
   const handleRangePick = (newDate) => {
     if (!props.rangeState.selecting || !props.minDate) {
       if (props.cycleType === "week") {
@@ -302,6 +306,7 @@ const useBasicDateTable = (props, emit) => {
     handleMouseUp,
     handleMouseDown,
     handleMouseMove,
+    handleMouseLeave,
     handleFocus
   };
 };

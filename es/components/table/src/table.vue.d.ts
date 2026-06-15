@@ -42,8 +42,17 @@ declare const _default: import("vue").DefineComponent<{
     expandRowKeys: import("vue").PropType<import("./table/defaults").TableProps<any>["expandRowKeys"]>;
     defaultExpandAll: BooleanConstructor;
     defaultSort: import("vue").PropType<import("./table/defaults").TableProps<any>["defaultSort"]>;
-    tooltipEffect: StringConstructor;
-    tooltipOptions: import("vue").PropType<import("./table/defaults").TableProps<any>["tooltipOptions"]>;
+    tooltipEffect: {
+        type: StringConstructor;
+        default: string;
+    };
+    tooltipOptions: {
+        type: import("vue").PropType<import("./table/defaults").TableProps<any>["tooltipOptions"]>;
+        default: () => {
+            showArrow: boolean;
+            popperClass: string;
+        };
+    };
     spanMethod: import("vue").PropType<import("./table/defaults").TableProps<any>["spanMethod"]>;
     selectOnIndeterminate: {
         type: BooleanConstructor;
@@ -840,8 +849,17 @@ declare const _default: import("vue").DefineComponent<{
     expandRowKeys: import("vue").PropType<import("./table/defaults").TableProps<any>["expandRowKeys"]>;
     defaultExpandAll: BooleanConstructor;
     defaultSort: import("vue").PropType<import("./table/defaults").TableProps<any>["defaultSort"]>;
-    tooltipEffect: StringConstructor;
-    tooltipOptions: import("vue").PropType<import("./table/defaults").TableProps<any>["tooltipOptions"]>;
+    tooltipEffect: {
+        type: StringConstructor;
+        default: string;
+    };
+    tooltipOptions: {
+        type: import("vue").PropType<import("./table/defaults").TableProps<any>["tooltipOptions"]>;
+        default: () => {
+            showArrow: boolean;
+            popperClass: string;
+        };
+    };
     spanMethod: import("vue").PropType<import("./table/defaults").TableProps<any>["spanMethod"]>;
     selectOnIndeterminate: {
         type: BooleanConstructor;
@@ -935,6 +953,7 @@ declare const _default: import("vue").DefineComponent<{
     editable: boolean;
     scrollbarAlwaysOn: boolean;
     allowDragLastColumn: boolean;
+    tooltipOptions: Partial<Pick<import("element-plus").ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">> | undefined;
     treeProps: import("./table/defaults").TreeProps | undefined;
     defaultExpandAll: boolean;
     selectOnIndeterminate: boolean;
@@ -943,6 +962,7 @@ declare const _default: import("vue").DefineComponent<{
     showHeader: boolean;
     showSummary: boolean;
     highlightCurrentRow: boolean;
+    tooltipEffect: string;
     rowDraggable: any;
     flexible: boolean;
     scrollbarTabindex: string | number;

@@ -29275,6 +29275,10 @@ const useBasicDateTable = (props, emit) => {
       return;
     focusWithClick = false;
   };
+  const handleMouseLeave = () => {
+    lastRow.value = void 0;
+    lastColumn.value = void 0;
+  };
   const handleRangePick = (newDate) => {
     if (!props.rangeState.selecting || !props.minDate) {
       if (props.cycleType === "week") {
@@ -29382,6 +29386,7 @@ const useBasicDateTable = (props, emit) => {
     handleMouseUp,
     handleMouseDown,
     handleMouseMove,
+    handleMouseLeave,
     handleFocus
   };
 };
@@ -29494,6 +29499,7 @@ const _sfc_main$1A = /* @__PURE__ */ defineComponent({
       handleMouseUp,
       handleMouseDown,
       handleMouseMove,
+      handleMouseLeave,
       handleFocus
     } = useBasicDateTable(props, emit);
     const { tableLabel, tableKls, getCellClasses, getRowKls, weekHeaderClass, t } = useBasicDateTableDOM(props, {
@@ -29515,6 +29521,7 @@ const _sfc_main$1A = /* @__PURE__ */ defineComponent({
         cellpadding: "0",
         role: "grid",
         onClick: unref(handlePickDate),
+        onMouseleave: unref(handleMouseLeave),
         onMousemove: unref(handleMouseMove),
         onMousedown: withModifiers(unref(handleMouseDown), ["prevent"]),
         onMouseup: unref(handleMouseUp)
@@ -29559,7 +29566,7 @@ const _sfc_main$1A = /* @__PURE__ */ defineComponent({
             ], 2);
           }), 128))
         ], 512)
-      ], 42, ["aria-label", "onClick", "onMousemove", "onMousedown", "onMouseup"]);
+      ], 42, ["aria-label", "onClick", "onMouseleave", "onMousemove", "onMousedown", "onMouseup"]);
     };
   }
 });
@@ -32713,19 +32720,20 @@ const _sfc_main$1t = /* @__PURE__ */ defineComponent({
       updateRangeValue(nextMinDate, maxDate.value, keepOpen);
     };
     const handleClear = () => {
-      let valueOnClear = null;
-      if (pickerBase == null ? void 0 : pickerBase.emptyValues) {
-        valueOnClear = pickerBase.emptyValues.valueOnClear.value;
-      }
-      leftDate.value = getDefaultValue(unref(defaultValue), {
-        lang: unref(lang),
-        unit: "month",
-        unlinkPanels: props.unlinkPanels
-      })[0];
-      rightDate.value = leftDate.value.add(1, "month");
-      maxDate.value = void 0;
       minDate.value = void 0;
-      emit("pick", valueOnClear);
+      const remainingMaxDate = maxDate.value;
+      if (remainingMaxDate) {
+        leftDate.value = remainingMaxDate;
+        onParsedValueChanged(void 0, remainingMaxDate);
+      } else {
+        leftDate.value = getDefaultValue(unref(defaultValue), {
+          lang: unref(lang),
+          unit: "month",
+          unlinkPanels: props.unlinkPanels
+        })[0];
+        rightDate.value = leftDate.value.add(1, "month");
+      }
+      emit("pick", getPartialRangePayload([void 0, remainingMaxDate]).pickRange);
     };
     const formatToString = (value) => {
       return isArray$1(value) ? value.map((_) => _ ? _.format(format.value) : "") : value.format(format.value);
@@ -32792,7 +32800,8 @@ const _sfc_main$1t = /* @__PURE__ */ defineComponent({
     emit("set-picker-option", ["formatToString", formatToString]);
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
-        class: normalizeClass(["data-start-range", [unref(ppNs).b(), unref(drpNs).b()]])
+        class: normalizeClass(["data-start-range", [unref(ppNs).b(), unref(drpNs).b()]]),
+        onMouseleave: syncHoverRangeState
       }, [
         createElementVNode("div", {
           class: normalizeClass(unref(ppNs).e("body-wrapper"))
@@ -33105,7 +33114,7 @@ const _sfc_main$1t = /* @__PURE__ */ defineComponent({
             _: 1
           }, 8, ["class"])) : createCommentVNode("v-if", true)
         ], 2)) : createCommentVNode("v-if", true)
-      ], 2);
+      ], 34);
     };
   }
 });
@@ -33282,19 +33291,20 @@ const _sfc_main$1s = /* @__PURE__ */ defineComponent({
       updateRangeValue(minDate.value, nextMaxDate, keepOpen);
     };
     const handleClear = () => {
-      let valueOnClear = null;
-      if (pickerBase == null ? void 0 : pickerBase.emptyValues) {
-        valueOnClear = pickerBase.emptyValues.valueOnClear.value;
-      }
-      leftDate.value = getDefaultValue(unref(defaultValue), {
-        lang: unref(lang),
-        unit: "month",
-        unlinkPanels: props.unlinkPanels
-      })[0];
-      rightDate.value = leftDate.value.add(1, "month");
       maxDate.value = void 0;
-      minDate.value = void 0;
-      emit("pick", valueOnClear);
+      const remainingMinDate = minDate.value;
+      if (remainingMinDate) {
+        leftDate.value = remainingMinDate;
+        onParsedValueChanged(remainingMinDate, void 0);
+      } else {
+        leftDate.value = getDefaultValue(unref(defaultValue), {
+          lang: unref(lang),
+          unit: "month",
+          unlinkPanels: props.unlinkPanels
+        })[0];
+        rightDate.value = leftDate.value.add(1, "month");
+      }
+      emit("pick", getPartialRangePayload([remainingMinDate, void 0]).pickRange);
     };
     const formatToString = (value) => {
       return isArray$1(value) ? value.map((_) => _ ? _.format(format.value) : "") : value.format(format.value);
@@ -33361,7 +33371,8 @@ const _sfc_main$1s = /* @__PURE__ */ defineComponent({
     emit("set-picker-option", ["formatToString", formatToString]);
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
-        class: normalizeClass(["data-end-range", [unref(ppNs).b(), unref(drpNs).b()]])
+        class: normalizeClass(["data-end-range", [unref(ppNs).b(), unref(drpNs).b()]]),
+        onMouseleave: syncHoverRangeState
       }, [
         createElementVNode("div", {
           class: normalizeClass(unref(ppNs).e("body-wrapper"))
@@ -33674,7 +33685,7 @@ const _sfc_main$1s = /* @__PURE__ */ defineComponent({
             _: 1
           }, 8, ["class"])) : createCommentVNode("v-if", true)
         ], 2)) : createCommentVNode("v-if", true)
-      ], 2);
+      ], 34);
     };
   }
 });
@@ -52746,8 +52757,14 @@ var defaultProps$2 = {
   expandRowKeys: Array,
   defaultExpandAll: Boolean,
   defaultSort: Object,
-  tooltipEffect: String,
-  tooltipOptions: Object,
+  tooltipEffect: { type: String, default: "light" },
+  tooltipOptions: {
+    type: Object,
+    default: () => ({
+      showArrow: false,
+      popperClass: "table-tooltip"
+    })
+  },
   spanMethod: Function,
   selectOnIndeterminate: {
     type: Boolean,

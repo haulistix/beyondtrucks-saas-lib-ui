@@ -16739,8 +16739,17 @@ declare const _default_84: DefineComponent<{
     expandRowKeys: PropType<TableProps<any>["expandRowKeys"]>;
     defaultExpandAll: BooleanConstructor;
     defaultSort: PropType<TableProps<any>["defaultSort"]>;
-    tooltipEffect: StringConstructor;
-    tooltipOptions: PropType<TableProps<any>["tooltipOptions"]>;
+    tooltipEffect: {
+        type: StringConstructor;
+        default: string;
+    };
+    tooltipOptions: {
+        type: PropType<TableProps<any>["tooltipOptions"]>;
+        default: () => {
+            showArrow: boolean;
+            popperClass: string;
+        };
+    };
     spanMethod: PropType<TableProps<any>["spanMethod"]>;
     selectOnIndeterminate: {
         type: BooleanConstructor;
@@ -17537,8 +17546,17 @@ declare const _default_84: DefineComponent<{
     expandRowKeys: PropType<TableProps<any>["expandRowKeys"]>;
     defaultExpandAll: BooleanConstructor;
     defaultSort: PropType<TableProps<any>["defaultSort"]>;
-    tooltipEffect: StringConstructor;
-    tooltipOptions: PropType<TableProps<any>["tooltipOptions"]>;
+    tooltipEffect: {
+        type: StringConstructor;
+        default: string;
+    };
+    tooltipOptions: {
+        type: PropType<TableProps<any>["tooltipOptions"]>;
+        default: () => {
+            showArrow: boolean;
+            popperClass: string;
+        };
+    };
     spanMethod: PropType<TableProps<any>["spanMethod"]>;
     selectOnIndeterminate: {
         type: BooleanConstructor;
@@ -17632,6 +17650,7 @@ declare const _default_84: DefineComponent<{
     editable: boolean;
     scrollbarAlwaysOn: boolean;
     allowDragLastColumn: boolean;
+    tooltipOptions: Partial<Pick<ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">> | undefined;
     treeProps: TreeProps | undefined;
     defaultExpandAll: boolean;
     selectOnIndeterminate: boolean;
@@ -17640,6 +17659,7 @@ declare const _default_84: DefineComponent<{
     showHeader: boolean;
     showSummary: boolean;
     highlightCurrentRow: boolean;
+    tooltipEffect: string;
     rowDraggable: any;
     flexible: boolean;
     scrollbarTabindex: string | number;

@@ -29279,6 +29279,10 @@
         return;
       focusWithClick = false;
     };
+    const handleMouseLeave = () => {
+      lastRow.value = void 0;
+      lastColumn.value = void 0;
+    };
     const handleRangePick = (newDate) => {
       if (!props.rangeState.selecting || !props.minDate) {
         if (props.cycleType === "week") {
@@ -29386,6 +29390,7 @@
       handleMouseUp,
       handleMouseDown,
       handleMouseMove,
+      handleMouseLeave,
       handleFocus
     };
   };
@@ -29498,6 +29503,7 @@
         handleMouseUp,
         handleMouseDown,
         handleMouseMove,
+        handleMouseLeave,
         handleFocus
       } = useBasicDateTable(props, emit);
       const { tableLabel, tableKls, getCellClasses, getRowKls, weekHeaderClass, t } = useBasicDateTableDOM(props, {
@@ -29519,6 +29525,7 @@
           cellpadding: "0",
           role: "grid",
           onClick: vue.unref(handlePickDate),
+          onMouseleave: vue.unref(handleMouseLeave),
           onMousemove: vue.unref(handleMouseMove),
           onMousedown: vue.withModifiers(vue.unref(handleMouseDown), ["prevent"]),
           onMouseup: vue.unref(handleMouseUp)
@@ -29563,7 +29570,7 @@
               ], 2);
             }), 128))
           ], 512)
-        ], 42, ["aria-label", "onClick", "onMousemove", "onMousedown", "onMouseup"]);
+        ], 42, ["aria-label", "onClick", "onMouseleave", "onMousemove", "onMousedown", "onMouseup"]);
       };
     }
   });
@@ -32717,19 +32724,20 @@
         updateRangeValue(nextMinDate, maxDate.value, keepOpen);
       };
       const handleClear = () => {
-        let valueOnClear = null;
-        if (pickerBase == null ? void 0 : pickerBase.emptyValues) {
-          valueOnClear = pickerBase.emptyValues.valueOnClear.value;
-        }
-        leftDate.value = getDefaultValue(vue.unref(defaultValue), {
-          lang: vue.unref(lang),
-          unit: "month",
-          unlinkPanels: props.unlinkPanels
-        })[0];
-        rightDate.value = leftDate.value.add(1, "month");
-        maxDate.value = void 0;
         minDate.value = void 0;
-        emit("pick", valueOnClear);
+        const remainingMaxDate = maxDate.value;
+        if (remainingMaxDate) {
+          leftDate.value = remainingMaxDate;
+          onParsedValueChanged(void 0, remainingMaxDate);
+        } else {
+          leftDate.value = getDefaultValue(vue.unref(defaultValue), {
+            lang: vue.unref(lang),
+            unit: "month",
+            unlinkPanels: props.unlinkPanels
+          })[0];
+          rightDate.value = leftDate.value.add(1, "month");
+        }
+        emit("pick", getPartialRangePayload([void 0, remainingMaxDate]).pickRange);
       };
       const formatToString = (value) => {
         return isArray$1(value) ? value.map((_) => _ ? _.format(format.value) : "") : value.format(format.value);
@@ -32796,7 +32804,8 @@
       emit("set-picker-option", ["formatToString", formatToString]);
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", {
-          class: vue.normalizeClass(["data-start-range", [vue.unref(ppNs).b(), vue.unref(drpNs).b()]])
+          class: vue.normalizeClass(["data-start-range", [vue.unref(ppNs).b(), vue.unref(drpNs).b()]]),
+          onMouseleave: syncHoverRangeState
         }, [
           vue.createElementVNode("div", {
             class: vue.normalizeClass(vue.unref(ppNs).e("body-wrapper"))
@@ -33109,7 +33118,7 @@
               _: 1
             }, 8, ["class"])) : vue.createCommentVNode("v-if", true)
           ], 2)) : vue.createCommentVNode("v-if", true)
-        ], 2);
+        ], 34);
       };
     }
   });
@@ -33286,19 +33295,20 @@
         updateRangeValue(minDate.value, nextMaxDate, keepOpen);
       };
       const handleClear = () => {
-        let valueOnClear = null;
-        if (pickerBase == null ? void 0 : pickerBase.emptyValues) {
-          valueOnClear = pickerBase.emptyValues.valueOnClear.value;
-        }
-        leftDate.value = getDefaultValue(vue.unref(defaultValue), {
-          lang: vue.unref(lang),
-          unit: "month",
-          unlinkPanels: props.unlinkPanels
-        })[0];
-        rightDate.value = leftDate.value.add(1, "month");
         maxDate.value = void 0;
-        minDate.value = void 0;
-        emit("pick", valueOnClear);
+        const remainingMinDate = minDate.value;
+        if (remainingMinDate) {
+          leftDate.value = remainingMinDate;
+          onParsedValueChanged(remainingMinDate, void 0);
+        } else {
+          leftDate.value = getDefaultValue(vue.unref(defaultValue), {
+            lang: vue.unref(lang),
+            unit: "month",
+            unlinkPanels: props.unlinkPanels
+          })[0];
+          rightDate.value = leftDate.value.add(1, "month");
+        }
+        emit("pick", getPartialRangePayload([remainingMinDate, void 0]).pickRange);
       };
       const formatToString = (value) => {
         return isArray$1(value) ? value.map((_) => _ ? _.format(format.value) : "") : value.format(format.value);
@@ -33365,7 +33375,8 @@
       emit("set-picker-option", ["formatToString", formatToString]);
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", {
-          class: vue.normalizeClass(["data-end-range", [vue.unref(ppNs).b(), vue.unref(drpNs).b()]])
+          class: vue.normalizeClass(["data-end-range", [vue.unref(ppNs).b(), vue.unref(drpNs).b()]]),
+          onMouseleave: syncHoverRangeState
         }, [
           vue.createElementVNode("div", {
             class: vue.normalizeClass(vue.unref(ppNs).e("body-wrapper"))
@@ -33678,7 +33689,7 @@
               _: 1
             }, 8, ["class"])) : vue.createCommentVNode("v-if", true)
           ], 2)) : vue.createCommentVNode("v-if", true)
-        ], 2);
+        ], 34);
       };
     }
   });
@@ -52750,8 +52761,14 @@
     expandRowKeys: Array,
     defaultExpandAll: Boolean,
     defaultSort: Object,
-    tooltipEffect: String,
-    tooltipOptions: Object,
+    tooltipEffect: { type: String, default: "light" },
+    tooltipOptions: {
+      type: Object,
+      default: () => ({
+        showArrow: false,
+        popperClass: "table-tooltip"
+      })
+    },
     spanMethod: Function,
     selectOnIndeterminate: {
       type: Boolean,

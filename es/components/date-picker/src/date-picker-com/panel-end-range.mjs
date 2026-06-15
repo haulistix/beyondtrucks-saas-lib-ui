@@ -187,19 +187,20 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       updateRangeValue(minDate.value, nextMaxDate, keepOpen);
     };
     const handleClear = () => {
-      let valueOnClear = null;
-      if (pickerBase == null ? void 0 : pickerBase.emptyValues) {
-        valueOnClear = pickerBase.emptyValues.valueOnClear.value;
-      }
-      leftDate.value = getDefaultValue(unref(defaultValue), {
-        lang: unref(lang),
-        unit: "month",
-        unlinkPanels: props.unlinkPanels
-      })[0];
-      rightDate.value = leftDate.value.add(1, "month");
       maxDate.value = void 0;
-      minDate.value = void 0;
-      emit("pick", valueOnClear);
+      const remainingMinDate = minDate.value;
+      if (remainingMinDate) {
+        leftDate.value = remainingMinDate;
+        onParsedValueChanged(remainingMinDate, void 0);
+      } else {
+        leftDate.value = getDefaultValue(unref(defaultValue), {
+          lang: unref(lang),
+          unit: "month",
+          unlinkPanels: props.unlinkPanels
+        })[0];
+        rightDate.value = leftDate.value.add(1, "month");
+      }
+      emit("pick", getPartialRangePayload([remainingMinDate, void 0]).pickRange);
     };
     const formatToString = (value) => {
       return isArray(value) ? value.map((_) => _ ? _.format(format.value) : "") : value.format(format.value);
@@ -266,7 +267,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     emit("set-picker-option", ["formatToString", formatToString]);
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
-        class: normalizeClass(["data-end-range", [unref(ppNs).b(), unref(drpNs).b()]])
+        class: normalizeClass(["data-end-range", [unref(ppNs).b(), unref(drpNs).b()]]),
+        onMouseleave: syncHoverRangeState
       }, [
         createElementVNode("div", {
           class: normalizeClass(unref(ppNs).e("body-wrapper"))
@@ -579,7 +581,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             _: 1
           }, 8, ["class"])) : createCommentVNode("v-if", true)
         ], 2)) : createCommentVNode("v-if", true)
-      ], 2);
+      ], 34);
     };
   }
 });

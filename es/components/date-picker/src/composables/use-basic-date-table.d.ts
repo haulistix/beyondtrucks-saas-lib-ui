@@ -172,6 +172,7 @@ export declare const useBasicDateTable: (props: BasicDateTableProps, emit: Setup
     handleMouseUp: (event: MouseEvent) => void;
     handleMouseDown: (event: MouseEvent) => void;
     handleMouseMove: (event: MouseEvent) => void;
+    handleMouseLeave: () => void;
     handleFocus: (event: FocusEvent) => void;
 };
 export declare const useBasicDateTableDOM: (props: BasicDateTableProps, { isCurrent, isWeekActive, }: Pick<ReturnType<typeof useBasicDateTable>, "isCurrent" | "isWeekActive">) => {

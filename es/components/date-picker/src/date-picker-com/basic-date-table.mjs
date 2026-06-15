@@ -23,6 +23,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       handleMouseUp,
       handleMouseDown,
       handleMouseMove,
+      handleMouseLeave,
       handleFocus
     } = useBasicDateTable(props, emit);
     const { tableLabel, tableKls, getCellClasses, getRowKls, weekHeaderClass, t } = useBasicDateTableDOM(props, {
@@ -44,6 +45,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         cellpadding: "0",
         role: "grid",
         onClick: unref(handlePickDate),
+        onMouseleave: unref(handleMouseLeave),
         onMousemove: unref(handleMouseMove),
         onMousedown: withModifiers(unref(handleMouseDown), ["prevent"]),
         onMouseup: unref(handleMouseUp)
@@ -88,7 +90,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             ], 2);
           }), 128))
         ], 512)
-      ], 42, ["aria-label", "onClick", "onMousemove", "onMousedown", "onMouseup"]);
+      ], 42, ["aria-label", "onClick", "onMouseleave", "onMousemove", "onMousedown", "onMouseup"]);
     };
   }
 });

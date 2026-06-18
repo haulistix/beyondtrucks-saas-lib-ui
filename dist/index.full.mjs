@@ -39888,7 +39888,10 @@ function _sfc_render$c(_ctx, _cache) {
             var _a;
             return [
               createElementVNode("div", { class: "option-wrap-content" }, [
-                renderSlot(_ctx.$slots, "optionIcon"),
+                renderSlot(_ctx.$slots, "optionIcon", {
+                  item: _ctx.rawOption,
+                  value: _ctx.select.props.modelValue
+                }),
                 createElementVNode("span", {
                   class: normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
                 }, toDisplayString(_ctx.currentLabel), 3)
@@ -41333,7 +41336,12 @@ function _sfc_render$9(_ctx, _cache) {
                     key: 0,
                     class: "iconItemWrap"
                   }, [
-                    renderSlot(_ctx.$slots, "itemIcon"),
+                    renderSlot(_ctx.$slots, "itemIcon", {
+                      item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
+                      index: _ctx.getOption(_ctx.modelValue).index,
+                      label: _ctx.currentPlaceholder,
+                      value: _ctx.modelValue
+                    }),
                     createElementVNode("span", { class: "itemPlaceholder" }, toDisplayString(_ctx.currentPlaceholder), 1)
                   ])) : (openBlock(), createElementBlock("span", { key: 1 }, toDisplayString(_ctx.currentPlaceholder), 1))
                 ])

@@ -39892,7 +39892,10 @@
               var _a;
               return [
                 vue.createElementVNode("div", { class: "option-wrap-content" }, [
-                  vue.renderSlot(_ctx.$slots, "optionIcon"),
+                  vue.renderSlot(_ctx.$slots, "optionIcon", {
+                    item: _ctx.rawOption,
+                    value: _ctx.select.props.modelValue
+                  }),
                   vue.createElementVNode("span", {
                     class: vue.normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
                   }, vue.toDisplayString(_ctx.currentLabel), 3)
@@ -41337,7 +41340,12 @@
                       key: 0,
                       class: "iconItemWrap"
                     }, [
-                      vue.renderSlot(_ctx.$slots, "itemIcon"),
+                      vue.renderSlot(_ctx.$slots, "itemIcon", {
+                        item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
+                        index: _ctx.getOption(_ctx.modelValue).index,
+                        label: _ctx.currentPlaceholder,
+                        value: _ctx.modelValue
+                      }),
                       vue.createElementVNode("span", { class: "itemPlaceholder" }, vue.toDisplayString(_ctx.currentPlaceholder), 1)
                     ])) : (vue.openBlock(), vue.createElementBlock("span", { key: 1 }, vue.toDisplayString(_ctx.currentPlaceholder), 1))
                   ])

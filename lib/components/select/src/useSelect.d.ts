@@ -108,6 +108,7 @@ export declare const useSelect: (props: SelectProps, emit: SelectEmits) => {
     toggleMenu: () => void;
     selectOption: () => void;
     getValueKey: (item: OptionPublicInstance | SelectStates["selected"][0]) => any;
+    getLabelSlotItem: (item: SelectStates["selected"][0]) => Record<string, any> | OptionBasic;
     navigateOptions: (direction: "prev" | "next") => void;
     dropdownMenuVisible: import("vue").WritableComputedRef<boolean>;
     showTagList: import("vue").ComputedRef<{
@@ -129,12 +130,13 @@ export declare const useSelect: (props: SelectProps, emit: SelectEmits) => {
     getOption: (value: OptionValue) => {
         index: number;
         value: import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
-        currentLabel: any;
+        currentLabel: string | number | boolean;
+        readonly isDisabled: boolean;
     } | {
         index: number;
         value: import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
-        currentLabel: string | number | boolean;
-        readonly isDisabled: boolean;
+        currentLabel: any;
+        readonly isDisabled?: undefined;
     };
     tagStyle: import("vue").ComputedRef<{
         maxWidth: string;

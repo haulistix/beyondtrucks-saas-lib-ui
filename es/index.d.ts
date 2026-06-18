@@ -15410,6 +15410,7 @@ declare const _default_73: DefineComponent<{
         label: any;
         value: any;
         disabled: any;
+        rawOption: Record<string, any>;
     };
     inputId: Ref<string | undefined>;
     contentId: Ref<string>;
@@ -15515,6 +15516,7 @@ declare const _default_73: DefineComponent<{
     toggleMenu: () => void;
     selectOption: () => void;
     getValueKey: (item: SelectOptionProxy | SelectStates["selected"][0]) => any;
+    getLabelSlotItem: (item: SelectStates["selected"][0]) => Record<string, any> | OptionBasic;
     navigateOptions: (direction: "prev" | "next") => void;
     dropdownMenuVisible: WritableComputedRef<boolean>;
     showTagList: ComputedRef<{
@@ -15536,12 +15538,13 @@ declare const _default_73: DefineComponent<{
     getOption: (value: OptionValue) => {
         index: number;
         value: EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
-        currentLabel: any;
+        currentLabel: string | number | boolean;
+        readonly isDisabled: boolean;
     } | {
         index: number;
         value: EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
-        currentLabel: string | number | boolean;
-        readonly isDisabled: boolean;
+        currentLabel: any;
+        readonly isDisabled?: undefined;
     };
     tagStyle: ComputedRef<{
         maxWidth: string;
@@ -15750,6 +15753,12 @@ declare const _default_74: DefineComponent<{
     showTip: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
+    rawOption: {
+        readonly type: PropType<Record<string, any>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
 }, {
     multiple: ComputedRef<boolean>;
     ns: {
@@ -15772,6 +15781,7 @@ declare const _default_74: DefineComponent<{
     };
     id: Ref<string>;
     containerKls: ComputedRef<string[]>;
+    rawOption: Record<string, any> | undefined;
     currentLabel: ComputedRef<boolean | EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
     itemSelected: ComputedRef<boolean>;
     isDisabled: ComputedRef<boolean>;
@@ -15808,6 +15818,12 @@ declare const _default_74: DefineComponent<{
     showTip: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
+    rawOption: {
+        readonly type: PropType<Record<string, any>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
 }>>, {
     disabled: boolean;
     created: boolean;
@@ -23228,6 +23244,7 @@ declare interface OptionExposed {
     ns: unknown;
     id: unknown;
     containerKls: unknown;
+    rawOption: unknown;
     currentLabel: ComputedRef<string | number | boolean>;
     itemSelected: ComputedRef<boolean>;
     isDisabled: ComputedRef<boolean>;
@@ -23258,6 +23275,12 @@ declare const optionProps: {
     showTip: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
+    rawOption: {
+        readonly type: PropType<Record<string, any>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
 };
 export { Options };
 declare interface OptionStates {

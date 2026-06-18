@@ -27,6 +27,12 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
             placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
             disabled: BooleanConstructor;
+            rawOption: {
+                readonly type: import("vue").PropType<Record<string, any>>;
+                readonly required: false;
+                readonly validator: ((val: unknown) => boolean) | undefined;
+                __epPropKey: true;
+            };
         }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "disabled" | "created" | "placement" | "showTip">;
         $attrs: {
             [x: string]: unknown;
@@ -56,6 +62,12 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
             placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
             disabled: BooleanConstructor;
+            rawOption: {
+                readonly type: import("vue").PropType<Record<string, any>>;
+                readonly required: false;
+                readonly validator: ((val: unknown) => boolean) | undefined;
+                __epPropKey: true;
+            };
         }>>, {
             multiple: import("vue").ComputedRef<boolean>;
             ns: {
@@ -78,6 +90,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             };
             id: import("vue").Ref<string>;
             containerKls: import("vue").ComputedRef<string[]>;
+            rawOption: Record<string, any> | undefined;
             currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
             itemSelected: import("vue").ComputedRef<boolean>;
             isDisabled: import("vue").ComputedRef<boolean>;
@@ -139,6 +152,12 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
         placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
         disabled: BooleanConstructor;
+        rawOption: {
+            readonly type: import("vue").PropType<Record<string, any>>;
+            readonly required: false;
+            readonly validator: ((val: unknown) => boolean) | undefined;
+            __epPropKey: true;
+        };
     }>> & import("vue").ShallowUnwrapRef<{
         multiple: import("vue").ComputedRef<boolean>;
         ns: {
@@ -161,6 +180,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         };
         id: import("vue").Ref<string>;
         containerKls: import("vue").ComputedRef<string[]>;
+        rawOption: Record<string, any> | undefined;
         currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
         itemSelected: import("vue").ComputedRef<boolean>;
         isDisabled: import("vue").ComputedRef<boolean>;
@@ -201,6 +221,12 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
     showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
+    rawOption: {
+        readonly type: import("vue").PropType<Record<string, any>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
 }>>, {
     multiple: import("vue").ComputedRef<boolean>;
     ns: {
@@ -223,6 +249,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
     };
     id: import("vue").Ref<string>;
     containerKls: import("vue").ComputedRef<string[]>;
+    rawOption: Record<string, any> | undefined;
     currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
     itemSelected: import("vue").ComputedRef<boolean>;
     isDisabled: import("vue").ComputedRef<boolean>;
@@ -275,6 +302,12 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
             placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
             disabled: BooleanConstructor;
+            rawOption: {
+                readonly type: import("vue").PropType<Record<string, any>>;
+                readonly required: false;
+                readonly validator: ((val: unknown) => boolean) | undefined;
+                __epPropKey: true;
+            };
         }>> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "disabled" | "created" | "placement" | "showTip">;
         $attrs: {
             [x: string]: unknown;
@@ -304,6 +337,12 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
             placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
             disabled: BooleanConstructor;
+            rawOption: {
+                readonly type: import("vue").PropType<Record<string, any>>;
+                readonly required: false;
+                readonly validator: ((val: unknown) => boolean) | undefined;
+                __epPropKey: true;
+            };
         }>>, {
             multiple: import("vue").ComputedRef<boolean>;
             ns: {
@@ -326,6 +365,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             };
             id: import("vue").Ref<string>;
             containerKls: import("vue").ComputedRef<string[]>;
+            rawOption: Record<string, any> | undefined;
             currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
             itemSelected: import("vue").ComputedRef<boolean>;
             isDisabled: import("vue").ComputedRef<boolean>;
@@ -387,6 +427,12 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
         placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
         disabled: BooleanConstructor;
+        rawOption: {
+            readonly type: import("vue").PropType<Record<string, any>>;
+            readonly required: false;
+            readonly validator: ((val: unknown) => boolean) | undefined;
+            __epPropKey: true;
+        };
     }>> & import("vue").ShallowUnwrapRef<{
         multiple: import("vue").ComputedRef<boolean>;
         ns: {
@@ -409,6 +455,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         };
         id: import("vue").Ref<string>;
         containerKls: import("vue").ComputedRef<string[]>;
+        rawOption: Record<string, any> | undefined;
         currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
         itemSelected: import("vue").ComputedRef<boolean>;
         isDisabled: import("vue").ComputedRef<boolean>;
@@ -449,6 +496,12 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
     showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
+    rawOption: {
+        readonly type: import("vue").PropType<Record<string, any>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
 }>>, {
     multiple: import("vue").ComputedRef<boolean>;
     ns: {
@@ -471,6 +524,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
     };
     id: import("vue").Ref<string>;
     containerKls: import("vue").ComputedRef<string[]>;
+    rawOption: Record<string, any> | undefined;
     currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
     itemSelected: import("vue").ComputedRef<boolean>;
     isDisabled: import("vue").ComputedRef<boolean>;

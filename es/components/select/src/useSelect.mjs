@@ -1,5 +1,5 @@
 import { reactive, ref, computed, watch, watchEffect, nextTick, onMounted } from 'vue';
-import { castArray, isEqual, get, findLastIndex, isNil } from 'lodash-unified';
+import { castArray, isEqual, findLastIndex, get, isNil } from 'lodash-unified';
 import { isIOS, isClient, useDebounceFn, useResizeObserver } from '@vueuse/core';
 import { useLocale } from '../../../hooks/use-locale/index.mjs';
 import { useId } from '../../../hooks/use-id/index.mjs';
@@ -263,33 +263,54 @@ const useSelect = (props, emit) => {
     }
     states.selected = result;
   };
-  const getOption = (value) => {
-    let option;
+  const findCachedOption = (value) => {
     const isObjectValue = isPlainObject(value);
     for (let i = states.cachedOptions.size - 1; i >= 0; i--) {
       const cachedOption = cachedOptionsArray.value[i];
       const isEqualValue = isObjectValue ? get(cachedOption.value, props.valueKey) === get(value, props.valueKey) : cachedOption.value === value;
       if (isEqualValue) {
-        option = {
-          index: optionsArray.value.filter((opt) => !opt.created).indexOf(cachedOption),
-          value,
-          currentLabel: cachedOption.currentLabel,
-          get isDisabled() {
-            return cachedOption.isDisabled;
-          }
-        };
-        break;
+        return cachedOption;
       }
     }
-    if (option)
-      return option;
+  };
+  const getOption = (value) => {
+    const isObjectValue = isPlainObject(value);
+    const cachedOption = findCachedOption(value);
+    if (cachedOption) {
+      return {
+        index: optionsArray.value.filter((opt) => !opt.created).indexOf(cachedOption),
+        value,
+        currentLabel: cachedOption.currentLabel,
+        get isDisabled() {
+          return cachedOption.isDisabled;
+        }
+      };
+    }
     const label = isObjectValue ? value.label : value != null ? value : "";
-    const newOption = {
+    return {
       index: -1,
       value,
       currentLabel: label
     };
-    return newOption;
+  };
+  const getLabelSlotItem = (item) => {
+    var _a, _b;
+    const cachedOption = findCachedOption(item.value);
+    if (cachedOption) {
+      const optionSource = cachedOption;
+      if (isPlainObject(optionSource.rawOption)) {
+        return optionSource.rawOption;
+      }
+      if (isPlainObject(optionSource.value)) {
+        return optionSource.value;
+      }
+      const slotItem = {
+        ...(_a = optionSource.$attrs) != null ? _a : {},
+        ...(_b = optionSource.$props) != null ? _b : cachedOption
+      };
+      return Object.keys(slotItem).length ? slotItem : item;
+    }
+    return isPlainObject(item.value) ? item.value : item;
   };
   const updateHoveringIndex = () => {
     states.hoveringIndex = optionsArray.value.findIndex((item) => states.selected.some((selected) => getValueKey(selected) === getValueKey(item)));
@@ -642,6 +663,7 @@ const useSelect = (props, emit) => {
     toggleMenu,
     selectOption,
     getValueKey,
+    getLabelSlotItem,
     navigateOptions,
     dropdownMenuVisible,
     showTagList,

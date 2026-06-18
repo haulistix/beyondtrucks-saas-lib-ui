@@ -41,6 +41,7 @@ export interface OptionExposed {
     ns: unknown;
     id: unknown;
     containerKls: unknown;
+    rawOption: unknown;
     currentLabel: ComputedRef<string | number | boolean>;
     itemSelected: ComputedRef<boolean>;
     isDisabled: ComputedRef<boolean>;

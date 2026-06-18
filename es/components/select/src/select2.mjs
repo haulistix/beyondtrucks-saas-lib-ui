@@ -4,7 +4,7 @@ import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { useProps } from '../../select-v2/src/useProps.mjs';
-import Option from './option2.mjs';
+import Option from './option.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
 import { useSelect } from './useSelect.mjs';
 import { selectKey } from './token.mjs';
@@ -75,7 +75,8 @@ const _sfc_main = defineComponent({
     const getOptionProps = (option) => ({
       label: getLabel(option),
       value: getValue(option),
-      disabled: getDisabled(option)
+      disabled: getDisabled(option),
+      rawOption: option
     });
     const flatTreeSelectData = (data) => {
       return data.reduce((acc, item) => {
@@ -99,6 +100,7 @@ const _sfc_main = defineComponent({
             const treeData = ((_a = item.props) == null ? void 0 : _a.data) || [];
             const flatData = flatTreeSelectData(treeData);
             flatData.forEach((treeItem) => {
+              treeItem.rawOption = treeItem;
               treeItem.currentLabel = treeItem.label || (isObject(treeItem.value) ? "" : treeItem.value);
               API.onOptionCreate(treeItem);
             });
@@ -268,6 +270,7 @@ function _sfc_render(_ctx, _cache) {
                           class: normalizeClass(_ctx.nsSelect.e("tags-text"))
                         }, [
                           renderSlot(_ctx.$slots, "label", {
+                            item: _ctx.getLabelSlotItem(item),
                             index: item.index,
                             label: item.currentLabel,
                             value: item.value
@@ -339,6 +342,7 @@ function _sfc_render(_ctx, _cache) {
                                 class: normalizeClass(_ctx.nsSelect.e("tags-text"))
                               }, [
                                 renderSlot(_ctx.$slots, "label", {
+                                  item: _ctx.getLabelSlotItem(item),
                                   index: item.index,
                                   label: item.currentLabel,
                                   value: item.value
@@ -416,11 +420,18 @@ function _sfc_render(_ctx, _cache) {
                 ])
               }, [
                 renderSlot(_ctx.$slots, "label", {
+                  item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
                   index: _ctx.getOption(_ctx.modelValue).index,
                   label: _ctx.currentPlaceholder,
                   value: _ctx.modelValue
                 }, () => [
-                  createElementVNode("span", null, toDisplayString(_ctx.currentPlaceholder), 1)
+                  _ctx.$slots.itemIcon ? (openBlock(), createElementBlock("div", {
+                    key: 0,
+                    class: "iconItemWrap"
+                  }, [
+                    renderSlot(_ctx.$slots, "itemIcon"),
+                    createElementVNode("span", { class: "itemPlaceholder" }, toDisplayString(_ctx.currentPlaceholder), 1)
+                  ])) : (openBlock(), createElementBlock("span", { key: 1 }, toDisplayString(_ctx.currentPlaceholder), 1))
                 ])
               ], 2)) : createCommentVNode("v-if", true)
             ], 2),

@@ -39661,7 +39661,10 @@
       values: Ee,
       default: "left"
     },
-    disabled: Boolean
+    disabled: Boolean,
+    rawOption: {
+      type: definePropType(Object)
+    }
   });
 
   function useOption$1(props, states) {
@@ -39838,6 +39841,7 @@
         ns,
         id,
         containerKls,
+        rawOption: props.rawOption,
         currentLabel,
         itemSelected,
         isDisabled,
@@ -40224,33 +40228,54 @@
       }
       states.selected = result;
     };
-    const getOption = (value) => {
-      let option;
+    const findCachedOption = (value) => {
       const isObjectValue = isPlainObject$1(value);
       for (let i = states.cachedOptions.size - 1; i >= 0; i--) {
         const cachedOption = cachedOptionsArray.value[i];
         const isEqualValue = isObjectValue ? get(cachedOption.value, props.valueKey) === get(value, props.valueKey) : cachedOption.value === value;
         if (isEqualValue) {
-          option = {
-            index: optionsArray.value.filter((opt) => !opt.created).indexOf(cachedOption),
-            value,
-            currentLabel: cachedOption.currentLabel,
-            get isDisabled() {
-              return cachedOption.isDisabled;
-            }
-          };
-          break;
+          return cachedOption;
         }
       }
-      if (option)
-        return option;
+    };
+    const getOption = (value) => {
+      const isObjectValue = isPlainObject$1(value);
+      const cachedOption = findCachedOption(value);
+      if (cachedOption) {
+        return {
+          index: optionsArray.value.filter((opt) => !opt.created).indexOf(cachedOption),
+          value,
+          currentLabel: cachedOption.currentLabel,
+          get isDisabled() {
+            return cachedOption.isDisabled;
+          }
+        };
+      }
       const label = isObjectValue ? value.label : value != null ? value : "";
-      const newOption = {
+      return {
         index: -1,
         value,
         currentLabel: label
       };
-      return newOption;
+    };
+    const getLabelSlotItem = (item) => {
+      var _a, _b;
+      const cachedOption = findCachedOption(item.value);
+      if (cachedOption) {
+        const optionSource = cachedOption;
+        if (isPlainObject$1(optionSource.rawOption)) {
+          return optionSource.rawOption;
+        }
+        if (isPlainObject$1(optionSource.value)) {
+          return optionSource.value;
+        }
+        const slotItem = {
+          ...(_a = optionSource.$attrs) != null ? _a : {},
+          ...(_b = optionSource.$props) != null ? _b : cachedOption
+        };
+        return Object.keys(slotItem).length ? slotItem : item;
+      }
+      return isPlainObject$1(item.value) ? item.value : item;
     };
     const updateHoveringIndex = () => {
       states.hoveringIndex = optionsArray.value.findIndex((item) => states.selected.some((selected) => getValueKey(selected) === getValueKey(item)));
@@ -40603,6 +40628,7 @@
       toggleMenu,
       selectOption,
       getValueKey,
+      getLabelSlotItem,
       navigateOptions,
       dropdownMenuVisible,
       showTagList,
@@ -40957,7 +40983,8 @@
       const getOptionProps = (option) => ({
         label: getLabel(option),
         value: getValue(option),
-        disabled: getDisabled(option)
+        disabled: getDisabled(option),
+        rawOption: option
       });
       const flatTreeSelectData = (data) => {
         return data.reduce((acc, item) => {
@@ -40981,6 +41008,7 @@
               const treeData = ((_a = item.props) == null ? void 0 : _a.data) || [];
               const flatData = flatTreeSelectData(treeData);
               flatData.forEach((treeItem) => {
+                treeItem.rawOption = treeItem;
                 treeItem.currentLabel = treeItem.label || (isObject$1(treeItem.value) ? "" : treeItem.value);
                 API.onOptionCreate(treeItem);
               });
@@ -41150,6 +41178,7 @@
                             class: vue.normalizeClass(_ctx.nsSelect.e("tags-text"))
                           }, [
                             vue.renderSlot(_ctx.$slots, "label", {
+                              item: _ctx.getLabelSlotItem(item),
                               index: item.index,
                               label: item.currentLabel,
                               value: item.value
@@ -41221,6 +41250,7 @@
                                   class: vue.normalizeClass(_ctx.nsSelect.e("tags-text"))
                                 }, [
                                   vue.renderSlot(_ctx.$slots, "label", {
+                                    item: _ctx.getLabelSlotItem(item),
                                     index: item.index,
                                     label: item.currentLabel,
                                     value: item.value
@@ -41298,11 +41328,18 @@
                   ])
                 }, [
                   vue.renderSlot(_ctx.$slots, "label", {
+                    item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
                     index: _ctx.getOption(_ctx.modelValue).index,
                     label: _ctx.currentPlaceholder,
                     value: _ctx.modelValue
                   }, () => [
-                    vue.createElementVNode("span", null, vue.toDisplayString(_ctx.currentPlaceholder), 1)
+                    _ctx.$slots.itemIcon ? (vue.openBlock(), vue.createElementBlock("div", {
+                      key: 0,
+                      class: "iconItemWrap"
+                    }, [
+                      vue.renderSlot(_ctx.$slots, "itemIcon"),
+                      vue.createElementVNode("span", { class: "itemPlaceholder" }, vue.toDisplayString(_ctx.currentPlaceholder), 1)
+                    ])) : (vue.openBlock(), vue.createElementBlock("span", { key: 1 }, vue.toDisplayString(_ctx.currentPlaceholder), 1))
                   ])
                 ], 2)) : vue.createCommentVNode("v-if", true)
               ], 2),

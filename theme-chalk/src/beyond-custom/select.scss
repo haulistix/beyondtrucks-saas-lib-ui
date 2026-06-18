@@ -51,6 +51,20 @@
   }
 
   .el-select__wrapper {
+
+    .iconItemWrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .itemPlaceholder {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+    }
+
     &.is-disabled {
       border-color: var(--color-gray-100);
       box-shadow: none;

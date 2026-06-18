@@ -137,6 +137,7 @@ declare const _default: import("vue").DefineComponent<{
         label: any;
         value: any;
         disabled: any;
+        rawOption: Record<string, any>;
     };
     inputId: import("vue").Ref<string | undefined>;
     contentId: import("vue").Ref<string>;
@@ -242,6 +243,7 @@ declare const _default: import("vue").DefineComponent<{
     toggleMenu: () => void;
     selectOption: () => void;
     getValueKey: (item: import("./type").OptionPublicInstance | import("./type").SelectStates["selected"][0]) => any;
+    getLabelSlotItem: (item: import("./type").SelectStates["selected"][0]) => Record<string, any> | import("./type").OptionBasic;
     navigateOptions: (direction: "prev" | "next") => void;
     dropdownMenuVisible: import("vue").WritableComputedRef<boolean>;
     showTagList: import("vue").ComputedRef<{
@@ -263,12 +265,13 @@ declare const _default: import("vue").DefineComponent<{
     getOption: (value: import("./type").OptionValue) => {
         index: number;
         value: import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
-        currentLabel: any;
+        currentLabel: string | number | boolean;
+        readonly isDisabled: boolean;
     } | {
         index: number;
         value: import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
-        currentLabel: string | number | boolean;
-        readonly isDisabled: boolean;
+        currentLabel: any;
+        readonly isDisabled?: undefined;
     };
     tagStyle: import("vue").ComputedRef<{
         maxWidth: string;

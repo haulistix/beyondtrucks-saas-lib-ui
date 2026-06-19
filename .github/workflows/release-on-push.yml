@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Prepare release metadata
         id: prepare
@@ -61,7 +61,7 @@ jobs:
           target_commitish: ${{ steps.bump.outputs.sha }}
           name: ${{ steps.prepare.outputs.release_title }}
           body: |
-            Version: v${{ steps.prepare.outputs.version }}
+            Version: ${{ steps.prepare.outputs.version }}
             Source Commit: ${{ github.sha }}
           files: ${{ env.ARCHIVE_PATH }}
           overwrite_files: true

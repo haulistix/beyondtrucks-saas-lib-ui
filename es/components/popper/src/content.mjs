@@ -48,7 +48,7 @@ const popperContentProps = buildProps({
   },
   effect: {
     type: definePropType(String),
-    default: "dark"
+    default: "light"
   },
   visible: Boolean,
   enterable: {

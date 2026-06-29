@@ -74,6 +74,8 @@ var ElTableColumn = defineComponent({
         "labelClassName",
         "type",
         "renderHeader",
+        "diagonalHeader",
+        "allowInsertBeforeFirstColumn",
         "formatter",
         "fixed",
         "resizable"

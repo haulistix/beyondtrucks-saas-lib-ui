@@ -18,6 +18,11 @@ declare const _default: import("vue").DefineComponent<{
         default: string;
     };
     renderHeader: import("vue").PropType<TableColumnCtx<any>["renderHeader"]>;
+    diagonalHeader: import("vue").PropType<TableColumnCtx<any>["diagonalHeader"]>;
+    allowInsertBeforeFirstColumn: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     sortable: {
         type: (BooleanConstructor | StringConstructor)[];
         default: boolean;
@@ -74,6 +79,11 @@ declare const _default: import("vue").DefineComponent<{
         default: string;
     };
     renderHeader: import("vue").PropType<TableColumnCtx<any>["renderHeader"]>;
+    diagonalHeader: import("vue").PropType<TableColumnCtx<any>["diagonalHeader"]>;
+    allowInsertBeforeFirstColumn: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     sortable: {
         type: (BooleanConstructor | StringConstructor)[];
         default: boolean;
@@ -121,5 +131,6 @@ declare const _default: import("vue").DefineComponent<{
     sortable: string | boolean;
     reserveSelection: boolean;
     filterMultiple: boolean;
+    allowInsertBeforeFirstColumn: boolean;
 }>;
 export default _default;

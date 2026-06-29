@@ -100,6 +100,8 @@ var defaultProps = {
     type: [Number, String],
     default: void 0
   },
+  showAddColumnTrigger: Boolean,
+  showAddRowTrigger: Boolean,
   allowDragLastColumn: {
     type: Boolean,
     default: true

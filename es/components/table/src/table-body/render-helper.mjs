@@ -8,7 +8,7 @@ import TdWrapper from './td-wrapper.mjs';
 import { useNamespace } from '../../../../hooks/use-namespace/index.mjs';
 import { isBoolean, isPropAbsent } from '../../../../utils/types.mjs';
 
-function useRender(props) {
+function useRender(props, emit) {
   const parent = inject(TABLE_INJECTION_KEY);
   const ns = useNamespace("table");
   const {
@@ -18,11 +18,13 @@ function useRender(props) {
     handleContextMenu,
     handleMouseEnter,
     handleMouseLeave,
+    handleRowMouseMove,
+    handleRowMouseOut,
     handleCellMouseEnter,
     handleCellMouseLeave,
     tooltipContent,
     tooltipTrigger
-  } = useEvents(props);
+  } = useEvents(props, emit);
   const {
     getRowStyle,
     getRowClass,
@@ -79,7 +81,9 @@ function useRender(props) {
       onClick: ($event) => handleClick($event, row),
       onContextmenu: ($event) => handleContextMenu($event, row),
       onMouseenter: () => handleMouseEnter($index),
-      onMouseleave: handleMouseLeave
+      onMouseleave: handleMouseLeave,
+      onMousemove: ($event) => handleRowMouseMove($event, row, $index),
+      onMouseout: ($event) => handleRowMouseOut($event)
     }, columns.value.map((column, cellIndex) => {
       const { rowspan, colspan } = getSpan(row, column, $index, cellIndex);
       if (!rowspan || !colspan) {

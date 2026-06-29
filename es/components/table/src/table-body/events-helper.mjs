@@ -2,12 +2,16 @@ import { inject, ref, h, nextTick } from 'vue';
 import { debounce } from 'lodash-unified';
 import { getCell, getColumnByCell, toggleRowClassByCell, removePopper, getPadding, isGreaterThan, createTablePopper } from '../util.mjs';
 import { TABLE_INJECTION_KEY } from '../tokens.mjs';
+import { isElement } from '../../../../utils/types.mjs';
 import { addClass, hasClass, removeClass } from '../../../../utils/dom/style.mjs';
 
-function useEvents(props) {
+function useEvents(props, emit) {
   const parent = inject(TABLE_INJECTION_KEY);
   const tooltipContent = ref("");
   const tooltipTrigger = ref(h("div"));
+  const clearAddRowTrigger = () => {
+    emit("update-add-row-trigger", null);
+  };
   const isRowEditLocked = (row) => {
     var _a;
     const editingRow = (_a = parent == null ? void 0 : parent.editingRow) == null ? void 0 : _a.value;
@@ -76,6 +80,53 @@ function useEvents(props) {
     var _a;
     (_a = props.store) == null ? void 0 : _a.commit("setHoverRow", null);
   }, 30);
+  const handleRowMouseMove = (event, row, rowIndex) => {
+    var _a;
+    if (!(parent == null ? void 0 : parent.props.showAddRowTrigger) || !(parent == null ? void 0 : parent.props.border)) {
+      clearAddRowTrigger();
+      return;
+    }
+    const currentTarget = event.currentTarget;
+    const tableRect = (_a = parent == null ? void 0 : parent.vnode.el) == null ? void 0 : _a.getBoundingClientRect();
+    if (!currentTarget || !tableRect)
+      return;
+    const rect = currentTarget.getBoundingClientRect();
+    const nearTop = rect.height > 12 && event.clientY - rect.top < 8;
+    const nearBottom = rect.height > 12 && rect.bottom - event.clientY < 8;
+    if (nearTop) {
+      emit("update-add-row-trigger", {
+        row,
+        rowIndex,
+        insertIndex: rowIndex,
+        top: rect.top - tableRect.top,
+        placement: "below"
+      });
+    } else if (nearBottom) {
+      emit("update-add-row-trigger", {
+        row,
+        rowIndex,
+        insertIndex: rowIndex + 1,
+        top: rect.bottom - tableRect.top,
+        placement: "above"
+      });
+    } else {
+      clearAddRowTrigger();
+    }
+  };
+  const handleRowMouseOut = (event) => {
+    var _a, _b;
+    const currentTarget = event.currentTarget;
+    const relatedTarget = event.relatedTarget;
+    const namespace = (_b = (_a = parent == null ? void 0 : parent.vnode.el) == null ? void 0 : _a.dataset.prefix) != null ? _b : "el";
+    const triggerSelector = `.${namespace}-table__add-row-trigger`;
+    if (currentTarget && relatedTarget && currentTarget.contains(relatedTarget)) {
+      return;
+    }
+    if (isElement(relatedTarget) && relatedTarget.closest(triggerSelector)) {
+      return;
+    }
+    clearAddRowTrigger();
+  };
   const handleCellMouseEnter = (event, row, tooltipOptions) => {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     if (!parent)
@@ -146,6 +197,8 @@ function useEvents(props) {
     handleContextMenu,
     handleMouseEnter,
     handleMouseLeave,
+    handleRowMouseMove,
+    handleRowMouseOut,
     handleCellMouseEnter,
     handleCellMouseLeave,
     tooltipContent,

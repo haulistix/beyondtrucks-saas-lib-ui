@@ -26,6 +26,14 @@
     height: 100%;
   }
 
+  @include m(with-add-column-trigger) {
+    overflow: visible;
+  }
+
+  @include m(with-add-row-trigger) {
+    overflow: visible;
+  }
+
   tbody {
     &:focus-visible {
       outline: none;
@@ -309,6 +317,42 @@
       margin-right: 5px;
       vertical-align: middle;
     }
+
+    &.is-diagonal-header {
+      padding: 0;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom left,
+            transparent calc(50% - 0.5px),
+            var(--color-gray-300) calc(50% - 0.5px),
+            var(--color-gray-300) calc(50% + 0.5px),
+            transparent calc(50% + 0.5px)
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+    }
+  }
+
+  @include e(diagonal-header) {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    line-height: normal;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  @include e(diagonal-header-text) {
+    font-size: 11px;
+    color: var(--color-gray-500);
   }
 
   td.#{$namespace}-table__cell {
@@ -656,6 +700,73 @@
     width: 0;
     border-left: getCssVar('table-border');
     z-index: calc(getCssVar('table-index') + 9);
+  }
+
+  @include e(add-column-trigger) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: calc(getCssVar('table-index') + 10);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      background-color: var(--color-blue-600);
+    }
+  }
+
+  @include e(add-column-trigger-button) {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+    transition: transform getCssVar('transition-duration-fast') ease;
+
+    .el-icon {
+      margin-left: 0 !important;
+    }
+  }
+
+  @include e(add-row-trigger) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: calc(getCssVar('table-index') + 10);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 2px;
+      background-color: var(--color-blue-600);
+    }
+  }
+
+  @include e(add-row-trigger-button) {
+    position: absolute;
+    top: -50%;
+    transform: translateY(-50%);
+    left: -16px;
+    pointer-events: auto;
+    transition: transform getCssVar('transition-duration-fast') ease;
+
+
+    .el-icon {
+      margin-left: 0 !important;
+    }
   }
 
   @include e(column-filter-trigger) {

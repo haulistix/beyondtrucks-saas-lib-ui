@@ -47,6 +47,8 @@ function useWatcher(owner, props_) {
       "formatter",
       "className",
       "labelClassName",
+      "diagonalHeader",
+      "allowInsertBeforeFirstColumn",
       "filterClassName",
       "showOverflowTooltip",
       "tooltipFormatter",

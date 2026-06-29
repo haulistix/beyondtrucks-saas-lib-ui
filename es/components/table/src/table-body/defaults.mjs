@@ -30,7 +30,8 @@ const defaultProps = {
   onDragstart: {
     type: Function,
     default: void 0
-  }
+  },
+  showAddRowTrigger: Boolean
 };
 
 export { defaultProps as default };

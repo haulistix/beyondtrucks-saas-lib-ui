@@ -24,6 +24,7 @@ import { ExtractPropTypes } from "vue";
 import type { h } from "vue";
 import type { InjectionKey } from "vue";
 import { Instance as Instance_2 } from "@popperjs/core";
+import { InternalRuleItem } from "async-validator";
 import type { MaybeRef } from "@vueuse/core";
 import { MemoizedFn } from "memoize-one";
 import { MemoizedFunction } from "lodash";
@@ -44,13 +45,14 @@ import type { Plugin as Plugin_2 } from "vue";
 import { PositioningStrategy } from "@popperjs/core";
 import { PromisifyFn } from "@vueuse/shared";
 import { PropType } from "vue";
-import { Reactive } from "@vue/reactivity";
 import { Ref } from "vue";
 import { RendererElement } from "vue";
 import { RendererNode } from "vue";
 import { RGBA } from "@ctrl/tinycolor";
 import { RouteLocationRaw } from "vue-router";
+import { Rule } from "async-validator";
 import type { RuleItem } from "async-validator";
+import { RuleType } from "async-validator";
 import type { SetupContext } from "vue";
 import { ShallowRef } from "vue";
 import { ShallowUnwrapRef } from "vue";
@@ -62,12 +64,16 @@ import type { State } from "@popperjs/core";
 import { StateRects } from "@popperjs/core";
 import type { Strategy } from "@floating-ui/dom";
 import { StyleValue } from "vue";
+import { SyncValidateResult } from "async-validator";
 import type { ToRefs } from "vue";
 import { TransitionProps } from "vue";
 import type { UnwrapNestedRefs } from "vue";
 import type { UnwrapRef } from "vue";
-import type { ValidateError } from "async-validator";
+import { ValidateError } from "async-validator";
 import type { ValidateFieldsError } from "async-validator";
+import { ValidateOption } from "async-validator";
+import { Value as Value_2 } from "async-validator";
+import { Values } from "async-validator";
 import type { VirtualElement } from "@floating-ui/dom";
 import type { VirtualElement as VirtualElement_2 } from "@popperjs/core";
 import { VisualViewport as VisualViewport_2 } from "@popperjs/core";
@@ -3248,7 +3254,580 @@ declare const __VLS_component_43: DefineComponent<{
     /**
     * @description All fields context.
     */
-    fields: Reactive<FormItemContext[]>;
+    fields: {
+        $el: HTMLDivElement | undefined;
+        size: ComponentSize;
+        validateMessage: string;
+        validateState: FormItemValidateState;
+        isGroup: boolean;
+        labelId: string;
+        inputIds: string[];
+        hasLabel: boolean;
+        fieldValue: any;
+        propString: string;
+        addInputId: (id: string) => void;
+        removeInputId: (id: string) => void;
+        validate: (trigger: string, callback?: FormValidateCallback) => FormValidationResult;
+        resetField: () => void;
+        clearValidate: () => void;
+        readonly alwaysShowError: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+        readonly labelWidth: EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>;
+        readonly labelPosition: EpPropMergeType<StringConstructor, "" | "left" | "right" | "top", unknown>;
+        readonly showMessage: boolean;
+        readonly label?: string | undefined;
+        readonly prop?: EpPropMergeType<(new (...args: any[]) => string | string[]) | (() => FormItemProp) | ((new (...args: any[]) => string | string[]) | (() => FormItemProp))[], unknown, unknown> | undefined;
+        readonly required?: EpPropMergeType<BooleanConstructor, unknown, unknown> | undefined;
+        readonly error?: string | undefined;
+        readonly rules?: {
+            trigger?: Arrayable<string> | undefined;
+            type?: RuleType | undefined;
+            required?: boolean | undefined;
+            pattern?: string | {
+                exec: (string: string) => RegExpExecArray | null;
+                test: (string: string) => boolean;
+                readonly source: string;
+                readonly global: boolean;
+                readonly ignoreCase: boolean;
+                readonly multiline: boolean;
+                lastIndex: number;
+                compile: (pattern: string, flags?: string) => RegExp;
+                readonly flags: string;
+                readonly sticky: boolean;
+                readonly unicode: boolean;
+                readonly dotAll: boolean;
+                [Symbol.match]: (string: string) => RegExpMatchArray | null;
+                [Symbol.replace]: {
+                    (string: string, replaceValue: string): string;
+                    (string: string, replacer: (substring: string, ...args: any[]) => string): string;
+                };
+                [Symbol.search]: (string: string) => number;
+                [Symbol.split]: (string: string, limit?: number) => string[];
+            } | undefined;
+            min?: number | undefined;
+            max?: number | undefined;
+            len?: number | undefined;
+            enum?: Array<string | number | boolean | null | undefined> | undefined;
+            whitespace?: boolean | undefined;
+            fields?: Record<string, Rule> | undefined;
+            options?: {
+                suppressWarning?: boolean | undefined;
+                suppressValidatorError?: boolean | undefined;
+                first?: boolean | undefined;
+                firstFields?: (boolean | string[]) | undefined;
+                messages?: {
+                    default?: (string | ((...args: unknown[]) => string)) | undefined;
+                    required?: (string | ((args_0: string | undefined) => string)) | undefined;
+                    enum?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                    whitespace?: (string | ((args_0: string | undefined) => string)) | undefined;
+                    date?: {
+                        format?: (string | ((...args: unknown[]) => string)) | undefined;
+                        parse?: (string | ((...args: unknown[]) => string)) | undefined;
+                        invalid?: (string | ((...args: unknown[]) => string)) | undefined;
+                    } | undefined;
+                    types?: {
+                        string?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        method?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        array?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        object?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        number?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        date?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        boolean?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        integer?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        float?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        regexp?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        email?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        url?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        hex?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                    } | undefined;
+                    string?: {
+                        len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                    } | undefined;
+                    number?: {
+                        len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                    } | undefined;
+                    array?: {
+                        len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                    } | undefined;
+                    pattern?: {
+                        mismatch?: (string | ((args_0: string | undefined, args_1: any, args_2: string | RegExp | undefined) => string)) | undefined;
+                    } | undefined;
+                } | undefined;
+                keys?: string[] | undefined;
+                error?: ((rule: InternalRuleItem, message: string) => ValidateError) | undefined;
+            } | undefined;
+            defaultField?: {
+                type?: RuleType | undefined;
+                required?: boolean | undefined;
+                pattern?: string | {
+                    exec: (string: string) => RegExpExecArray | null;
+                    test: (string: string) => boolean;
+                    readonly source: string;
+                    readonly global: boolean;
+                    readonly ignoreCase: boolean;
+                    readonly multiline: boolean;
+                    lastIndex: number;
+                    compile: (pattern: string, flags?: string) => RegExp;
+                    readonly flags: string;
+                    readonly sticky: boolean;
+                    readonly unicode: boolean;
+                    readonly dotAll: boolean;
+                    [Symbol.match]: (string: string) => RegExpMatchArray | null;
+                    [Symbol.replace]: {
+                        (string: string, replaceValue: string): string;
+                        (string: string, replacer: (substring: string, ...args: any[]) => string): string;
+                    };
+                    [Symbol.search]: (string: string) => number;
+                    [Symbol.split]: (string: string, limit?: number) => string[];
+                } | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
+                len?: number | undefined;
+                enum?: Array<string | number | boolean | null | undefined> | undefined;
+                whitespace?: boolean | undefined;
+                fields?: Record<string, Rule> | undefined;
+                options?: {
+                    suppressWarning?: boolean | undefined;
+                    suppressValidatorError?: boolean | undefined;
+                    first?: boolean | undefined;
+                    firstFields?: (boolean | string[]) | undefined;
+                    messages?: {
+                        default?: (string | ((...args: unknown[]) => string)) | undefined;
+                        required?: (string | ((args_0: string | undefined) => string)) | undefined;
+                        enum?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        whitespace?: (string | ((args_0: string | undefined) => string)) | undefined;
+                        date?: {
+                            format?: (string | ((...args: unknown[]) => string)) | undefined;
+                            parse?: (string | ((...args: unknown[]) => string)) | undefined;
+                            invalid?: (string | ((...args: unknown[]) => string)) | undefined;
+                        } | undefined;
+                        types?: {
+                            string?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            method?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            array?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            object?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            number?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            date?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            boolean?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            integer?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            float?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            regexp?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            email?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            url?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            hex?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        } | undefined;
+                        string?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        number?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        array?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        pattern?: {
+                            mismatch?: (string | ((args_0: string | undefined, args_1: any, args_2: string | RegExp | undefined) => string)) | undefined;
+                        } | undefined;
+                    } | undefined;
+                    keys?: string[] | undefined;
+                    error?: ((rule: InternalRuleItem, message: string) => ValidateError) | undefined;
+                } | undefined;
+                defaultField?: any | any[] | undefined;
+                transform?: ((value: Value_2) => Value_2) | undefined;
+                message?: (string | ((a?: string) => string)) | undefined;
+                asyncValidator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => void | Promise<void>) | undefined;
+                validator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => SyncValidateResult | void) | undefined;
+            } | {
+                type?: RuleType | undefined;
+                required?: boolean | undefined;
+                pattern?: string | {
+                    exec: (string: string) => RegExpExecArray | null;
+                    test: (string: string) => boolean;
+                    readonly source: string;
+                    readonly global: boolean;
+                    readonly ignoreCase: boolean;
+                    readonly multiline: boolean;
+                    lastIndex: number;
+                    compile: (pattern: string, flags?: string) => RegExp;
+                    readonly flags: string;
+                    readonly sticky: boolean;
+                    readonly unicode: boolean;
+                    readonly dotAll: boolean;
+                    [Symbol.match]: (string: string) => RegExpMatchArray | null;
+                    [Symbol.replace]: {
+                        (string: string, replaceValue: string): string;
+                        (string: string, replacer: (substring: string, ...args: any[]) => string): string;
+                    };
+                    [Symbol.search]: (string: string) => number;
+                    [Symbol.split]: (string: string, limit?: number) => string[];
+                } | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
+                len?: number | undefined;
+                enum?: Array<string | number | boolean | null | undefined> | undefined;
+                whitespace?: boolean | undefined;
+                fields?: Record<string, Rule> | undefined;
+                options?: {
+                    suppressWarning?: boolean | undefined;
+                    suppressValidatorError?: boolean | undefined;
+                    first?: boolean | undefined;
+                    firstFields?: (boolean | string[]) | undefined;
+                    messages?: {
+                        default?: (string | ((...args: unknown[]) => string)) | undefined;
+                        required?: (string | ((args_0: string | undefined) => string)) | undefined;
+                        enum?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        whitespace?: (string | ((args_0: string | undefined) => string)) | undefined;
+                        date?: {
+                            format?: (string | ((...args: unknown[]) => string)) | undefined;
+                            parse?: (string | ((...args: unknown[]) => string)) | undefined;
+                            invalid?: (string | ((...args: unknown[]) => string)) | undefined;
+                        } | undefined;
+                        types?: {
+                            string?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            method?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            array?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            object?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            number?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            date?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            boolean?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            integer?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            float?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            regexp?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            email?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            url?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            hex?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        } | undefined;
+                        string?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        number?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        array?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        pattern?: {
+                            mismatch?: (string | ((args_0: string | undefined, args_1: any, args_2: string | RegExp | undefined) => string)) | undefined;
+                        } | undefined;
+                    } | undefined;
+                    keys?: string[] | undefined;
+                    error?: ((rule: InternalRuleItem, message: string) => ValidateError) | undefined;
+                } | undefined;
+                defaultField?: any | any[] | undefined;
+                transform?: ((value: Value_2) => Value_2) | undefined;
+                message?: (string | ((a?: string) => string)) | undefined;
+                asyncValidator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => void | Promise<void>) | undefined;
+                validator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => SyncValidateResult | void) | undefined;
+            }[] | undefined;
+            transform?: ((value: Value_2) => Value_2) | undefined;
+            message?: (string | ((a?: string) => string)) | undefined;
+            asyncValidator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => void | Promise<void>) | undefined;
+            validator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => SyncValidateResult | void) | undefined;
+        } | {
+            trigger?: Arrayable<string> | undefined;
+            type?: RuleType | undefined;
+            required?: boolean | undefined;
+            pattern?: string | {
+                exec: (string: string) => RegExpExecArray | null;
+                test: (string: string) => boolean;
+                readonly source: string;
+                readonly global: boolean;
+                readonly ignoreCase: boolean;
+                readonly multiline: boolean;
+                lastIndex: number;
+                compile: (pattern: string, flags?: string) => RegExp;
+                readonly flags: string;
+                readonly sticky: boolean;
+                readonly unicode: boolean;
+                readonly dotAll: boolean;
+                [Symbol.match]: (string: string) => RegExpMatchArray | null;
+                [Symbol.replace]: {
+                    (string: string, replaceValue: string): string;
+                    (string: string, replacer: (substring: string, ...args: any[]) => string): string;
+                };
+                [Symbol.search]: (string: string) => number;
+                [Symbol.split]: (string: string, limit?: number) => string[];
+            } | undefined;
+            min?: number | undefined;
+            max?: number | undefined;
+            len?: number | undefined;
+            enum?: Array<string | number | boolean | null | undefined> | undefined;
+            whitespace?: boolean | undefined;
+            fields?: Record<string, Rule> | undefined;
+            options?: {
+                suppressWarning?: boolean | undefined;
+                suppressValidatorError?: boolean | undefined;
+                first?: boolean | undefined;
+                firstFields?: (boolean | string[]) | undefined;
+                messages?: {
+                    default?: (string | ((...args: unknown[]) => string)) | undefined;
+                    required?: (string | ((args_0: string | undefined) => string)) | undefined;
+                    enum?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                    whitespace?: (string | ((args_0: string | undefined) => string)) | undefined;
+                    date?: {
+                        format?: (string | ((...args: unknown[]) => string)) | undefined;
+                        parse?: (string | ((...args: unknown[]) => string)) | undefined;
+                        invalid?: (string | ((...args: unknown[]) => string)) | undefined;
+                    } | undefined;
+                    types?: {
+                        string?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        method?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        array?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        object?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        number?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        date?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        boolean?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        integer?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        float?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        regexp?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        email?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        url?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        hex?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                    } | undefined;
+                    string?: {
+                        len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                    } | undefined;
+                    number?: {
+                        len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                    } | undefined;
+                    array?: {
+                        len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                        range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                    } | undefined;
+                    pattern?: {
+                        mismatch?: (string | ((args_0: string | undefined, args_1: any, args_2: string | RegExp | undefined) => string)) | undefined;
+                    } | undefined;
+                } | undefined;
+                keys?: string[] | undefined;
+                error?: ((rule: InternalRuleItem, message: string) => ValidateError) | undefined;
+            } | undefined;
+            defaultField?: {
+                type?: RuleType | undefined;
+                required?: boolean | undefined;
+                pattern?: string | {
+                    exec: (string: string) => RegExpExecArray | null;
+                    test: (string: string) => boolean;
+                    readonly source: string;
+                    readonly global: boolean;
+                    readonly ignoreCase: boolean;
+                    readonly multiline: boolean;
+                    lastIndex: number;
+                    compile: (pattern: string, flags?: string) => RegExp;
+                    readonly flags: string;
+                    readonly sticky: boolean;
+                    readonly unicode: boolean;
+                    readonly dotAll: boolean;
+                    [Symbol.match]: (string: string) => RegExpMatchArray | null;
+                    [Symbol.replace]: {
+                        (string: string, replaceValue: string): string;
+                        (string: string, replacer: (substring: string, ...args: any[]) => string): string;
+                    };
+                    [Symbol.search]: (string: string) => number;
+                    [Symbol.split]: (string: string, limit?: number) => string[];
+                } | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
+                len?: number | undefined;
+                enum?: Array<string | number | boolean | null | undefined> | undefined;
+                whitespace?: boolean | undefined;
+                fields?: Record<string, Rule> | undefined;
+                options?: {
+                    suppressWarning?: boolean | undefined;
+                    suppressValidatorError?: boolean | undefined;
+                    first?: boolean | undefined;
+                    firstFields?: (boolean | string[]) | undefined;
+                    messages?: {
+                        default?: (string | ((...args: unknown[]) => string)) | undefined;
+                        required?: (string | ((args_0: string | undefined) => string)) | undefined;
+                        enum?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        whitespace?: (string | ((args_0: string | undefined) => string)) | undefined;
+                        date?: {
+                            format?: (string | ((...args: unknown[]) => string)) | undefined;
+                            parse?: (string | ((...args: unknown[]) => string)) | undefined;
+                            invalid?: (string | ((...args: unknown[]) => string)) | undefined;
+                        } | undefined;
+                        types?: {
+                            string?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            method?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            array?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            object?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            number?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            date?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            boolean?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            integer?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            float?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            regexp?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            email?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            url?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            hex?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        } | undefined;
+                        string?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        number?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        array?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        pattern?: {
+                            mismatch?: (string | ((args_0: string | undefined, args_1: any, args_2: string | RegExp | undefined) => string)) | undefined;
+                        } | undefined;
+                    } | undefined;
+                    keys?: string[] | undefined;
+                    error?: ((rule: InternalRuleItem, message: string) => ValidateError) | undefined;
+                } | undefined;
+                defaultField?: any | any[] | undefined;
+                transform?: ((value: Value_2) => Value_2) | undefined;
+                message?: (string | ((a?: string) => string)) | undefined;
+                asyncValidator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => void | Promise<void>) | undefined;
+                validator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => SyncValidateResult | void) | undefined;
+            } | {
+                type?: RuleType | undefined;
+                required?: boolean | undefined;
+                pattern?: string | {
+                    exec: (string: string) => RegExpExecArray | null;
+                    test: (string: string) => boolean;
+                    readonly source: string;
+                    readonly global: boolean;
+                    readonly ignoreCase: boolean;
+                    readonly multiline: boolean;
+                    lastIndex: number;
+                    compile: (pattern: string, flags?: string) => RegExp;
+                    readonly flags: string;
+                    readonly sticky: boolean;
+                    readonly unicode: boolean;
+                    readonly dotAll: boolean;
+                    [Symbol.match]: (string: string) => RegExpMatchArray | null;
+                    [Symbol.replace]: {
+                        (string: string, replaceValue: string): string;
+                        (string: string, replacer: (substring: string, ...args: any[]) => string): string;
+                    };
+                    [Symbol.search]: (string: string) => number;
+                    [Symbol.split]: (string: string, limit?: number) => string[];
+                } | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
+                len?: number | undefined;
+                enum?: Array<string | number | boolean | null | undefined> | undefined;
+                whitespace?: boolean | undefined;
+                fields?: Record<string, Rule> | undefined;
+                options?: {
+                    suppressWarning?: boolean | undefined;
+                    suppressValidatorError?: boolean | undefined;
+                    first?: boolean | undefined;
+                    firstFields?: (boolean | string[]) | undefined;
+                    messages?: {
+                        default?: (string | ((...args: unknown[]) => string)) | undefined;
+                        required?: (string | ((args_0: string | undefined) => string)) | undefined;
+                        enum?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        whitespace?: (string | ((args_0: string | undefined) => string)) | undefined;
+                        date?: {
+                            format?: (string | ((...args: unknown[]) => string)) | undefined;
+                            parse?: (string | ((...args: unknown[]) => string)) | undefined;
+                            invalid?: (string | ((...args: unknown[]) => string)) | undefined;
+                        } | undefined;
+                        types?: {
+                            string?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            method?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            array?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            object?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            number?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            date?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            boolean?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            integer?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            float?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            regexp?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            email?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            url?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                            hex?: (string | ((args_0: string | undefined, args_1: string | undefined) => string)) | undefined;
+                        } | undefined;
+                        string?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        number?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        array?: {
+                            len?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            min?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            max?: (string | ((args_0: string | undefined, args_1: number | undefined) => string)) | undefined;
+                            range?: (string | ((args_0: string | undefined, args_1: number | undefined, args_2: number | undefined) => string)) | undefined;
+                        } | undefined;
+                        pattern?: {
+                            mismatch?: (string | ((args_0: string | undefined, args_1: any, args_2: string | RegExp | undefined) => string)) | undefined;
+                        } | undefined;
+                    } | undefined;
+                    keys?: string[] | undefined;
+                    error?: ((rule: InternalRuleItem, message: string) => ValidateError) | undefined;
+                } | undefined;
+                defaultField?: any | any[] | undefined;
+                transform?: ((value: Value_2) => Value_2) | undefined;
+                message?: (string | ((a?: string) => string)) | undefined;
+                asyncValidator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => void | Promise<void>) | undefined;
+                validator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => SyncValidateResult | void) | undefined;
+            }[] | undefined;
+            transform?: ((value: Value_2) => Value_2) | undefined;
+            message?: (string | ((a?: string) => string)) | undefined;
+            asyncValidator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => void | Promise<void>) | undefined;
+            validator?: ((rule: InternalRuleItem, value: Value_2, callback: (error?: string | Error) => void, source: Values, options: ValidateOption) => SyncValidateResult | void) | undefined;
+        }[] | undefined;
+        readonly validateStatus?: EpPropMergeType<StringConstructor, "" | "error" | "success" | "validating", unknown> | undefined;
+        readonly inlineMessage?: EpPropMergeType<BooleanConstructor, unknown, unknown> | undefined;
+        readonly for?: string | undefined;
+    }[];
 }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
     validate: (prop: FormItemProp, isValid: boolean, message: string) => void;
 }, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
@@ -4109,7 +4688,7 @@ declare const __VLS_component_5: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "light", boolean>;
     enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     pure: BooleanConstructor;
     focusOnShow: BooleanConstructor;
@@ -4467,7 +5046,7 @@ declare const __VLS_component_5: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "light", boolean>;
     enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     pure: BooleanConstructor;
     focusOnShow: BooleanConstructor;
@@ -6006,7 +6585,7 @@ declare const __VLS_component_7: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "light", boolean>;
     readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly pure: BooleanConstructor;
     readonly focusOnShow: BooleanConstructor;
@@ -6282,7 +6861,7 @@ declare const __VLS_component_7: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "light", boolean>;
     readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly pure: BooleanConstructor;
     readonly focusOnShow: BooleanConstructor;
@@ -7900,7 +8479,7 @@ declare const __VLS_component_8: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "light", boolean>;
     readonly visible: BooleanConstructor;
     readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly pure: BooleanConstructor;
@@ -8172,7 +8751,7 @@ declare const __VLS_component_8: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "light", boolean>;
     readonly visible: BooleanConstructor;
     readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly pure: BooleanConstructor;
@@ -15452,8 +16031,8 @@ declare const _default_73: DefineComponent<{
     };
     states: {
         inputValue: string;
-        options: Map<EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>, SelectOptionProxy> & Omit<Map<EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>, SelectOptionProxy>, keyof Map<any, any>>;
-        cachedOptions: Map<EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>, SelectOptionProxy> & Omit<Map<EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>, SelectOptionProxy>, keyof Map<any, any>>;
+        options: Map<OptionValue, SelectOptionProxy>;
+        cachedOptions: Map<OptionValue, SelectOptionProxy>;
         optionValues: OptionValue[];
         selected: {
             index: number;
@@ -16819,6 +17398,8 @@ declare const _default_84: DefineComponent<{
         type: (NumberConstructor | StringConstructor)[];
         default: undefined;
     };
+    showAddColumnTrigger: BooleanConstructor;
+    showAddRowTrigger: BooleanConstructor;
     allowDragLastColumn: {
         type: BooleanConstructor;
         default: boolean;
@@ -17407,7 +17988,7 @@ declare const _default_84: DefineComponent<{
     };
     columns: ComputedRef<TableColumnCtx<any>[]>;
     handleHeaderFooterMousewheel: (_event: WheelEvent, data: any) => void;
-    handleMouseLeave: () => void;
+    handleTableMouseLeave: () => void;
     tableId: string;
     tableSize: ComputedRef<"" | "small" | "default" | "large">;
     isHidden: Ref<boolean>;
@@ -17480,12 +18061,44 @@ declare const _default_84: DefineComponent<{
     t: Translator;
     setDragVisible: (visible: boolean) => void;
     context: Table<any>;
-    editingRow: Ref<any>;
-    activeEditableCell: Ref<any>;
+    editingRow: any;
+    activeEditableCell: any;
     startRowEdit: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow: () => void;
     applyEditingRow: () => any;
     hasEditingRow: ComputedRef<boolean>;
+    addColumnTrigger: ShallowRef<{
+        column: TableColumnCtx<any>;
+        columnIndex: number;
+        insertIndex: number;
+        left: number;
+        top: number;
+    } | null>;
+    addColumnTriggerStyle: ComputedRef<CSSProperties>;
+    handleAddColumnClick: (event: MouseEvent) => void;
+    updateAddColumnTrigger: (payload: {
+        column: TableColumnCtx<any>;
+        columnIndex: number;
+        insertIndex: number;
+        left: number;
+        top: number;
+    } | null) => void;
+    addRowTrigger: Ref<{
+        row: any;
+        rowIndex: number;
+        insertIndex: number;
+        top: number;
+        placement: "above" | "below";
+    } | null>;
+    addRowTriggerStyle: ComputedRef<CSSProperties>;
+    handleAddRowClick: (event: MouseEvent) => void;
+    updateAddRowTrigger: (payload: {
+        row: any;
+        rowIndex: number;
+        insertIndex: number;
+        top: number;
+        placement: "above" | "below";
+    } | null) => void;
     computedSumText: ComputedRef<string>;
     computedEmptyText: ComputedRef<string>;
     tableLayout: ComputedRef<("fixed" | "auto") | undefined>;
@@ -17504,6 +18117,7 @@ declare const _default_84: DefineComponent<{
         maxHeight?: undefined;
     }>;
     scrollBarRef: Ref<any>;
+    handleScrollbarScroll: (event: any) => void;
     /**
     * @description scrolls to a particular set of coordinates
     */
@@ -17520,7 +18134,15 @@ declare const _default_84: DefineComponent<{
     * @description whether to allow drag the last column
     */
     allowDragLastColumn: boolean;
-}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    /**
+    * @description whether to show an add-column trigger when hovering a header divider
+    */
+    showAddColumnTrigger: boolean;
+    /**
+    * @description whether to show an add-row trigger when hovering a row divider
+    */
+    showAddRowTrigger: boolean;
+}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     data: {
         type: PropType<any[]>;
         default: () => never[];
@@ -17626,6 +18248,8 @@ declare const _default_84: DefineComponent<{
         type: (NumberConstructor | StringConstructor)[];
         default: undefined;
     };
+    showAddColumnTrigger: BooleanConstructor;
+    showAddRowTrigger: BooleanConstructor;
     allowDragLastColumn: {
         type: BooleanConstructor;
         default: boolean;
@@ -17653,6 +18277,8 @@ declare const _default_84: DefineComponent<{
     "onRow-contextmenu"?: ((...args: any[]) => any) | undefined;
     "onRow-dblclick"?: ((...args: any[]) => any) | undefined;
     "onEditable-cell-active-change"?: ((...args: any[]) => any) | undefined;
+    "onAdd-column"?: ((...args: any[]) => any) | undefined;
+    "onAdd-row"?: ((...args: any[]) => any) | undefined;
 }, {
     data: any[];
     style: CSSProperties;
@@ -17666,6 +18292,7 @@ declare const _default_84: DefineComponent<{
     editable: boolean;
     scrollbarAlwaysOn: boolean;
     allowDragLastColumn: boolean;
+    showAddColumnTrigger: boolean;
     tooltipOptions: Partial<Pick<ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">> | undefined;
     treeProps: TreeProps | undefined;
     defaultExpandAll: boolean;
@@ -17680,6 +18307,7 @@ declare const _default_84: DefineComponent<{
     flexible: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;
+    showAddRowTrigger: boolean;
     preserveExpandedContent: boolean;
 }>;
 declare const _default_85: DefineComponent<{
@@ -17701,6 +18329,11 @@ declare const _default_85: DefineComponent<{
         default: string;
     };
     renderHeader: PropType<TableColumnCtx<any>["renderHeader"]>;
+    diagonalHeader: PropType<TableColumnCtx<any>["diagonalHeader"]>;
+    allowInsertBeforeFirstColumn: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     sortable: {
         type: (BooleanConstructor | StringConstructor)[];
         default: boolean;
@@ -17757,6 +18390,11 @@ declare const _default_85: DefineComponent<{
         default: string;
     };
     renderHeader: PropType<TableColumnCtx<any>["renderHeader"]>;
+    diagonalHeader: PropType<TableColumnCtx<any>["diagonalHeader"]>;
+    allowInsertBeforeFirstColumn: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     sortable: {
         type: (BooleanConstructor | StringConstructor)[];
         default: boolean;
@@ -17804,6 +18442,7 @@ declare const _default_85: DefineComponent<{
     sortable: string | boolean;
     reserveSelection: boolean;
     filterMultiple: boolean;
+    allowInsertBeforeFirstColumn: boolean;
 }>;
 declare const _default_86: __VLS_WithTemplateSlots_68<typeof __VLS_component_68, ReturnType<typeof __VLS_template_68>>;
 declare const _default_87: __VLS_WithTemplateSlots_69<typeof __VLS_component_69, ReturnType<typeof __VLS_template_69>>;
@@ -19146,6 +19785,10 @@ export declare const descriptionProps: {
     ], unknown, unknown, "", boolean>;
 };
 export declare type DescriptionPropsPublic = __ExtractPublicPropTypes<typeof descriptionProps>;
+declare type DiagonalHeaderConfig = {
+    from: string;
+    to: string;
+};
 export declare type DialogBeforeCloseFn = (done: DoneFn) => void;
 export declare interface DialogConfigContext {
     alignCenter?: boolean;
@@ -23683,7 +24326,7 @@ export declare const popperContentProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "light", boolean>;
     readonly visible: BooleanConstructor;
     readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly pure: BooleanConstructor;
@@ -25426,6 +26069,8 @@ export declare type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     filterOpened?: boolean;
     renderFilterIcon?: (scope: any) => VNode;
     renderExpand?: (scope: any) => VNode;
+    diagonalHeader?: DiagonalHeaderConfig;
+    allowInsertBeforeFirstColumn: boolean;
 };
 export declare type TableColumnInstance = InstanceType<typeof _default_85> & unknown;
 declare const TableGrid: DefineComponent<{
@@ -25758,6 +26403,8 @@ export declare interface TableProps<T extends DefaultRow> {
     appendFilterPanelTo?: string;
     scrollbarTabindex?: number | string;
     nativeScrollbar?: boolean;
+    showAddColumnTrigger?: boolean;
+    showAddRowTrigger?: boolean;
 }
 export declare interface TableRefs {
     tableWrapper: HTMLElement;
@@ -28608,7 +29255,7 @@ export declare const usePopperContentProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "light", boolean>;
     readonly visible: BooleanConstructor;
     readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly pure: BooleanConstructor;
@@ -28985,7 +29632,7 @@ export declare const useTooltipContentProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    readonly effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "light", boolean>;
     readonly enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly pure: BooleanConstructor;
     readonly focusOnShow: BooleanConstructor;
@@ -29316,7 +29963,7 @@ export declare const useTooltipProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "dark", boolean>;
+    effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, "light", boolean>;
     enterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     pure: BooleanConstructor;
     focusOnShow: BooleanConstructor;

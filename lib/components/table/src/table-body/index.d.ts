@@ -32,6 +32,7 @@ declare const _default: import("vue").DefineComponent<{
         type: FunctionConstructor;
         default: undefined;
     };
+    showAddRowTrigger: BooleanConstructor;
 }, {
     ns: {
         namespace: import("vue").ComputedRef<string>;
@@ -97,6 +98,7 @@ declare const _default: import("vue").DefineComponent<{
         type: FunctionConstructor;
         default: undefined;
     };
+    showAddRowTrigger: BooleanConstructor;
 }>>, {
     fixed: string;
     onDragend: Function;
@@ -105,5 +107,6 @@ declare const _default: import("vue").DefineComponent<{
     stripe: boolean;
     context: import("element-plus").Table<any>;
     rowDraggable: boolean | Function;
+    showAddRowTrigger: boolean;
 }>;
 export default _default;

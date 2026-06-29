@@ -14,6 +14,10 @@ type Filters = {
 }[];
 type FilterMethods<T extends DefaultRow> = (value: string, row: T, column: TableColumnCtx<T>) => void;
 type ValueOf<T> = T[keyof T];
+type DiagonalHeaderConfig = {
+    from: string;
+    to: string;
+};
 type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     id: string;
     realWidth: number | null;
@@ -63,6 +67,8 @@ type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     filterOpened?: boolean;
     renderFilterIcon?: (scope: any) => VNode;
     renderExpand?: (scope: any) => VNode;
+    diagonalHeader?: DiagonalHeaderConfig;
+    allowInsertBeforeFirstColumn: boolean;
 };
 interface TableColumn<T extends DefaultRow> extends ComponentInternalInstance {
     vnode: {
@@ -119,6 +125,17 @@ declare const _default: {
      * @description render function for table header of this column
      */
     renderHeader: PropType<TableColumnCtx<any>["renderHeader"]>;
+    /**
+     * @description configures this column header as a diagonal header with `from` and `to` labels
+     */
+    diagonalHeader: PropType<TableColumnCtx<any>["diagonalHeader"]>;
+    /**
+     * @description whether the first column can insert a new column before itself when hovering the left half of its header
+     */
+    allowInsertBeforeFirstColumn: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     /**
      * @description whether column can be sorted. Remote sorting can be done by setting this attribute to 'custom' and listening to the `sort-change` event of Table
      */

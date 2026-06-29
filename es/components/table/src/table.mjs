@@ -1,4 +1,5 @@
-import { defineComponent, getCurrentInstance, provide, ref, computed, onBeforeUnmount, toRaw, resolveComponent, resolveDirective, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, withDirectives, createVNode, createCommentVNode, withCtx, createBlock, createTextVNode, toDisplayString, vShow } from 'vue';
+import { defineComponent, getCurrentInstance, provide, ref, shallowRef, computed, onBeforeUnmount, toRaw, resolveComponent, resolveDirective, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, withDirectives, createVNode, createCommentVNode, withCtx, createBlock, createTextVNode, toDisplayString, vShow, withModifiers } from 'vue';
+import ElTooltip from '../../tooltip/src/tooltip2.mjs';
 import { debounce, cloneDeep } from 'lodash-unified';
 import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { createStore } from './store/helper.mjs';
@@ -26,6 +27,7 @@ const _sfc_main = defineComponent({
     Mousewheel
   },
   components: {
+    ElTooltip,
     TableHeader,
     TableBody,
     TableFooter,
@@ -53,9 +55,11 @@ const _sfc_main = defineComponent({
     "header-dragend",
     "expand-change",
     "editable-cell-active-change",
-    "scroll"
+    "scroll",
+    "add-column",
+    "add-row"
   ],
-  setup(props) {
+  setup(props, { emit }) {
     const { t } = useLocale();
     const ns = useNamespace("table");
     const table = getCurrentInstance();
@@ -64,6 +68,8 @@ const _sfc_main = defineComponent({
     table.store = store;
     const editingRow = ref(null);
     const activeEditableCell = ref(null);
+    const addColumnTrigger = shallowRef(null);
+    const addRowTrigger = ref(null);
     const startRowEdit = (row, prop, rowIndex, cellIndex) => {
       var _a, _b;
       const current = editingRow.value;
@@ -144,6 +150,52 @@ const _sfc_main = defineComponent({
       scrollbarViewStyle,
       scrollbarStyle
     } = useStyle(props, layout, store, table);
+    const clearAddColumnTrigger = () => {
+      addColumnTrigger.value = null;
+    };
+    const updateAddColumnTrigger = (payload) => {
+      addColumnTrigger.value = payload;
+    };
+    const handleAddColumnClick = (event) => {
+      const trigger = addColumnTrigger.value;
+      if (!trigger)
+        return;
+      emit("add-column", {
+        column: trigger.column,
+        columnIndex: trigger.columnIndex,
+        insertIndex: trigger.insertIndex,
+        event
+      });
+      clearAddColumnTrigger();
+    };
+    const clearAddRowTrigger = () => {
+      addRowTrigger.value = null;
+    };
+    const updateAddRowTrigger = (payload) => {
+      addRowTrigger.value = payload;
+    };
+    const handleAddRowClick = (event) => {
+      const trigger = addRowTrigger.value;
+      if (!trigger)
+        return;
+      emit("add-row", {
+        row: trigger.row,
+        rowIndex: trigger.rowIndex,
+        insertIndex: trigger.insertIndex,
+        event
+      });
+      clearAddRowTrigger();
+    };
+    const handleTableMouseLeave = () => {
+      handleMouseLeave();
+      clearAddColumnTrigger();
+      clearAddRowTrigger();
+    };
+    const handleScrollbarScroll = (event) => {
+      clearAddColumnTrigger();
+      clearAddRowTrigger();
+      emit("scroll", event);
+    };
     const { scrollBarRef, scrollTo, setScrollLeft, setScrollTop } = useScrollbar();
     const debouncedUpdateLayout = debounce(doLayout, 50);
     const tableId = `${ns.namespace.value}-table_${tableIdSeed++}`;
@@ -163,6 +215,20 @@ const _sfc_main = defineComponent({
       var _a;
       return (_a = props.emptyText) != null ? _a : t("el.table.emptyText");
     });
+    const addColumnTriggerStyle = computed(() => {
+      if (!addColumnTrigger.value)
+        return {};
+      return {
+        left: `${addColumnTrigger.value.left}px`
+      };
+    });
+    const addRowTriggerStyle = computed(() => {
+      if (!addRowTrigger.value)
+        return {};
+      return {
+        top: `${addRowTrigger.value.top}px`
+      };
+    });
     const columns = computed(() => {
       return convertToRows(store.states.originColumns.value)[0];
     });
@@ -176,7 +242,7 @@ const _sfc_main = defineComponent({
       store,
       columns,
       handleHeaderFooterMousewheel,
-      handleMouseLeave,
+      handleTableMouseLeave,
       tableId,
       tableSize,
       isHidden,
@@ -210,16 +276,27 @@ const _sfc_main = defineComponent({
       clearEditingRow,
       applyEditingRow,
       hasEditingRow,
+      addColumnTrigger,
+      addColumnTriggerStyle,
+      handleAddColumnClick,
+      updateAddColumnTrigger,
+      addRowTrigger,
+      addRowTriggerStyle,
+      handleAddRowClick,
+      updateAddRowTrigger,
       computedSumText,
       computedEmptyText,
       tableLayout,
       scrollbarViewStyle,
       scrollbarStyle,
       scrollBarRef,
+      handleScrollbarScroll,
       scrollTo,
       setScrollLeft,
       setScrollTop,
-      allowDragLastColumn: props.allowDragLastColumn
+      allowDragLastColumn: props.allowDragLastColumn,
+      showAddColumnTrigger: props.showAddColumnTrigger,
+      showAddRowTrigger: props.showAddRowTrigger
     };
   }
 });
@@ -229,6 +306,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_table_body = resolveComponent("table-body");
   const _component_table_footer = resolveComponent("table-footer");
   const _component_el_scrollbar = resolveComponent("el-scrollbar");
+  const _component_el_icon = resolveComponent("el-icon");
+  const _component_el_button = resolveComponent("el-button");
+  const _component_el_tooltip = resolveComponent("el-tooltip");
   const _directive_mousewheel = resolveDirective("mousewheel");
   return openBlock(), createElementBlock("div", {
     ref: "tableWrapper",
@@ -243,6 +323,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         [_ctx.ns.m("fluid-height")]: _ctx.maxHeight,
         [_ctx.ns.m("scrollable-x")]: _ctx.layout.scrollX.value,
         [_ctx.ns.m("scrollable-y")]: _ctx.layout.scrollY.value,
+        [_ctx.ns.m("with-add-column-trigger")]: _ctx.showAddColumnTrigger,
+        [_ctx.ns.m("with-add-row-trigger")]: _ctx.showAddRowTrigger,
         [_ctx.ns.m("enable-row-hover")]: !_ctx.store.states.isComplex.value,
         [_ctx.ns.m("enable-row-transition")]: (_ctx.store.states.data.value || []).length !== 0 && (_ctx.store.states.data.value || []).length < 100,
         "has-footer": _ctx.showSummary
@@ -254,7 +336,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     style: normalizeStyle(_ctx.style),
     "data-prefix": _ctx.ns.namespace.value,
-    onMouseleave: _ctx.handleMouseLeave
+    onMouseleave: _ctx.handleTableMouseLeave
   }, [
     createElementVNode("div", {
       class: normalizeClass(_ctx.ns.e("inner-wrapper"))
@@ -289,8 +371,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             store: _ctx.store,
             "append-filter-panel-to": _ctx.appendFilterPanelTo,
             "allow-drag-last-column": _ctx.allowDragLastColumn,
-            onSetDragVisible: _ctx.setDragVisible
-          }, null, 8, ["border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "onSetDragVisible"])
+            "show-add-column-trigger": _ctx.showAddColumnTrigger,
+            onSetDragVisible: _ctx.setDragVisible,
+            onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger
+          }, null, 8, ["border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "onSetDragVisible", "onUpdateAddColumnTrigger"])
         ], 6)
       ], 2)), [
         [_directive_mousewheel, _ctx.handleHeaderFooterMousewheel]
@@ -306,7 +390,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           always: _ctx.scrollbarAlwaysOn,
           tabindex: _ctx.scrollbarTabindex,
           native: _ctx.nativeScrollbar,
-          onScroll: ($event) => _ctx.$emit("scroll", $event)
+          onScroll: _ctx.handleScrollbarScroll
         }, {
           default: withCtx(() => [
             createElementVNode("table", {
@@ -332,8 +416,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 "default-sort": _ctx.defaultSort,
                 store: _ctx.store,
                 "append-filter-panel-to": _ctx.appendFilterPanelTo,
-                onSetDragVisible: _ctx.setDragVisible
-              }, null, 8, ["class", "border", "default-sort", "store", "append-filter-panel-to", "onSetDragVisible"])) : createCommentVNode("v-if", true),
+                "allow-drag-last-column": _ctx.allowDragLastColumn,
+                "show-add-column-trigger": _ctx.showAddColumnTrigger,
+                onSetDragVisible: _ctx.setDragVisible,
+                onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger
+              }, null, 8, ["class", "border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "onSetDragVisible", "onUpdateAddColumnTrigger"])) : createCommentVNode("v-if", true),
               createVNode(_component_table_body, {
                 context: _ctx.context,
                 "row-draggable": _ctx.rowDraggable,
@@ -345,8 +432,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 "tooltip-options": _ctx.tooltipOptions,
                 "row-style": _ctx.rowStyle,
                 store: _ctx.store,
-                stripe: _ctx.stripe
-              }, null, 8, ["context", "row-draggable", "on-dragend", "on-dragstart", "highlight", "row-class-name", "tooltip-effect", "tooltip-options", "row-style", "store", "stripe"]),
+                stripe: _ctx.stripe,
+                "show-add-row-trigger": _ctx.showAddRowTrigger,
+                onUpdateAddRowTrigger: _ctx.updateAddRowTrigger
+              }, null, 8, ["context", "row-draggable", "on-dragend", "on-dragstart", "highlight", "row-class-name", "tooltip-effect", "tooltip-options", "row-style", "store", "stripe", "show-add-row-trigger", "onUpdateAddRowTrigger"]),
               _ctx.showSummary && _ctx.tableLayout === "auto" ? (openBlock(), createBlock(_component_table_footer, {
                 key: 1,
                 class: normalizeClass(_ctx.ns.e("body-footer")),
@@ -416,6 +505,107 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       class: normalizeClass(_ctx.ns.e("column-resize-proxy"))
     }, null, 2), [
       [vShow, _ctx.resizeProxyVisible]
+    ]),
+    withDirectives(createElementVNode("div", {
+      class: normalizeClass(_ctx.ns.e("add-column-trigger")),
+      style: normalizeStyle(_ctx.addColumnTriggerStyle)
+    }, [
+      createVNode(_component_el_tooltip, {
+        content: "Add Column",
+        placement: "top"
+      }, {
+        default: withCtx(() => [
+          createVNode(_component_el_button, {
+            class: normalizeClass(["icon-button", _ctx.ns.e("add-column-trigger-button")]),
+            onClick: withModifiers(_ctx.handleAddColumnClick, ["stop"])
+          }, {
+            default: withCtx(() => [
+              createVNode(_component_el_icon, {
+                color: "#2A3F4D",
+                size: "12px"
+              }, {
+                default: withCtx(() => [
+                  (openBlock(), createElementBlock("svg", {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "12",
+                    height: "12",
+                    viewBox: "0 0 12 12"
+                  }, [
+                    createElementVNode("g", { "clip-path": "url(#clip0_35669_24470)" }, [
+                      createElementVNode("path", { d: "M12 5.25H6.75V0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25Z" })
+                    ]),
+                    createElementVNode("defs", null, [
+                      createElementVNode("clipPath", { id: "clip0_35669_24470" }, [
+                        createElementVNode("rect", {
+                          width: "12",
+                          height: "12",
+                          fill: "white"
+                        })
+                      ])
+                    ])
+                  ]))
+                ]),
+                _: 1
+              })
+            ]),
+            _: 1
+          }, 8, ["class", "onClick"])
+        ]),
+        _: 1
+      })
+    ], 6), [
+      [vShow, _ctx.addColumnTrigger]
+    ]),
+    withDirectives(createElementVNode("div", {
+      class: normalizeClass([_ctx.ns.e("add-row-trigger")]),
+      style: normalizeStyle(_ctx.addRowTriggerStyle)
+    }, [
+      createVNode(_component_el_tooltip, {
+        content: "Add Row",
+        placement: "top"
+      }, {
+        default: withCtx(() => [
+          createVNode(_component_el_button, {
+            class: normalizeClass(["icon-button", _ctx.ns.e("add-row-trigger-button")]),
+            "aria-label": "Add Row",
+            onClick: withModifiers(_ctx.handleAddRowClick, ["stop"])
+          }, {
+            default: withCtx(() => [
+              createVNode(_component_el_icon, {
+                color: "#2A3F4D",
+                size: "12px"
+              }, {
+                default: withCtx(() => [
+                  (openBlock(), createElementBlock("svg", {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "12",
+                    height: "12",
+                    viewBox: "0 0 12 12"
+                  }, [
+                    createElementVNode("g", { "clip-path": "url(#clip0_35669_24470)" }, [
+                      createElementVNode("path", { d: "M12 5.25H6.75V0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25Z" })
+                    ]),
+                    createElementVNode("defs", null, [
+                      createElementVNode("clipPath", { id: "clip0_35669_24470" }, [
+                        createElementVNode("rect", {
+                          width: "12",
+                          height: "12",
+                          fill: "white"
+                        })
+                      ])
+                    ])
+                  ]))
+                ]),
+                _: 1
+              })
+            ]),
+            _: 1
+          }, 8, ["class", "onClick"])
+        ]),
+        _: 1
+      })
+    ], 6), [
+      [vShow, _ctx.addRowTrigger]
     ])
   ], 46, ["data-prefix", "onMouseleave"]);
 }

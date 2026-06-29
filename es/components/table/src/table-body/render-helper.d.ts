@@ -1,6 +1,6 @@
 import type { TableBodyProps } from './defaults';
 import type { DefaultRow } from '../table/defaults';
-declare function useRender<T extends DefaultRow>(props: Partial<TableBodyProps<T>>): {
+declare function useRender<T extends DefaultRow>(props: Partial<TableBodyProps<T>>, emit: (...args: any[]) => void): {
     wrappedRowRender: (row: T, $index: number) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }> | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {

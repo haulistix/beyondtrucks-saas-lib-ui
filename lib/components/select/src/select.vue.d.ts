@@ -179,8 +179,8 @@ declare const _default: import("vue").DefineComponent<{
     };
     states: {
         inputValue: string;
-        options: Map<import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>, import("./type").OptionPublicInstance> & Omit<Map<import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>, import("./type").OptionPublicInstance>, keyof Map<any, any>>;
-        cachedOptions: Map<import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>, import("./type").OptionPublicInstance> & Omit<Map<import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>, import("./type").OptionPublicInstance>, keyof Map<any, any>>;
+        options: Map<import("./type").OptionValue, import("./type").OptionPublicInstance>;
+        cachedOptions: Map<import("./type").OptionValue, import("./type").OptionPublicInstance>;
         optionValues: import("./type").OptionValue[];
         selected: {
             index: number;

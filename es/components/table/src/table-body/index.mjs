@@ -12,12 +12,12 @@ import { rAF } from '../../../../utils/raf.mjs';
 var TableBody = defineComponent({
   name: "ElTableBody",
   props: defaultProps,
-  setup(props) {
+  setup(props, { emit }) {
     var _a;
     const instance = getCurrentInstance();
     const parent = inject(TABLE_INJECTION_KEY);
     const ns = useNamespace("table");
-    const { wrappedRowRender, tooltipContent, tooltipTrigger } = useRender(props);
+    const { wrappedRowRender, tooltipContent, tooltipTrigger } = useRender(props, emit);
     const { onColumnsChange, onScrollableChange } = useLayoutObserver(parent);
     const hoveredCellList = [];
     watch((_a = props.store) == null ? void 0 : _a.states.hoverRow, (newVal, oldVal) => {

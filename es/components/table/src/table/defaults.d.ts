@@ -153,6 +153,8 @@ interface TableProps<T extends DefaultRow> {
     appendFilterPanelTo?: string;
     scrollbarTabindex?: number | string;
     nativeScrollbar?: boolean;
+    showAddColumnTrigger?: boolean;
+    showAddRowTrigger?: boolean;
 }
 type TableTooltipData<T extends DefaultRow> = Parameters<TableOverflowTooltipFormatter<T>>[0];
 type TableSortOrder = 'ascending' | 'descending';
@@ -411,6 +413,14 @@ declare const _default: {
         type: (NumberConstructor | StringConstructor)[];
         default: undefined;
     };
+    /**
+     * @description whether to show an add-column trigger when hovering a header divider
+     */
+    showAddColumnTrigger: BooleanConstructor;
+    /**
+     * @description whether to show an add-row trigger when hovering a row divider
+     */
+    showAddRowTrigger: BooleanConstructor;
     /**
      * @description whether to allow drag the last column
      */

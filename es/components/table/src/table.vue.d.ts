@@ -1,5 +1,7 @@
 import TableLayout from './table-layout';
+import type { CSSProperties } from 'vue';
 import type { DefaultRow, Table } from './table/defaults';
+import type { TableColumnCtx } from './table-column/defaults';
 declare const _default: import("vue").DefineComponent<{
     data: {
         type: import("vue").PropType<any[]>;
@@ -73,7 +75,7 @@ declare const _default: import("vue").DefineComponent<{
     lazy: BooleanConstructor;
     load: import("vue").PropType<import("./table/defaults").TableProps<any>["load"]>;
     style: {
-        type: import("vue").PropType<import("vue").CSSProperties>;
+        type: import("vue").PropType<CSSProperties>;
         default: () => {};
     };
     className: {
@@ -106,6 +108,8 @@ declare const _default: import("vue").DefineComponent<{
         type: (NumberConstructor | StringConstructor)[];
         default: undefined;
     };
+    showAddColumnTrigger: BooleanConstructor;
+    showAddRowTrigger: BooleanConstructor;
     allowDragLastColumn: {
         type: BooleanConstructor;
         default: boolean;
@@ -152,14 +156,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -171,7 +175,7 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
@@ -194,14 +198,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -213,11 +217,11 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
-            }, column: import("./table-column/defaults").TableColumnCtx<any>, parent: import("./table-column/defaults").TableColumnCtx<any>, updateColumnOrder: () => void): void;
+            }, column: TableColumnCtx<any>, parent: TableColumnCtx<any>, updateColumnOrder: () => void): void;
             updateColumnOrder(states: {
                 _currentRowKey: import("vue").Ref<string | null>;
                 currentRow: import("vue").Ref<any>;
@@ -236,14 +240,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -255,11 +259,11 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
-            }, column: import("./table-column/defaults").TableColumnCtx<any>): void;
+            }, column: TableColumnCtx<any>): void;
             removeColumn(states: {
                 _currentRowKey: import("vue").Ref<string | null>;
                 currentRow: import("vue").Ref<any>;
@@ -278,14 +282,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -297,11 +301,11 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
-            }, column: import("./table-column/defaults").TableColumnCtx<any>, parent: import("./table-column/defaults").TableColumnCtx<any>, updateColumnOrder: () => void): void;
+            }, column: TableColumnCtx<any>, parent: TableColumnCtx<any>, updateColumnOrder: () => void): void;
             sortUpdate(states: {
                 _currentRowKey: import("vue").Ref<string | null>;
                 currentRow: import("vue").Ref<any>;
@@ -320,14 +324,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -339,7 +343,7 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
@@ -362,14 +366,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -381,7 +385,7 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
@@ -404,14 +408,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -423,7 +427,7 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
@@ -446,14 +450,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -465,7 +469,7 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
@@ -489,14 +493,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -508,7 +512,7 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
@@ -531,14 +535,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -550,7 +554,7 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
@@ -573,14 +577,14 @@ declare const _default: import("vue").DefineComponent<{
                 data: import("vue").Ref<any[]>;
                 _data: import("vue").Ref<any[]>;
                 isComplex: import("vue").Ref<boolean>;
-                _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-                rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+                _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                columns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+                rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
                 updateOrderFns: (() => void)[];
                 leafColumnsLength: import("vue").Ref<number>;
                 fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -592,7 +596,7 @@ declare const _default: import("vue").DefineComponent<{
                 selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
                 filters: import("vue").Ref<import("./store").StoreFilter>;
                 filteredData: import("vue").Ref<any[] | null>;
-                sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+                sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
                 sortProp: import("vue").Ref<string | null>;
                 sortOrder: import("vue").Ref<string | number | null>;
                 hoverRow: import("vue").Ref<any>;
@@ -611,9 +615,9 @@ declare const _default: import("vue").DefineComponent<{
         _toggleAllSelection: () => void;
         toggleAllSelection: (() => void) | null;
         updateAllSelected: () => void;
-        updateFilters: (column: import("./table-column/defaults").TableColumnCtx<any>, values: string[]) => Record<string, string[]>;
+        updateFilters: (column: TableColumnCtx<any>, values: string[]) => Record<string, string[]>;
         updateCurrentRow: (_currentRow: any) => void;
-        updateSort: (column: import("./table-column/defaults").TableColumnCtx<any> | null, prop: string | null, order: import("./table/defaults").TableSortOrder | null) => void;
+        updateSort: (column: TableColumnCtx<any> | null, prop: string | null, order: import("./table/defaults").TableSortOrder | null) => void;
         execFilter: () => void;
         execSort: () => void;
         execQuery: (ignore?: {
@@ -649,14 +653,14 @@ declare const _default: import("vue").DefineComponent<{
             data: import("vue").Ref<any[]>;
             _data: import("vue").Ref<any[]>;
             isComplex: import("vue").Ref<boolean>;
-            _columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-            originColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-            columns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-            fixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-            rightFixedColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-            leafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-            fixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
-            rightFixedLeafColumns: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any>[]>;
+            _columns: import("vue").Ref<TableColumnCtx<any>[]>;
+            originColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+            columns: import("vue").Ref<TableColumnCtx<any>[]>;
+            fixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+            rightFixedColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+            leafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+            fixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
+            rightFixedLeafColumns: import("vue").Ref<TableColumnCtx<any>[]>;
             updateOrderFns: (() => void)[];
             leafColumnsLength: import("vue").Ref<number>;
             fixedLeafColumnsLength: import("vue").Ref<number>;
@@ -668,7 +672,7 @@ declare const _default: import("vue").DefineComponent<{
             selectable: import("vue").Ref<((row: any, index: number) => boolean) | null>;
             filters: import("vue").Ref<import("./store").StoreFilter>;
             filteredData: import("vue").Ref<any[] | null>;
-            sortingColumn: import("vue").Ref<import("./table-column/defaults").TableColumnCtx<any> | null>;
+            sortingColumn: import("vue").Ref<TableColumnCtx<any> | null>;
             sortProp: import("vue").Ref<string | null>;
             sortOrder: import("vue").Ref<string | number | null>;
             hoverRow: import("vue").Ref<any>;
@@ -692,9 +696,9 @@ declare const _default: import("vue").DefineComponent<{
             cssVarBlockName: (name: string) => string;
         };
     };
-    columns: import("vue").ComputedRef<import("./table-column/defaults").TableColumnCtx<any>[]>;
+    columns: import("vue").ComputedRef<TableColumnCtx<any>[]>;
     handleHeaderFooterMousewheel: (_event: WheelEvent, data: any) => void;
-    handleMouseLeave: () => void;
+    handleTableMouseLeave: () => void;
     tableId: string;
     tableSize: import("vue").ComputedRef<"" | "small" | "default" | "large">;
     isHidden: import("vue").Ref<boolean>;
@@ -767,12 +771,44 @@ declare const _default: import("vue").DefineComponent<{
     t: import("element-plus/es/hooks").Translator;
     setDragVisible: (visible: boolean) => void;
     context: Table<any>;
-    editingRow: import("vue").Ref<any>;
-    activeEditableCell: import("vue").Ref<any>;
+    editingRow: any;
+    activeEditableCell: any;
     startRowEdit: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow: () => void;
     applyEditingRow: () => any;
     hasEditingRow: import("vue").ComputedRef<boolean>;
+    addColumnTrigger: import("vue").ShallowRef<{
+        column: TableColumnCtx<any>;
+        columnIndex: number;
+        insertIndex: number;
+        left: number;
+        top: number;
+    } | null>;
+    addColumnTriggerStyle: import("vue").ComputedRef<CSSProperties>;
+    handleAddColumnClick: (event: MouseEvent) => void;
+    updateAddColumnTrigger: (payload: {
+        column: TableColumnCtx<any>;
+        columnIndex: number;
+        insertIndex: number;
+        left: number;
+        top: number;
+    } | null) => void;
+    addRowTrigger: import("vue").Ref<{
+        row: any;
+        rowIndex: number;
+        insertIndex: number;
+        top: number;
+        placement: "above" | "below";
+    } | null>;
+    addRowTriggerStyle: import("vue").ComputedRef<CSSProperties>;
+    handleAddRowClick: (event: MouseEvent) => void;
+    updateAddRowTrigger: (payload: {
+        row: any;
+        rowIndex: number;
+        insertIndex: number;
+        top: number;
+        placement: "above" | "below";
+    } | null) => void;
     computedSumText: import("vue").ComputedRef<string>;
     computedEmptyText: import("vue").ComputedRef<string>;
     tableLayout: import("vue").ComputedRef<("fixed" | "auto") | undefined>;
@@ -791,6 +827,7 @@ declare const _default: import("vue").DefineComponent<{
         maxHeight?: undefined;
     }>;
     scrollBarRef: import("vue").Ref<any>;
+    handleScrollbarScroll: (event: any) => void;
     /**
      * @description scrolls to a particular set of coordinates
      */
@@ -807,7 +844,15 @@ declare const _default: import("vue").DefineComponent<{
      * @description whether to allow drag the last column
      */
     allowDragLastColumn: boolean;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    /**
+     * @description whether to show an add-column trigger when hovering a header divider
+     */
+    showAddColumnTrigger: boolean;
+    /**
+     * @description whether to show an add-row trigger when hovering a row divider
+     */
+    showAddRowTrigger: boolean;
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     data: {
         type: import("vue").PropType<any[]>;
         default: () => never[];
@@ -880,7 +925,7 @@ declare const _default: import("vue").DefineComponent<{
     lazy: BooleanConstructor;
     load: import("vue").PropType<import("./table/defaults").TableProps<any>["load"]>;
     style: {
-        type: import("vue").PropType<import("vue").CSSProperties>;
+        type: import("vue").PropType<CSSProperties>;
         default: () => {};
     };
     className: {
@@ -913,6 +958,8 @@ declare const _default: import("vue").DefineComponent<{
         type: (NumberConstructor | StringConstructor)[];
         default: undefined;
     };
+    showAddColumnTrigger: BooleanConstructor;
+    showAddRowTrigger: BooleanConstructor;
     allowDragLastColumn: {
         type: BooleanConstructor;
         default: boolean;
@@ -940,9 +987,11 @@ declare const _default: import("vue").DefineComponent<{
     "onRow-contextmenu"?: ((...args: any[]) => any) | undefined;
     "onRow-dblclick"?: ((...args: any[]) => any) | undefined;
     "onEditable-cell-active-change"?: ((...args: any[]) => any) | undefined;
+    "onAdd-column"?: ((...args: any[]) => any) | undefined;
+    "onAdd-row"?: ((...args: any[]) => any) | undefined;
 }, {
     data: any[];
-    style: import("vue").CSSProperties;
+    style: CSSProperties;
     tableLayout: "fixed" | "auto";
     border: boolean;
     className: string;
@@ -953,6 +1002,7 @@ declare const _default: import("vue").DefineComponent<{
     editable: boolean;
     scrollbarAlwaysOn: boolean;
     allowDragLastColumn: boolean;
+    showAddColumnTrigger: boolean;
     tooltipOptions: Partial<Pick<import("element-plus").ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">> | undefined;
     treeProps: import("./table/defaults").TreeProps | undefined;
     defaultExpandAll: boolean;
@@ -967,6 +1017,7 @@ declare const _default: import("vue").DefineComponent<{
     flexible: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;
+    showAddRowTrigger: boolean;
     preserveExpandedContent: boolean;
 }>;
 export default _default;

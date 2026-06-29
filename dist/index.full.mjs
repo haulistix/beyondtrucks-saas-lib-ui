@@ -15490,7 +15490,7 @@ const popperContentProps = buildProps({
   },
   effect: {
     type: definePropType(String),
-    default: "dark"
+    default: "light"
   },
   visible: Boolean,
   enterable: {
@@ -16465,7 +16465,7 @@ const _sfc_main$2n = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Tooltip = /* @__PURE__ */ _export_sfc(_sfc_main$2n, [["__file", "tooltip.vue"]]);
+var ElTooltip$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2n, [["__file", "tooltip.vue"]]);
 
 const inputProps = buildProps({
   isHoverSuffix: Boolean,
@@ -16855,6 +16855,8 @@ const _sfc_main$2m = /* @__PURE__ */ defineComponent({
       value = formatValue(value);
       if (props.modelModifiers.lazy) {
         emit(UPDATE_MODEL_EVENT, value);
+      } else if (String(value) !== nativeInputValue.value) {
+        emit(UPDATE_MODEL_EVENT, value);
       }
       emit(CHANGE_EVENT, value);
       await nextTick();
@@ -17128,7 +17130,7 @@ const _sfc_main$2m = /* @__PURE__ */ defineComponent({
                 }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true)
               ], 2)
             ], 2)) : createCommentVNode("v-if", true),
-            unref(validateError) ? (openBlock(), createBlock(Tooltip, {
+            unref(validateError) ? (openBlock(), createBlock(ElTooltip$1, {
               key: 3,
               content: unref(validateMsg),
               effect: "light",
@@ -17205,7 +17207,7 @@ const _sfc_main$2m = /* @__PURE__ */ defineComponent({
           }, [
             renderSlot(_ctx.$slots, "textareaSuffix")
           ])) : createCommentVNode("v-if", true),
-          unref(validateError) ? (openBlock(), createBlock(Tooltip, {
+          unref(validateError) ? (openBlock(), createBlock(ElTooltip$1, {
             key: 2,
             content: unref(validateMsg),
             effect: "light",
@@ -17775,7 +17777,7 @@ var Scrollbar$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2j, [["__file", "scrollb
 
 const ElScrollbar = withInstall(Scrollbar$1);
 
-const ElTooltip = withInstall(Tooltip);
+const ElTooltip = withInstall(ElTooltip$1);
 
 const autocompleteProps = buildProps({
   ...inputProps,
@@ -51097,13 +51099,41 @@ function useEvent(props, emit) {
   const draggingColumn = ref(null);
   const dragging = ref(false);
   const dragState = ref();
+  const clearAddColumnTrigger = () => {
+    emit("update-add-column-trigger", null);
+  };
+  const isColumnBeforeLastRightFixedColumn = (column) => {
+    const rightFixedLeafColumnsLength = props.store.states.rightFixedLeafColumnsLength.value;
+    if (rightFixedLeafColumnsLength <= 0) {
+      return false;
+    }
+    const columns = props.store.states.columns.value;
+    const columnIndex = columns.findIndex((item) => item.id === column.id);
+    if (columnIndex < 0) {
+      return false;
+    }
+    let lastRightFixedIndex = -1;
+    for (let index = columns.length - 1; index >= 0; index--) {
+      if (columns[index].fixed === "right") {
+        lastRightFixedIndex = index;
+        break;
+      }
+    }
+    if (lastRightFixedIndex <= 0) {
+      return false;
+    }
+    return columnIndex === lastRightFixedIndex - 1;
+  };
   const handleMouseDown = (event, column) => {
     var _a, _b;
     if (!isClient || !column.resizable)
       return;
     if (column.children && column.children.length > 0)
       return;
+    if (isColumnBeforeLastRightFixedColumn(column))
+      return;
     if (draggingColumn.value && props.border) {
+      clearAddColumnTrigger();
       dragging.value = true;
       const table = parent;
       emit("set-drag-visible", true);
@@ -51161,7 +51191,7 @@ function useEvent(props, emit) {
     }
   };
   const handleMouseMove = (event, column) => {
-    var _a;
+    var _a, _b;
     if (column.children && column.children.length > 0)
       return;
     const el = event.target;
@@ -51173,28 +51203,78 @@ function useEvent(props, emit) {
       return;
     if (!dragging.value && props.border) {
       const rect = target.getBoundingClientRect();
+      const tableRect = (_a = parent == null ? void 0 : parent.vnode.el) == null ? void 0 : _a.getBoundingClientRect();
       const bodyStyle = document.body.style;
-      const isLastTh = ((_a = target.parentNode) == null ? void 0 : _a.lastElementChild) === target;
-      const allowDarg = props.allowDragLastColumn || !isLastTh;
-      if (rect.width > 12 && rect.right - event.clientX < 8 && allowDarg) {
+      const isLastTh = ((_b = target.parentNode) == null ? void 0 : _b.lastElementChild) === target;
+      const allowDarg = !isColumnBeforeLastRightFixedColumn(column) && (props.allowDragLastColumn || !isLastTh);
+      const canShowAddColumnTrigger = props.showAddColumnTrigger && tableRect && rect.width > 12;
+      const columnIndex = props.store.states.columns.value.findIndex((item) => item.id === column.id);
+      const isNearRightEdge = rect.right - event.clientX < 4 && allowDarg;
+      if (rect.width > 12 && isNearRightEdge) {
         bodyStyle.cursor = "col-resize";
         if (hasClass(target, "is-sortable")) {
           target.style.cursor = "col-resize";
         }
         draggingColumn.value = column;
-      } else if (!dragging.value) {
+        if (canShowAddColumnTrigger && columnIndex > -1) {
+          emit("update-add-column-trigger", {
+            column,
+            columnIndex,
+            insertIndex: columnIndex + 1,
+            left: rect.right - tableRect.left,
+            top: rect.top - tableRect.top + rect.height / 2
+          });
+        } else {
+          clearAddColumnTrigger();
+        }
+      } else if (canShowAddColumnTrigger && columnIndex > -1) {
         bodyStyle.cursor = "";
         if (hasClass(target, "is-sortable")) {
           target.style.cursor = "pointer";
         }
         draggingColumn.value = null;
+        const isLeftHalf = event.clientX < rect.left + rect.width / 2;
+        const disableInsertBeforeFirstColumn = columnIndex === 0 && isLeftHalf && column.allowInsertBeforeFirstColumn === false;
+        if (disableInsertBeforeFirstColumn) {
+          clearAddColumnTrigger();
+          return;
+        }
+        const insertBefore = isLeftHalf;
+        emit("update-add-column-trigger", {
+          column,
+          columnIndex,
+          insertIndex: insertBefore ? columnIndex : columnIndex + 1,
+          left: insertBefore ? rect.left - tableRect.left : rect.right - tableRect.left,
+          top: rect.top - tableRect.top + rect.height / 2
+        });
+      } else {
+        bodyStyle.cursor = "";
+        if (hasClass(target, "is-sortable")) {
+          target.style.cursor = "pointer";
+        } else {
+          target.style.cursor = "";
+        }
+        draggingColumn.value = null;
+        clearAddColumnTrigger();
       }
     }
   };
-  const handleMouseOut = () => {
+  const handleMouseOut = (event) => {
+    var _a, _b;
     if (!isClient)
       return;
+    const currentTarget = event.currentTarget;
+    const relatedTarget = event.relatedTarget;
+    const namespace = (_b = (_a = parent == null ? void 0 : parent.vnode.el) == null ? void 0 : _a.dataset.prefix) != null ? _b : "el";
+    const triggerSelector = `.${namespace}-table__add-column-trigger`;
+    if (currentTarget && relatedTarget && currentTarget.contains(relatedTarget)) {
+      return;
+    }
+    if (isElement$2(relatedTarget) && relatedTarget.closest(triggerSelector)) {
+      return;
+    }
     document.body.style.cursor = "";
+    clearAddColumnTrigger();
   };
   const toggleOrder = ({ order, sortOrders }) => {
     if (order === "")
@@ -51442,6 +51522,9 @@ var TableHeader = defineComponent({
     },
     allowDragLastColumn: {
       type: Boolean
+    },
+    showAddColumnTrigger: {
+      type: Boolean
     }
   },
   setup(props, { emit }) {
@@ -51567,8 +51650,15 @@ var TableHeader = defineComponent({
       if (isTableLayoutAuto && column.fixed) {
         saveIndexSelection.set(_class, column);
       }
+      const diagonalHeader = column.diagonalHeader;
+      const isDiagonalHeaderCell = !!diagonalHeader;
       return h$1("th", {
-        class: _class,
+        class: [
+          _class,
+          {
+            [ns.is("diagonal-header")]: isDiagonalHeaderCell
+          }
+        ],
         colspan: column.colSpan,
         key: `${column.id}-thead`,
         rowspan: column.rowSpan,
@@ -51584,15 +51674,25 @@ var TableHeader = defineComponent({
         onContextmenu: ($event) => handleHeaderContextMenu($event, column),
         onMousedown: ($event) => handleMouseDown($event, column),
         onMousemove: ($event) => handleMouseMove($event, column),
-        onMouseout: handleMouseOut
+        onMouseout: ($event) => handleMouseOut($event)
       }, [
         h$1("div", {
           class: [
             "cell",
+            {
+              [ns.e("diagonal-header")]: isDiagonalHeaderCell
+            },
             column.filteredValue && column.filteredValue.length > 0 ? "highlight" : ""
           ]
         }, [
-          column.renderHeader ? column.renderHeader({
+          isDiagonalHeaderCell ? [
+            h$1("span", {
+              class: ns.e("diagonal-header-text")
+            }, diagonalHeader.from),
+            h$1("span", {
+              class: ns.e("diagonal-header-text")
+            }, diagonalHeader.to)
+          ] : column.renderHeader ? column.renderHeader({
             column,
             $index: cellIndex,
             store,
@@ -51625,10 +51725,13 @@ var TableHeader = defineComponent({
   }
 });
 
-function useEvents(props) {
+function useEvents(props, emit) {
   const parent = inject(TABLE_INJECTION_KEY);
   const tooltipContent = ref("");
   const tooltipTrigger = ref(h$1("div"));
+  const clearAddRowTrigger = () => {
+    emit("update-add-row-trigger", null);
+  };
   const isRowEditLocked = (row) => {
     var _a;
     const editingRow = (_a = parent == null ? void 0 : parent.editingRow) == null ? void 0 : _a.value;
@@ -51697,6 +51800,53 @@ function useEvents(props) {
     var _a;
     (_a = props.store) == null ? void 0 : _a.commit("setHoverRow", null);
   }, 30);
+  const handleRowMouseMove = (event, row, rowIndex) => {
+    var _a;
+    if (!(parent == null ? void 0 : parent.props.showAddRowTrigger) || !(parent == null ? void 0 : parent.props.border)) {
+      clearAddRowTrigger();
+      return;
+    }
+    const currentTarget = event.currentTarget;
+    const tableRect = (_a = parent == null ? void 0 : parent.vnode.el) == null ? void 0 : _a.getBoundingClientRect();
+    if (!currentTarget || !tableRect)
+      return;
+    const rect = currentTarget.getBoundingClientRect();
+    const nearTop = rect.height > 12 && event.clientY - rect.top < 8;
+    const nearBottom = rect.height > 12 && rect.bottom - event.clientY < 8;
+    if (nearTop) {
+      emit("update-add-row-trigger", {
+        row,
+        rowIndex,
+        insertIndex: rowIndex,
+        top: rect.top - tableRect.top,
+        placement: "below"
+      });
+    } else if (nearBottom) {
+      emit("update-add-row-trigger", {
+        row,
+        rowIndex,
+        insertIndex: rowIndex + 1,
+        top: rect.bottom - tableRect.top,
+        placement: "above"
+      });
+    } else {
+      clearAddRowTrigger();
+    }
+  };
+  const handleRowMouseOut = (event) => {
+    var _a, _b;
+    const currentTarget = event.currentTarget;
+    const relatedTarget = event.relatedTarget;
+    const namespace = (_b = (_a = parent == null ? void 0 : parent.vnode.el) == null ? void 0 : _a.dataset.prefix) != null ? _b : "el";
+    const triggerSelector = `.${namespace}-table__add-row-trigger`;
+    if (currentTarget && relatedTarget && currentTarget.contains(relatedTarget)) {
+      return;
+    }
+    if (isElement$2(relatedTarget) && relatedTarget.closest(triggerSelector)) {
+      return;
+    }
+    clearAddRowTrigger();
+  };
   const handleCellMouseEnter = (event, row, tooltipOptions) => {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     if (!parent)
@@ -51767,6 +51917,8 @@ function useEvents(props) {
     handleContextMenu,
     handleMouseEnter,
     handleMouseLeave,
+    handleRowMouseMove,
+    handleRowMouseOut,
     handleCellMouseEnter,
     handleCellMouseLeave,
     tooltipContent,
@@ -51917,7 +52069,7 @@ const _sfc_main$A = /* @__PURE__ */ defineComponent({
 });
 var TdWrapper = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__file", "td-wrapper.vue"]]);
 
-function useRender$1(props) {
+function useRender$1(props, emit) {
   const parent = inject(TABLE_INJECTION_KEY);
   const ns = useNamespace("table");
   const {
@@ -51927,11 +52079,13 @@ function useRender$1(props) {
     handleContextMenu,
     handleMouseEnter,
     handleMouseLeave,
+    handleRowMouseMove,
+    handleRowMouseOut,
     handleCellMouseEnter,
     handleCellMouseLeave,
     tooltipContent,
     tooltipTrigger
-  } = useEvents(props);
+  } = useEvents(props, emit);
   const {
     getRowStyle,
     getRowClass,
@@ -51988,7 +52142,9 @@ function useRender$1(props) {
       onClick: ($event) => handleClick($event, row),
       onContextmenu: ($event) => handleContextMenu($event, row),
       onMouseenter: () => handleMouseEnter($index),
-      onMouseleave: handleMouseLeave
+      onMouseleave: handleMouseLeave,
+      onMousemove: ($event) => handleRowMouseMove($event, row, $index),
+      onMouseout: ($event) => handleRowMouseOut($event)
     }, columns.value.map((column, cellIndex) => {
       const { rowspan, colspan } = getSpan(row, column, $index, cellIndex);
       if (!rowspan || !colspan) {
@@ -52177,19 +52333,20 @@ const defaultProps$3 = {
   onDragstart: {
     type: Function,
     default: void 0
-  }
+  },
+  showAddRowTrigger: Boolean
 };
 var defaultProps$4 = defaultProps$3;
 
 var TableBody = defineComponent({
   name: "ElTableBody",
   props: defaultProps$4,
-  setup(props) {
+  setup(props, { emit }) {
     var _a;
     const instance = getCurrentInstance();
     const parent = inject(TABLE_INJECTION_KEY);
     const ns = useNamespace("table");
-    const { wrappedRowRender, tooltipContent, tooltipTrigger } = useRender$1(props);
+    const { wrappedRowRender, tooltipContent, tooltipTrigger } = useRender$1(props, emit);
     const { onColumnsChange, onScrollableChange } = useLayoutObserver(parent);
     const hoveredCellList = [];
     watch((_a = props.store) == null ? void 0 : _a.states.hoverRow, (newVal, oldVal) => {
@@ -52865,6 +53022,8 @@ var defaultProps$2 = {
     type: [Number, String],
     default: void 0
   },
+  showAddColumnTrigger: Boolean,
+  showAddRowTrigger: Boolean,
   allowDragLastColumn: {
     type: Boolean,
     default: true
@@ -52931,6 +53090,7 @@ const _sfc_main$z = defineComponent({
     Mousewheel
   },
   components: {
+    ElTooltip: ElTooltip$1,
     TableHeader,
     TableBody,
     TableFooter,
@@ -52958,9 +53118,11 @@ const _sfc_main$z = defineComponent({
     "header-dragend",
     "expand-change",
     "editable-cell-active-change",
-    "scroll"
+    "scroll",
+    "add-column",
+    "add-row"
   ],
-  setup(props) {
+  setup(props, { emit }) {
     const { t } = useLocale();
     const ns = useNamespace("table");
     const table = getCurrentInstance();
@@ -52969,6 +53131,8 @@ const _sfc_main$z = defineComponent({
     table.store = store;
     const editingRow = ref(null);
     const activeEditableCell = ref(null);
+    const addColumnTrigger = shallowRef(null);
+    const addRowTrigger = ref(null);
     const startRowEdit = (row, prop, rowIndex, cellIndex) => {
       var _a, _b;
       const current = editingRow.value;
@@ -53049,6 +53213,52 @@ const _sfc_main$z = defineComponent({
       scrollbarViewStyle,
       scrollbarStyle
     } = useStyle(props, layout, store, table);
+    const clearAddColumnTrigger = () => {
+      addColumnTrigger.value = null;
+    };
+    const updateAddColumnTrigger = (payload) => {
+      addColumnTrigger.value = payload;
+    };
+    const handleAddColumnClick = (event) => {
+      const trigger = addColumnTrigger.value;
+      if (!trigger)
+        return;
+      emit("add-column", {
+        column: trigger.column,
+        columnIndex: trigger.columnIndex,
+        insertIndex: trigger.insertIndex,
+        event
+      });
+      clearAddColumnTrigger();
+    };
+    const clearAddRowTrigger = () => {
+      addRowTrigger.value = null;
+    };
+    const updateAddRowTrigger = (payload) => {
+      addRowTrigger.value = payload;
+    };
+    const handleAddRowClick = (event) => {
+      const trigger = addRowTrigger.value;
+      if (!trigger)
+        return;
+      emit("add-row", {
+        row: trigger.row,
+        rowIndex: trigger.rowIndex,
+        insertIndex: trigger.insertIndex,
+        event
+      });
+      clearAddRowTrigger();
+    };
+    const handleTableMouseLeave = () => {
+      handleMouseLeave();
+      clearAddColumnTrigger();
+      clearAddRowTrigger();
+    };
+    const handleScrollbarScroll = (event) => {
+      clearAddColumnTrigger();
+      clearAddRowTrigger();
+      emit("scroll", event);
+    };
     const { scrollBarRef, scrollTo, setScrollLeft, setScrollTop } = useScrollbar$1();
     const debouncedUpdateLayout = debounce(doLayout, 50);
     const tableId = `${ns.namespace.value}-table_${tableIdSeed++}`;
@@ -53068,6 +53278,20 @@ const _sfc_main$z = defineComponent({
       var _a;
       return (_a = props.emptyText) != null ? _a : t("el.table.emptyText");
     });
+    const addColumnTriggerStyle = computed(() => {
+      if (!addColumnTrigger.value)
+        return {};
+      return {
+        left: `${addColumnTrigger.value.left}px`
+      };
+    });
+    const addRowTriggerStyle = computed(() => {
+      if (!addRowTrigger.value)
+        return {};
+      return {
+        top: `${addRowTrigger.value.top}px`
+      };
+    });
     const columns = computed(() => {
       return convertToRows(store.states.originColumns.value)[0];
     });
@@ -53081,7 +53305,7 @@ const _sfc_main$z = defineComponent({
       store,
       columns,
       handleHeaderFooterMousewheel,
-      handleMouseLeave,
+      handleTableMouseLeave,
       tableId,
       tableSize,
       isHidden,
@@ -53115,16 +53339,27 @@ const _sfc_main$z = defineComponent({
       clearEditingRow,
       applyEditingRow,
       hasEditingRow,
+      addColumnTrigger,
+      addColumnTriggerStyle,
+      handleAddColumnClick,
+      updateAddColumnTrigger,
+      addRowTrigger,
+      addRowTriggerStyle,
+      handleAddRowClick,
+      updateAddRowTrigger,
       computedSumText,
       computedEmptyText,
       tableLayout,
       scrollbarViewStyle,
       scrollbarStyle,
       scrollBarRef,
+      handleScrollbarScroll,
       scrollTo,
       setScrollLeft,
       setScrollTop,
-      allowDragLastColumn: props.allowDragLastColumn
+      allowDragLastColumn: props.allowDragLastColumn,
+      showAddColumnTrigger: props.showAddColumnTrigger,
+      showAddRowTrigger: props.showAddRowTrigger
     };
   }
 });
@@ -53134,6 +53369,9 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_table_body = resolveComponent("table-body");
   const _component_table_footer = resolveComponent("table-footer");
   const _component_el_scrollbar = resolveComponent("el-scrollbar");
+  const _component_el_icon = resolveComponent("el-icon");
+  const _component_el_button = resolveComponent("el-button");
+  const _component_el_tooltip = resolveComponent("el-tooltip");
   const _directive_mousewheel = resolveDirective("mousewheel");
   return openBlock(), createElementBlock("div", {
     ref: "tableWrapper",
@@ -53148,6 +53386,8 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
         [_ctx.ns.m("fluid-height")]: _ctx.maxHeight,
         [_ctx.ns.m("scrollable-x")]: _ctx.layout.scrollX.value,
         [_ctx.ns.m("scrollable-y")]: _ctx.layout.scrollY.value,
+        [_ctx.ns.m("with-add-column-trigger")]: _ctx.showAddColumnTrigger,
+        [_ctx.ns.m("with-add-row-trigger")]: _ctx.showAddRowTrigger,
         [_ctx.ns.m("enable-row-hover")]: !_ctx.store.states.isComplex.value,
         [_ctx.ns.m("enable-row-transition")]: (_ctx.store.states.data.value || []).length !== 0 && (_ctx.store.states.data.value || []).length < 100,
         "has-footer": _ctx.showSummary
@@ -53159,7 +53399,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     style: normalizeStyle(_ctx.style),
     "data-prefix": _ctx.ns.namespace.value,
-    onMouseleave: _ctx.handleMouseLeave
+    onMouseleave: _ctx.handleTableMouseLeave
   }, [
     createElementVNode("div", {
       class: normalizeClass(_ctx.ns.e("inner-wrapper"))
@@ -53194,8 +53434,10 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
             store: _ctx.store,
             "append-filter-panel-to": _ctx.appendFilterPanelTo,
             "allow-drag-last-column": _ctx.allowDragLastColumn,
-            onSetDragVisible: _ctx.setDragVisible
-          }, null, 8, ["border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "onSetDragVisible"])
+            "show-add-column-trigger": _ctx.showAddColumnTrigger,
+            onSetDragVisible: _ctx.setDragVisible,
+            onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger
+          }, null, 8, ["border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "onSetDragVisible", "onUpdateAddColumnTrigger"])
         ], 6)
       ], 2)), [
         [_directive_mousewheel, _ctx.handleHeaderFooterMousewheel]
@@ -53211,7 +53453,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
           always: _ctx.scrollbarAlwaysOn,
           tabindex: _ctx.scrollbarTabindex,
           native: _ctx.nativeScrollbar,
-          onScroll: ($event) => _ctx.$emit("scroll", $event)
+          onScroll: _ctx.handleScrollbarScroll
         }, {
           default: withCtx(() => [
             createElementVNode("table", {
@@ -53237,8 +53479,11 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
                 "default-sort": _ctx.defaultSort,
                 store: _ctx.store,
                 "append-filter-panel-to": _ctx.appendFilterPanelTo,
-                onSetDragVisible: _ctx.setDragVisible
-              }, null, 8, ["class", "border", "default-sort", "store", "append-filter-panel-to", "onSetDragVisible"])) : createCommentVNode("v-if", true),
+                "allow-drag-last-column": _ctx.allowDragLastColumn,
+                "show-add-column-trigger": _ctx.showAddColumnTrigger,
+                onSetDragVisible: _ctx.setDragVisible,
+                onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger
+              }, null, 8, ["class", "border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "onSetDragVisible", "onUpdateAddColumnTrigger"])) : createCommentVNode("v-if", true),
               createVNode(_component_table_body, {
                 context: _ctx.context,
                 "row-draggable": _ctx.rowDraggable,
@@ -53250,8 +53495,10 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
                 "tooltip-options": _ctx.tooltipOptions,
                 "row-style": _ctx.rowStyle,
                 store: _ctx.store,
-                stripe: _ctx.stripe
-              }, null, 8, ["context", "row-draggable", "on-dragend", "on-dragstart", "highlight", "row-class-name", "tooltip-effect", "tooltip-options", "row-style", "store", "stripe"]),
+                stripe: _ctx.stripe,
+                "show-add-row-trigger": _ctx.showAddRowTrigger,
+                onUpdateAddRowTrigger: _ctx.updateAddRowTrigger
+              }, null, 8, ["context", "row-draggable", "on-dragend", "on-dragstart", "highlight", "row-class-name", "tooltip-effect", "tooltip-options", "row-style", "store", "stripe", "show-add-row-trigger", "onUpdateAddRowTrigger"]),
               _ctx.showSummary && _ctx.tableLayout === "auto" ? (openBlock(), createBlock(_component_table_footer, {
                 key: 1,
                 class: normalizeClass(_ctx.ns.e("body-footer")),
@@ -53321,6 +53568,107 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
       class: normalizeClass(_ctx.ns.e("column-resize-proxy"))
     }, null, 2), [
       [vShow, _ctx.resizeProxyVisible]
+    ]),
+    withDirectives(createElementVNode("div", {
+      class: normalizeClass(_ctx.ns.e("add-column-trigger")),
+      style: normalizeStyle(_ctx.addColumnTriggerStyle)
+    }, [
+      createVNode(_component_el_tooltip, {
+        content: "Add Column",
+        placement: "top"
+      }, {
+        default: withCtx(() => [
+          createVNode(_component_el_button, {
+            class: normalizeClass(["icon-button", _ctx.ns.e("add-column-trigger-button")]),
+            onClick: withModifiers(_ctx.handleAddColumnClick, ["stop"])
+          }, {
+            default: withCtx(() => [
+              createVNode(_component_el_icon, {
+                color: "#2A3F4D",
+                size: "12px"
+              }, {
+                default: withCtx(() => [
+                  (openBlock(), createElementBlock("svg", {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "12",
+                    height: "12",
+                    viewBox: "0 0 12 12"
+                  }, [
+                    createElementVNode("g", { "clip-path": "url(#clip0_35669_24470)" }, [
+                      createElementVNode("path", { d: "M12 5.25H6.75V0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25Z" })
+                    ]),
+                    createElementVNode("defs", null, [
+                      createElementVNode("clipPath", { id: "clip0_35669_24470" }, [
+                        createElementVNode("rect", {
+                          width: "12",
+                          height: "12",
+                          fill: "white"
+                        })
+                      ])
+                    ])
+                  ]))
+                ]),
+                _: 1
+              })
+            ]),
+            _: 1
+          }, 8, ["class", "onClick"])
+        ]),
+        _: 1
+      })
+    ], 6), [
+      [vShow, _ctx.addColumnTrigger]
+    ]),
+    withDirectives(createElementVNode("div", {
+      class: normalizeClass([_ctx.ns.e("add-row-trigger")]),
+      style: normalizeStyle(_ctx.addRowTriggerStyle)
+    }, [
+      createVNode(_component_el_tooltip, {
+        content: "Add Row",
+        placement: "top"
+      }, {
+        default: withCtx(() => [
+          createVNode(_component_el_button, {
+            class: normalizeClass(["icon-button", _ctx.ns.e("add-row-trigger-button")]),
+            "aria-label": "Add Row",
+            onClick: withModifiers(_ctx.handleAddRowClick, ["stop"])
+          }, {
+            default: withCtx(() => [
+              createVNode(_component_el_icon, {
+                color: "#2A3F4D",
+                size: "12px"
+              }, {
+                default: withCtx(() => [
+                  (openBlock(), createElementBlock("svg", {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "12",
+                    height: "12",
+                    viewBox: "0 0 12 12"
+                  }, [
+                    createElementVNode("g", { "clip-path": "url(#clip0_35669_24470)" }, [
+                      createElementVNode("path", { d: "M12 5.25H6.75V0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25Z" })
+                    ]),
+                    createElementVNode("defs", null, [
+                      createElementVNode("clipPath", { id: "clip0_35669_24470" }, [
+                        createElementVNode("rect", {
+                          width: "12",
+                          height: "12",
+                          fill: "white"
+                        })
+                      ])
+                    ])
+                  ]))
+                ]),
+                _: 1
+              })
+            ]),
+            _: 1
+          }, 8, ["class", "onClick"])
+        ]),
+        _: 1
+      })
+    ], 6), [
+      [vShow, _ctx.addRowTrigger]
     ])
   ], 46, ["data-prefix", "onMouseleave"]);
 }
@@ -53580,6 +53928,8 @@ function useWatcher(owner, props_) {
       "formatter",
       "className",
       "labelClassName",
+      "diagonalHeader",
+      "allowInsertBeforeFirstColumn",
       "filterClassName",
       "showOverflowTooltip",
       "tooltipFormatter",
@@ -53802,6 +54152,11 @@ var defaultProps$1 = {
     default: ""
   },
   renderHeader: Function,
+  diagonalHeader: Object,
+  allowInsertBeforeFirstColumn: {
+    type: Boolean,
+    default: true
+  },
   sortable: {
     type: [Boolean, String],
     default: false
@@ -53911,6 +54266,8 @@ var ElTableColumn$1 = defineComponent({
         "labelClassName",
         "type",
         "renderHeader",
+        "diagonalHeader",
+        "allowInsertBeforeFirstColumn",
         "formatter",
         "fixed",
         "resizable"

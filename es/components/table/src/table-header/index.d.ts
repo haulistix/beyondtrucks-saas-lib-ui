@@ -15,6 +15,7 @@ export interface TableHeaderProps<T extends DefaultRow> {
     border: boolean;
     defaultSort: Sort;
     allowDragLastColumn: boolean;
+    showAddColumnTrigger: boolean;
 }
 declare const _default: import("vue").DefineComponent<{
     fixed: {
@@ -37,6 +38,9 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
     };
     allowDragLastColumn: {
+        type: BooleanConstructor;
+    };
+    showAddColumnTrigger: {
         type: BooleanConstructor;
     };
 }, {
@@ -71,12 +75,12 @@ declare const _default: import("vue").DefineComponent<{
     handleHeaderContextMenu: (event: Event, column: import("../table-column/defaults.js").TableColumnCtx<any>) => void;
     handleMouseDown: (event: MouseEvent, column: import("../table-column/defaults.js").TableColumnCtx<any>) => void;
     handleMouseMove: (event: MouseEvent, column: import("../table-column/defaults.js").TableColumnCtx<any>) => void;
-    handleMouseOut: () => void;
+    handleMouseOut: (event: MouseEvent) => void;
     handleSortClick: (event: Event, column: import("../table-column/defaults.js").TableColumnCtx<any>, givenOrder?: import("../table/defaults").TableSortOrder | boolean) => void;
     handleFilterClick: (event: Event) => void;
     isGroup: import("vue").ComputedRef<boolean>;
     toggleAllSelection: (event: Event) => void;
-    saveIndexSelection: import("@vue/reactivity").Reactive<Map<any, any>>;
+    saveIndexSelection: Map<any, any>;
     isTableLayoutAuto: boolean;
     theadRef: Ref<any>;
     updateFixedColumnStyle: () => void;
@@ -103,10 +107,14 @@ declare const _default: import("vue").DefineComponent<{
     allowDragLastColumn: {
         type: BooleanConstructor;
     };
+    showAddColumnTrigger: {
+        type: BooleanConstructor;
+    };
 }>>, {
     fixed: string;
     border: boolean;
     defaultSort: Sort;
     allowDragLastColumn: boolean;
+    showAddColumnTrigger: boolean;
 }>;
 export default _default;

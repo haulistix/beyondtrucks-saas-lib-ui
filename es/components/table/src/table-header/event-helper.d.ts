@@ -8,7 +8,7 @@ declare function useEvent<T extends DefaultRow>(props: TableHeaderProps<T>, emit
     handleHeaderContextMenu: (event: Event, column: TableColumnCtx<T>) => void;
     handleMouseDown: (event: MouseEvent, column: TableColumnCtx<T>) => void;
     handleMouseMove: (event: MouseEvent, column: TableColumnCtx<T>) => void;
-    handleMouseOut: () => void;
+    handleMouseOut: (event: MouseEvent) => void;
     handleSortClick: (event: Event, column: TableColumnCtx<T>, givenOrder?: TableSortOrder | boolean) => void;
     handleFilterClick: (event: Event) => void;
 };

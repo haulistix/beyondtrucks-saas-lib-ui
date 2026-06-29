@@ -61,13 +61,41 @@ function useEvent(props, emit) {
   const draggingColumn = ref(null);
   const dragging = ref(false);
   const dragState = ref();
+  const clearAddColumnTrigger = () => {
+    emit("update-add-column-trigger", null);
+  };
+  const isColumnBeforeLastRightFixedColumn = (column) => {
+    const rightFixedLeafColumnsLength = props.store.states.rightFixedLeafColumnsLength.value;
+    if (rightFixedLeafColumnsLength <= 0) {
+      return false;
+    }
+    const columns = props.store.states.columns.value;
+    const columnIndex = columns.findIndex((item) => item.id === column.id);
+    if (columnIndex < 0) {
+      return false;
+    }
+    let lastRightFixedIndex = -1;
+    for (let index = columns.length - 1; index >= 0; index--) {
+      if (columns[index].fixed === "right") {
+        lastRightFixedIndex = index;
+        break;
+      }
+    }
+    if (lastRightFixedIndex <= 0) {
+      return false;
+    }
+    return columnIndex === lastRightFixedIndex - 1;
+  };
   const handleMouseDown = (event, column) => {
     var _a, _b;
     if (!isClient || !column.resizable)
       return;
     if (column.children && column.children.length > 0)
       return;
+    if (isColumnBeforeLastRightFixedColumn(column))
+      return;
     if (draggingColumn.value && props.border) {
+      clearAddColumnTrigger();
       dragging.value = true;
       const table = parent;
       emit("set-drag-visible", true);
@@ -125,7 +153,7 @@ function useEvent(props, emit) {
     }
   };
   const handleMouseMove = (event, column) => {
-    var _a;
+    var _a, _b;
     if (column.children && column.children.length > 0)
       return;
     const el = event.target;
@@ -137,28 +165,78 @@ function useEvent(props, emit) {
       return;
     if (!dragging.value && props.border) {
       const rect = target.getBoundingClientRect();
+      const tableRect = (_a = parent == null ? void 0 : parent.vnode.el) == null ? void 0 : _a.getBoundingClientRect();
       const bodyStyle = document.body.style;
-      const isLastTh = ((_a = target.parentNode) == null ? void 0 : _a.lastElementChild) === target;
-      const allowDarg = props.allowDragLastColumn || !isLastTh;
-      if (rect.width > 12 && rect.right - event.clientX < 8 && allowDarg) {
+      const isLastTh = ((_b = target.parentNode) == null ? void 0 : _b.lastElementChild) === target;
+      const allowDarg = !isColumnBeforeLastRightFixedColumn(column) && (props.allowDragLastColumn || !isLastTh);
+      const canShowAddColumnTrigger = props.showAddColumnTrigger && tableRect && rect.width > 12;
+      const columnIndex = props.store.states.columns.value.findIndex((item) => item.id === column.id);
+      const isNearRightEdge = rect.right - event.clientX < 4 && allowDarg;
+      if (rect.width > 12 && isNearRightEdge) {
         bodyStyle.cursor = "col-resize";
         if (hasClass(target, "is-sortable")) {
           target.style.cursor = "col-resize";
         }
         draggingColumn.value = column;
-      } else if (!dragging.value) {
+        if (canShowAddColumnTrigger && columnIndex > -1) {
+          emit("update-add-column-trigger", {
+            column,
+            columnIndex,
+            insertIndex: columnIndex + 1,
+            left: rect.right - tableRect.left,
+            top: rect.top - tableRect.top + rect.height / 2
+          });
+        } else {
+          clearAddColumnTrigger();
+        }
+      } else if (canShowAddColumnTrigger && columnIndex > -1) {
         bodyStyle.cursor = "";
         if (hasClass(target, "is-sortable")) {
           target.style.cursor = "pointer";
         }
         draggingColumn.value = null;
+        const isLeftHalf = event.clientX < rect.left + rect.width / 2;
+        const disableInsertBeforeFirstColumn = columnIndex === 0 && isLeftHalf && column.allowInsertBeforeFirstColumn === false;
+        if (disableInsertBeforeFirstColumn) {
+          clearAddColumnTrigger();
+          return;
+        }
+        const insertBefore = isLeftHalf;
+        emit("update-add-column-trigger", {
+          column,
+          columnIndex,
+          insertIndex: insertBefore ? columnIndex : columnIndex + 1,
+          left: insertBefore ? rect.left - tableRect.left : rect.right - tableRect.left,
+          top: rect.top - tableRect.top + rect.height / 2
+        });
+      } else {
+        bodyStyle.cursor = "";
+        if (hasClass(target, "is-sortable")) {
+          target.style.cursor = "pointer";
+        } else {
+          target.style.cursor = "";
+        }
+        draggingColumn.value = null;
+        clearAddColumnTrigger();
       }
     }
   };
-  const handleMouseOut = () => {
+  const handleMouseOut = (event) => {
+    var _a, _b;
     if (!isClient)
       return;
+    const currentTarget = event.currentTarget;
+    const relatedTarget = event.relatedTarget;
+    const namespace = (_b = (_a = parent == null ? void 0 : parent.vnode.el) == null ? void 0 : _a.dataset.prefix) != null ? _b : "el";
+    const triggerSelector = `.${namespace}-table__add-column-trigger`;
+    if (currentTarget && relatedTarget && currentTarget.contains(relatedTarget)) {
+      return;
+    }
+    if (isElement(relatedTarget) && relatedTarget.closest(triggerSelector)) {
+      return;
+    }
     document.body.style.cursor = "";
+    clearAddColumnTrigger();
   };
   const toggleOrder = ({ order, sortOrders }) => {
     if (order === "")

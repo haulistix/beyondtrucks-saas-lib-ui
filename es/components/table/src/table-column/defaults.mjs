@@ -17,6 +17,11 @@ var defaultProps = {
     default: ""
   },
   renderHeader: Function,
+  diagonalHeader: Object,
+  allowInsertBeforeFirstColumn: {
+    type: Boolean,
+    default: true
+  },
   sortable: {
     type: [Boolean, String],
     default: false

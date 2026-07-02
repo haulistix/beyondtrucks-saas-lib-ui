@@ -1,25 +1,53 @@
-import { defineComponent, inject, ref, resolveComponent, openBlock, createElementBlock, normalizeStyle, normalizeClass, withModifiers, renderSlot, createElementVNode, createVNode, withCtx, toDisplayString, withDirectives, vShow } from 'vue';
+import { defineComponent, inject, ref, computed, resolveComponent, openBlock, createElementBlock, normalizeStyle, normalizeClass, withModifiers, renderSlot, createElementVNode, createBlock, createCommentVNode, createVNode, withCtx, toDisplayString } from 'vue';
+import { isObject, get } from 'lodash-unified';
 import { getPadding, isGreaterThan } from '../../table/src/util.mjs';
+import { ElCheckbox } from '../../checkbox/index.mjs';
+import { ElIcon } from '../../icon/index.mjs';
 import { ElTooltip } from '../../tooltip/index.mjs';
 import { useOption } from './useOption.mjs';
 import { useProps } from './useProps.mjs';
 import { optionV2Props, optionV2Emits } from './defaults.mjs';
 import { selectV2InjectionKey } from './token.mjs';
-import { ElIcon } from '../../icon/index.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 
 const _sfc_main = defineComponent({
-  components: { ElIcon, ElTooltip },
+  components: { ElCheckbox, ElIcon, ElTooltip },
   props: optionV2Props,
   emits: optionV2Emits,
   setup(props, { emit }) {
     const select = inject(selectV2InjectionKey);
     const showTip = ref(true);
     const ns = useNamespace("select");
+    const multiple = computed(() => select.props.multiple);
     const { hoverItem, selectOptionClick } = useOption(props, { emit });
-    const { getLabel } = useProps(select.props);
+    const { getLabel, getValue } = useProps(select.props);
     const contentId = select.contentId;
+    const isItemSelected = (item) => {
+      if (!item || item.type === "Group" || !multiple.value)
+        return false;
+      const values = Array.isArray(select.props.modelValue) ? select.props.modelValue : [];
+      const itemValue = getValue(item);
+      if (!isObject(itemValue)) {
+        return values.includes(itemValue);
+      }
+      return values.some((value) => get(value, select.props.valueKey) === get(itemValue, select.props.valueKey));
+    };
+    const selectedCount = computed(() => {
+      if (!multiple.value || !Array.isArray(props.data))
+        return 0;
+      return props.data.filter((item) => isItemSelected(item)).length;
+    });
+    const showSelectedDivider = computed(() => {
+      return !props.selected && multiple.value && selectedCount.value > 0 && props.index === selectedCount.value;
+    });
+    const optionStyle = computed(() => {
+      var _a;
+      return {
+        ...(_a = props.style) != null ? _a : {},
+        borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : "none"
+      };
+    });
     const handleCellMouseEnter = (event) => {
       const cellChild = event.target.querySelector(".option-wrap-content");
       if (!cellChild)
@@ -41,7 +69,9 @@ const _sfc_main = defineComponent({
     return {
       ns,
       contentId,
+      multiple,
       showTip,
+      optionStyle,
       hoverItem,
       selectOptionClick,
       getLabel,
@@ -50,6 +80,7 @@ const _sfc_main = defineComponent({
   }
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
   return openBlock(), createElementBlock("li", {
@@ -57,7 +88,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     role: "option",
     "aria-selected": _ctx.selected,
     "aria-disabled": _ctx.disabled || void 0,
-    style: normalizeStyle(_ctx.style),
+    style: normalizeStyle(_ctx.optionStyle),
     class: normalizeClass([
       _ctx.ns.be("dropdown", "item"),
       _ctx.ns.is("selected", _ctx.selected),
@@ -75,6 +106,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       disabled: _ctx.disabled
     }, () => [
       createElementVNode("div", { class: "option-wrap" }, [
+        _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
+          key: 0,
+          "model-value": _ctx.selected,
+          disabled: _ctx.disabled
+        }, null, 8, ["model-value", "disabled"])) : createCommentVNode("v-if", true),
         createVNode(_component_el_tooltip, {
           ref: "tooltipRef",
           effect: "light",
@@ -96,7 +132,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           }),
           _: 3
         }, 8, ["disabled", "content"]),
-        withDirectives(createElementVNode("div", { class: "option-wrap-icon" }, [
+        _ctx.selected && !_ctx.multiple ? (openBlock(), createElementBlock("div", {
+          key: 1,
+          class: "option-wrap-icon"
+        }, [
           createVNode(_component_el_icon, {
             size: "16px",
             color: "#2A3F4D"
@@ -113,9 +152,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             ]),
             _: 1
           })
-        ], 512), [
-          [vShow, _ctx.selected]
-        ])
+        ])) : createCommentVNode("v-if", true)
       ])
     ])
   ], 46, ["id", "aria-selected", "aria-disabled", "onMousemove", "onClick", "onMouseenter"]);

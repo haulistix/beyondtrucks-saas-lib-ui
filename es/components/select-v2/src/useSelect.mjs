@@ -9,13 +9,13 @@ import { useFormItem, useFormItemInputId } from '../../form/src/hooks/use-form-i
 import { useEmptyValues } from '../../../hooks/use-empty-values/index.mjs';
 import { useComposition } from '../../../hooks/use-composition/index.mjs';
 import { useFocusController } from '../../../hooks/use-focus-controller/index.mjs';
-import { debugWarn } from '../../../utils/error.mjs';
-import { isArray, isFunction, isObject } from '@vue/shared';
+import { debugWarn, throwError } from '../../../utils/error.mjs';
+import { isArray, isFunction, isObject, isPromise } from '@vue/shared';
 import { ValidateComponentsMap } from '../../../utils/vue/icon.mjs';
 import { escapeStringRegexp } from '../../../utils/strings.mjs';
 import { useFormSize } from '../../form/src/hooks/use-form-common-props.mjs';
 import { MINIMUM_INPUT_WIDTH } from '../../../constants/form.mjs';
-import { isEmpty, isUndefined, isNumber } from '../../../utils/types.mjs';
+import { isEmpty, isUndefined, isNumber, isBoolean } from '../../../utils/types.mjs';
 import { getEventCode } from '../../../utils/dom/event.mjs';
 import { EVENT_CODE } from '../../../constants/aria.mjs';
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../constants/event.mjs';
@@ -134,6 +134,30 @@ const useSelect = (props, emit) => {
   });
   const isFilterMethodValid = computed(() => props.filterable && isFunction(props.filterMethod));
   const isRemoteMethodValid = computed(() => props.filterable && props.remote && isFunction(props.remoteMethod));
+  const isOptionSelected = (option) => {
+    if (!props.multiple || !isArray(props.modelValue))
+      return false;
+    const optionValue = getValue(option);
+    if (!isObject(optionValue)) {
+      return props.modelValue.includes(optionValue);
+    }
+    return props.modelValue.some((value) => getValueKey(value) === getValueKey(optionValue));
+  };
+  const reorderFilteredOptions = (options) => {
+    if (!props.multiple || options.some((option) => option.type === "Group")) {
+      return options;
+    }
+    const selectedOptions = [];
+    const unselectedOptions = [];
+    options.forEach((option) => {
+      if (isOptionSelected(option)) {
+        selectedOptions.push(option);
+      } else {
+        unselectedOptions.push(option);
+      }
+    });
+    return [...selectedOptions, ...unselectedOptions];
+  };
   const filterOptions = (query) => {
     const regexp = new RegExp(escapeStringRegexp(query), "i");
     const isValidOption = (o) => {
@@ -144,7 +168,7 @@ const useSelect = (props, emit) => {
     if (props.loading) {
       return [];
     }
-    return [...states.createdOptions, ...props.options].reduce((all, item) => {
+    return reorderFilteredOptions([...states.createdOptions, ...props.options].reduce((all, item) => {
       const options = getOptions(item);
       if (isArray(options)) {
         const filtered = options.filter(isValidOption);
@@ -158,7 +182,7 @@ const useSelect = (props, emit) => {
         all.push(item);
       }
       return all;
-    }, []);
+    }, []));
   };
   const updateOptions = () => {
     filteredOptions.value = filterOptions(states.inputValue);
@@ -384,20 +408,45 @@ const useSelect = (props, emit) => {
     var _a, _b;
     (_b = (_a = tagTooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
   };
-  const onSelect = (option) => {
+  const checkBeforeChange = async (value, oldValue) => {
+    if (isEqual(value, oldValue) || !props.beforeChange)
+      return true;
+    const shouldChange = props.beforeChange(value, oldValue);
+    const isPromiseOrBool = [
+      isPromise(shouldChange),
+      isBoolean(shouldChange)
+    ].filter(Boolean).length;
+    if (!isPromiseOrBool) {
+      throwError("ElSelectV2", "beforeChange must return type `Promise<boolean>` or `boolean`");
+    }
+    if (isPromise(shouldChange)) {
+      return shouldChange.catch((err) => {
+        return false;
+      });
+    }
+    return shouldChange;
+  };
+  const onSelect = async (option) => {
     const optionValue = getValue(option);
     if (props.multiple) {
       let selectedOptions = props.modelValue.slice();
       const index = getValueIndex(selectedOptions, optionValue);
-      if (index > -1) {
+      const isSelected = index > -1;
+      const canSelect = props.multipleLimit <= 0 || selectedOptions.length < props.multipleLimit;
+      if (isSelected) {
         selectedOptions = [
           ...selectedOptions.slice(0, index),
           ...selectedOptions.slice(index + 1)
         ];
+      } else if (canSelect) {
+        selectedOptions = [...selectedOptions, optionValue];
+      }
+      if (!await checkBeforeChange(selectedOptions, props.modelValue))
+        return;
+      if (isSelected) {
         states.cachedOptions.splice(index, 1);
         removeNewOption(option);
-      } else if (props.multipleLimit <= 0 || selectedOptions.length < props.multipleLimit) {
-        selectedOptions = [...selectedOptions, optionValue];
+      } else if (canSelect) {
         states.cachedOptions.push(option);
         selectNewOption(option);
       }
@@ -409,6 +458,8 @@ const useSelect = (props, emit) => {
         states.inputValue = "";
       }
     } else {
+      if (!await checkBeforeChange(optionValue, props.modelValue))
+        return;
       states.selectedLabel = getLabel(option);
       !isEqual(props.modelValue, optionValue) && update(optionValue);
       expanded.value = false;

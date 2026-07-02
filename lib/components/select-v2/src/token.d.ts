@@ -7,7 +7,7 @@ export interface SelectV2Context {
     expanded: Ref<boolean>;
     tooltipRef: Ref<TooltipInstance | undefined>;
     contentId: Ref<string>;
-    onSelect: (option: Option) => void;
+    onSelect: (option: Option) => void | Promise<void>;
     onHover: (idx?: number) => void;
     onKeyboardNavigate: (direction: 'forward' | 'backward') => void;
     onKeyboardSelect: () => void;

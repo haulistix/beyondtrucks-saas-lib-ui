@@ -8,11 +8,11 @@ import { useFormItem, useFormItemInputId } from '../../form/src/hooks/use-form-i
 import { useEmptyValues } from '../../../hooks/use-empty-values/index.mjs';
 import { useComposition } from '../../../hooks/use-composition/index.mjs';
 import { useFocusController } from '../../../hooks/use-focus-controller/index.mjs';
-import { debugWarn } from '../../../utils/error.mjs';
-import { isArray, isFunction, isPlainObject, isObject } from '@vue/shared';
+import { debugWarn, throwError } from '../../../utils/error.mjs';
+import { isArray, isFunction, isPlainObject, isObject, isPromise } from '@vue/shared';
 import { ValidateComponentsMap } from '../../../utils/vue/icon.mjs';
 import { useFormSize } from '../../form/src/hooks/use-form-common-props.mjs';
-import { isEmpty, isUndefined, isNumber } from '../../../utils/types.mjs';
+import { isEmpty, isUndefined, isNumber, isBoolean } from '../../../utils/types.mjs';
 import { getEventCode } from '../../../utils/dom/event.mjs';
 import { EVENT_CODE } from '../../../constants/aria.mjs';
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../constants/event.mjs';
@@ -353,6 +353,26 @@ const useSelect = (props, emit) => {
       emit(CHANGE_EVENT, val);
     }
   };
+  const checkBeforeChange = async (value, oldValue) => {
+    if (isEqual(value, oldValue) || !props.beforeChange)
+      return true;
+    const shouldChange = props.beforeChange(value, oldValue);
+    const isPromiseOrBool = [
+      isPromise(shouldChange),
+      isBoolean(shouldChange)
+    ].includes(true);
+    if (!isPromiseOrBool) {
+      throwError("ElSelect", "beforeChange must return type `Promise<boolean>` or `boolean`");
+    }
+    if (isPromise(shouldChange)) {
+      try {
+        return !!await shouldChange;
+      } catch (error) {
+        return false;
+      }
+    }
+    return shouldChange;
+  };
   const getLastNotDisabledIndex = (value) => findLastIndex(value, (it) => {
     const option = states.cachedOptions.get(it);
     return option && !option.disabled && !option.states.groupDisabled;
@@ -403,7 +423,7 @@ const useSelect = (props, emit) => {
     emit("clear");
     focus();
   };
-  const handleOptionSelect = (option) => {
+  const handleOptionSelect = async (option) => {
     var _a;
     if (props.multiple) {
       const value = castArray((_a = props.modelValue) != null ? _a : []).slice();
@@ -413,6 +433,8 @@ const useSelect = (props, emit) => {
       } else if (props.multipleLimit <= 0 || value.length < props.multipleLimit) {
         value.push(option.value);
       }
+      if (!await checkBeforeChange(value, props.modelValue))
+        return;
       emit(UPDATE_MODEL_EVENT, value);
       emitChange(value);
       if (option.created) {
@@ -422,6 +444,8 @@ const useSelect = (props, emit) => {
         states.inputValue = "";
       }
     } else {
+      if (!await checkBeforeChange(option.value, props.modelValue))
+        return;
       !isEqual(props.modelValue, option.value) && emit(UPDATE_MODEL_EVENT, option.value);
       emitChange(option.value);
       expanded.value = false;

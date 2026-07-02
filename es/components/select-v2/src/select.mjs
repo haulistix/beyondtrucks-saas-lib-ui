@@ -82,7 +82,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_click_outside = resolveDirective("click-outside");
   return withDirectives((openBlock(), createElementBlock("div", {
     ref: "selectRef",
-    class: normalizeClass([_ctx.nsSelect.b(), _ctx.nsSelect.m(_ctx.selectSize)]),
+    class: normalizeClass([
+      _ctx.nsSelect.b(),
+      _ctx.nsSelect.m(_ctx.selectSize),
+      _ctx.multiple && _ctx.isFocused ? "multi-select" : ""
+    ]),
     onMouseenter: ($event) => _ctx.states.inputHovering = true,
     onMouseleave: ($event) => _ctx.states.inputHovering = false
   }, [

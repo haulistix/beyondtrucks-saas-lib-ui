@@ -75,7 +75,7 @@ export declare const useSelect: (props: SelectProps, emit: SelectEmits) => {
     deletePrevTag: (e: KeyboardEvent) => void;
     deleteTag: (event: MouseEvent, tag: OptionBasic) => void;
     deleteSelected: (event: Event) => void;
-    handleOptionSelect: (option: OptionPublicInstance) => void;
+    handleOptionSelect: (option: OptionPublicInstance) => Promise<void>;
     scrollToOption: (option: OptionPublicInstance | OptionPublicInstance[] | SelectStates["selected"]) => void;
     hasModelValue: import("vue").ComputedRef<boolean>;
     shouldShowPlaceholder: import("vue").ComputedRef<boolean>;

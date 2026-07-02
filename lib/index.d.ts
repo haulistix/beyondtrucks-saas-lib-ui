@@ -15870,6 +15870,12 @@ declare const _default_73: DefineComponent<{
     addItem: BooleanConstructor;
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
+    beforeChange: {
+        readonly type: PropType<(value: OptionValue | OptionValue[] | null | undefined, oldValue: OptionValue | OptionValue[] | null | undefined) => Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     allowCreate: BooleanConstructor;
     loading: BooleanConstructor;
     popperClass: EpPropFinalized<StringConstructor, unknown, unknown, string, boolean>;
@@ -16062,7 +16068,7 @@ declare const _default_73: DefineComponent<{
     deletePrevTag: (e: KeyboardEvent) => void;
     deleteTag: (event: MouseEvent, tag: OptionBasic) => void;
     deleteSelected: (event: Event) => void;
-    handleOptionSelect: (option: SelectOptionProxy) => void;
+    handleOptionSelect: (option: SelectOptionProxy) => Promise<void>;
     scrollToOption: (option: SelectOptionProxy | SelectOptionProxy[] | SelectStates["selected"]) => void;
     hasModelValue: ComputedRef<boolean>;
     shouldShowPlaceholder: ComputedRef<boolean>;
@@ -16164,6 +16170,12 @@ declare const _default_73: DefineComponent<{
     addItem: BooleanConstructor;
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
+    beforeChange: {
+        readonly type: PropType<(value: OptionValue | OptionValue[] | null | undefined, oldValue: OptionValue | OptionValue[] | null | undefined) => Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     allowCreate: BooleanConstructor;
     loading: BooleanConstructor;
     popperClass: EpPropFinalized<StringConstructor, unknown, unknown, string, boolean>;
@@ -16376,6 +16388,13 @@ declare const _default_74: DefineComponent<{
     disabled: Ref<boolean>;
     showTip: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     placement: EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown>;
+    optionStyle: ComputedRef<{
+        order?: undefined;
+        borderTop?: undefined;
+    } | {
+        order: number;
+        borderTop: string | undefined;
+    }>;
     handleCellMouseEnter: (event: MouseEvent) => void;
     hoverItem: () => void;
     updateOption: (query: string) => void;
@@ -16474,6 +16493,12 @@ declare const _default_76: DefineComponent<{
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: BooleanConstructor;
+    readonly beforeChange: {
+        readonly type: PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly filterMethod: {
         readonly type: PropType<(query: string) => void>;
         readonly required: false;
@@ -16805,14 +16830,14 @@ declare const _default_76: DefineComponent<{
     onInput: (event: Event) => void;
     onKeyboardNavigate: (direction: "forward" | "backward", hoveringIndex?: number | undefined) => void;
     onKeyboardSelect: () => void;
-    onSelect: (option: Option_2) => void;
+    onSelect: (option: Option_2) => Promise<void>;
     onHover: (idx?: number) => void;
     handleCompositionStart: (event: CompositionEvent) => void;
     handleCompositionEnd: (event: CompositionEvent) => void;
     handleCompositionUpdate: (event: CompositionEvent) => void;
 }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    "update:modelValue": (val: SelectV2Props["modelValue"]) => boolean;
-    change: (val: SelectV2Props["modelValue"]) => boolean;
+    "update:modelValue": (val: SelectV2ModelValue) => boolean;
+    change: (val: SelectV2ModelValue) => boolean;
     "remove-tag": (val: unknown) => boolean;
     "visible-change": (visible: boolean) => boolean;
     focus: (evt: FocusEvent) => boolean;
@@ -16841,6 +16866,12 @@ declare const _default_76: DefineComponent<{
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: BooleanConstructor;
+    readonly beforeChange: {
+        readonly type: PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly filterMethod: {
         readonly type: PropType<(query: string) => void>;
         readonly required: false;
@@ -24918,7 +24949,7 @@ export declare interface SelectContext {
     setSelected(): void;
     onOptionCreate(vm: SelectOptionProxy): void;
     onOptionDestroy(key: OptionValue, vm: SelectOptionProxy): void;
-    handleOptionSelect(vm: SelectOptionProxy): void;
+    handleOptionSelect(vm: SelectOptionProxy): void | Promise<void>;
 }
 declare interface SelectDropdownExposed {
     listRef: Ref<FixedSizeListInstance | DynamicSizeListInstance | undefined>;
@@ -24973,6 +25004,12 @@ export declare const selectProps: {
     addItem: BooleanConstructor;
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
+    beforeChange: {
+        readonly type: PropType<(value: OptionValue | OptionValue[] | null | undefined, oldValue: OptionValue | OptionValue[] | null | undefined) => Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     allowCreate: BooleanConstructor;
     loading: BooleanConstructor;
     popperClass: EpPropFinalized<StringConstructor, unknown, unknown, string, boolean>;
@@ -25114,13 +25151,14 @@ export declare interface SelectV2Context {
     expanded: Ref<boolean>;
     tooltipRef: Ref<TooltipInstance | undefined>;
     contentId: Ref<string>;
-    onSelect: (option: Option_2) => void;
+    onSelect: (option: Option_2) => void | Promise<void>;
     onHover: (idx?: number) => void;
     onKeyboardNavigate: (direction: "forward" | "backward") => void;
     onKeyboardSelect: () => void;
 }
 export declare const selectV2InjectionKey: InjectionKey<SelectV2Context>;
 export declare type SelectV2Instance = InstanceType<typeof _default_76> & unknown;
+declare type SelectV2ModelValue = any[] | string | number | boolean | Record<string, any> | any;
 export declare type SelectV2Props = ExtractPropTypes<typeof selectV2Props>;
 declare const selectV2Props: {
     readonly ariaLabel: StringConstructor;
@@ -25145,6 +25183,12 @@ declare const selectV2Props: {
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: BooleanConstructor;
+    readonly beforeChange: {
+        readonly type: PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly filterMethod: {
         readonly type: PropType<(query: string) => void>;
         readonly required: false;

@@ -1,7 +1,8 @@
-import type { EmitFn } from 'element-plus/es/utils';
+import type { Awaitable, EmitFn } from 'element-plus/es/utils';
 import type { CSSProperties, ExtractPropTypes, __ExtractPublicPropTypes } from 'vue';
 import type Select from './select.vue';
 import type { Options, Placement, PopperEffect } from 'element-plus/es/components/popper';
+import type { OptionValue } from './type';
 import type { Props } from 'element-plus/es/components/select-v2/src/useProps';
 export declare const selectProps: {
     ariaLabel: StringConstructor;
@@ -23,6 +24,12 @@ export declare const selectProps: {
     addItem: BooleanConstructor;
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
+    beforeChange: {
+        readonly type: import("vue").PropType<(value: OptionValue | OptionValue[] | null | undefined, oldValue: OptionValue | OptionValue[] | null | undefined) => Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     allowCreate: BooleanConstructor;
     loading: BooleanConstructor;
     popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, string, boolean>;

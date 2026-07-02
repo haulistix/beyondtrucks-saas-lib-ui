@@ -5,7 +5,7 @@ import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs
 import { iconPropType } from '../../../utils/vue/icon.mjs';
 import { useTooltipContentProps } from '../../tooltip/src/content.mjs';
 import { useSizeProp } from '../../../hooks/use-size/index.mjs';
-import { tagProps } from '../../tag/src/tag2.mjs';
+import { tagProps } from '../../tag/src/tag.mjs';
 import { isBoolean, isNumber } from '../../../utils/types.mjs';
 import { useEmptyValuesProps } from '../../../hooks/use-empty-values/index.mjs';
 import { useAriaProps } from '../../../hooks/use-aria/index.mjs';
@@ -44,6 +44,9 @@ const selectV2Props = buildProps({
     default: void 0
   },
   filterable: Boolean,
+  beforeChange: {
+    type: definePropType(Function)
+  },
   filterMethod: {
     type: definePropType(Function)
   },

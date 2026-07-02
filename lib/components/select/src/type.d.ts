@@ -12,7 +12,7 @@ export interface SelectContext {
     setSelected(): void;
     onOptionCreate(vm: OptionPublicInstance): void;
     onOptionDestroy(key: OptionValue, vm: OptionPublicInstance): void;
-    handleOptionSelect(vm: OptionPublicInstance): void;
+    handleOptionSelect(vm: OptionPublicInstance): void | Promise<void>;
 }
 export type SelectStates = {
     inputValue: string;

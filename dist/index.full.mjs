@@ -39782,6 +39782,23 @@ const _sfc_main$$ = defineComponent({
     const vm = getCurrentInstance().proxy;
     select.onOptionCreate(vm);
     const multiple = computed(() => select.props.multiple);
+    const isSelectedTop = computed(() => multiple.value && itemSelected.value);
+    const showSelectedDivider = computed(() => {
+      if (!multiple.value || itemSelected.value || !visible.value)
+        return false;
+      const visibleOptions = select.optionsArray.filter((option) => option.visible);
+      const firstUnselectedOption = visibleOptions.find((option) => !option.itemSelected);
+      const hasSelectedOption = visibleOptions.some((option) => option.itemSelected);
+      return hasSelectedOption && firstUnselectedOption === vm;
+    });
+    const optionStyle = computed(() => {
+      if (!multiple.value)
+        return {};
+      return {
+        order: isSelectedTop.value ? 1 : 2,
+        borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : void 0
+      };
+    });
     onBeforeUnmount(() => {
       const key = vm.value;
       nextTick(() => {
@@ -39850,6 +39867,7 @@ const _sfc_main$$ = defineComponent({
       disabled,
       showTip: props.showTip,
       placement: props.placement,
+      optionStyle,
       handleCellMouseEnter,
       hoverItem,
       updateOption,
@@ -39864,6 +39882,7 @@ function _sfc_render$c(_ctx, _cache) {
   return withDirectives((openBlock(), createElementBlock("li", {
     id: _ctx.id,
     class: normalizeClass(_ctx.containerKls),
+    style: normalizeStyle(_ctx.optionStyle),
     role: "option",
     "aria-disabled": _ctx.isDisabled || void 0,
     "aria-selected": _ctx.itemSelected,
@@ -39876,8 +39895,9 @@ function _sfc_render$c(_ctx, _cache) {
         _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
           key: 0,
           modelValue: _ctx.itemSelected,
-          "onUpdate:modelValue": ($event) => _ctx.itemSelected = $event
-        }, null, 8, ["modelValue", "onUpdate:modelValue"])) : createCommentVNode("v-if", true),
+          "onUpdate:modelValue": ($event) => _ctx.itemSelected = $event,
+          disabled: _ctx.isDisabled
+        }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled"])) : createCommentVNode("v-if", true),
         createVNode(_component_el_tooltip, {
           ref: "tooltipRef",
           effect: "light",
@@ -39925,7 +39945,7 @@ function _sfc_render$c(_ctx, _cache) {
         ])) : createCommentVNode("v-if", true)
       ])
     ])
-  ], 42, ["id", "aria-disabled", "aria-selected", "onMousemove", "onClick", "onMouseenter"])), [
+  ], 46, ["id", "aria-disabled", "aria-selected", "onMousemove", "onClick", "onMouseenter"])), [
     [vShow, _ctx.visible]
   ]);
 }
@@ -40319,6 +40339,26 @@ const useSelect$3 = (props, emit) => {
       emit(CHANGE_EVENT, val);
     }
   };
+  const checkBeforeChange = async (value, oldValue) => {
+    if (isEqual$1(value, oldValue) || !props.beforeChange)
+      return true;
+    const shouldChange = props.beforeChange(value, oldValue);
+    const isPromiseOrBool = [
+      isPromise(shouldChange),
+      isBoolean(shouldChange)
+    ].includes(true);
+    if (!isPromiseOrBool) {
+      throwError("ElSelect", "beforeChange must return type `Promise<boolean>` or `boolean`");
+    }
+    if (isPromise(shouldChange)) {
+      try {
+        return !!await shouldChange;
+      } catch (error) {
+        return false;
+      }
+    }
+    return shouldChange;
+  };
   const getLastNotDisabledIndex = (value) => findLastIndex(value, (it) => {
     const option = states.cachedOptions.get(it);
     return option && !option.disabled && !option.states.groupDisabled;
@@ -40369,7 +40409,7 @@ const useSelect$3 = (props, emit) => {
     emit("clear");
     focus();
   };
-  const handleOptionSelect = (option) => {
+  const handleOptionSelect = async (option) => {
     var _a;
     if (props.multiple) {
       const value = castArray$1((_a = props.modelValue) != null ? _a : []).slice();
@@ -40379,6 +40419,8 @@ const useSelect$3 = (props, emit) => {
       } else if (props.multipleLimit <= 0 || value.length < props.multipleLimit) {
         value.push(option.value);
       }
+      if (!await checkBeforeChange(value, props.modelValue))
+        return;
       emit(UPDATE_MODEL_EVENT, value);
       emitChange(value);
       if (option.created) {
@@ -40388,6 +40430,8 @@ const useSelect$3 = (props, emit) => {
         states.inputValue = "";
       }
     } else {
+      if (!await checkBeforeChange(option.value, props.modelValue))
+        return;
       !isEqual$1(props.modelValue, option.value) && emit(UPDATE_MODEL_EVENT, option.value);
       emitChange(option.value);
       expanded.value = false;
@@ -40719,6 +40763,9 @@ const selectProps = buildProps({
   addItem: Boolean,
   clearable: Boolean,
   filterable: Boolean,
+  beforeChange: {
+    type: definePropType(Function)
+  },
   allowCreate: Boolean,
   loading: Boolean,
   popperClass: {
@@ -45626,6 +45673,9 @@ const selectV2Props = buildProps({
     default: void 0
   },
   filterable: Boolean,
+  beforeChange: {
+    type: definePropType(Function)
+  },
   filterMethod: {
     type: definePropType(Function)
   },
@@ -45761,16 +45811,42 @@ const optionV2Emits = {
 const selectV2InjectionKey = Symbol("ElSelectV2Injection");
 
 const _sfc_main$N = defineComponent({
-  components: { ElIcon, ElTooltip },
+  components: { ElCheckbox, ElIcon, ElTooltip },
   props: optionV2Props,
   emits: optionV2Emits,
   setup(props, { emit }) {
     const select = inject(selectV2InjectionKey);
     const showTip = ref(true);
     const ns = useNamespace("select");
+    const multiple = computed(() => select.props.multiple);
     const { hoverItem, selectOptionClick } = useOption(props, { emit });
-    const { getLabel } = useProps(select.props);
+    const { getLabel, getValue } = useProps(select.props);
     const contentId = select.contentId;
+    const isItemSelected = (item) => {
+      if (!item || item.type === "Group" || !multiple.value)
+        return false;
+      const values = Array.isArray(select.props.modelValue) ? select.props.modelValue : [];
+      const itemValue = getValue(item);
+      if (!isObject(itemValue)) {
+        return values.includes(itemValue);
+      }
+      return values.some((value) => get(value, select.props.valueKey) === get(itemValue, select.props.valueKey));
+    };
+    const selectedCount = computed(() => {
+      if (!multiple.value || !Array.isArray(props.data))
+        return 0;
+      return props.data.filter((item) => isItemSelected(item)).length;
+    });
+    const showSelectedDivider = computed(() => {
+      return !props.selected && multiple.value && selectedCount.value > 0 && props.index === selectedCount.value;
+    });
+    const optionStyle = computed(() => {
+      var _a;
+      return {
+        ...(_a = props.style) != null ? _a : {},
+        borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : "none"
+      };
+    });
     const handleCellMouseEnter = (event) => {
       const cellChild = event.target.querySelector(".option-wrap-content");
       if (!cellChild)
@@ -45792,7 +45868,9 @@ const _sfc_main$N = defineComponent({
     return {
       ns,
       contentId,
+      multiple,
       showTip,
+      optionStyle,
       hoverItem,
       selectOptionClick,
       getLabel,
@@ -45801,6 +45879,7 @@ const _sfc_main$N = defineComponent({
   }
 });
 function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
   return openBlock(), createElementBlock("li", {
@@ -45808,7 +45887,7 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     role: "option",
     "aria-selected": _ctx.selected,
     "aria-disabled": _ctx.disabled || void 0,
-    style: normalizeStyle(_ctx.style),
+    style: normalizeStyle(_ctx.optionStyle),
     class: normalizeClass([
       _ctx.ns.be("dropdown", "item"),
       _ctx.ns.is("selected", _ctx.selected),
@@ -45826,6 +45905,11 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
       disabled: _ctx.disabled
     }, () => [
       createElementVNode("div", { class: "option-wrap" }, [
+        _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
+          key: 0,
+          "model-value": _ctx.selected,
+          disabled: _ctx.disabled
+        }, null, 8, ["model-value", "disabled"])) : createCommentVNode("v-if", true),
         createVNode(_component_el_tooltip, {
           ref: "tooltipRef",
           effect: "light",
@@ -45847,7 +45931,10 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
           }),
           _: 3
         }, 8, ["disabled", "content"]),
-        withDirectives(createElementVNode("div", { class: "option-wrap-icon" }, [
+        _ctx.selected && !_ctx.multiple ? (openBlock(), createElementBlock("div", {
+          key: 1,
+          class: "option-wrap-icon"
+        }, [
           createVNode(_component_el_icon, {
             size: "16px",
             color: "#2A3F4D"
@@ -45864,9 +45951,7 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
             ]),
             _: 1
           })
-        ], 512), [
-          [vShow, _ctx.selected]
-        ])
+        ])) : createCommentVNode("v-if", true)
       ])
     ])
   ], 46, ["id", "aria-selected", "aria-disabled", "onMousemove", "onClick", "onMouseenter"]);
@@ -46299,6 +46384,30 @@ const useSelect$1 = (props, emit) => {
   });
   const isFilterMethodValid = computed(() => props.filterable && isFunction$1(props.filterMethod));
   const isRemoteMethodValid = computed(() => props.filterable && props.remote && isFunction$1(props.remoteMethod));
+  const isOptionSelected = (option) => {
+    if (!props.multiple || !isArray$1(props.modelValue))
+      return false;
+    const optionValue = getValue(option);
+    if (!isObject$1(optionValue)) {
+      return props.modelValue.includes(optionValue);
+    }
+    return props.modelValue.some((value) => getValueKey(value) === getValueKey(optionValue));
+  };
+  const reorderFilteredOptions = (options) => {
+    if (!props.multiple || options.some((option) => option.type === "Group")) {
+      return options;
+    }
+    const selectedOptions = [];
+    const unselectedOptions = [];
+    options.forEach((option) => {
+      if (isOptionSelected(option)) {
+        selectedOptions.push(option);
+      } else {
+        unselectedOptions.push(option);
+      }
+    });
+    return [...selectedOptions, ...unselectedOptions];
+  };
   const filterOptions = (query) => {
     const regexp = new RegExp(escapeStringRegexp(query), "i");
     const isValidOption = (o) => {
@@ -46309,7 +46418,7 @@ const useSelect$1 = (props, emit) => {
     if (props.loading) {
       return [];
     }
-    return [...states.createdOptions, ...props.options].reduce((all, item) => {
+    return reorderFilteredOptions([...states.createdOptions, ...props.options].reduce((all, item) => {
       const options = getOptions(item);
       if (isArray$1(options)) {
         const filtered = options.filter(isValidOption);
@@ -46323,7 +46432,7 @@ const useSelect$1 = (props, emit) => {
         all.push(item);
       }
       return all;
-    }, []);
+    }, []));
   };
   const updateOptions = () => {
     filteredOptions.value = filterOptions(states.inputValue);
@@ -46549,20 +46658,45 @@ const useSelect$1 = (props, emit) => {
     var _a, _b;
     (_b = (_a = tagTooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
   };
-  const onSelect = (option) => {
+  const checkBeforeChange = async (value, oldValue) => {
+    if (isEqual$1(value, oldValue) || !props.beforeChange)
+      return true;
+    const shouldChange = props.beforeChange(value, oldValue);
+    const isPromiseOrBool = [
+      isPromise(shouldChange),
+      isBoolean(shouldChange)
+    ].filter(Boolean).length;
+    if (!isPromiseOrBool) {
+      throwError("ElSelectV2", "beforeChange must return type `Promise<boolean>` or `boolean`");
+    }
+    if (isPromise(shouldChange)) {
+      return shouldChange.catch((err) => {
+        return false;
+      });
+    }
+    return shouldChange;
+  };
+  const onSelect = async (option) => {
     const optionValue = getValue(option);
     if (props.multiple) {
       let selectedOptions = props.modelValue.slice();
       const index = getValueIndex(selectedOptions, optionValue);
-      if (index > -1) {
+      const isSelected = index > -1;
+      const canSelect = props.multipleLimit <= 0 || selectedOptions.length < props.multipleLimit;
+      if (isSelected) {
         selectedOptions = [
           ...selectedOptions.slice(0, index),
           ...selectedOptions.slice(index + 1)
         ];
+      } else if (canSelect) {
+        selectedOptions = [...selectedOptions, optionValue];
+      }
+      if (!await checkBeforeChange(selectedOptions, props.modelValue))
+        return;
+      if (isSelected) {
         states.cachedOptions.splice(index, 1);
         removeNewOption(option);
-      } else if (props.multipleLimit <= 0 || selectedOptions.length < props.multipleLimit) {
-        selectedOptions = [...selectedOptions, optionValue];
+      } else if (canSelect) {
         states.cachedOptions.push(option);
         selectNewOption(option);
       }
@@ -46574,6 +46708,8 @@ const useSelect$1 = (props, emit) => {
         states.inputValue = "";
       }
     } else {
+      if (!await checkBeforeChange(optionValue, props.modelValue))
+        return;
       states.selectedLabel = getLabel(option);
       !isEqual$1(props.modelValue, optionValue) && update(optionValue);
       expanded.value = false;
@@ -47009,7 +47145,11 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_click_outside = resolveDirective("click-outside");
   return withDirectives((openBlock(), createElementBlock("div", {
     ref: "selectRef",
-    class: normalizeClass([_ctx.nsSelect.b(), _ctx.nsSelect.m(_ctx.selectSize)]),
+    class: normalizeClass([
+      _ctx.nsSelect.b(),
+      _ctx.nsSelect.m(_ctx.selectSize),
+      _ctx.multiple && _ctx.isFocused ? "multi-select" : ""
+    ]),
     onMouseenter: ($event) => _ctx.states.inputHovering = true,
     onMouseleave: ($event) => _ctx.states.inputHovering = false
   }, [

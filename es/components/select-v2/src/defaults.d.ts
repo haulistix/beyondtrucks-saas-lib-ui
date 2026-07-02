@@ -1,9 +1,11 @@
 import type SelectV2 from './select.vue';
 import type { Option, OptionType } from './select.types';
 import type { Props } from './useProps';
+import type { Awaitable } from 'element-plus/es/utils';
 import type { EmitFn } from 'element-plus/es/utils/vue/typescript';
 import type { ExtractPropTypes, __ExtractPublicPropTypes } from 'vue';
 import type { Options, Placement, PopperEffect } from 'element-plus/es/components/popper';
+export type SelectV2ModelValue = any[] | string | number | boolean | Record<string, any> | any;
 export declare const selectV2Props: {
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -27,6 +29,12 @@ export declare const selectV2Props: {
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: BooleanConstructor;
+    readonly beforeChange: {
+        readonly type: import("vue").PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly filterMethod: {
         readonly type: import("vue").PropType<(query: string) => void>;
         readonly required: false;
@@ -243,8 +251,8 @@ export declare const optionV2Props: {
     readonly created: BooleanConstructor;
 };
 export declare const selectV2Emits: {
-    "update:modelValue": (val: SelectV2Props["modelValue"]) => boolean;
-    change: (val: SelectV2Props["modelValue"]) => boolean;
+    "update:modelValue": (val: SelectV2ModelValue) => boolean;
+    change: (val: SelectV2ModelValue) => boolean;
     'remove-tag': (val: unknown) => boolean;
     'visible-change': (visible: boolean) => boolean;
     focus: (evt: FocusEvent) => boolean;

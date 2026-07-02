@@ -50,13 +50,23 @@ $checked-icon: "data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='
     }
 
     @include when(disabled) {
-      color: #c1ccd6;
+      color: var(--color-gray-300);
       cursor: not-allowed;
       background-color: unset;
     }
   }
 
   @include when(multiple) {
+    .#{$namespace}-select-dropdown__list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .#{$namespace}-select-group {
+      display: flex;
+      flex-direction: column;
+    }
+
     .#{$namespace}-select-dropdown__item.is-disabled {
       &::after {
         background-color: map.get($select-option, 'disabled-color');

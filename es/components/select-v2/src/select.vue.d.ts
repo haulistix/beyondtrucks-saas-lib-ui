@@ -21,6 +21,12 @@ declare const _default: import("vue").DefineComponent<{
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: BooleanConstructor;
+    readonly beforeChange: {
+        readonly type: import("vue").PropType<(value: import("./defaults").SelectV2ModelValue, oldValue: import("./defaults").SelectV2ModelValue) => import("element-plus/es/utils").Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly filterMethod: {
         readonly type: import("vue").PropType<(query: string) => void>;
         readonly required: false;
@@ -341,14 +347,14 @@ declare const _default: import("vue").DefineComponent<{
     onInput: (event: Event) => void;
     onKeyboardNavigate: (direction: "forward" | "backward", hoveringIndex?: number | undefined) => void;
     onKeyboardSelect: () => void;
-    onSelect: (option: import("./select.types").Option) => void;
+    onSelect: (option: import("./select.types").Option) => Promise<void>;
     onHover: (idx?: number) => void;
     handleCompositionStart: (event: CompositionEvent) => void;
     handleCompositionEnd: (event: CompositionEvent) => void;
     handleCompositionUpdate: (event: CompositionEvent) => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    "update:modelValue": (val: import("./defaults").SelectV2Props["modelValue"]) => boolean;
-    change: (val: import("./defaults").SelectV2Props["modelValue"]) => boolean;
+    "update:modelValue": (val: import("./defaults").SelectV2ModelValue) => boolean;
+    change: (val: import("./defaults").SelectV2ModelValue) => boolean;
     'remove-tag': (val: unknown) => boolean;
     'visible-change': (visible: boolean) => boolean;
     focus: (evt: FocusEvent) => boolean;
@@ -377,6 +383,12 @@ declare const _default: import("vue").DefineComponent<{
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: BooleanConstructor;
+    readonly beforeChange: {
+        readonly type: import("vue").PropType<(value: import("./defaults").SelectV2ModelValue, oldValue: import("./defaults").SelectV2ModelValue) => import("element-plus/es/utils").Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly filterMethod: {
         readonly type: import("vue").PropType<(query: string) => void>;
         readonly required: false;

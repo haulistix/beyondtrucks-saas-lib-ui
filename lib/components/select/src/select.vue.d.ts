@@ -18,6 +18,12 @@ declare const _default: import("vue").DefineComponent<{
     addItem: BooleanConstructor;
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
+    beforeChange: {
+        readonly type: import("vue").PropType<(value: import("./type").OptionValue | import("./type").OptionValue[] | null | undefined, oldValue: import("./type").OptionValue | import("./type").OptionValue[] | null | undefined) => import("element-plus/es/utils").Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     allowCreate: BooleanConstructor;
     loading: BooleanConstructor;
     popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, string, boolean>;
@@ -210,7 +216,7 @@ declare const _default: import("vue").DefineComponent<{
     deletePrevTag: (e: KeyboardEvent) => void;
     deleteTag: (event: MouseEvent, tag: import("./type").OptionBasic) => void;
     deleteSelected: (event: Event) => void;
-    handleOptionSelect: (option: import("./type").OptionPublicInstance) => void;
+    handleOptionSelect: (option: import("./type").OptionPublicInstance) => Promise<void>;
     scrollToOption: (option: import("./type").OptionPublicInstance | import("./type").OptionPublicInstance[] | import("./type").SelectStates["selected"]) => void;
     hasModelValue: import("vue").ComputedRef<boolean>;
     shouldShowPlaceholder: import("vue").ComputedRef<boolean>;
@@ -312,6 +318,12 @@ declare const _default: import("vue").DefineComponent<{
     addItem: BooleanConstructor;
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
+    beforeChange: {
+        readonly type: import("vue").PropType<(value: import("./type").OptionValue | import("./type").OptionValue[] | null | undefined, oldValue: import("./type").OptionValue | import("./type").OptionValue[] | null | undefined) => import("element-plus/es/utils").Awaitable<boolean>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     allowCreate: BooleanConstructor;
     loading: BooleanConstructor;
     popperClass: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, string, boolean>;

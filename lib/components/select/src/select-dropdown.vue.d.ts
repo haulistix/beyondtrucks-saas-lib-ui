@@ -18,6 +18,12 @@ declare const _default: import("vue").DefineComponent<{}, {
         cssVarBlockName: (name: string) => string;
     };
     minWidth: import("vue").Ref<string>;
+    dropdownStyle: import("vue").ComputedRef<{
+        width: string;
+    } | {
+        [x: string]: string;
+        width?: undefined;
+    }>;
     popperClass: import("vue").ComputedRef<string>;
     isMultiple: import("vue").ComputedRef<boolean>;
     isFitInputWidth: import("vue").ComputedRef<import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>>;

@@ -15935,6 +15935,7 @@ declare const _default_73: DefineComponent<{
         __epPropKey: true;
     };
     fitInputWidth: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+    optionWidth: EpPropFinalized<(NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     suffixIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -16235,6 +16236,7 @@ declare const _default_73: DefineComponent<{
         __epPropKey: true;
     };
     fitInputWidth: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+    optionWidth: EpPropFinalized<(NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     suffixIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -16325,6 +16327,7 @@ declare const _default_73: DefineComponent<{
     remote: boolean;
     addItem: boolean;
     filterMaxLength: number;
+    optionWidth: EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>;
     remoteShowSuffix: boolean;
 }>;
 declare const _default_74: DefineComponent<{
@@ -25069,6 +25072,7 @@ export declare const selectProps: {
         __epPropKey: true;
     };
     fitInputWidth: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+    optionWidth: EpPropFinalized<(NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     suffixIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;

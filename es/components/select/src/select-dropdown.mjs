@@ -4,6 +4,7 @@ import { selectKey } from './token.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { BORDER_HORIZONTAL_WIDTH } from '../../../constants/form.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
+import { addUnit } from '../../../utils/dom/style.mjs';
 
 const _sfc_main = defineComponent({
   name: "ElSelectDropdown",
@@ -14,7 +15,18 @@ const _sfc_main = defineComponent({
     const popperClass = computed(() => select.props.popperClass);
     const isMultiple = computed(() => select.props.multiple);
     const isFitInputWidth = computed(() => select.props.fitInputWidth);
+    const optionWidth = computed(() => addUnit(select.props.optionWidth));
     const minWidth = ref("");
+    const dropdownStyle = computed(() => {
+      if (!isFitInputWidth.value && optionWidth.value) {
+        return {
+          width: optionWidth.value
+        };
+      }
+      return {
+        [isFitInputWidth.value ? "width" : "minWidth"]: minWidth.value
+      };
+    });
     function updateMinWidth() {
       var _a;
       const offsetWidth = (_a = select.selectRef) == null ? void 0 : _a.offsetWidth;
@@ -31,6 +43,7 @@ const _sfc_main = defineComponent({
     return {
       ns,
       minWidth,
+      dropdownStyle,
       popperClass,
       isMultiple,
       isFitInputWidth
@@ -40,7 +53,7 @@ const _sfc_main = defineComponent({
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass([_ctx.ns.b("dropdown"), _ctx.ns.is("multiple", _ctx.isMultiple), _ctx.popperClass]),
-    style: normalizeStyle({ [_ctx.isFitInputWidth ? "width" : "minWidth"]: _ctx.minWidth })
+    style: normalizeStyle(_ctx.dropdownStyle)
   }, [
     _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
       key: 0,

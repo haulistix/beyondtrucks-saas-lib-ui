@@ -39964,7 +39964,18 @@
       const popperClass = vue.computed(() => select.props.popperClass);
       const isMultiple = vue.computed(() => select.props.multiple);
       const isFitInputWidth = vue.computed(() => select.props.fitInputWidth);
+      const optionWidth = vue.computed(() => addUnit(select.props.optionWidth));
       const minWidth = vue.ref("");
+      const dropdownStyle = vue.computed(() => {
+        if (!isFitInputWidth.value && optionWidth.value) {
+          return {
+            width: optionWidth.value
+          };
+        }
+        return {
+          [isFitInputWidth.value ? "width" : "minWidth"]: minWidth.value
+        };
+      });
       function updateMinWidth() {
         var _a;
         const offsetWidth = (_a = select.selectRef) == null ? void 0 : _a.offsetWidth;
@@ -39981,6 +39992,7 @@
       return {
         ns,
         minWidth,
+        dropdownStyle,
         popperClass,
         isMultiple,
         isFitInputWidth
@@ -39990,7 +40002,7 @@
   function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", {
       class: vue.normalizeClass([_ctx.ns.b("dropdown"), _ctx.ns.is("multiple", _ctx.isMultiple), _ctx.popperClass]),
-      style: vue.normalizeStyle({ [_ctx.isFitInputWidth ? "width" : "minWidth"]: _ctx.minWidth })
+      style: vue.normalizeStyle(_ctx.dropdownStyle)
     }, [
       _ctx.$slots.header ? (vue.openBlock(), vue.createElementBlock("div", {
         key: 0,
@@ -40844,6 +40856,10 @@
     fitInputWidth: {
       type: Boolean,
       default: true
+    },
+    optionWidth: {
+      type: [String, Number],
+      default: void 0
     },
     suffixIcon: {
       type: iconPropType,

@@ -83,6 +83,7 @@ declare const _default: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     fitInputWidth: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+    optionWidth: import("element-plus/es/utils").EpPropFinalized<(NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     suffixIcon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;
         readonly required: false;
@@ -383,6 +384,7 @@ declare const _default: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     fitInputWidth: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+    optionWidth: import("element-plus/es/utils").EpPropFinalized<(NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     suffixIcon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;
         readonly required: false;
@@ -473,6 +475,7 @@ declare const _default: import("vue").DefineComponent<{
     remote: boolean;
     addItem: boolean;
     filterMaxLength: number;
+    optionWidth: import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>;
     remoteShowSuffix: boolean;
 }>;
 export default _default;

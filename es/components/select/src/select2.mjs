@@ -116,6 +116,10 @@ const selectProps = buildProps({
     type: Boolean,
     default: true
   },
+  optionWidth: {
+    type: [String, Number],
+    default: void 0
+  },
   suffixIcon: {
     type: iconPropType,
     default: ArrowDown

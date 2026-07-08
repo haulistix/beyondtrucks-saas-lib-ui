@@ -52147,6 +52147,9 @@ function useStyles$1(props) {
       }));
     }
     classes.push(ns.e("cell"));
+    if (column.diagonalHeader) {
+      classes.push("is-diagonal-header-column");
+    }
     return classes.filter((className) => Boolean(className)).join(" ");
   };
   const getSpan = (row, column, rowIndex, columnIndex) => {

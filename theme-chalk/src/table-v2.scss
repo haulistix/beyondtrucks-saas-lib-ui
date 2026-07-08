@@ -126,7 +126,7 @@
     bottom: 0;
     overflow: hidden;
     &.footer-default {
-      background-color: var(--color-cyan-100);
+      background-color: getCssVar('table-header-bg-color');
       height: 44px;
       padding: 12px 20px;
       font-size: 14px;
@@ -169,7 +169,7 @@
     z-index: 3;
     overflow: hidden;
     bottom: 44px;
-    box-shadow: 0 -3px 1px -1px rgba(26, 26, 26, 0.07);
+    box-shadow: var(--shadow-ghost-row);
   }
 
   @include e('add-row-left') {
@@ -191,7 +191,7 @@
   @include e('header-row') {
     display: flex;
     border-bottom: getCssVar('table', 'border');
-    background-color: var(--color-cyan-100);
+    background-color: getCssVar('table-header-bg-color');
 
     @include e('header-cell') {
       height: 100%;

@@ -5,7 +5,7 @@
 
   .footer-text{
     position: relative;
-    background-color: var(--color-cyan-100);
+    background-color: getCssVar('table-header-bg-color');
     height: 44px;
     display: flex;
     align-items: center;

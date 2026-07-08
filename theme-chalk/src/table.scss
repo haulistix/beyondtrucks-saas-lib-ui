@@ -134,10 +134,10 @@
   }
 
   thead {
-    color: var(--color-gray-990);
+    color: var(--el-table-header-text-color);
 
     th {
-      font-weight: 400;
+      font-weight: 600;
 
       &.#{$namespace}-table__cell {
         padding: 12px 0;

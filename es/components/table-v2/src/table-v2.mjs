@@ -1,17 +1,20 @@
-import { defineComponent, provide, unref, createVNode, isVNode, mergeProps } from 'vue';
+import { defineComponent, provide, computed, unref, createVNode, isVNode, Fragment, mergeProps } from 'vue';
 import { useTable } from './use-table.mjs';
-import { TableV2InjectionKey } from './tokens.mjs';
-import { tableV2Props } from './table.mjs';
+import { rowAddKey, rowAddSign } from './private.mjs';
+import { TableV2InjectionKey, TABLE_V2_GRID_INJECTION_KEY } from './tokens.mjs';
+import { tableV2Props, tableV2Emits } from './table.mjs';
 import MainTable from './renderers/main-table.mjs';
 import LeftTable from './renderers/left-table.mjs';
 import RightTable from './renderers/right-table.mjs';
 import Row from './renderers/row.mjs';
 import Cell from './renderers/cell.mjs';
-import Header from './renderers/header.mjs';
+import HeaderRenderer from './renderers/header.mjs';
 import HeaderCell from './renderers/header-cell.mjs';
 import Footer from './renderers/footer.mjs';
+import FooterDefault from './renderers/footerDefault.mjs';
 import Empty from './renderers/empty.mjs';
 import Overlay from './renderers/overlay.mjs';
+import Header from './components/header.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 
 function _isSlot(s) {
@@ -21,9 +24,11 @@ const COMPONENT_NAME = "ElTableV2";
 const TableV2 = defineComponent({
   name: COMPONENT_NAME,
   props: tableV2Props,
+  emits: tableV2Emits,
   setup(props, {
     slots,
-    expose
+    expose,
+    emit
   }) {
     const ns = useNamespace("table-v2");
     const {
@@ -46,6 +51,7 @@ const TableV2 = defineComponent({
       isResetting,
       isScrolling,
       bodyWidth,
+      addRowHeight,
       emptyStyle,
       rootStyle,
       footerHeight,
@@ -61,7 +67,8 @@ const TableV2 = defineComponent({
       onRowExpanded,
       onRowsRendered,
       onScroll,
-      onVerticalScroll
+      onVerticalScroll,
+      scrollPos
     } = useTable(props);
     expose({
       scrollTo,
@@ -74,6 +81,13 @@ const TableV2 = defineComponent({
       isResetting,
       isScrolling
     });
+    provide(TABLE_V2_GRID_INJECTION_KEY, computed(() => unref(scrollPos).scrollLeft));
+    const onRowDelete = (params) => {
+      emit("row-delete", params);
+    };
+    const onRowAdd = (params) => {
+      emit("row-add", params);
+    };
     return () => {
       const {
         cache,
@@ -184,15 +198,20 @@ const TableV2 = defineComponent({
         rowClass,
         rowKey,
         rowEventHandlers,
+        onRowAdd,
         onRowHovered,
         onRowExpanded,
         onRowHeightChange
       };
       const tableCellProps = {
+        canEditTable: props.canEditTable,
         cellProps,
+        editable: props.editable,
         expandColumnKey,
         indentSize,
         iconSize,
+        onRowAdd,
+        onRowDelete,
         rowKey,
         expandedRowKeys: unref(expandedRowKeys),
         ns
@@ -224,7 +243,7 @@ const TableV2 = defineComponent({
             }), null);
           }
         }),
-        header: (props2) => createVNode(Header, mergeProps(props2, tableHeaderProps), {
+        header: (props2) => createVNode(HeaderRenderer, mergeProps(props2, tableHeaderProps), {
           header: slots.header,
           cell: (props3) => {
             let _slot2;
@@ -241,7 +260,24 @@ const TableV2 = defineComponent({
       const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic))];
       const footerProps = {
         class: ns.e("footer"),
-        style: unref(footerHeight)
+        style: unref(footerHeight),
+        total: props.total,
+        updateTime: props.updateTime
+      };
+      const showAddRow = props.canEditTable && props.editable;
+      const addRowData = {
+        [rowKey]: rowAddKey,
+        [rowAddSign]: true
+      };
+      const addRowHeaderProps = {
+        fixedHeaderData: [addRowData],
+        headerData: _data,
+        headerHeight: [],
+        rowHeight,
+        height: unref(addRowHeight)
+      };
+      const addRowWrapperStyle = {
+        bottom: `${props.footerHeight}px`
       };
       return createVNode("div", {
         "class": rootKls,
@@ -252,9 +288,41 @@ const TableV2 = defineComponent({
         default: () => [tableSlots]
       }), createVNode(RightTable, rightTableProps, _isSlot(tableSlots) ? tableSlots : {
         default: () => [tableSlots]
-      }), slots.footer && createVNode(Footer, footerProps, {
+      }), showAddRow && createVNode(Fragment, null, [createVNode("div", {
+        "class": ns.e("add-row-main"),
+        "style": addRowWrapperStyle
+      }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
+        "columns": unref(mainColumns),
+        "class": ns.e("add-row-main-inner"),
+        "rowWidth": width,
+        "width": width
+      }), {
+        fixed: tableSlots.row
+      })]), leftColumnsWidth > 0 && createVNode("div", {
+        "class": ns.e("add-row-left"),
+        "style": addRowWrapperStyle
+      }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
+        "columns": unref(fixedColumnsOnLeft),
+        "class": ns.e("add-row-left-inner"),
+        "rowWidth": leftColumnsWidth,
+        "width": leftColumnsWidth
+      }), {
+        fixed: tableSlots.row
+      })]), rightColumnsWidth > 0 && createVNode("div", {
+        "class": ns.e("add-row-right"),
+        "style": addRowWrapperStyle
+      }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
+        "columns": unref(fixedColumnsOnRight),
+        "class": ns.e("add-row-right-inner"),
+        "rowWidth": rightColumnsWidth,
+        "width": rightColumnsWidth
+      }), {
+        fixed: tableSlots.row
+      })])]), slots.footer ? createVNode(Footer, footerProps, {
         default: slots.footer
-      }), unref(showEmpty) && createVNode(Empty, {
+      }) : props.isFooterDefault ? createVNode(FooterDefault, footerProps, {
+        default: slots.footer
+      }) : null, unref(showEmpty) && createVNode(Empty, {
         "class": ns.e("empty"),
         "style": unref(emptyStyle)
       }, {

@@ -56,6 +56,7 @@ export type Column<T = any> = {
     headerClass?: HeaderClassGetter<T> | string;
     maxWidth?: number;
     minWidth?: number;
+    required?: boolean;
     style?: CSSProperties;
     sortable?: boolean;
     width: number;

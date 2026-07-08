@@ -1,17 +1,20 @@
 import { createVNode } from 'vue';
 import { ElIcon } from '../../../icon/index.mjs';
-import { SortUp, SortDown } from '@element-plus/icons-vue';
+import FilterIconUp from './filter-icon-up.mjs';
+import FilterIconDown from './filter-icon-down.mjs';
 import { SortOrder } from '../constants.mjs';
 
 const SortIcon = (props) => {
   const {
-    sortOrder
+    sortOrder,
+    sorting
   } = props;
   return createVNode(ElIcon, {
-    "size": 14,
-    "class": props.class
+    "size": 12,
+    "class": props.class,
+    "color": sorting ? "#ff5b05" : "#9FB1BD"
   }, {
-    default: () => [sortOrder === SortOrder.ASC ? createVNode(SortUp, null, null) : createVNode(SortDown, null, null)]
+    default: () => [sortOrder === SortOrder.ASC ? createVNode(FilterIconUp, null, null) : createVNode(FilterIconDown, null, null)]
   });
 };
 var SortIcon$1 = SortIcon;

@@ -45,7 +45,7 @@ declare const TableGrid: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly headerHeight: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 50, boolean>;
+    readonly headerHeight: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 44, boolean>;
     readonly bodyWidth: {
         readonly type: import("vue").PropType<number>;
         readonly required: true;
@@ -139,7 +139,7 @@ declare const TableGrid: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly headerHeight: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 50, boolean>;
+    readonly headerHeight: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 44, boolean>;
     readonly bodyWidth: {
         readonly type: import("vue").PropType<number>;
         readonly required: true;

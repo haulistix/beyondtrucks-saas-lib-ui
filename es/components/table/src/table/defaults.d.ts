@@ -63,6 +63,7 @@ interface Table<T extends DefaultRow = any> extends ComponentInternalInstance {
     hoverState?: HoverState<T> | null;
     editingRow?: Ref<EditingRow<T>>;
     activeEditableCell?: Ref<ActiveEditableCell<T>>;
+    ghostRowData?: Ref<DefaultRow>;
     startRowEdit?: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow?: () => void;
     applyEditingRow?: () => EditingRow<T>;
@@ -148,6 +149,11 @@ interface TableProps<T extends DefaultRow> {
     scrollbarAlwaysOn?: boolean;
     flexible?: boolean;
     editable?: boolean;
+    ghostTable?: boolean;
+    editTable?: boolean;
+    total?: number;
+    updateTime?: string;
+    haveTableText?: boolean;
     showOverflowTooltip?: boolean | TableOverflowTooltipOptions;
     tooltipFormatter?: TableOverflowTooltipFormatter<T>;
     appendFilterPanelTo?: string;
@@ -388,6 +394,32 @@ declare const _default: {
      * @description whether editable cells can enter edit mode by clicking the table cell
      */
     editable: BooleanConstructor;
+    /**
+     * @description whether to enable ghost table behavior
+     */
+    ghostTable: BooleanConstructor;
+    /**
+     * @description whether to render edit cells for ghost table
+     */
+    editTable: BooleanConstructor;
+    /**
+     * @description total item count shown in the default table text footer
+     */
+    total: {
+        type: NumberConstructor;
+        default: number;
+    };
+    /**
+     * @description update time shown in the default table text footer
+     */
+    updateTime: {
+        type: StringConstructor;
+        default: string;
+    };
+    /**
+     * @description whether to show the default table text footer
+     */
+    haveTableText: BooleanConstructor;
     /**
      * @description whether to hide extra content and show them in a tooltip when hovering on the cell.It will affect all the table columns
      */

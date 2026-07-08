@@ -31,14 +31,14 @@
           background-color: var(--color-gray-100);
           color: #0e171f;
           box-shadow: none;
-          border-color: #c1ccd6;
+          border-color: var(--color-gray-300);
         }
       }
     }
 
     .el-radio-button__inner {
       width: 100%;
-      border-color: #c1ccd6;
+      border-color: var(--color-gray-300);
       font-size: 12px;
       font-weight: 600;
     }

@@ -68,7 +68,9 @@ type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     renderFilterIcon?: (scope: any) => VNode;
     renderExpand?: (scope: any) => VNode;
     diagonalHeader?: DiagonalHeaderConfig;
+    required: boolean;
     allowInsertBeforeFirstColumn: boolean;
+    renderEditCell?: (data: any) => VNode | VNode[];
 };
 interface TableColumn<T extends DefaultRow> extends ComponentInternalInstance {
     vnode: {
@@ -129,6 +131,10 @@ declare const _default: {
      * @description configures this column header as a diagonal header with `from` and `to` labels
      */
     diagonalHeader: PropType<TableColumnCtx<any>["diagonalHeader"]>;
+    /**
+     * @description whether this column is required
+     */
+    required: BooleanConstructor;
     /**
      * @description whether the first column can insert a new column before itself when hovering the left half of its header
      */

@@ -4,7 +4,7 @@ import AutoResizer from './src/components/auto-resizer.mjs';
 export { Alignment as TableV2Alignment, FixedDir as TableV2FixedDir, SortOrder as TableV2SortOrder } from './src/constants.mjs';
 export { autoResizerProps } from './src/auto-resizer.mjs';
 export { placeholderSign as TableV2Placeholder } from './src/private.mjs';
-export { tableV2Props } from './src/table.mjs';
+export { tableV2Emits, tableV2Props } from './src/table.mjs';
 export { tableV2RowProps } from './src/row.mjs';
 import { withInstall } from '../../utils/vue/install.mjs';
 

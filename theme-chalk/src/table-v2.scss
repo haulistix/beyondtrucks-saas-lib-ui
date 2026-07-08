@@ -105,6 +105,9 @@
 
   @include e('header-wrapper') {
     overflow: hidden;
+    box-shadow: var(--shadow-table);
+    border-top: var(--el-table-border);
+    border-bottom: var(--el-table-border);
   }
 
   @include e('header') {
@@ -122,6 +125,27 @@
     right: 0;
     bottom: 0;
     overflow: hidden;
+    &.footer-default {
+      background-color: var(--color-cyan-100);
+      height: 44px;
+      padding: 12px 20px;
+      font-size: 14px;
+      color: var(--color-gray-990);
+      display: flex;
+      align-items: center;
+
+      .count {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+      }
+
+      .time {
+        margin-left: auto;
+        text-align: right;
+      }
+    }
   }
 
   @include e('empty') {
@@ -138,23 +162,54 @@
     z-index: 9999;
   }
 
+  @include e('add-row-main') {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    overflow: hidden;
+    bottom: 44px;
+    box-shadow: 0 -3px 1px -1px rgba(26, 26, 26, 0.07);
+  }
+
+  @include e('add-row-left') {
+    position: absolute;
+    left: 0;
+    z-index: 4;
+    overflow: hidden;
+    box-shadow: 2px 0 4px 0 rgb(0 0 0 / 6%);
+  }
+
+  @include e('add-row-right') {
+    position: absolute;
+    right: 0;
+    z-index: 4;
+    overflow: hidden;
+    box-shadow: -2px 0 4px 0 rgb(0 0 0 / 6%);
+  }
+
   @include e('header-row') {
     display: flex;
     border-bottom: getCssVar('table', 'border');
+    background-color: var(--color-cyan-100);
 
     @include e('header-cell') {
       height: 100%;
       user-select: none;
       overflow: hidden;
-      background-color: getCssVar('table-header', 'bg-color');
-      color: getCssVar('table-header', 'text-color');
-      font-weight: bold;
+      color: var(--color-gray-990);
+      border-right: var(--el-table-border);
       @include center-flex;
       @include cell-padding;
       @include cell-alignment;
 
+      &:last-child {
+        border-right: none;
+      }
+
       @include when(sortable) {
         cursor: pointer;
+        justify-content: space-between;
       }
 
       &:hover {
@@ -162,15 +217,14 @@
           display: block;
         }
       }
+
+      &.is-row-delete-column {
+        padding: 0;
+        justify-content: center;
+      }
     }
 
     @include e('sort-icon') {
-      transition:
-        opacity,
-        display getCssVar('transition-duration', '');
-      opacity: 0.6;
-      display: none;
-
       @include when(sorting) {
         display: block;
         opacity: 1;
@@ -188,6 +242,11 @@
       background-color: getCssVar('table-row', 'hover-bg-color');
     }
 
+    @include when('add-row') {
+      background-color: #fff;
+      cursor: pointer;
+    }
+
     &:hover {
       background-color: getCssVar('table-row', 'hover-bg-color');
     }
@@ -198,6 +257,10 @@
       @include center-flex;
       @include cell-padding;
       @include cell-alignment;
+
+      &.is-row-delete-column {
+        padding: 0;
+      }
     }
 
     @include e('expand-icon') {
@@ -223,6 +286,14 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+  }
+
+  .delete-icon {
+    margin-left: 0 !important;
+  }
+
+  @include e('row-add-button') {
+    padding: 0;
   }
 
   @include when(dynamic) {

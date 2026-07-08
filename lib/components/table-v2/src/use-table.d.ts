@@ -1,25 +1,7 @@
 import type { TableV2Props } from './table';
 import type { TableGridInstance } from './table-grid';
 declare function useTable(props: TableV2Props): {
-    columns: import("vue").ComputedRef<{
-        key: import("./types").KeyType;
-        align?: import("./types").Alignment;
-        class?: string | import("./types").ClassNameGetter<any> | undefined;
-        dataKey?: import("./types").KeyType;
-        fixed?: true | import("./types").FixedDirection;
-        flexGrow?: import("vue").CSSProperties["flexGrow"];
-        flexShrink?: import("vue").CSSProperties["flexShrink"];
-        title?: string;
-        hidden?: boolean;
-        headerClass?: string | import("./types").HeaderClassGetter<any> | undefined;
-        maxWidth?: number;
-        minWidth?: number;
-        style?: import("vue").CSSProperties;
-        sortable?: boolean;
-        width: number;
-        cellRenderer?: import("./types").CellRenderer<any> | undefined;
-        headerCellRenderer?: import("./types").HeaderCellRenderer<any> | undefined;
-    }[]>;
+    columns: import("vue").ComputedRef<import("./types").AnyColumns>;
     containerRef: import("vue").Ref<any>;
     mainTableRef: import("vue").Ref<TableGridInstance | undefined>;
     leftTableRef: import("vue").Ref<TableGridInstance | undefined>;
@@ -33,45 +15,10 @@ declare function useTable(props: TableV2Props): {
     data: import("vue").ComputedRef<any[]>;
     expandedRowKeys: import("vue").Ref<import("./types").KeyType[]>;
     depthMap: import("vue").Ref<Record<import("./types").KeyType, number>>;
-    fixedColumnsOnLeft: import("vue").ComputedRef<{
-        key: import("./types").KeyType;
-        align?: import("./types").Alignment;
-        class?: string | import("./types").ClassNameGetter<any> | undefined;
-        dataKey?: import("./types").KeyType;
-        fixed?: true | import("./types").FixedDirection;
-        flexGrow?: import("vue").CSSProperties["flexGrow"];
-        flexShrink?: import("vue").CSSProperties["flexShrink"];
-        title?: string;
-        hidden?: boolean;
-        headerClass?: string | import("./types").HeaderClassGetter<any> | undefined;
-        maxWidth?: number;
-        minWidth?: number;
-        style?: import("vue").CSSProperties;
-        sortable?: boolean;
-        width: number;
-        cellRenderer?: import("./types").CellRenderer<any> | undefined;
-        headerCellRenderer?: import("./types").HeaderCellRenderer<any> | undefined;
-    }[]>;
-    fixedColumnsOnRight: import("vue").ComputedRef<{
-        key: import("./types").KeyType;
-        align?: import("./types").Alignment;
-        class?: string | import("./types").ClassNameGetter<any> | undefined;
-        dataKey?: import("./types").KeyType;
-        fixed?: true | import("./types").FixedDirection;
-        flexGrow?: import("vue").CSSProperties["flexGrow"];
-        flexShrink?: import("vue").CSSProperties["flexShrink"];
-        title?: string;
-        hidden?: boolean;
-        headerClass?: string | import("./types").HeaderClassGetter<any> | undefined;
-        maxWidth?: number;
-        minWidth?: number;
-        style?: import("vue").CSSProperties;
-        sortable?: boolean;
-        width: number;
-        cellRenderer?: import("./types").CellRenderer<any> | undefined;
-        headerCellRenderer?: import("./types").HeaderCellRenderer<any> | undefined;
-    }[]>;
+    fixedColumnsOnLeft: import("vue").ComputedRef<import("element-plus").Column<any>[]>;
+    fixedColumnsOnRight: import("vue").ComputedRef<import("element-plus").Column<any>[]>;
     mainColumns: import("vue").ComputedRef<import("./types").AnyColumns>;
+    addRowHeight: import("vue").ComputedRef<number>;
     bodyWidth: import("vue").ComputedRef<number>;
     emptyStyle: import("vue").ComputedRef<import("vue").CSSProperties>;
     rootStyle: import("vue").ComputedRef<import("vue").CSSProperties>;
@@ -93,6 +40,10 @@ declare function useTable(props: TableV2Props): {
     scrollToRow: (row: number, strategy?: import("./composables").ScrollStrategy) => void;
     onScroll: (params: import("./composables").ScrollPos) => void;
     onVerticalScroll: ({ scrollTop }: import("./composables").ScrollPos) => void;
+    scrollPos: import("vue").Ref<{
+        scrollLeft: number;
+        scrollTop: number;
+    }>;
 };
 export { useTable };
 export type UseTableReturn = ReturnType<typeof useTable>;

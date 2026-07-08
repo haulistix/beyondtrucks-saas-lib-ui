@@ -1,4 +1,5 @@
 import { defineComponent, getCurrentInstance, provide, ref, shallowRef, computed, onBeforeUnmount, toRaw, resolveComponent, resolveDirective, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, withDirectives, createVNode, createCommentVNode, withCtx, createBlock, createTextVNode, toDisplayString, vShow, withModifiers } from 'vue';
+import TableText from './table-footer/tableText.mjs';
 import ElTooltip from '../../tooltip/src/tooltip2.mjs';
 import { debounce, cloneDeep } from 'lodash-unified';
 import { ElScrollbar } from '../../scrollbar/index.mjs';
@@ -15,6 +16,7 @@ import defaultProps from './table/defaults.mjs';
 import { TABLE_INJECTION_KEY } from './tokens.mjs';
 import { hColgroup } from './h-helper.mjs';
 import { useScrollbar } from './composables/use-scrollbar.mjs';
+import { ghostRowSign, ghostRowKey } from './private.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import Mousewheel from '../../../directives/mousewheel/index.mjs';
 import { useLocale } from '../../../hooks/use-locale/index.mjs';
@@ -27,6 +29,7 @@ const _sfc_main = defineComponent({
     Mousewheel
   },
   components: {
+    TableText,
     ElTooltip,
     TableHeader,
     TableBody,
@@ -57,7 +60,8 @@ const _sfc_main = defineComponent({
     "editable-cell-active-change",
     "scroll",
     "add-column",
-    "add-row"
+    "add-row",
+    "add-ghost-row"
   ],
   setup(props, { emit }) {
     const { t } = useLocale();
@@ -68,6 +72,10 @@ const _sfc_main = defineComponent({
     table.store = store;
     const editingRow = ref(null);
     const activeEditableCell = ref(null);
+    const ghostRowData = ref({
+      [ghostRowSign]: true,
+      [ghostRowKey]: "ghost-row"
+    });
     const addColumnTrigger = shallowRef(null);
     const addRowTrigger = ref(null);
     const startRowEdit = (row, prop, rowIndex, cellIndex) => {
@@ -108,6 +116,7 @@ const _sfc_main = defineComponent({
     };
     table.editingRow = editingRow;
     table.activeEditableCell = activeEditableCell;
+    table.ghostRowData = ghostRowData;
     table.startRowEdit = startRowEdit;
     table.clearEditingRow = clearEditingRow;
     table.applyEditingRow = applyEditingRow;
@@ -118,7 +127,10 @@ const _sfc_main = defineComponent({
       showHeader: props.showHeader
     });
     table.layout = layout;
-    const isEmpty = computed(() => (store.states.data.value || []).length === 0);
+    const isEmpty = computed(() => {
+      const hasRows = (store.states.data.value || []).length > 0;
+      return !hasRows && !(props.ghostTable && props.editTable);
+    });
     const {
       setCurrentRow,
       getSelectionRows,
@@ -306,6 +318,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_table_body = resolveComponent("table-body");
   const _component_table_footer = resolveComponent("table-footer");
   const _component_el_scrollbar = resolveComponent("el-scrollbar");
+  const _component_table_text = resolveComponent("table-text");
   const _component_el_icon = resolveComponent("el-icon");
   const _component_el_button = resolveComponent("el-button");
   const _component_el_tooltip = resolveComponent("el-tooltip");
@@ -500,6 +513,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         [_directive_mousewheel, _ctx.handleHeaderFooterMousewheel]
       ]) : createCommentVNode("v-if", true)
     ], 2),
+    _ctx.haveTableText ? (openBlock(), createBlock(_component_table_text, {
+      key: 0,
+      total: _ctx.total,
+      "update-time": _ctx.updateTime
+    }, null, 8, ["total", "update-time"])) : createCommentVNode("v-if", true),
     withDirectives(createElementVNode("div", {
       ref: "resizeProxy",
       class: normalizeClass(_ctx.ns.e("column-resize-proxy"))

@@ -13292,6 +13292,7 @@ export declare type Column<T = any> = {
     headerClass?: HeaderClassGetter<T> | string;
     maxWidth?: number;
     minWidth?: number;
+    required?: boolean;
     style?: CSSProperties;
     sortable?: boolean;
     width: number;
@@ -16480,6 +16481,12 @@ declare const _default_76: DefineComponent<{
     readonly allowCreate: BooleanConstructor;
     readonly autocomplete: EpPropFinalized<(new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list") | ((new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list"))[], unknown, unknown, "none", boolean>;
     readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly haveAll: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly automaticDropdown: BooleanConstructor;
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
@@ -16853,6 +16860,12 @@ declare const _default_76: DefineComponent<{
     readonly allowCreate: BooleanConstructor;
     readonly autocomplete: EpPropFinalized<(new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list") | ((new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list"))[], unknown, unknown, "none", boolean>;
     readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly haveAll: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly automaticDropdown: BooleanConstructor;
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
@@ -17413,6 +17426,17 @@ declare const _default_84: DefineComponent<{
     scrollbarAlwaysOn: BooleanConstructor;
     flexible: BooleanConstructor;
     editable: BooleanConstructor;
+    ghostTable: BooleanConstructor;
+    editTable: BooleanConstructor;
+    total: {
+        type: NumberConstructor;
+        default: number;
+    };
+    updateTime: {
+        type: StringConstructor;
+        default: string;
+    };
+    haveTableText: BooleanConstructor;
     showOverflowTooltip: PropType<TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: PropType<any>;
@@ -18176,7 +18200,7 @@ declare const _default_84: DefineComponent<{
     * @description whether to show an add-row trigger when hovering a row divider
     */
     showAddRowTrigger: boolean;
-}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     data: {
         type: PropType<any[]>;
         default: () => never[];
@@ -18263,6 +18287,17 @@ declare const _default_84: DefineComponent<{
     scrollbarAlwaysOn: BooleanConstructor;
     flexible: BooleanConstructor;
     editable: BooleanConstructor;
+    ghostTable: BooleanConstructor;
+    editTable: BooleanConstructor;
+    total: {
+        type: NumberConstructor;
+        default: number;
+    };
+    updateTime: {
+        type: StringConstructor;
+        default: string;
+    };
+    haveTableText: BooleanConstructor;
     showOverflowTooltip: PropType<TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: PropType<any>;
@@ -18313,11 +18348,13 @@ declare const _default_84: DefineComponent<{
     "onEditable-cell-active-change"?: ((...args: any[]) => any) | undefined;
     "onAdd-column"?: ((...args: any[]) => any) | undefined;
     "onAdd-row"?: ((...args: any[]) => any) | undefined;
+    "onAdd-ghost-row"?: ((...args: any[]) => any) | undefined;
 }, {
     data: any[];
     style: CSSProperties;
     tableLayout: "fixed" | "auto";
     border: boolean;
+    total: number;
     className: string;
     onDragend: any;
     onDragstart: any;
@@ -18329,6 +18366,7 @@ declare const _default_84: DefineComponent<{
     showAddColumnTrigger: boolean;
     tooltipOptions: Partial<Pick<ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">> | undefined;
     treeProps: TreeProps | undefined;
+    updateTime: string;
     defaultExpandAll: boolean;
     selectOnIndeterminate: boolean;
     indent: number;
@@ -18339,6 +18377,9 @@ declare const _default_84: DefineComponent<{
     tooltipEffect: string;
     rowDraggable: any;
     flexible: boolean;
+    ghostTable: boolean;
+    editTable: boolean;
+    haveTableText: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;
     showAddRowTrigger: boolean;
@@ -18364,6 +18405,7 @@ declare const _default_85: DefineComponent<{
     };
     renderHeader: PropType<TableColumnCtx<any>["renderHeader"]>;
     diagonalHeader: PropType<TableColumnCtx<any>["diagonalHeader"]>;
+    required: BooleanConstructor;
     allowInsertBeforeFirstColumn: {
         type: BooleanConstructor;
         default: boolean;
@@ -18425,6 +18467,7 @@ declare const _default_85: DefineComponent<{
     };
     renderHeader: PropType<TableColumnCtx<any>["renderHeader"]>;
     diagonalHeader: PropType<TableColumnCtx<any>["diagonalHeader"]>;
+    required: BooleanConstructor;
     allowInsertBeforeFirstColumn: {
         type: BooleanConstructor;
         default: boolean;
@@ -18470,6 +18513,7 @@ declare const _default_85: DefineComponent<{
     width: string | number;
     minWidth: string | number;
     type: string;
+    required: boolean;
     resizable: boolean;
     showOverflowTooltip: boolean | Partial<Pick<ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">> | undefined;
     sortOrders: (TableSortOrder | null)[];
@@ -24778,6 +24822,11 @@ export declare interface RootTreeType {
     currentNode: Ref<Node_2>;
     instance: ComponentInternalInstance;
 }
+export declare type RowAddHandler = (params: RowAddParams) => void;
+export declare type RowAddParams = {
+    event: MouseEvent;
+    rowKey: KeyType_2;
+} & RowCommonParams;
 export declare const RowAlign: readonly [
     "top",
     "middle",
@@ -24794,6 +24843,11 @@ declare interface RowContext {
     gutter: ComputedRef<number>;
 }
 export declare const rowContextKey: InjectionKey<RowContext>;
+export declare type RowDeleteHandler = (params: RowDeleteParams) => void;
+export declare type RowDeleteParams = {
+    event: MouseEvent;
+    rowKey: KeyType_2;
+} & RowCommonParams;
 export declare type RowEventHandler = (params: RowEventHandlerParams) => void;
 export declare type RowEventHandlerParams = {
     rowKey: KeyType_2;
@@ -25171,6 +25225,12 @@ declare const selectV2Props: {
     readonly allowCreate: BooleanConstructor;
     readonly autocomplete: EpPropFinalized<(new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list") | ((new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list"))[], unknown, unknown, "none", boolean>;
     readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly haveAll: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly automaticDropdown: BooleanConstructor;
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
@@ -26058,6 +26118,7 @@ export declare interface Table<T extends DefaultRow = any> extends ComponentInte
     hoverState?: HoverState<T> | null;
     editingRow?: Ref<EditingRow<T>>;
     activeEditableCell?: Ref<ActiveEditableCell<T>>;
+    ghostRowData?: Ref<DefaultRow>;
     startRowEdit?: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow?: () => void;
     applyEditingRow?: () => EditingRow<T>;
@@ -26118,7 +26179,9 @@ export declare type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     renderFilterIcon?: (scope: any) => VNode;
     renderExpand?: (scope: any) => VNode;
     diagonalHeader?: DiagonalHeaderConfig;
+    required: boolean;
     allowInsertBeforeFirstColumn: boolean;
+    renderEditCell?: (data: any) => VNode | VNode[];
 };
 export declare type TableColumnInstance = InstanceType<typeof _default_85> & unknown;
 declare const TableGrid: DefineComponent<{
@@ -26165,7 +26228,7 @@ declare const TableGrid: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly headerHeight: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 50, boolean>;
+    readonly headerHeight: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 44, boolean>;
     readonly bodyWidth: {
         readonly type: PropType<number>;
         readonly required: true;
@@ -26259,7 +26322,7 @@ declare const TableGrid: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly headerHeight: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 50, boolean>;
+    readonly headerHeight: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 44, boolean>;
     readonly bodyWidth: {
         readonly type: PropType<number>;
         readonly required: true;
@@ -26446,6 +26509,11 @@ export declare interface TableProps<T extends DefaultRow> {
     scrollbarAlwaysOn?: boolean;
     flexible?: boolean;
     editable?: boolean;
+    ghostTable?: boolean;
+    editTable?: boolean;
+    total?: number;
+    updateTime?: string;
+    haveTableText?: boolean;
     showOverflowTooltip?: boolean | TableOverflowTooltipOptions;
     tooltipFormatter?: TableOverflowTooltipFormatter<T>;
     appendFilterPanelTo?: string;
@@ -26503,8 +26571,13 @@ export declare const TableV2: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly headerHeight: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 50, boolean>;
+    readonly headerHeight: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 44, boolean>;
     readonly footerHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly isFooterDefault: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly editable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly canEditTable: BooleanConstructor;
+    readonly total: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly updateTime: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | RowClassNameGetter<any>) | (() => string | RowClassNameGetter<any>) | ((new (...args: any[]) => string | RowClassNameGetter<any>) | (() => string | RowClassNameGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -26517,7 +26590,7 @@ export declare const TableV2: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly rowHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 50, boolean>;
+    readonly rowHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 44, boolean>;
     readonly cellProps: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => Record<string, any> | ExtraCellPropGetter<any>) | (() => Record<string, any> | ExtraCellPropGetter<any>) | ((new (...args: any[]) => Record<string, any> | ExtraCellPropGetter<any>) | (() => Record<string, any> | ExtraCellPropGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -26625,7 +26698,11 @@ export declare const TableV2: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-}, () => JSX.Element, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+}, () => JSX.Element, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    "update:expandedRowKeys": (expandedRowKeys: KeyType_2[]) => boolean;
+    "row-delete": (params: RowDeleteParams) => boolean;
+    "row-add": (params: RowAddParams) => boolean;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     readonly cache: EpPropFinalized<NumberConstructor, never, never, 2, false>;
     readonly estimatedRowHeight: {
         readonly default: undefined;
@@ -26653,8 +26730,13 @@ export declare const TableV2: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly headerHeight: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 50, boolean>;
+    readonly headerHeight: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 44, boolean>;
     readonly footerHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly isFooterDefault: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly editable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly canEditTable: BooleanConstructor;
+    readonly total: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly updateTime: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | RowClassNameGetter<any>) | (() => string | RowClassNameGetter<any>) | ((new (...args: any[]) => string | RowClassNameGetter<any>) | (() => string | RowClassNameGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -26667,7 +26749,7 @@ export declare const TableV2: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly rowHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 50, boolean>;
+    readonly rowHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 44, boolean>;
     readonly cellProps: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => Record<string, any> | ExtraCellPropGetter<any>) | (() => Record<string, any> | ExtraCellPropGetter<any>) | ((new (...args: any[]) => Record<string, any> | ExtraCellPropGetter<any>) | (() => Record<string, any> | ExtraCellPropGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -26775,8 +26857,14 @@ export declare const TableV2: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-}>>, {
+}>> & {
+    "onUpdate:expandedRowKeys"?: ((expandedRowKeys: KeyType_2[]) => any) | undefined;
+    "onRow-delete"?: ((params: RowDeleteParams) => any) | undefined;
+    "onRow-add"?: ((params: RowAddParams) => any) | undefined;
+}, {
     readonly fixed: boolean;
+    readonly total: number;
+    readonly editable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly rowKey: EpPropMergeType<(new (...args: any[]) => string | number | symbol) | (() => KeyType_2) | ((new (...args: any[]) => string | number | symbol) | (() => KeyType_2))[], unknown, unknown>;
     readonly useIsScrolling: boolean;
     readonly scrollbarAlwaysOn: boolean;
@@ -26786,11 +26874,14 @@ export declare const TableV2: DefineComponent<{
     readonly hScrollbarSize: number;
     readonly vScrollbarSize: number;
     readonly sortBy: SortBy;
+    readonly updateTime: string;
     readonly headerHeight: EpPropMergeType<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown>;
     readonly footerHeight: number;
+    readonly isFooterDefault: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly indentSize: number;
     readonly iconSize: number;
     readonly sortState: SortState;
+    readonly canEditTable: boolean;
     readonly expandedRowKeys: KeyType_2[];
     readonly defaultExpandedRowKeys: KeyType_2[];
 }>;
@@ -26803,6 +26894,11 @@ export declare type TableV2CustomizedHeaderSlotParam<T = any> = {
     cells: VNode[];
     columns: Columns<T>;
     headerIndex: number;
+};
+export declare const tableV2Emits: {
+    "update:expandedRowKeys": (expandedRowKeys: KeyType_2[]) => boolean;
+    "row-delete": (params: RowDeleteParams) => boolean;
+    "row-add": (params: RowAddParams) => boolean;
 };
 export declare enum TableV2FixedDir {
     LEFT = "left",
@@ -26894,8 +26990,13 @@ export declare const tableV2Props: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly headerHeight: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 50, boolean>;
+    readonly headerHeight: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 44, boolean>;
     readonly footerHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly isFooterDefault: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly editable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly canEditTable: BooleanConstructor;
+    readonly total: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly updateTime: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | RowClassNameGetter<any>) | (() => string | RowClassNameGetter<any>) | ((new (...args: any[]) => string | RowClassNameGetter<any>) | (() => string | RowClassNameGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -26908,7 +27009,7 @@ export declare const tableV2Props: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly rowHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 50, boolean>;
+    readonly rowHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 44, boolean>;
     readonly cellProps: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => Record<string, any> | ExtraCellPropGetter<any>) | (() => Record<string, any> | ExtraCellPropGetter<any>) | ((new (...args: any[]) => Record<string, any> | ExtraCellPropGetter<any>) | (() => Record<string, any> | ExtraCellPropGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -29447,25 +29548,7 @@ export declare function useSpace(props: SpaceProps): {
     itemStyle: ComputedRef<StyleValue>;
 };
 declare function useTable(props: TableV2Props): {
-    columns: ComputedRef<{
-        key: KeyType_2;
-        align?: Alignment_2;
-        class?: string | ClassNameGetter<any> | undefined;
-        dataKey?: KeyType_2;
-        fixed?: true | FixedDirection;
-        flexGrow?: CSSProperties["flexGrow"];
-        flexShrink?: CSSProperties["flexShrink"];
-        title?: string;
-        hidden?: boolean;
-        headerClass?: string | HeaderClassGetter<any> | undefined;
-        maxWidth?: number;
-        minWidth?: number;
-        style?: CSSProperties;
-        sortable?: boolean;
-        width: number;
-        cellRenderer?: CellRenderer<any> | undefined;
-        headerCellRenderer?: HeaderCellRenderer<any> | undefined;
-    }[]>;
+    columns: ComputedRef<AnyColumns>;
     containerRef: Ref<any>;
     mainTableRef: Ref<TableGridInstance | undefined>;
     leftTableRef: Ref<TableGridInstance | undefined>;
@@ -29479,45 +29562,10 @@ declare function useTable(props: TableV2Props): {
     data: ComputedRef<any[]>;
     expandedRowKeys: Ref<KeyType_2[]>;
     depthMap: Ref<Record<KeyType_2, number>>;
-    fixedColumnsOnLeft: ComputedRef<{
-        key: KeyType_2;
-        align?: Alignment_2;
-        class?: string | ClassNameGetter<any> | undefined;
-        dataKey?: KeyType_2;
-        fixed?: true | FixedDirection;
-        flexGrow?: CSSProperties["flexGrow"];
-        flexShrink?: CSSProperties["flexShrink"];
-        title?: string;
-        hidden?: boolean;
-        headerClass?: string | HeaderClassGetter<any> | undefined;
-        maxWidth?: number;
-        minWidth?: number;
-        style?: CSSProperties;
-        sortable?: boolean;
-        width: number;
-        cellRenderer?: CellRenderer<any> | undefined;
-        headerCellRenderer?: HeaderCellRenderer<any> | undefined;
-    }[]>;
-    fixedColumnsOnRight: ComputedRef<{
-        key: KeyType_2;
-        align?: Alignment_2;
-        class?: string | ClassNameGetter<any> | undefined;
-        dataKey?: KeyType_2;
-        fixed?: true | FixedDirection;
-        flexGrow?: CSSProperties["flexGrow"];
-        flexShrink?: CSSProperties["flexShrink"];
-        title?: string;
-        hidden?: boolean;
-        headerClass?: string | HeaderClassGetter<any> | undefined;
-        maxWidth?: number;
-        minWidth?: number;
-        style?: CSSProperties;
-        sortable?: boolean;
-        width: number;
-        cellRenderer?: CellRenderer<any> | undefined;
-        headerCellRenderer?: HeaderCellRenderer<any> | undefined;
-    }[]>;
+    fixedColumnsOnLeft: ComputedRef<Column<any>[]>;
+    fixedColumnsOnRight: ComputedRef<Column<any>[]>;
     mainColumns: ComputedRef<AnyColumns>;
+    addRowHeight: ComputedRef<number>;
     bodyWidth: ComputedRef<number>;
     emptyStyle: ComputedRef<CSSProperties>;
     rootStyle: ComputedRef<CSSProperties>;
@@ -29539,6 +29587,10 @@ declare function useTable(props: TableV2Props): {
     scrollToRow: (row: number, strategy?: Alignment) => void;
     onScroll: (params: ScrollPos) => void;
     onVerticalScroll: ({ scrollTop }: ScrollPos) => void;
+    scrollPos: Ref<{
+        scrollLeft: number;
+        scrollTop: number;
+    }>;
 };
 declare type UseTableReturn = ReturnType<typeof useTable>;
 export declare const useTeleport: (contentRenderer: () => VNode, appendToBody: Ref<boolean>) => {

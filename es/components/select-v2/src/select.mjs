@@ -120,6 +120,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             class: normalizeClass([
               _ctx.nsSelect.e("wrapper"),
               _ctx.nsSelect.is("focused", _ctx.isFocused),
+              _ctx.nsSelect.is("all", !!_ctx.haveAll),
               _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
               _ctx.nsSelect.is("filterable", _ctx.filterable),
               _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
@@ -151,6 +152,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 deleteTag: _ctx.deleteTag,
                 selectDisabled: _ctx.selectDisabled
               }, () => [
+                _ctx.haveAll && !_ctx.states.cachedOptions.length ? (openBlock(), createElementBlock("span", {
+                  key: 0,
+                  class: "select-all-tag"
+                }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
                 (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.showTagList, (item) => {
                   return openBlock(), createElementBlock("div", {
                     key: _ctx.getValueKey(_ctx.getValue(item)),
@@ -183,7 +188,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                   ], 2);
                 }), 128)),
                 _ctx.collapseTags && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
-                  key: 0,
+                  key: 1,
                   ref: "tagTooltipRef",
                   disabled: _ctx.dropdownMenuVisible || !_ctx.collapseTagsTooltip,
                   "fallback-placements": ["bottom", "top", "right", "left"],
@@ -431,16 +436,21 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           ]),
           _: 2
         }, [
-          _ctx.$slots.header ? {
+          _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? {
             name: "header",
             fn: withCtx(() => [
-              createElementVNode("div", {
+              _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
+                key: 0,
                 class: normalizeClass(_ctx.nsSelect.be("dropdown", "header")),
                 onClick: withModifiers(() => {
                 }, ["stop"])
               }, [
                 renderSlot(_ctx.$slots, "header")
-              ], 10, ["onClick"])
+              ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+              _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
+                key: 1,
+                class: "select-all-item"
+              }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true)
             ])
           } : void 0,
           _ctx.$slots.loading && _ctx.loading ? {

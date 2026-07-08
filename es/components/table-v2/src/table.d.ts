@@ -1,6 +1,7 @@
 import type { CSSProperties, ExtractPropTypes, __ExtractPublicPropTypes } from 'vue';
 import type { SortOrder } from './constants';
 import type { Column, ColumnCommonParams, DataGetter, KeyType, RowCommonParams, SortBy, SortState } from './types';
+import type { RowAddParams, RowDeleteParams } from './row';
 /**
  * Param types
  */
@@ -39,6 +40,11 @@ export type RowClassNameGetter<T> = (params: {
 export type ColumnSortHandler<T> = (params: ColumnSortParams<T>) => void;
 export type ColumnResizeHandler<T> = (column: Column<T>, width: number) => void;
 export type ExpandedRowsChangeHandler = (expandedRowKeys: KeyType[]) => void;
+export declare const tableV2Emits: {
+    'update:expandedRowKeys': (expandedRowKeys: KeyType[]) => boolean;
+    'row-delete': (params: RowDeleteParams) => boolean;
+    'row-add': (params: RowAddParams) => boolean;
+};
 export declare const tableV2Props: {
     readonly cache: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, never, never, 2, false>;
     readonly estimatedRowHeight: {
@@ -67,8 +73,13 @@ export declare const tableV2Props: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly headerHeight: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 50, boolean>;
+    readonly headerHeight: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 44, boolean>;
     readonly footerHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly isFooterDefault: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly editable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly canEditTable: BooleanConstructor;
+    readonly total: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly updateTime: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => string | RowClassNameGetter<any>) | (() => string | RowClassNameGetter<any>) | ((new (...args: any[]) => string | RowClassNameGetter<any>) | (() => string | RowClassNameGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -81,7 +92,7 @@ export declare const tableV2Props: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly rowHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 50, boolean>;
+    readonly rowHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 44, boolean>;
     readonly cellProps: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => Record<string, any> | ExtraCellPropGetter<any>) | (() => Record<string, any> | ExtraCellPropGetter<any>) | ((new (...args: any[]) => Record<string, any> | ExtraCellPropGetter<any>) | (() => Record<string, any> | ExtraCellPropGetter<any>))[], unknown, unknown>>;
         readonly required: false;

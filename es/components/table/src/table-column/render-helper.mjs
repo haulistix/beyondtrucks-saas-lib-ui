@@ -1,6 +1,8 @@
 import { getCurrentInstance, ref, watchEffect, computed, unref, h, renderSlot, Comment } from 'vue';
 import { cellForced, defaultRenderCell, treeCellPrefix, getDefaultClassName } from '../config.mjs';
 import { parseWidth, parseMinWidth } from '../util.mjs';
+import { ghostRowSign } from '../private.mjs';
+import GhostRowAddButton from '../ghost-row-add-button.mjs';
 import { useNamespace } from '../../../../hooks/use-namespace/index.mjs';
 import { isUndefined } from '../../../../utils/types.mjs';
 import { isArray } from '@vue/shared';
@@ -103,6 +105,12 @@ function useRender(props, slots, owner) {
         return renderSlot(slots, "expand", scope);
       };
     }
+    const editSlot = slots["edit-cell"];
+    if (editSlot) {
+      column.renderEditCell = (scope) => {
+        return editSlot(scope);
+      };
+    }
     let originRenderCell = column.renderCell;
     if (column.type === "expand") {
       column.renderCell = (data) => h("div", {
@@ -114,16 +122,31 @@ function useRender(props, slots, owner) {
     } else {
       originRenderCell = originRenderCell || defaultRenderCell;
       column.renderCell = (data) => {
+        var _a, _b;
         let children = null;
-        if (slots.default) {
+        const { columns } = owner.value.store.states;
+        const columnCount = columns.value.length;
+        const shouldRenderAddButton = owner.value.props.ghostTable && owner.value.props.editTable && !!((_a = data.row) == null ? void 0 : _a[ghostRowSign]) && (columnCount === 1 ? data.cellIndex === 0 : data.cellIndex === columnCount - 1);
+        const shouldRenderEditCell = owner.value.props.ghostTable && owner.value.props.editTable && !!column.renderEditCell;
+        if (shouldRenderAddButton) {
+          children = [
+            h(GhostRowAddButton, {
+              row: data.row
+            })
+          ];
+        } else if (shouldRenderEditCell) {
+          const vnodes = column.renderEditCell(data);
+          const editVNodes = isArray(vnodes) ? vnodes : [vnodes];
+          children = editVNodes.some((v) => v.type !== Comment) ? vnodes : originRenderCell(data);
+        } else if (slots.default) {
           const vnodes = slots.default(data);
-          children = vnodes.some((v) => v.type !== Comment) ? vnodes : originRenderCell(data);
+          const defaultVNodes = isArray(vnodes) ? vnodes : [vnodes];
+          children = defaultVNodes.some((v) => v.type !== Comment) ? vnodes : originRenderCell(data);
         } else {
           children = originRenderCell(data);
         }
-        const { columns } = owner.value.store.states;
         const firstUserColumnIndex = columns.value.findIndex((item) => item.type === "default");
-        const shouldCreatePlaceholder = hasTreeColumn.value && data.cellIndex === firstUserColumnIndex;
+        const shouldCreatePlaceholder = hasTreeColumn.value && !((_b = data.row) == null ? void 0 : _b[ghostRowSign]) && data.cellIndex === firstUserColumnIndex;
         const prefix = treeCellPrefix(data, shouldCreatePlaceholder);
         const props2 = {
           class: "cell",
@@ -136,6 +159,9 @@ function useRender(props, slots, owner) {
           props2.style = {
             width: `${(data.column.realWidth || Number(data.column.width)) - 1}px`
           };
+        }
+        if (owner.value.props.ghostTable) {
+          props2.class = `${props2.class} is-full-width`;
         }
         checkSubColumn(children);
         return h("div", props2, [prefix, children]);

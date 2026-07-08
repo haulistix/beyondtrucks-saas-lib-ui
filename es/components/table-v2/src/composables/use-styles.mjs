@@ -9,6 +9,7 @@ const useStyles = (props, {
   fixedColumnsOnLeft,
   fixedColumnsOnRight
 }) => {
+  const addRowHeight = computed(() => props.canEditTable && props.editable ? props.rowHeight : 0);
   const bodyWidth = computed(() => {
     const { fixed, width, vScrollbarSize } = props;
     const ret = width - vScrollbarSize;
@@ -21,9 +22,9 @@ const useStyles = (props, {
       const _rowsHeight = unref(rowsHeight);
       const _headerHeight = unref(headerHeight);
       const total = _headerHeight + _fixedRowsHeight + _rowsHeight + hScrollbarSize;
-      return Math.min(total, maxHeight - footerHeight2);
+      return Math.min(total, maxHeight - footerHeight2 - unref(addRowHeight));
     }
-    return height - footerHeight2;
+    return height - footerHeight2 - unref(addRowHeight);
   });
   const fixedTableHeight = computed(() => {
     const { maxHeight } = props;
@@ -55,10 +56,11 @@ const useStyles = (props, {
   const footerHeight = computed(() => enforceUnit({ height: props.footerHeight }));
   const emptyStyle = computed(() => ({
     top: addUnit(unref(headerHeight)),
-    bottom: addUnit(props.footerHeight),
+    bottom: addUnit(props.footerHeight + unref(addRowHeight)),
     width: addUnit(props.width)
   }));
   return {
+    addRowHeight,
     bodyWidth,
     fixedTableHeight,
     mainTableHeight,

@@ -8,6 +8,7 @@ type UseStyleProps = {
     rowsHeight: ComputedRef<number>;
 };
 export declare const useStyles: (props: TableV2Props, { columnsTotalWidth, rowsHeight, fixedColumnsOnLeft, fixedColumnsOnRight, }: UseStyleProps) => {
+    addRowHeight: ComputedRef<number>;
     bodyWidth: ComputedRef<number>;
     fixedTableHeight: ComputedRef<number>;
     mainTableHeight: ComputedRef<number>;

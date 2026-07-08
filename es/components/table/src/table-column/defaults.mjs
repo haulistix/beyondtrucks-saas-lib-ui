@@ -18,6 +18,7 @@ var defaultProps = {
   },
   renderHeader: Function,
   diagonalHeader: Object,
+  required: Boolean,
   allowInsertBeforeFirstColumn: {
     type: Boolean,
     default: true

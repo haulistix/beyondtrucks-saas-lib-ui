@@ -8717,38 +8717,6 @@ var _sfc_main225 = /* @__PURE__ */ defineComponent({
   }
 });
 var search_default = _sfc_main225;
-var _sfc_main242 = /* @__PURE__ */ defineComponent({
-  name: "SortDown",
-  __name: "sort-down",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createElementVNode("path", {
-        fill: "currentColor",
-        d: "M576 96v709.568L333.312 562.816A32 32 0 1 0 288 608l297.408 297.344A32 32 0 0 0 640 882.688V96a32 32 0 0 0-64 0"
-      })
-    ]));
-  }
-});
-var sort_down_default = _sfc_main242;
-var _sfc_main243 = /* @__PURE__ */ defineComponent({
-  name: "SortUp",
-  __name: "sort-up",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createElementVNode("path", {
-        fill: "currentColor",
-        d: "M384 141.248V928a32 32 0 1 0 64 0V218.56l242.688 242.688A32 32 0 1 0 736 416L438.592 118.656A32 32 0 0 0 384 141.248"
-      })
-    ]));
-  }
-});
-var sort_up_default = _sfc_main243;
 var _sfc_main246 = /* @__PURE__ */ defineComponent({
   name: "StarFilled",
   __name: "star-filled",
@@ -12619,7 +12587,7 @@ const COMPONENT_NAME$o = "ElAffix";
 const __default__$1Y = defineComponent({
   name: COMPONENT_NAME$o
 });
-const _sfc_main$2A = /* @__PURE__ */ defineComponent({
+const _sfc_main$2E = /* @__PURE__ */ defineComponent({
   ...__default__$1Y,
   props: affixProps,
   emits: affixEmits,
@@ -12736,7 +12704,7 @@ const _sfc_main$2A = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Affix = /* @__PURE__ */ _export_sfc(_sfc_main$2A, [["__file", "affix.vue"]]);
+var Affix = /* @__PURE__ */ _export_sfc(_sfc_main$2E, [["__file", "affix.vue"]]);
 
 const ElAffix = withInstall(Affix);
 
@@ -12753,7 +12721,7 @@ const __default__$1X = defineComponent({
   name: "ElIcon",
   inheritAttrs: false
 });
-const _sfc_main$2z = /* @__PURE__ */ defineComponent({
+const _sfc_main$2D = /* @__PURE__ */ defineComponent({
   ...__default__$1X,
   props: iconProps,
   setup(__props) {
@@ -12778,7 +12746,7 @@ const _sfc_main$2z = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2z, [["__file", "icon.vue"]]);
+var ElIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2D, [["__file", "icon.vue"]]);
 
 const ElIcon = withInstall(ElIcon$1);
 
@@ -12823,7 +12791,7 @@ const alertEmits = {
 const __default__$1W = defineComponent({
   name: "ElAlert"
 });
-const _sfc_main$2y = /* @__PURE__ */ defineComponent({
+const _sfc_main$2C = /* @__PURE__ */ defineComponent({
   ...__default__$1W,
   props: alertProps,
   emits: alertEmits,
@@ -12913,7 +12881,7 @@ const _sfc_main$2y = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$2y, [["__file", "alert.vue"]]);
+var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$2C, [["__file", "alert.vue"]]);
 
 const ElAlert = withInstall(Alert);
 
@@ -13096,7 +13064,7 @@ const COMPONENT_NAME$n = "ElForm";
 const __default__$1V = defineComponent({
   name: COMPONENT_NAME$n
 });
-const _sfc_main$2x = /* @__PURE__ */ defineComponent({
+const _sfc_main$2B = /* @__PURE__ */ defineComponent({
   ...__default__$1V,
   props: formProps,
   emits: formEmits,
@@ -13240,7 +13208,7 @@ const _sfc_main$2x = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Form = /* @__PURE__ */ _export_sfc(_sfc_main$2x, [["__file", "form.vue"]]);
+var Form = /* @__PURE__ */ _export_sfc(_sfc_main$2B, [["__file", "form.vue"]]);
 
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function(target) {
@@ -14428,7 +14396,7 @@ var FormLabelWrap = defineComponent({
 const __default__$1U = defineComponent({
   name: "ElFormItem"
 });
-const _sfc_main$2w = /* @__PURE__ */ defineComponent({
+const _sfc_main$2A = /* @__PURE__ */ defineComponent({
   ...__default__$1U,
   props: formItemProps,
   setup(__props, { expose }) {
@@ -14746,7 +14714,7 @@ const _sfc_main$2w = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var FormItem = /* @__PURE__ */ _export_sfc(_sfc_main$2w, [["__file", "form-item.vue"]]);
+var FormItem = /* @__PURE__ */ _export_sfc(_sfc_main$2A, [["__file", "form-item.vue"]]);
 
 const ElForm = withInstall(Form, {
   FormItem
@@ -14783,7 +14751,7 @@ const __default__$1T = defineComponent({
   name: "ElPopper",
   inheritAttrs: false
 });
-const _sfc_main$2v = /* @__PURE__ */ defineComponent({
+const _sfc_main$2z = /* @__PURE__ */ defineComponent({
   ...__default__$1T,
   props: popperProps,
   setup(__props, { expose }) {
@@ -14807,13 +14775,13 @@ const _sfc_main$2v = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Popper = /* @__PURE__ */ _export_sfc(_sfc_main$2v, [["__file", "popper.vue"]]);
+var Popper = /* @__PURE__ */ _export_sfc(_sfc_main$2z, [["__file", "popper.vue"]]);
 
 const __default__$1S = defineComponent({
   name: "ElPopperArrow",
   inheritAttrs: false
 });
-const _sfc_main$2u = /* @__PURE__ */ defineComponent({
+const _sfc_main$2y = /* @__PURE__ */ defineComponent({
   ...__default__$1S,
   setup(__props, { expose }) {
     const ns = useNamespace("popper");
@@ -14835,7 +14803,7 @@ const _sfc_main$2u = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElPopperArrow = /* @__PURE__ */ _export_sfc(_sfc_main$2u, [["__file", "arrow.vue"]]);
+var ElPopperArrow = /* @__PURE__ */ _export_sfc(_sfc_main$2y, [["__file", "arrow.vue"]]);
 
 const NAME = "ElOnlyChild";
 const OnlyChild = defineComponent({
@@ -14925,7 +14893,7 @@ const __default__$1R = defineComponent({
   name: "ElPopperTrigger",
   inheritAttrs: false
 });
-const _sfc_main$2t = /* @__PURE__ */ defineComponent({
+const _sfc_main$2x = /* @__PURE__ */ defineComponent({
   ...__default__$1R,
   props: popperTriggerProps,
   setup(__props, { expose }) {
@@ -15037,7 +15005,7 @@ const _sfc_main$2t = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElPopperTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2t, [["__file", "trigger.vue"]]);
+var ElPopperTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2x, [["__file", "trigger.vue"]]);
 
 const FOCUS_AFTER_TRAPPED = "focus-trap.focus-after-trapped";
 const FOCUS_AFTER_RELEASED = "focus-trap.focus-after-released";
@@ -15187,7 +15155,7 @@ const createFocusOutPreventedEvent = (detail) => {
   });
 };
 
-const _sfc_main$2s = defineComponent({
+const _sfc_main$2w = defineComponent({
   name: "ElFocusTrap",
   inheritAttrs: false,
   props: {
@@ -15432,10 +15400,10 @@ const _sfc_main$2s = defineComponent({
     };
   }
 });
-function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default", { handleKeydown: _ctx.onKeydown });
 }
-var ElFocusTrap = /* @__PURE__ */ _export_sfc(_sfc_main$2s, [["render", _sfc_render$m], ["__file", "focus-trap.vue"]]);
+var ElFocusTrap = /* @__PURE__ */ _export_sfc(_sfc_main$2w, [["render", _sfc_render$o], ["__file", "focus-trap.vue"]]);
 
 const popperArrowProps = buildProps({
   arrowOffset: {
@@ -15735,7 +15703,7 @@ const usePopperContentFocusTrap = (props, emit) => {
 const __default__$1Q = defineComponent({
   name: "ElPopperContent"
 });
-const _sfc_main$2r = /* @__PURE__ */ defineComponent({
+const _sfc_main$2v = /* @__PURE__ */ defineComponent({
   ...__default__$1Q,
   props: popperContentProps,
   emits: popperContentEmits,
@@ -15851,7 +15819,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElPopperContent = /* @__PURE__ */ _export_sfc(_sfc_main$2r, [["__file", "content.vue"]]);
+var ElPopperContent = /* @__PURE__ */ _export_sfc(_sfc_main$2v, [["__file", "content.vue"]]);
 
 const ElPopper = withInstall(Popper);
 
@@ -15865,7 +15833,7 @@ const teleportProps = buildProps({
   disabled: Boolean
 });
 
-const _sfc_main$2q = /* @__PURE__ */ defineComponent({
+const _sfc_main$2u = /* @__PURE__ */ defineComponent({
   __name: "teleport",
   props: teleportProps,
   setup(__props) {
@@ -15879,7 +15847,7 @@ const _sfc_main$2q = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Teleport = /* @__PURE__ */ _export_sfc(_sfc_main$2q, [["__file", "teleport.vue"]]);
+var Teleport = /* @__PURE__ */ _export_sfc(_sfc_main$2u, [["__file", "teleport.vue"]]);
 
 const ElTeleport = withInstall(Teleport);
 var ElTeleport$1 = ElTeleport;
@@ -15967,7 +15935,7 @@ const whenTrigger = (trigger, type, handler) => {
 const __default__$1P = defineComponent({
   name: "ElTooltipTrigger"
 });
-const _sfc_main$2p = /* @__PURE__ */ defineComponent({
+const _sfc_main$2t = /* @__PURE__ */ defineComponent({
   ...__default__$1P,
   props: useTooltipTriggerProps,
   setup(__props, { expose }) {
@@ -16034,7 +16002,7 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElTooltipTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2p, [["__file", "trigger.vue"]]);
+var ElTooltipTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2t, [["__file", "trigger.vue"]]);
 
 const overlayProps = buildProps({
   mask: {
@@ -16097,7 +16065,7 @@ const __default__$1O = defineComponent({
   name: "ElTooltipContent",
   inheritAttrs: false
 });
-const _sfc_main$2o = /* @__PURE__ */ defineComponent({
+const _sfc_main$2s = /* @__PURE__ */ defineComponent({
   ...__default__$1O,
   props: useTooltipContentProps,
   setup(__props, { expose }) {
@@ -16306,12 +16274,12 @@ const _sfc_main$2o = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElTooltipContent = /* @__PURE__ */ _export_sfc(_sfc_main$2o, [["__file", "content.vue"]]);
+var ElTooltipContent = /* @__PURE__ */ _export_sfc(_sfc_main$2s, [["__file", "content.vue"]]);
 
 const __default__$1N = defineComponent({
   name: "ElTooltip"
 });
-const _sfc_main$2n = /* @__PURE__ */ defineComponent({
+const _sfc_main$2r = /* @__PURE__ */ defineComponent({
   ...__default__$1N,
   props: useTooltipProps,
   emits: tooltipEmits,
@@ -16465,7 +16433,7 @@ const _sfc_main$2n = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElTooltip$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2n, [["__file", "tooltip.vue"]]);
+var ElTooltip$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2r, [["__file", "tooltip.vue"]]);
 
 const inputProps = buildProps({
   isHoverSuffix: Boolean,
@@ -16679,7 +16647,7 @@ const __default__$1M = defineComponent({
   name: COMPONENT_NAME$l,
   inheritAttrs: false
 });
-const _sfc_main$2m = /* @__PURE__ */ defineComponent({
+const _sfc_main$2q = /* @__PURE__ */ defineComponent({
   ...__default__$1M,
   props: inputProps,
   emits: inputEmits,
@@ -17252,7 +17220,7 @@ const _sfc_main$2m = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Input = /* @__PURE__ */ _export_sfc(_sfc_main$2m, [["__file", "input.vue"]]);
+var Input = /* @__PURE__ */ _export_sfc(_sfc_main$2q, [["__file", "input.vue"]]);
 
 const ElInput = withInstall(Input);
 
@@ -17302,7 +17270,7 @@ const thumbProps = buildProps({
 });
 
 const COMPONENT_NAME$k = "Thumb";
-const _sfc_main$2l = /* @__PURE__ */ defineComponent({
+const _sfc_main$2p = /* @__PURE__ */ defineComponent({
   __name: "thumb",
   props: thumbProps,
   setup(__props) {
@@ -17431,7 +17399,7 @@ const _sfc_main$2l = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Thumb = /* @__PURE__ */ _export_sfc(_sfc_main$2l, [["__file", "thumb.vue"]]);
+var Thumb = /* @__PURE__ */ _export_sfc(_sfc_main$2p, [["__file", "thumb.vue"]]);
 
 const barProps = buildProps({
   always: {
@@ -17444,7 +17412,7 @@ const barProps = buildProps({
   }
 });
 
-const _sfc_main$2k = /* @__PURE__ */ defineComponent({
+const _sfc_main$2o = /* @__PURE__ */ defineComponent({
   __name: "bar",
   props: barProps,
   setup(__props, { expose }) {
@@ -17502,7 +17470,7 @@ const _sfc_main$2k = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Bar = /* @__PURE__ */ _export_sfc(_sfc_main$2k, [["__file", "bar.vue"]]);
+var Bar = /* @__PURE__ */ _export_sfc(_sfc_main$2o, [["__file", "bar.vue"]]);
 
 const scrollbarProps = buildProps({
   distance: {
@@ -17564,7 +17532,7 @@ const COMPONENT_NAME$j = "ElScrollbar";
 const __default__$1L = defineComponent({
   name: COMPONENT_NAME$j
 });
-const _sfc_main$2j = /* @__PURE__ */ defineComponent({
+const _sfc_main$2n = /* @__PURE__ */ defineComponent({
   ...__default__$1L,
   props: scrollbarProps,
   emits: scrollbarEmits,
@@ -17773,7 +17741,7 @@ const _sfc_main$2j = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Scrollbar$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2j, [["__file", "scrollbar.vue"]]);
+var Scrollbar$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2n, [["__file", "scrollbar.vue"]]);
 
 const ElScrollbar = withInstall(Scrollbar$1);
 
@@ -17857,7 +17825,7 @@ const __default__$1K = defineComponent({
   name: COMPONENT_NAME$i,
   inheritAttrs: false
 });
-const _sfc_main$2i = /* @__PURE__ */ defineComponent({
+const _sfc_main$2m = /* @__PURE__ */ defineComponent({
   ...__default__$1K,
   props: autocompleteProps,
   emits: autocompleteEmits,
@@ -18311,7 +18279,7 @@ const _sfc_main$2i = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Autocomplete = /* @__PURE__ */ _export_sfc(_sfc_main$2i, [["__file", "autocomplete.vue"]]);
+var Autocomplete = /* @__PURE__ */ _export_sfc(_sfc_main$2m, [["__file", "autocomplete.vue"]]);
 
 const ElAutocomplete = withInstall(Autocomplete);
 
@@ -18348,7 +18316,7 @@ const avatarEmits = {
 const __default__$1J = defineComponent({
   name: "ElAvatar"
 });
-const _sfc_main$2h = /* @__PURE__ */ defineComponent({
+const _sfc_main$2l = /* @__PURE__ */ defineComponent({
   ...__default__$1J,
   props: avatarProps,
   emits: avatarEmits,
@@ -18403,7 +18371,7 @@ const _sfc_main$2h = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Avatar = /* @__PURE__ */ _export_sfc(_sfc_main$2h, [["__file", "avatar.vue"]]);
+var Avatar = /* @__PURE__ */ _export_sfc(_sfc_main$2l, [["__file", "avatar.vue"]]);
 
 const ElAvatar = withInstall(Avatar);
 
@@ -18467,7 +18435,7 @@ const COMPONENT_NAME$h = "ElBacktop";
 const __default__$1I = defineComponent({
   name: COMPONENT_NAME$h
 });
-const _sfc_main$2g = /* @__PURE__ */ defineComponent({
+const _sfc_main$2k = /* @__PURE__ */ defineComponent({
   ...__default__$1I,
   props: backtopProps,
   emits: backtopEmits,
@@ -18507,7 +18475,7 @@ const _sfc_main$2g = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Backtop = /* @__PURE__ */ _export_sfc(_sfc_main$2g, [["__file", "backtop.vue"]]);
+var Backtop = /* @__PURE__ */ _export_sfc(_sfc_main$2k, [["__file", "backtop.vue"]]);
 
 const ElBacktop = withInstall(Backtop);
 
@@ -18547,7 +18515,7 @@ const badgeProps = buildProps({
 const __default__$1H = defineComponent({
   name: "ElBadge"
 });
-const _sfc_main$2f = /* @__PURE__ */ defineComponent({
+const _sfc_main$2j = /* @__PURE__ */ defineComponent({
   ...__default__$1H,
   props: badgeProps,
   setup(__props, { expose }) {
@@ -18609,7 +18577,7 @@ const _sfc_main$2f = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Badge = /* @__PURE__ */ _export_sfc(_sfc_main$2f, [["__file", "badge.vue"]]);
+var Badge = /* @__PURE__ */ _export_sfc(_sfc_main$2j, [["__file", "badge.vue"]]);
 
 const ElBadge = withInstall(Badge);
 
@@ -18628,7 +18596,7 @@ const breadcrumbProps = buildProps({
 const __default__$1G = defineComponent({
   name: "ElBreadcrumb"
 });
-const _sfc_main$2e = /* @__PURE__ */ defineComponent({
+const _sfc_main$2i = /* @__PURE__ */ defineComponent({
   ...__default__$1G,
   props: breadcrumbProps,
   setup(__props) {
@@ -18656,7 +18624,7 @@ const _sfc_main$2e = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Breadcrumb = /* @__PURE__ */ _export_sfc(_sfc_main$2e, [["__file", "breadcrumb.vue"]]);
+var Breadcrumb = /* @__PURE__ */ _export_sfc(_sfc_main$2i, [["__file", "breadcrumb.vue"]]);
 
 const breadcrumbItemProps = buildProps({
   to: {
@@ -18669,7 +18637,7 @@ const breadcrumbItemProps = buildProps({
 const __default__$1F = defineComponent({
   name: "ElBreadcrumbItem"
 });
-const _sfc_main$2d = /* @__PURE__ */ defineComponent({
+const _sfc_main$2h = /* @__PURE__ */ defineComponent({
   ...__default__$1F,
   props: breadcrumbItemProps,
   setup(__props) {
@@ -18715,7 +18683,7 @@ const _sfc_main$2d = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var BreadcrumbItem = /* @__PURE__ */ _export_sfc(_sfc_main$2d, [["__file", "breadcrumb-item.vue"]]);
+var BreadcrumbItem = /* @__PURE__ */ _export_sfc(_sfc_main$2h, [["__file", "breadcrumb-item.vue"]]);
 
 const ElBreadcrumb = withInstall(Breadcrumb, {
   BreadcrumbItem
@@ -19818,7 +19786,7 @@ function useButtonCustomStyle(props) {
 const __default__$1E = defineComponent({
   name: "ElButton"
 });
-const _sfc_main$2c = /* @__PURE__ */ defineComponent({
+const _sfc_main$2g = /* @__PURE__ */ defineComponent({
   ...__default__$1E,
   props: buttonProps,
   emits: buttonEmits,
@@ -19896,7 +19864,7 @@ const _sfc_main$2c = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElButton$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2c, [["__file", "button.vue"]]);
+var ElButton$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2g, [["__file", "button.vue"]]);
 
 const buttonGroupProps = {
   size: buttonProps.size,
@@ -19906,7 +19874,7 @@ const buttonGroupProps = {
 const __default__$1D = defineComponent({
   name: "ElButtonGroup"
 });
-const _sfc_main$2b = /* @__PURE__ */ defineComponent({
+const _sfc_main$2f = /* @__PURE__ */ defineComponent({
   ...__default__$1D,
   props: buttonGroupProps,
   setup(__props) {
@@ -19925,7 +19893,7 @@ const _sfc_main$2b = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ButtonGroup = /* @__PURE__ */ _export_sfc(_sfc_main$2b, [["__file", "button-group.vue"]]);
+var ButtonGroup = /* @__PURE__ */ _export_sfc(_sfc_main$2f, [["__file", "button-group.vue"]]);
 
 const ElButton = withInstall(ElButton$1, {
   ButtonGroup
@@ -20620,7 +20588,7 @@ const __default__$1C = defineComponent({
   name: "PickerRangeTrigger",
   inheritAttrs: false
 });
-const _sfc_main$2a = /* @__PURE__ */ defineComponent({
+const _sfc_main$2e = /* @__PURE__ */ defineComponent({
   ...__default__$1C,
   props: timePickerRangeTriggerProps,
   emits: [
@@ -20736,12 +20704,12 @@ const _sfc_main$2a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var PickerRangeTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2a, [["__file", "picker-range-trigger.vue"]]);
+var PickerRangeTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2e, [["__file", "picker-range-trigger.vue"]]);
 
 const __default__$1B = defineComponent({
   name: "Picker"
 });
-const _sfc_main$29 = /* @__PURE__ */ defineComponent({
+const _sfc_main$2d = /* @__PURE__ */ defineComponent({
   ...__default__$1B,
   props: timePickerDefaultProps,
   emits: [
@@ -21426,7 +21394,7 @@ const _sfc_main$29 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CommonPicker = /* @__PURE__ */ _export_sfc(_sfc_main$29, [["__file", "picker.vue"]]);
+var CommonPicker = /* @__PURE__ */ _export_sfc(_sfc_main$2d, [["__file", "picker.vue"]]);
 
 const panelTimePickerProps = buildProps({
   ...timePanelSharedProps,
@@ -21752,7 +21720,7 @@ const basicTimeSpinnerProps = buildProps({
   ...disabledTimeListsProps
 });
 
-const _sfc_main$28 = /* @__PURE__ */ defineComponent({
+const _sfc_main$2c = /* @__PURE__ */ defineComponent({
   __name: "basic-time-spinner",
   props: basicTimeSpinnerProps,
   emits: [CHANGE_EVENT, "select-range", "set-option"],
@@ -22047,9 +22015,9 @@ const _sfc_main$28 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var TimeSpinner = /* @__PURE__ */ _export_sfc(_sfc_main$28, [["__file", "basic-time-spinner.vue"]]);
+var TimeSpinner = /* @__PURE__ */ _export_sfc(_sfc_main$2c, [["__file", "basic-time-spinner.vue"]]);
 
-const _sfc_main$27 = /* @__PURE__ */ defineComponent({
+const _sfc_main$2b = /* @__PURE__ */ defineComponent({
   __name: "panel-time-pick",
   props: panelTimePickerProps,
   emits: ["pick", "select-range", "set-picker-option"],
@@ -22199,7 +22167,7 @@ const _sfc_main$27 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var TimePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$27, [["__file", "panel-time-pick.vue"]]);
+var TimePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$2b, [["__file", "panel-time-pick.vue"]]);
 
 const panelTimeRangeProps = buildProps({
   ...timePanelSharedProps,
@@ -22208,7 +22176,7 @@ const panelTimeRangeProps = buildProps({
   }
 });
 
-const _sfc_main$26 = /* @__PURE__ */ defineComponent({
+const _sfc_main$2a = /* @__PURE__ */ defineComponent({
   __name: "panel-time-range",
   props: panelTimeRangeProps,
   emits: ["pick", "select-range", "set-picker-option"],
@@ -22474,7 +22442,7 @@ const _sfc_main$26 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var TimeRangePanel = /* @__PURE__ */ _export_sfc(_sfc_main$26, [["__file", "panel-time-range.vue"]]);
+var TimeRangePanel = /* @__PURE__ */ _export_sfc(_sfc_main$2a, [["__file", "panel-time-range.vue"]]);
 
 dayjs.extend(customParseFormat);
 var TimePicker = defineComponent({
@@ -22722,7 +22690,7 @@ const useDateTable = (props, emit) => {
 const __default__$1A = defineComponent({
   name: "DateTable"
 });
-const _sfc_main$25 = /* @__PURE__ */ defineComponent({
+const _sfc_main$29 = /* @__PURE__ */ defineComponent({
   ...__default__$1A,
   props: dateTableProps,
   emits: dateTableEmits,
@@ -22804,7 +22772,7 @@ const _sfc_main$25 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DateTable$1 = /* @__PURE__ */ _export_sfc(_sfc_main$25, [["__file", "date-table.vue"]]);
+var DateTable$1 = /* @__PURE__ */ _export_sfc(_sfc_main$29, [["__file", "date-table.vue"]]);
 
 const adjacentMonth = (start, end) => {
   const firstMonthLastDay = start.endOf("month");
@@ -22936,7 +22904,7 @@ const COMPONENT_NAME$g = "ElCalendar";
 const __default__$1z = defineComponent({
   name: COMPONENT_NAME$g
 });
-const _sfc_main$24 = /* @__PURE__ */ defineComponent({
+const _sfc_main$28 = /* @__PURE__ */ defineComponent({
   ...__default__$1z,
   props: calendarProps,
   emits: calendarEmits,
@@ -23058,7 +23026,7 @@ const _sfc_main$24 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Calendar = /* @__PURE__ */ _export_sfc(_sfc_main$24, [["__file", "calendar.vue"]]);
+var Calendar = /* @__PURE__ */ _export_sfc(_sfc_main$28, [["__file", "calendar.vue"]]);
 
 const ElCalendar = withInstall(Calendar);
 
@@ -23089,7 +23057,7 @@ const cardContextKey = Symbol("cardContextKey");
 const __default__$1y = defineComponent({
   name: "ElCard"
 });
-const _sfc_main$23 = /* @__PURE__ */ defineComponent({
+const _sfc_main$27 = /* @__PURE__ */ defineComponent({
   ...__default__$1y,
   props: cardProps,
   setup(__props) {
@@ -23129,7 +23097,7 @@ const _sfc_main$23 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Card = /* @__PURE__ */ _export_sfc(_sfc_main$23, [["__file", "card.vue"]]);
+var Card = /* @__PURE__ */ _export_sfc(_sfc_main$27, [["__file", "card.vue"]]);
 
 const ElCard = withInstall(Card);
 
@@ -23460,7 +23428,7 @@ const COMPONENT_NAME$f = "ElCarousel";
 const __default__$1x = defineComponent({
   name: COMPONENT_NAME$f
 });
-const _sfc_main$22 = /* @__PURE__ */ defineComponent({
+const _sfc_main$26 = /* @__PURE__ */ defineComponent({
   ...__default__$1x,
   props: carouselProps,
   emits: carouselEmits,
@@ -23659,7 +23627,7 @@ const _sfc_main$22 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Carousel = /* @__PURE__ */ _export_sfc(_sfc_main$22, [["__file", "carousel.vue"]]);
+var Carousel = /* @__PURE__ */ _export_sfc(_sfc_main$26, [["__file", "carousel.vue"]]);
 
 const carouselItemProps = buildProps({
   name: { type: String, default: "" },
@@ -23783,7 +23751,7 @@ const useCarouselItem = (props) => {
 const __default__$1w = defineComponent({
   name: CAROUSEL_ITEM_NAME
 });
-const _sfc_main$21 = /* @__PURE__ */ defineComponent({
+const _sfc_main$25 = /* @__PURE__ */ defineComponent({
   ...__default__$1w,
   props: carouselItemProps,
   setup(__props) {
@@ -23843,7 +23811,7 @@ const _sfc_main$21 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CarouselItem = /* @__PURE__ */ _export_sfc(_sfc_main$21, [["__file", "carousel-item.vue"]]);
+var CarouselItem = /* @__PURE__ */ _export_sfc(_sfc_main$25, [["__file", "carousel-item.vue"]]);
 
 const ElCarousel = withInstall(Carousel, {
   CarouselItem
@@ -24126,7 +24094,7 @@ const useCheckbox = (props, slots) => {
 const __default__$1v = defineComponent({
   name: "ElCheckbox"
 });
-const _sfc_main$20 = /* @__PURE__ */ defineComponent({
+const _sfc_main$24 = /* @__PURE__ */ defineComponent({
   ...__default__$1v,
   props: checkboxProps,
   emits: checkboxEmits,
@@ -24246,12 +24214,12 @@ const _sfc_main$20 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Checkbox = /* @__PURE__ */ _export_sfc(_sfc_main$20, [["__file", "checkbox.vue"]]);
+var Checkbox = /* @__PURE__ */ _export_sfc(_sfc_main$24, [["__file", "checkbox.vue"]]);
 
 const __default__$1u = defineComponent({
   name: "ElCheckboxButton"
 });
-const _sfc_main$1$ = /* @__PURE__ */ defineComponent({
+const _sfc_main$23 = /* @__PURE__ */ defineComponent({
   ...__default__$1u,
   props: checkboxProps,
   emits: checkboxEmits,
@@ -24333,7 +24301,7 @@ const _sfc_main$1$ = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CheckboxButton = /* @__PURE__ */ _export_sfc(_sfc_main$1$, [["__file", "checkbox-button.vue"]]);
+var CheckboxButton = /* @__PURE__ */ _export_sfc(_sfc_main$23, [["__file", "checkbox-button.vue"]]);
 
 const checkboxGroupProps = buildProps({
   modelValue: {
@@ -24381,7 +24349,7 @@ const checkboxDefaultProps = {
 const __default__$1t = defineComponent({
   name: "ElCheckboxGroup"
 });
-const _sfc_main$1_ = /* @__PURE__ */ defineComponent({
+const _sfc_main$22 = /* @__PURE__ */ defineComponent({
   ...__default__$1t,
   props: checkboxGroupProps,
   emits: checkboxGroupEmits,
@@ -24458,7 +24426,7 @@ const _sfc_main$1_ = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CheckboxGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1_, [["__file", "checkbox-group.vue"]]);
+var CheckboxGroup = /* @__PURE__ */ _export_sfc(_sfc_main$22, [["__file", "checkbox-group.vue"]]);
 
 const ElCheckbox = withInstall(Checkbox, {
   CheckboxButton,
@@ -24550,7 +24518,7 @@ const useRadio = (props, emit) => {
 const __default__$1s = defineComponent({
   name: "ElRadio"
 });
-const _sfc_main$1Z = /* @__PURE__ */ defineComponent({
+const _sfc_main$21 = /* @__PURE__ */ defineComponent({
   ...__default__$1s,
   props: radioProps,
   emits: radioEmits,
@@ -24615,7 +24583,7 @@ const _sfc_main$1Z = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Radio = /* @__PURE__ */ _export_sfc(_sfc_main$1Z, [["__file", "radio.vue"]]);
+var Radio = /* @__PURE__ */ _export_sfc(_sfc_main$21, [["__file", "radio.vue"]]);
 
 const radioButtonProps = buildProps({
   ...radioPropsBase
@@ -24624,7 +24592,7 @@ const radioButtonProps = buildProps({
 const __default__$1r = defineComponent({
   name: "ElRadioButton"
 });
-const _sfc_main$1Y = /* @__PURE__ */ defineComponent({
+const _sfc_main$20 = /* @__PURE__ */ defineComponent({
   ...__default__$1r,
   props: radioButtonProps,
   setup(__props) {
@@ -24680,7 +24648,7 @@ const _sfc_main$1Y = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var RadioButton = /* @__PURE__ */ _export_sfc(_sfc_main$1Y, [["__file", "radio-button.vue"]]);
+var RadioButton = /* @__PURE__ */ _export_sfc(_sfc_main$20, [["__file", "radio-button.vue"]]);
 
 const radioGroupProps = buildProps({
   id: {
@@ -24733,7 +24701,7 @@ const radioDefaultProps = {
 const __default__$1q = defineComponent({
   name: "ElRadioGroup"
 });
-const _sfc_main$1X = /* @__PURE__ */ defineComponent({
+const _sfc_main$1$ = /* @__PURE__ */ defineComponent({
   ...__default__$1q,
   props: radioGroupProps,
   emits: radioGroupEmits,
@@ -24803,7 +24771,7 @@ const _sfc_main$1X = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var RadioGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1X, [["__file", "radio-group.vue"]]);
+var RadioGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1$, [["__file", "radio-group.vue"]]);
 
 const ElRadio = withInstall(Radio, {
   RadioButton,
@@ -24855,7 +24823,7 @@ var NodeContent$1 = defineComponent({
 const __default__$1p = defineComponent({
   name: "ElCascaderNode"
 });
-const _sfc_main$1W = /* @__PURE__ */ defineComponent({
+const _sfc_main$1_ = /* @__PURE__ */ defineComponent({
   ...__default__$1p,
   props: {
     node: {
@@ -25021,12 +24989,12 @@ const _sfc_main$1W = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElCascaderNode = /* @__PURE__ */ _export_sfc(_sfc_main$1W, [["__file", "node.vue"]]);
+var ElCascaderNode = /* @__PURE__ */ _export_sfc(_sfc_main$1_, [["__file", "node.vue"]]);
 
 const __default__$1o = defineComponent({
   name: "ElCascaderMenu"
 });
-const _sfc_main$1V = /* @__PURE__ */ defineComponent({
+const _sfc_main$1Z = /* @__PURE__ */ defineComponent({
   ...__default__$1o,
   props: {
     nodes: {
@@ -25143,7 +25111,7 @@ const _sfc_main$1V = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElCascaderMenu = /* @__PURE__ */ _export_sfc(_sfc_main$1V, [["__file", "menu.vue"]]);
+var ElCascaderMenu = /* @__PURE__ */ _export_sfc(_sfc_main$1Z, [["__file", "menu.vue"]]);
 
 let uid = 0;
 const calculatePathNodes = (node) => {
@@ -25413,7 +25381,7 @@ const __default__$1n = defineComponent({
   name: "ElCascaderPanel",
   inheritAttrs: false
 });
-const _sfc_main$1U = /* @__PURE__ */ defineComponent({
+const _sfc_main$1Y = /* @__PURE__ */ defineComponent({
   ...__default__$1n,
   props: cascaderPanelProps,
   emits: cascaderPanelEmits,
@@ -25692,7 +25660,7 @@ const _sfc_main$1U = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CascaderPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1U, [["__file", "index.vue"]]);
+var CascaderPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1Y, [["__file", "index.vue"]]);
 
 const ElCascaderPanel = withInstall(CascaderPanel);
 
@@ -25737,7 +25705,7 @@ const tagEmits = {
 const __default__$1m = defineComponent({
   name: "ElTag"
 });
-const _sfc_main$1T = /* @__PURE__ */ defineComponent({
+const _sfc_main$1X = /* @__PURE__ */ defineComponent({
   ...__default__$1m,
   props: tagProps,
   emits: tagEmits,
@@ -25839,7 +25807,7 @@ const _sfc_main$1T = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Tag = /* @__PURE__ */ _export_sfc(_sfc_main$1T, [["__file", "tag.vue"]]);
+var Tag = /* @__PURE__ */ _export_sfc(_sfc_main$1X, [["__file", "tag.vue"]]);
 
 const ElTag = withInstall(Tag);
 
@@ -25936,7 +25904,7 @@ const cascaderEmits = {
 const __default__$1l = defineComponent({
   name: "ElCascader"
 });
-const _sfc_main$1S = /* @__PURE__ */ defineComponent({
+const _sfc_main$1W = /* @__PURE__ */ defineComponent({
   ...__default__$1l,
   props: cascaderProps,
   emits: cascaderEmits,
@@ -26614,7 +26582,7 @@ const _sfc_main$1S = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Cascader = /* @__PURE__ */ _export_sfc(_sfc_main$1S, [["__file", "cascader.vue"]]);
+var Cascader = /* @__PURE__ */ _export_sfc(_sfc_main$1W, [["__file", "cascader.vue"]]);
 
 const ElCascader = withInstall(Cascader);
 
@@ -26635,7 +26603,7 @@ const checkTagEmits = {
 const __default__$1k = defineComponent({
   name: "ElCheckTag"
 });
-const _sfc_main$1R = /* @__PURE__ */ defineComponent({
+const _sfc_main$1V = /* @__PURE__ */ defineComponent({
   ...__default__$1k,
   props: checkTagProps,
   emits: checkTagEmits,
@@ -26665,7 +26633,7 @@ const _sfc_main$1R = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CheckTag = /* @__PURE__ */ _export_sfc(_sfc_main$1R, [["__file", "check-tag.vue"]]);
+var CheckTag = /* @__PURE__ */ _export_sfc(_sfc_main$1V, [["__file", "check-tag.vue"]]);
 
 const ElCheckTag = withInstall(CheckTag);
 
@@ -26703,7 +26671,7 @@ const rowProps = buildProps({
 const __default__$1j = defineComponent({
   name: "ElRow"
 });
-const _sfc_main$1Q = /* @__PURE__ */ defineComponent({
+const _sfc_main$1U = /* @__PURE__ */ defineComponent({
   ...__default__$1j,
   props: rowProps,
   setup(__props) {
@@ -26739,7 +26707,7 @@ const _sfc_main$1Q = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Row$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1Q, [["__file", "row.vue"]]);
+var Row$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1U, [["__file", "row.vue"]]);
 
 const ElRow = withInstall(Row$1);
 
@@ -26789,7 +26757,7 @@ const colProps = buildProps({
 const __default__$1i = defineComponent({
   name: "ElCol"
 });
-const _sfc_main$1P = /* @__PURE__ */ defineComponent({
+const _sfc_main$1T = /* @__PURE__ */ defineComponent({
   ...__default__$1i,
   props: colProps,
   setup(__props) {
@@ -26843,7 +26811,7 @@ const _sfc_main$1P = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Col = /* @__PURE__ */ _export_sfc(_sfc_main$1P, [["__file", "col.vue"]]);
+var Col = /* @__PURE__ */ _export_sfc(_sfc_main$1T, [["__file", "col.vue"]]);
 
 const ElCol = withInstall(Col);
 
@@ -26941,7 +26909,7 @@ const useCollapseDOM = (props) => {
 const __default__$1h = defineComponent({
   name: "ElCollapse"
 });
-const _sfc_main$1O = /* @__PURE__ */ defineComponent({
+const _sfc_main$1S = /* @__PURE__ */ defineComponent({
   ...__default__$1h,
   props: collapseProps,
   emits: collapseEmits,
@@ -26962,12 +26930,12 @@ const _sfc_main$1O = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Collapse = /* @__PURE__ */ _export_sfc(_sfc_main$1O, [["__file", "collapse.vue"]]);
+var Collapse = /* @__PURE__ */ _export_sfc(_sfc_main$1S, [["__file", "collapse.vue"]]);
 
 const __default__$1g = defineComponent({
   name: "ElCollapseTransition"
 });
-const _sfc_main$1N = /* @__PURE__ */ defineComponent({
+const _sfc_main$1R = /* @__PURE__ */ defineComponent({
   ...__default__$1g,
   setup(__props) {
     const ns = useNamespace("collapse-transition");
@@ -27046,7 +27014,7 @@ const _sfc_main$1N = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main$1N, [["__file", "collapse-transition.vue"]]);
+var CollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main$1R, [["__file", "collapse-transition.vue"]]);
 
 const ElCollapseTransition = withInstall(CollapseTransition);
 
@@ -27149,7 +27117,7 @@ const useCollapseItemDOM = (props, { focusing, isActive, id }) => {
 const __default__$1f = defineComponent({
   name: "ElCollapseItem"
 });
-const _sfc_main$1M = /* @__PURE__ */ defineComponent({
+const _sfc_main$1Q = /* @__PURE__ */ defineComponent({
   ...__default__$1f,
   props: collapseItemProps,
   setup(__props, { expose }) {
@@ -27234,7 +27202,7 @@ const _sfc_main$1M = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CollapseItem = /* @__PURE__ */ _export_sfc(_sfc_main$1M, [["__file", "collapse-item.vue"]]);
+var CollapseItem = /* @__PURE__ */ _export_sfc(_sfc_main$1Q, [["__file", "collapse-item.vue"]]);
 
 const ElCollapse = withInstall(Collapse, {
   CollapseItem
@@ -27458,7 +27426,7 @@ const maxValue$1 = 100;
 const __default__$1e = defineComponent({
   name: "ElColorAlphaSlider"
 });
-const _sfc_main$1L = /* @__PURE__ */ defineComponent({
+const _sfc_main$1P = /* @__PURE__ */ defineComponent({
   ...__default__$1e,
   props: alphaSliderProps,
   setup(__props, { expose }) {
@@ -27523,14 +27491,14 @@ const _sfc_main$1L = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var AlphaSlider = /* @__PURE__ */ _export_sfc(_sfc_main$1L, [["__file", "alpha-slider.vue"]]);
+var AlphaSlider = /* @__PURE__ */ _export_sfc(_sfc_main$1P, [["__file", "alpha-slider.vue"]]);
 
 const minValue = 0;
 const maxValue = 360;
 const __default__$1d = defineComponent({
   name: "ElColorHueSlider"
 });
-const _sfc_main$1K = /* @__PURE__ */ defineComponent({
+const _sfc_main$1O = /* @__PURE__ */ defineComponent({
   ...__default__$1d,
   props: hueSliderProps,
   setup(__props, { expose }) {
@@ -27587,7 +27555,7 @@ const _sfc_main$1K = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var HueSlider = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["__file", "hue-slider.vue"]]);
+var HueSlider = /* @__PURE__ */ _export_sfc(_sfc_main$1O, [["__file", "hue-slider.vue"]]);
 
 const predefineProps = buildProps({
   colors: {
@@ -27779,7 +27747,7 @@ const usePredefineDOM = (props) => {
 const __default__$1c = defineComponent({
   name: "ElColorPredefine"
 });
-const _sfc_main$1J = /* @__PURE__ */ defineComponent({
+const _sfc_main$1N = /* @__PURE__ */ defineComponent({
   ...__default__$1c,
   props: predefineProps,
   setup(__props) {
@@ -27816,7 +27784,7 @@ const _sfc_main$1J = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Predefine = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["__file", "predefine.vue"]]);
+var Predefine = /* @__PURE__ */ _export_sfc(_sfc_main$1N, [["__file", "predefine.vue"]]);
 
 const svPanelProps = buildProps({
   color: {
@@ -27967,7 +27935,7 @@ const useSvPanelDOM = (props, {
 const __default__$1b = defineComponent({
   name: "ElSvPanel"
 });
-const _sfc_main$1I = /* @__PURE__ */ defineComponent({
+const _sfc_main$1M = /* @__PURE__ */ defineComponent({
   ...__default__$1b,
   props: svPanelProps,
   setup(__props, { expose }) {
@@ -28025,7 +27993,7 @@ const _sfc_main$1I = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var SvPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["__file", "sv-panel.vue"]]);
+var SvPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1M, [["__file", "sv-panel.vue"]]);
 
 const useCommonColor = (props, emit) => {
   const color = reactive(new Color({
@@ -28047,7 +28015,7 @@ const useCommonColor = (props, emit) => {
 const __default__$1a = defineComponent({
   name: "ElColorPickerPanel"
 });
-const _sfc_main$1H = /* @__PURE__ */ defineComponent({
+const _sfc_main$1L = /* @__PURE__ */ defineComponent({
   ...__default__$1a,
   props: colorPickerPanelProps,
   emits: colorPickerPanelEmits,
@@ -28163,7 +28131,7 @@ const _sfc_main$1H = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ColorPickerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1H, [["__file", "color-picker-panel.vue"]]);
+var ColorPickerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1L, [["__file", "color-picker-panel.vue"]]);
 
 const ElColorPickerPanel = withInstall(ColorPickerPanel);
 
@@ -28210,7 +28178,7 @@ const colorPickerEmits = {
 const __default__$19 = defineComponent({
   name: "ElColorPicker"
 });
-const _sfc_main$1G = /* @__PURE__ */ defineComponent({
+const _sfc_main$1K = /* @__PURE__ */ defineComponent({
   ...__default__$19,
   props: colorPickerProps,
   emits: colorPickerEmits,
@@ -28530,14 +28498,14 @@ const _sfc_main$1G = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ColorPicker = /* @__PURE__ */ _export_sfc(_sfc_main$1G, [["__file", "color-picker.vue"]]);
+var ColorPicker = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["__file", "color-picker.vue"]]);
 
 const ElColorPicker = withInstall(ColorPicker);
 
 const __default__$18 = defineComponent({
   name: "ElContainer"
 });
-const _sfc_main$1F = /* @__PURE__ */ defineComponent({
+const _sfc_main$1J = /* @__PURE__ */ defineComponent({
   ...__default__$18,
   props: buildProps({
     direction: {
@@ -28574,12 +28542,12 @@ const _sfc_main$1F = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Container = /* @__PURE__ */ _export_sfc(_sfc_main$1F, [["__file", "container.vue"]]);
+var Container = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["__file", "container.vue"]]);
 
 const __default__$17 = defineComponent({
   name: "ElAside"
 });
-const _sfc_main$1E = /* @__PURE__ */ defineComponent({
+const _sfc_main$1I = /* @__PURE__ */ defineComponent({
   ...__default__$17,
   props: {
     width: {
@@ -28601,12 +28569,12 @@ const _sfc_main$1E = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Aside = /* @__PURE__ */ _export_sfc(_sfc_main$1E, [["__file", "aside.vue"]]);
+var Aside = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["__file", "aside.vue"]]);
 
 const __default__$16 = defineComponent({
   name: "ElFooter"
 });
-const _sfc_main$1D = /* @__PURE__ */ defineComponent({
+const _sfc_main$1H = /* @__PURE__ */ defineComponent({
   ...__default__$16,
   props: {
     height: {
@@ -28628,12 +28596,12 @@ const _sfc_main$1D = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Footer$2 = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["__file", "footer.vue"]]);
+var Footer$2 = /* @__PURE__ */ _export_sfc(_sfc_main$1H, [["__file", "footer.vue"]]);
 
 const __default__$15 = defineComponent({
   name: "ElHeader"
 });
-const _sfc_main$1C = /* @__PURE__ */ defineComponent({
+const _sfc_main$1G = /* @__PURE__ */ defineComponent({
   ...__default__$15,
   props: {
     height: {
@@ -28659,12 +28627,12 @@ const _sfc_main$1C = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Header$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1C, [["__file", "header.vue"]]);
+var Header$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1G, [["__file", "header.vue"]]);
 
 const __default__$14 = defineComponent({
   name: "ElMain"
 });
-const _sfc_main$1B = /* @__PURE__ */ defineComponent({
+const _sfc_main$1F = /* @__PURE__ */ defineComponent({
   ...__default__$14,
   setup(__props) {
     const ns = useNamespace("main");
@@ -28677,7 +28645,7 @@ const _sfc_main$1B = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Main = /* @__PURE__ */ _export_sfc(_sfc_main$1B, [["__file", "main.vue"]]);
+var Main = /* @__PURE__ */ _export_sfc(_sfc_main$1F, [["__file", "main.vue"]]);
 
 const ElContainer = withInstall(Container, {
   Aside,
@@ -29482,7 +29450,7 @@ var ElDatePickerCell = defineComponent({
   }
 });
 
-const _sfc_main$1A = /* @__PURE__ */ defineComponent({
+const _sfc_main$1E = /* @__PURE__ */ defineComponent({
   __name: "basic-date-table",
   props: basicDateTableProps,
   emits: basicDateTableEmits,
@@ -29572,14 +29540,14 @@ const _sfc_main$1A = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DateTable = /* @__PURE__ */ _export_sfc(_sfc_main$1A, [["__file", "basic-date-table.vue"]]);
+var DateTable = /* @__PURE__ */ _export_sfc(_sfc_main$1E, [["__file", "basic-date-table.vue"]]);
 
 const basicMonthTableProps = buildProps({
   ...datePickerSharedProps,
   selectionMode: selectionModeWithDefault("month")
 });
 
-const _sfc_main$1z = /* @__PURE__ */ defineComponent({
+const _sfc_main$1D = /* @__PURE__ */ defineComponent({
   __name: "basic-month-table",
   props: basicMonthTableProps,
   emits: ["changerange", "pick", "select"],
@@ -29779,14 +29747,14 @@ const _sfc_main$1z = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var MonthTable = /* @__PURE__ */ _export_sfc(_sfc_main$1z, [["__file", "basic-month-table.vue"]]);
+var MonthTable = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["__file", "basic-month-table.vue"]]);
 
 const basicYearTableProps = buildProps({
   ...datePickerSharedProps,
   selectionMode: selectionModeWithDefault("year")
 });
 
-const _sfc_main$1y = /* @__PURE__ */ defineComponent({
+const _sfc_main$1C = /* @__PURE__ */ defineComponent({
   __name: "basic-year-table",
   props: basicYearTableProps,
   emits: ["changerange", "pick", "select"],
@@ -29982,9 +29950,9 @@ const _sfc_main$1y = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var YearTable = /* @__PURE__ */ _export_sfc(_sfc_main$1y, [["__file", "basic-year-table.vue"]]);
+var YearTable = /* @__PURE__ */ _export_sfc(_sfc_main$1C, [["__file", "basic-year-table.vue"]]);
 
-const _sfc_main$1x = /* @__PURE__ */ defineComponent({
+const _sfc_main$1B = /* @__PURE__ */ defineComponent({
   __name: "panel-date-pick",
   props: panelDatePickProps,
   emits: ["pick", "set-picker-option", "panel-change"],
@@ -30742,7 +30710,7 @@ const _sfc_main$1x = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DatePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1x, [["__file", "panel-date-pick.vue"]]);
+var DatePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1B, [["__file", "panel-date-pick.vue"]]);
 
 const panelDateRangeProps = buildProps({
   ...panelSharedProps,
@@ -30978,7 +30946,7 @@ const usePanelDateRange = (props, emit, leftDate, rightDate) => {
 };
 
 const unit$4 = "month";
-const _sfc_main$1w = /* @__PURE__ */ defineComponent({
+const _sfc_main$1A = /* @__PURE__ */ defineComponent({
   __name: "panel-date-range",
   props: panelDateRangeProps,
   emits: [
@@ -31810,7 +31778,7 @@ const _sfc_main$1w = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DateRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1w, [["__file", "panel-date-range.vue"]]);
+var DateRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1A, [["__file", "panel-date-range.vue"]]);
 
 const panelMonthRangeProps = buildProps({
   ...panelRangeSharedProps
@@ -31873,7 +31841,7 @@ const unit$3 = "year";
 const __default__$13 = defineComponent({
   name: "DatePickerMonthRange"
 });
-const _sfc_main$1v = /* @__PURE__ */ defineComponent({
+const _sfc_main$1z = /* @__PURE__ */ defineComponent({
   ...__default__$13,
   props: panelMonthRangeProps,
   emits: panelMonthRangeEmits,
@@ -32165,7 +32133,7 @@ const _sfc_main$1v = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var MonthRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1v, [["__file", "panel-month-range.vue"]]);
+var MonthRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1z, [["__file", "panel-month-range.vue"]]);
 
 const panelYearRangeProps = buildProps({
   ...panelRangeSharedProps
@@ -32232,7 +32200,7 @@ const unit$2 = "year";
 const __default__$12 = defineComponent({
   name: "DatePickerYearRange"
 });
-const _sfc_main$1u = /* @__PURE__ */ defineComponent({
+const _sfc_main$1y = /* @__PURE__ */ defineComponent({
   ...__default__$12,
   props: panelYearRangeProps,
   emits: panelYearRangeEmits,
@@ -32550,10 +32518,10 @@ const _sfc_main$1u = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var YearRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1u, [["__file", "panel-year-range.vue"]]);
+var YearRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1y, [["__file", "panel-year-range.vue"]]);
 
 const unit$1 = "month";
-const _sfc_main$1t = /* @__PURE__ */ defineComponent({
+const _sfc_main$1x = /* @__PURE__ */ defineComponent({
   __name: "panel-start-range",
   props: panelDateRangeProps,
   emits: [
@@ -33120,10 +33088,10 @@ const _sfc_main$1t = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DateStartRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1t, [["__file", "panel-start-range.vue"]]);
+var DateStartRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1x, [["__file", "panel-start-range.vue"]]);
 
 const unit = "month";
-const _sfc_main$1s = /* @__PURE__ */ defineComponent({
+const _sfc_main$1w = /* @__PURE__ */ defineComponent({
   __name: "panel-end-range",
   props: panelDateRangeProps,
   emits: [
@@ -33691,7 +33659,7 @@ const _sfc_main$1s = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DateEndRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["__file", "panel-end-range.vue"]]);
+var DateEndRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1w, [["__file", "panel-end-range.vue"]]);
 
 const getPanel = function(type) {
   switch (type) {
@@ -33947,7 +33915,7 @@ const descriptionsRowProps = buildProps({
 const __default__$11 = defineComponent({
   name: "ElDescriptionsRow"
 });
-const _sfc_main$1r = /* @__PURE__ */ defineComponent({
+const _sfc_main$1v = /* @__PURE__ */ defineComponent({
   ...__default__$11,
   props: descriptionsRowProps,
   setup(__props) {
@@ -34002,7 +33970,7 @@ const _sfc_main$1r = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElDescriptionsRow = /* @__PURE__ */ _export_sfc(_sfc_main$1r, [["__file", "descriptions-row.vue"]]);
+var ElDescriptionsRow = /* @__PURE__ */ _export_sfc(_sfc_main$1v, [["__file", "descriptions-row.vue"]]);
 
 const descriptionProps = buildProps({
   border: Boolean,
@@ -34035,7 +34003,7 @@ const COMPONENT_NAME$e = "ElDescriptionsItem";
 const __default__$10 = defineComponent({
   name: "ElDescriptions"
 });
-const _sfc_main$1q = /* @__PURE__ */ defineComponent({
+const _sfc_main$1u = /* @__PURE__ */ defineComponent({
   ...__default__$10,
   props: descriptionProps,
   setup(__props) {
@@ -34150,7 +34118,7 @@ const _sfc_main$1q = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Descriptions = /* @__PURE__ */ _export_sfc(_sfc_main$1q, [["__file", "description.vue"]]);
+var Descriptions = /* @__PURE__ */ _export_sfc(_sfc_main$1u, [["__file", "description.vue"]]);
 
 const descriptionItemProps = buildProps({
   label: {
@@ -34260,7 +34228,7 @@ const dialogContentEmits = {
 };
 
 const __default__$$ = defineComponent({ name: "ElDialogContent" });
-const _sfc_main$1p = /* @__PURE__ */ defineComponent({
+const _sfc_main$1t = /* @__PURE__ */ defineComponent({
   ...__default__$$,
   props: dialogContentProps,
   emits: dialogContentEmits,
@@ -34382,7 +34350,7 @@ const _sfc_main$1p = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElDialogContent = /* @__PURE__ */ _export_sfc(_sfc_main$1p, [["__file", "dialog-content.vue"]]);
+var ElDialogContent = /* @__PURE__ */ _export_sfc(_sfc_main$1t, [["__file", "dialog-content.vue"]]);
 
 const dialogProps = buildProps({
   ...dialogContentProps,
@@ -34694,7 +34662,7 @@ const __default__$_ = defineComponent({
   name: "ElDialog",
   inheritAttrs: false
 });
-const _sfc_main$1o = /* @__PURE__ */ defineComponent({
+const _sfc_main$1s = /* @__PURE__ */ defineComponent({
   ...__default__$_,
   props: dialogProps,
   emits: dialogEmits,
@@ -34857,7 +34825,7 @@ const _sfc_main$1o = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Dialog = /* @__PURE__ */ _export_sfc(_sfc_main$1o, [["__file", "dialog.vue"]]);
+var Dialog = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["__file", "dialog.vue"]]);
 
 const ElDialog = withInstall(Dialog);
 
@@ -34885,7 +34853,7 @@ const dividerProps = buildProps({
 const __default__$Z = defineComponent({
   name: "ElDivider"
 });
-const _sfc_main$1n = /* @__PURE__ */ defineComponent({
+const _sfc_main$1r = /* @__PURE__ */ defineComponent({
   ...__default__$Z,
   props: dividerProps,
   setup(__props) {
@@ -34913,7 +34881,7 @@ const _sfc_main$1n = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElDivider$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1n, [["__file", "divider.vue"]]);
+var ElDivider$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1r, [["__file", "divider.vue"]]);
 
 const ElDivider = withInstall(ElDivider$1);
 
@@ -35016,7 +34984,7 @@ const __default__$Y = defineComponent({
   name: "ElDrawer",
   inheritAttrs: false
 });
-const _sfc_main$1m = /* @__PURE__ */ defineComponent({
+const _sfc_main$1q = /* @__PURE__ */ defineComponent({
   ...__default__$Y,
   props: drawerProps,
   emits: drawerEmits,
@@ -35208,26 +35176,26 @@ const _sfc_main$1m = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Drawer = /* @__PURE__ */ _export_sfc(_sfc_main$1m, [["__file", "drawer.vue"]]);
+var Drawer = /* @__PURE__ */ _export_sfc(_sfc_main$1q, [["__file", "drawer.vue"]]);
 
 const ElDrawer = withInstall(Drawer);
 
-const _sfc_main$1l = defineComponent({
+const _sfc_main$1p = defineComponent({
   inheritAttrs: false
 });
-function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var Collection = /* @__PURE__ */ _export_sfc(_sfc_main$1l, [["render", _sfc_render$l], ["__file", "collection.vue"]]);
+var Collection = /* @__PURE__ */ _export_sfc(_sfc_main$1p, [["render", _sfc_render$n], ["__file", "collection.vue"]]);
 
-const _sfc_main$1k = defineComponent({
+const _sfc_main$1o = defineComponent({
   name: "ElCollectionItem",
   inheritAttrs: false
 });
-function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var CollectionItem = /* @__PURE__ */ _export_sfc(_sfc_main$1k, [["render", _sfc_render$k], ["__file", "collection-item.vue"]]);
+var CollectionItem = /* @__PURE__ */ _export_sfc(_sfc_main$1o, [["render", _sfc_render$m], ["__file", "collection-item.vue"]]);
 
 const COLLECTION_ITEM_SIGN = `data-el-collection-item`;
 const createCollectionWithScope = (name) => {
@@ -35365,7 +35333,7 @@ const focusFirst = (elements) => {
 const CURRENT_TAB_ID_CHANGE_EVT = "currentTabIdChange";
 const ENTRY_FOCUS_EVT = "rovingFocusGroup.entryFocus";
 const EVT_OPTS = { bubbles: false, cancelable: true };
-const _sfc_main$1j = defineComponent({
+const _sfc_main$1n = defineComponent({
   name: "ElRovingFocusGroupImpl",
   inheritAttrs: false,
   props: rovingFocusGroupProps,
@@ -35475,19 +35443,19 @@ const _sfc_main$1j = defineComponent({
     useEventListener(rovingFocusGroupRef, ENTRY_FOCUS_EVT, handleEntryFocus);
   }
 });
-function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var ElRovingFocusGroupImpl = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["render", _sfc_render$j], ["__file", "roving-focus-group-impl.vue"]]);
+var ElRovingFocusGroupImpl = /* @__PURE__ */ _export_sfc(_sfc_main$1n, [["render", _sfc_render$l], ["__file", "roving-focus-group-impl.vue"]]);
 
-const _sfc_main$1i = defineComponent({
+const _sfc_main$1m = defineComponent({
   name: "ElRovingFocusGroup",
   components: {
     ElFocusGroupCollection: ElCollection,
     ElRovingFocusGroupImpl
   }
 });
-function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_roving_focus_group_impl = resolveComponent("el-roving-focus-group-impl");
   const _component_el_focus_group_collection = resolveComponent("el-focus-group-collection");
   return openBlock(), createBlock(_component_el_focus_group_collection, null, {
@@ -35502,9 +35470,9 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   });
 }
-var ElRovingFocusGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$i], ["__file", "roving-focus-group.vue"]]);
+var ElRovingFocusGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1m, [["render", _sfc_render$k], ["__file", "roving-focus-group.vue"]]);
 
-const _sfc_main$1h = defineComponent({
+const _sfc_main$1l = defineComponent({
   components: {
     ElRovingFocusCollectionItem: ElCollectionItem
   },
@@ -35563,7 +35531,7 @@ const _sfc_main$1h = defineComponent({
     };
   }
 });
-function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_roving_focus_collection_item = resolveComponent("el-roving-focus-collection-item");
   return openBlock(), createBlock(_component_el_roving_focus_collection_item, {
     id: _ctx.id,
@@ -35576,7 +35544,7 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["id", "focusable", "active"]);
 }
-var ElRovingFocusItem = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$h], ["__file", "roving-focus-item.vue"]]);
+var ElRovingFocusItem = /* @__PURE__ */ _export_sfc(_sfc_main$1l, [["render", _sfc_render$j], ["__file", "roving-focus-item.vue"]]);
 
 const dropdownProps = buildProps({
   trigger: useTooltipTriggerProps.trigger,
@@ -35684,7 +35652,7 @@ const DROPDOWN_INJECTION_KEY = Symbol("elDropdown");
 const DROPDOWN_INSTANCE_INJECTION_KEY = "elDropdown";
 
 const { ButtonGroup: ElButtonGroup } = ElButton;
-const _sfc_main$1g = defineComponent({
+const _sfc_main$1k = defineComponent({
   name: "ElDropdown",
   components: {
     ElButton,
@@ -35798,7 +35766,7 @@ const _sfc_main$1g = defineComponent({
     };
   }
 });
-function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
   var _a;
   const _component_el_roving_focus_group = resolveComponent("el-roving-focus-group");
   const _component_el_scrollbar = resolveComponent("el-scrollbar");
@@ -35925,9 +35893,9 @@ function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     })) : createCommentVNode("v-if", true)
   ], 2);
 }
-var Dropdown = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["render", _sfc_render$g], ["__file", "dropdown.vue"]]);
+var Dropdown = /* @__PURE__ */ _export_sfc(_sfc_main$1k, [["render", _sfc_render$i], ["__file", "dropdown.vue"]]);
 
-const _sfc_main$1f = defineComponent({
+const _sfc_main$1j = defineComponent({
   name: "DropdownItemImpl",
   components: {
     ElIcon
@@ -35977,7 +35945,7 @@ const _sfc_main$1f = defineComponent({
     };
   }
 });
-function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_icon = resolveComponent("el-icon");
   return openBlock(), createElementBlock(Fragment, null, [
     _ctx.divided ? (openBlock(), createElementBlock("li", {
@@ -36007,7 +35975,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     ], 16, ["aria-disabled", "tabindex", "role", "onClick", "onFocus", "onKeydown", "onMousedown", "onPointermove", "onPointerleave"])
   ], 64);
 }
-var ElDropdownItemImpl = /* @__PURE__ */ _export_sfc(_sfc_main$1f, [["render", _sfc_render$f], ["__file", "dropdown-item-impl.vue"]]);
+var ElDropdownItemImpl = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["render", _sfc_render$h], ["__file", "dropdown-item-impl.vue"]]);
 
 const useDropdown = () => {
   const elDropdown = inject(DROPDOWN_INSTANCE_INJECTION_KEY, {});
@@ -36018,7 +35986,7 @@ const useDropdown = () => {
   };
 };
 
-const _sfc_main$1e = defineComponent({
+const _sfc_main$1i = defineComponent({
   name: "ElDropdownItem",
   components: {
     ElRovingFocusItem,
@@ -36080,7 +36048,7 @@ const _sfc_main$1e = defineComponent({
     };
   }
 });
-function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_dropdown_item_impl = resolveComponent("el-dropdown-item-impl");
   const _component_el_roving_focus_item = resolveComponent("el-roving-focus-item");
   return openBlock(), createBlock(_component_el_roving_focus_item, {
@@ -36101,9 +36069,9 @@ function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["focusable"]);
 }
-var DropdownItem = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["render", _sfc_render$e], ["__file", "dropdown-item.vue"]]);
+var DropdownItem = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$g], ["__file", "dropdown-item.vue"]]);
 
-const _sfc_main$1d = defineComponent({
+const _sfc_main$1h = defineComponent({
   name: "ElDropdownMenu",
   props: dropdownMenuProps,
   setup(props) {
@@ -36153,7 +36121,7 @@ const _sfc_main$1d = defineComponent({
     };
   }
 });
-function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("ul", {
     ref: _ctx.dropdownListWrapperRef,
     class: normalizeClass(_ctx.dropdownKls),
@@ -36169,7 +36137,7 @@ function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "default")
   ], 46, ["role", "aria-labelledby", "onFocusin", "onFocusout", "onKeydown", "onMousedown"]);
 }
-var DropdownMenu = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$d], ["__file", "dropdown-menu.vue"]]);
+var DropdownMenu = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$f], ["__file", "dropdown-menu.vue"]]);
 
 const ElDropdown = withInstall(Dropdown, {
   DropdownItem,
@@ -36181,7 +36149,7 @@ const ElDropdownMenu = withNoopInstall(DropdownMenu);
 const __default__$X = defineComponent({
   name: "ImgEmpty"
 });
-const _sfc_main$1c = /* @__PURE__ */ defineComponent({
+const _sfc_main$1g = /* @__PURE__ */ defineComponent({
   ...__default__$X,
   setup(__props) {
     const ns = useNamespace("empty");
@@ -36307,7 +36275,7 @@ const _sfc_main$1c = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ImgEmpty = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["__file", "img-empty.vue"]]);
+var ImgEmpty = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["__file", "img-empty.vue"]]);
 
 const emptyProps = buildProps({
   image: {
@@ -36324,7 +36292,7 @@ const emptyProps = buildProps({
 const __default__$W = defineComponent({
   name: "ElEmpty"
 });
-const _sfc_main$1b = /* @__PURE__ */ defineComponent({
+const _sfc_main$1f = /* @__PURE__ */ defineComponent({
   ...__default__$W,
   props: emptyProps,
   setup(__props) {
@@ -36366,7 +36334,7 @@ const _sfc_main$1b = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Empty = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["__file", "empty.vue"]]);
+var Empty = /* @__PURE__ */ _export_sfc(_sfc_main$1f, [["__file", "empty.vue"]]);
 
 const ElEmpty = withInstall(Empty);
 
@@ -36423,7 +36391,7 @@ const imageViewerEmits = {
 const __default__$V = defineComponent({
   name: "ElImageViewer"
 });
-const _sfc_main$1a = /* @__PURE__ */ defineComponent({
+const _sfc_main$1e = /* @__PURE__ */ defineComponent({
   ...__default__$V,
   props: imageViewerProps,
   emits: imageViewerEmits,
@@ -36865,7 +36833,7 @@ const _sfc_main$1a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ImageViewer = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["__file", "image-viewer.vue"]]);
+var ImageViewer = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["__file", "image-viewer.vue"]]);
 
 const ElImageViewer = withInstall(ImageViewer);
 
@@ -36941,7 +36909,7 @@ const __default__$U = defineComponent({
   name: "ElImage",
   inheritAttrs: false
 });
-const _sfc_main$19 = /* @__PURE__ */ defineComponent({
+const _sfc_main$1d = /* @__PURE__ */ defineComponent({
   ...__default__$U,
   props: imageProps,
   emits: imageEmits,
@@ -37159,7 +37127,7 @@ const _sfc_main$19 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Image$1 = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["__file", "image.vue"]]);
+var Image$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["__file", "image.vue"]]);
 
 const ElImage = withInstall(Image$1);
 
@@ -37233,7 +37201,7 @@ const inputNumberEmits = {
 const __default__$T = defineComponent({
   name: "ElInputNumber"
 });
-const _sfc_main$18 = /* @__PURE__ */ defineComponent({
+const _sfc_main$1c = /* @__PURE__ */ defineComponent({
   ...__default__$T,
   props: inputNumberProps,
   emits: inputNumberEmits,
@@ -37587,7 +37555,7 @@ const _sfc_main$18 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var InputNumber = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["__file", "input-number.vue"]]);
+var InputNumber = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["__file", "input-number.vue"]]);
 
 const ElInputNumber = withInstall(InputNumber);
 
@@ -38020,7 +37988,7 @@ const __default__$S = defineComponent({
   name: "ElInputTag",
   inheritAttrs: false
 });
-const _sfc_main$17 = /* @__PURE__ */ defineComponent({
+const _sfc_main$1b = /* @__PURE__ */ defineComponent({
   ...__default__$S,
   props: inputTagProps,
   emits: inputTagEmits,
@@ -38273,7 +38241,7 @@ const _sfc_main$17 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var InputTag = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["__file", "input-tag.vue"]]);
+var InputTag = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["__file", "input-tag.vue"]]);
 
 const ElInputTag = withInstall(InputTag);
 
@@ -38305,7 +38273,7 @@ const linkEmits = {
 const __default__$R = defineComponent({
   name: "ElLink"
 });
-const _sfc_main$16 = /* @__PURE__ */ defineComponent({
+const _sfc_main$1a = /* @__PURE__ */ defineComponent({
   ...__default__$R,
   props: linkProps,
   emits: linkEmits,
@@ -38365,7 +38333,7 @@ const _sfc_main$16 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Link = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["__file", "link.vue"]]);
+var Link = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["__file", "link.vue"]]);
 
 const ElLink = withInstall(Link);
 
@@ -38501,7 +38469,7 @@ var Menubar = Menu$1;
 const __default__$Q = defineComponent({
   name: "ElMenuCollapseTransition"
 });
-const _sfc_main$15 = /* @__PURE__ */ defineComponent({
+const _sfc_main$19 = /* @__PURE__ */ defineComponent({
   ...__default__$Q,
   setup(__props) {
     const ns = useNamespace("menu");
@@ -38548,7 +38516,7 @@ const _sfc_main$15 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElMenuCollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["__file", "menu-collapse-transition.vue"]]);
+var ElMenuCollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["__file", "menu-collapse-transition.vue"]]);
 
 function useMenu(instance, currentIndex) {
   const indexPath = computed(() => {
@@ -39239,7 +39207,7 @@ const COMPONENT_NAME$c = "ElMenuItem";
 const __default__$P = defineComponent({
   name: COMPONENT_NAME$c
 });
-const _sfc_main$14 = /* @__PURE__ */ defineComponent({
+const _sfc_main$18 = /* @__PURE__ */ defineComponent({
   ...__default__$P,
   props: menuItemProps,
   emits: menuItemEmits,
@@ -39327,7 +39295,7 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var MenuItem = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__file", "menu-item.vue"]]);
+var MenuItem = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["__file", "menu-item.vue"]]);
 
 const menuItemGroupProps = {
   title: String
@@ -39336,7 +39304,7 @@ const menuItemGroupProps = {
 const __default__$O = defineComponent({
   name: "ElMenuItemGroup"
 });
-const _sfc_main$13 = /* @__PURE__ */ defineComponent({
+const _sfc_main$17 = /* @__PURE__ */ defineComponent({
   ...__default__$O,
   props: menuItemGroupProps,
   setup(__props) {
@@ -39359,7 +39327,7 @@ const _sfc_main$13 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var MenuItemGroup = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__file", "menu-item-group.vue"]]);
+var MenuItemGroup = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["__file", "menu-item-group.vue"]]);
 
 const ElMenu = withInstall(Menu, {
   MenuItem,
@@ -39388,7 +39356,7 @@ const pageHeaderEmits = {
 const __default__$N = defineComponent({
   name: "ElPageHeader"
 });
-const _sfc_main$12 = /* @__PURE__ */ defineComponent({
+const _sfc_main$16 = /* @__PURE__ */ defineComponent({
   ...__default__$N,
   props: pageHeaderProps,
   emits: pageHeaderEmits,
@@ -39475,7 +39443,7 @@ const _sfc_main$12 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var PageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__file", "page-header.vue"]]);
+var PageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["__file", "page-header.vue"]]);
 
 const ElPageHeader = withInstall(PageHeader);
 
@@ -39501,7 +39469,7 @@ const paginationPrevEmits = {
 const __default__$M = defineComponent({
   name: "ElPaginationPrev"
 });
-const _sfc_main$11 = /* @__PURE__ */ defineComponent({
+const _sfc_main$15 = /* @__PURE__ */ defineComponent({
   ...__default__$M,
   props: paginationPrevProps,
   emits: paginationPrevEmits,
@@ -39546,7 +39514,7 @@ const _sfc_main$11 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Prev = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__file", "prev.vue"]]);
+var Prev = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["__file", "prev.vue"]]);
 
 const paginationNextProps = buildProps({
   disabled: Boolean,
@@ -39569,7 +39537,7 @@ const paginationNextProps = buildProps({
 const __default__$L = defineComponent({
   name: "ElPaginationNext"
 });
-const _sfc_main$10 = /* @__PURE__ */ defineComponent({
+const _sfc_main$14 = /* @__PURE__ */ defineComponent({
   ...__default__$L,
   props: paginationNextProps,
   emits: ["click"],
@@ -39614,7 +39582,7 @@ const _sfc_main$10 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Next = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__file", "next.vue"]]);
+var Next = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__file", "next.vue"]]);
 
 const defaultProps$5 = {
   label: "label",
@@ -39745,7 +39713,7 @@ function useOption$1(props, states) {
   };
 }
 
-const _sfc_main$$ = defineComponent({
+const _sfc_main$13 = defineComponent({
   name: COMPONENT_NAME$b,
   componentName: COMPONENT_NAME$b,
   components: {
@@ -39875,7 +39843,7 @@ const _sfc_main$$ = defineComponent({
     };
   }
 });
-function _sfc_render$c(_ctx, _cache) {
+function _sfc_render$e(_ctx, _cache) {
   const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
@@ -39949,9 +39917,9 @@ function _sfc_render$c(_ctx, _cache) {
     [vShow, _ctx.visible]
   ]);
 }
-var Option = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$c], ["__file", "option.vue"]]);
+var Option = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$e], ["__file", "option.vue"]]);
 
-const _sfc_main$_ = defineComponent({
+const _sfc_main$12 = defineComponent({
   name: "ElSelectDropdown",
   componentName: "ElSelectDropdown",
   setup() {
@@ -39995,7 +39963,7 @@ const _sfc_main$_ = defineComponent({
     };
   }
 });
-function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass([_ctx.ns.b("dropdown"), _ctx.ns.is("multiple", _ctx.isMultiple), _ctx.popperClass]),
     style: normalizeStyle(_ctx.dropdownStyle)
@@ -40015,7 +39983,7 @@ function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)) : createCommentVNode("v-if", true)
   ], 6);
 }
-var ElSelectMenu$1 = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$b], ["__file", "select-dropdown.vue"]]);
+var ElSelectMenu$1 = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$d], ["__file", "select-dropdown.vue"]]);
 
 const useSelect$3 = (props, emit) => {
   const { t } = useLocale();
@@ -40912,7 +40880,7 @@ const selectEmits = {
   clear: () => true
 };
 
-const _sfc_main$Z = defineComponent({
+const _sfc_main$11 = defineComponent({
   name: "ElOptionGroup",
   components: { ElDivider: ElDivider$1 },
   componentName: "ElOptionGroup",
@@ -40968,7 +40936,7 @@ const _sfc_main$Z = defineComponent({
     };
   }
 });
-function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_divider = resolveComponent("el-divider");
   return withDirectives((openBlock(), createElementBlock("ul", {
     ref: "groupRef",
@@ -40989,10 +40957,10 @@ function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     [vShow, _ctx.visible]
   ]);
 }
-var OptionGroup = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$a], ["__file", "option-group.vue"]]);
+var OptionGroup = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$c], ["__file", "option-group.vue"]]);
 
 const COMPONENT_NAME$a = "ElSelect";
-const _sfc_main$Y = defineComponent({
+const _sfc_main$10 = defineComponent({
   name: COMPONENT_NAME$a,
   componentName: COMPONENT_NAME$a,
   components: {
@@ -41133,7 +41101,7 @@ const _sfc_main$Y = defineComponent({
     };
   }
 });
-function _sfc_render$9(_ctx, _cache) {
+function _sfc_render$b(_ctx, _cache) {
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
@@ -41626,7 +41594,7 @@ function _sfc_render$9(_ctx, _cache) {
     [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
   ]);
 }
-var Select$1 = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$9], ["__file", "select.vue"]]);
+var Select$1 = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$b], ["__file", "select.vue"]]);
 
 const ElSelect = withInstall(Select$1, {
   Option,
@@ -41664,7 +41632,7 @@ const paginationSizesProps = buildProps({
 const __default__$K = defineComponent({
   name: "ElPaginationSizes"
 });
-const _sfc_main$X = /* @__PURE__ */ defineComponent({
+const _sfc_main$$ = /* @__PURE__ */ defineComponent({
   ...__default__$K,
   props: paginationSizesProps,
   emits: ["page-size-change"],
@@ -41727,7 +41695,7 @@ const _sfc_main$X = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Sizes = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__file", "sizes.vue"]]);
+var Sizes = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["__file", "sizes.vue"]]);
 
 const paginationJumperProps = buildProps({
   size: {
@@ -41739,7 +41707,7 @@ const paginationJumperProps = buildProps({
 const __default__$J = defineComponent({
   name: "ElPaginationJumper"
 });
-const _sfc_main$W = /* @__PURE__ */ defineComponent({
+const _sfc_main$_ = /* @__PURE__ */ defineComponent({
   ...__default__$J,
   props: paginationJumperProps,
   setup(__props) {
@@ -41783,7 +41751,7 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Jumper = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["__file", "jumper.vue"]]);
+var Jumper = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__file", "jumper.vue"]]);
 
 const paginationTotalProps = buildProps({
   total: {
@@ -41795,7 +41763,7 @@ const paginationTotalProps = buildProps({
 const __default__$I = defineComponent({
   name: "ElPaginationTotal"
 });
-const _sfc_main$V = /* @__PURE__ */ defineComponent({
+const _sfc_main$Z = /* @__PURE__ */ defineComponent({
   ...__default__$I,
   props: paginationTotalProps,
   setup(__props) {
@@ -41812,7 +41780,7 @@ const _sfc_main$V = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Total = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__file", "total.vue"]]);
+var Total = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["__file", "total.vue"]]);
 
 const paginationPagerProps = buildProps({
   currentPage: {
@@ -41833,7 +41801,7 @@ const paginationPagerProps = buildProps({
 const __default__$H = defineComponent({
   name: "ElPaginationPager"
 });
-const _sfc_main$U = /* @__PURE__ */ defineComponent({
+const _sfc_main$Y = /* @__PURE__ */ defineComponent({
   ...__default__$H,
   props: paginationPagerProps,
   emits: [CHANGE_EVENT],
@@ -42027,7 +41995,7 @@ const _sfc_main$U = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Pager = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__file", "pager.vue"]]);
+var Pager = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__file", "pager.vue"]]);
 
 const isAbsent = (v) => typeof v !== "number";
 const paginationProps = buildProps({
@@ -42359,7 +42327,7 @@ const popconfirmEmits = {
 const __default__$G = defineComponent({
   name: "ElPopconfirm"
 });
-const _sfc_main$T = /* @__PURE__ */ defineComponent({
+const _sfc_main$X = /* @__PURE__ */ defineComponent({
   ...__default__$G,
   props: popconfirmProps,
   emits: popconfirmEmits,
@@ -42479,7 +42447,7 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Popconfirm = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__file", "popconfirm.vue"]]);
+var Popconfirm = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__file", "popconfirm.vue"]]);
 
 const ElPopconfirm = withInstall(Popconfirm);
 
@@ -42551,7 +42519,7 @@ const updateEventKeyRaw = `onUpdate:visible`;
 const __default__$F = defineComponent({
   name: "ElPopover"
 });
-const _sfc_main$S = /* @__PURE__ */ defineComponent({
+const _sfc_main$W = /* @__PURE__ */ defineComponent({
   ...__default__$F,
   props: popoverProps,
   emits: popoverEmits,
@@ -42657,7 +42625,7 @@ const _sfc_main$S = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Popover = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["__file", "popover.vue"]]);
+var Popover = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["__file", "popover.vue"]]);
 
 const attachEvents = (el, binding) => {
   const popperComponent = binding.arg || binding.value;
@@ -42738,7 +42706,7 @@ const progressProps = buildProps({
 const __default__$E = defineComponent({
   name: "ElProgress"
 });
-const _sfc_main$R = /* @__PURE__ */ defineComponent({
+const _sfc_main$V = /* @__PURE__ */ defineComponent({
   ...__default__$E,
   props: progressProps,
   setup(__props) {
@@ -42935,7 +42903,7 @@ const _sfc_main$R = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Progress = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["__file", "progress.vue"]]);
+var Progress = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__file", "progress.vue"]]);
 
 const ElProgress = withInstall(Progress);
 
@@ -43018,7 +42986,7 @@ const rateEmits = {
 const __default__$D = defineComponent({
   name: "ElRate"
 });
-const _sfc_main$Q = /* @__PURE__ */ defineComponent({
+const _sfc_main$U = /* @__PURE__ */ defineComponent({
   ...__default__$D,
   props: rateProps,
   emits: rateEmits,
@@ -43257,7 +43225,7 @@ const _sfc_main$Q = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Rate = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__file", "rate.vue"]]);
+var Rate = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__file", "rate.vue"]]);
 
 const ElRate = withInstall(Rate);
 
@@ -43294,7 +43262,7 @@ const resultProps = buildProps({
 const __default__$C = defineComponent({
   name: "ElResult"
 });
-const _sfc_main$P = /* @__PURE__ */ defineComponent({
+const _sfc_main$T = /* @__PURE__ */ defineComponent({
   ...__default__$C,
   props: resultProps,
   setup(__props) {
@@ -43349,7 +43317,7 @@ const _sfc_main$P = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Result = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["__file", "result.vue"]]);
+var Result = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__file", "result.vue"]]);
 
 const ElResult = withInstall(Result);
 
@@ -45155,7 +45123,7 @@ const DynamicSizeGrid = createGrid$1({
 });
 var DynamicSizeGrid$1 = DynamicSizeGrid;
 
-const _sfc_main$O = defineComponent({
+const _sfc_main$S = defineComponent({
   props: {
     item: {
       type: Object,
@@ -45173,13 +45141,13 @@ const _sfc_main$O = defineComponent({
     };
   }
 });
-function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.ns.be("group", "title")),
     style: normalizeStyle({ ..._ctx.style, lineHeight: `${_ctx.height}px` })
   }, toDisplayString(_ctx.item.label), 7);
 }
-var GroupItem = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$8], ["__file", "group-item.vue"]]);
+var GroupItem = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$a], ["__file", "group-item.vue"]]);
 
 const getCell = function(event) {
   var _a;
@@ -45666,6 +45634,9 @@ const selectV2Props = buildProps({
     type: Boolean,
     default: true
   },
+  haveAll: {
+    type: String
+  },
   automaticDropdown: Boolean,
   clearable: Boolean,
   clearIcon: {
@@ -45826,7 +45797,7 @@ const optionV2Emits = {
 
 const selectV2InjectionKey = Symbol("ElSelectV2Injection");
 
-const _sfc_main$N = defineComponent({
+const _sfc_main$R = defineComponent({
   components: { ElCheckbox, ElIcon, ElTooltip },
   props: optionV2Props,
   emits: optionV2Emits,
@@ -45894,7 +45865,7 @@ const _sfc_main$N = defineComponent({
     };
   }
 });
-function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
@@ -45972,7 +45943,7 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 46, ["id", "aria-selected", "aria-disabled", "onMousemove", "onClick", "onMouseenter"]);
 }
-var OptionItem = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$7], ["__file", "option-item.vue"]]);
+var OptionItem = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$9], ["__file", "option-item.vue"]]);
 
 const props = {
   loading: Boolean,
@@ -47092,7 +47063,7 @@ const useSelect$1 = (props, emit) => {
 };
 var useSelect$2 = useSelect$1;
 
-const _sfc_main$M = defineComponent({
+const _sfc_main$Q = defineComponent({
   name: "ElSelectV2",
   components: {
     ElSelectMenu,
@@ -47153,7 +47124,7 @@ const _sfc_main$M = defineComponent({
     };
   }
 });
-function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
@@ -47199,6 +47170,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
             class: normalizeClass([
               _ctx.nsSelect.e("wrapper"),
               _ctx.nsSelect.is("focused", _ctx.isFocused),
+              _ctx.nsSelect.is("all", !!_ctx.haveAll),
               _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
               _ctx.nsSelect.is("filterable", _ctx.filterable),
               _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
@@ -47230,6 +47202,10 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
                 deleteTag: _ctx.deleteTag,
                 selectDisabled: _ctx.selectDisabled
               }, () => [
+                _ctx.haveAll && !_ctx.states.cachedOptions.length ? (openBlock(), createElementBlock("span", {
+                  key: 0,
+                  class: "select-all-tag"
+                }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
                 (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.showTagList, (item) => {
                   return openBlock(), createElementBlock("div", {
                     key: _ctx.getValueKey(_ctx.getValue(item)),
@@ -47262,7 +47238,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
                   ], 2);
                 }), 128)),
                 _ctx.collapseTags && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
-                  key: 0,
+                  key: 1,
                   ref: "tagTooltipRef",
                   disabled: _ctx.dropdownMenuVisible || !_ctx.collapseTagsTooltip,
                   "fallback-placements": ["bottom", "top", "right", "left"],
@@ -47510,16 +47486,21 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
           ]),
           _: 2
         }, [
-          _ctx.$slots.header ? {
+          _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? {
             name: "header",
             fn: withCtx(() => [
-              createElementVNode("div", {
+              _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
+                key: 0,
                 class: normalizeClass(_ctx.nsSelect.be("dropdown", "header")),
                 onClick: withModifiers(() => {
                 }, ["stop"])
               }, [
                 renderSlot(_ctx.$slots, "header")
-              ], 10, ["onClick"])
+              ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+              _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
+                key: 1,
+                class: "select-all-item"
+              }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true)
             ])
           } : void 0,
           _ctx.$slots.loading && _ctx.loading ? {
@@ -47563,7 +47544,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
   ]);
 }
-var Select = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$6], ["__file", "select.vue"]]);
+var Select = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$8], ["__file", "select.vue"]]);
 
 const ElSelectV2 = withInstall(Select);
 
@@ -47607,7 +47588,7 @@ const skeletonItemProps = buildProps({
 const __default__$B = defineComponent({
   name: "ElSkeletonItem"
 });
-const _sfc_main$L = /* @__PURE__ */ defineComponent({
+const _sfc_main$P = /* @__PURE__ */ defineComponent({
   ...__default__$B,
   props: skeletonItemProps,
   setup(__props) {
@@ -47621,12 +47602,12 @@ const _sfc_main$L = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var SkeletonItem = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__file", "skeleton-item.vue"]]);
+var SkeletonItem = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["__file", "skeleton-item.vue"]]);
 
 const __default__$A = defineComponent({
   name: "ElSkeleton"
 });
-const _sfc_main$K = /* @__PURE__ */ defineComponent({
+const _sfc_main$O = /* @__PURE__ */ defineComponent({
   ...__default__$A,
   props: skeletonProps,
   setup(__props, { expose }) {
@@ -47665,7 +47646,7 @@ const _sfc_main$K = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Skeleton = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__file", "skeleton.vue"]]);
+var Skeleton = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__file", "skeleton.vue"]]);
 
 const ElSkeleton = withInstall(Skeleton, {
   SkeletonItem
@@ -48306,7 +48287,7 @@ const sliderButtonEmits = {
 const __default__$z = defineComponent({
   name: "ElSliderButton"
 });
-const _sfc_main$J = /* @__PURE__ */ defineComponent({
+const _sfc_main$N = /* @__PURE__ */ defineComponent({
   ...__default__$z,
   props: sliderButtonProps,
   emits: sliderButtonEmits,
@@ -48388,7 +48369,7 @@ const _sfc_main$J = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var SliderButton = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__file", "button.vue"]]);
+var SliderButton = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__file", "button.vue"]]);
 
 const sliderMarkerProps = buildProps({
   mark: {
@@ -48415,7 +48396,7 @@ var SliderMarker = defineComponent({
 const __default__$y = defineComponent({
   name: "ElSlider"
 });
-const _sfc_main$I = /* @__PURE__ */ defineComponent({
+const _sfc_main$M = /* @__PURE__ */ defineComponent({
   ...__default__$y,
   props: sliderProps,
   emits: sliderEmits,
@@ -48631,7 +48612,7 @@ const _sfc_main$I = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Slider = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__file", "slider.vue"]]);
+var Slider = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["__file", "slider.vue"]]);
 
 const ElSlider = withInstall(Slider);
 
@@ -48858,7 +48839,7 @@ const statisticProps = buildProps({
 const __default__$x = defineComponent({
   name: "ElStatistic"
 });
-const _sfc_main$H = /* @__PURE__ */ defineComponent({
+const _sfc_main$L = /* @__PURE__ */ defineComponent({
   ...__default__$x,
   props: statisticProps,
   setup(__props, { expose }) {
@@ -48918,7 +48899,7 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Statistic = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__file", "statistic.vue"]]);
+var Statistic = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__file", "statistic.vue"]]);
 
 const ElStatistic = withInstall(Statistic);
 
@@ -48973,7 +48954,7 @@ const formatTime$1 = (timestamp, format) => {
 const __default__$w = defineComponent({
   name: "ElCountdown"
 });
-const _sfc_main$G = /* @__PURE__ */ defineComponent({
+const _sfc_main$K = /* @__PURE__ */ defineComponent({
   ...__default__$w,
   props: countdownProps,
   emits: countdownEmits,
@@ -49043,7 +49024,7 @@ const _sfc_main$G = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Countdown = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__file", "countdown.vue"]]);
+var Countdown = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__file", "countdown.vue"]]);
 
 const ElCountdown = withInstall(Countdown);
 
@@ -49087,7 +49068,7 @@ const STEPS_INJECTION_KEY = "ElSteps";
 const __default__$v = defineComponent({
   name: "ElSteps"
 });
-const _sfc_main$F = /* @__PURE__ */ defineComponent({
+const _sfc_main$J = /* @__PURE__ */ defineComponent({
   ...__default__$v,
   props: stepsProps,
   emits: stepsEmits,
@@ -49119,7 +49100,7 @@ const _sfc_main$F = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Steps = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__file", "steps.vue"]]);
+var Steps = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__file", "steps.vue"]]);
 
 const stepProps = buildProps({
   title: {
@@ -49143,7 +49124,7 @@ const stepProps = buildProps({
 const __default__$u = defineComponent({
   name: "ElStep"
 });
-const _sfc_main$E = defineComponent({
+const _sfc_main$I = defineComponent({
   ...__default__$u,
   props: stepProps,
   setup(__props) {
@@ -49330,7 +49311,7 @@ const _sfc_main$E = defineComponent({
     };
   }
 });
-var Step = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__file", "item.vue"]]);
+var Step = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__file", "item.vue"]]);
 
 const ElSteps = withInstall(Steps, {
   Step
@@ -49408,7 +49389,7 @@ const COMPONENT_NAME$9 = "ElSwitch";
 const __default__$t = defineComponent({
   name: COMPONENT_NAME$9
 });
-const _sfc_main$D = /* @__PURE__ */ defineComponent({
+const _sfc_main$H = /* @__PURE__ */ defineComponent({
   ...__default__$t,
   props: switchProps,
   emits: switchEmits,
@@ -49627,9 +49608,26 @@ const _sfc_main$D = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Switch = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__file", "switch.vue"]]);
+var Switch = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__file", "switch.vue"]]);
 
 const ElSwitch = withInstall(Switch);
+
+const _sfc_main$G = /* @__PURE__ */ defineComponent({
+  __name: "tableText",
+  props: { total: Number, updateTime: String },
+  setup(__props) {
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", { class: "footer-text" }, [
+        createElementVNode("div", { class: "count" }, toDisplayString(__props.total) + " items", 1),
+        __props.updateTime ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          class: "time"
+        }, "Last Updated " + toDisplayString(__props.updateTime), 1)) : createCommentVNode("v-if", true)
+      ]);
+    };
+  }
+});
+var TableText = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__file", "tableText.vue"]]);
 
 function useExpand(watcherData) {
   const instance = getCurrentInstance();
@@ -50862,7 +50860,7 @@ class TableLayout {
 var TableLayout$1 = TableLayout;
 
 const { CheckboxGroup: ElCheckboxGroup } = ElCheckbox;
-const _sfc_main$C = defineComponent({
+const _sfc_main$F = defineComponent({
   name: "ElTableFilterPanel",
   components: {
     ElCheckbox,
@@ -51016,7 +51014,7 @@ const _sfc_main$C = defineComponent({
     };
   }
 });
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_checkbox_group = resolveComponent("el-checkbox-group");
   const _component_el_scrollbar = resolveComponent("el-scrollbar");
@@ -51133,7 +51131,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["visible", "placement", "popper-class", "append-to"]);
 }
-var FilterPanel = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$5], ["__file", "filter-panel.vue"]]);
+var FilterPanel = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$7], ["__file", "filter-panel.vue"]]);
 
 function useLayoutObserver(root) {
   const instance = getCurrentInstance();
@@ -51487,8 +51485,8 @@ function useEvent(props, emit) {
   };
 }
 
-const _sfc_main$B = {};
-function _sfc_render$4(_ctx, _cache) {
+const _sfc_main$E = {};
+function _sfc_render$6(_ctx, _cache) {
   return openBlock(), createElementBlock("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     width: "12",
@@ -51498,7 +51496,7 @@ function _sfc_render$4(_ctx, _cache) {
     createElementVNode("path", { d: "M8.14648 6.3535L6.49998 8V3H5.49998V8L3.85348 6.3535L3.14648 7.0605L5.29298 9.207C5.48051 9.39447 5.73482 9.49979 5.99998 9.49979C6.26515 9.49979 6.51946 9.39447 6.70698 9.207L8.85349 7.0605L8.14648 6.3535Z" })
   ]);
 }
-var FilterIcon = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$4], ["__file", "filter-icon.vue"]]);
+var FilterIcon = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$6], ["__file", "filter-icon.vue"]]);
 
 function useStyle$2(props) {
   const parent = inject(TABLE_INJECTION_KEY);
@@ -51551,6 +51549,9 @@ function useStyle$2(props) {
     }
     if (column.sortable) {
       classes.push("is-sortable");
+    }
+    if (column.required) {
+      classes.push("required-column");
     }
     const headerCellClassName = parent == null ? void 0 : parent.props.headerCellClassName;
     if (isString$1(headerCellClassName)) {
@@ -52189,7 +52190,7 @@ function useStyles$1(props) {
 const __default__$s = defineComponent({
   name: "TableTdWrapper"
 });
-const _sfc_main$A = /* @__PURE__ */ defineComponent({
+const _sfc_main$D = /* @__PURE__ */ defineComponent({
   ...__default__$s,
   props: {
     colspan: {
@@ -52207,6 +52208,10 @@ const _sfc_main$A = /* @__PURE__ */ defineComponent({
     rowIndex: {
       type: Number,
       default: 0
+    },
+    fullWidth: {
+      type: Boolean,
+      default: false
     }
   },
   setup(__props) {
@@ -52216,14 +52221,19 @@ const _sfc_main$A = /* @__PURE__ */ defineComponent({
         rowspan: __props.rowspan,
         "data-cellIndex": __props.rowIndex + "-" + __props.cellIndex
       }, [
-        createElementVNode("div", { class: "cell-height" }, [
+        createElementVNode("div", {
+          class: normalizeClass(["cell-height", { "is-full-width": __props.fullWidth }])
+        }, [
           renderSlot(_ctx.$slots, "default")
-        ])
+        ], 2)
       ], 8, ["colspan", "rowspan", "data-cellIndex"]);
     };
   }
 });
-var TdWrapper = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__file", "td-wrapper.vue"]]);
+var TdWrapper = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__file", "td-wrapper.vue"]]);
+
+const ghostRowSign = "__ep_table_ghost_row__";
+const ghostRowKey = "__ep_table_ghost_row_key__";
 
 function useRender$1(props, emit) {
   const parent = inject(TABLE_INJECTION_KEY);
@@ -52256,8 +52266,11 @@ function useRender$1(props, emit) {
     return (_a = props.store) == null ? void 0 : _a.states.columns.value.findIndex(({ type }) => type === "default");
   });
   const getKeyOfRow = (row, index) => {
-    var _a;
-    const rowKey = (_a = parent == null ? void 0 : parent.props) == null ? void 0 : _a.rowKey;
+    var _a, _b;
+    if (row == null ? void 0 : row[ghostRowSign]) {
+      return (_a = row[ghostRowKey]) != null ? _a : `${ghostRowKey}_${index}`;
+    }
+    const rowKey = (_b = parent == null ? void 0 : parent.props) == null ? void 0 : _b.rowKey;
     if (rowKey) {
       return getRowIdentity(row, rowKey);
     }
@@ -52274,6 +52287,7 @@ function useRender$1(props, emit) {
     } = props;
     const { indent, columns } = store.states;
     const rowClasses = [];
+    const isGhostRow = Boolean(row == null ? void 0 : row[ghostRowSign]);
     let display = true;
     if (treeRowData) {
       rowClasses.push(ns.em("row", `level-${treeRowData.level}`));
@@ -52286,22 +52300,11 @@ function useRender$1(props, emit) {
       displayIndex++;
     }
     rowClasses.push(...getRowClass(row, $index, displayIndex));
+    if (isGhostRow) {
+      rowClasses.push("is-ghost-row");
+    }
     const displayStyle = display ? null : { display: "none" };
-    return h$1("tr", {
-      style: [displayStyle, getRowStyle(row, $index)],
-      class: rowClasses,
-      key: getKeyOfRow(row, $index),
-      draggable: typeof rowDraggable === "function" ? rowDraggable(row) : rowDraggable,
-      onDragstart: ($event) => onDragstart($event, row),
-      onDragend: ($event) => onDragend($event, row),
-      onDblclick: ($event) => handleDoubleClick($event, row),
-      onClick: ($event) => handleClick($event, row),
-      onContextmenu: ($event) => handleContextMenu($event, row),
-      onMouseenter: () => handleMouseEnter($index),
-      onMouseleave: handleMouseLeave,
-      onMousemove: ($event) => handleRowMouseMove($event, row, $index),
-      onMouseout: ($event) => handleRowMouseOut($event)
-    }, columns.value.map((column, cellIndex) => {
+    const cells = columns.value.map((column, cellIndex) => {
       const { rowspan, colspan } = getSpan(row, column, $index, cellIndex);
       if (!rowspan || !colspan) {
         return null;
@@ -52345,13 +52348,29 @@ function useRender$1(props, emit) {
         cellIndex,
         columnIndex: $index,
         colspan,
+        fullWidth: props.ghostTable,
         onClick: ($event) => handleCellClick($event, row, column, $index, cellIndex),
         onMouseenter: ($event) => handleCellMouseEnter($event, row, mergedTooltipOptions),
         onMouseleave: handleCellMouseLeave
       }, {
         default: () => cellChildren(cellIndex, column, data)
       });
-    }));
+    });
+    return h$1("tr", {
+      style: [displayStyle, getRowStyle(row, $index)],
+      class: rowClasses,
+      key: getKeyOfRow(row, $index),
+      draggable: typeof rowDraggable === "function" ? rowDraggable(row) : rowDraggable,
+      onDragstart: ($event) => onDragstart($event, row),
+      onDragend: ($event) => onDragend($event, row),
+      onDblclick: ($event) => handleDoubleClick($event, row),
+      onClick: ($event) => handleClick($event, row),
+      onContextmenu: ($event) => handleContextMenu($event, row),
+      onMouseenter: () => handleMouseEnter($index),
+      onMouseleave: handleMouseLeave,
+      onMousemove: ($event) => handleRowMouseMove($event, row, $index),
+      onMouseout: ($event) => handleRowMouseOut($event)
+    }, cells);
   };
   const cellChildren = (_cellIndex, column, data) => {
     return column.renderCell(data);
@@ -52490,6 +52509,7 @@ const defaultProps$3 = {
     type: Function,
     default: void 0
   },
+  ghostTable: Boolean,
   showAddRowTrigger: Boolean
 };
 var defaultProps$4 = defaultProps$3;
@@ -52568,13 +52588,19 @@ var TableBody = defineComponent({
     };
   },
   render() {
+    var _a, _b, _c, _d, _e;
     const { wrappedRowRender, store } = this;
     const data = (store == null ? void 0 : store.states.data.value) || [];
-    return h$1("tbody", { tabIndex: -1 }, [
-      data.reduce((acc, row) => {
-        return acc.concat(wrappedRowRender(row, acc.length));
-      }, [])
-    ]);
+    const rows = data.reduce((acc, row) => {
+      return acc.concat(wrappedRowRender(row, acc.length));
+    }, []);
+    const shouldRenderGhostRow = ((_b = (_a = this.context) == null ? void 0 : _a.props) == null ? void 0 : _b.ghostTable) && ((_d = (_c = this.context) == null ? void 0 : _c.props) == null ? void 0 : _d.editTable) && ((_e = this.context) == null ? void 0 : _e.ghostRowData);
+    const bodyRows = shouldRenderGhostRow ? (() => {
+      var _a2, _b2;
+      const ghostRow = (_b2 = (_a2 = this.context.ghostRowData) == null ? void 0 : _a2.value) != null ? _b2 : this.context.ghostRowData;
+      return rows.concat(wrappedRowRender(ghostRow, rows.length));
+    })() : rows;
+    return h$1("tbody", { tabIndex: -1 }, [bodyRows]);
   }
 });
 
@@ -53159,6 +53185,17 @@ var defaultProps$2 = {
   scrollbarAlwaysOn: Boolean,
   flexible: Boolean,
   editable: Boolean,
+  ghostTable: Boolean,
+  editTable: Boolean,
+  total: {
+    type: Number,
+    default: 0
+  },
+  updateTime: {
+    type: String,
+    default: ""
+  },
+  haveTableText: Boolean,
   showOverflowTooltip: [Boolean, Object],
   rowDraggable: {
     type: [Function, Boolean],
@@ -53240,12 +53277,13 @@ const useScrollbar$1 = () => {
 };
 
 let tableIdSeed = 1;
-const _sfc_main$z = defineComponent({
+const _sfc_main$C = defineComponent({
   name: "ElTable",
   directives: {
     Mousewheel
   },
   components: {
+    TableText,
     ElTooltip: ElTooltip$1,
     TableHeader,
     TableBody,
@@ -53276,7 +53314,8 @@ const _sfc_main$z = defineComponent({
     "editable-cell-active-change",
     "scroll",
     "add-column",
-    "add-row"
+    "add-row",
+    "add-ghost-row"
   ],
   setup(props, { emit }) {
     const { t } = useLocale();
@@ -53287,6 +53326,10 @@ const _sfc_main$z = defineComponent({
     table.store = store;
     const editingRow = ref(null);
     const activeEditableCell = ref(null);
+    const ghostRowData = ref({
+      [ghostRowSign]: true,
+      [ghostRowKey]: "ghost-row"
+    });
     const addColumnTrigger = shallowRef(null);
     const addRowTrigger = ref(null);
     const startRowEdit = (row, prop, rowIndex, cellIndex) => {
@@ -53327,6 +53370,7 @@ const _sfc_main$z = defineComponent({
     };
     table.editingRow = editingRow;
     table.activeEditableCell = activeEditableCell;
+    table.ghostRowData = ghostRowData;
     table.startRowEdit = startRowEdit;
     table.clearEditingRow = clearEditingRow;
     table.applyEditingRow = applyEditingRow;
@@ -53337,7 +53381,10 @@ const _sfc_main$z = defineComponent({
       showHeader: props.showHeader
     });
     table.layout = layout;
-    const isEmpty = computed(() => (store.states.data.value || []).length === 0);
+    const isEmpty = computed(() => {
+      const hasRows = (store.states.data.value || []).length > 0;
+      return !hasRows && !(props.ghostTable && props.editTable);
+    });
     const {
       setCurrentRow,
       getSelectionRows,
@@ -53519,12 +53566,13 @@ const _sfc_main$z = defineComponent({
     };
   }
 });
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_hColgroup = resolveComponent("hColgroup");
   const _component_table_header = resolveComponent("table-header");
   const _component_table_body = resolveComponent("table-body");
   const _component_table_footer = resolveComponent("table-footer");
   const _component_el_scrollbar = resolveComponent("el-scrollbar");
+  const _component_table_text = resolveComponent("table-text");
   const _component_el_icon = resolveComponent("el-icon");
   const _component_el_button = resolveComponent("el-button");
   const _component_el_tooltip = resolveComponent("el-tooltip");
@@ -53719,6 +53767,11 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
         [_directive_mousewheel, _ctx.handleHeaderFooterMousewheel]
       ]) : createCommentVNode("v-if", true)
     ], 2),
+    _ctx.haveTableText ? (openBlock(), createBlock(_component_table_text, {
+      key: 0,
+      total: _ctx.total,
+      "update-time": _ctx.updateTime
+    }, null, 8, ["total", "update-time"])) : createCommentVNode("v-if", true),
     withDirectives(createElementVNode("div", {
       ref: "resizeProxy",
       class: normalizeClass(_ctx.ns.e("column-resize-proxy"))
@@ -53828,7 +53881,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 46, ["data-prefix", "onMouseleave"]);
 }
-var Table = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$3], ["__file", "table.vue"]]);
+var Table = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$5], ["__file", "table.vue"]]);
 
 const defaultClassNames = {
   selection: "table-column--selection",
@@ -54085,6 +54138,7 @@ function useWatcher(owner, props_) {
       "className",
       "labelClassName",
       "diagonalHeader",
+      "required",
       "allowInsertBeforeFirstColumn",
       "filterClassName",
       "showOverflowTooltip",
@@ -54119,6 +54173,54 @@ function useWatcher(owner, props_) {
     registerNormalWatchers
   };
 }
+
+const _sfc_main$B = /* @__PURE__ */ defineComponent({
+  __name: "ghost-row-add-button",
+  props: {
+    row: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(__props) {
+    const props = __props;
+    const table = inject(TABLE_INJECTION_KEY);
+    const handleAdd = (event) => {
+      var _a;
+      table == null ? void 0 : table.emit("add-ghost-row", {
+        event,
+        row: props.row,
+        rowIndex: -1,
+        rowKey: (_a = props.row) == null ? void 0 : _a[ghostRowKey]
+      });
+    };
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(ElButton), {
+        class: "icon-button",
+        text: "",
+        onClick: handleAdd
+      }, {
+        default: withCtx(() => [
+          createVNode(unref(ElIcon), { size: "12" }, {
+            default: withCtx(() => [
+              (openBlock(), createElementBlock("svg", {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "12",
+                height: "12",
+                viewBox: "0 0 12 12"
+              }, [
+                createElementVNode("path", { d: "M3.82026 11.0062C3.64674 11.0063 3.4749 10.9711 3.3146 10.9026C3.1543 10.8341 3.00868 10.7337 2.88608 10.6072L0 7.6341L1.10129 6.49954L3.82026 9.30198L10.8987 2.00623L12 3.14079L4.75443 10.6072C4.63183 10.7337 4.48621 10.8341 4.32591 10.9026C4.16561 10.9711 3.99378 11.0063 3.82026 11.0062Z" })
+              ]))
+            ]),
+            _: 1
+          })
+        ]),
+        _: 1
+      });
+    };
+  }
+});
+var GhostRowAddButton = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__file", "ghost-row-add-button.vue"]]);
 
 function useRender(props, slots, owner) {
   const instance = getCurrentInstance();
@@ -54218,6 +54320,12 @@ function useRender(props, slots, owner) {
         return renderSlot(slots, "expand", scope);
       };
     }
+    const editSlot = slots["edit-cell"];
+    if (editSlot) {
+      column.renderEditCell = (scope) => {
+        return editSlot(scope);
+      };
+    }
     let originRenderCell = column.renderCell;
     if (column.type === "expand") {
       column.renderCell = (data) => h$1("div", {
@@ -54229,16 +54337,31 @@ function useRender(props, slots, owner) {
     } else {
       originRenderCell = originRenderCell || defaultRenderCell;
       column.renderCell = (data) => {
+        var _a, _b;
         let children = null;
-        if (slots.default) {
+        const { columns } = owner.value.store.states;
+        const columnCount = columns.value.length;
+        const shouldRenderAddButton = owner.value.props.ghostTable && owner.value.props.editTable && !!((_a = data.row) == null ? void 0 : _a[ghostRowSign]) && (columnCount === 1 ? data.cellIndex === 0 : data.cellIndex === columnCount - 1);
+        const shouldRenderEditCell = owner.value.props.ghostTable && owner.value.props.editTable && !!column.renderEditCell;
+        if (shouldRenderAddButton) {
+          children = [
+            h$1(GhostRowAddButton, {
+              row: data.row
+            })
+          ];
+        } else if (shouldRenderEditCell) {
+          const vnodes = column.renderEditCell(data);
+          const editVNodes = isArray$1(vnodes) ? vnodes : [vnodes];
+          children = editVNodes.some((v) => v.type !== Comment) ? vnodes : originRenderCell(data);
+        } else if (slots.default) {
           const vnodes = slots.default(data);
-          children = vnodes.some((v) => v.type !== Comment) ? vnodes : originRenderCell(data);
+          const defaultVNodes = isArray$1(vnodes) ? vnodes : [vnodes];
+          children = defaultVNodes.some((v) => v.type !== Comment) ? vnodes : originRenderCell(data);
         } else {
           children = originRenderCell(data);
         }
-        const { columns } = owner.value.store.states;
         const firstUserColumnIndex = columns.value.findIndex((item) => item.type === "default");
-        const shouldCreatePlaceholder = hasTreeColumn.value && data.cellIndex === firstUserColumnIndex;
+        const shouldCreatePlaceholder = hasTreeColumn.value && !((_b = data.row) == null ? void 0 : _b[ghostRowSign]) && data.cellIndex === firstUserColumnIndex;
         const prefix = treeCellPrefix(data, shouldCreatePlaceholder);
         const props2 = {
           class: "cell",
@@ -54251,6 +54374,9 @@ function useRender(props, slots, owner) {
           props2.style = {
             width: `${(data.column.realWidth || Number(data.column.width)) - 1}px`
           };
+        }
+        if (owner.value.props.ghostTable) {
+          props2.class = `${props2.class} is-full-width`;
         }
         checkSubColumn(children);
         return h$1("div", props2, [prefix, children]);
@@ -54309,6 +54435,7 @@ var defaultProps$1 = {
   },
   renderHeader: Function,
   diagonalHeader: Object,
+  required: Boolean,
   allowInsertBeforeFirstColumn: {
     type: Boolean,
     default: true
@@ -54423,6 +54550,7 @@ var ElTableColumn$1 = defineComponent({
         "type",
         "renderHeader",
         "diagonalHeader",
+        "required",
         "allowInsertBeforeFirstColumn",
         "formatter",
         "fixed",
@@ -54497,7 +54625,7 @@ var ElTableColumn$1 = defineComponent({
 });
 
 const DEFAULT_DECIMAL_PRECISION = 2;
-const _sfc_main$y = /* @__PURE__ */ defineComponent({
+const _sfc_main$A = /* @__PURE__ */ defineComponent({
   __name: "editable-cell",
   props: {
     cellData: {
@@ -54782,9 +54910,9 @@ const _sfc_main$y = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var TableEditableCell = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__file", "editable-cell.vue"]]);
+var TableEditableCell = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__file", "editable-cell.vue"]]);
 
-const _sfc_main$x = /* @__PURE__ */ defineComponent({
+const _sfc_main$z = /* @__PURE__ */ defineComponent({
   __name: "editable-row-actions",
   props: {
     row: {
@@ -54913,7 +55041,7 @@ const _sfc_main$x = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var TableEditableRowActions = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__file", "editable-row-actions.vue"]]);
+var TableEditableRowActions = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__file", "editable-row-actions.vue"]]);
 
 const ElTable = withInstall(Table, {
   TableColumn: ElTableColumn$1,
@@ -54946,6 +55074,10 @@ const oppositeOrderMap = {
 };
 
 const placeholderSign = Symbol("placeholder");
+const rowDeleteColumnKey = "__ep_table_v2_row_delete__";
+const rowDeleteColumnWidth = 36;
+const rowAddKey = "__ep_table_v2_add_row__";
+const rowAddSign = "__ep_table_v2_is_add_row__";
 
 const calcColumnStyle = (column, fixedColumn, fixed) => {
   var _a;
@@ -54976,13 +55108,29 @@ const calcColumnStyle = (column, fixedColumn, fixed) => {
 };
 
 function useColumns(props, columns, fixed) {
-  const _columns = computed(() => unref(columns).map((column, index) => {
-    var _a, _b;
-    return {
-      ...column,
-      key: (_b = (_a = column.key) != null ? _a : column.dataKey) != null ? _b : index
+  const _columns = computed(() => {
+    const normalizedColumns = unref(columns).map((column, index) => {
+      var _a, _b;
+      return {
+        ...column,
+        key: (_b = (_a = column.key) != null ? _a : column.dataKey) != null ? _b : index
+      };
+    });
+    if (!(props.canEditTable && props.editable)) {
+      return normalizedColumns;
+    }
+    const rowDeleteColumn = {
+      key: rowDeleteColumnKey,
+      dataKey: rowDeleteColumnKey,
+      title: "",
+      width: rowDeleteColumnWidth,
+      fixed: FixedDir.RIGHT,
+      align: "center",
+      class: "is-row-delete-column",
+      headerClass: "is-row-delete-column"
     };
-  }));
+    return [...normalizedColumns, rowDeleteColumn];
+  });
   const visibleColumns = computed(() => {
     return unref(_columns).filter((column) => !column.hidden);
   });
@@ -55013,7 +55161,8 @@ function useColumns(props, columns, fixed) {
   });
   const columnsStyles = computed(() => {
     return unref(_columns).reduce((style, column) => {
-      style[column.key] = calcColumnStyle(column, unref(fixed), props.fixed);
+      const key = column.key;
+      style[key] = calcColumnStyle(column, unref(fixed), props.fixed);
       return style;
     }, {});
   });
@@ -55030,18 +55179,18 @@ function useColumns(props, columns, fixed) {
     column.width = width;
   };
   function onColumnSorted(e) {
-    var _a;
+    var _a, _b, _c;
     const { key } = e.currentTarget.dataset;
     if (!key)
       return;
     const { sortState, sortBy } = props;
     let order = SortOrder.ASC;
     if (isObject$1(sortState)) {
-      order = oppositeOrderMap[sortState[key]];
+      order = (_a = oppositeOrderMap[sortState[key]]) != null ? _a : SortOrder.ASC;
     } else {
-      order = oppositeOrderMap[sortBy.order];
+      order = sortBy.key === key ? (_b = oppositeOrderMap[sortBy.order]) != null ? _b : SortOrder.ASC : SortOrder.ASC;
     }
-    (_a = props.onColumnSort) == null ? void 0 : _a.call(props, { column: getColumn(key), key, order });
+    (_c = props.onColumnSort) == null ? void 0 : _c.call(props, { column: getColumn(key), key, order });
   }
   return {
     columns: _columns,
@@ -55312,6 +55461,7 @@ const useStyles = (props, {
   fixedColumnsOnLeft,
   fixedColumnsOnRight
 }) => {
+  const addRowHeight = computed(() => props.canEditTable && props.editable ? props.rowHeight : 0);
   const bodyWidth = computed(() => {
     const { fixed, width, vScrollbarSize } = props;
     const ret = width - vScrollbarSize;
@@ -55324,9 +55474,9 @@ const useStyles = (props, {
       const _rowsHeight = unref(rowsHeight);
       const _headerHeight = unref(headerHeight);
       const total = _headerHeight + _fixedRowsHeight + _rowsHeight + hScrollbarSize;
-      return Math.min(total, maxHeight - footerHeight2);
+      return Math.min(total, maxHeight - footerHeight2 - unref(addRowHeight));
     }
-    return height - footerHeight2;
+    return height - footerHeight2 - unref(addRowHeight);
   });
   const fixedTableHeight = computed(() => {
     const { maxHeight } = props;
@@ -55358,10 +55508,11 @@ const useStyles = (props, {
   const footerHeight = computed(() => enforceUnit({ height: props.footerHeight }));
   const emptyStyle = computed(() => ({
     top: addUnit(unref(headerHeight)),
-    bottom: addUnit(props.footerHeight),
+    bottom: addUnit(props.footerHeight + unref(addRowHeight)),
     width: addUnit(props.width)
   }));
   return {
+    addRowHeight,
     bodyWidth,
     fixedTableHeight,
     mainTableHeight,
@@ -55473,6 +55624,7 @@ function useTable(props) {
     return _data.length * rowHeight;
   });
   const {
+    addRowHeight,
     bodyWidth,
     fixedTableHeight,
     mainTableHeight,
@@ -55538,6 +55690,7 @@ function useTable(props) {
     fixedColumnsOnLeft,
     fixedColumnsOnRight,
     mainColumns,
+    addRowHeight,
     bodyWidth,
     emptyStyle,
     rootStyle,
@@ -55558,7 +55711,8 @@ function useTable(props) {
     scrollToTop,
     scrollToRow,
     onScroll,
-    onVerticalScroll
+    onVerticalScroll,
+    scrollPos
   };
 }
 
@@ -55650,12 +55804,12 @@ const tableV2HeaderProps = buildProps({
   },
   headerHeight: {
     type: definePropType([Number, Array]),
-    default: 50
+    default: 44
   },
   rowWidth: requiredNumberType,
   rowHeight: {
     type: Number,
-    default: 50
+    default: 44
   },
   height: requiredNumberType,
   width: requiredNumberType
@@ -55693,6 +55847,11 @@ const tableV2GridProps = buildProps({
   }
 });
 
+const tableV2Emits = {
+  "update:expandedRowKeys": (expandedRowKeys) => Array.isArray(expandedRowKeys),
+  "row-delete": (params) => Boolean(params),
+  "row-add": (params) => Boolean(params)
+};
 const tableV2Props = buildProps({
   cache: tableV2GridProps.cache,
   estimatedRowHeight: tableV2RowProps.estimatedRowHeight,
@@ -55720,6 +55879,23 @@ const tableV2Props = buildProps({
     type: Number,
     default: 0
   },
+  isFooterDefault: {
+    type: Boolean,
+    default: true
+  },
+  editable: {
+    type: Boolean,
+    default: true
+  },
+  canEditTable: Boolean,
+  total: {
+    type: Number,
+    default: 0
+  },
+  updateTime: {
+    type: String,
+    default: ""
+  },
   rowClass: {
     type: definePropType([String, Function])
   },
@@ -55728,7 +55904,7 @@ const tableV2Props = buildProps({
   },
   rowHeight: {
     type: Number,
-    default: 50
+    default: 44
   },
   cellProps: {
     type: definePropType([
@@ -56169,15 +56345,43 @@ const TableV2Row = defineComponent({
 });
 var Row = TableV2Row;
 
+const _sfc_main$y = {};
+function _sfc_render$4(_ctx, _cache) {
+  return openBlock(), createElementBlock("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24"
+  }, [
+    createElementVNode("path", { d: "M17.7072 9.87894L13.4142 5.58594C13.0392 5.211 12.5305 5.00037 12.0002 5.00037C11.4699 5.00037 10.9613 5.211 10.5862 5.58594L6.29321 9.87894L7.70721 11.2929L11.0002 7.99994V18.9999H13.0002V7.99994L16.2932 11.2929L17.7072 9.87894Z" })
+  ]);
+}
+var FilterIconUp = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$4], ["__file", "filter-icon-up.vue"]]);
+
+const _sfc_main$x = {};
+function _sfc_render$3(_ctx, _cache) {
+  return openBlock(), createElementBlock("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24"
+  }, [
+    createElementVNode("path", { d: "M16.2932 12.707L13.0002 16V6H11.0002V16L7.70721 12.707L6.29321 14.121L10.5862 18.414C10.9613 18.7889 11.4699 18.9996 12.0002 18.9996C12.5305 18.9996 13.0392 18.7889 13.4142 18.414L17.7072 14.121L16.2932 12.707Z" })
+  ]);
+}
+var FilterIconDown = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["render", _sfc_render$3], ["__file", "filter-icon-down.vue"]]);
+
 const SortIcon = (props) => {
   const {
-    sortOrder
+    sortOrder,
+    sorting
   } = props;
   return createVNode(ElIcon, {
-    "size": 14,
-    "class": props.class
+    "size": 12,
+    "class": props.class,
+    "color": sorting ? "#ff5b05" : "#9FB1BD"
   }, {
-    default: () => [sortOrder === SortOrder.ASC ? createVNode(sort_up_default, null, null) : createVNode(sort_down_default, null, null)]
+    default: () => [sortOrder === SortOrder.ASC ? createVNode(FilterIconUp, null, null) : createVNode(FilterIconDown, null, null)]
   });
 };
 var SortIcon$1 = SortIcon;
@@ -56511,6 +56715,7 @@ const RowRenderer = (props, {
     rowClass,
     rowKey,
     rowEventHandlers,
+    onRowAdd,
     ns,
     onRowHovered,
     onRowExpanded
@@ -56529,7 +56734,8 @@ const RowRenderer = (props, {
   const depth = depthMap[_rowKey] || 0;
   const canExpand = Boolean(expandColumnKey);
   const isFixedRow = rowIndex < 0;
-  const kls = [ns.e("row"), rowKls, ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
+  const isAddRow = Boolean(rowData[rowAddSign]);
+  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
     [ns.e(`row-depth-${depth}`)]: canExpand && rowIndex >= 0
   }];
   const onRowHover = hasFixedColumns ? onRowHovered : void 0;
@@ -56566,7 +56772,18 @@ const RowRenderer = (props, {
       rowIndex
     });
   };
+  const handlerClick = (e) => {
+    if (!isAddRow)
+      return;
+    onRowAdd == null ? void 0 : onRowAdd({
+      event: e,
+      rowData,
+      rowIndex,
+      rowKey: _rowKey
+    });
+  };
   return createVNode(Row, mergeProps(_rowProps, {
+    "onClick": handlerClick,
     "onRowExpand": onRowExpanded,
     "onMouseenter": handlerMouseEnter,
     "onMouseleave": handlerMouseLeave,
@@ -56588,10 +56805,14 @@ const CellRenderer = ({
   style,
   expandedRowKeys,
   ns,
+  canEditTable,
   cellProps: _cellProps,
+  editable,
   expandColumnKey,
   indentSize,
   iconSize,
+  onRowAdd,
+  onRowDelete,
   rowKey
 }, {
   slots
@@ -56608,34 +56829,95 @@ const CellRenderer = ({
     dataKey,
     dataGetter
   } = column;
-  const cellData = isFunction$1(dataGetter) ? dataGetter({
+  const getCellData = () => isFunction$1(dataGetter) ? dataGetter({
     columns,
     column,
     columnIndex,
     rowData,
     rowIndex
   }) : get(rowData, dataKey != null ? dataKey : "");
-  const extraCellProps = tryCall(_cellProps, {
-    cellData,
-    columns,
-    column,
-    columnIndex,
-    rowIndex,
-    rowData
-  });
-  const cellProps = {
+  const setCellData = (value) => {
+    if (!rowData || dataKey == null)
+      return;
+    if (typeof dataKey === "symbol") {
+      rowData[dataKey] = value;
+      return;
+    }
+    set(rowData, dataKey, value);
+  };
+  const baseCellProps = {
     class: ns.e("cell-text"),
     columns,
     column,
     columnIndex,
-    cellData,
     isScrolling,
     rowData,
     rowIndex
   };
+  const cellProps = Object.defineProperty(baseCellProps, "cellData", {
+    enumerable: true,
+    configurable: true,
+    get: getCellData,
+    set: setCellData
+  });
+  const extraCellProps = tryCall(_cellProps, cellProps);
+  const isAddRow = Boolean(rowData[rowAddSign]);
+  const isRowDeleteColumn = column.key === rowDeleteColumnKey;
   const columnCellRenderer = componentToSlot(cellRenderer);
-  const Cell = columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(TableCell, cellProps, null)]);
-  const kls = [ns.e("row-cell"), column.class, column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right")];
+  const shouldRenderEditor = canEditTable ? editable : true;
+  const Cell = isRowDeleteColumn ? isAddRow ? createVNode(ElButton, {
+    "type": "text",
+    "class": "icon-button",
+    "onClick": (event) => {
+      event.stopPropagation();
+      onRowAdd == null ? void 0 : onRowAdd({
+        event,
+        rowData,
+        rowIndex,
+        rowKey: rowData[rowKey]
+      });
+    }
+  }, {
+    default: () => [createVNode(ElIcon, {
+      "size": 12
+    }, {
+      default: () => [createVNode("svg", {
+        "xmlns": "http://www.w3.org/2000/svg",
+        "width": "12",
+        "height": "12",
+        "viewBox": "0 0 12 12"
+      }, [createVNode("path", {
+        "d": "M3.82026 11.0062C3.64674 11.0063 3.4749 10.9711 3.3146 10.9026C3.1543 10.8341 3.00868 10.7337 2.88608 10.6072L0 7.6341L1.10129 6.49954L3.82026 9.30198L10.8987 2.00623L12 3.14079L4.75443 10.6072C4.63183 10.7337 4.48621 10.8341 4.32591 10.9026C4.16561 10.9711 3.99378 11.0063 3.82026 11.0062Z"
+      }, null)])]
+    })]
+  }) : createVNode(ElButton, {
+    "link": true,
+    "class": ns.e("row-delete-button"),
+    "onClick": (event) => {
+      event.stopPropagation();
+      onRowDelete == null ? void 0 : onRowDelete({
+        event,
+        rowData,
+        rowIndex,
+        rowKey: rowData[rowKey]
+      });
+    }
+  }, {
+    default: () => [createVNode(ElIcon, {
+      "size": "16px",
+      "class": "delete-icon"
+    }, {
+      default: () => [createVNode("svg", {
+        "xmlns": "http://www.w3.org/2000/svg",
+        "width": "16",
+        "height": "16",
+        "viewBox": "0 0 16 16"
+      }, [createVNode("path", {
+        "d": "M11.334 2.66667V1.33333C11.334 0.979711 11.1935 0.640573 10.9435 0.390524C10.6934 0.140476 10.3543 0 10.0007 0L6.00065 0C5.64703 0 5.30789 0.140476 5.05784 0.390524C4.80779 0.640573 4.66732 0.979711 4.66732 1.33333V2.66667H1.33398V4H2.66732V14C2.66732 14.5304 2.87803 15.0391 3.2531 15.4142C3.62818 15.7893 4.13688 16 4.66732 16H11.334C11.8644 16 12.3731 15.7893 12.7482 15.4142C13.1233 15.0391 13.334 14.5304 13.334 14V4H14.6673V2.66667H11.334ZM7.33398 11.3333H6.00065V7.33333H7.33398V11.3333ZM10.0007 11.3333H8.66732V7.33333H10.0007V11.3333ZM10.0007 2.66667H6.00065V1.33333H10.0007V2.66667Z"
+      }, null)])]
+    })]
+  }) : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(TableCell, cellProps, null)]);
+  const kls = [ns.e("row-cell"), column.required && "required-column", column.class, column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right")];
   const expandable = rowIndex >= 0 && expandColumnKey && column.key === expandColumnKey;
   const expanded = rowIndex >= 0 && expandedRowKeys.includes(rowData[rowKey]);
   let IconOrPlaceholder;
@@ -56737,7 +57019,7 @@ const HeaderCellRenderer = (props, {
     sorting = column.key === sortBy.key;
     sortOrder = sorting ? sortBy.order : SortOrder.ASC;
   }
-  const cellKls = [ns.e("header-cell"), tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
+  const cellKls = [ns.e("header-cell"), column.required && "required-column", tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
   const cellWrapperProps = {
     ...tryCall(headerCellProps, props),
     onClick: column.sortable ? onColumnSorted : void 0,
@@ -56749,7 +57031,8 @@ const HeaderCellRenderer = (props, {
     "role": "columnheader"
   }), [Cell, sortable && createVNode(SortIcon$1, {
     "class": [ns.e("sort-icon"), sorting && ns.is("sorting")],
-    "sortOrder": sortOrder
+    "sortOrder": sortOrder,
+    "sorting": sorting
   }, null)]);
 };
 
@@ -56763,6 +57046,18 @@ const Footer$1 = (props, {
   }, [(_a = slots.default) == null ? void 0 : _a.call(slots)]);
 };
 Footer$1.displayName = "ElTableV2Footer";
+
+const FooterDefault = (props) => {
+  return createVNode("div", {
+    "class": ["footer-default", props.class],
+    "style": props.style
+  }, [createVNode("div", {
+    "class": "count"
+  }, [props.total, createTextVNode(" items")]), props.updateTime && createVNode("div", {
+    "class": "time"
+  }, [createTextVNode("Last Updated "), props.updateTime])]);
+};
+FooterDefault.displayName = "ElTableV2FooterDefault";
 
 const Footer = (props, {
   slots
@@ -56793,9 +57088,11 @@ const COMPONENT_NAME$5 = "ElTableV2";
 const TableV2 = defineComponent({
   name: COMPONENT_NAME$5,
   props: tableV2Props,
+  emits: tableV2Emits,
   setup(props, {
     slots,
-    expose
+    expose,
+    emit
   }) {
     const ns = useNamespace("table-v2");
     const {
@@ -56818,6 +57115,7 @@ const TableV2 = defineComponent({
       isResetting,
       isScrolling,
       bodyWidth,
+      addRowHeight,
       emptyStyle,
       rootStyle,
       footerHeight,
@@ -56833,7 +57131,8 @@ const TableV2 = defineComponent({
       onRowExpanded,
       onRowsRendered,
       onScroll,
-      onVerticalScroll
+      onVerticalScroll,
+      scrollPos
     } = useTable(props);
     expose({
       scrollTo,
@@ -56846,6 +57145,13 @@ const TableV2 = defineComponent({
       isResetting,
       isScrolling
     });
+    provide(TABLE_V2_GRID_INJECTION_KEY, computed(() => unref(scrollPos).scrollLeft));
+    const onRowDelete = (params) => {
+      emit("row-delete", params);
+    };
+    const onRowAdd = (params) => {
+      emit("row-add", params);
+    };
     return () => {
       const {
         cache,
@@ -56956,15 +57262,20 @@ const TableV2 = defineComponent({
         rowClass,
         rowKey,
         rowEventHandlers,
+        onRowAdd,
         onRowHovered,
         onRowExpanded,
         onRowHeightChange
       };
       const tableCellProps = {
+        canEditTable: props.canEditTable,
         cellProps,
+        editable: props.editable,
         expandColumnKey,
         indentSize,
         iconSize,
+        onRowAdd,
+        onRowDelete,
         rowKey,
         expandedRowKeys: unref(expandedRowKeys),
         ns
@@ -57013,7 +57324,24 @@ const TableV2 = defineComponent({
       const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic))];
       const footerProps = {
         class: ns.e("footer"),
-        style: unref(footerHeight)
+        style: unref(footerHeight),
+        total: props.total,
+        updateTime: props.updateTime
+      };
+      const showAddRow = props.canEditTable && props.editable;
+      const addRowData = {
+        [rowKey]: rowAddKey,
+        [rowAddSign]: true
+      };
+      const addRowHeaderProps = {
+        fixedHeaderData: [addRowData],
+        headerData: _data,
+        headerHeight: [],
+        rowHeight,
+        height: unref(addRowHeight)
+      };
+      const addRowWrapperStyle = {
+        bottom: `${props.footerHeight}px`
       };
       return createVNode("div", {
         "class": rootKls,
@@ -57024,9 +57352,41 @@ const TableV2 = defineComponent({
         default: () => [tableSlots]
       }), createVNode(RightTable, rightTableProps, _isSlot(tableSlots) ? tableSlots : {
         default: () => [tableSlots]
-      }), slots.footer && createVNode(Footer$1, footerProps, {
+      }), showAddRow && createVNode(Fragment, null, [createVNode("div", {
+        "class": ns.e("add-row-main"),
+        "style": addRowWrapperStyle
+      }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
+        "columns": unref(mainColumns),
+        "class": ns.e("add-row-main-inner"),
+        "rowWidth": width,
+        "width": width
+      }), {
+        fixed: tableSlots.row
+      })]), leftColumnsWidth > 0 && createVNode("div", {
+        "class": ns.e("add-row-left"),
+        "style": addRowWrapperStyle
+      }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
+        "columns": unref(fixedColumnsOnLeft),
+        "class": ns.e("add-row-left-inner"),
+        "rowWidth": leftColumnsWidth,
+        "width": leftColumnsWidth
+      }), {
+        fixed: tableSlots.row
+      })]), rightColumnsWidth > 0 && createVNode("div", {
+        "class": ns.e("add-row-right"),
+        "style": addRowWrapperStyle
+      }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
+        "columns": unref(fixedColumnsOnRight),
+        "class": ns.e("add-row-right-inner"),
+        "rowWidth": rightColumnsWidth,
+        "width": rightColumnsWidth
+      }), {
+        fixed: tableSlots.row
+      })])]), slots.footer ? createVNode(Footer$1, footerProps, {
         default: slots.footer
-      }), unref(showEmpty) && createVNode(Footer, {
+      }) : props.isFooterDefault ? createVNode(FooterDefault, footerProps, {
+        default: slots.footer
+      }) : null, unref(showEmpty) && createVNode(Footer, {
         "class": ns.e("empty"),
         "style": unref(emptyStyle)
       }, {
@@ -69036,4 +69396,4 @@ var installer = makeInstaller([...Components, ...Plugins]);
 const install = installer.install;
 const version = installer.version;
 
-export { BAR_MAP, BORDER_HORIZONTAL_WIDTH, CAROUSEL_ITEM_NAME, CASCADER_PANEL_INJECTION_KEY, CHANGE_EVENT, ClickOutside, CommonPicker, CommonProps, DEFAULT_DIALOG_TRANSITION, DEFAULT_EMPTY_VALUES, DEFAULT_FORMATS_DATE, DEFAULT_FORMATS_DATEPICKER, DEFAULT_FORMATS_TIME, DEFAULT_VALUE_ON_CLEAR, DROPDOWN_INJECTION_KEY, DROPDOWN_INSTANCE_INJECTION_KEY, DefaultProps, DynamicSizeGrid$1 as DynamicSizeGrid, DynamicSizeList$1 as DynamicSizeList, EVENT_CODE, Effect, ElAffix, ElAlert, ElAnchor, ElAnchorLink, ElAside, ElAutoResizer, ElAutocomplete, ElAvatar, ElBacktop, ElBadge, ElBreadcrumb, ElBreadcrumbItem, ElButton, ElButtonGroup$1 as ElButtonGroup, ElCalendar, ElCard, ElCarousel, ElCarouselItem, ElCascader, ElCascaderPanel, ElCheckTag, ElCheckbox, ElCheckboxButton, ElCheckboxGroup$1 as ElCheckboxGroup, ElCol, ElCollapse, ElCollapseItem, ElCollapseTransition, ElColorPicker, ElConfigProvider, ElContainer, ElCountdown, ElDatePicker, ElDescriptions, ElDescriptionsItem, ElDialog, ElDivider, ElDrawer, ElDropdown, ElDropdownItem, ElDropdownMenu, ElEmpty, ElFooter, ElForm, ElFormItem, ElHeader, ElIcon, ElImage, ElImageViewer, ElInfiniteScroll, ElInput, ElInputNumber, ElInputTag, ElLink, ElLoading, vLoading$1 as ElLoadingDirective, Loading$1 as ElLoadingService, ElMain, ElMention, ElMenu, ElMenuItem, ElMenuItemGroup, ElMessage, ElMessageBox, ElNotification, ElOption, ElOptionGroup, ElOverlay, ElPageHeader, ElPagination, ElPopconfirm, ElPopover, ElPopoverDirective, ElPopper, ElPopperArrow, ElPopperContent, ElPopperTrigger, ElProgress, ElRadio, ElRadioButton, ElRadioGroup, ElRate, ElResult, ElRow, ElScrollbar, ElSegmented, ElSelect, ElSelectV2, ElSkeleton, ElSkeletonItem, ElSlider, ElSpace, ElSplitter, ElSplitterPanel, ElStatistic, ElStep, ElSteps, ElSubMenu, ElSwitch, ElTabPane, ElTable, ElTableColumn, ElTableEditableCell, ElTableEditableRowActions, ElTableV2, ElTabs, ElTag, ElText, ElTimePicker, ElTimeSelect, ElTimeline, ElTimelineItem, ElTooltip, ElTour, ElTourStep, ElTransfer, ElTree, ElTreeSelect, ElTreeV2, ElUpload, ElWatermark, FIRST_KEYS, FIRST_LAST_KEYS, FORWARD_REF_INJECTION_KEY, FixedSizeGrid$1 as FixedSizeGrid, FixedSizeList$1 as FixedSizeList, GAP, ID_INJECTION_KEY, INPUT_EVENT, INSTALLED_KEY, IconComponentMap, IconMap, LAST_KEYS, LEFT_CHECK_CHANGE_EVENT, MENU_INJECTION_KEY, MESSAGE_DEFAULT_PLACEMENT, MINIMUM_INPUT_WIDTH, Mousewheel, NODE_INSTANCE_INJECTION_KEY, PICKER_BASE_INJECTION_KEY, PICKER_POPPER_OPTIONS_INJECTION_KEY, POPPER_CONTENT_INJECTION_KEY, POPPER_INJECTION_KEY, RIGHT_CHECK_CHANGE_EVENT, ROOT_COMMON_PICKER_INJECTION_KEY, ROOT_PICKER_INJECTION_KEY, ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY, ROOT_TREE_INJECTION_KEY$1 as ROOT_TREE_INJECTION_KEY, RowAlign, RowJustify, SCOPE$5 as SCOPE, SIZE_INJECTION_KEY, STEPS_INJECTION_KEY, SUB_MENU_INJECTION_KEY, TIMELINE_INJECTION_KEY, TOOLTIP_INJECTION_KEY, TREE_NODE_MAP_INJECTION_KEY, TableV2$1 as TableV2, Alignment as TableV2Alignment, FixedDir as TableV2FixedDir, placeholderSign as TableV2Placeholder, SortOrder as TableV2SortOrder, TimePickPanel, TrapFocus, UPDATE_MODEL_EVENT, WEEK_DAYS, ZINDEX_INJECTION_KEY, affixEmits, affixProps, alertEffects, alertEmits, alertProps, anchorEmits, anchorProps, ariaProps, arrowMiddleware, autoResizerProps, autocompleteEmits, autocompleteProps, avatarEmits, avatarProps, backtopEmits, backtopProps, badgeProps, breadcrumbItemProps, breadcrumbKey, breadcrumbProps, buildLocaleContext, buildTimeList, buildTranslator, buttonEmits, buttonGroupContextKey, buttonNativeTypes, buttonProps, buttonTypes, calendarEmits, calendarProps, cardContextKey, cardProps, carouselContextKey, carouselEmits, carouselItemProps, carouselProps, cascaderEmits, cascaderPanelEmits, cascaderPanelProps, cascaderProps, checkTagEmits, checkTagProps, checkboxDefaultProps, checkboxEmits, checkboxGroupContextKey, checkboxGroupEmits, checkboxGroupProps, checkboxProps, colProps, collapseContextKey, collapseEmits, collapseItemProps, collapseProps, colorPickerEmits, colorPickerProps, columnAlignment, componentSizeMap, componentSizes, configProviderContextKey, configProviderProps, countdownEmits, countdownProps, createModelToggleComposable, dateEquals, datePickTypes, datePickerProps, dayOrDaysToDate, dayjs, installer as default, defaultInitialZIndex, defaultNamespace, defaultProps, descriptionItemProps, descriptionProps, dialogContextKey, dialogEmits, dialogInjectionKey, dialogProps, dividerProps, drawerEmits, drawerProps, dropdownItemProps, dropdownMenuProps, dropdownProps, elPaginationKey, emitChangeFn, emptyProps, emptyValuesContextKey, extractDateFormat, extractTimeFormat, formContextKey, formEmits, formItemContextKey, formItemProps, formItemValidateStates, formMetaProps, formProps, formatter, genFileId, getPositionDataWithUnit, iconProps, imageEmits, imageProps, imageViewerEmits, imageViewerProps, inputEmits, inputNumberEmits, inputNumberProps, inputProps, inputTagEmits, inputTagProps, install, linkEmits, linkProps, localeContextKey, makeInstaller, makeList, mentionDefaultProps, mentionEmits, mentionProps, menuEmits, menuItemEmits, menuItemGroupProps, menuItemProps, menuProps, messageConfig, messageDefaults, messageEmits, messagePlacement, messageProps, messageTypes, namespaceContextKey, notificationEmits, notificationProps, notificationTypes, overlayEmits, overlayProps, pageHeaderEmits, pageHeaderProps, paginationEmits, paginationProps, parseDate, popconfirmEmits, popconfirmProps, popoverEmits, popoverProps, popperArrowProps, popperContentEmits, popperContentProps, popperCoreConfigProps, popperProps, popperTriggerProps, progressProps, provideGlobalConfig, radioButtonProps, radioDefaultProps, radioEmits, radioGroupEmits, radioGroupKey, radioGroupProps, radioProps, radioPropsBase, rangeArr, rateEmits, rateProps, renderThumbStyle$1 as renderThumbStyle, resultProps, roleTypes, rowContextKey, rowProps, scrollbarContextKey, scrollbarEmits, scrollbarProps, segmentedEmits, segmentedProps, selectEmits, selectGroupKey, selectKey, selectProps, selectV2InjectionKey, skeletonItemProps, skeletonProps, sliderContextKey, sliderEmits, sliderProps, spaceItemProps, spaceProps, splitterPanelProps, splitterProps, statisticProps, stepProps, stepsEmits, stepsProps, subMenuProps, switchEmits, switchProps, tabBarProps, tabNavEmits, tabNavProps, tabPaneProps, tableV2Props, tableV2RowProps, tabsEmits, tabsProps, tabsRootContextKey, tagEmits, tagProps, textProps, thumbProps, timePickerDefaultProps, timePickerRangeTriggerProps, timePickerRngeTriggerProps, timeSelectProps, timeUnits$1 as timeUnits, timelineItemProps, tooltipEmits, tourContentEmits, tourContentProps, tourEmits, tourPlacements, tourProps, tourStepEmits, tourStepProps, tourStrategies, transferCheckedChangeFn, transferEmits, transferProps, translate, treeEmits$1 as treeEmits, uploadBaseProps, uploadContentProps, uploadContextKey, uploadDraggerEmits, uploadDraggerProps, uploadListEmits, uploadListProps, uploadListTypes, uploadProps, useAriaProps, useAttrs, useCalcInputWidth, useCascaderConfig, useComposition, useCursor, useDelayedRender, useDelayedToggle, useDelayedToggleProps, useDeprecated, useDialog, useDisabled, useDraggable, useEmptyValues, useEmptyValuesProps, useEscapeKeydown, useFloating$1 as useFloating, useFloatingProps, useFocus, useFocusController, useFormDisabled, useFormItem, useFormItemInputId, useFormSize, useForwardRef, useForwardRefDirective, useGetDerivedNamespace, useGlobalComponentSettings, useGlobalConfig, useGlobalSize, useId, useIdInjection, useLocale, useLockscreen, useModal, useModelToggle, useModelToggleEmits, useModelToggleProps, useNamespace, useOrderedChildren, usePopper, usePopperArrowProps, usePopperContainer, usePopperContainerId, usePopperContentEmits, usePopperContentProps, usePopperCoreConfigProps, usePopperProps, usePopperTriggerProps, usePreventGlobal, useProp, useSameTarget, useSize$1 as useSize, useSizeProp, useSizeProps, useSpace, useTeleport, useThrottleRender, useTimeout, useTooltipContentProps, useTooltipModelToggle, useTooltipModelToggleEmits, useTooltipModelToggleProps, useTooltipProps, useTooltipTriggerProps, useTransitionFallthrough, useTransitionFallthroughEmits, useZIndex, vLoading$1 as vLoading, vRepeatClick, valueEquals, version, virtualizedGridProps, virtualizedListProps, virtualizedProps, virtualizedScrollbarProps, watermarkProps, zIndexContextKey };
+export { BAR_MAP, BORDER_HORIZONTAL_WIDTH, CAROUSEL_ITEM_NAME, CASCADER_PANEL_INJECTION_KEY, CHANGE_EVENT, ClickOutside, CommonPicker, CommonProps, DEFAULT_DIALOG_TRANSITION, DEFAULT_EMPTY_VALUES, DEFAULT_FORMATS_DATE, DEFAULT_FORMATS_DATEPICKER, DEFAULT_FORMATS_TIME, DEFAULT_VALUE_ON_CLEAR, DROPDOWN_INJECTION_KEY, DROPDOWN_INSTANCE_INJECTION_KEY, DefaultProps, DynamicSizeGrid$1 as DynamicSizeGrid, DynamicSizeList$1 as DynamicSizeList, EVENT_CODE, Effect, ElAffix, ElAlert, ElAnchor, ElAnchorLink, ElAside, ElAutoResizer, ElAutocomplete, ElAvatar, ElBacktop, ElBadge, ElBreadcrumb, ElBreadcrumbItem, ElButton, ElButtonGroup$1 as ElButtonGroup, ElCalendar, ElCard, ElCarousel, ElCarouselItem, ElCascader, ElCascaderPanel, ElCheckTag, ElCheckbox, ElCheckboxButton, ElCheckboxGroup$1 as ElCheckboxGroup, ElCol, ElCollapse, ElCollapseItem, ElCollapseTransition, ElColorPicker, ElConfigProvider, ElContainer, ElCountdown, ElDatePicker, ElDescriptions, ElDescriptionsItem, ElDialog, ElDivider, ElDrawer, ElDropdown, ElDropdownItem, ElDropdownMenu, ElEmpty, ElFooter, ElForm, ElFormItem, ElHeader, ElIcon, ElImage, ElImageViewer, ElInfiniteScroll, ElInput, ElInputNumber, ElInputTag, ElLink, ElLoading, vLoading$1 as ElLoadingDirective, Loading$1 as ElLoadingService, ElMain, ElMention, ElMenu, ElMenuItem, ElMenuItemGroup, ElMessage, ElMessageBox, ElNotification, ElOption, ElOptionGroup, ElOverlay, ElPageHeader, ElPagination, ElPopconfirm, ElPopover, ElPopoverDirective, ElPopper, ElPopperArrow, ElPopperContent, ElPopperTrigger, ElProgress, ElRadio, ElRadioButton, ElRadioGroup, ElRate, ElResult, ElRow, ElScrollbar, ElSegmented, ElSelect, ElSelectV2, ElSkeleton, ElSkeletonItem, ElSlider, ElSpace, ElSplitter, ElSplitterPanel, ElStatistic, ElStep, ElSteps, ElSubMenu, ElSwitch, ElTabPane, ElTable, ElTableColumn, ElTableEditableCell, ElTableEditableRowActions, ElTableV2, ElTabs, ElTag, ElText, ElTimePicker, ElTimeSelect, ElTimeline, ElTimelineItem, ElTooltip, ElTour, ElTourStep, ElTransfer, ElTree, ElTreeSelect, ElTreeV2, ElUpload, ElWatermark, FIRST_KEYS, FIRST_LAST_KEYS, FORWARD_REF_INJECTION_KEY, FixedSizeGrid$1 as FixedSizeGrid, FixedSizeList$1 as FixedSizeList, GAP, ID_INJECTION_KEY, INPUT_EVENT, INSTALLED_KEY, IconComponentMap, IconMap, LAST_KEYS, LEFT_CHECK_CHANGE_EVENT, MENU_INJECTION_KEY, MESSAGE_DEFAULT_PLACEMENT, MINIMUM_INPUT_WIDTH, Mousewheel, NODE_INSTANCE_INJECTION_KEY, PICKER_BASE_INJECTION_KEY, PICKER_POPPER_OPTIONS_INJECTION_KEY, POPPER_CONTENT_INJECTION_KEY, POPPER_INJECTION_KEY, RIGHT_CHECK_CHANGE_EVENT, ROOT_COMMON_PICKER_INJECTION_KEY, ROOT_PICKER_INJECTION_KEY, ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY, ROOT_TREE_INJECTION_KEY$1 as ROOT_TREE_INJECTION_KEY, RowAlign, RowJustify, SCOPE$5 as SCOPE, SIZE_INJECTION_KEY, STEPS_INJECTION_KEY, SUB_MENU_INJECTION_KEY, TIMELINE_INJECTION_KEY, TOOLTIP_INJECTION_KEY, TREE_NODE_MAP_INJECTION_KEY, TableV2$1 as TableV2, Alignment as TableV2Alignment, FixedDir as TableV2FixedDir, placeholderSign as TableV2Placeholder, SortOrder as TableV2SortOrder, TimePickPanel, TrapFocus, UPDATE_MODEL_EVENT, WEEK_DAYS, ZINDEX_INJECTION_KEY, affixEmits, affixProps, alertEffects, alertEmits, alertProps, anchorEmits, anchorProps, ariaProps, arrowMiddleware, autoResizerProps, autocompleteEmits, autocompleteProps, avatarEmits, avatarProps, backtopEmits, backtopProps, badgeProps, breadcrumbItemProps, breadcrumbKey, breadcrumbProps, buildLocaleContext, buildTimeList, buildTranslator, buttonEmits, buttonGroupContextKey, buttonNativeTypes, buttonProps, buttonTypes, calendarEmits, calendarProps, cardContextKey, cardProps, carouselContextKey, carouselEmits, carouselItemProps, carouselProps, cascaderEmits, cascaderPanelEmits, cascaderPanelProps, cascaderProps, checkTagEmits, checkTagProps, checkboxDefaultProps, checkboxEmits, checkboxGroupContextKey, checkboxGroupEmits, checkboxGroupProps, checkboxProps, colProps, collapseContextKey, collapseEmits, collapseItemProps, collapseProps, colorPickerEmits, colorPickerProps, columnAlignment, componentSizeMap, componentSizes, configProviderContextKey, configProviderProps, countdownEmits, countdownProps, createModelToggleComposable, dateEquals, datePickTypes, datePickerProps, dayOrDaysToDate, dayjs, installer as default, defaultInitialZIndex, defaultNamespace, defaultProps, descriptionItemProps, descriptionProps, dialogContextKey, dialogEmits, dialogInjectionKey, dialogProps, dividerProps, drawerEmits, drawerProps, dropdownItemProps, dropdownMenuProps, dropdownProps, elPaginationKey, emitChangeFn, emptyProps, emptyValuesContextKey, extractDateFormat, extractTimeFormat, formContextKey, formEmits, formItemContextKey, formItemProps, formItemValidateStates, formMetaProps, formProps, formatter, genFileId, getPositionDataWithUnit, iconProps, imageEmits, imageProps, imageViewerEmits, imageViewerProps, inputEmits, inputNumberEmits, inputNumberProps, inputProps, inputTagEmits, inputTagProps, install, linkEmits, linkProps, localeContextKey, makeInstaller, makeList, mentionDefaultProps, mentionEmits, mentionProps, menuEmits, menuItemEmits, menuItemGroupProps, menuItemProps, menuProps, messageConfig, messageDefaults, messageEmits, messagePlacement, messageProps, messageTypes, namespaceContextKey, notificationEmits, notificationProps, notificationTypes, overlayEmits, overlayProps, pageHeaderEmits, pageHeaderProps, paginationEmits, paginationProps, parseDate, popconfirmEmits, popconfirmProps, popoverEmits, popoverProps, popperArrowProps, popperContentEmits, popperContentProps, popperCoreConfigProps, popperProps, popperTriggerProps, progressProps, provideGlobalConfig, radioButtonProps, radioDefaultProps, radioEmits, radioGroupEmits, radioGroupKey, radioGroupProps, radioProps, radioPropsBase, rangeArr, rateEmits, rateProps, renderThumbStyle$1 as renderThumbStyle, resultProps, roleTypes, rowContextKey, rowProps, scrollbarContextKey, scrollbarEmits, scrollbarProps, segmentedEmits, segmentedProps, selectEmits, selectGroupKey, selectKey, selectProps, selectV2InjectionKey, skeletonItemProps, skeletonProps, sliderContextKey, sliderEmits, sliderProps, spaceItemProps, spaceProps, splitterPanelProps, splitterProps, statisticProps, stepProps, stepsEmits, stepsProps, subMenuProps, switchEmits, switchProps, tabBarProps, tabNavEmits, tabNavProps, tabPaneProps, tableV2Emits, tableV2Props, tableV2RowProps, tabsEmits, tabsProps, tabsRootContextKey, tagEmits, tagProps, textProps, thumbProps, timePickerDefaultProps, timePickerRangeTriggerProps, timePickerRngeTriggerProps, timeSelectProps, timeUnits$1 as timeUnits, timelineItemProps, tooltipEmits, tourContentEmits, tourContentProps, tourEmits, tourPlacements, tourProps, tourStepEmits, tourStepProps, tourStrategies, transferCheckedChangeFn, transferEmits, transferProps, translate, treeEmits$1 as treeEmits, uploadBaseProps, uploadContentProps, uploadContextKey, uploadDraggerEmits, uploadDraggerProps, uploadListEmits, uploadListProps, uploadListTypes, uploadProps, useAriaProps, useAttrs, useCalcInputWidth, useCascaderConfig, useComposition, useCursor, useDelayedRender, useDelayedToggle, useDelayedToggleProps, useDeprecated, useDialog, useDisabled, useDraggable, useEmptyValues, useEmptyValuesProps, useEscapeKeydown, useFloating$1 as useFloating, useFloatingProps, useFocus, useFocusController, useFormDisabled, useFormItem, useFormItemInputId, useFormSize, useForwardRef, useForwardRefDirective, useGetDerivedNamespace, useGlobalComponentSettings, useGlobalConfig, useGlobalSize, useId, useIdInjection, useLocale, useLockscreen, useModal, useModelToggle, useModelToggleEmits, useModelToggleProps, useNamespace, useOrderedChildren, usePopper, usePopperArrowProps, usePopperContainer, usePopperContainerId, usePopperContentEmits, usePopperContentProps, usePopperCoreConfigProps, usePopperProps, usePopperTriggerProps, usePreventGlobal, useProp, useSameTarget, useSize$1 as useSize, useSizeProp, useSizeProps, useSpace, useTeleport, useThrottleRender, useTimeout, useTooltipContentProps, useTooltipModelToggle, useTooltipModelToggleEmits, useTooltipModelToggleProps, useTooltipProps, useTooltipTriggerProps, useTransitionFallthrough, useTransitionFallthroughEmits, useZIndex, vLoading$1 as vLoading, vRepeatClick, valueEquals, version, virtualizedGridProps, virtualizedListProps, virtualizedProps, virtualizedScrollbarProps, watermarkProps, zIndexContextKey };

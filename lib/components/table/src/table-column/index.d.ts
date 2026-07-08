@@ -19,6 +19,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     renderHeader: import("vue").PropType<TableColumnCtx<any>["renderHeader"]>;
     diagonalHeader: import("vue").PropType<TableColumnCtx<any>["diagonalHeader"]>;
+    required: BooleanConstructor;
     allowInsertBeforeFirstColumn: {
         type: BooleanConstructor;
         default: boolean;
@@ -80,6 +81,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     renderHeader: import("vue").PropType<TableColumnCtx<any>["renderHeader"]>;
     diagonalHeader: import("vue").PropType<TableColumnCtx<any>["diagonalHeader"]>;
+    required: BooleanConstructor;
     allowInsertBeforeFirstColumn: {
         type: BooleanConstructor;
         default: boolean;
@@ -125,6 +127,7 @@ declare const _default: import("vue").DefineComponent<{
     width: string | number;
     minWidth: string | number;
     type: string;
+    required: boolean;
     resizable: boolean;
     showOverflowTooltip: boolean | Partial<Pick<import("element-plus").ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">> | undefined;
     sortOrders: (import("../table/defaults").TableSortOrder | null)[];

@@ -89,6 +89,17 @@ declare const _default: import("vue").DefineComponent<{
     scrollbarAlwaysOn: BooleanConstructor;
     flexible: BooleanConstructor;
     editable: BooleanConstructor;
+    ghostTable: BooleanConstructor;
+    editTable: BooleanConstructor;
+    total: {
+        type: NumberConstructor;
+        default: number;
+    };
+    updateTime: {
+        type: StringConstructor;
+        default: string;
+    };
+    haveTableText: BooleanConstructor;
     showOverflowTooltip: import("vue").PropType<import("./table/defaults").TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: import("vue").PropType<any>;
@@ -852,7 +863,7 @@ declare const _default: import("vue").DefineComponent<{
      * @description whether to show an add-row trigger when hovering a row divider
      */
     showAddRowTrigger: boolean;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     data: {
         type: import("vue").PropType<any[]>;
         default: () => never[];
@@ -939,6 +950,17 @@ declare const _default: import("vue").DefineComponent<{
     scrollbarAlwaysOn: BooleanConstructor;
     flexible: BooleanConstructor;
     editable: BooleanConstructor;
+    ghostTable: BooleanConstructor;
+    editTable: BooleanConstructor;
+    total: {
+        type: NumberConstructor;
+        default: number;
+    };
+    updateTime: {
+        type: StringConstructor;
+        default: string;
+    };
+    haveTableText: BooleanConstructor;
     showOverflowTooltip: import("vue").PropType<import("./table/defaults").TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: import("vue").PropType<any>;
@@ -989,11 +1011,13 @@ declare const _default: import("vue").DefineComponent<{
     "onEditable-cell-active-change"?: ((...args: any[]) => any) | undefined;
     "onAdd-column"?: ((...args: any[]) => any) | undefined;
     "onAdd-row"?: ((...args: any[]) => any) | undefined;
+    "onAdd-ghost-row"?: ((...args: any[]) => any) | undefined;
 }, {
     data: any[];
     style: CSSProperties;
     tableLayout: "fixed" | "auto";
     border: boolean;
+    total: number;
     className: string;
     onDragend: any;
     onDragstart: any;
@@ -1005,6 +1029,7 @@ declare const _default: import("vue").DefineComponent<{
     showAddColumnTrigger: boolean;
     tooltipOptions: Partial<Pick<import("element-plus").ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">> | undefined;
     treeProps: import("./table/defaults").TreeProps | undefined;
+    updateTime: string;
     defaultExpandAll: boolean;
     selectOnIndeterminate: boolean;
     indent: number;
@@ -1015,6 +1040,9 @@ declare const _default: import("vue").DefineComponent<{
     tooltipEffect: string;
     rowDraggable: any;
     flexible: boolean;
+    ghostTable: boolean;
+    editTable: boolean;
+    haveTableText: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;
     showAddRowTrigger: boolean;

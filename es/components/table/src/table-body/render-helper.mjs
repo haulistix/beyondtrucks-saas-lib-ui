@@ -5,6 +5,7 @@ import { TABLE_INJECTION_KEY } from '../tokens.mjs';
 import useEvents from './events-helper.mjs';
 import useStyles from './styles-helper.mjs';
 import TdWrapper from './td-wrapper.mjs';
+import { ghostRowSign, ghostRowKey } from '../private.mjs';
 import { useNamespace } from '../../../../hooks/use-namespace/index.mjs';
 import { isBoolean, isPropAbsent } from '../../../../utils/types.mjs';
 
@@ -39,8 +40,11 @@ function useRender(props, emit) {
     return (_a = props.store) == null ? void 0 : _a.states.columns.value.findIndex(({ type }) => type === "default");
   });
   const getKeyOfRow = (row, index) => {
-    var _a;
-    const rowKey = (_a = parent == null ? void 0 : parent.props) == null ? void 0 : _a.rowKey;
+    var _a, _b;
+    if (row == null ? void 0 : row[ghostRowSign]) {
+      return (_a = row[ghostRowKey]) != null ? _a : `${ghostRowKey}_${index}`;
+    }
+    const rowKey = (_b = parent == null ? void 0 : parent.props) == null ? void 0 : _b.rowKey;
     if (rowKey) {
       return getRowIdentity(row, rowKey);
     }
@@ -57,6 +61,7 @@ function useRender(props, emit) {
     } = props;
     const { indent, columns } = store.states;
     const rowClasses = [];
+    const isGhostRow = Boolean(row == null ? void 0 : row[ghostRowSign]);
     let display = true;
     if (treeRowData) {
       rowClasses.push(ns.em("row", `level-${treeRowData.level}`));
@@ -69,22 +74,11 @@ function useRender(props, emit) {
       displayIndex++;
     }
     rowClasses.push(...getRowClass(row, $index, displayIndex));
+    if (isGhostRow) {
+      rowClasses.push("is-ghost-row");
+    }
     const displayStyle = display ? null : { display: "none" };
-    return h("tr", {
-      style: [displayStyle, getRowStyle(row, $index)],
-      class: rowClasses,
-      key: getKeyOfRow(row, $index),
-      draggable: typeof rowDraggable === "function" ? rowDraggable(row) : rowDraggable,
-      onDragstart: ($event) => onDragstart($event, row),
-      onDragend: ($event) => onDragend($event, row),
-      onDblclick: ($event) => handleDoubleClick($event, row),
-      onClick: ($event) => handleClick($event, row),
-      onContextmenu: ($event) => handleContextMenu($event, row),
-      onMouseenter: () => handleMouseEnter($index),
-      onMouseleave: handleMouseLeave,
-      onMousemove: ($event) => handleRowMouseMove($event, row, $index),
-      onMouseout: ($event) => handleRowMouseOut($event)
-    }, columns.value.map((column, cellIndex) => {
+    const cells = columns.value.map((column, cellIndex) => {
       const { rowspan, colspan } = getSpan(row, column, $index, cellIndex);
       if (!rowspan || !colspan) {
         return null;
@@ -128,13 +122,29 @@ function useRender(props, emit) {
         cellIndex,
         columnIndex: $index,
         colspan,
+        fullWidth: props.ghostTable,
         onClick: ($event) => handleCellClick($event, row, column, $index, cellIndex),
         onMouseenter: ($event) => handleCellMouseEnter($event, row, mergedTooltipOptions),
         onMouseleave: handleCellMouseLeave
       }, {
         default: () => cellChildren(cellIndex, column, data)
       });
-    }));
+    });
+    return h("tr", {
+      style: [displayStyle, getRowStyle(row, $index)],
+      class: rowClasses,
+      key: getKeyOfRow(row, $index),
+      draggable: typeof rowDraggable === "function" ? rowDraggable(row) : rowDraggable,
+      onDragstart: ($event) => onDragstart($event, row),
+      onDragend: ($event) => onDragend($event, row),
+      onDblclick: ($event) => handleDoubleClick($event, row),
+      onClick: ($event) => handleClick($event, row),
+      onContextmenu: ($event) => handleContextMenu($event, row),
+      onMouseenter: () => handleMouseEnter($index),
+      onMouseleave: handleMouseLeave,
+      onMousemove: ($event) => handleRowMouseMove($event, row, $index),
+      onMouseout: ($event) => handleRowMouseOut($event)
+    }, cells);
   };
   const cellChildren = (_cellIndex, column, data) => {
     return column.renderCell(data);

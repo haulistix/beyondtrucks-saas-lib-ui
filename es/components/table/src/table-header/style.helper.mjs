@@ -56,6 +56,9 @@ function useStyle(props) {
     if (column.sortable) {
       classes.push("is-sortable");
     }
+    if (column.required) {
+      classes.push("required-column");
+    }
     const headerCellClassName = parent == null ? void 0 : parent.props.headerCellClassName;
     if (isString(headerCellClassName)) {
       classes.push(headerCellClassName);

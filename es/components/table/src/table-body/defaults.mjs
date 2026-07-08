@@ -31,6 +31,7 @@ const defaultProps = {
     type: Function,
     default: void 0
   },
+  ghostTable: Boolean,
   showAddRowTrigger: Boolean
 };
 

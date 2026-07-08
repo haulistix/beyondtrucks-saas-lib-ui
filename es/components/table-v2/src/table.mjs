@@ -5,6 +5,11 @@ import { tableV2GridProps } from './grid.mjs';
 import { virtualizedGridProps, virtualizedScrollbarProps } from '../../virtual-list/src/props.mjs';
 import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs';
 
+const tableV2Emits = {
+  "update:expandedRowKeys": (expandedRowKeys) => Array.isArray(expandedRowKeys),
+  "row-delete": (params) => Boolean(params),
+  "row-add": (params) => Boolean(params)
+};
 const tableV2Props = buildProps({
   cache: tableV2GridProps.cache,
   estimatedRowHeight: tableV2RowProps.estimatedRowHeight,
@@ -32,6 +37,23 @@ const tableV2Props = buildProps({
     type: Number,
     default: 0
   },
+  isFooterDefault: {
+    type: Boolean,
+    default: true
+  },
+  editable: {
+    type: Boolean,
+    default: true
+  },
+  canEditTable: Boolean,
+  total: {
+    type: Number,
+    default: 0
+  },
+  updateTime: {
+    type: String,
+    default: ""
+  },
   rowClass: {
     type: definePropType([String, Function])
   },
@@ -40,7 +62,7 @@ const tableV2Props = buildProps({
   },
   rowHeight: {
     type: Number,
-    default: 50
+    default: 44
   },
   cellProps: {
     type: definePropType([
@@ -100,5 +122,5 @@ const tableV2Props = buildProps({
   rowEventHandlers: tableV2RowProps.rowEventHandlers
 });
 
-export { tableV2Props };
+export { tableV2Emits, tableV2Props };
 //# sourceMappingURL=table.mjs.map

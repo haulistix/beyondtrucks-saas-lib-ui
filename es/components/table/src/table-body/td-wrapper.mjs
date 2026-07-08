@@ -1,4 +1,4 @@
-import { defineComponent, openBlock, createElementBlock, createElementVNode, renderSlot } from 'vue';
+import { defineComponent, openBlock, createElementBlock, createElementVNode, normalizeClass, renderSlot } from 'vue';
 import _export_sfc from '../../../../_virtual/plugin-vue_export-helper.mjs';
 
 const __default__ = defineComponent({
@@ -22,6 +22,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     rowIndex: {
       type: Number,
       default: 0
+    },
+    fullWidth: {
+      type: Boolean,
+      default: false
     }
   },
   setup(__props) {
@@ -31,9 +35,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         rowspan: __props.rowspan,
         "data-cellIndex": __props.rowIndex + "-" + __props.cellIndex
       }, [
-        createElementVNode("div", { class: "cell-height" }, [
+        createElementVNode("div", {
+          class: normalizeClass(["cell-height", { "is-full-width": __props.fullWidth }])
+        }, [
           renderSlot(_ctx.$slots, "default")
-        ])
+        ], 2)
       ], 8, ["colspan", "rowspan", "data-cellIndex"]);
     };
   }

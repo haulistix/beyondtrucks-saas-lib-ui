@@ -16,7 +16,7 @@
   width: 100%;
   max-width: 100%;
   background-color: getCssVar('table-bg-color');
-  font-size: getCssVar('font-size', 'base');
+  font-size: 14px;
   color: getCssVar('table-text-color');
 
   @include e(inner-wrapper) {
@@ -134,14 +134,13 @@
   }
 
   thead {
-    color: getCssVar('table-header-text-color');
-    font-weight: 600;
+    color: var(--color-gray-990);
 
     th {
-      font-weight: 600;
+      font-weight: 400;
 
       &.#{$namespace}-table__cell {
-        padding: 8px 0;
+        padding: 12px 0;
       }
     }
 
@@ -165,6 +164,10 @@
       min-height: 44px;
       display: flex;
       align-items: center;
+
+      &.is-full-width {
+        width: 100%;
+      }
     }
 
     @include when(center) {
@@ -209,8 +212,23 @@
       white-space: nowrap;
       min-width: 50px;
     }
+
+    &.is-full-width {
+      width: 100%;
+    }
   }
 
+  .icon-column {
+    .cell {
+      padding: 0 1px;
+
+      .el-button {
+        .el-icon {
+          margin-left: 0;
+        }
+      }
+    }
+  }
   .editable-table-cell {
     width: 100%;
     min-height: 44px;
@@ -300,14 +318,14 @@
   }
 
   th.#{$namespace}-table__cell {
-    background-color: getCssVar('table-header-bg-color');
+    background-color: var(--color-cyan-100);
     vertical-align: baseline;
 
     > .cell.highlight {
       color: getCssVar('color-primary');
     }
 
-    &.required > div::before {
+    &.required-column > div::before {
       display: inline-block;
       content: '';
       width: 8px;
@@ -356,10 +374,6 @@
   }
 
   td.#{$namespace}-table__cell {
-    div {
-      box-sizing: border-box;
-    }
-
     &.gutter {
       width: 0;
     }
@@ -463,14 +477,14 @@
   @include e(header-wrapper) {
     flex-shrink: 0;
     border-bottom: 1px solid getCssVar('border-color', 'light');
-    box-shadow: 0 1px 0 0 rgba(26, 26, 26, 0.07);
+    box-shadow: var(--shadow-table);
     margin-bottom: 1px;
 
     tr {
       th {
         &.#{$namespace}-table-fixed-column--left,
         &.#{$namespace}-table-fixed-column--right {
-          background-color: getCssVar('table-header-bg-color');
+          background-color: var(--color-cyan-100);
         }
       }
     }
@@ -532,7 +546,7 @@
     }
 
     th.#{$namespace}-table-fixed-column--left {
-      background-color: getCssVar('table-header-bg-color');
+      background-color: var(--color-cyan-100);
     }
   }
 
@@ -548,7 +562,7 @@
     }
 
     th.#{$namespace}-table-fixed-column--right {
-      background-color: getCssVar('table-header-bg-color');
+      background-color: var(--color-cyan-100);
     }
   }
 

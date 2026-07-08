@@ -72,6 +72,7 @@ function useTable(props) {
     return _data.length * rowHeight;
   });
   const {
+    addRowHeight,
     bodyWidth,
     fixedTableHeight,
     mainTableHeight,
@@ -137,6 +138,7 @@ function useTable(props) {
     fixedColumnsOnLeft,
     fixedColumnsOnRight,
     mainColumns,
+    addRowHeight,
     bodyWidth,
     emptyStyle,
     rootStyle,
@@ -157,7 +159,8 @@ function useTable(props) {
     scrollToTop,
     scrollToRow,
     onScroll,
-    onVerticalScroll
+    onVerticalScroll,
+    scrollPos
   };
 }
 

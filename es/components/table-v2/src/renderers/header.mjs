@@ -33,7 +33,7 @@ const HeaderRenderer = ({
     default: () => [slots]
   });
 };
-var Header = HeaderRenderer;
+var HeaderRenderer$1 = HeaderRenderer;
 
-export { Header as default };
+export { HeaderRenderer$1 as default };
 //# sourceMappingURL=header.mjs.map

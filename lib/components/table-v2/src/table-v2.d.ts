@@ -29,8 +29,13 @@ declare const TableV2: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly headerHeight: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 50, boolean>;
+    readonly headerHeight: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 44, boolean>;
     readonly footerHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly isFooterDefault: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly editable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly canEditTable: BooleanConstructor;
+    readonly total: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly updateTime: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => string | import("./table").RowClassNameGetter<any>) | (() => string | import("./table").RowClassNameGetter<any>) | ((new (...args: any[]) => string | import("./table").RowClassNameGetter<any>) | (() => string | import("./table").RowClassNameGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -43,7 +48,7 @@ declare const TableV2: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly rowHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 50, boolean>;
+    readonly rowHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 44, boolean>;
     readonly cellProps: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => Record<string, any> | import("./table").ExtraCellPropGetter<any>) | (() => Record<string, any> | import("./table").ExtraCellPropGetter<any>) | ((new (...args: any[]) => Record<string, any> | import("./table").ExtraCellPropGetter<any>) | (() => Record<string, any> | import("./table").ExtraCellPropGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -128,7 +133,7 @@ declare const TableV2: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     readonly onRowExpand: {
-        readonly type: import("vue").PropType<import("element-plus").RowExpandHandler>;
+        readonly type: import("vue").PropType<import("./row").RowExpandHandler>;
         readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
@@ -146,12 +151,16 @@ declare const TableV2: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     readonly rowEventHandlers: {
-        readonly type: import("vue").PropType<import("element-plus").RowEventHandlers>;
+        readonly type: import("vue").PropType<import("./row").RowEventHandlers>;
         readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-}, () => JSX.Element, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, () => JSX.Element, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    'update:expandedRowKeys': (expandedRowKeys: KeyType[]) => boolean;
+    'row-delete': (params: import("./row").RowDeleteParams) => boolean;
+    'row-add': (params: import("./row").RowAddParams) => boolean;
+}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     readonly cache: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, never, never, 2, false>;
     readonly estimatedRowHeight: {
         readonly default: undefined;
@@ -179,8 +188,13 @@ declare const TableV2: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly headerHeight: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 50, boolean>;
+    readonly headerHeight: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown, 44, boolean>;
     readonly footerHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly isFooterDefault: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly editable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly canEditTable: BooleanConstructor;
+    readonly total: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly updateTime: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => string | import("./table").RowClassNameGetter<any>) | (() => string | import("./table").RowClassNameGetter<any>) | ((new (...args: any[]) => string | import("./table").RowClassNameGetter<any>) | (() => string | import("./table").RowClassNameGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -193,7 +207,7 @@ declare const TableV2: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly rowHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 50, boolean>;
+    readonly rowHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 44, boolean>;
     readonly cellProps: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => Record<string, any> | import("./table").ExtraCellPropGetter<any>) | (() => Record<string, any> | import("./table").ExtraCellPropGetter<any>) | ((new (...args: any[]) => Record<string, any> | import("./table").ExtraCellPropGetter<any>) | (() => Record<string, any> | import("./table").ExtraCellPropGetter<any>))[], unknown, unknown>>;
         readonly required: false;
@@ -278,7 +292,7 @@ declare const TableV2: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     readonly onRowExpand: {
-        readonly type: import("vue").PropType<import("element-plus").RowExpandHandler>;
+        readonly type: import("vue").PropType<import("./row").RowExpandHandler>;
         readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
@@ -296,13 +310,19 @@ declare const TableV2: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     readonly rowEventHandlers: {
-        readonly type: import("vue").PropType<import("element-plus").RowEventHandlers>;
+        readonly type: import("vue").PropType<import("./row").RowEventHandlers>;
         readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-}>>, {
+}>> & {
+    "onUpdate:expandedRowKeys"?: ((expandedRowKeys: KeyType[]) => any) | undefined;
+    "onRow-delete"?: ((params: import("./row").RowDeleteParams) => any) | undefined;
+    "onRow-add"?: ((params: import("./row").RowAddParams) => any) | undefined;
+}, {
     readonly fixed: boolean;
+    readonly total: number;
+    readonly editable: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly rowKey: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => string | number | symbol) | (() => KeyType) | ((new (...args: any[]) => string | number | symbol) | (() => KeyType))[], unknown, unknown>;
     readonly useIsScrolling: boolean;
     readonly scrollbarAlwaysOn: boolean;
@@ -312,11 +332,14 @@ declare const TableV2: import("vue").DefineComponent<{
     readonly hScrollbarSize: number;
     readonly vScrollbarSize: number;
     readonly sortBy: import("./types").SortBy;
+    readonly updateTime: string;
     readonly headerHeight: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown>;
     readonly footerHeight: number;
+    readonly isFooterDefault: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly indentSize: number;
     readonly iconSize: number;
     readonly sortState: import("./types").SortState;
+    readonly canEditTable: boolean;
     readonly expandedRowKeys: KeyType[];
     readonly defaultExpandedRowKeys: KeyType[];
 }>;

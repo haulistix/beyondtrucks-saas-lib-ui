@@ -46,7 +46,7 @@ const HeaderCellRenderer = (props, {
     sorting = column.key === sortBy.key;
     sortOrder = sorting ? sortBy.order : SortOrder.ASC;
   }
-  const cellKls = [ns.e("header-cell"), tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
+  const cellKls = [ns.e("header-cell"), column.required && "required-column", tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
   const cellWrapperProps = {
     ...tryCall(headerCellProps, props),
     onClick: column.sortable ? onColumnSorted : void 0,
@@ -58,7 +58,8 @@ const HeaderCellRenderer = (props, {
     "role": "columnheader"
   }), [Cell, sortable && createVNode(SortIcon, {
     "class": [ns.e("sort-icon"), sorting && ns.is("sorting")],
-    "sortOrder": sortOrder
+    "sortOrder": sortOrder,
+    "sorting": sorting
   }, null)]);
 };
 var HeaderCell = HeaderCellRenderer;

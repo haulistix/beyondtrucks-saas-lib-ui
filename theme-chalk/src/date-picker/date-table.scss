@@ -178,7 +178,7 @@
 
       .#{$namespace}-date-table-cell {
         cursor: not-allowed;
-        color: #c1ccd6;
+        color: var(--color-gray-300);
       }
     }
 

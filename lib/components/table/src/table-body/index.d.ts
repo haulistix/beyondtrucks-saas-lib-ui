@@ -32,6 +32,7 @@ declare const _default: import("vue").DefineComponent<{
         type: FunctionConstructor;
         default: undefined;
     };
+    ghostTable: BooleanConstructor;
     showAddRowTrigger: BooleanConstructor;
 }, {
     ns: {
@@ -98,6 +99,7 @@ declare const _default: import("vue").DefineComponent<{
         type: FunctionConstructor;
         default: undefined;
     };
+    ghostTable: BooleanConstructor;
     showAddRowTrigger: BooleanConstructor;
 }>>, {
     fixed: string;
@@ -107,6 +109,7 @@ declare const _default: import("vue").DefineComponent<{
     stripe: boolean;
     context: import("element-plus").Table<any>;
     rowDraggable: boolean | Function;
+    ghostTable: boolean;
     showAddRowTrigger: boolean;
 }>;
 export default _default;

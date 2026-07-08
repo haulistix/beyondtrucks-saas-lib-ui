@@ -13,6 +13,12 @@ export declare const selectV2Props: {
     readonly allowCreate: BooleanConstructor;
     readonly autocomplete: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list") | ((new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list"))[], unknown, unknown, "none", boolean>;
     readonly floatLabel: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly haveAll: {
+        readonly type: import("vue").PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly automaticDropdown: BooleanConstructor;
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {

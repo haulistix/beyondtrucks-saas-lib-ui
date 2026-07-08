@@ -2,8 +2,8 @@ import { defineComponent, getCurrentInstance, computed, ref, watch, provide, h }
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
 import { elPaginationKey } from './constants.mjs';
 import Prev from './components/prev.mjs';
-import Next from './components/next.mjs';
-import Sizes from './components/sizes.mjs';
+import Next from './components/next2.mjs';
+import Sizes from './components/sizes2.mjs';
 import Jumper from './components/jumper2.mjs';
 import Total from './components/total2.mjs';
 import Pager from './components/pager2.mjs';

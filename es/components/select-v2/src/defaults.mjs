@@ -21,6 +21,9 @@ const selectV2Props = buildProps({
     type: Boolean,
     default: true
   },
+  haveAll: {
+    type: String
+  },
   automaticDropdown: Boolean,
   clearable: Boolean,
   clearIcon: {

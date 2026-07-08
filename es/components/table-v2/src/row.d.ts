@@ -18,9 +18,19 @@ export type RowHeightChangedParams = {
     height: number;
     rowIndex: number;
 };
+export type RowDeleteParams = {
+    event: MouseEvent;
+    rowKey: KeyType;
+} & RowCommonParams;
+export type RowAddParams = {
+    event: MouseEvent;
+    rowKey: KeyType;
+} & RowCommonParams;
 export type RowExpandHandler = (params: RowExpandParams) => void;
 export type RowHoverHandler = (params: RowHoverParams) => void;
 export type RowEventHandler = (params: RowEventHandlerParams) => void;
+export type RowDeleteHandler = (params: RowDeleteParams) => void;
+export type RowAddHandler = (params: RowAddParams) => void;
 export type RowHeightChangeHandler = (row: RowHeightChangedParams, fixedDirection: boolean | FixedDirection | undefined) => void;
 export type RowEventHandlers = {
     onClick?: RowEventHandler;

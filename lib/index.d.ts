@@ -26345,6 +26345,7 @@ export declare type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     prop: string;
     width?: string | number;
     minWidth: string | number;
+    autoWidth?: boolean;
     renderHeader: (data: CI<T>) => VNode;
     sortable: boolean | string;
     sortMethod: (a: T, b: T) => number;

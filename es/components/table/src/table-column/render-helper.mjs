@@ -1,5 +1,6 @@
 import { getCurrentInstance, ref, watchEffect, computed, unref, h, renderSlot, Comment, cloneVNode } from 'vue';
 import { cellForced, defaultRenderCell, treeCellPrefix, getDefaultClassName } from '../config.mjs';
+import { getAutoColumnWidth } from '../column-width.mjs';
 import { parseWidth, parseMinWidth } from '../util.mjs';
 import { ghostRowSign, ghostRowKey } from '../private.mjs';
 import GhostRowAddButton from '../ghost-row-add-button.mjs';
@@ -79,7 +80,10 @@ function useRender(props, slots, owner) {
     if (!realWidth.value && realMinWidth.value) {
       column.width = void 0;
     }
-    if (!column.minWidth) {
+    column.autoWidth = isUndefined(column.width) && !realWidth.value && !realMinWidth.value;
+    if (column.autoWidth) {
+      column.minWidth = getAutoColumnWidth(column.label);
+    } else if (!column.minWidth) {
       column.minWidth = 80;
     }
     column.realWidth = Number(isUndefined(column.width) ? column.minWidth : column.width);

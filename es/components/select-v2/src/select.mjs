@@ -115,7 +115,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       disabled: _ctx.errorTooltipDisabled
     }, {
       default: withCtx(() => [
-        createElementVNode("div", null, [
+        createElementVNode("div", {
+          class: normalizeClass([
+            _ctx.nsSelect.e("container"),
+            _ctx.nsSelect.is("append", !!_ctx.$slots.append)
+          ])
+        }, [
           createVNode(_component_el_tooltip, {
             ref: "tooltipRef",
             visible: _ctx.dropdownMenuVisible,
@@ -492,8 +497,18 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               ]), 1032, ["id", "data", "width", "hovering-index", "scrollbar-always-on", "aria-label"])
             ]),
             _: 3
-          }, 8, ["visible", "teleported", "popper-class", "popper-style", "popper-options", "fallback-placements", "effect", "placement", "transition", "persistent", "append-to", "show-arrow", "offset", "onBeforeShow", "onHide"])
-        ])
+          }, 8, ["visible", "teleported", "popper-class", "popper-style", "popper-options", "fallback-placements", "effect", "placement", "transition", "persistent", "append-to", "show-arrow", "offset", "onBeforeShow", "onHide"]),
+          _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
+            key: 0,
+            class: normalizeClass(_ctx.nsSelect.e("append")),
+            onMousedown: withModifiers(() => {
+            }, ["stop"]),
+            onClick: withModifiers(() => {
+            }, ["stop"])
+          }, [
+            renderSlot(_ctx.$slots, "append")
+          ], 42, ["onMousedown", "onClick"])) : createCommentVNode("v-if", true)
+        ], 2)
       ]),
       _: 3
     }, 8, ["content", "disabled"])

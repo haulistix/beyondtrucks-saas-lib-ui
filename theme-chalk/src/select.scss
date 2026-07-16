@@ -22,6 +22,22 @@
   vertical-align: middle;
   width: getCssVar('select-width');
 
+  @include e(container) {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+
+    @include when(append) {
+      @include e(wrapper) {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+
   @include e(wrapper) {
     display: flex;
     align-items: center;
@@ -38,6 +54,7 @@
     transition: getCssVar('transition', 'duration');
     transform: translate3d(0, 0, 0);
     border: 1px solid getCssVar('border-color-light');
+    width: 100%;
     &:hover {
       border-color: #7a909e;
     }
@@ -120,6 +137,27 @@
       .#{$namespace}-select__suffix {
         pointer-events: none;
       }
+    }
+  }
+
+  @include e(append) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    min-width: map.get($input-height, 'default');
+    cursor: pointer;
+    border: 1px solid getCssVar('border-color-light');
+    border-left: 0;
+    border-radius: 0 getCssVar('border-radius-custom')
+      getCssVar('border-radius-custom') 0;
+    background-color: getCssVar('fill-color', 'blank');
+    transition: getCssVar('transition', 'duration');
+
+    &:hover {
+      border-color: #7a909e;
+      background-color: getCssVar('fill-color', 'light');
     }
   }
 
@@ -279,6 +317,10 @@
 
   @each $size in (large, small) {
     @include m($size) {
+      @include e(append) {
+        min-width: map.get($input-height, $size);
+      }
+
       @include e(wrapper) {
         gap: map.get($select-item-gap, $size);
         padding: map.get($select-wrapper-padding, $size);

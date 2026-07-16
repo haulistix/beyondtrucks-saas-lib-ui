@@ -1,6 +1,7 @@
 import { inject, ref, h, nextTick } from 'vue';
 import { debounce } from 'lodash-unified';
 import { getCell, getColumnByCell, toggleRowClassByCell, removePopper, getPadding, isGreaterThan, createTablePopper } from '../util.mjs';
+import { ghostRowSign } from '../private.mjs';
 import { TABLE_INJECTION_KEY } from '../tokens.mjs';
 import { isElement } from '../../../../utils/types.mjs';
 import { addClass, hasClass, removeClass } from '../../../../utils/dom/style.mjs';
@@ -82,7 +83,7 @@ function useEvents(props, emit) {
   }, 30);
   const handleRowMouseMove = (event, row, rowIndex) => {
     var _a;
-    if (!(parent == null ? void 0 : parent.props.showAddRowTrigger) || !(parent == null ? void 0 : parent.props.border)) {
+    if (!(parent == null ? void 0 : parent.props.showAddRowTrigger) || !(parent == null ? void 0 : parent.props.editTable) || !(parent == null ? void 0 : parent.props.border)) {
       clearAddRowTrigger();
       return;
     }
@@ -93,6 +94,7 @@ function useEvents(props, emit) {
     const rect = currentTarget.getBoundingClientRect();
     const nearTop = rect.height > 12 && event.clientY - rect.top < 8;
     const nearBottom = rect.height > 12 && rect.bottom - event.clientY < 8;
+    const isGhostRow = Boolean(row == null ? void 0 : row[ghostRowSign]);
     if (nearTop) {
       emit("update-add-row-trigger", {
         row,
@@ -101,7 +103,7 @@ function useEvents(props, emit) {
         top: rect.top - tableRect.top,
         placement: "below"
       });
-    } else if (nearBottom) {
+    } else if (nearBottom && !isGhostRow) {
       emit("update-add-row-trigger", {
         row,
         rowIndex,

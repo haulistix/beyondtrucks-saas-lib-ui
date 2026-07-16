@@ -206,6 +206,7 @@ export type GridInstance = InstanceType<ReturnType<typeof createGrid>> & UnwrapR
     getItemStyleCache: ReturnType<typeof useCache>;
     scrollTo: (scrollOptions: GridScrollOptions) => void;
     scrollToItem: (rowIndex: number, columnIndex: number, alignment: Alignment) => void;
+    scrollToRow: (rowIndex: number, alignment: Alignment) => void;
     states: Ref<{
         isScrolling: boolean;
         scrollLeft: number;

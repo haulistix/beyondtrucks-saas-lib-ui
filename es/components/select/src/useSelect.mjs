@@ -149,6 +149,17 @@ const useSelect = (props, emit) => {
       (_a = option.updateOption) == null ? void 0 : _a.call(option, states.inputValue);
     });
   };
+  const tryAutoSelectSingleOption = () => {
+    if (props.multiple || props.clearable || hasModelValue.value)
+      return;
+    const availableOptions = optionsArray.value.filter((option2) => !option2.isDisabled);
+    if (availableOptions.length !== 1)
+      return;
+    const [option] = availableOptions;
+    if (isEmptyValue(option.value))
+      return;
+    emit(UPDATE_MODEL_EVENT, option.value);
+  };
   const selectSize = useFormSize();
   const collapseTagSize = computed(() => ["small"].includes(selectSize.value) ? "small" : "default");
   const dropdownMenuVisible = computed({
@@ -200,6 +211,7 @@ const useSelect = (props, emit) => {
   watch(() => states.options.entries(), () => {
     if (!isClient)
       return;
+    tryAutoSelectSingleOption();
     setSelected();
     if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptionsCount.value) {
       checkDefaultFirstOption();
@@ -633,6 +645,7 @@ const useSelect = (props, emit) => {
     }
   });
   onMounted(() => {
+    tryAutoSelectSingleOption();
     setSelected();
   });
   return {

@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'vue';
 import type { ScrollStrategy } from './composables/use-scrollbar';
 import type { KeyType } from './types';
+import type { ColumnInsertParams, GhostRowAddParams, RowInsertParams } from './table';
 declare const TableV2: import("vue").DefineComponent<{
     readonly cache: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, never, never, 2, false>;
     readonly estimatedRowHeight: {
@@ -34,6 +35,12 @@ declare const TableV2: import("vue").DefineComponent<{
     readonly isFooterDefault: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly editable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly canEditTable: BooleanConstructor;
+    readonly ghostTable: BooleanConstructor;
+    readonly editTable: BooleanConstructor;
+    readonly ghostRowTemplate: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
+    readonly showAddColumnTrigger: BooleanConstructor;
+    readonly addColumnButton: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showAddRowTrigger: BooleanConstructor;
     readonly total: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly updateTime: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
@@ -92,13 +99,13 @@ declare const TableV2: import("vue").DefineComponent<{
     };
     readonly width: {
         readonly type: import("vue").PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
     readonly height: {
         readonly type: import("vue").PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
@@ -158,8 +165,12 @@ declare const TableV2: import("vue").DefineComponent<{
     };
 }, () => JSX.Element, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     'update:expandedRowKeys': (expandedRowKeys: KeyType[]) => boolean;
+    'header-dragend': (newWidth: number, oldWidth: number, column: import("./types").Column<any>, event: MouseEvent) => boolean;
     'row-delete': (params: import("./row").RowDeleteParams) => boolean;
     'row-add': (params: import("./row").RowAddParams) => boolean;
+    'add-column': (params: ColumnInsertParams<any>) => boolean;
+    'add-row': (params: RowInsertParams<any>) => boolean;
+    'add-ghost-row': (params: GhostRowAddParams<any>) => boolean;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     readonly cache: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, never, never, 2, false>;
     readonly estimatedRowHeight: {
@@ -193,6 +204,12 @@ declare const TableV2: import("vue").DefineComponent<{
     readonly isFooterDefault: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly editable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly canEditTable: BooleanConstructor;
+    readonly ghostTable: BooleanConstructor;
+    readonly editTable: BooleanConstructor;
+    readonly ghostRowTemplate: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
+    readonly showAddColumnTrigger: BooleanConstructor;
+    readonly addColumnButton: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showAddRowTrigger: BooleanConstructor;
     readonly total: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly updateTime: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
@@ -251,13 +268,13 @@ declare const TableV2: import("vue").DefineComponent<{
     };
     readonly width: {
         readonly type: import("vue").PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
     readonly height: {
         readonly type: import("vue").PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
@@ -316,6 +333,10 @@ declare const TableV2: import("vue").DefineComponent<{
         __epPropKey: true;
     };
 }>> & {
+    "onHeader-dragend"?: ((newWidth: number, oldWidth: number, column: import("./types").Column<any>, event: MouseEvent) => any) | undefined;
+    "onAdd-column"?: ((params: ColumnInsertParams<any>) => any) | undefined;
+    "onAdd-row"?: ((params: RowInsertParams<any>) => any) | undefined;
+    "onAdd-ghost-row"?: ((params: GhostRowAddParams<any>) => any) | undefined;
     "onUpdate:expandedRowKeys"?: ((expandedRowKeys: KeyType[]) => any) | undefined;
     "onRow-delete"?: ((params: import("./row").RowDeleteParams) => any) | undefined;
     "onRow-add"?: ((params: import("./row").RowAddParams) => any) | undefined;
@@ -332,10 +353,16 @@ declare const TableV2: import("vue").DefineComponent<{
     readonly hScrollbarSize: number;
     readonly vScrollbarSize: number;
     readonly sortBy: import("./types").SortBy;
+    readonly showAddColumnTrigger: boolean;
+    readonly addColumnButton: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly editTable: boolean;
     readonly updateTime: string;
+    readonly ghostTable: boolean;
+    readonly showAddRowTrigger: boolean;
     readonly headerHeight: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown>;
     readonly footerHeight: number;
     readonly isFooterDefault: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly ghostRowTemplate: Record<string, any>;
     readonly indentSize: number;
     readonly iconSize: number;
     readonly sortState: import("./types").SortState;
@@ -369,4 +396,8 @@ export type TableV2Instance = InstanceType<typeof TableV2> & {
      * @params strategy {ScrollStrategy} use what strategy to scroll to
      */
     scrollToRow(row: number, strategy?: ScrollStrategy): void;
+    /**
+     * @description validates current table data against required columns
+     */
+    validateRequiredColumns: () => boolean;
 };

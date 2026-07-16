@@ -1,5 +1,10 @@
 export declare const placeholderSign: unique symbol;
 export declare const rowDeleteColumnKey = "__ep_table_v2_row_delete__";
 export declare const rowDeleteColumnWidth = 36;
+export declare const rowDeletePlaceholderMergedSign = "__ep_table_v2_row_delete_placeholder_merged__";
 export declare const rowAddKey = "__ep_table_v2_add_row__";
 export declare const rowAddSign = "__ep_table_v2_is_add_row__";
+export declare const ghostRowSign = "__ep_table_v2_ghost_row__";
+export declare const ghostRowKey = "__ep_table_v2_ghost_row_key__";
+export declare const ghostRowFieldKey = "__ep_table_v2_ghost_row_field__";
+export declare const ghostRowTouchedSign = "__ep_table_v2_ghost_row_touched__";

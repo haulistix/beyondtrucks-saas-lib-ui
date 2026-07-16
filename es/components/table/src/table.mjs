@@ -1,4 +1,4 @@
-import { defineComponent, getCurrentInstance, provide, ref, shallowRef, computed, onBeforeUnmount, toRaw, resolveComponent, resolveDirective, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, withDirectives, createVNode, createCommentVNode, withCtx, createBlock, createTextVNode, toDisplayString, vShow, withModifiers } from 'vue';
+import { defineComponent, getCurrentInstance, provide, ref, shallowRef, computed, watch, onBeforeUnmount, toRaw, nextTick, resolveComponent, resolveDirective, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, withDirectives, createVNode, createCommentVNode, withCtx, createBlock, createTextVNode, toDisplayString, vShow, withModifiers } from 'vue';
 import TableText from './table-footer/tableText.mjs';
 import ElTooltip from '../../tooltip/src/tooltip2.mjs';
 import { debounce, cloneDeep } from 'lodash-unified';
@@ -114,12 +114,6 @@ const _sfc_main = defineComponent({
       Object.assign(editingRow.value.row, editingRow.value.draft);
       return editingRow.value;
     };
-    table.editingRow = editingRow;
-    table.activeEditableCell = activeEditableCell;
-    table.ghostRowData = ghostRowData;
-    table.startRowEdit = startRowEdit;
-    table.clearEditingRow = clearEditingRow;
-    table.applyEditingRow = applyEditingRow;
     const layout = new TableLayout({
       store: table.store,
       table,
@@ -180,6 +174,10 @@ const _sfc_main = defineComponent({
       });
       clearAddColumnTrigger();
     };
+    const handleAddColumnTailClick = (payload) => {
+      emit("add-column", payload);
+      clearAddColumnTrigger();
+    };
     const clearAddRowTrigger = () => {
       addRowTrigger.value = null;
     };
@@ -209,7 +207,36 @@ const _sfc_main = defineComponent({
       emit("scroll", event);
     };
     const { scrollBarRef, scrollTo, setScrollLeft, setScrollTop } = useScrollbar();
+    let stopPendingGhostRowScrollWatch;
+    const clearPendingGhostRowScrollWatch = () => {
+      stopPendingGhostRowScrollWatch == null ? void 0 : stopPendingGhostRowScrollWatch();
+      stopPendingGhostRowScrollWatch = void 0;
+    };
+    const scheduleGhostRowScroll = () => {
+      clearPendingGhostRowScrollWatch();
+      const previousLength = props.data.length;
+      stopPendingGhostRowScrollWatch = watch(() => props.data.length, async (length) => {
+        var _a, _b;
+        if (length <= previousLength)
+          return;
+        clearPendingGhostRowScrollWatch();
+        await nextTick();
+        const scrollHeight = (_b = (_a = scrollBarRef.value) == null ? void 0 : _a.wrapRef) == null ? void 0 : _b.scrollHeight;
+        if (scrollHeight != null) {
+          setScrollTop(scrollHeight);
+        }
+      }, {
+        flush: "post"
+      });
+    };
     const debouncedUpdateLayout = debounce(doLayout, 50);
+    table.editingRow = editingRow;
+    table.activeEditableCell = activeEditableCell;
+    table.ghostRowData = ghostRowData;
+    table.scheduleGhostRowScroll = scheduleGhostRowScroll;
+    table.startRowEdit = startRowEdit;
+    table.clearEditingRow = clearEditingRow;
+    table.applyEditingRow = applyEditingRow;
     const tableId = `${ns.namespace.value}-table_${tableIdSeed++}`;
     table.tableId = tableId;
     table.state = {
@@ -219,6 +246,8 @@ const _sfc_main = defineComponent({
       debouncedUpdateLayout
     };
     const hasEditingRow = computed(() => !!editingRow.value);
+    const effectiveShowAddColumnTrigger = computed(() => props.editTable && props.showAddColumnTrigger);
+    const effectiveShowAddRowTrigger = computed(() => props.editTable && props.showAddRowTrigger);
     const computedSumText = computed(() => {
       var _a;
       return (_a = props.sumText) != null ? _a : t("el.table.sumText");
@@ -227,6 +256,17 @@ const _sfc_main = defineComponent({
       var _a;
       return (_a = props.emptyText) != null ? _a : t("el.table.emptyText");
     });
+    const isEmptyRequiredValue = (value) => value === "" || value === null || value === void 0;
+    const validateRequiredColumns = () => {
+      const requiredColumns = store.states.columns.value.filter((column) => !!column.required && !!column.property);
+      if (!requiredColumns.length)
+        return true;
+      return props.data.every((row) => {
+        var _a;
+        const source = ((_a = editingRow.value) == null ? void 0 : _a.row) === row ? editingRow.value.draft : row;
+        return requiredColumns.every((column) => !isEmptyRequiredValue(source == null ? void 0 : source[column.property]));
+      });
+    };
     const addColumnTriggerStyle = computed(() => {
       if (!addColumnTrigger.value)
         return {};
@@ -241,11 +281,22 @@ const _sfc_main = defineComponent({
         top: `${addRowTrigger.value.top}px`
       };
     });
+    watch(effectiveShowAddColumnTrigger, (enabled) => {
+      if (!enabled) {
+        clearAddColumnTrigger();
+      }
+    });
+    watch(effectiveShowAddRowTrigger, (enabled) => {
+      if (!enabled) {
+        clearAddRowTrigger();
+      }
+    });
     const columns = computed(() => {
       return convertToRows(store.states.originColumns.value)[0];
     });
     useKeyRender(table);
     onBeforeUnmount(() => {
+      clearPendingGhostRowScrollWatch();
       debouncedUpdateLayout.cancel();
     });
     return {
@@ -288,8 +339,11 @@ const _sfc_main = defineComponent({
       clearEditingRow,
       applyEditingRow,
       hasEditingRow,
+      effectiveShowAddColumnTrigger,
+      effectiveShowAddRowTrigger,
       addColumnTrigger,
       addColumnTriggerStyle,
+      handleAddColumnTailClick,
       handleAddColumnClick,
       updateAddColumnTrigger,
       addRowTrigger,
@@ -307,8 +361,9 @@ const _sfc_main = defineComponent({
       setScrollLeft,
       setScrollTop,
       allowDragLastColumn: props.allowDragLastColumn,
-      showAddColumnTrigger: props.showAddColumnTrigger,
-      showAddRowTrigger: props.showAddRowTrigger
+      showAddColumnTrigger: effectiveShowAddColumnTrigger,
+      showAddRowTrigger: effectiveShowAddRowTrigger,
+      validateRequiredColumns
     };
   }
 });
@@ -336,8 +391,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         [_ctx.ns.m("fluid-height")]: _ctx.maxHeight,
         [_ctx.ns.m("scrollable-x")]: _ctx.layout.scrollX.value,
         [_ctx.ns.m("scrollable-y")]: _ctx.layout.scrollY.value,
-        [_ctx.ns.m("with-add-column-trigger")]: _ctx.showAddColumnTrigger,
-        [_ctx.ns.m("with-add-row-trigger")]: _ctx.showAddRowTrigger,
+        [_ctx.ns.m("with-add-column-trigger")]: _ctx.effectiveShowAddColumnTrigger,
+        [_ctx.ns.m("with-add-row-trigger")]: _ctx.effectiveShowAddRowTrigger,
         [_ctx.ns.m("enable-row-hover")]: !_ctx.store.states.isComplex.value,
         [_ctx.ns.m("enable-row-transition")]: (_ctx.store.states.data.value || []).length !== 0 && (_ctx.store.states.data.value || []).length < 100,
         "has-footer": _ctx.showSummary
@@ -384,10 +439,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             store: _ctx.store,
             "append-filter-panel-to": _ctx.appendFilterPanelTo,
             "allow-drag-last-column": _ctx.allowDragLastColumn,
-            "show-add-column-trigger": _ctx.showAddColumnTrigger,
+            "show-add-column-trigger": _ctx.effectiveShowAddColumnTrigger,
+            "add-column-button": _ctx.addColumnButton,
+            "edit-table": _ctx.editTable,
             onSetDragVisible: _ctx.setDragVisible,
-            onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger
-          }, null, 8, ["border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "onSetDragVisible", "onUpdateAddColumnTrigger"])
+            onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger,
+            onTailAddColumn: _ctx.handleAddColumnTailClick
+          }, null, 8, ["border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "add-column-button", "edit-table", "onSetDragVisible", "onUpdateAddColumnTrigger", "onTailAddColumn"])
         ], 6)
       ], 2)), [
         [_directive_mousewheel, _ctx.handleHeaderFooterMousewheel]
@@ -430,10 +488,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 store: _ctx.store,
                 "append-filter-panel-to": _ctx.appendFilterPanelTo,
                 "allow-drag-last-column": _ctx.allowDragLastColumn,
-                "show-add-column-trigger": _ctx.showAddColumnTrigger,
+                "show-add-column-trigger": _ctx.effectiveShowAddColumnTrigger,
+                "add-column-button": _ctx.addColumnButton,
+                "edit-table": _ctx.editTable,
                 onSetDragVisible: _ctx.setDragVisible,
-                onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger
-              }, null, 8, ["class", "border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "onSetDragVisible", "onUpdateAddColumnTrigger"])) : createCommentVNode("v-if", true),
+                onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger,
+                onTailAddColumn: _ctx.handleAddColumnTailClick
+              }, null, 8, ["class", "border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "add-column-button", "edit-table", "onSetDragVisible", "onUpdateAddColumnTrigger", "onTailAddColumn"])) : createCommentVNode("v-if", true),
               createVNode(_component_table_body, {
                 context: _ctx.context,
                 "row-draggable": _ctx.rowDraggable,
@@ -446,7 +507,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 "row-style": _ctx.rowStyle,
                 store: _ctx.store,
                 stripe: _ctx.stripe,
-                "show-add-row-trigger": _ctx.showAddRowTrigger,
+                "show-add-row-trigger": _ctx.effectiveShowAddRowTrigger,
                 onUpdateAddRowTrigger: _ctx.updateAddRowTrigger
               }, null, 8, ["context", "row-draggable", "on-dragend", "on-dragstart", "highlight", "row-class-name", "tooltip-effect", "tooltip-options", "row-style", "store", "stripe", "show-add-row-trigger", "onUpdateAddRowTrigger"]),
               _ctx.showSummary && _ctx.tableLayout === "auto" ? (openBlock(), createBlock(_component_table_footer, {
@@ -572,7 +633,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
       })
     ], 6), [
-      [vShow, _ctx.addColumnTrigger]
+      [vShow, _ctx.effectiveShowAddColumnTrigger && _ctx.addColumnTrigger]
     ]),
     withDirectives(createElementVNode("div", {
       class: normalizeClass([_ctx.ns.e("add-row-trigger")]),
@@ -623,7 +684,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
       })
     ], 6), [
-      [vShow, _ctx.addRowTrigger]
+      [vShow, _ctx.effectiveShowAddRowTrigger && _ctx.addRowTrigger]
     ])
   ], 46, ["data-prefix", "onMouseleave"]);
 }

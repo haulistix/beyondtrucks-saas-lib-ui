@@ -112,6 +112,10 @@ var defaultProps = {
     default: void 0
   },
   showAddColumnTrigger: Boolean,
+  addColumnButton: {
+    type: Boolean,
+    default: true
+  },
   showAddRowTrigger: Boolean,
   allowDragLastColumn: {
     type: Boolean,

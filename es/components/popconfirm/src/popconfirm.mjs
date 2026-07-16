@@ -3,7 +3,7 @@ import { buttonTypes } from '../../button/src/button.mjs';
 import { buildProps } from '../../../utils/vue/props/runtime.mjs';
 import { iconPropType } from '../../../utils/vue/icon.mjs';
 import { useTooltipContentProps } from '../../tooltip/src/content.mjs';
-import { useTooltipTriggerProps } from '../../tooltip/src/trigger2.mjs';
+import { useTooltipTriggerProps } from '../../tooltip/src/trigger.mjs';
 
 const popconfirmProps = buildProps({
   title: String,

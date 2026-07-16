@@ -1082,8 +1082,8 @@ declare const __VLS_component_21: DefineComponent<{
     fallbackPlacements: Placement[];
     teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     persistent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     clearable: boolean;
+    validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     debounce: number;
     checkOnClickNode: boolean;
     showPrefix: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -1927,6 +1927,18 @@ declare const __VLS_component_3: DefineComponent<{
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly resize: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
         readonly required: false;
@@ -1967,7 +1979,7 @@ declare const __VLS_component_3: DefineComponent<{
     };
     readonly readonly: BooleanConstructor;
     readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly clearable: BooleanConstructor;
+    readonly clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -2201,6 +2213,18 @@ declare const __VLS_component_3: DefineComponent<{
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly resize: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
         readonly required: false;
@@ -2241,7 +2265,7 @@ declare const __VLS_component_3: DefineComponent<{
     };
     readonly readonly: BooleanConstructor;
     readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly clearable: BooleanConstructor;
+    readonly clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -2300,6 +2324,7 @@ declare const __VLS_component_3: DefineComponent<{
     readonly autosize: InputAutoSize;
     readonly autocomplete: AutoFill;
     readonly floatLabel: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly wordLimitPosition: EpPropMergeType<StringConstructor, "inside" | "outside", unknown>;
     readonly containerRole: string;
     readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -2307,7 +2332,6 @@ declare const __VLS_component_3: DefineComponent<{
     readonly rows: number;
     readonly inputmode: EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     readonly isHoverSuffix: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly clearable: boolean;
     readonly showPassword: boolean;
     readonly showWordLimit: boolean;
     readonly autofocus: boolean;
@@ -2718,6 +2742,18 @@ declare const __VLS_component_4: DefineComponent<{
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly resize: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
         readonly required: false;
@@ -2758,7 +2794,7 @@ declare const __VLS_component_4: DefineComponent<{
     };
     readonly readonly: BooleanConstructor;
     readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly clearable: BooleanConstructor;
+    readonly clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -2860,6 +2896,18 @@ declare const __VLS_component_4: DefineComponent<{
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly resize: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
         readonly required: false;
@@ -2900,7 +2948,7 @@ declare const __VLS_component_4: DefineComponent<{
     };
     readonly readonly: BooleanConstructor;
     readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly clearable: BooleanConstructor;
+    readonly clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -2959,6 +3007,7 @@ declare const __VLS_component_4: DefineComponent<{
     readonly autosize: InputAutoSize;
     readonly autocomplete: AutoFill;
     readonly floatLabel: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly wordLimitPosition: EpPropMergeType<StringConstructor, "inside" | "outside", unknown>;
     readonly containerRole: string;
     readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -2966,7 +3015,6 @@ declare const __VLS_component_4: DefineComponent<{
     readonly rows: number;
     readonly inputmode: EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     readonly isHoverSuffix: boolean;
-    readonly clearable: boolean;
     readonly showPassword: boolean;
     readonly showWordLimit: boolean;
     readonly autofocus: boolean;
@@ -4490,8 +4538,8 @@ declare const __VLS_component_49: DefineComponent<{
     readonly readonly: boolean;
     readonly trigger: EpPropMergeType<(new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space") | ((new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space"))[], unknown, unknown>;
     readonly autocomplete: AutoFill;
-    readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: boolean;
+    readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly autofocus: boolean;
     readonly draggable: boolean;
     readonly collapseTags: boolean;
@@ -7473,9 +7521,9 @@ declare const __VLS_component_73: DefineComponent<{
     readonly popperOptions: Partial<Options>;
     readonly popperClass: string;
     readonly teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly prefixIcon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
     readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly automaticDropdown: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly cycle: number;
     readonly isOk: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -9542,6 +9590,18 @@ declare const __VLS_component_88: DefineComponent<{
         __epPropKey: true;
     };
     type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     resize: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
         readonly required: false;
@@ -9582,7 +9642,7 @@ declare const __VLS_component_88: DefineComponent<{
     };
     readonly: BooleanConstructor;
     floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    clearable: BooleanConstructor;
+    clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -9785,6 +9845,18 @@ declare const __VLS_component_88: DefineComponent<{
         __epPropKey: true;
     };
     type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     resize: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
         readonly required: false;
@@ -9825,7 +9897,7 @@ declare const __VLS_component_88: DefineComponent<{
     };
     readonly: BooleanConstructor;
     floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    clearable: BooleanConstructor;
+    clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -9887,6 +9959,7 @@ declare const __VLS_component_88: DefineComponent<{
     autosize: InputAutoSize;
     autocomplete: AutoFill;
     floatLabel: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     wordLimitPosition: EpPropMergeType<StringConstructor, "inside" | "outside", unknown>;
     containerRole: string;
     validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -9894,7 +9967,6 @@ declare const __VLS_component_88: DefineComponent<{
     rows: number;
     inputmode: EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     isHoverSuffix: boolean;
-    clearable: boolean;
     showPassword: boolean;
     showWordLimit: boolean;
     autofocus: boolean;
@@ -12043,6 +12115,18 @@ export declare const autocompleteProps: {
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly resize: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
         readonly required: false;
@@ -12083,7 +12167,7 @@ export declare const autocompleteProps: {
     };
     readonly readonly: BooleanConstructor;
     readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly clearable: BooleanConstructor;
+    readonly clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -13290,16 +13374,20 @@ export declare type Column<T = any> = {
     title?: string;
     hidden?: boolean;
     headerClass?: HeaderClassGetter<T> | string;
+    diagonalHeader?: DiagonalHeaderConfig_2;
+    allowInsertBeforeFirstColumn?: boolean;
     maxWidth?: number;
     minWidth?: number;
     required?: boolean;
+    resizable?: boolean;
     style?: CSSProperties;
     sortable?: boolean;
-    width: number;
+    width?: ColumnWidth;
     /**
      * Renderers
      */
     cellRenderer?: CellRenderer<T>;
+    editCellRenderer?: EditCellRenderer<T>;
     headerCellRenderer?: HeaderCellRenderer<T>;
     /**
      * Extendable sections
@@ -13321,7 +13409,12 @@ declare type ColumnCommonParams<T> = {
     column: Column<T>;
     columnIndex: number;
 };
-export declare type ColumnResizeHandler<T> = (column: Column<T>, width: number) => void;
+export declare type ColumnInsertParams<T> = {
+    column: Column<T>;
+    columnIndex: number;
+    insertIndex: number;
+    event: MouseEvent;
+};
 export declare type Columns<T> = Column<T>[];
 /**
  * Handler types
@@ -13339,6 +13432,10 @@ export declare type ColumnStyle<T> = CSSProperties | ((data: {
     row: T;
     rowIndex: number;
 }) => CSSProperties);
+declare type ColumnTriggerState = Omit<ColumnInsertParams<any>, "event"> & {
+    left: number;
+};
+declare type ColumnWidth = number | string;
 export declare const CommonPicker: __VLS_WithTemplateSlots_73<typeof __VLS_component_73, ReturnType<typeof __VLS_template_73>>;
 declare type CommonPickerContext = ReturnType<typeof useCommonPicker>;
 declare type CommonPickerEmits = (event: "update:modelValue" | "calendar-change" | "panel-change", ...args: any[]) => void;
@@ -14902,9 +14999,9 @@ declare const _default_40: DefineComponent<{
     readonly popperOptions: Partial<Options>;
     readonly popperClass: string;
     readonly teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly prefixIcon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
     readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly automaticDropdown: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly cycle: number;
     readonly isOk: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -15869,6 +15966,12 @@ declare const _default_73: DefineComponent<{
     effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;
+    inputType: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
     beforeChange: {
@@ -15987,6 +16090,8 @@ declare const _default_73: DefineComponent<{
     }>;
     validateError: ComputedRef<boolean>;
     validateMsg: ComputedRef<string>;
+    errorTooltipContent: ComputedRef<string>;
+    errorTooltipDisabled: ComputedRef<boolean>;
     handleAddSelect: () => void;
     getLabel: (option: Option_2) => any;
     isEmpty: (val: unknown) => boolean;
@@ -16170,6 +16275,12 @@ declare const _default_73: DefineComponent<{
     effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;
+    inputType: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
     beforeChange: {
@@ -16309,8 +16420,8 @@ declare const _default_73: DefineComponent<{
     showArrow: boolean;
     autocomplete: string;
     floatLabel: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     clearable: boolean;
+    validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     valueKey: string;
     debounce: number;
     fitInputWidth: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -16488,6 +16599,12 @@ declare const _default_76: DefineComponent<{
         __epPropKey: true;
     };
     readonly automaticDropdown: BooleanConstructor;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
@@ -16728,6 +16845,8 @@ declare const _default_76: DefineComponent<{
     }>;
     validateError: ComputedRef<boolean>;
     validateMsg: ComputedRef<string>;
+    errorTooltipContent: ComputedRef<string>;
+    errorTooltipDisabled: ComputedRef<boolean>;
     contentId: Ref<string>;
     BORDER_HORIZONTAL_WIDTH: number;
     inputId: Ref<string | undefined>;
@@ -16867,6 +16986,12 @@ declare const _default_76: DefineComponent<{
         __epPropKey: true;
     };
     readonly automaticDropdown: BooleanConstructor;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
@@ -17128,8 +17253,8 @@ declare const _default_76: DefineComponent<{
     readonly showArrow: boolean;
     readonly autocomplete: EpPropMergeType<(new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list") | ((new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list"))[], unknown, unknown>;
     readonly floatLabel: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: boolean;
+    readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly valueKey: string;
     readonly debounce: number;
     readonly fitInputWidth: EpPropMergeType<readonly [
@@ -17457,6 +17582,10 @@ declare const _default_84: DefineComponent<{
         default: undefined;
     };
     showAddColumnTrigger: BooleanConstructor;
+    addColumnButton: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     showAddRowTrigger: BooleanConstructor;
     allowDragLastColumn: {
         type: BooleanConstructor;
@@ -18125,6 +18254,8 @@ declare const _default_84: DefineComponent<{
     clearEditingRow: () => void;
     applyEditingRow: () => any;
     hasEditingRow: ComputedRef<boolean>;
+    effectiveShowAddColumnTrigger: ComputedRef<boolean>;
+    effectiveShowAddRowTrigger: ComputedRef<boolean>;
     addColumnTrigger: ShallowRef<{
         column: TableColumnCtx<any>;
         columnIndex: number;
@@ -18133,6 +18264,12 @@ declare const _default_84: DefineComponent<{
         top: number;
     } | null>;
     addColumnTriggerStyle: ComputedRef<CSSProperties>;
+    handleAddColumnTailClick: (payload: {
+        column: TableColumnCtx<any>;
+        columnIndex: number;
+        insertIndex: number;
+        event: MouseEvent;
+    }) => void;
     handleAddColumnClick: (event: MouseEvent) => void;
     updateAddColumnTrigger: (payload: {
         column: TableColumnCtx<any>;
@@ -18195,11 +18332,15 @@ declare const _default_84: DefineComponent<{
     /**
     * @description whether to show an add-column trigger when hovering a header divider
     */
-    showAddColumnTrigger: boolean;
+    showAddColumnTrigger: ComputedRef<boolean>;
     /**
     * @description whether to show an add-row trigger when hovering a row divider
     */
-    showAddRowTrigger: boolean;
+    showAddRowTrigger: ComputedRef<boolean>;
+    /**
+    * @description validates required columns in the table data, returns `false` when any required cell is empty
+    */
+    validateRequiredColumns: () => boolean;
 }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     data: {
         type: PropType<any[]>;
@@ -18318,6 +18459,10 @@ declare const _default_84: DefineComponent<{
         default: undefined;
     };
     showAddColumnTrigger: BooleanConstructor;
+    addColumnButton: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     showAddRowTrigger: BooleanConstructor;
     allowDragLastColumn: {
         type: BooleanConstructor;
@@ -18364,6 +18509,8 @@ declare const _default_84: DefineComponent<{
     scrollbarAlwaysOn: boolean;
     allowDragLastColumn: boolean;
     showAddColumnTrigger: boolean;
+    addColumnButton: boolean;
+    editTable: boolean;
     tooltipOptions: Partial<Pick<ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">> | undefined;
     treeProps: TreeProps | undefined;
     updateTime: string;
@@ -18378,7 +18525,6 @@ declare const _default_84: DefineComponent<{
     rowDraggable: any;
     flexible: boolean;
     ghostTable: boolean;
-    editTable: boolean;
     haveTableText: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;
@@ -19041,9 +19187,9 @@ declare const _default_92: DefineComponent<{
     popperOptions: Partial<Options>;
     popperClass: string;
     teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     prefixIcon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
     validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     automaticDropdown: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     cycle: number;
     isOk: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -19180,9 +19326,9 @@ declare const _default_93: DefineComponent<{
     readonly valueOnClear: EpPropMergeType<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown>;
     readonly format: string;
     readonly popperClass: string;
+    readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearIcon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
     readonly prefixIcon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
-    readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly editable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly step: string;
     readonly includeEndTime: boolean;
@@ -19864,6 +20010,10 @@ export declare const descriptionProps: {
 };
 export declare type DescriptionPropsPublic = __ExtractPublicPropTypes<typeof descriptionProps>;
 declare type DiagonalHeaderConfig = {
+    from: string;
+    to: string;
+};
+declare type DiagonalHeaderConfig_2 = {
     from: string;
     to: string;
 };
@@ -20671,6 +20821,7 @@ export declare const DynamicSizeList: DefineComponent<{
     readonly initScrollOffset: number;
 }>;
 export declare type DynamicSizeListInstance = InstanceType<typeof DynamicSizeList> & unknown;
+declare type EditCellRenderer<T> = (params: CellRendererParams<T>) => VNode;
 declare type EditingRow<T extends DefaultRow> = Nullable<{
     row: T;
     prop?: string;
@@ -21970,6 +22121,12 @@ export declare type GetPosition<T, P extends InitGridCacheFunc<T>> = (props: T, 
 export declare const getPositionDataWithUnit: <T extends Record<string, number>>(record: T | undefined, key: keyof T) => string;
 export declare type GetStartIndexForOffset<T, P extends InitCacheFunc<T, GridCache | ListCache>> = (props: T, offset: number, cache: ReturnType<P>) => number;
 export declare type GetStopIndexForStartIndex<T, P extends InitCacheFunc<T, GridCache | ListCache>> = (props: T, startIndex: number, scrollOffset: number, cache: ReturnType<P>) => number;
+export declare type GhostRowAddParams<T> = {
+    row: T;
+    rowIndex: number;
+    rowKey: KeyType_2;
+    event: MouseEvent;
+};
 export declare type GridCache = {
     column: Record<string, ListItem>;
     row: Record<string, ListItem>;
@@ -22018,6 +22175,7 @@ export declare type GridExposes = {
         scrollTop: number;
     }) => void;
     scrollToItem: (columnIndex?: number, rowIndex?: number, alignment?: Alignment) => void;
+    scrollToRow: (rowIndex?: number, alignment?: Alignment) => void;
 } & SharedExposes;
 export declare type GridInstance = InstanceType<ReturnType<typeof createGrid>> & UnwrapRef<{
     windowRef: Ref<HTMLElement>;
@@ -22025,6 +22183,7 @@ export declare type GridInstance = InstanceType<ReturnType<typeof createGrid>> &
     getItemStyleCache: ReturnType<typeof useCache>;
     scrollTo: (scrollOptions: GridScrollOptions) => void;
     scrollToItem: (rowIndex: number, columnIndex: number, alignment: Alignment) => void;
+    scrollToRow: (rowIndex: number, alignment: Alignment) => void;
     states: Ref<{
         isScrolling: boolean;
         scrollLeft: number;
@@ -22060,7 +22219,10 @@ declare type HeaderCellRenderer<T> = (params: HeaderCellRendererParams<T>) => VN
 declare type HeaderCellRendererParams<T> = {
     headerIndex: number;
 } & ColumnCommonParams<T>;
-declare type HeaderCellRendererProps = TableV2HeaderRowCellRendererParams & UnwrapNestedRefs<Pick<UseTableReturn, "onColumnSorted">> & Pick<TableV2Props, "sortBy" | "sortState" | "headerCellProps"> & {
+declare type HeaderCellRendererProps = TableV2HeaderRowCellRendererParams & UnwrapNestedRefs<Pick<UseTableReturn, "onColumnSorted" | "updateColumnWidth" | "visibleColumns">> & Pick<TableV2Props, "sortBy" | "sortState" | "headerCellProps" | "canEditTable" | "editable" | "editTable" | "ghostTable" | "showAddColumnTrigger" | "addColumnButton"> & {
+    onAddColumnTriggerChange?: (payload: ColumnTriggerState | null) => void;
+    onTailAddColumn?: (payload: ColumnInsertParams<any>) => void;
+    onHeaderDragend?: (newWidth: number, oldWidth: number, column: TableV2HeaderRowCellRendererParams["column"], event: MouseEvent) => void;
     ns: UseNamespaceReturn;
 };
 export declare type HeaderCellSlotProps = HeaderCellRendererProps & {
@@ -22923,6 +23085,18 @@ export declare const inputProps: {
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly resize: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
         readonly required: false;
@@ -22963,7 +23137,7 @@ export declare const inputProps: {
     };
     readonly readonly: BooleanConstructor;
     readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly clearable: BooleanConstructor;
+    readonly clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -23428,6 +23602,18 @@ export declare const mentionProps: {
         __epPropKey: true;
     };
     type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     resize: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
         readonly required: false;
@@ -23468,7 +23654,7 @@ export declare const mentionProps: {
     };
     readonly: BooleanConstructor;
     floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    clearable: BooleanConstructor;
+    clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -24877,6 +25063,12 @@ export declare type RowHoverParams = {
     hovered: boolean;
     rowKey: KeyType_2;
 } & Partial<RowCommonParams>;
+export declare type RowInsertParams<T> = {
+    row: T;
+    rowIndex: number;
+    insertIndex: number;
+    event: MouseEvent;
+};
 export declare type RowInstance = InstanceType<typeof _default_70> & unknown;
 export declare const RowJustify: readonly [
     "start",
@@ -25059,6 +25251,12 @@ export declare const selectProps: {
     effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;
+    inputType: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
     beforeChange: {
@@ -25232,6 +25430,12 @@ declare const selectV2Props: {
         __epPropKey: true;
     };
     readonly automaticDropdown: BooleanConstructor;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
@@ -26119,6 +26323,7 @@ export declare interface Table<T extends DefaultRow = any> extends ComponentInte
     editingRow?: Ref<EditingRow<T>>;
     activeEditableCell?: Ref<ActiveEditableCell<T>>;
     ghostRowData?: Ref<DefaultRow>;
+    scheduleGhostRowScroll?: () => void;
     startRowEdit?: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow?: () => void;
     applyEditingRow?: () => EditingRow<T>;
@@ -26520,6 +26725,7 @@ export declare interface TableProps<T extends DefaultRow> {
     scrollbarTabindex?: number | string;
     nativeScrollbar?: boolean;
     showAddColumnTrigger?: boolean;
+    addColumnButton?: boolean;
     showAddRowTrigger?: boolean;
 }
 export declare interface TableRefs {
@@ -26576,6 +26782,12 @@ export declare const TableV2: DefineComponent<{
     readonly isFooterDefault: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly editable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly canEditTable: BooleanConstructor;
+    readonly ghostTable: BooleanConstructor;
+    readonly editTable: BooleanConstructor;
+    readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
+    readonly showAddColumnTrigger: BooleanConstructor;
+    readonly addColumnButton: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showAddRowTrigger: BooleanConstructor;
     readonly total: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly updateTime: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
@@ -26634,13 +26846,13 @@ export declare const TableV2: DefineComponent<{
     };
     readonly width: {
         readonly type: PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
     readonly height: {
         readonly type: PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
@@ -26700,8 +26912,12 @@ export declare const TableV2: DefineComponent<{
     };
 }, () => JSX.Element, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
     "update:expandedRowKeys": (expandedRowKeys: KeyType_2[]) => boolean;
+    "header-dragend": (newWidth: number, oldWidth: number, column: Column<any>, event: MouseEvent) => boolean;
     "row-delete": (params: RowDeleteParams) => boolean;
     "row-add": (params: RowAddParams) => boolean;
+    "add-column": (params: ColumnInsertParams<any>) => boolean;
+    "add-row": (params: RowInsertParams<any>) => boolean;
+    "add-ghost-row": (params: GhostRowAddParams<any>) => boolean;
 }, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     readonly cache: EpPropFinalized<NumberConstructor, never, never, 2, false>;
     readonly estimatedRowHeight: {
@@ -26735,6 +26951,12 @@ export declare const TableV2: DefineComponent<{
     readonly isFooterDefault: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly editable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly canEditTable: BooleanConstructor;
+    readonly ghostTable: BooleanConstructor;
+    readonly editTable: BooleanConstructor;
+    readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
+    readonly showAddColumnTrigger: BooleanConstructor;
+    readonly addColumnButton: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showAddRowTrigger: BooleanConstructor;
     readonly total: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly updateTime: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
@@ -26793,13 +27015,13 @@ export declare const TableV2: DefineComponent<{
     };
     readonly width: {
         readonly type: PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
     readonly height: {
         readonly type: PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
@@ -26858,6 +27080,10 @@ export declare const TableV2: DefineComponent<{
         __epPropKey: true;
     };
 }>> & {
+    "onHeader-dragend"?: ((newWidth: number, oldWidth: number, column: Column<any>, event: MouseEvent) => any) | undefined;
+    "onAdd-column"?: ((params: ColumnInsertParams<any>) => any) | undefined;
+    "onAdd-row"?: ((params: RowInsertParams<any>) => any) | undefined;
+    "onAdd-ghost-row"?: ((params: GhostRowAddParams<any>) => any) | undefined;
     "onUpdate:expandedRowKeys"?: ((expandedRowKeys: KeyType_2[]) => any) | undefined;
     "onRow-delete"?: ((params: RowDeleteParams) => any) | undefined;
     "onRow-add"?: ((params: RowAddParams) => any) | undefined;
@@ -26874,10 +27100,16 @@ export declare const TableV2: DefineComponent<{
     readonly hScrollbarSize: number;
     readonly vScrollbarSize: number;
     readonly sortBy: SortBy;
+    readonly showAddColumnTrigger: boolean;
+    readonly addColumnButton: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly editTable: boolean;
     readonly updateTime: string;
+    readonly ghostTable: boolean;
+    readonly showAddRowTrigger: boolean;
     readonly headerHeight: EpPropMergeType<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown>;
     readonly footerHeight: number;
     readonly isFooterDefault: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly ghostRowTemplate: Record<string, any>;
     readonly indentSize: number;
     readonly iconSize: number;
     readonly sortState: SortState;
@@ -26897,8 +27129,12 @@ export declare type TableV2CustomizedHeaderSlotParam<T = any> = {
 };
 export declare const tableV2Emits: {
     "update:expandedRowKeys": (expandedRowKeys: KeyType_2[]) => boolean;
+    "header-dragend": (newWidth: number, oldWidth: number, column: Column<any>, event: MouseEvent) => boolean;
     "row-delete": (params: RowDeleteParams) => boolean;
     "row-add": (params: RowAddParams) => boolean;
+    "add-column": (params: ColumnInsertParams<any>) => boolean;
+    "add-row": (params: RowInsertParams<any>) => boolean;
+    "add-ghost-row": (params: GhostRowAddParams<any>) => boolean;
 };
 export declare enum TableV2FixedDir {
     LEFT = "left",
@@ -26959,6 +27195,10 @@ export declare type TableV2Instance = InstanceType<typeof TableV2> & {
      * @params strategy {ScrollStrategy} use what strategy to scroll to
      */
     scrollToRow(row: number, strategy?: Alignment): void;
+    /**
+     * @description validates current table data against required columns
+     */
+    validateRequiredColumns: () => boolean;
 };
 export declare const TableV2Placeholder: unique symbol;
 export declare type TableV2Props = ExtractPropTypes<typeof tableV2Props>;
@@ -26995,6 +27235,12 @@ export declare const tableV2Props: {
     readonly isFooterDefault: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly editable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly canEditTable: BooleanConstructor;
+    readonly ghostTable: BooleanConstructor;
+    readonly editTable: BooleanConstructor;
+    readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
+    readonly showAddColumnTrigger: BooleanConstructor;
+    readonly addColumnButton: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showAddRowTrigger: BooleanConstructor;
     readonly total: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly updateTime: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
@@ -27053,13 +27299,13 @@ export declare const tableV2Props: {
     };
     readonly width: {
         readonly type: PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
     readonly height: {
         readonly type: PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
@@ -29549,7 +29795,7 @@ export declare function useSpace(props: SpaceProps): {
 };
 declare function useTable(props: TableV2Props): {
     columns: ComputedRef<AnyColumns>;
-    containerRef: Ref<any>;
+    containerRef: Ref<HTMLElement | undefined>;
     mainTableRef: Ref<TableGridInstance | undefined>;
     leftTableRef: Ref<TableGridInstance | undefined>;
     rightTableRef: Ref<TableGridInstance | undefined>;
@@ -29565,17 +29811,22 @@ declare function useTable(props: TableV2Props): {
     fixedColumnsOnLeft: ComputedRef<Column<any>[]>;
     fixedColumnsOnRight: ComputedRef<Column<any>[]>;
     mainColumns: ComputedRef<AnyColumns>;
+    visibleColumns: ComputedRef<Column<any>[]>;
     addRowHeight: ComputedRef<number>;
     bodyWidth: ComputedRef<number>;
     emptyStyle: ComputedRef<CSSProperties>;
+    effectiveHScrollbarSize: ComputedRef<number>;
     rootStyle: ComputedRef<CSSProperties>;
+    effectiveWidth: ComputedRef<number>;
     footerHeight: ComputedRef<CSSProperties>;
+    effectiveFooterHeight: ComputedRef<number>;
     mainTableHeight: ComputedRef<number>;
     fixedTableHeight: ComputedRef<number>;
     leftTableWidth: ComputedRef<number>;
     rightTableWidth: ComputedRef<number>;
     showEmpty: ComputedRef<boolean>;
     getRowHeight: (rowIndex: number) => number;
+    updateColumnWidth: (column: Column<any>, width: number) => void;
     onColumnSorted: (e: MouseEvent) => void;
     onRowHovered: ({ hovered, rowKey }: RowHoverParams) => void;
     onRowExpanded: ({ expanded, rowData, rowIndex, rowKey, }: RowExpandParams) => void;

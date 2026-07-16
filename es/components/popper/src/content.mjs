@@ -1,5 +1,5 @@
 import { placements } from '@popperjs/core';
-import { popperArrowProps } from './arrow2.mjs';
+import { popperArrowProps } from './arrow.mjs';
 import { useAriaProps } from '../../../hooks/use-aria/index.mjs';
 import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs';
 

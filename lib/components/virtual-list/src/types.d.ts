@@ -80,6 +80,7 @@ export type GridExposes = {
         scrollTop: number;
     }) => void;
     scrollToItem: (columnIndex?: number, rowIndex?: number, alignment?: Alignment) => void;
+    scrollToRow: (rowIndex?: number, alignment?: Alignment) => void;
 } & SharedExposes;
 export type ScrollbarExpose = {
     onMouseUp: () => void;

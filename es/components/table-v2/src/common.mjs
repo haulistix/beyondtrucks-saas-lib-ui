@@ -25,6 +25,9 @@ const requiredNumber = {
   type: Number,
   required: true
 };
+const optionalNumber = {
+  type: Number
+};
 const rowKey = {
   type: definePropType([String, Number, Symbol]),
   default: "id"
@@ -33,5 +36,5 @@ const styleType = {
   type: definePropType(Object)
 };
 
-export { classType, column, columns, dataType, expandColumnKey, expandKeys, fixedDataType, requiredNumber, rowKey, styleType };
+export { classType, column, columns, dataType, expandColumnKey, expandKeys, fixedDataType, optionalNumber, requiredNumber, rowKey, styleType };
 //# sourceMappingURL=common.mjs.map

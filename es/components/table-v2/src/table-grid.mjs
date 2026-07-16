@@ -87,7 +87,7 @@ const useTableGrid = (props) => {
   }
   function scrollToRow(row, strategy) {
     var _a;
-    (_a = unref(bodyRef)) == null ? void 0 : _a.scrollToItem(row, 1, strategy);
+    (_a = unref(bodyRef)) == null ? void 0 : _a.scrollToRow(row, strategy);
   }
   function forceUpdate() {
     var _a, _b;

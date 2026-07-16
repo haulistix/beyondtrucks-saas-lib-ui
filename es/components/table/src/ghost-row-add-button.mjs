@@ -1,4 +1,4 @@
-import { defineComponent, inject, openBlock, createBlock, unref, withCtx, createVNode, createElementBlock, createElementVNode } from 'vue';
+import { defineComponent, inject, computed, openBlock, createBlock, unref, withCtx, createVNode, createElementBlock, createElementVNode } from 'vue';
 import { ElButton } from '../../button/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { TABLE_INJECTION_KEY } from './tokens.mjs';
@@ -16,19 +16,33 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const props = __props;
     const table = inject(TABLE_INJECTION_KEY);
-    const handleAdd = (event) => {
+    const isEmptyValue = (value) => value === "" || value === null || value === void 0;
+    const requiredColumns = computed(() => {
+      var _a, _b, _c, _d;
+      const columns = (_d = (_c = (_b = (_a = table == null ? void 0 : table.store) == null ? void 0 : _a.states) == null ? void 0 : _b.columns) == null ? void 0 : _c.value) != null ? _d : [];
+      return columns.filter((column) => !!column.required && !!column.property);
+    });
+    const isDisabled = computed(() => requiredColumns.value.some((column) => {
       var _a;
+      return isEmptyValue((_a = props.row) == null ? void 0 : _a[column.property]);
+    }));
+    const handleAdd = (event) => {
+      var _a, _b;
+      if (isDisabled.value)
+        return;
+      (_a = table == null ? void 0 : table.scheduleGhostRowScroll) == null ? void 0 : _a.call(table);
       table == null ? void 0 : table.emit("add-ghost-row", {
         event,
         row: props.row,
         rowIndex: -1,
-        rowKey: (_a = props.row) == null ? void 0 : _a[ghostRowKey]
+        rowKey: (_b = props.row) == null ? void 0 : _b[ghostRowKey]
       });
     };
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(ElButton), {
         class: "icon-button",
         text: "",
+        disabled: unref(isDisabled),
         onClick: handleAdd
       }, {
         default: withCtx(() => [
@@ -47,7 +61,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           })
         ]),
         _: 1
-      });
+      }, 8, ["disabled"]);
     };
   }
 });

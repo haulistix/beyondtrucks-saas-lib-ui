@@ -6,19 +6,26 @@ type UseStyleProps = {
     fixedColumnsOnLeft: UseColumnsReturn['fixedColumnsOnLeft'];
     fixedColumnsOnRight: UseColumnsReturn['fixedColumnsOnRight'];
     rowsHeight: ComputedRef<number>;
+    showEmpty: ComputedRef<boolean>;
+    effectiveWidth: ComputedRef<number>;
+    reservedVScrollbarWidth: ComputedRef<number>;
 };
-export declare const useStyles: (props: TableV2Props, { columnsTotalWidth, rowsHeight, fixedColumnsOnLeft, fixedColumnsOnRight, }: UseStyleProps) => {
+export declare const useStyles: (props: TableV2Props, { columnsTotalWidth, rowsHeight, fixedColumnsOnLeft, fixedColumnsOnRight, effectiveWidth, reservedVScrollbarWidth, showEmpty, }: UseStyleProps) => {
     addRowHeight: ComputedRef<number>;
     bodyWidth: ComputedRef<number>;
+    effectiveHScrollbarSize: ComputedRef<number>;
     fixedTableHeight: ComputedRef<number>;
     mainTableHeight: ComputedRef<number>;
     leftTableWidth: ComputedRef<number>;
     rightTableWidth: ComputedRef<number>;
     windowHeight: ComputedRef<number>;
     footerHeight: ComputedRef<CSSProperties>;
+    effectiveFooterHeight: ComputedRef<number>;
     emptyStyle: ComputedRef<CSSProperties>;
     rootStyle: ComputedRef<CSSProperties>;
     headerHeight: ComputedRef<number>;
+    effectiveWidth: ComputedRef<number>;
+    rootHeight: ComputedRef<number>;
 };
 export type UseStyleReturn = ReturnType<typeof useStyles>;
 export {};

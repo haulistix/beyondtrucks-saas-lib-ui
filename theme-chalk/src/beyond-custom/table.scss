@@ -1,9 +1,14 @@
+@use 'sass:map';
+
+@use '../mixins/mixins' as *;
+@use '../mixins/var' as *;
 @use './font.scss' as *;
+@use '../common/var' as *;
 
 .el-table {
   border-bottom: 1px solid #e7ecef;
 
-  .footer-text{
+  .footer-text {
     position: relative;
     background-color: getCssVar('table-header-bg-color');
     height: 44px;
@@ -23,6 +28,9 @@
     .time {
       margin-left: auto;
       text-align: right;
+      display: flex;
+      gap: 4px;
+      align-items: center;
     }
   }
 
@@ -49,6 +57,7 @@
       .cell {
         display: flex;
         align-items: center;
+        line-height: 32px;
       }
 
       &.is-diagonal-header {
@@ -66,8 +75,6 @@
       cursor: unset !important;
 
       .cell {
-        display: flex;
-        justify-content: space-between;
         align-items: flex-start;
 
         .icon-wrap {

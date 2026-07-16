@@ -135,6 +135,31 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       var _a;
       return (_a = table == null ? void 0 : table.activeEditableCell) == null ? void 0 : _a.value;
     });
+    const currentColumn = computed(() => {
+      var _a, _b, _c, _d;
+      const columns = (_c = (_b = (_a = table == null ? void 0 : table.store) == null ? void 0 : _a.states) == null ? void 0 : _b.columns) == null ? void 0 : _c.value;
+      if (!(columns == null ? void 0 : columns.length))
+        return void 0;
+      return (_d = columns.find((column) => column.property === props.property)) != null ? _d : columns[props.cellData.cellIndex];
+    });
+    const isRequiredEmptyInput = computed(() => {
+      var _a;
+      if (props.editor !== "input")
+        return false;
+      if (!((_a = currentColumn.value) == null ? void 0 : _a.required))
+        return false;
+      return currentValue.value === "" || currentValue.value === null || currentValue.value === void 0;
+    });
+    const resolvedInputProps = computed(() => {
+      var _a, _b;
+      if (!isRequiredEmptyInput.value)
+        return props.inputProps;
+      return {
+        ...props.inputProps,
+        inputType: (_a = props.inputProps.inputType) != null ? _a : "error",
+        infoTip: (_b = props.inputProps.infoTip) != null ? _b : "Required"
+      };
+    });
     const currentValue = computed(() => {
       var _a;
       if (((_a = table == null ? void 0 : table.editingRow) == null ? void 0 : _a.value) && table.editingRow.value.row === props.cellData.row) {
@@ -244,7 +269,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           editor: __props.editor,
           isEditing: unref(isEditing),
           options: __props.options,
-          inputProps: __props.inputProps,
+          inputProps: unref(resolvedInputProps),
           selectProps: __props.selectProps,
           updateModelValue,
           commitValue,
@@ -278,7 +303,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           modelValue: unref(editorModel),
           "onUpdate:modelValue": ($event) => isRef(editorModel) ? editorModel.value = $event : null,
           clearable: __props.clearable
-        }, __props.inputProps, {
+        }, unref(resolvedInputProps), {
           autofocus: unref(isActiveEditingCell),
           onBlur: handleInputBlur,
           onChange: handleInputChange

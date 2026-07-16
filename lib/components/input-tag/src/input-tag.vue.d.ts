@@ -154,8 +154,8 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly readonly: boolean;
     readonly trigger: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space") | ((new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space"))[], unknown, unknown>;
     readonly autocomplete: AutoFill;
-    readonly validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: boolean;
+    readonly validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly autofocus: boolean;
     readonly draggable: boolean;
     readonly collapseTags: boolean;

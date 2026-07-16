@@ -64,6 +64,7 @@ interface Table<T extends DefaultRow = any> extends ComponentInternalInstance {
     editingRow?: Ref<EditingRow<T>>;
     activeEditableCell?: Ref<ActiveEditableCell<T>>;
     ghostRowData?: Ref<DefaultRow>;
+    scheduleGhostRowScroll?: () => void;
     startRowEdit?: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow?: () => void;
     applyEditingRow?: () => EditingRow<T>;
@@ -160,6 +161,7 @@ interface TableProps<T extends DefaultRow> {
     scrollbarTabindex?: number | string;
     nativeScrollbar?: boolean;
     showAddColumnTrigger?: boolean;
+    addColumnButton?: boolean;
     showAddRowTrigger?: boolean;
 }
 type TableTooltipData<T extends DefaultRow> = Parameters<TableOverflowTooltipFormatter<T>>[0];
@@ -449,6 +451,13 @@ declare const _default: {
      * @description whether to show an add-column trigger when hovering a header divider
      */
     showAddColumnTrigger: BooleanConstructor;
+    /**
+     * @description whether to show an add-column button in the last header cell when `show-add-column-trigger` is enabled
+     */
+    addColumnButton: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     /**
      * @description whether to show an add-row trigger when hovering a row divider
      */

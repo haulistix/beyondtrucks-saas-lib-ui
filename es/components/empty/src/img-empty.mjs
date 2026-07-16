@@ -132,7 +132,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ImgEmpty = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "img-empty.vue"]]);
+var imgEmpty = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "img-empty.vue"]]);
 
-export { ImgEmpty as default };
+export { imgEmpty as default };
 //# sourceMappingURL=img-empty.mjs.map

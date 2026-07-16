@@ -1,4 +1,4 @@
-import { defineComponent, inject, ref, computed, unref, onUpdated, createVNode, nextTick } from 'vue';
+import { defineComponent, inject, ref, computed, unref, watch, createVNode, nextTick } from 'vue';
 import { tableV2HeaderProps } from '../header.mjs';
 import { enforceUnit } from '../utils.mjs';
 import { TABLE_V2_GRID_INJECTION_KEY } from '../tokens.mjs';
@@ -74,9 +74,9 @@ const TableV2Header = defineComponent({
         });
       });
     };
-    onUpdated(() => {
-      if (scrollLeftInfo == null ? void 0 : scrollLeftInfo.value) {
-        scrollToLeft(scrollLeftInfo.value);
+    watch(() => scrollLeftInfo == null ? void 0 : scrollLeftInfo.value, (left) => {
+      if (typeof left === "number") {
+        scrollToLeft(left);
       }
     });
     expose({

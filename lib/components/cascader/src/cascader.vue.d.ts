@@ -566,8 +566,8 @@ declare const __VLS_component: import("vue").DefineComponent<{
     fallbackPlacements: import("element-plus/es/components/popper").Placement[];
     teleported: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     persistent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     clearable: boolean;
+    validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     debounce: number;
     checkOnClickNode: boolean;
     showPrefix: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;

@@ -1,4 +1,4 @@
-import { rowKey, columns, dataType, fixedDataType, expandKeys, classType, requiredNumber } from './common.mjs';
+import { rowKey, columns, dataType, fixedDataType, expandKeys, classType, optionalNumber } from './common.mjs';
 import { tableV2RowProps } from './row.mjs';
 import { tableV2HeaderProps } from './header.mjs';
 import { tableV2GridProps } from './grid.mjs';
@@ -7,8 +7,12 @@ import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs
 
 const tableV2Emits = {
   "update:expandedRowKeys": (expandedRowKeys) => Array.isArray(expandedRowKeys),
+  "header-dragend": (newWidth, oldWidth, column, event) => Number.isFinite(newWidth) && Number.isFinite(oldWidth) && Boolean(column) && event instanceof MouseEvent,
   "row-delete": (params) => Boolean(params),
-  "row-add": (params) => Boolean(params)
+  "row-add": (params) => Boolean(params),
+  "add-column": (params) => Boolean(params),
+  "add-row": (params) => Boolean(params),
+  "add-ghost-row": (params) => Boolean(params)
 };
 const tableV2Props = buildProps({
   cache: tableV2GridProps.cache,
@@ -46,6 +50,18 @@ const tableV2Props = buildProps({
     default: true
   },
   canEditTable: Boolean,
+  ghostTable: Boolean,
+  editTable: Boolean,
+  ghostRowTemplate: {
+    type: definePropType(Object),
+    default: () => ({})
+  },
+  showAddColumnTrigger: Boolean,
+  addColumnButton: {
+    type: Boolean,
+    default: true
+  },
+  showAddRowTrigger: Boolean,
   total: {
     type: Number,
     default: 0
@@ -84,8 +100,8 @@ const tableV2Props = buildProps({
   style: {
     type: definePropType(Object)
   },
-  width: requiredNumber,
-  height: requiredNumber,
+  width: optionalNumber,
+  height: optionalNumber,
   maxHeight: Number,
   useIsScrolling: Boolean,
   indentSize: {

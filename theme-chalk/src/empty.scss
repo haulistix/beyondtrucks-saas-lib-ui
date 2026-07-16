@@ -34,12 +34,10 @@
   }
 
   @include e(description) {
-    margin-top: getCssVar('empty-description-margin-top');
-
     p {
       margin: 0;
       font-size: getCssVar('font-size', 'base');
-      color: getCssVar('text-color', 'secondary');
+      color: var(--color-gray-500);
     }
   }
 

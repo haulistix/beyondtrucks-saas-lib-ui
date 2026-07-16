@@ -7,24 +7,40 @@ const useStyles = (props, {
   columnsTotalWidth,
   rowsHeight,
   fixedColumnsOnLeft,
-  fixedColumnsOnRight
+  fixedColumnsOnRight,
+  effectiveWidth,
+  reservedVScrollbarWidth,
+  showEmpty
 }) => {
-  const addRowHeight = computed(() => props.canEditTable && props.editable ? props.rowHeight : 0);
+  const availableBodyWidth = computed(() => Math.max(unref(effectiveWidth) - unref(reservedVScrollbarWidth), 0));
+  const hasHorizontalScrollbar = computed(() => props.fixed && unref(columnsTotalWidth) > unref(availableBodyWidth));
+  const effectiveHScrollbarSize = computed(() => hasHorizontalScrollbar.value ? props.hScrollbarSize : 0);
+  const addRowHeight = computed(() => props.canEditTable && props.editable || props.ghostTable && props.editTable ? props.rowHeight : 0);
+  const shouldUseDefaultFooterHeight = computed(() => props.isFooterDefault && props.footerHeight === 0);
+  const effectiveFooterHeight = computed(() => shouldUseDefaultFooterHeight.value ? 44 : props.footerHeight);
+  const contentHeight = computed(() => {
+    const _fixedRowsHeight = unref(fixedRowsHeight);
+    const _rowsHeight = unref(rowsHeight);
+    const _headerHeight = unref(headerHeight);
+    return _headerHeight + _fixedRowsHeight + _rowsHeight + (unref(showEmpty) ? props.rowHeight : 0) + unref(effectiveHScrollbarSize);
+  });
   const bodyWidth = computed(() => {
-    const { fixed, width, vScrollbarSize } = props;
-    const ret = width - vScrollbarSize;
+    const { fixed } = props;
+    const ret = unref(availableBodyWidth);
     return fixed ? Math.max(Math.round(unref(columnsTotalWidth)), ret) : ret;
   });
   const mainTableHeight = computed(() => {
-    const { height = 0, maxHeight = 0, footerHeight: footerHeight2, hScrollbarSize } = props;
+    const { height, maxHeight = 0 } = props;
+    const footerHeight2 = unref(effectiveFooterHeight);
+    const addRowSpace = unref(addRowHeight);
+    const availableMaxHeight = Math.max(maxHeight - footerHeight2 - addRowSpace, 0);
     if (maxHeight > 0) {
-      const _fixedRowsHeight = unref(fixedRowsHeight);
-      const _rowsHeight = unref(rowsHeight);
-      const _headerHeight = unref(headerHeight);
-      const total = _headerHeight + _fixedRowsHeight + _rowsHeight + hScrollbarSize;
-      return Math.min(total, maxHeight - footerHeight2 - unref(addRowHeight));
+      return Math.min(unref(contentHeight), availableMaxHeight);
     }
-    return height - footerHeight2 - unref(addRowHeight);
+    if (isNumber(height)) {
+      return Math.max(height - footerHeight2 - addRowSpace, 0);
+    }
+    return unref(contentHeight);
   });
   const fixedTableHeight = computed(() => {
     const { maxHeight } = props;
@@ -34,7 +50,7 @@ const useStyles = (props, {
     const totalHeight = unref(rowsHeight) + unref(headerHeight) + unref(fixedRowsHeight);
     return Math.min(tableHeight, totalHeight);
   });
-  const mapColumn = (column) => column.width;
+  const mapColumn = (column) => typeof column.width === "number" ? column.width : 0;
   const leftTableWidth = computed(() => sum(unref(fixedColumnsOnLeft).map(mapColumn)));
   const rightTableWidth = computed(() => sum(unref(fixedColumnsOnRight).map(mapColumn)));
   const headerHeight = computed(() => sum(props.headerHeight));
@@ -45,32 +61,40 @@ const useStyles = (props, {
   const windowHeight = computed(() => {
     return unref(mainTableHeight) - unref(headerHeight) - unref(fixedRowsHeight);
   });
+  const rootHeight = computed(() => {
+    return unref(mainTableHeight) + unref(effectiveFooterHeight) + unref(addRowHeight);
+  });
   const rootStyle = computed(() => {
-    const { style = {}, height, width } = props;
+    const { style = {}, height, maxHeight, width } = props;
     return enforceUnit({
       ...style,
-      height,
-      width
+      height: height != null ? height : unref(rootHeight),
+      maxHeight: height == null ? addUnit(maxHeight) : void 0,
+      width: width != null ? width : "100%"
     });
   });
-  const footerHeight = computed(() => enforceUnit({ height: props.footerHeight }));
+  const footerHeight = computed(() => enforceUnit({ height: unref(effectiveFooterHeight) }));
   const emptyStyle = computed(() => ({
     top: addUnit(unref(headerHeight)),
-    bottom: addUnit(props.footerHeight + unref(addRowHeight)),
-    width: addUnit(props.width)
+    height: addUnit(props.rowHeight),
+    width: addUnit(unref(effectiveWidth))
   }));
   return {
     addRowHeight,
     bodyWidth,
+    effectiveHScrollbarSize,
     fixedTableHeight,
     mainTableHeight,
     leftTableWidth,
     rightTableWidth,
     windowHeight,
     footerHeight,
+    effectiveFooterHeight,
     emptyStyle,
     rootStyle,
-    headerHeight
+    headerHeight,
+    effectiveWidth,
+    rootHeight
   };
 };
 

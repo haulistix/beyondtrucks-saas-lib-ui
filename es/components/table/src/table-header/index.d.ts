@@ -16,6 +16,8 @@ export interface TableHeaderProps<T extends DefaultRow> {
     defaultSort: Sort;
     allowDragLastColumn: boolean;
     showAddColumnTrigger: boolean;
+    addColumnButton: boolean;
+    editTable: boolean;
 }
 declare const _default: import("vue").DefineComponent<{
     fixed: {
@@ -41,6 +43,13 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
     };
     showAddColumnTrigger: {
+        type: BooleanConstructor;
+    };
+    addColumnButton: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    editTable: {
         type: BooleanConstructor;
     };
 }, {
@@ -82,6 +91,7 @@ declare const _default: import("vue").DefineComponent<{
     toggleAllSelection: (event: Event) => void;
     saveIndexSelection: Map<any, any>;
     isTableLayoutAuto: boolean;
+    handleAddColumn: (event: MouseEvent) => void;
     theadRef: Ref<any>;
     updateFixedColumnStyle: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
@@ -110,11 +120,20 @@ declare const _default: import("vue").DefineComponent<{
     showAddColumnTrigger: {
         type: BooleanConstructor;
     };
+    addColumnButton: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    editTable: {
+        type: BooleanConstructor;
+    };
 }>>, {
     fixed: string;
     border: boolean;
     defaultSort: Sort;
     allowDragLastColumn: boolean;
     showAddColumnTrigger: boolean;
+    addColumnButton: boolean;
+    editTable: boolean;
 }>;
 export default _default;

@@ -256,6 +256,16 @@ const createGrid = ({
           scrollTop: getRowOffset(props, rowIndex, alignment, _states.scrollTop, _cache, estimatedHeight > props.height ? scrollBarWidth : 0)
         });
       };
+      const scrollToRow = (rowIndex = 0, alignment = AUTO_ALIGNMENT) => {
+        const _states = unref(states);
+        rowIndex = Math.max(0, Math.min(rowIndex, props.totalRow - 1));
+        const scrollBarWidth = getScrollBarWidth(ns.namespace.value);
+        const _cache = unref(cache);
+        const estimatedHeight = getEstimatedTotalHeight(props, _cache);
+        scrollTo({
+          scrollTop: getRowOffset(props, rowIndex, alignment, _states.scrollTop, _cache, estimatedHeight > props.height ? scrollBarWidth : 0)
+        });
+      };
       const getItemStyle = (rowIndex, columnIndex) => {
         const { columnWidth, direction, rowHeight } = props;
         const itemStyleCache = getItemStyleCache.value(clearCache && columnWidth, clearCache && rowHeight, clearCache && direction);
@@ -334,6 +344,7 @@ const createGrid = ({
         getItemStyleCache,
         scrollTo,
         scrollToItem,
+        scrollToRow,
         states,
         resetAfterColumnIndex,
         resetAfterRowIndex,

@@ -22,6 +22,9 @@ export type RowCommonParams = {
     rowData: any;
     rowIndex: number;
 };
+export type TableV2RowActionSlotParams<T = any> = RowCommonParams & ColumnCommonParams<T> & {
+    rowKey: KeyType;
+};
 export type ClassNameGetterParams<T> = {
     cellData: T;
 } & RowCommonParams & ColumnCommonParams<T>;
@@ -39,7 +42,13 @@ export type HeaderClassGetter<T> = (params: ColumnCommonParams<T> & {
  * Renderer/Getter types
  */
 export type CellRenderer<T> = (params: CellRendererParams<T>) => VNode;
+export type EditCellRenderer<T> = (params: CellRendererParams<T>) => VNode;
 export type HeaderCellRenderer<T> = (params: HeaderCellRendererParams<T>) => VNode;
+export type DiagonalHeaderConfig = {
+    from: string;
+    to: string;
+};
+export type ColumnWidth = number | string;
 export type Column<T = any> = {
     /**
      * Attributes
@@ -54,16 +63,20 @@ export type Column<T = any> = {
     title?: string;
     hidden?: boolean;
     headerClass?: HeaderClassGetter<T> | string;
+    diagonalHeader?: DiagonalHeaderConfig;
+    allowInsertBeforeFirstColumn?: boolean;
     maxWidth?: number;
     minWidth?: number;
     required?: boolean;
+    resizable?: boolean;
     style?: CSSProperties;
     sortable?: boolean;
-    width: number;
+    width?: ColumnWidth;
     /**
      * Renderers
      */
     cellRenderer?: CellRenderer<T>;
+    editCellRenderer?: EditCellRenderer<T>;
     headerCellRenderer?: HeaderCellRenderer<T>;
     /**
      * Extendable sections

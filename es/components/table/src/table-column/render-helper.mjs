@@ -1,12 +1,43 @@
-import { getCurrentInstance, ref, watchEffect, computed, unref, h, renderSlot, Comment } from 'vue';
+import { getCurrentInstance, ref, watchEffect, computed, unref, h, renderSlot, Comment, cloneVNode } from 'vue';
 import { cellForced, defaultRenderCell, treeCellPrefix, getDefaultClassName } from '../config.mjs';
 import { parseWidth, parseMinWidth } from '../util.mjs';
-import { ghostRowSign } from '../private.mjs';
+import { ghostRowSign, ghostRowKey } from '../private.mjs';
 import GhostRowAddButton from '../ghost-row-add-button.mjs';
 import { useNamespace } from '../../../../hooks/use-namespace/index.mjs';
 import { isUndefined } from '../../../../utils/types.mjs';
 import { isArray } from '@vue/shared';
 
+const isEmptyRequiredValue = (value) => value === "" || value === null || value === void 0;
+const hasGhostRowValue = (row) => {
+  return Object.entries(row != null ? row : {}).some(([key, value]) => {
+    if (key === ghostRowSign || key === ghostRowKey)
+      return false;
+    return !isEmptyRequiredValue(value);
+  });
+};
+const isElInputVNode = (vnode) => {
+  const type = vnode.type;
+  return (type == null ? void 0 : type.name) === "ElInput" || (type == null ? void 0 : type.__name) === "ElInput";
+};
+const applyRequiredInputState = (vnodes, column, row) => {
+  if (!column.required || !column.property)
+    return vnodes;
+  if ((row == null ? void 0 : row[ghostRowSign]) && !hasGhostRowValue(row))
+    return vnodes;
+  if (!isEmptyRequiredValue(row == null ? void 0 : row[column.property]))
+    return vnodes;
+  const patchVNode = (vnode) => {
+    var _a, _b, _c, _d, _e;
+    if (!isElInputVNode(vnode))
+      return vnode;
+    const vnodeProps = (_a = vnode.props) != null ? _a : {};
+    return cloneVNode(vnode, {
+      inputType: (_c = (_b = vnodeProps.inputType) != null ? _b : vnodeProps["input-type"]) != null ? _c : "error",
+      infoTip: (_e = (_d = vnodeProps.infoTip) != null ? _d : vnodeProps["info-tip"]) != null ? _e : "Required"
+    });
+  };
+  return isArray(vnodes) ? vnodes.map((vnode) => patchVNode(vnode)) : patchVNode(vnodes);
+};
 function useRender(props, slots, owner) {
   const instance = getCurrentInstance();
   const columnId = ref("");
@@ -135,7 +166,7 @@ function useRender(props, slots, owner) {
             })
           ];
         } else if (shouldRenderEditCell) {
-          const vnodes = column.renderEditCell(data);
+          const vnodes = applyRequiredInputState(column.renderEditCell(data), column, data.row);
           const editVNodes = isArray(vnodes) ? vnodes : [vnodes];
           children = editVNodes.some((v) => v.type !== Comment) ? vnodes : originRenderCell(data);
         } else if (slots.default) {

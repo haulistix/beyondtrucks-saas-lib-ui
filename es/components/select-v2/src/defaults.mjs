@@ -25,6 +25,10 @@ const selectV2Props = buildProps({
     type: String
   },
   automaticDropdown: Boolean,
+  inputType: {
+    type: String,
+    values: ["error", "info", "warning"]
+  },
   clearable: Boolean,
   clearIcon: {
     type: iconPropType,

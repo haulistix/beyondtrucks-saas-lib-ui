@@ -20,6 +20,36 @@
   border: none;
   font-weight: normal;
 
+  &.el-select--error {
+    .el-select__wrapper {
+      background-color: var(--color-red-200);
+    }
+  }
+
+  &.el-select--warning {
+    .el-select__wrapper {
+      background-color: var(--color-yellow-100);
+    }
+  }
+
+  &.el-select--inputType {
+    .el-select__wrapper {
+      &.is-focused {
+        background-color: #fff;
+      }
+    }
+
+    &.el-select--filled {
+      .el-select__wrapper {
+        background-color: #fff;
+      }
+    }
+
+    .float-label {
+      background-color: transparent;
+    }
+  }
+
   &.multi-select {
     position: absolute;
     top: 0;

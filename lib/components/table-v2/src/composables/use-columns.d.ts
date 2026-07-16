@@ -1,7 +1,7 @@
 import type { CSSProperties, Ref } from 'vue';
 import type { TableV2Props } from '../table';
 import type { AnyColumns, Column, KeyType } from '../types';
-declare function useColumns(props: TableV2Props, columns: Ref<AnyColumns>, fixed: Ref<boolean>): {
+declare function useColumns(props: TableV2Props, columns: Ref<AnyColumns>, fixed: Ref<boolean>, effectiveWidth: Ref<number>, reservedVScrollbarWidth: Ref<number>): {
     columns: import("vue").ComputedRef<AnyColumns>;
     columnsStyles: import("vue").ComputedRef<Record<KeyType, CSSProperties>>;
     columnsTotalWidth: import("vue").ComputedRef<number>;

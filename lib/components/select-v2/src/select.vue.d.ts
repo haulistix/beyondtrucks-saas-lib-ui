@@ -12,6 +12,12 @@ declare const _default: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     readonly automaticDropdown: BooleanConstructor;
+    readonly inputType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;
@@ -241,6 +247,8 @@ declare const _default: import("vue").DefineComponent<{
     }>;
     validateError: import("vue").ComputedRef<boolean>;
     validateMsg: import("vue").ComputedRef<string>;
+    errorTooltipContent: import("vue").ComputedRef<string>;
+    errorTooltipDisabled: import("vue").ComputedRef<boolean>;
     contentId: import("vue").Ref<string>;
     BORDER_HORIZONTAL_WIDTH: number;
     inputId: import("vue").Ref<string | undefined>;
@@ -380,6 +388,12 @@ declare const _default: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     readonly automaticDropdown: BooleanConstructor;
+    readonly inputType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly clearable: BooleanConstructor;
     readonly clearIcon: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown>>;
@@ -627,8 +641,8 @@ declare const _default: import("vue").DefineComponent<{
     readonly showArrow: boolean;
     readonly autocomplete: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list") | ((new (...args: any[]) => "none" | "both" | "inline" | "list") | (() => "none" | "both" | "inline" | "list"))[], unknown, unknown>;
     readonly floatLabel: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: boolean;
+    readonly validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly valueKey: string;
     readonly debounce: number;
     readonly fitInputWidth: import("element-plus/es/utils").EpPropMergeType<readonly [BooleanConstructor, NumberConstructor], unknown, number | boolean>;

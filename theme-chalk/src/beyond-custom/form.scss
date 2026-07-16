@@ -1,13 +1,15 @@
 .el-form-item {
   &.is-error {
-    .el-input__wrapper {
-      background-color: var(--color-red-100);
-      border-color: var(--color-gray-500);
+    .el-input__wrapper, .el-textarea__inner {
+      background-color: var(--color-red-200);
+
+      &.is-focus {
+        background-color: #fff;
+      }
     }
 
     .el-select__wrapper {
-      background-color: var(--color-red-100);
-      border-color: var(--color-gray-500);
+      background-color: var(--color-red-200);
     }
 
     .el-input__validateIcon {
@@ -15,11 +17,6 @@
     }
 
     .el-input {
-      .error-icon {
-        cursor: pointer;
-        margin-right: 8px;
-      }
-
       .el-input__clear, {
         margin-right: 0;
       }

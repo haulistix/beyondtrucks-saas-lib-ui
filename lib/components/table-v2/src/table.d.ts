@@ -10,6 +10,24 @@ export type ColumnSortParams<T> = {
     key: KeyType;
     order: SortOrder;
 };
+export type ColumnInsertParams<T> = {
+    column: Column<T>;
+    columnIndex: number;
+    insertIndex: number;
+    event: MouseEvent;
+};
+export type RowInsertParams<T> = {
+    row: T;
+    rowIndex: number;
+    insertIndex: number;
+    event: MouseEvent;
+};
+export type GhostRowAddParams<T> = {
+    row: T;
+    rowIndex: number;
+    rowKey: KeyType;
+    event: MouseEvent;
+};
 /**
  * Renderer/Getter types
  */
@@ -38,12 +56,15 @@ export type RowClassNameGetter<T> = (params: {
  * Handler types
  */
 export type ColumnSortHandler<T> = (params: ColumnSortParams<T>) => void;
-export type ColumnResizeHandler<T> = (column: Column<T>, width: number) => void;
 export type ExpandedRowsChangeHandler = (expandedRowKeys: KeyType[]) => void;
 export declare const tableV2Emits: {
     'update:expandedRowKeys': (expandedRowKeys: KeyType[]) => boolean;
+    'header-dragend': (newWidth: number, oldWidth: number, column: Column<any>, event: MouseEvent) => boolean;
     'row-delete': (params: RowDeleteParams) => boolean;
     'row-add': (params: RowAddParams) => boolean;
+    'add-column': (params: ColumnInsertParams<any>) => boolean;
+    'add-row': (params: RowInsertParams<any>) => boolean;
+    'add-ghost-row': (params: GhostRowAddParams<any>) => boolean;
 };
 export declare const tableV2Props: {
     readonly cache: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, never, never, 2, false>;
@@ -78,6 +99,12 @@ export declare const tableV2Props: {
     readonly isFooterDefault: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly editable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly canEditTable: BooleanConstructor;
+    readonly ghostTable: BooleanConstructor;
+    readonly editTable: BooleanConstructor;
+    readonly ghostRowTemplate: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
+    readonly showAddColumnTrigger: BooleanConstructor;
+    readonly addColumnButton: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showAddRowTrigger: BooleanConstructor;
     readonly total: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly updateTime: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly rowClass: {
@@ -136,13 +163,13 @@ export declare const tableV2Props: {
     };
     readonly width: {
         readonly type: import("vue").PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
     readonly height: {
         readonly type: import("vue").PropType<number>;
-        readonly required: true;
+        readonly required: false;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };

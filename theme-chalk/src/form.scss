@@ -210,22 +210,8 @@ $form-item-label-top-margin-bottom: map.merge(
   }
 
   @include when(error) {
-    .#{$namespace}-textarea__inner {
-      border-color: var(--color-gray-500);
-    }
-    .#{$namespace}-input__wrapper,
-    .#{$namespace}-select__wrapper,
     .#{$namespace}-input-tag__wrapper {
       &,
-      &:hover {
-        border-color: var(--color-gray-500);
-      }
-    }
-    .#{$namespace}-input__wrapper,
-    .#{$namespace}-textarea__inner,
-    .#{$namespace}-input-tag__wrapper {
-      &,
-      &:hover,
       &:focus,
       &.is-focus {
         background-color: var(--color-red-100);

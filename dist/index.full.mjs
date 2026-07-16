@@ -12584,11 +12584,11 @@ var _export_sfc = (sfc, props) => {
 };
 
 const COMPONENT_NAME$o = "ElAffix";
-const __default__$1Y = defineComponent({
+const __default__$1X = defineComponent({
   name: COMPONENT_NAME$o
 });
-const _sfc_main$2E = /* @__PURE__ */ defineComponent({
-  ...__default__$1Y,
+const _sfc_main$2D = /* @__PURE__ */ defineComponent({
+  ...__default__$1X,
   props: affixProps,
   emits: affixEmits,
   setup(__props, { expose, emit }) {
@@ -12704,7 +12704,7 @@ const _sfc_main$2E = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Affix = /* @__PURE__ */ _export_sfc(_sfc_main$2E, [["__file", "affix.vue"]]);
+var Affix = /* @__PURE__ */ _export_sfc(_sfc_main$2D, [["__file", "affix.vue"]]);
 
 const ElAffix = withInstall(Affix);
 
@@ -12717,12 +12717,12 @@ const iconProps = buildProps({
   }
 });
 
-const __default__$1X = defineComponent({
+const __default__$1W = defineComponent({
   name: "ElIcon",
   inheritAttrs: false
 });
-const _sfc_main$2D = /* @__PURE__ */ defineComponent({
-  ...__default__$1X,
+const _sfc_main$2C = /* @__PURE__ */ defineComponent({
+  ...__default__$1W,
   props: iconProps,
   setup(__props) {
     const props = __props;
@@ -12746,7 +12746,7 @@ const _sfc_main$2D = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2D, [["__file", "icon.vue"]]);
+var ElIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2C, [["__file", "icon.vue"]]);
 
 const ElIcon = withInstall(ElIcon$1);
 
@@ -12788,11 +12788,11 @@ const alertEmits = {
   close: (evt) => isUndefined(evt) || evt instanceof Event
 };
 
-const __default__$1W = defineComponent({
+const __default__$1V = defineComponent({
   name: "ElAlert"
 });
-const _sfc_main$2C = /* @__PURE__ */ defineComponent({
-  ...__default__$1W,
+const _sfc_main$2B = /* @__PURE__ */ defineComponent({
+  ...__default__$1V,
   props: alertProps,
   emits: alertEmits,
   setup(__props, { emit }) {
@@ -12881,7 +12881,7 @@ const _sfc_main$2C = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$2C, [["__file", "alert.vue"]]);
+var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$2B, [["__file", "alert.vue"]]);
 
 const ElAlert = withInstall(Alert);
 
@@ -13061,11 +13061,11 @@ const filterFields = (fields, props) => {
 };
 
 const COMPONENT_NAME$n = "ElForm";
-const __default__$1V = defineComponent({
+const __default__$1U = defineComponent({
   name: COMPONENT_NAME$n
 });
-const _sfc_main$2B = /* @__PURE__ */ defineComponent({
-  ...__default__$1V,
+const _sfc_main$2A = /* @__PURE__ */ defineComponent({
+  ...__default__$1U,
   props: formProps,
   emits: formEmits,
   setup(__props, { expose, emit }) {
@@ -13208,7 +13208,7 @@ const _sfc_main$2B = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Form = /* @__PURE__ */ _export_sfc(_sfc_main$2B, [["__file", "form.vue"]]);
+var Form = /* @__PURE__ */ _export_sfc(_sfc_main$2A, [["__file", "form.vue"]]);
 
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function(target) {
@@ -14393,11 +14393,11 @@ var FormLabelWrap = defineComponent({
   }
 });
 
-const __default__$1U = defineComponent({
+const __default__$1T = defineComponent({
   name: "ElFormItem"
 });
-const _sfc_main$2A = /* @__PURE__ */ defineComponent({
-  ...__default__$1U,
+const _sfc_main$2z = /* @__PURE__ */ defineComponent({
+  ...__default__$1T,
   props: formItemProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -14714,7 +14714,7 @@ const _sfc_main$2A = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var FormItem = /* @__PURE__ */ _export_sfc(_sfc_main$2A, [["__file", "form-item.vue"]]);
+var FormItem = /* @__PURE__ */ _export_sfc(_sfc_main$2z, [["__file", "form-item.vue"]]);
 
 const ElForm = withInstall(Form, {
   FormItem
@@ -14747,12 +14747,12 @@ const popperProps = buildProps({
 });
 const usePopperProps = popperProps;
 
-const __default__$1T = defineComponent({
+const __default__$1S = defineComponent({
   name: "ElPopper",
   inheritAttrs: false
 });
-const _sfc_main$2z = /* @__PURE__ */ defineComponent({
-  ...__default__$1T,
+const _sfc_main$2y = /* @__PURE__ */ defineComponent({
+  ...__default__$1S,
   props: popperProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -14775,14 +14775,14 @@ const _sfc_main$2z = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Popper = /* @__PURE__ */ _export_sfc(_sfc_main$2z, [["__file", "popper.vue"]]);
+var Popper = /* @__PURE__ */ _export_sfc(_sfc_main$2y, [["__file", "popper.vue"]]);
 
-const __default__$1S = defineComponent({
+const __default__$1R = defineComponent({
   name: "ElPopperArrow",
   inheritAttrs: false
 });
-const _sfc_main$2y = /* @__PURE__ */ defineComponent({
-  ...__default__$1S,
+const _sfc_main$2x = /* @__PURE__ */ defineComponent({
+  ...__default__$1R,
   setup(__props, { expose }) {
     const ns = useNamespace("popper");
     const { arrowRef, arrowStyle } = inject(POPPER_CONTENT_INJECTION_KEY, void 0);
@@ -14803,7 +14803,7 @@ const _sfc_main$2y = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElPopperArrow = /* @__PURE__ */ _export_sfc(_sfc_main$2y, [["__file", "arrow.vue"]]);
+var ElPopperArrow = /* @__PURE__ */ _export_sfc(_sfc_main$2x, [["__file", "arrow.vue"]]);
 
 const NAME = "ElOnlyChild";
 const OnlyChild = defineComponent({
@@ -14889,12 +14889,12 @@ const popperTriggerProps = buildProps({
 });
 const usePopperTriggerProps = popperTriggerProps;
 
-const __default__$1R = defineComponent({
+const __default__$1Q = defineComponent({
   name: "ElPopperTrigger",
   inheritAttrs: false
 });
-const _sfc_main$2x = /* @__PURE__ */ defineComponent({
-  ...__default__$1R,
+const _sfc_main$2w = /* @__PURE__ */ defineComponent({
+  ...__default__$1Q,
   props: popperTriggerProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -15005,7 +15005,7 @@ const _sfc_main$2x = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElPopperTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2x, [["__file", "trigger.vue"]]);
+var ElPopperTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2w, [["__file", "trigger.vue"]]);
 
 const FOCUS_AFTER_TRAPPED = "focus-trap.focus-after-trapped";
 const FOCUS_AFTER_RELEASED = "focus-trap.focus-after-released";
@@ -15155,7 +15155,7 @@ const createFocusOutPreventedEvent = (detail) => {
   });
 };
 
-const _sfc_main$2w = defineComponent({
+const _sfc_main$2v = defineComponent({
   name: "ElFocusTrap",
   inheritAttrs: false,
   props: {
@@ -15403,7 +15403,7 @@ const _sfc_main$2w = defineComponent({
 function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default", { handleKeydown: _ctx.onKeydown });
 }
-var ElFocusTrap = /* @__PURE__ */ _export_sfc(_sfc_main$2w, [["render", _sfc_render$o], ["__file", "focus-trap.vue"]]);
+var ElFocusTrap = /* @__PURE__ */ _export_sfc(_sfc_main$2v, [["render", _sfc_render$o], ["__file", "focus-trap.vue"]]);
 
 const popperArrowProps = buildProps({
   arrowOffset: {
@@ -15700,11 +15700,11 @@ const usePopperContentFocusTrap = (props, emit) => {
   };
 };
 
-const __default__$1Q = defineComponent({
+const __default__$1P = defineComponent({
   name: "ElPopperContent"
 });
-const _sfc_main$2v = /* @__PURE__ */ defineComponent({
-  ...__default__$1Q,
+const _sfc_main$2u = /* @__PURE__ */ defineComponent({
+  ...__default__$1P,
   props: popperContentProps,
   emits: popperContentEmits,
   setup(__props, { expose, emit }) {
@@ -15819,7 +15819,7 @@ const _sfc_main$2v = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElPopperContent = /* @__PURE__ */ _export_sfc(_sfc_main$2v, [["__file", "content.vue"]]);
+var ElPopperContent = /* @__PURE__ */ _export_sfc(_sfc_main$2u, [["__file", "content.vue"]]);
 
 const ElPopper = withInstall(Popper);
 
@@ -15833,7 +15833,7 @@ const teleportProps = buildProps({
   disabled: Boolean
 });
 
-const _sfc_main$2u = /* @__PURE__ */ defineComponent({
+const _sfc_main$2t = /* @__PURE__ */ defineComponent({
   __name: "teleport",
   props: teleportProps,
   setup(__props) {
@@ -15847,7 +15847,7 @@ const _sfc_main$2u = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Teleport = /* @__PURE__ */ _export_sfc(_sfc_main$2u, [["__file", "teleport.vue"]]);
+var Teleport = /* @__PURE__ */ _export_sfc(_sfc_main$2t, [["__file", "teleport.vue"]]);
 
 const ElTeleport = withInstall(Teleport);
 var ElTeleport$1 = ElTeleport;
@@ -15932,11 +15932,11 @@ const whenTrigger = (trigger, type, handler) => {
   };
 };
 
-const __default__$1P = defineComponent({
+const __default__$1O = defineComponent({
   name: "ElTooltipTrigger"
 });
-const _sfc_main$2t = /* @__PURE__ */ defineComponent({
-  ...__default__$1P,
+const _sfc_main$2s = /* @__PURE__ */ defineComponent({
+  ...__default__$1O,
   props: useTooltipTriggerProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -16002,7 +16002,7 @@ const _sfc_main$2t = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElTooltipTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2t, [["__file", "trigger.vue"]]);
+var ElTooltipTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2s, [["__file", "trigger.vue"]]);
 
 const overlayProps = buildProps({
   mask: {
@@ -16061,12 +16061,12 @@ var Overlay$1 = defineComponent({
 
 const ElOverlay = Overlay$1;
 
-const __default__$1O = defineComponent({
+const __default__$1N = defineComponent({
   name: "ElTooltipContent",
   inheritAttrs: false
 });
-const _sfc_main$2s = /* @__PURE__ */ defineComponent({
-  ...__default__$1O,
+const _sfc_main$2r = /* @__PURE__ */ defineComponent({
+  ...__default__$1N,
   props: useTooltipContentProps,
   setup(__props, { expose }) {
     var _a;
@@ -16274,13 +16274,13 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElTooltipContent = /* @__PURE__ */ _export_sfc(_sfc_main$2s, [["__file", "content.vue"]]);
+var ElTooltipContent = /* @__PURE__ */ _export_sfc(_sfc_main$2r, [["__file", "content.vue"]]);
 
-const __default__$1N = defineComponent({
+const __default__$1M = defineComponent({
   name: "ElTooltip"
 });
-const _sfc_main$2r = /* @__PURE__ */ defineComponent({
-  ...__default__$1N,
+const _sfc_main$2q = /* @__PURE__ */ defineComponent({
+  ...__default__$1M,
   props: useTooltipProps,
   emits: tooltipEmits,
   setup(__props, { expose, emit }) {
@@ -16433,7 +16433,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElTooltip$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2r, [["__file", "tooltip.vue"]]);
+var ElTooltip$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2q, [["__file", "tooltip.vue"]]);
 
 const inputProps = buildProps({
   isHoverSuffix: Boolean,
@@ -16469,6 +16469,13 @@ const inputProps = buildProps({
     type: String,
     default: "text"
   },
+  inputType: {
+    type: String,
+    values: ["error", "info", "warning"]
+  },
+  infoTip: {
+    type: String
+  },
   resize: {
     type: String,
     values: ["none", "both", "horizontal", "vertical"]
@@ -16498,7 +16505,10 @@ const inputProps = buildProps({
     type: Boolean,
     default: true
   },
-  clearable: Boolean,
+  clearable: {
+    type: Boolean,
+    default: true
+  },
   clearIcon: {
     type: iconPropType,
     default: circle_close_default
@@ -16643,12 +16653,12 @@ function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
 }
 
 const COMPONENT_NAME$l = "ElInput";
-const __default__$1M = defineComponent({
+const __default__$1L = defineComponent({
   name: COMPONENT_NAME$l,
   inheritAttrs: false
 });
-const _sfc_main$2q = /* @__PURE__ */ defineComponent({
-  ...__default__$1M,
+const _sfc_main$2p = /* @__PURE__ */ defineComponent({
+  ...__default__$1L,
   props: inputProps,
   emits: inputEmits,
   setup(__props, { expose, emit }) {
@@ -16666,7 +16676,10 @@ const _sfc_main$2q = /* @__PURE__ */ defineComponent({
         [nsInput.m("prefix")]: slots.prefix || props.prefixIcon,
         [nsInput.m("suffix")]: slots.suffix || props.suffixIcon || props.clearable || props.showPassword,
         [nsInput.bm("suffix", "password-clear")]: showClear.value && showPwdVisible.value,
-        [nsInput.b("hidden")]: props.type === "hidden"
+        [nsInput.b("hidden")]: props.type === "hidden",
+        [nsInput.m(props.inputType)]: !!props.inputType,
+        [nsInput.m("inputType")]: !!props.inputType,
+        [nsInput.m("filled")]: !!props.inputType && !!nativeInputValue.value
       },
       rawAttrs.class
     ]);
@@ -16715,12 +16728,40 @@ const _sfc_main$2q = /* @__PURE__ */ defineComponent({
       { resize: props.resize }
     ]);
     const nativeInputValue = computed(() => isNil(props.modelValue) ? "" : String(props.modelValue));
+    const showEmptyErrorTooltip = computed(() => props.inputType === "error" && isEmpty(nativeInputValue.value));
+    const isTextOverflowing = ref(false);
+    const inputTooltipSource = computed(() => {
+      if (validateError.value && !isEmpty(validateMsg.value))
+        return "error";
+      if (showEmptyErrorTooltip.value)
+        return "error";
+      if (isTextOverflowing.value && !isEmpty(nativeInputValue.value)) {
+        return "overflow";
+      }
+      return "none";
+    });
+    const inputTooltipContent = computed(() => {
+      if (inputTooltipSource.value === "error") {
+        if (validateError.value && !isEmpty(validateMsg.value)) {
+          return validateMsg.value;
+        }
+        return props.infoTip || "Required";
+      }
+      if (inputTooltipSource.value === "overflow") {
+        return nativeInputValue.value;
+      }
+      return "";
+    });
+    const inputTooltipDisabled = computed(() => inputTooltipSource.value === "none");
+    const inputTooltipTrigger = computed(() => "hover");
     const showClear = computed(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (isFocused.value || hovering.value));
     const showPwdVisible = computed(() => props.showPassword && !inputDisabled.value && !!nativeInputValue.value);
+    const showInfoTipIcon = computed(() => props.inputType === "info" && !!props.infoTip);
+    const infoTipTooltipDisabled = computed(() => inputTooltipSource.value !== "none");
     const isWordLimitVisible = computed(() => props.showWordLimit && !!props.maxlength && (props.type === "text" || props.type === "textarea") && !inputDisabled.value && !props.readonly && !props.showPassword);
     const textLength = computed(() => nativeInputValue.value.length);
     const inputExceed = computed(() => !!isWordLimitVisible.value && textLength.value > Number(props.maxlength));
-    const suffixVisible = computed(() => !!slots.suffix || !!props.suffixIcon || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
+    const suffixVisible = computed(() => !!slots.suffix || !!props.suffixIcon || showInfoTipIcon.value || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
     const hasModelModifiers = computed(() => !!Object.keys(props.modelModifiers).length);
     const [recordCursor, setCursor] = useCursor(input);
     useResizeObserver(textarea, (entries) => {
@@ -16733,6 +16774,25 @@ const _sfc_main$2q = /* @__PURE__ */ defineComponent({
         right: `calc(100% - ${width + 15 + 6}px)`
       };
     });
+    useResizeObserver(wrapperRef, () => {
+      nextTick(syncTextOverflow);
+    });
+    const syncTextOverflow = () => {
+      const target = _ref.value;
+      if (!target || isEmpty(nativeInputValue.value)) {
+        isTextOverflowing.value = false;
+        return;
+      }
+      if (props.type === "textarea") {
+        isTextOverflowing.value = target.scrollHeight > target.clientHeight || target.scrollWidth > target.clientWidth;
+        return;
+      }
+      if (props.type === "password" || props.type === "hidden") {
+        isTextOverflowing.value = false;
+        return;
+      }
+      isTextOverflowing.value = target.scrollWidth > target.clientWidth;
+    };
     const handleTextareaFocus = () => {
       var _a;
       (_a = textarea.value) == null ? void 0 : _a.focus();
@@ -16853,6 +16913,7 @@ const _sfc_main$2q = /* @__PURE__ */ defineComponent({
     };
     const handleMouseEnter = (evt) => {
       hovering.value = true;
+      nextTick(syncTextOverflow);
       emit("mouseenter", evt);
     };
     const handleKeydown = (evt) => {
@@ -16871,6 +16932,7 @@ const _sfc_main$2q = /* @__PURE__ */ defineComponent({
     watch(() => props.modelValue, () => {
       var _a;
       nextTick(() => resizeTextarea());
+      nextTick(syncTextOverflow);
       if (props.validateEvent) {
         (_a = elFormItem == null ? void 0 : elFormItem.validate) == null ? void 0 : _a.call(elFormItem, "change").catch((err) => debugWarn());
       }
@@ -16896,11 +16958,13 @@ const _sfc_main$2q = /* @__PURE__ */ defineComponent({
       await nextTick();
       setNativeInputValue();
       resizeTextarea();
+      syncTextOverflow();
     });
     onMounted(() => {
       if (!props.formatter && props.parser) ;
       setNativeInputValue();
       nextTick(resizeTextarea);
+      nextTick(syncTextOverflow);
     });
     expose({
       input,
@@ -16916,7 +16980,6 @@ const _sfc_main$2q = /* @__PURE__ */ defineComponent({
       resizeTextarea
     });
     return (_ctx, _cache) => {
-      var _a;
       return openBlock(), createElementBlock("div", {
         class: normalizeClass([
           unref(containerKls),
@@ -16929,298 +16992,299 @@ const _sfc_main$2q = /* @__PURE__ */ defineComponent({
         onMouseenter: handleMouseEnter,
         onMouseleave: handleMouseLeave
       }, [
-        createCommentVNode(" input "),
-        _ctx.type !== "textarea" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-          createCommentVNode(" prepend slot "),
-          _ctx.$slots.prepend ? (openBlock(), createElementBlock("div", {
-            key: 0,
-            class: normalizeClass(unref(nsInput).be("group", "prepend"))
-          }, [
-            renderSlot(_ctx.$slots, "prepend")
-          ], 2)) : createCommentVNode("v-if", true),
-          createElementVNode("div", {
-            ref_key: "wrapperRef",
-            ref: wrapperRef,
-            class: normalizeClass(unref(wrapperKls))
-          }, [
-            createCommentVNode(" prefix slot "),
-            _ctx.$slots.prefix || _ctx.prefixIcon ? (openBlock(), createElementBlock("span", {
-              key: 0,
-              class: normalizeClass(unref(nsInput).e("prefix"))
-            }, [
-              createElementVNode("span", {
-                class: normalizeClass(unref(nsInput).e("prefix-inner"))
-              }, [
-                renderSlot(_ctx.$slots, "prefix"),
-                _ctx.prefixIcon ? (openBlock(), createBlock(unref(ElIcon), {
+        createVNode(ElTooltip$1, {
+          content: unref(inputTooltipContent),
+          placement: "top-start",
+          disabled: unref(inputTooltipDisabled),
+          offset: 12,
+          trigger: unref(inputTooltipTrigger)
+        }, {
+          default: withCtx(() => {
+            var _a;
+            return [
+              createCommentVNode(" input "),
+              _ctx.type !== "textarea" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                createCommentVNode(" prepend slot "),
+                _ctx.$slots.prepend ? (openBlock(), createElementBlock("div", {
                   key: 0,
-                  class: normalizeClass(unref(nsInput).e("icon")),
-                  size: "12px"
-                }, {
-                  default: withCtx(() => [
-                    (openBlock(), createBlock(resolveDynamicComponent(_ctx.prefixIcon)))
-                  ]),
-                  _: 1
-                }, 8, ["class"])) : createCommentVNode("v-if", true)
-              ], 2)
-            ], 2)) : createCommentVNode("v-if", true),
-            createElementVNode("input", mergeProps({
-              id: unref(inputId),
-              ref_key: "input",
-              ref: input,
-              required: "",
-              class: unref(nsInput).e("inner")
-            }, unref(attrs), {
-              name: _ctx.name,
-              minlength: _ctx.minlength,
-              maxlength: _ctx.maxlength,
-              type: _ctx.showPassword ? passwordVisible.value ? "text" : "password" : _ctx.type,
-              disabled: unref(inputDisabled),
-              readonly: _ctx.readonly,
-              autocomplete: _ctx.autocomplete,
-              tabindex: _ctx.tabindex,
-              "aria-label": _ctx.ariaLabel,
-              placeholder: !_ctx.floatLabel ? _ctx.placeholder : "",
-              style: _ctx.inputStyle,
-              form: _ctx.form,
-              autofocus: _ctx.autofocus,
-              role: _ctx.containerRole,
-              inputmode: _ctx.inputmode,
-              onCompositionstart: unref(handleCompositionStart),
-              onCompositionupdate: unref(handleCompositionUpdate),
-              onCompositionend: unref(handleCompositionEnd),
-              onInput: handleInput,
-              onChange: handleChange,
-              onKeydown: handleKeydown
-            }), null, 16, ["id", "name", "minlength", "maxlength", "type", "disabled", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form", "autofocus", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"]),
-            _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
-              key: 1,
-              class: normalizeClass(["float-label", {
-                "prefix-label": _ctx.$slots.prefix || _ctx.prefixIcon,
-                "has-value": !unref(isEmpty)(_ctx.modelValue)
-              }])
-            }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
-            createCommentVNode(" suffix slot "),
-            unref(suffixVisible) ? (openBlock(), createElementBlock("span", {
-              key: 2,
-              class: normalizeClass(unref(nsInput).e("suffix"))
-            }, [
-              createElementVNode("span", {
-                class: normalizeClass(unref(nsInput).e("suffix-inner"))
-              }, [
-                unref(showClear) ? (openBlock(), createBlock(unref(ElIcon), {
-                  key: 0,
-                  class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("clear")]),
-                  onMousedown: withModifiers(unref(NOOP), ["prevent"]),
-                  onClick: clear
-                }, {
-                  default: withCtx(() => [
-                    (openBlock(), createElementBlock("svg", {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "12",
-                      height: "12",
-                      viewBox: "0 0 12 12"
+                  class: normalizeClass(unref(nsInput).be("group", "prepend"))
+                }, [
+                  renderSlot(_ctx.$slots, "prepend")
+                ], 2)) : createCommentVNode("v-if", true),
+                createElementVNode("div", {
+                  ref_key: "wrapperRef",
+                  ref: wrapperRef,
+                  class: normalizeClass(unref(wrapperKls))
+                }, [
+                  createCommentVNode(" prefix slot "),
+                  _ctx.$slots.prefix || _ctx.prefixIcon ? (openBlock(), createElementBlock("span", {
+                    key: 0,
+                    class: normalizeClass(unref(nsInput).e("prefix"))
+                  }, [
+                    createElementVNode("span", {
+                      class: normalizeClass(unref(nsInput).e("prefix-inner"))
                     }, [
-                      createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
-                    ]))
-                  ]),
-                  _: 1
-                }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
-                (!unref(showClear) || !unref(showPwdVisible) || !unref(isWordLimitVisible)) && ((_a = _ctx.alwaysShowSuffix) != null ? _a : !unref(validateState)) ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-                  _ctx.isHoverSuffix && hovering.value || !_ctx.isHoverSuffix ? renderSlot(_ctx.$slots, "suffix", { key: 0 }) : createCommentVNode("v-if", true),
-                  _ctx.suffixIcon ? (openBlock(), createBlock(unref(ElIcon), {
+                      renderSlot(_ctx.$slots, "prefix"),
+                      _ctx.prefixIcon ? (openBlock(), createBlock(unref(ElIcon), {
+                        key: 0,
+                        class: normalizeClass(unref(nsInput).e("icon")),
+                        size: "12px"
+                      }, {
+                        default: withCtx(() => [
+                          (openBlock(), createBlock(resolveDynamicComponent(_ctx.prefixIcon)))
+                        ]),
+                        _: 1
+                      }, 8, ["class"])) : createCommentVNode("v-if", true)
+                    ], 2)
+                  ], 2)) : createCommentVNode("v-if", true),
+                  createElementVNode("input", mergeProps({
+                    id: unref(inputId),
+                    ref_key: "input",
+                    ref: input,
+                    required: "",
+                    class: unref(nsInput).e("inner")
+                  }, unref(attrs), {
+                    name: _ctx.name,
+                    minlength: _ctx.minlength,
+                    maxlength: _ctx.maxlength,
+                    type: _ctx.showPassword ? passwordVisible.value ? "text" : "password" : _ctx.type,
+                    disabled: unref(inputDisabled),
+                    readonly: _ctx.readonly,
+                    autocomplete: _ctx.autocomplete,
+                    tabindex: _ctx.tabindex,
+                    "aria-label": _ctx.ariaLabel,
+                    placeholder: !_ctx.floatLabel ? _ctx.placeholder : "",
+                    style: _ctx.inputStyle,
+                    form: _ctx.form,
+                    autofocus: _ctx.autofocus,
+                    role: _ctx.containerRole,
+                    inputmode: _ctx.inputmode,
+                    onCompositionstart: unref(handleCompositionStart),
+                    onCompositionupdate: unref(handleCompositionUpdate),
+                    onCompositionend: unref(handleCompositionEnd),
+                    onInput: handleInput,
+                    onChange: handleChange,
+                    onKeydown: handleKeydown
+                  }), null, 16, ["id", "name", "minlength", "maxlength", "type", "disabled", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form", "autofocus", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"]),
+                  _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
                     key: 1,
-                    class: normalizeClass(unref(nsInput).e("icon"))
-                  }, {
-                    default: withCtx(() => [
-                      (openBlock(), createBlock(resolveDynamicComponent(_ctx.suffixIcon)))
-                    ]),
-                    _: 1
-                  }, 8, ["class"])) : createCommentVNode("v-if", true)
-                ], 64)) : createCommentVNode("v-if", true),
-                unref(showPwdVisible) ? (openBlock(), createBlock(unref(ElIcon), {
+                    class: normalizeClass(["float-label", {
+                      "prefix-label": _ctx.$slots.prefix || _ctx.prefixIcon,
+                      "has-value": !unref(isEmpty)(_ctx.modelValue)
+                    }])
+                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+                  createCommentVNode(" suffix slot "),
+                  unref(suffixVisible) ? (openBlock(), createElementBlock("span", {
+                    key: 2,
+                    class: normalizeClass(unref(nsInput).e("suffix"))
+                  }, [
+                    createElementVNode("span", {
+                      class: normalizeClass(unref(nsInput).e("suffix-inner"))
+                    }, [
+                      unref(showInfoTipIcon) ? (openBlock(), createBlock(ElTooltip$1, {
+                        key: 0,
+                        placement: "top",
+                        content: _ctx.infoTip,
+                        offset: 12,
+                        disabled: unref(infoTipTooltipDisabled)
+                      }, {
+                        default: withCtx(() => [
+                          createVNode(unref(ElIcon), {
+                            class: normalizeClass(unref(nsInput).e("icon")),
+                            size: "12px",
+                            color: "#2A3F4D"
+                          }, {
+                            default: withCtx(() => [
+                              (openBlock(), createElementBlock("svg", {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: "12",
+                                height: "12",
+                                viewBox: "0 0 12 12"
+                              }, [
+                                createElementVNode("g", { "clip-path": "url(#clip0_2517_514)" }, [
+                                  createElementVNode("path", { d: "M7.16666 9.34083H5.66667V6.27234H4.98467V4.77234H5.93917C6.26464 4.7726 6.5767 4.90201 6.80684 5.13216C7.03699 5.3623 7.1664 5.67436 7.16666 5.99984V9.34083Z" }),
+                                  createElementVNode("path", { d: "M6 12C4.81331 12 3.65328 11.6481 2.66658 10.9888C1.67989 10.3295 0.910851 9.39246 0.456725 8.2961C0.0025996 7.19975 -0.11622 5.99335 0.115291 4.82946C0.346802 3.66557 0.918247 2.59648 1.75736 1.75736C2.59648 0.918247 3.66557 0.346802 4.82946 0.115291C5.99335 -0.11622 7.19975 0.00259968 8.2961 0.456725C9.39246 0.910851 10.3295 1.67989 10.9888 2.66658C11.6481 3.65328 12 4.81331 12 6C11.9983 7.59077 11.3656 9.1159 10.2407 10.2407C9.1159 11.3656 7.59077 11.9983 6 12ZM6 1.5C5.10999 1.5 4.23996 1.76392 3.49994 2.25839C2.75991 2.75286 2.18314 3.45566 1.84254 4.27793C1.50195 5.10019 1.41283 6.00499 1.58647 6.87791C1.7601 7.75082 2.18869 8.55264 2.81802 9.18198C3.44736 9.81132 4.24918 10.2399 5.1221 10.4135C5.99501 10.5872 6.89981 10.4981 7.72208 10.1575C8.54434 9.81686 9.24715 9.24009 9.74161 8.50007C10.2361 7.76005 10.5 6.89002 10.5 6C10.4985 4.80697 10.024 3.66323 9.18037 2.81963C8.33678 1.97603 7.19303 1.50146 6 1.5Z" }),
+                                  createElementVNode("path", { d: "M6.142 4.23321C6.61586 4.23321 7 3.84907 7 3.37521C7 2.90135 6.61586 2.51721 6.142 2.51721C5.66814 2.51721 5.284 2.90135 5.284 3.37521C5.284 3.84907 5.66814 4.23321 6.142 4.23321Z" })
+                                ]),
+                                createElementVNode("defs", null, [
+                                  createElementVNode("clipPath", { id: "clip0_2517_514" }, [
+                                    createElementVNode("rect", {
+                                      width: "12",
+                                      height: "12",
+                                      fill: "white"
+                                    })
+                                  ])
+                                ])
+                              ]))
+                            ]),
+                            _: 1
+                          }, 8, ["class"])
+                        ]),
+                        _: 1
+                      }, 8, ["content", "disabled"])) : createCommentVNode("v-if", true),
+                      unref(showClear) ? (openBlock(), createBlock(unref(ElIcon), {
+                        key: 1,
+                        class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("clear")]),
+                        onMousedown: withModifiers(unref(NOOP), ["prevent"]),
+                        onClick: clear
+                      }, {
+                        default: withCtx(() => [
+                          (openBlock(), createElementBlock("svg", {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "12",
+                            height: "12",
+                            viewBox: "0 0 12 12"
+                          }, [
+                            createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
+                          ]))
+                        ]),
+                        _: 1
+                      }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
+                      (!unref(showClear) || !unref(showPwdVisible) || !unref(isWordLimitVisible)) && ((_a = _ctx.alwaysShowSuffix) != null ? _a : !unref(validateState)) ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                        _ctx.isHoverSuffix && hovering.value || !_ctx.isHoverSuffix ? renderSlot(_ctx.$slots, "suffix", { key: 0 }) : createCommentVNode("v-if", true),
+                        _ctx.suffixIcon ? (openBlock(), createBlock(unref(ElIcon), {
+                          key: 1,
+                          class: normalizeClass(unref(nsInput).e("icon"))
+                        }, {
+                          default: withCtx(() => [
+                            (openBlock(), createBlock(resolveDynamicComponent(_ctx.suffixIcon)))
+                          ]),
+                          _: 1
+                        }, 8, ["class"])) : createCommentVNode("v-if", true)
+                      ], 64)) : createCommentVNode("v-if", true),
+                      unref(showPwdVisible) ? (openBlock(), createBlock(unref(ElIcon), {
+                        key: 3,
+                        class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("password")]),
+                        onClick: handlePasswordVisible,
+                        onMousedown: withModifiers(unref(NOOP), ["prevent"]),
+                        onMouseup: withModifiers(unref(NOOP), ["prevent"])
+                      }, {
+                        default: withCtx(() => [
+                          passwordVisible.value ? (openBlock(), createElementBlock("svg", {
+                            key: 0,
+                            xmlns: "http://www.w3.org/2000/svg",
+                            "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                            width: "24",
+                            height: "24",
+                            fill: "#1a1f36",
+                            viewBox: "0 0 24 24"
+                          }, [
+                            createElementVNode("path", {
+                              id: "ujy5xle6ka",
+                              d: "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                            })
+                          ])) : (openBlock(), createElementBlock("svg", {
+                            key: 1,
+                            width: "18",
+                            fill: "#1a1f36",
+                            height: "18",
+                            viewBox: "0 0 18 18",
+                            xmlns: "http://www.w3.org/2000/svg",
+                            "xmlns:xlink": "http://www.w3.org/1999/xlink"
+                          }, [
+                            createElementVNode("path", {
+                              id: "a",
+                              d: "M9 5.25c2.07 0 3.75 1.68 3.75 3.75 0 .488-.098.945-.27 1.373l2.19 2.19A8.863 8.863 0 0 0 17.242 9c-1.297-3.293-4.5-5.625-8.25-5.625-1.05 0-2.055.188-2.985.525l1.62 1.62A3.64 3.64 0 0 1 9 5.25zM1.5 3.203l1.71 1.71.345.345A8.853 8.853 0 0 0 .75 9c1.297 3.293 4.5 5.625 8.25 5.625a8.832 8.832 0 0 0 3.285-.63l.315.315 2.197 2.19.953-.953L2.453 2.25l-.953.953zM5.647 7.35 6.81 8.512c-.037.158-.06.323-.06.488A2.247 2.247 0 0 0 9 11.25c.165 0 .33-.023.488-.06l1.162 1.162A3.717 3.717 0 0 1 9 12.75c-2.07 0-3.75-1.68-3.75-3.75 0-.592.15-1.147.397-1.65zm3.233-.585 2.362 2.362.015-.12a2.247 2.247 0 0 0-2.25-2.25l-.127.008z"
+                            })
+                          ]))
+                        ]),
+                        _: 1
+                      }, 8, ["class", "onMousedown", "onMouseup"])) : createCommentVNode("v-if", true),
+                      unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
+                        key: 4,
+                        class: normalizeClass([
+                          unref(nsInput).e("count"),
+                          unref(nsInput).is("outside", _ctx.wordLimitPosition === "outside")
+                        ])
+                      }, [
+                        createElementVNode("span", {
+                          class: normalizeClass(unref(nsInput).e("count-inner"))
+                        }, toDisplayString(unref(textLength)) + " / " + toDisplayString(_ctx.maxlength), 3)
+                      ], 2)) : createCommentVNode("v-if", true),
+                      unref(validateState) && unref(validateIcon) && unref(needStatusIcon) ? (openBlock(), createBlock(unref(ElIcon), {
+                        key: 5,
+                        class: normalizeClass([
+                          unref(nsInput).e("icon"),
+                          unref(nsInput).e("validateIcon"),
+                          unref(nsInput).is("loading", unref(validateState) === "validating")
+                        ]),
+                        innerHTML: unref(validateIcon)
+                      }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true)
+                    ], 2)
+                  ], 2)) : createCommentVNode("v-if", true)
+                ], 2),
+                createCommentVNode(" append slot "),
+                _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
+                  key: 1,
+                  class: normalizeClass(unref(nsInput).be("group", "append"))
+                }, [
+                  renderSlot(_ctx.$slots, "append")
+                ], 2)) : createCommentVNode("v-if", true)
+              ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                createCommentVNode(" textarea "),
+                createElementVNode("textarea", mergeProps({
+                  id: unref(inputId),
+                  ref_key: "textarea",
+                  ref: textarea,
+                  class: [unref(nsTextarea).e("inner"), unref(nsInput).is("focus", unref(isFocused))]
+                }, unref(attrs), {
+                  minlength: _ctx.minlength,
+                  maxlength: _ctx.maxlength,
+                  tabindex: _ctx.tabindex,
+                  disabled: unref(inputDisabled),
+                  readonly: _ctx.readonly,
+                  autocomplete: _ctx.autocomplete,
+                  style: unref(textareaStyle),
+                  "aria-label": _ctx.ariaLabel,
+                  placeholder: !_ctx.floatLabel ? _ctx.placeholder : "",
+                  form: _ctx.form,
+                  autofocus: _ctx.autofocus,
+                  rows: _ctx.rows,
+                  role: _ctx.containerRole,
+                  onCompositionstart: unref(handleCompositionStart),
+                  onCompositionupdate: unref(handleCompositionUpdate),
+                  onCompositionend: unref(handleCompositionEnd),
+                  onInput: handleInput,
+                  onFocus: unref(handleFocus),
+                  onBlur: unref(handleBlur),
+                  onChange: handleChange,
+                  onKeydown: handleKeydown
+                }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"]),
+                _ctx.$slots.textareaPrefix ? (openBlock(), createElementBlock("span", {
+                  key: 0,
+                  class: "textarea-prefix"
+                }, [
+                  renderSlot(_ctx.$slots, "textareaPrefix")
+                ])) : createCommentVNode("v-if", true),
+                _ctx.$slots.textareaSuffix ? (openBlock(), createElementBlock("span", {
+                  key: 1,
+                  class: "textarea-suffix"
+                }, [
+                  renderSlot(_ctx.$slots, "textareaSuffix")
+                ])) : createCommentVNode("v-if", true),
+                _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
                   key: 2,
-                  class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("password")]),
-                  onClick: handlePasswordVisible,
-                  onMousedown: withModifiers(unref(NOOP), ["prevent"]),
-                  onMouseup: withModifiers(unref(NOOP), ["prevent"])
-                }, {
-                  default: withCtx(() => [
-                    passwordVisible.value ? (openBlock(), createElementBlock("svg", {
-                      key: 0,
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                      width: "24",
-                      height: "24",
-                      fill: "#1a1f36",
-                      viewBox: "0 0 24 24"
-                    }, [
-                      createElementVNode("path", {
-                        id: "ujy5xle6ka",
-                        d: "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
-                      })
-                    ])) : (openBlock(), createElementBlock("svg", {
-                      key: 1,
-                      width: "18",
-                      fill: "#1a1f36",
-                      height: "18",
-                      viewBox: "0 0 18 18",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "xmlns:xlink": "http://www.w3.org/1999/xlink"
-                    }, [
-                      createElementVNode("path", {
-                        id: "a",
-                        d: "M9 5.25c2.07 0 3.75 1.68 3.75 3.75 0 .488-.098.945-.27 1.373l2.19 2.19A8.863 8.863 0 0 0 17.242 9c-1.297-3.293-4.5-5.625-8.25-5.625-1.05 0-2.055.188-2.985.525l1.62 1.62A3.64 3.64 0 0 1 9 5.25zM1.5 3.203l1.71 1.71.345.345A8.853 8.853 0 0 0 .75 9c1.297 3.293 4.5 5.625 8.25 5.625a8.832 8.832 0 0 0 3.285-.63l.315.315 2.197 2.19.953-.953L2.453 2.25l-.953.953zM5.647 7.35 6.81 8.512c-.037.158-.06.323-.06.488A2.247 2.247 0 0 0 9 11.25c.165 0 .33-.023.488-.06l1.162 1.162A3.717 3.717 0 0 1 9 12.75c-2.07 0-3.75-1.68-3.75-3.75 0-.592.15-1.147.397-1.65zm3.233-.585 2.362 2.362.015-.12a2.247 2.247 0 0 0-2.25-2.25l-.127.008z"
-                      })
-                    ]))
-                  ]),
-                  _: 1
-                }, 8, ["class", "onMousedown", "onMouseup"])) : createCommentVNode("v-if", true),
+                  class: normalizeClass(["float-label", { "has-value": !unref(isEmpty)(_ctx.modelValue) }]),
+                  onClick: handleTextareaFocus
+                }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
                 unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
                   key: 3,
+                  style: normalizeStyle(countStyle.value),
                   class: normalizeClass([
                     unref(nsInput).e("count"),
                     unref(nsInput).is("outside", _ctx.wordLimitPosition === "outside")
                   ])
-                }, [
-                  createElementVNode("span", {
-                    class: normalizeClass(unref(nsInput).e("count-inner"))
-                  }, toDisplayString(unref(textLength)) + " / " + toDisplayString(_ctx.maxlength), 3)
-                ], 2)) : createCommentVNode("v-if", true),
-                unref(validateState) && unref(validateIcon) && unref(needStatusIcon) ? (openBlock(), createBlock(unref(ElIcon), {
-                  key: 4,
-                  class: normalizeClass([
-                    unref(nsInput).e("icon"),
-                    unref(nsInput).e("validateIcon"),
-                    unref(nsInput).is("loading", unref(validateState) === "validating")
-                  ]),
-                  innerHTML: unref(validateIcon)
-                }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true)
-              ], 2)
-            ], 2)) : createCommentVNode("v-if", true),
-            unref(validateError) ? (openBlock(), createBlock(ElTooltip$1, {
-              key: 3,
-              content: unref(validateMsg),
-              effect: "light",
-              placement: "top",
-              offset: 4
-            }, {
-              default: withCtx(() => [
-                createVNode(unref(ElIcon), {
-                  class: "error-icon",
-                  color: "#A1160A"
-                }, {
-                  default: withCtx(() => [
-                    (openBlock(), createElementBlock("svg", {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "12",
-                      height: "12",
-                      viewBox: "0 0 12 12"
-                    }, [
-                      createElementVNode("path", { d: "M6.00041 1C8.00045 1 6.75037 5.25 6.75037 5.25C6.75037 5.25 10.1112 2.75 11.0004 4.5C11.8896 6.25 7.25037 6.75 7.25037 6.75C7.25037 6.75 10.7186 9.88284 9.25035 10.9496C7.78208 12.0164 6.00037 7.5 6.00037 7.5C6.00037 7.5 4.23586 12.0164 2.76759 10.9496C1.29932 9.88283 4.75037 6.75 4.75037 6.75C4.75037 6.75 0.250258 6.25 1.00035 4.5C1.75045 2.75 5.25037 5.25 5.25037 5.25C5.25037 5.25 4.00037 1 6.00041 1Z" })
-                    ]))
-                  ]),
-                  _: 1
-                })
-              ]),
-              _: 1
-            }, 8, ["content"])) : createCommentVNode("v-if", true)
-          ], 2),
-          createCommentVNode(" append slot "),
-          _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
-            key: 1,
-            class: normalizeClass(unref(nsInput).be("group", "append"))
-          }, [
-            renderSlot(_ctx.$slots, "append")
-          ], 2)) : createCommentVNode("v-if", true)
-        ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-          createCommentVNode(" textarea "),
-          createElementVNode("textarea", mergeProps({
-            id: unref(inputId),
-            ref_key: "textarea",
-            ref: textarea,
-            class: [unref(nsTextarea).e("inner"), unref(nsInput).is("focus", unref(isFocused))]
-          }, unref(attrs), {
-            minlength: _ctx.minlength,
-            maxlength: _ctx.maxlength,
-            tabindex: _ctx.tabindex,
-            disabled: unref(inputDisabled),
-            readonly: _ctx.readonly,
-            autocomplete: _ctx.autocomplete,
-            style: unref(textareaStyle),
-            "aria-label": _ctx.ariaLabel,
-            placeholder: !_ctx.floatLabel ? _ctx.placeholder : "",
-            form: _ctx.form,
-            autofocus: _ctx.autofocus,
-            rows: _ctx.rows,
-            role: _ctx.containerRole,
-            onCompositionstart: unref(handleCompositionStart),
-            onCompositionupdate: unref(handleCompositionUpdate),
-            onCompositionend: unref(handleCompositionEnd),
-            onInput: handleInput,
-            onFocus: unref(handleFocus),
-            onBlur: unref(handleBlur),
-            onChange: handleChange,
-            onKeydown: handleKeydown
-          }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"]),
-          _ctx.$slots.textareaPrefix ? (openBlock(), createElementBlock("span", {
-            key: 0,
-            class: "textarea-prefix"
-          }, [
-            renderSlot(_ctx.$slots, "textareaPrefix")
-          ])) : createCommentVNode("v-if", true),
-          _ctx.$slots.textareaSuffix ? (openBlock(), createElementBlock("span", {
-            key: 1,
-            class: "textarea-suffix"
-          }, [
-            renderSlot(_ctx.$slots, "textareaSuffix")
-          ])) : createCommentVNode("v-if", true),
-          unref(validateError) ? (openBlock(), createBlock(ElTooltip$1, {
-            key: 2,
-            content: unref(validateMsg),
-            effect: "light",
-            placement: "top",
-            offset: 4
-          }, {
-            default: withCtx(() => [
-              createVNode(unref(ElIcon), {
-                class: "error-icon",
-                color: "#A1160A"
-              }, {
-                default: withCtx(() => [
-                  (openBlock(), createElementBlock("svg", {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    width: "12",
-                    height: "12",
-                    viewBox: "0 0 12 12"
-                  }, [
-                    createElementVNode("path", { d: "M6.00041 1C8.00045 1 6.75037 5.25 6.75037 5.25C6.75037 5.25 10.1112 2.75 11.0004 4.5C11.8896 6.25 7.25037 6.75 7.25037 6.75C7.25037 6.75 10.7186 9.88284 9.25035 10.9496C7.78208 12.0164 6.00037 7.5 6.00037 7.5C6.00037 7.5 4.23586 12.0164 2.76759 10.9496C1.29932 9.88283 4.75037 6.75 4.75037 6.75C4.75037 6.75 0.250258 6.25 1.00035 4.5C1.75045 2.75 5.25037 5.25 5.25037 5.25C5.25037 5.25 4.00037 1 6.00041 1Z" })
-                  ]))
-                ]),
-                _: 1
-              })
-            ]),
-            _: 1
-          }, 8, ["content"])) : createCommentVNode("v-if", true),
-          _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
-            key: 3,
-            class: normalizeClass(["float-label", { "has-value": !unref(isEmpty)(_ctx.modelValue) }]),
-            onClick: handleTextareaFocus
-          }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
-          unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
-            key: 4,
-            style: normalizeStyle(countStyle.value),
-            class: normalizeClass([
-              unref(nsInput).e("count"),
-              unref(nsInput).is("outside", _ctx.wordLimitPosition === "outside")
-            ])
-          }, toDisplayString(unref(textLength)) + " / " + toDisplayString(_ctx.maxlength), 7)) : createCommentVNode("v-if", true)
-        ], 64))
+                }, toDisplayString(unref(textLength)) + " / " + toDisplayString(_ctx.maxlength), 7)) : createCommentVNode("v-if", true)
+              ], 64))
+            ];
+          }),
+          _: 3
+        }, 8, ["content", "disabled", "trigger"])
       ], 38);
     };
   }
 });
-var Input = /* @__PURE__ */ _export_sfc(_sfc_main$2q, [["__file", "input.vue"]]);
+var Input = /* @__PURE__ */ _export_sfc(_sfc_main$2p, [["__file", "input.vue"]]);
 
 const ElInput = withInstall(Input);
 
@@ -17270,7 +17334,7 @@ const thumbProps = buildProps({
 });
 
 const COMPONENT_NAME$k = "Thumb";
-const _sfc_main$2p = /* @__PURE__ */ defineComponent({
+const _sfc_main$2o = /* @__PURE__ */ defineComponent({
   __name: "thumb",
   props: thumbProps,
   setup(__props) {
@@ -17399,7 +17463,7 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Thumb = /* @__PURE__ */ _export_sfc(_sfc_main$2p, [["__file", "thumb.vue"]]);
+var Thumb = /* @__PURE__ */ _export_sfc(_sfc_main$2o, [["__file", "thumb.vue"]]);
 
 const barProps = buildProps({
   always: {
@@ -17412,7 +17476,7 @@ const barProps = buildProps({
   }
 });
 
-const _sfc_main$2o = /* @__PURE__ */ defineComponent({
+const _sfc_main$2n = /* @__PURE__ */ defineComponent({
   __name: "bar",
   props: barProps,
   setup(__props, { expose }) {
@@ -17470,7 +17534,7 @@ const _sfc_main$2o = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Bar = /* @__PURE__ */ _export_sfc(_sfc_main$2o, [["__file", "bar.vue"]]);
+var Bar = /* @__PURE__ */ _export_sfc(_sfc_main$2n, [["__file", "bar.vue"]]);
 
 const scrollbarProps = buildProps({
   distance: {
@@ -17529,11 +17593,11 @@ const scrollbarEmits = {
 };
 
 const COMPONENT_NAME$j = "ElScrollbar";
-const __default__$1L = defineComponent({
+const __default__$1K = defineComponent({
   name: COMPONENT_NAME$j
 });
-const _sfc_main$2n = /* @__PURE__ */ defineComponent({
-  ...__default__$1L,
+const _sfc_main$2m = /* @__PURE__ */ defineComponent({
+  ...__default__$1K,
   props: scrollbarProps,
   emits: scrollbarEmits,
   setup(__props, { expose, emit }) {
@@ -17741,7 +17805,7 @@ const _sfc_main$2n = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Scrollbar$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2n, [["__file", "scrollbar.vue"]]);
+var Scrollbar$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2m, [["__file", "scrollbar.vue"]]);
 
 const ElScrollbar = withInstall(Scrollbar$1);
 
@@ -17821,12 +17885,12 @@ const autocompleteEmits = {
 };
 
 const COMPONENT_NAME$i = "ElAutocomplete";
-const __default__$1K = defineComponent({
+const __default__$1J = defineComponent({
   name: COMPONENT_NAME$i,
   inheritAttrs: false
 });
-const _sfc_main$2m = /* @__PURE__ */ defineComponent({
-  ...__default__$1K,
+const _sfc_main$2l = /* @__PURE__ */ defineComponent({
+  ...__default__$1J,
   props: autocompleteProps,
   emits: autocompleteEmits,
   setup(__props, { expose, emit }) {
@@ -18279,7 +18343,7 @@ const _sfc_main$2m = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Autocomplete = /* @__PURE__ */ _export_sfc(_sfc_main$2m, [["__file", "autocomplete.vue"]]);
+var Autocomplete = /* @__PURE__ */ _export_sfc(_sfc_main$2l, [["__file", "autocomplete.vue"]]);
 
 const ElAutocomplete = withInstall(Autocomplete);
 
@@ -18313,11 +18377,11 @@ const avatarEmits = {
   error: (evt) => evt instanceof Event
 };
 
-const __default__$1J = defineComponent({
+const __default__$1I = defineComponent({
   name: "ElAvatar"
 });
-const _sfc_main$2l = /* @__PURE__ */ defineComponent({
-  ...__default__$1J,
+const _sfc_main$2k = /* @__PURE__ */ defineComponent({
+  ...__default__$1I,
   props: avatarProps,
   emits: avatarEmits,
   setup(__props, { emit }) {
@@ -18371,7 +18435,7 @@ const _sfc_main$2l = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Avatar = /* @__PURE__ */ _export_sfc(_sfc_main$2l, [["__file", "avatar.vue"]]);
+var Avatar = /* @__PURE__ */ _export_sfc(_sfc_main$2k, [["__file", "avatar.vue"]]);
 
 const ElAvatar = withInstall(Avatar);
 
@@ -18432,11 +18496,11 @@ const useBackTop = (props, emit, componentName) => {
 };
 
 const COMPONENT_NAME$h = "ElBacktop";
-const __default__$1I = defineComponent({
+const __default__$1H = defineComponent({
   name: COMPONENT_NAME$h
 });
-const _sfc_main$2k = /* @__PURE__ */ defineComponent({
-  ...__default__$1I,
+const _sfc_main$2j = /* @__PURE__ */ defineComponent({
+  ...__default__$1H,
   props: backtopProps,
   emits: backtopEmits,
   setup(__props, { emit }) {
@@ -18475,7 +18539,7 @@ const _sfc_main$2k = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Backtop = /* @__PURE__ */ _export_sfc(_sfc_main$2k, [["__file", "backtop.vue"]]);
+var Backtop = /* @__PURE__ */ _export_sfc(_sfc_main$2j, [["__file", "backtop.vue"]]);
 
 const ElBacktop = withInstall(Backtop);
 
@@ -18512,11 +18576,11 @@ const badgeProps = buildProps({
   }
 });
 
-const __default__$1H = defineComponent({
+const __default__$1G = defineComponent({
   name: "ElBadge"
 });
-const _sfc_main$2j = /* @__PURE__ */ defineComponent({
-  ...__default__$1H,
+const _sfc_main$2i = /* @__PURE__ */ defineComponent({
+  ...__default__$1G,
   props: badgeProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -18577,7 +18641,7 @@ const _sfc_main$2j = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Badge = /* @__PURE__ */ _export_sfc(_sfc_main$2j, [["__file", "badge.vue"]]);
+var Badge = /* @__PURE__ */ _export_sfc(_sfc_main$2i, [["__file", "badge.vue"]]);
 
 const ElBadge = withInstall(Badge);
 
@@ -18593,11 +18657,11 @@ const breadcrumbProps = buildProps({
   }
 });
 
-const __default__$1G = defineComponent({
+const __default__$1F = defineComponent({
   name: "ElBreadcrumb"
 });
-const _sfc_main$2i = /* @__PURE__ */ defineComponent({
-  ...__default__$1G,
+const _sfc_main$2h = /* @__PURE__ */ defineComponent({
+  ...__default__$1F,
   props: breadcrumbProps,
   setup(__props) {
     const props = __props;
@@ -18624,7 +18688,7 @@ const _sfc_main$2i = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Breadcrumb = /* @__PURE__ */ _export_sfc(_sfc_main$2i, [["__file", "breadcrumb.vue"]]);
+var Breadcrumb = /* @__PURE__ */ _export_sfc(_sfc_main$2h, [["__file", "breadcrumb.vue"]]);
 
 const breadcrumbItemProps = buildProps({
   to: {
@@ -18634,11 +18698,11 @@ const breadcrumbItemProps = buildProps({
   replace: Boolean
 });
 
-const __default__$1F = defineComponent({
+const __default__$1E = defineComponent({
   name: "ElBreadcrumbItem"
 });
-const _sfc_main$2h = /* @__PURE__ */ defineComponent({
-  ...__default__$1F,
+const _sfc_main$2g = /* @__PURE__ */ defineComponent({
+  ...__default__$1E,
   props: breadcrumbItemProps,
   setup(__props) {
     const props = __props;
@@ -18683,7 +18747,7 @@ const _sfc_main$2h = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var BreadcrumbItem = /* @__PURE__ */ _export_sfc(_sfc_main$2h, [["__file", "breadcrumb-item.vue"]]);
+var BreadcrumbItem = /* @__PURE__ */ _export_sfc(_sfc_main$2g, [["__file", "breadcrumb-item.vue"]]);
 
 const ElBreadcrumb = withInstall(Breadcrumb, {
   BreadcrumbItem
@@ -19783,11 +19847,11 @@ function useButtonCustomStyle(props) {
   });
 }
 
-const __default__$1E = defineComponent({
+const __default__$1D = defineComponent({
   name: "ElButton"
 });
-const _sfc_main$2g = /* @__PURE__ */ defineComponent({
-  ...__default__$1E,
+const _sfc_main$2f = /* @__PURE__ */ defineComponent({
+  ...__default__$1D,
   props: buttonProps,
   emits: buttonEmits,
   setup(__props, { expose, emit }) {
@@ -19864,18 +19928,18 @@ const _sfc_main$2g = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElButton$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2g, [["__file", "button.vue"]]);
+var ElButton$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2f, [["__file", "button.vue"]]);
 
 const buttonGroupProps = {
   size: buttonProps.size,
   type: buttonProps.type
 };
 
-const __default__$1D = defineComponent({
+const __default__$1C = defineComponent({
   name: "ElButtonGroup"
 });
-const _sfc_main$2f = /* @__PURE__ */ defineComponent({
-  ...__default__$1D,
+const _sfc_main$2e = /* @__PURE__ */ defineComponent({
+  ...__default__$1C,
   props: buttonGroupProps,
   setup(__props) {
     const props = __props;
@@ -19893,7 +19957,7 @@ const _sfc_main$2f = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ButtonGroup = /* @__PURE__ */ _export_sfc(_sfc_main$2f, [["__file", "button-group.vue"]]);
+var ButtonGroup = /* @__PURE__ */ _export_sfc(_sfc_main$2e, [["__file", "button-group.vue"]]);
 
 const ElButton = withInstall(ElButton$1, {
   ButtonGroup
@@ -20584,12 +20648,12 @@ const timePickerRangeTriggerProps = buildProps({
 });
 const timePickerRngeTriggerProps = timePickerRangeTriggerProps;
 
-const __default__$1C = defineComponent({
+const __default__$1B = defineComponent({
   name: "PickerRangeTrigger",
   inheritAttrs: false
 });
-const _sfc_main$2e = /* @__PURE__ */ defineComponent({
-  ...__default__$1C,
+const _sfc_main$2d = /* @__PURE__ */ defineComponent({
+  ...__default__$1B,
   props: timePickerRangeTriggerProps,
   emits: [
     "mouseenter",
@@ -20704,13 +20768,13 @@ const _sfc_main$2e = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var PickerRangeTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2e, [["__file", "picker-range-trigger.vue"]]);
+var PickerRangeTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2d, [["__file", "picker-range-trigger.vue"]]);
 
-const __default__$1B = defineComponent({
+const __default__$1A = defineComponent({
   name: "Picker"
 });
-const _sfc_main$2d = /* @__PURE__ */ defineComponent({
-  ...__default__$1B,
+const _sfc_main$2c = /* @__PURE__ */ defineComponent({
+  ...__default__$1A,
   props: timePickerDefaultProps,
   emits: [
     UPDATE_MODEL_EVENT,
@@ -21394,7 +21458,7 @@ const _sfc_main$2d = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CommonPicker = /* @__PURE__ */ _export_sfc(_sfc_main$2d, [["__file", "picker.vue"]]);
+var CommonPicker = /* @__PURE__ */ _export_sfc(_sfc_main$2c, [["__file", "picker.vue"]]);
 
 const panelTimePickerProps = buildProps({
   ...timePanelSharedProps,
@@ -21720,7 +21784,7 @@ const basicTimeSpinnerProps = buildProps({
   ...disabledTimeListsProps
 });
 
-const _sfc_main$2c = /* @__PURE__ */ defineComponent({
+const _sfc_main$2b = /* @__PURE__ */ defineComponent({
   __name: "basic-time-spinner",
   props: basicTimeSpinnerProps,
   emits: [CHANGE_EVENT, "select-range", "set-option"],
@@ -22015,9 +22079,9 @@ const _sfc_main$2c = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var TimeSpinner = /* @__PURE__ */ _export_sfc(_sfc_main$2c, [["__file", "basic-time-spinner.vue"]]);
+var TimeSpinner = /* @__PURE__ */ _export_sfc(_sfc_main$2b, [["__file", "basic-time-spinner.vue"]]);
 
-const _sfc_main$2b = /* @__PURE__ */ defineComponent({
+const _sfc_main$2a = /* @__PURE__ */ defineComponent({
   __name: "panel-time-pick",
   props: panelTimePickerProps,
   emits: ["pick", "select-range", "set-picker-option"],
@@ -22167,7 +22231,7 @@ const _sfc_main$2b = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var TimePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$2b, [["__file", "panel-time-pick.vue"]]);
+var TimePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$2a, [["__file", "panel-time-pick.vue"]]);
 
 const panelTimeRangeProps = buildProps({
   ...timePanelSharedProps,
@@ -22176,7 +22240,7 @@ const panelTimeRangeProps = buildProps({
   }
 });
 
-const _sfc_main$2a = /* @__PURE__ */ defineComponent({
+const _sfc_main$29 = /* @__PURE__ */ defineComponent({
   __name: "panel-time-range",
   props: panelTimeRangeProps,
   emits: ["pick", "select-range", "set-picker-option"],
@@ -22442,7 +22506,7 @@ const _sfc_main$2a = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var TimeRangePanel = /* @__PURE__ */ _export_sfc(_sfc_main$2a, [["__file", "panel-time-range.vue"]]);
+var TimeRangePanel = /* @__PURE__ */ _export_sfc(_sfc_main$29, [["__file", "panel-time-range.vue"]]);
 
 dayjs.extend(customParseFormat);
 var TimePicker = defineComponent({
@@ -22687,11 +22751,11 @@ const useDateTable = (props, emit) => {
   };
 };
 
-const __default__$1A = defineComponent({
+const __default__$1z = defineComponent({
   name: "DateTable"
 });
-const _sfc_main$29 = /* @__PURE__ */ defineComponent({
-  ...__default__$1A,
+const _sfc_main$28 = /* @__PURE__ */ defineComponent({
+  ...__default__$1z,
   props: dateTableProps,
   emits: dateTableEmits,
   setup(__props, { expose, emit }) {
@@ -22772,7 +22836,7 @@ const _sfc_main$29 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DateTable$1 = /* @__PURE__ */ _export_sfc(_sfc_main$29, [["__file", "date-table.vue"]]);
+var DateTable$1 = /* @__PURE__ */ _export_sfc(_sfc_main$28, [["__file", "date-table.vue"]]);
 
 const adjacentMonth = (start, end) => {
   const firstMonthLastDay = start.endOf("month");
@@ -22901,11 +22965,11 @@ const calendarEmits = {
 };
 
 const COMPONENT_NAME$g = "ElCalendar";
-const __default__$1z = defineComponent({
+const __default__$1y = defineComponent({
   name: COMPONENT_NAME$g
 });
-const _sfc_main$28 = /* @__PURE__ */ defineComponent({
-  ...__default__$1z,
+const _sfc_main$27 = /* @__PURE__ */ defineComponent({
+  ...__default__$1y,
   props: calendarProps,
   emits: calendarEmits,
   setup(__props, { expose, emit }) {
@@ -23026,7 +23090,7 @@ const _sfc_main$28 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Calendar = /* @__PURE__ */ _export_sfc(_sfc_main$28, [["__file", "calendar.vue"]]);
+var Calendar = /* @__PURE__ */ _export_sfc(_sfc_main$27, [["__file", "calendar.vue"]]);
 
 const ElCalendar = withInstall(Calendar);
 
@@ -23054,11 +23118,11 @@ const cardProps = buildProps({
 });
 const cardContextKey = Symbol("cardContextKey");
 
-const __default__$1y = defineComponent({
+const __default__$1x = defineComponent({
   name: "ElCard"
 });
-const _sfc_main$27 = /* @__PURE__ */ defineComponent({
-  ...__default__$1y,
+const _sfc_main$26 = /* @__PURE__ */ defineComponent({
+  ...__default__$1x,
   props: cardProps,
   setup(__props) {
     const globalConfig = useGlobalConfig("card");
@@ -23097,7 +23161,7 @@ const _sfc_main$27 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Card = /* @__PURE__ */ _export_sfc(_sfc_main$27, [["__file", "card.vue"]]);
+var Card = /* @__PURE__ */ _export_sfc(_sfc_main$26, [["__file", "card.vue"]]);
 
 const ElCard = withInstall(Card);
 
@@ -23425,11 +23489,11 @@ const useCarousel = (props, emit, componentName) => {
 };
 
 const COMPONENT_NAME$f = "ElCarousel";
-const __default__$1x = defineComponent({
+const __default__$1w = defineComponent({
   name: COMPONENT_NAME$f
 });
-const _sfc_main$26 = /* @__PURE__ */ defineComponent({
-  ...__default__$1x,
+const _sfc_main$25 = /* @__PURE__ */ defineComponent({
+  ...__default__$1w,
   props: carouselProps,
   emits: carouselEmits,
   setup(__props, { expose, emit }) {
@@ -23627,7 +23691,7 @@ const _sfc_main$26 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Carousel = /* @__PURE__ */ _export_sfc(_sfc_main$26, [["__file", "carousel.vue"]]);
+var Carousel = /* @__PURE__ */ _export_sfc(_sfc_main$25, [["__file", "carousel.vue"]]);
 
 const carouselItemProps = buildProps({
   name: { type: String, default: "" },
@@ -23748,11 +23812,11 @@ const useCarouselItem = (props) => {
   };
 };
 
-const __default__$1w = defineComponent({
+const __default__$1v = defineComponent({
   name: CAROUSEL_ITEM_NAME
 });
-const _sfc_main$25 = /* @__PURE__ */ defineComponent({
-  ...__default__$1w,
+const _sfc_main$24 = /* @__PURE__ */ defineComponent({
+  ...__default__$1v,
   props: carouselItemProps,
   setup(__props) {
     const props = __props;
@@ -23811,7 +23875,7 @@ const _sfc_main$25 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CarouselItem = /* @__PURE__ */ _export_sfc(_sfc_main$25, [["__file", "carousel-item.vue"]]);
+var CarouselItem = /* @__PURE__ */ _export_sfc(_sfc_main$24, [["__file", "carousel-item.vue"]]);
 
 const ElCarousel = withInstall(Carousel, {
   CarouselItem
@@ -24091,11 +24155,11 @@ const useCheckbox = (props, slots) => {
   };
 };
 
-const __default__$1v = defineComponent({
+const __default__$1u = defineComponent({
   name: "ElCheckbox"
 });
-const _sfc_main$24 = /* @__PURE__ */ defineComponent({
-  ...__default__$1v,
+const _sfc_main$23 = /* @__PURE__ */ defineComponent({
+  ...__default__$1u,
   props: checkboxProps,
   emits: checkboxEmits,
   setup(__props) {
@@ -24214,13 +24278,13 @@ const _sfc_main$24 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Checkbox = /* @__PURE__ */ _export_sfc(_sfc_main$24, [["__file", "checkbox.vue"]]);
+var Checkbox = /* @__PURE__ */ _export_sfc(_sfc_main$23, [["__file", "checkbox.vue"]]);
 
-const __default__$1u = defineComponent({
+const __default__$1t = defineComponent({
   name: "ElCheckboxButton"
 });
-const _sfc_main$23 = /* @__PURE__ */ defineComponent({
-  ...__default__$1u,
+const _sfc_main$22 = /* @__PURE__ */ defineComponent({
+  ...__default__$1t,
   props: checkboxProps,
   emits: checkboxEmits,
   setup(__props) {
@@ -24301,7 +24365,7 @@ const _sfc_main$23 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CheckboxButton = /* @__PURE__ */ _export_sfc(_sfc_main$23, [["__file", "checkbox-button.vue"]]);
+var CheckboxButton = /* @__PURE__ */ _export_sfc(_sfc_main$22, [["__file", "checkbox-button.vue"]]);
 
 const checkboxGroupProps = buildProps({
   modelValue: {
@@ -24346,11 +24410,11 @@ const checkboxDefaultProps = {
   disabled: "disabled"
 };
 
-const __default__$1t = defineComponent({
+const __default__$1s = defineComponent({
   name: "ElCheckboxGroup"
 });
-const _sfc_main$22 = /* @__PURE__ */ defineComponent({
-  ...__default__$1t,
+const _sfc_main$21 = /* @__PURE__ */ defineComponent({
+  ...__default__$1s,
   props: checkboxGroupProps,
   emits: checkboxGroupEmits,
   setup(__props, { emit }) {
@@ -24426,7 +24490,7 @@ const _sfc_main$22 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CheckboxGroup = /* @__PURE__ */ _export_sfc(_sfc_main$22, [["__file", "checkbox-group.vue"]]);
+var CheckboxGroup = /* @__PURE__ */ _export_sfc(_sfc_main$21, [["__file", "checkbox-group.vue"]]);
 
 const ElCheckbox = withInstall(Checkbox, {
   CheckboxButton,
@@ -24515,11 +24579,11 @@ const useRadio = (props, emit) => {
   };
 };
 
-const __default__$1s = defineComponent({
+const __default__$1r = defineComponent({
   name: "ElRadio"
 });
-const _sfc_main$21 = /* @__PURE__ */ defineComponent({
-  ...__default__$1s,
+const _sfc_main$20 = /* @__PURE__ */ defineComponent({
+  ...__default__$1r,
   props: radioProps,
   emits: radioEmits,
   setup(__props, { emit }) {
@@ -24583,17 +24647,17 @@ const _sfc_main$21 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Radio = /* @__PURE__ */ _export_sfc(_sfc_main$21, [["__file", "radio.vue"]]);
+var Radio = /* @__PURE__ */ _export_sfc(_sfc_main$20, [["__file", "radio.vue"]]);
 
 const radioButtonProps = buildProps({
   ...radioPropsBase
 });
 
-const __default__$1r = defineComponent({
+const __default__$1q = defineComponent({
   name: "ElRadioButton"
 });
-const _sfc_main$20 = /* @__PURE__ */ defineComponent({
-  ...__default__$1r,
+const _sfc_main$1$ = /* @__PURE__ */ defineComponent({
+  ...__default__$1q,
   props: radioButtonProps,
   setup(__props) {
     const props = __props;
@@ -24648,7 +24712,7 @@ const _sfc_main$20 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var RadioButton = /* @__PURE__ */ _export_sfc(_sfc_main$20, [["__file", "radio-button.vue"]]);
+var RadioButton = /* @__PURE__ */ _export_sfc(_sfc_main$1$, [["__file", "radio-button.vue"]]);
 
 const radioGroupProps = buildProps({
   id: {
@@ -24698,11 +24762,11 @@ const radioDefaultProps = {
   disabled: "disabled"
 };
 
-const __default__$1q = defineComponent({
+const __default__$1p = defineComponent({
   name: "ElRadioGroup"
 });
-const _sfc_main$1$ = /* @__PURE__ */ defineComponent({
-  ...__default__$1q,
+const _sfc_main$1_ = /* @__PURE__ */ defineComponent({
+  ...__default__$1p,
   props: radioGroupProps,
   emits: radioGroupEmits,
   setup(__props, { emit }) {
@@ -24771,7 +24835,7 @@ const _sfc_main$1$ = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var RadioGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1$, [["__file", "radio-group.vue"]]);
+var RadioGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1_, [["__file", "radio-group.vue"]]);
 
 const ElRadio = withInstall(Radio, {
   RadioButton,
@@ -24820,11 +24884,11 @@ var NodeContent$1 = defineComponent({
   }
 });
 
-const __default__$1p = defineComponent({
+const __default__$1o = defineComponent({
   name: "ElCascaderNode"
 });
-const _sfc_main$1_ = /* @__PURE__ */ defineComponent({
-  ...__default__$1p,
+const _sfc_main$1Z = /* @__PURE__ */ defineComponent({
+  ...__default__$1o,
   props: {
     node: {
       type: Object,
@@ -24989,13 +25053,13 @@ const _sfc_main$1_ = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElCascaderNode = /* @__PURE__ */ _export_sfc(_sfc_main$1_, [["__file", "node.vue"]]);
+var ElCascaderNode = /* @__PURE__ */ _export_sfc(_sfc_main$1Z, [["__file", "node.vue"]]);
 
-const __default__$1o = defineComponent({
+const __default__$1n = defineComponent({
   name: "ElCascaderMenu"
 });
-const _sfc_main$1Z = /* @__PURE__ */ defineComponent({
-  ...__default__$1o,
+const _sfc_main$1Y = /* @__PURE__ */ defineComponent({
+  ...__default__$1n,
   props: {
     nodes: {
       type: Array,
@@ -25111,7 +25175,7 @@ const _sfc_main$1Z = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElCascaderMenu = /* @__PURE__ */ _export_sfc(_sfc_main$1Z, [["__file", "menu.vue"]]);
+var ElCascaderMenu = /* @__PURE__ */ _export_sfc(_sfc_main$1Y, [["__file", "menu.vue"]]);
 
 let uid = 0;
 const calculatePathNodes = (node) => {
@@ -25377,12 +25441,12 @@ const sortByOriginalOrder = (oldNodes, newNodes) => {
   return res;
 };
 
-const __default__$1n = defineComponent({
+const __default__$1m = defineComponent({
   name: "ElCascaderPanel",
   inheritAttrs: false
 });
-const _sfc_main$1Y = /* @__PURE__ */ defineComponent({
-  ...__default__$1n,
+const _sfc_main$1X = /* @__PURE__ */ defineComponent({
+  ...__default__$1m,
   props: cascaderPanelProps,
   emits: cascaderPanelEmits,
   setup(__props, { expose, emit }) {
@@ -25660,7 +25724,7 @@ const _sfc_main$1Y = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CascaderPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1Y, [["__file", "index.vue"]]);
+var CascaderPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1X, [["__file", "index.vue"]]);
 
 const ElCascaderPanel = withInstall(CascaderPanel);
 
@@ -25702,11 +25766,11 @@ const tagEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-const __default__$1m = defineComponent({
+const __default__$1l = defineComponent({
   name: "ElTag"
 });
-const _sfc_main$1X = /* @__PURE__ */ defineComponent({
-  ...__default__$1m,
+const _sfc_main$1W = /* @__PURE__ */ defineComponent({
+  ...__default__$1l,
   props: tagProps,
   emits: tagEmits,
   setup(__props, { emit }) {
@@ -25807,7 +25871,7 @@ const _sfc_main$1X = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Tag = /* @__PURE__ */ _export_sfc(_sfc_main$1X, [["__file", "tag.vue"]]);
+var Tag = /* @__PURE__ */ _export_sfc(_sfc_main$1W, [["__file", "tag.vue"]]);
 
 const ElTag = withInstall(Tag);
 
@@ -25901,11 +25965,11 @@ const cascaderEmits = {
   removeTag: (val) => !!val
 };
 
-const __default__$1l = defineComponent({
+const __default__$1k = defineComponent({
   name: "ElCascader"
 });
-const _sfc_main$1W = /* @__PURE__ */ defineComponent({
-  ...__default__$1l,
+const _sfc_main$1V = /* @__PURE__ */ defineComponent({
+  ...__default__$1k,
   props: cascaderProps,
   emits: cascaderEmits,
   setup(__props, { expose, emit }) {
@@ -26582,7 +26646,7 @@ const _sfc_main$1W = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Cascader = /* @__PURE__ */ _export_sfc(_sfc_main$1W, [["__file", "cascader.vue"]]);
+var Cascader = /* @__PURE__ */ _export_sfc(_sfc_main$1V, [["__file", "cascader.vue"]]);
 
 const ElCascader = withInstall(Cascader);
 
@@ -26600,11 +26664,11 @@ const checkTagEmits = {
   [CHANGE_EVENT]: (value) => isBoolean(value)
 };
 
-const __default__$1k = defineComponent({
+const __default__$1j = defineComponent({
   name: "ElCheckTag"
 });
-const _sfc_main$1V = /* @__PURE__ */ defineComponent({
-  ...__default__$1k,
+const _sfc_main$1U = /* @__PURE__ */ defineComponent({
+  ...__default__$1j,
   props: checkTagProps,
   emits: checkTagEmits,
   setup(__props, { emit }) {
@@ -26633,7 +26697,7 @@ const _sfc_main$1V = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CheckTag = /* @__PURE__ */ _export_sfc(_sfc_main$1V, [["__file", "check-tag.vue"]]);
+var CheckTag = /* @__PURE__ */ _export_sfc(_sfc_main$1U, [["__file", "check-tag.vue"]]);
 
 const ElCheckTag = withInstall(CheckTag);
 
@@ -26668,11 +26732,11 @@ const rowProps = buildProps({
   }
 });
 
-const __default__$1j = defineComponent({
+const __default__$1i = defineComponent({
   name: "ElRow"
 });
-const _sfc_main$1U = /* @__PURE__ */ defineComponent({
-  ...__default__$1j,
+const _sfc_main$1T = /* @__PURE__ */ defineComponent({
+  ...__default__$1i,
   props: rowProps,
   setup(__props) {
     const props = __props;
@@ -26707,7 +26771,7 @@ const _sfc_main$1U = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Row$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1U, [["__file", "row.vue"]]);
+var Row$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1T, [["__file", "row.vue"]]);
 
 const ElRow = withInstall(Row$1);
 
@@ -26754,11 +26818,11 @@ const colProps = buildProps({
   }
 });
 
-const __default__$1i = defineComponent({
+const __default__$1h = defineComponent({
   name: "ElCol"
 });
-const _sfc_main$1T = /* @__PURE__ */ defineComponent({
-  ...__default__$1i,
+const _sfc_main$1S = /* @__PURE__ */ defineComponent({
+  ...__default__$1h,
   props: colProps,
   setup(__props) {
     const props = __props;
@@ -26811,7 +26875,7 @@ const _sfc_main$1T = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Col = /* @__PURE__ */ _export_sfc(_sfc_main$1T, [["__file", "col.vue"]]);
+var Col = /* @__PURE__ */ _export_sfc(_sfc_main$1S, [["__file", "col.vue"]]);
 
 const ElCol = withInstall(Col);
 
@@ -26906,11 +26970,11 @@ const useCollapseDOM = (props) => {
   };
 };
 
-const __default__$1h = defineComponent({
+const __default__$1g = defineComponent({
   name: "ElCollapse"
 });
-const _sfc_main$1S = /* @__PURE__ */ defineComponent({
-  ...__default__$1h,
+const _sfc_main$1R = /* @__PURE__ */ defineComponent({
+  ...__default__$1g,
   props: collapseProps,
   emits: collapseEmits,
   setup(__props, { expose, emit }) {
@@ -26930,13 +26994,13 @@ const _sfc_main$1S = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Collapse = /* @__PURE__ */ _export_sfc(_sfc_main$1S, [["__file", "collapse.vue"]]);
+var Collapse = /* @__PURE__ */ _export_sfc(_sfc_main$1R, [["__file", "collapse.vue"]]);
 
-const __default__$1g = defineComponent({
+const __default__$1f = defineComponent({
   name: "ElCollapseTransition"
 });
-const _sfc_main$1R = /* @__PURE__ */ defineComponent({
-  ...__default__$1g,
+const _sfc_main$1Q = /* @__PURE__ */ defineComponent({
+  ...__default__$1f,
   setup(__props) {
     const ns = useNamespace("collapse-transition");
     const reset = (el) => {
@@ -27014,7 +27078,7 @@ const _sfc_main$1R = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main$1R, [["__file", "collapse-transition.vue"]]);
+var CollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main$1Q, [["__file", "collapse-transition.vue"]]);
 
 const ElCollapseTransition = withInstall(CollapseTransition);
 
@@ -27114,11 +27178,11 @@ const useCollapseItemDOM = (props, { focusing, isActive, id }) => {
   };
 };
 
-const __default__$1f = defineComponent({
+const __default__$1e = defineComponent({
   name: "ElCollapseItem"
 });
-const _sfc_main$1Q = /* @__PURE__ */ defineComponent({
-  ...__default__$1f,
+const _sfc_main$1P = /* @__PURE__ */ defineComponent({
+  ...__default__$1e,
   props: collapseItemProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -27202,7 +27266,7 @@ const _sfc_main$1Q = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var CollapseItem = /* @__PURE__ */ _export_sfc(_sfc_main$1Q, [["__file", "collapse-item.vue"]]);
+var CollapseItem = /* @__PURE__ */ _export_sfc(_sfc_main$1P, [["__file", "collapse-item.vue"]]);
 
 const ElCollapse = withInstall(Collapse, {
   CollapseItem
@@ -27423,11 +27487,11 @@ const useSliderDOM = (props, {
 
 const minValue$1 = 0;
 const maxValue$1 = 100;
-const __default__$1e = defineComponent({
+const __default__$1d = defineComponent({
   name: "ElColorAlphaSlider"
 });
-const _sfc_main$1P = /* @__PURE__ */ defineComponent({
-  ...__default__$1e,
+const _sfc_main$1O = /* @__PURE__ */ defineComponent({
+  ...__default__$1d,
   props: alphaSliderProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -27491,15 +27555,15 @@ const _sfc_main$1P = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var AlphaSlider = /* @__PURE__ */ _export_sfc(_sfc_main$1P, [["__file", "alpha-slider.vue"]]);
+var AlphaSlider = /* @__PURE__ */ _export_sfc(_sfc_main$1O, [["__file", "alpha-slider.vue"]]);
 
 const minValue = 0;
 const maxValue = 360;
-const __default__$1d = defineComponent({
+const __default__$1c = defineComponent({
   name: "ElColorHueSlider"
 });
-const _sfc_main$1O = /* @__PURE__ */ defineComponent({
-  ...__default__$1d,
+const _sfc_main$1N = /* @__PURE__ */ defineComponent({
+  ...__default__$1c,
   props: hueSliderProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -27555,7 +27619,7 @@ const _sfc_main$1O = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var HueSlider = /* @__PURE__ */ _export_sfc(_sfc_main$1O, [["__file", "hue-slider.vue"]]);
+var HueSlider = /* @__PURE__ */ _export_sfc(_sfc_main$1N, [["__file", "hue-slider.vue"]]);
 
 const predefineProps = buildProps({
   colors: {
@@ -27744,11 +27808,11 @@ const usePredefineDOM = (props) => {
   };
 };
 
-const __default__$1c = defineComponent({
+const __default__$1b = defineComponent({
   name: "ElColorPredefine"
 });
-const _sfc_main$1N = /* @__PURE__ */ defineComponent({
-  ...__default__$1c,
+const _sfc_main$1M = /* @__PURE__ */ defineComponent({
+  ...__default__$1b,
   props: predefineProps,
   setup(__props) {
     const props = __props;
@@ -27784,7 +27848,7 @@ const _sfc_main$1N = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Predefine = /* @__PURE__ */ _export_sfc(_sfc_main$1N, [["__file", "predefine.vue"]]);
+var Predefine = /* @__PURE__ */ _export_sfc(_sfc_main$1M, [["__file", "predefine.vue"]]);
 
 const svPanelProps = buildProps({
   color: {
@@ -27932,11 +27996,11 @@ const useSvPanelDOM = (props, {
   };
 };
 
-const __default__$1b = defineComponent({
+const __default__$1a = defineComponent({
   name: "ElSvPanel"
 });
-const _sfc_main$1M = /* @__PURE__ */ defineComponent({
-  ...__default__$1b,
+const _sfc_main$1L = /* @__PURE__ */ defineComponent({
+  ...__default__$1a,
   props: svPanelProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -27993,7 +28057,7 @@ const _sfc_main$1M = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var SvPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1M, [["__file", "sv-panel.vue"]]);
+var SvPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1L, [["__file", "sv-panel.vue"]]);
 
 const useCommonColor = (props, emit) => {
   const color = reactive(new Color({
@@ -28012,11 +28076,11 @@ const useCommonColor = (props, emit) => {
   };
 };
 
-const __default__$1a = defineComponent({
+const __default__$19 = defineComponent({
   name: "ElColorPickerPanel"
 });
-const _sfc_main$1L = /* @__PURE__ */ defineComponent({
-  ...__default__$1a,
+const _sfc_main$1K = /* @__PURE__ */ defineComponent({
+  ...__default__$19,
   props: colorPickerPanelProps,
   emits: colorPickerPanelEmits,
   setup(__props, { expose, emit }) {
@@ -28131,7 +28195,7 @@ const _sfc_main$1L = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ColorPickerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1L, [["__file", "color-picker-panel.vue"]]);
+var ColorPickerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["__file", "color-picker-panel.vue"]]);
 
 const ElColorPickerPanel = withInstall(ColorPickerPanel);
 
@@ -28175,11 +28239,11 @@ const colorPickerEmits = {
   blur: (evt) => evt instanceof FocusEvent
 };
 
-const __default__$19 = defineComponent({
+const __default__$18 = defineComponent({
   name: "ElColorPicker"
 });
-const _sfc_main$1K = /* @__PURE__ */ defineComponent({
-  ...__default__$19,
+const _sfc_main$1J = /* @__PURE__ */ defineComponent({
+  ...__default__$18,
   props: colorPickerProps,
   emits: colorPickerEmits,
   setup(__props, { expose, emit }) {
@@ -28498,15 +28562,15 @@ const _sfc_main$1K = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ColorPicker = /* @__PURE__ */ _export_sfc(_sfc_main$1K, [["__file", "color-picker.vue"]]);
+var ColorPicker = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["__file", "color-picker.vue"]]);
 
 const ElColorPicker = withInstall(ColorPicker);
 
-const __default__$18 = defineComponent({
+const __default__$17 = defineComponent({
   name: "ElContainer"
 });
-const _sfc_main$1J = /* @__PURE__ */ defineComponent({
-  ...__default__$18,
+const _sfc_main$1I = /* @__PURE__ */ defineComponent({
+  ...__default__$17,
   props: buildProps({
     direction: {
       type: String,
@@ -28542,13 +28606,13 @@ const _sfc_main$1J = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Container = /* @__PURE__ */ _export_sfc(_sfc_main$1J, [["__file", "container.vue"]]);
+var Container = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["__file", "container.vue"]]);
 
-const __default__$17 = defineComponent({
+const __default__$16 = defineComponent({
   name: "ElAside"
 });
-const _sfc_main$1I = /* @__PURE__ */ defineComponent({
-  ...__default__$17,
+const _sfc_main$1H = /* @__PURE__ */ defineComponent({
+  ...__default__$16,
   props: {
     width: {
       type: String,
@@ -28569,13 +28633,13 @@ const _sfc_main$1I = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Aside = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["__file", "aside.vue"]]);
+var Aside = /* @__PURE__ */ _export_sfc(_sfc_main$1H, [["__file", "aside.vue"]]);
 
-const __default__$16 = defineComponent({
+const __default__$15 = defineComponent({
   name: "ElFooter"
 });
-const _sfc_main$1H = /* @__PURE__ */ defineComponent({
-  ...__default__$16,
+const _sfc_main$1G = /* @__PURE__ */ defineComponent({
+  ...__default__$15,
   props: {
     height: {
       type: String,
@@ -28596,13 +28660,13 @@ const _sfc_main$1H = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Footer$2 = /* @__PURE__ */ _export_sfc(_sfc_main$1H, [["__file", "footer.vue"]]);
+var Footer$2 = /* @__PURE__ */ _export_sfc(_sfc_main$1G, [["__file", "footer.vue"]]);
 
-const __default__$15 = defineComponent({
+const __default__$14 = defineComponent({
   name: "ElHeader"
 });
-const _sfc_main$1G = /* @__PURE__ */ defineComponent({
-  ...__default__$15,
+const _sfc_main$1F = /* @__PURE__ */ defineComponent({
+  ...__default__$14,
   props: {
     height: {
       type: String,
@@ -28627,13 +28691,13 @@ const _sfc_main$1G = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Header$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1G, [["__file", "header.vue"]]);
+var Header$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1F, [["__file", "header.vue"]]);
 
-const __default__$14 = defineComponent({
+const __default__$13 = defineComponent({
   name: "ElMain"
 });
-const _sfc_main$1F = /* @__PURE__ */ defineComponent({
-  ...__default__$14,
+const _sfc_main$1E = /* @__PURE__ */ defineComponent({
+  ...__default__$13,
   setup(__props) {
     const ns = useNamespace("main");
     return (_ctx, _cache) => {
@@ -28645,7 +28709,7 @@ const _sfc_main$1F = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Main = /* @__PURE__ */ _export_sfc(_sfc_main$1F, [["__file", "main.vue"]]);
+var Main = /* @__PURE__ */ _export_sfc(_sfc_main$1E, [["__file", "main.vue"]]);
 
 const ElContainer = withInstall(Container, {
   Aside,
@@ -29450,7 +29514,7 @@ var ElDatePickerCell = defineComponent({
   }
 });
 
-const _sfc_main$1E = /* @__PURE__ */ defineComponent({
+const _sfc_main$1D = /* @__PURE__ */ defineComponent({
   __name: "basic-date-table",
   props: basicDateTableProps,
   emits: basicDateTableEmits,
@@ -29540,14 +29604,14 @@ const _sfc_main$1E = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DateTable = /* @__PURE__ */ _export_sfc(_sfc_main$1E, [["__file", "basic-date-table.vue"]]);
+var DateTable = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["__file", "basic-date-table.vue"]]);
 
 const basicMonthTableProps = buildProps({
   ...datePickerSharedProps,
   selectionMode: selectionModeWithDefault("month")
 });
 
-const _sfc_main$1D = /* @__PURE__ */ defineComponent({
+const _sfc_main$1C = /* @__PURE__ */ defineComponent({
   __name: "basic-month-table",
   props: basicMonthTableProps,
   emits: ["changerange", "pick", "select"],
@@ -29747,14 +29811,14 @@ const _sfc_main$1D = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var MonthTable = /* @__PURE__ */ _export_sfc(_sfc_main$1D, [["__file", "basic-month-table.vue"]]);
+var MonthTable = /* @__PURE__ */ _export_sfc(_sfc_main$1C, [["__file", "basic-month-table.vue"]]);
 
 const basicYearTableProps = buildProps({
   ...datePickerSharedProps,
   selectionMode: selectionModeWithDefault("year")
 });
 
-const _sfc_main$1C = /* @__PURE__ */ defineComponent({
+const _sfc_main$1B = /* @__PURE__ */ defineComponent({
   __name: "basic-year-table",
   props: basicYearTableProps,
   emits: ["changerange", "pick", "select"],
@@ -29950,9 +30014,9 @@ const _sfc_main$1C = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var YearTable = /* @__PURE__ */ _export_sfc(_sfc_main$1C, [["__file", "basic-year-table.vue"]]);
+var YearTable = /* @__PURE__ */ _export_sfc(_sfc_main$1B, [["__file", "basic-year-table.vue"]]);
 
-const _sfc_main$1B = /* @__PURE__ */ defineComponent({
+const _sfc_main$1A = /* @__PURE__ */ defineComponent({
   __name: "panel-date-pick",
   props: panelDatePickProps,
   emits: ["pick", "set-picker-option", "panel-change"],
@@ -30710,7 +30774,7 @@ const _sfc_main$1B = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DatePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1B, [["__file", "panel-date-pick.vue"]]);
+var DatePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1A, [["__file", "panel-date-pick.vue"]]);
 
 const panelDateRangeProps = buildProps({
   ...panelSharedProps,
@@ -30946,7 +31010,7 @@ const usePanelDateRange = (props, emit, leftDate, rightDate) => {
 };
 
 const unit$4 = "month";
-const _sfc_main$1A = /* @__PURE__ */ defineComponent({
+const _sfc_main$1z = /* @__PURE__ */ defineComponent({
   __name: "panel-date-range",
   props: panelDateRangeProps,
   emits: [
@@ -31778,7 +31842,7 @@ const _sfc_main$1A = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DateRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1A, [["__file", "panel-date-range.vue"]]);
+var DateRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1z, [["__file", "panel-date-range.vue"]]);
 
 const panelMonthRangeProps = buildProps({
   ...panelRangeSharedProps
@@ -31838,11 +31902,11 @@ const useMonthRangeHeader = ({
 };
 
 const unit$3 = "year";
-const __default__$13 = defineComponent({
+const __default__$12 = defineComponent({
   name: "DatePickerMonthRange"
 });
-const _sfc_main$1z = /* @__PURE__ */ defineComponent({
-  ...__default__$13,
+const _sfc_main$1y = /* @__PURE__ */ defineComponent({
+  ...__default__$12,
   props: panelMonthRangeProps,
   emits: panelMonthRangeEmits,
   setup(__props, { emit }) {
@@ -32133,7 +32197,7 @@ const _sfc_main$1z = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var MonthRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1z, [["__file", "panel-month-range.vue"]]);
+var MonthRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1y, [["__file", "panel-month-range.vue"]]);
 
 const panelYearRangeProps = buildProps({
   ...panelRangeSharedProps
@@ -32197,11 +32261,11 @@ const useYearRangeHeader = ({
 
 const step = 10;
 const unit$2 = "year";
-const __default__$12 = defineComponent({
+const __default__$11 = defineComponent({
   name: "DatePickerYearRange"
 });
-const _sfc_main$1y = /* @__PURE__ */ defineComponent({
-  ...__default__$12,
+const _sfc_main$1x = /* @__PURE__ */ defineComponent({
+  ...__default__$11,
   props: panelYearRangeProps,
   emits: panelYearRangeEmits,
   setup(__props, { emit }) {
@@ -32518,10 +32582,10 @@ const _sfc_main$1y = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var YearRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1y, [["__file", "panel-year-range.vue"]]);
+var YearRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1x, [["__file", "panel-year-range.vue"]]);
 
 const unit$1 = "month";
-const _sfc_main$1x = /* @__PURE__ */ defineComponent({
+const _sfc_main$1w = /* @__PURE__ */ defineComponent({
   __name: "panel-start-range",
   props: panelDateRangeProps,
   emits: [
@@ -33088,10 +33152,10 @@ const _sfc_main$1x = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DateStartRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1x, [["__file", "panel-start-range.vue"]]);
+var DateStartRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1w, [["__file", "panel-start-range.vue"]]);
 
 const unit = "month";
-const _sfc_main$1w = /* @__PURE__ */ defineComponent({
+const _sfc_main$1v = /* @__PURE__ */ defineComponent({
   __name: "panel-end-range",
   props: panelDateRangeProps,
   emits: [
@@ -33659,7 +33723,7 @@ const _sfc_main$1w = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var DateEndRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1w, [["__file", "panel-end-range.vue"]]);
+var DateEndRangePickPanel = /* @__PURE__ */ _export_sfc(_sfc_main$1v, [["__file", "panel-end-range.vue"]]);
 
 const getPanel = function(type) {
   switch (type) {
@@ -33912,11 +33976,11 @@ const descriptionsRowProps = buildProps({
   }
 });
 
-const __default__$11 = defineComponent({
+const __default__$10 = defineComponent({
   name: "ElDescriptionsRow"
 });
-const _sfc_main$1v = /* @__PURE__ */ defineComponent({
-  ...__default__$11,
+const _sfc_main$1u = /* @__PURE__ */ defineComponent({
+  ...__default__$10,
   props: descriptionsRowProps,
   setup(__props) {
     const descriptions = inject(descriptionsKey, {});
@@ -33970,7 +34034,7 @@ const _sfc_main$1v = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElDescriptionsRow = /* @__PURE__ */ _export_sfc(_sfc_main$1v, [["__file", "descriptions-row.vue"]]);
+var ElDescriptionsRow = /* @__PURE__ */ _export_sfc(_sfc_main$1u, [["__file", "descriptions-row.vue"]]);
 
 const descriptionProps = buildProps({
   border: Boolean,
@@ -34000,11 +34064,11 @@ const descriptionProps = buildProps({
 
 const COMPONENT_NAME$e = "ElDescriptionsItem";
 
-const __default__$10 = defineComponent({
+const __default__$$ = defineComponent({
   name: "ElDescriptions"
 });
-const _sfc_main$1u = /* @__PURE__ */ defineComponent({
-  ...__default__$10,
+const _sfc_main$1t = /* @__PURE__ */ defineComponent({
+  ...__default__$$,
   props: descriptionProps,
   setup(__props) {
     const props = __props;
@@ -34118,7 +34182,7 @@ const _sfc_main$1u = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Descriptions = /* @__PURE__ */ _export_sfc(_sfc_main$1u, [["__file", "description.vue"]]);
+var Descriptions = /* @__PURE__ */ _export_sfc(_sfc_main$1t, [["__file", "description.vue"]]);
 
 const descriptionItemProps = buildProps({
   label: {
@@ -34227,9 +34291,9 @@ const dialogContentEmits = {
   close: () => true
 };
 
-const __default__$$ = defineComponent({ name: "ElDialogContent" });
-const _sfc_main$1t = /* @__PURE__ */ defineComponent({
-  ...__default__$$,
+const __default__$_ = defineComponent({ name: "ElDialogContent" });
+const _sfc_main$1s = /* @__PURE__ */ defineComponent({
+  ...__default__$_,
   props: dialogContentProps,
   emits: dialogContentEmits,
   setup(__props, { expose }) {
@@ -34350,7 +34414,7 @@ const _sfc_main$1t = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElDialogContent = /* @__PURE__ */ _export_sfc(_sfc_main$1t, [["__file", "dialog-content.vue"]]);
+var ElDialogContent = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["__file", "dialog-content.vue"]]);
 
 const dialogProps = buildProps({
   ...dialogContentProps,
@@ -34658,12 +34722,12 @@ const useDialog = (props, targetRef) => {
   };
 };
 
-const __default__$_ = defineComponent({
+const __default__$Z = defineComponent({
   name: "ElDialog",
   inheritAttrs: false
 });
-const _sfc_main$1s = /* @__PURE__ */ defineComponent({
-  ...__default__$_,
+const _sfc_main$1r = /* @__PURE__ */ defineComponent({
+  ...__default__$Z,
   props: dialogProps,
   emits: dialogEmits,
   setup(__props, { expose }) {
@@ -34825,7 +34889,7 @@ const _sfc_main$1s = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Dialog = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["__file", "dialog.vue"]]);
+var Dialog = /* @__PURE__ */ _export_sfc(_sfc_main$1r, [["__file", "dialog.vue"]]);
 
 const ElDialog = withInstall(Dialog);
 
@@ -34850,11 +34914,11 @@ const dividerProps = buildProps({
   }
 });
 
-const __default__$Z = defineComponent({
+const __default__$Y = defineComponent({
   name: "ElDivider"
 });
-const _sfc_main$1r = /* @__PURE__ */ defineComponent({
-  ...__default__$Z,
+const _sfc_main$1q = /* @__PURE__ */ defineComponent({
+  ...__default__$Y,
   props: dividerProps,
   setup(__props) {
     const props = __props;
@@ -34881,7 +34945,7 @@ const _sfc_main$1r = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElDivider$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1r, [["__file", "divider.vue"]]);
+var ElDivider$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1q, [["__file", "divider.vue"]]);
 
 const ElDivider = withInstall(ElDivider$1);
 
@@ -34980,12 +35044,12 @@ const drawerProps = buildProps({
 });
 const drawerEmits = dialogEmits;
 
-const __default__$Y = defineComponent({
+const __default__$X = defineComponent({
   name: "ElDrawer",
   inheritAttrs: false
 });
-const _sfc_main$1q = /* @__PURE__ */ defineComponent({
-  ...__default__$Y,
+const _sfc_main$1p = /* @__PURE__ */ defineComponent({
+  ...__default__$X,
   props: drawerProps,
   emits: drawerEmits,
   setup(__props, { expose }) {
@@ -35176,26 +35240,26 @@ const _sfc_main$1q = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Drawer = /* @__PURE__ */ _export_sfc(_sfc_main$1q, [["__file", "drawer.vue"]]);
+var Drawer = /* @__PURE__ */ _export_sfc(_sfc_main$1p, [["__file", "drawer.vue"]]);
 
 const ElDrawer = withInstall(Drawer);
 
-const _sfc_main$1p = defineComponent({
+const _sfc_main$1o = defineComponent({
   inheritAttrs: false
 });
 function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var Collection = /* @__PURE__ */ _export_sfc(_sfc_main$1p, [["render", _sfc_render$n], ["__file", "collection.vue"]]);
+var Collection = /* @__PURE__ */ _export_sfc(_sfc_main$1o, [["render", _sfc_render$n], ["__file", "collection.vue"]]);
 
-const _sfc_main$1o = defineComponent({
+const _sfc_main$1n = defineComponent({
   name: "ElCollectionItem",
   inheritAttrs: false
 });
 function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var CollectionItem = /* @__PURE__ */ _export_sfc(_sfc_main$1o, [["render", _sfc_render$m], ["__file", "collection-item.vue"]]);
+var CollectionItem = /* @__PURE__ */ _export_sfc(_sfc_main$1n, [["render", _sfc_render$m], ["__file", "collection-item.vue"]]);
 
 const COLLECTION_ITEM_SIGN = `data-el-collection-item`;
 const createCollectionWithScope = (name) => {
@@ -35333,7 +35397,7 @@ const focusFirst = (elements) => {
 const CURRENT_TAB_ID_CHANGE_EVT = "currentTabIdChange";
 const ENTRY_FOCUS_EVT = "rovingFocusGroup.entryFocus";
 const EVT_OPTS = { bubbles: false, cancelable: true };
-const _sfc_main$1n = defineComponent({
+const _sfc_main$1m = defineComponent({
   name: "ElRovingFocusGroupImpl",
   inheritAttrs: false,
   props: rovingFocusGroupProps,
@@ -35446,9 +35510,9 @@ const _sfc_main$1n = defineComponent({
 function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var ElRovingFocusGroupImpl = /* @__PURE__ */ _export_sfc(_sfc_main$1n, [["render", _sfc_render$l], ["__file", "roving-focus-group-impl.vue"]]);
+var ElRovingFocusGroupImpl = /* @__PURE__ */ _export_sfc(_sfc_main$1m, [["render", _sfc_render$l], ["__file", "roving-focus-group-impl.vue"]]);
 
-const _sfc_main$1m = defineComponent({
+const _sfc_main$1l = defineComponent({
   name: "ElRovingFocusGroup",
   components: {
     ElFocusGroupCollection: ElCollection,
@@ -35470,9 +35534,9 @@ function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   });
 }
-var ElRovingFocusGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1m, [["render", _sfc_render$k], ["__file", "roving-focus-group.vue"]]);
+var ElRovingFocusGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1l, [["render", _sfc_render$k], ["__file", "roving-focus-group.vue"]]);
 
-const _sfc_main$1l = defineComponent({
+const _sfc_main$1k = defineComponent({
   components: {
     ElRovingFocusCollectionItem: ElCollectionItem
   },
@@ -35544,7 +35608,7 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["id", "focusable", "active"]);
 }
-var ElRovingFocusItem = /* @__PURE__ */ _export_sfc(_sfc_main$1l, [["render", _sfc_render$j], ["__file", "roving-focus-item.vue"]]);
+var ElRovingFocusItem = /* @__PURE__ */ _export_sfc(_sfc_main$1k, [["render", _sfc_render$j], ["__file", "roving-focus-item.vue"]]);
 
 const dropdownProps = buildProps({
   trigger: useTooltipTriggerProps.trigger,
@@ -35652,7 +35716,7 @@ const DROPDOWN_INJECTION_KEY = Symbol("elDropdown");
 const DROPDOWN_INSTANCE_INJECTION_KEY = "elDropdown";
 
 const { ButtonGroup: ElButtonGroup } = ElButton;
-const _sfc_main$1k = defineComponent({
+const _sfc_main$1j = defineComponent({
   name: "ElDropdown",
   components: {
     ElButton,
@@ -35893,9 +35957,9 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     })) : createCommentVNode("v-if", true)
   ], 2);
 }
-var Dropdown = /* @__PURE__ */ _export_sfc(_sfc_main$1k, [["render", _sfc_render$i], ["__file", "dropdown.vue"]]);
+var Dropdown = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["render", _sfc_render$i], ["__file", "dropdown.vue"]]);
 
-const _sfc_main$1j = defineComponent({
+const _sfc_main$1i = defineComponent({
   name: "DropdownItemImpl",
   components: {
     ElIcon
@@ -35975,7 +36039,7 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     ], 16, ["aria-disabled", "tabindex", "role", "onClick", "onFocus", "onKeydown", "onMousedown", "onPointermove", "onPointerleave"])
   ], 64);
 }
-var ElDropdownItemImpl = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["render", _sfc_render$h], ["__file", "dropdown-item-impl.vue"]]);
+var ElDropdownItemImpl = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$h], ["__file", "dropdown-item-impl.vue"]]);
 
 const useDropdown = () => {
   const elDropdown = inject(DROPDOWN_INSTANCE_INJECTION_KEY, {});
@@ -35986,7 +36050,7 @@ const useDropdown = () => {
   };
 };
 
-const _sfc_main$1i = defineComponent({
+const _sfc_main$1h = defineComponent({
   name: "ElDropdownItem",
   components: {
     ElRovingFocusItem,
@@ -36069,9 +36133,9 @@ function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["focusable"]);
 }
-var DropdownItem = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$g], ["__file", "dropdown-item.vue"]]);
+var DropdownItem = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$g], ["__file", "dropdown-item.vue"]]);
 
-const _sfc_main$1h = defineComponent({
+const _sfc_main$1g = defineComponent({
   name: "ElDropdownMenu",
   props: dropdownMenuProps,
   setup(props) {
@@ -36137,7 +36201,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "default")
   ], 46, ["role", "aria-labelledby", "onFocusin", "onFocusout", "onKeydown", "onMousedown"]);
 }
-var DropdownMenu = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$f], ["__file", "dropdown-menu.vue"]]);
+var DropdownMenu = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["render", _sfc_render$f], ["__file", "dropdown-menu.vue"]]);
 
 const ElDropdown = withInstall(Dropdown, {
   DropdownItem,
@@ -36145,137 +36209,6 @@ const ElDropdown = withInstall(Dropdown, {
 });
 const ElDropdownItem = withNoopInstall(DropdownItem);
 const ElDropdownMenu = withNoopInstall(DropdownMenu);
-
-const __default__$X = defineComponent({
-  name: "ImgEmpty"
-});
-const _sfc_main$1g = /* @__PURE__ */ defineComponent({
-  ...__default__$X,
-  setup(__props) {
-    const ns = useNamespace("empty");
-    const id = useId();
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("svg", {
-        viewBox: "0 0 79 86",
-        version: "1.1",
-        xmlns: "http://www.w3.org/2000/svg",
-        "xmlns:xlink": "http://www.w3.org/1999/xlink"
-      }, [
-        createElementVNode("defs", null, [
-          createElementVNode("linearGradient", {
-            id: `linearGradient-1-${unref(id)}`,
-            x1: "38.8503086%",
-            y1: "0%",
-            x2: "61.1496914%",
-            y2: "100%"
-          }, [
-            createElementVNode("stop", {
-              "stop-color": `var(${unref(ns).cssVarBlockName("fill-color-1")})`,
-              offset: "0%"
-            }, null, 8, ["stop-color"]),
-            createElementVNode("stop", {
-              "stop-color": `var(${unref(ns).cssVarBlockName("fill-color-4")})`,
-              offset: "100%"
-            }, null, 8, ["stop-color"])
-          ], 8, ["id"]),
-          createElementVNode("linearGradient", {
-            id: `linearGradient-2-${unref(id)}`,
-            x1: "0%",
-            y1: "9.5%",
-            x2: "100%",
-            y2: "90.5%"
-          }, [
-            createElementVNode("stop", {
-              "stop-color": `var(${unref(ns).cssVarBlockName("fill-color-1")})`,
-              offset: "0%"
-            }, null, 8, ["stop-color"]),
-            createElementVNode("stop", {
-              "stop-color": `var(${unref(ns).cssVarBlockName("fill-color-6")})`,
-              offset: "100%"
-            }, null, 8, ["stop-color"])
-          ], 8, ["id"]),
-          createElementVNode("rect", {
-            id: `path-3-${unref(id)}`,
-            x: "0",
-            y: "0",
-            width: "17",
-            height: "36"
-          }, null, 8, ["id"])
-        ]),
-        createElementVNode("g", {
-          stroke: "none",
-          "stroke-width": "1",
-          fill: "none",
-          "fill-rule": "evenodd"
-        }, [
-          createElementVNode("g", { transform: "translate(-1268.000000, -535.000000)" }, [
-            createElementVNode("g", { transform: "translate(1268.000000, 535.000000)" }, [
-              createElementVNode("path", {
-                d: "M39.5,86 C61.3152476,86 79,83.9106622 79,81.3333333 C79,78.7560045 57.3152476,78 35.5,78 C13.6847524,78 0,78.7560045 0,81.3333333 C0,83.9106622 17.6847524,86 39.5,86 Z",
-                fill: `var(${unref(ns).cssVarBlockName("fill-color-3")})`
-              }, null, 8, ["fill"]),
-              createElementVNode("polygon", {
-                fill: `var(${unref(ns).cssVarBlockName("fill-color-7")})`,
-                transform: "translate(27.500000, 51.500000) scale(1, -1) translate(-27.500000, -51.500000) ",
-                points: "13 58 53 58 42 45 2 45"
-              }, null, 8, ["fill"]),
-              createElementVNode("g", { transform: "translate(34.500000, 31.500000) scale(-1, 1) rotate(-25.000000) translate(-34.500000, -31.500000) translate(7.000000, 10.000000)" }, [
-                createElementVNode("polygon", {
-                  fill: `var(${unref(ns).cssVarBlockName("fill-color-7")})`,
-                  transform: "translate(11.500000, 5.000000) scale(1, -1) translate(-11.500000, -5.000000) ",
-                  points: "2.84078316e-14 3 18 3 23 7 5 7"
-                }, null, 8, ["fill"]),
-                createElementVNode("polygon", {
-                  fill: `var(${unref(ns).cssVarBlockName("fill-color-5")})`,
-                  points: "-3.69149156e-15 7 38 7 38 43 -3.69149156e-15 43"
-                }, null, 8, ["fill"]),
-                createElementVNode("rect", {
-                  fill: `url(#linearGradient-1-${unref(id)})`,
-                  transform: "translate(46.500000, 25.000000) scale(-1, 1) translate(-46.500000, -25.000000) ",
-                  x: "38",
-                  y: "7",
-                  width: "17",
-                  height: "36"
-                }, null, 8, ["fill"]),
-                createElementVNode("polygon", {
-                  fill: `var(${unref(ns).cssVarBlockName("fill-color-2")})`,
-                  transform: "translate(39.500000, 3.500000) scale(-1, 1) translate(-39.500000, -3.500000) ",
-                  points: "24 7 41 7 55 -3.63806207e-12 38 -3.63806207e-12"
-                }, null, 8, ["fill"])
-              ]),
-              createElementVNode("rect", {
-                fill: `url(#linearGradient-2-${unref(id)})`,
-                x: "13",
-                y: "45",
-                width: "40",
-                height: "36"
-              }, null, 8, ["fill"]),
-              createElementVNode("g", { transform: "translate(53.000000, 45.000000)" }, [
-                createElementVNode("use", {
-                  fill: `var(${unref(ns).cssVarBlockName("fill-color-8")})`,
-                  transform: "translate(8.500000, 18.000000) scale(-1, 1) translate(-8.500000, -18.000000) ",
-                  "xlink:href": `#path-3-${unref(id)}`
-                }, null, 8, ["fill", "xlink:href"]),
-                createElementVNode("polygon", {
-                  fill: `var(${unref(ns).cssVarBlockName("fill-color-9")})`,
-                  mask: `url(#mask-4-${unref(id)})`,
-                  transform: "translate(12.000000, 9.000000) scale(-1, 1) translate(-12.000000, -9.000000) ",
-                  points: "7 0 24 0 20 18 7 16.5"
-                }, null, 8, ["fill", "mask"])
-              ]),
-              createElementVNode("polygon", {
-                fill: `var(${unref(ns).cssVarBlockName("fill-color-2")})`,
-                transform: "translate(66.000000, 51.500000) scale(-1, 1) translate(-66.000000, -51.500000) ",
-                points: "62 45 79 45 70 58 53 58"
-              }, null, 8, ["fill"])
-            ])
-          ])
-        ])
-      ]);
-    };
-  }
-});
-var ImgEmpty = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["__file", "img-empty.vue"]]);
 
 const emptyProps = buildProps({
   image: {
@@ -36315,9 +36248,7 @@ const _sfc_main$1f = /* @__PURE__ */ defineComponent({
             key: 0,
             src: _ctx.image,
             ondragstart: "return false"
-          }, null, 8, ["src"])) : renderSlot(_ctx.$slots, "image", { key: 1 }, () => [
-            createVNode(ImgEmpty)
-          ])
+          }, null, 8, ["src"])) : renderSlot(_ctx.$slots, "image", { key: 1 })
         ], 6),
         createElementVNode("div", {
           class: normalizeClass(unref(ns).e("description"))
@@ -40115,6 +40046,17 @@ const useSelect$3 = (props, emit) => {
       (_a = option.updateOption) == null ? void 0 : _a.call(option, states.inputValue);
     });
   };
+  const tryAutoSelectSingleOption = () => {
+    if (props.multiple || props.clearable || hasModelValue.value)
+      return;
+    const availableOptions = optionsArray.value.filter((option2) => !option2.isDisabled);
+    if (availableOptions.length !== 1)
+      return;
+    const [option] = availableOptions;
+    if (isEmptyValue(option.value))
+      return;
+    emit(UPDATE_MODEL_EVENT, option.value);
+  };
   const selectSize = useFormSize();
   const collapseTagSize = computed(() => ["small"].includes(selectSize.value) ? "small" : "default");
   const dropdownMenuVisible = computed({
@@ -40166,6 +40108,7 @@ const useSelect$3 = (props, emit) => {
   watch(() => states.options.entries(), () => {
     if (!isClient)
       return;
+    tryAutoSelectSingleOption();
     setSelected();
     if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptionsCount.value) {
       checkDefaultFirstOption();
@@ -40599,6 +40542,7 @@ const useSelect$3 = (props, emit) => {
     }
   });
   onMounted(() => {
+    tryAutoSelectSingleOption();
     setSelected();
   });
   return {
@@ -40741,6 +40685,10 @@ const selectProps = buildProps({
   },
   disabled: Boolean,
   addItem: Boolean,
+  inputType: {
+    type: String,
+    values: ["error", "info", "warning"]
+  },
   clearable: Boolean,
   filterable: Boolean,
   beforeChange: {
@@ -41012,6 +40960,15 @@ const _sfc_main$10 = defineComponent({
     const { getLabel, getValue, getOptions, getDisabled } = useProps(props);
     const validateError = computed(() => (API == null ? void 0 : API.validateState.value) === "error");
     const validateMsg = computed(() => (API == null ? void 0 : API.validateMessage.value) || "");
+    const showEmptyErrorTooltip = computed(() => props.inputType === "error" && !API.hasModelValue.value);
+    const errorTooltipContent = computed(() => {
+      if (validateError.value && validateMsg.value)
+        return validateMsg.value;
+      if (showEmptyErrorTooltip.value)
+        return "Required";
+      return "";
+    });
+    const errorTooltipDisabled = computed(() => !errorTooltipContent.value);
     const getOptionProps = (option) => ({
       label: getLabel(option),
       value: getValue(option),
@@ -41091,6 +41048,8 @@ const _sfc_main$10 = defineComponent({
       inputStyle,
       validateError,
       validateMsg,
+      errorTooltipContent,
+      errorTooltipDisabled,
       handleAddSelect,
       getLabel,
       isEmpty,
@@ -41116,164 +41075,107 @@ function _sfc_render$b(_ctx, _cache) {
     class: normalizeClass([
       _ctx.nsSelect.b(),
       _ctx.nsSelect.m(_ctx.selectSize),
+      _ctx.nsSelect.m(_ctx.inputType),
+      {
+        [_ctx.nsSelect.m("inputType")]: !!_ctx.inputType,
+        [_ctx.nsSelect.m("filled")]: !!_ctx.inputType && _ctx.hasModelValue
+      },
       _ctx.multiple && _ctx.isFocused ? "multi-select" : ""
     ]),
     [toHandlerKey(_ctx.mouseEnterEventName)]: ($event) => _ctx.states.inputHovering = true,
     onMouseleave: ($event) => _ctx.states.inputHovering = false
   }, [
     createVNode(_component_el_tooltip, {
-      ref: "tooltipRef",
-      visible: _ctx.dropdownMenuVisible,
-      placement: _ctx.placement,
-      teleported: _ctx.teleported,
-      "popper-class": [_ctx.nsSelect.e("popper"), _ctx.popperClass],
-      "popper-style": _ctx.popperStyle,
-      "popper-options": _ctx.popperOptions,
-      "fallback-placements": _ctx.fallbackPlacements,
-      effect: _ctx.effect,
-      pure: "",
-      trigger: "click",
-      transition: `${_ctx.nsSelect.namespace.value}-zoom-in-top`,
-      "stop-popper-mouse-event": false,
-      "gpu-acceleration": false,
-      persistent: _ctx.persistent,
-      "append-to": _ctx.appendTo,
-      "show-arrow": false,
-      offset: _ctx.offset,
-      onBeforeShow: _ctx.handleMenuEnter,
-      onHide: ($event) => _ctx.states.isBeforeHide = false
+      trigger: "hover",
+      effect: "light",
+      placement: "top",
+      offset: 4,
+      content: _ctx.errorTooltipContent,
+      disabled: _ctx.errorTooltipDisabled
     }, {
-      default: withCtx(() => {
-        var _a;
-        return [
-          createElementVNode("div", {
-            ref: "wrapperRef",
-            class: normalizeClass([
-              _ctx.nsSelect.e("wrapper"),
-              _ctx.nsSelect.is("focused", _ctx.isFocused),
-              _ctx.nsSelect.is("all", !!_ctx.haveAll),
-              _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
-              _ctx.nsSelect.is("filterable", _ctx.filterable),
-              _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-              _ctx.nsSelect.is("value", _ctx.hasModelValue)
-            ]),
-            onClick: withModifiers(_ctx.toggleMenu, ["prevent"])
-          }, [
-            _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
-              key: 0,
-              class: normalizeClass(["float-label", {
-                "prefix-label": _ctx.$slots.prefix,
-                "select-visible": _ctx.dropdownMenuVisible || !_ctx.isEmpty(_ctx.states.inputValue)
-              }])
-            }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
-            _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
-              key: 1,
-              ref: "prefixRef",
-              class: normalizeClass(_ctx.nsSelect.e("prefix"))
-            }, [
-              renderSlot(_ctx.$slots, "prefix")
-            ], 2)) : createCommentVNode("v-if", true),
-            createElementVNode("div", {
-              ref: "selectionRef",
-              class: normalizeClass([
-                _ctx.nsSelect.e("selection"),
-                _ctx.nsSelect.is("near", _ctx.multiple && !_ctx.$slots.prefix && !!_ctx.states.selected.length)
-              ])
-            }, [
-              _ctx.multiple ? renderSlot(_ctx.$slots, "tag", {
-                key: 0,
-                data: _ctx.states.selected,
-                deleteTag: _ctx.deleteTag,
-                selectDisabled: _ctx.selectDisabled
-              }, () => [
-                _ctx.haveAll && !_ctx.states.selected.length ? (openBlock(), createElementBlock("span", {
-                  key: 0,
-                  class: "select-all-tag"
-                }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
-                (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.showTagList, (item) => {
-                  return openBlock(), createElementBlock("div", {
-                    key: _ctx.getValueKey(item),
-                    class: normalizeClass(_ctx.nsSelect.e("selected-item"))
-                  }, [
-                    createVNode(_component_el_tag, {
-                      closable: !_ctx.selectDisabled && !item.isDisabled,
-                      size: _ctx.collapseTagSize,
-                      type: _ctx.tagType,
-                      effect: _ctx.tagEffect,
-                      "disable-transitions": "",
-                      style: normalizeStyle(_ctx.tagStyle),
-                      round: "",
-                      onClose: ($event) => _ctx.deleteTag($event, item)
-                    }, {
-                      default: withCtx(() => [
-                        createElementVNode("span", {
-                          class: normalizeClass(_ctx.nsSelect.e("tags-text"))
-                        }, [
-                          renderSlot(_ctx.$slots, "label", {
-                            item: _ctx.getLabelSlotItem(item),
-                            index: item.index,
-                            label: item.currentLabel,
-                            value: item.value
-                          }, () => [
-                            createTextVNode(toDisplayString(item.currentLabel), 1)
-                          ])
-                        ], 2)
-                      ]),
-                      _: 2
-                    }, 1032, ["closable", "size", "type", "effect", "style", "onClose"])
-                  ], 2);
-                }), 128)),
-                _ctx.collapseTags && _ctx.states.selected.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
-                  key: 1,
-                  ref: "tagTooltipRef",
-                  disabled: _ctx.dropdownMenuVisible || !_ctx.collapseTagsTooltip,
-                  "fallback-placements": ["bottom", "top", "right", "left"],
-                  effect: _ctx.effect,
-                  placement: "bottom",
-                  "popper-class": _ctx.popperClass,
-                  "popper-style": _ctx.popperStyle,
-                  teleported: _ctx.teleported
-                }, {
-                  default: withCtx(() => [
-                    createElementVNode("div", {
-                      ref: "collapseItemRef",
-                      class: normalizeClass(_ctx.nsSelect.e("selected-item"))
-                    }, [
-                      createVNode(_component_el_tag, {
-                        closable: false,
-                        size: _ctx.collapseTagSize,
-                        type: _ctx.tagType,
-                        effect: _ctx.tagEffect,
-                        "disable-transitions": "",
-                        style: normalizeStyle(_ctx.collapseTagStyle),
-                        round: ""
-                      }, {
-                        default: withCtx(() => [
-                          createElementVNode("span", {
-                            class: normalizeClass(_ctx.nsSelect.e("tags-text"))
-                          }, " + " + toDisplayString(_ctx.states.selected.length - _ctx.maxCollapseTags), 3)
-                        ]),
-                        _: 1
-                      }, 8, ["size", "type", "effect", "style"])
-                    ], 2)
+      default: withCtx(() => [
+        createElementVNode("div", null, [
+          createVNode(_component_el_tooltip, {
+            ref: "tooltipRef",
+            visible: _ctx.dropdownMenuVisible,
+            placement: _ctx.placement,
+            teleported: _ctx.teleported,
+            "popper-class": [_ctx.nsSelect.e("popper"), _ctx.popperClass],
+            "popper-style": _ctx.popperStyle,
+            "popper-options": _ctx.popperOptions,
+            "fallback-placements": _ctx.fallbackPlacements,
+            effect: _ctx.effect,
+            pure: "",
+            trigger: "click",
+            transition: `${_ctx.nsSelect.namespace.value}-zoom-in-top`,
+            "stop-popper-mouse-event": false,
+            "gpu-acceleration": false,
+            persistent: _ctx.persistent,
+            "append-to": _ctx.appendTo,
+            "show-arrow": false,
+            offset: _ctx.offset,
+            onBeforeShow: _ctx.handleMenuEnter,
+            onHide: ($event) => _ctx.states.isBeforeHide = false
+          }, {
+            default: withCtx(() => {
+              var _a;
+              return [
+                createElementVNode("div", {
+                  ref: "wrapperRef",
+                  class: normalizeClass([
+                    _ctx.nsSelect.e("wrapper"),
+                    _ctx.nsSelect.is("focused", _ctx.isFocused),
+                    _ctx.nsSelect.is("all", !!_ctx.haveAll),
+                    _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
+                    _ctx.nsSelect.is("filterable", _ctx.filterable),
+                    _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
+                    _ctx.nsSelect.is("value", _ctx.hasModelValue)
                   ]),
-                  content: withCtx(() => [
-                    createElementVNode("div", {
-                      ref: "tagMenuRef",
-                      class: normalizeClass(_ctx.nsSelect.e("selection"))
-                    }, [
-                      (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.collapseTagList, (item) => {
+                  onClick: withModifiers(_ctx.toggleMenu, ["prevent"])
+                }, [
+                  _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
+                    key: 0,
+                    class: normalizeClass(["float-label", {
+                      "prefix-label": _ctx.$slots.prefix,
+                      "select-visible": _ctx.dropdownMenuVisible || !_ctx.isEmpty(_ctx.states.inputValue)
+                    }])
+                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+                  _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
+                    key: 1,
+                    ref: "prefixRef",
+                    class: normalizeClass(_ctx.nsSelect.e("prefix"))
+                  }, [
+                    renderSlot(_ctx.$slots, "prefix")
+                  ], 2)) : createCommentVNode("v-if", true),
+                  createElementVNode("div", {
+                    ref: "selectionRef",
+                    class: normalizeClass([
+                      _ctx.nsSelect.e("selection"),
+                      _ctx.nsSelect.is("near", _ctx.multiple && !_ctx.$slots.prefix && !!_ctx.states.selected.length)
+                    ])
+                  }, [
+                    _ctx.multiple ? renderSlot(_ctx.$slots, "tag", {
+                      key: 0,
+                      data: _ctx.states.selected,
+                      deleteTag: _ctx.deleteTag,
+                      selectDisabled: _ctx.selectDisabled
+                    }, () => [
+                      _ctx.haveAll && !_ctx.states.selected.length ? (openBlock(), createElementBlock("span", {
+                        key: 0,
+                        class: "select-all-tag"
+                      }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
+                      (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.showTagList, (item) => {
                         return openBlock(), createElementBlock("div", {
                           key: _ctx.getValueKey(item),
                           class: normalizeClass(_ctx.nsSelect.e("selected-item"))
                         }, [
                           createVNode(_component_el_tag, {
-                            class: "in-tooltip",
                             closable: !_ctx.selectDisabled && !item.isDisabled,
                             size: _ctx.collapseTagSize,
                             type: _ctx.tagType,
                             effect: _ctx.tagEffect,
                             "disable-transitions": "",
+                            style: normalizeStyle(_ctx.tagStyle),
                             round: "",
                             onClose: ($event) => _ctx.deleteTag($event, item)
                           }, {
@@ -41292,304 +41194,357 @@ function _sfc_render$b(_ctx, _cache) {
                               ], 2)
                             ]),
                             _: 2
-                          }, 1032, ["closable", "size", "type", "effect", "onClose"])
+                          }, 1032, ["closable", "size", "type", "effect", "style", "onClose"])
                         ], 2);
-                      }), 128))
-                    ], 2)
-                  ]),
-                  _: 3
-                }, 8, ["disabled", "effect", "popper-class", "popper-style", "teleported"])) : createCommentVNode("v-if", true)
-              ]) : createCommentVNode("v-if", true),
-              createElementVNode("div", {
-                class: normalizeClass([
-                  _ctx.nsSelect.e("selected-item"),
-                  _ctx.nsSelect.e("input-wrapper"),
-                  _ctx.nsSelect.is("hidden", !_ctx.filterable)
-                ])
-              }, [
-                withDirectives(createElementVNode("input", {
-                  id: _ctx.inputId,
-                  ref: "inputRef",
-                  "onUpdate:modelValue": ($event) => _ctx.states.inputValue = $event,
-                  type: "text",
-                  name: _ctx.name,
-                  class: normalizeClass([_ctx.nsSelect.e("input"), _ctx.nsSelect.is(_ctx.selectSize)]),
-                  disabled: _ctx.selectDisabled,
-                  autocomplete: _ctx.autocomplete,
-                  maxlength: _ctx.filterMaxLength,
-                  style: normalizeStyle(_ctx.inputStyle),
-                  tabindex: _ctx.tabindex,
-                  role: "combobox",
-                  readonly: !_ctx.filterable,
-                  spellcheck: "false",
-                  "aria-activedescendant": ((_a = _ctx.hoverOption) == null ? void 0 : _a.id) || "",
-                  "aria-controls": _ctx.contentId,
-                  "aria-expanded": _ctx.dropdownMenuVisible,
-                  "aria-label": _ctx.ariaLabel,
-                  "aria-autocomplete": "none",
-                  "aria-haspopup": "listbox",
-                  onKeydown: [
-                    withKeys(withModifiers(($event) => _ctx.navigateOptions("next"), ["stop", "prevent"]), ["down"]),
-                    withKeys(withModifiers(($event) => _ctx.navigateOptions("prev"), ["stop", "prevent"]), ["up"]),
-                    withKeys(withModifiers(_ctx.handleEsc, ["stop", "prevent"]), ["esc"]),
-                    withKeys(withModifiers(_ctx.selectOption, ["stop", "prevent"]), ["enter"]),
-                    withKeys(withModifiers(_ctx.deletePrevTag, ["stop"]), ["delete"])
-                  ],
-                  onCompositionstart: _ctx.handleCompositionStart,
-                  onCompositionupdate: _ctx.handleCompositionUpdate,
-                  onCompositionend: _ctx.handleCompositionEnd,
-                  onInput: _ctx.onInput,
-                  onClick: withModifiers(_ctx.toggleMenu, ["stop"])
-                }, null, 46, ["id", "onUpdate:modelValue", "name", "disabled", "autocomplete", "maxlength", "tabindex", "readonly", "aria-activedescendant", "aria-controls", "aria-expanded", "aria-label", "onKeydown", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onInput", "onClick"]), [
-                  [vModelText, _ctx.states.inputValue]
-                ]),
-                _ctx.filterable ? (openBlock(), createElementBlock("span", {
-                  key: 0,
-                  ref: "calculatorRef",
-                  "aria-hidden": "true",
-                  class: normalizeClass(_ctx.nsSelect.e("input-calculator")),
-                  textContent: toDisplayString(_ctx.states.inputValue)
-                }, null, 10, ["textContent"])) : createCommentVNode("v-if", true)
-              ], 2),
-              !_ctx.floatLabel && !_ctx.states.inputValue || _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (openBlock(), createElementBlock("div", {
-                key: 1,
-                class: normalizeClass([
-                  _ctx.nsSelect.e("selected-item"),
-                  _ctx.nsSelect.e("placeholder"),
-                  _ctx.nsSelect.is("transparent", !_ctx.hasModelValue || _ctx.expanded && !_ctx.states.inputValue)
-                ])
-              }, [
-                renderSlot(_ctx.$slots, "label", {
-                  item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
-                  index: _ctx.getOption(_ctx.modelValue).index,
-                  label: _ctx.currentPlaceholder,
-                  value: _ctx.modelValue
-                }, () => [
-                  _ctx.$slots.itemIcon ? (openBlock(), createElementBlock("div", {
+                      }), 128)),
+                      _ctx.collapseTags && _ctx.states.selected.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
+                        key: 1,
+                        ref: "tagTooltipRef",
+                        disabled: _ctx.dropdownMenuVisible || !_ctx.collapseTagsTooltip,
+                        "fallback-placements": ["bottom", "top", "right", "left"],
+                        effect: _ctx.effect,
+                        placement: "bottom",
+                        "popper-class": _ctx.popperClass,
+                        "popper-style": _ctx.popperStyle,
+                        teleported: _ctx.teleported
+                      }, {
+                        default: withCtx(() => [
+                          createElementVNode("div", {
+                            ref: "collapseItemRef",
+                            class: normalizeClass(_ctx.nsSelect.e("selected-item"))
+                          }, [
+                            createVNode(_component_el_tag, {
+                              closable: false,
+                              size: _ctx.collapseTagSize,
+                              type: _ctx.tagType,
+                              effect: _ctx.tagEffect,
+                              "disable-transitions": "",
+                              style: normalizeStyle(_ctx.collapseTagStyle),
+                              round: ""
+                            }, {
+                              default: withCtx(() => [
+                                createElementVNode("span", {
+                                  class: normalizeClass(_ctx.nsSelect.e("tags-text"))
+                                }, " + " + toDisplayString(_ctx.states.selected.length - _ctx.maxCollapseTags), 3)
+                              ]),
+                              _: 1
+                            }, 8, ["size", "type", "effect", "style"])
+                          ], 2)
+                        ]),
+                        content: withCtx(() => [
+                          createElementVNode("div", {
+                            ref: "tagMenuRef",
+                            class: normalizeClass(_ctx.nsSelect.e("selection"))
+                          }, [
+                            (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.collapseTagList, (item) => {
+                              return openBlock(), createElementBlock("div", {
+                                key: _ctx.getValueKey(item),
+                                class: normalizeClass(_ctx.nsSelect.e("selected-item"))
+                              }, [
+                                createVNode(_component_el_tag, {
+                                  class: "in-tooltip",
+                                  closable: !_ctx.selectDisabled && !item.isDisabled,
+                                  size: _ctx.collapseTagSize,
+                                  type: _ctx.tagType,
+                                  effect: _ctx.tagEffect,
+                                  "disable-transitions": "",
+                                  round: "",
+                                  onClose: ($event) => _ctx.deleteTag($event, item)
+                                }, {
+                                  default: withCtx(() => [
+                                    createElementVNode("span", {
+                                      class: normalizeClass(_ctx.nsSelect.e("tags-text"))
+                                    }, [
+                                      renderSlot(_ctx.$slots, "label", {
+                                        item: _ctx.getLabelSlotItem(item),
+                                        index: item.index,
+                                        label: item.currentLabel,
+                                        value: item.value
+                                      }, () => [
+                                        createTextVNode(toDisplayString(item.currentLabel), 1)
+                                      ])
+                                    ], 2)
+                                  ]),
+                                  _: 2
+                                }, 1032, ["closable", "size", "type", "effect", "onClose"])
+                              ], 2);
+                            }), 128))
+                          ], 2)
+                        ]),
+                        _: 3
+                      }, 8, ["disabled", "effect", "popper-class", "popper-style", "teleported"])) : createCommentVNode("v-if", true)
+                    ]) : createCommentVNode("v-if", true),
+                    createElementVNode("div", {
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("selected-item"),
+                        _ctx.nsSelect.e("input-wrapper"),
+                        _ctx.nsSelect.is("hidden", !_ctx.filterable)
+                      ])
+                    }, [
+                      withDirectives(createElementVNode("input", {
+                        id: _ctx.inputId,
+                        ref: "inputRef",
+                        "onUpdate:modelValue": ($event) => _ctx.states.inputValue = $event,
+                        type: "text",
+                        name: _ctx.name,
+                        class: normalizeClass([_ctx.nsSelect.e("input"), _ctx.nsSelect.is(_ctx.selectSize)]),
+                        disabled: _ctx.selectDisabled,
+                        autocomplete: _ctx.autocomplete,
+                        maxlength: _ctx.filterMaxLength,
+                        style: normalizeStyle(_ctx.inputStyle),
+                        tabindex: _ctx.tabindex,
+                        role: "combobox",
+                        readonly: !_ctx.filterable,
+                        spellcheck: "false",
+                        "aria-activedescendant": ((_a = _ctx.hoverOption) == null ? void 0 : _a.id) || "",
+                        "aria-controls": _ctx.contentId,
+                        "aria-expanded": _ctx.dropdownMenuVisible,
+                        "aria-label": _ctx.ariaLabel,
+                        "aria-autocomplete": "none",
+                        "aria-haspopup": "listbox",
+                        onKeydown: [
+                          withKeys(withModifiers(($event) => _ctx.navigateOptions("next"), ["stop", "prevent"]), ["down"]),
+                          withKeys(withModifiers(($event) => _ctx.navigateOptions("prev"), ["stop", "prevent"]), ["up"]),
+                          withKeys(withModifiers(_ctx.handleEsc, ["stop", "prevent"]), ["esc"]),
+                          withKeys(withModifiers(_ctx.selectOption, ["stop", "prevent"]), ["enter"]),
+                          withKeys(withModifiers(_ctx.deletePrevTag, ["stop"]), ["delete"])
+                        ],
+                        onCompositionstart: _ctx.handleCompositionStart,
+                        onCompositionupdate: _ctx.handleCompositionUpdate,
+                        onCompositionend: _ctx.handleCompositionEnd,
+                        onInput: _ctx.onInput,
+                        onClick: withModifiers(_ctx.toggleMenu, ["stop"])
+                      }, null, 46, ["id", "onUpdate:modelValue", "name", "disabled", "autocomplete", "maxlength", "tabindex", "readonly", "aria-activedescendant", "aria-controls", "aria-expanded", "aria-label", "onKeydown", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onInput", "onClick"]), [
+                        [vModelText, _ctx.states.inputValue]
+                      ]),
+                      _ctx.filterable ? (openBlock(), createElementBlock("span", {
+                        key: 0,
+                        ref: "calculatorRef",
+                        "aria-hidden": "true",
+                        class: normalizeClass(_ctx.nsSelect.e("input-calculator")),
+                        textContent: toDisplayString(_ctx.states.inputValue)
+                      }, null, 10, ["textContent"])) : createCommentVNode("v-if", true)
+                    ], 2),
+                    !_ctx.floatLabel && !_ctx.states.inputValue || _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (openBlock(), createElementBlock("div", {
+                      key: 1,
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("selected-item"),
+                        _ctx.nsSelect.e("placeholder"),
+                        _ctx.nsSelect.is("transparent", !_ctx.hasModelValue || _ctx.expanded && !_ctx.states.inputValue)
+                      ])
+                    }, [
+                      renderSlot(_ctx.$slots, "label", {
+                        item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
+                        index: _ctx.getOption(_ctx.modelValue).index,
+                        label: _ctx.currentPlaceholder,
+                        value: _ctx.modelValue
+                      }, () => [
+                        _ctx.$slots.itemIcon ? (openBlock(), createElementBlock("div", {
+                          key: 0,
+                          class: "iconItemWrap"
+                        }, [
+                          renderSlot(_ctx.$slots, "itemIcon", {
+                            item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
+                            index: _ctx.getOption(_ctx.modelValue).index,
+                            label: _ctx.currentPlaceholder,
+                            value: _ctx.modelValue
+                          }),
+                          createElementVNode("span", { class: "itemPlaceholder" }, toDisplayString(_ctx.currentPlaceholder), 1)
+                        ])) : (openBlock(), createElementBlock("span", { key: 1 }, toDisplayString(_ctx.currentPlaceholder), 1))
+                      ])
+                    ], 2)) : createCommentVNode("v-if", true)
+                  ], 2),
+                  createElementVNode("div", {
+                    ref: "suffixRef",
+                    class: normalizeClass(_ctx.nsSelect.e("suffix"))
+                  }, [
+                    createTextVNode(toDisplayString(_ctx.labelSuffix) + " ", 1),
+                    _ctx.$slots.info ? renderSlot(_ctx.$slots, "info", { key: 0 }) : createCommentVNode("v-if", true),
+                    _ctx.$slots.suffixBeforeIcon ? renderSlot(_ctx.$slots, "suffixBeforeIcon", { key: 1 }) : createCommentVNode("v-if", true),
+                    _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.validateError && !_ctx.$slots.info ? (openBlock(), createBlock(_component_el_icon, {
+                      key: 2,
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("caret"),
+                        _ctx.nsSelect.e("icon"),
+                        _ctx.iconReverse
+                      ])
+                    }, {
+                      default: withCtx(() => [
+                        (openBlock(), createElementBlock("svg", {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "12",
+                          height: "12",
+                          viewBox: "0 0 12 12"
+                        }, [
+                          createElementVNode("path", { d: "M5.99992 7.75002C5.86862 7.75024 5.73856 7.72452 5.61723 7.67432C5.4959 7.62413 5.38569 7.55045 5.29292 7.45752L2.64642 4.81052L3.35342 4.10352L5.99992 6.75002L8.64642 4.10352L9.35342 4.81052L6.70692 7.45702C6.6142 7.55004 6.50401 7.62381 6.38267 7.67409C6.26134 7.72438 6.13126 7.75018 5.99992 7.75002Z" })
+                        ]))
+                      ]),
+                      _: 1
+                    }, 8, ["class"])) : createCommentVNode("v-if", true),
+                    _ctx.showClearBtn && _ctx.clearIcon ? (openBlock(), createBlock(_component_el_icon, {
+                      key: 3,
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("caret"),
+                        _ctx.nsSelect.e("icon"),
+                        _ctx.nsSelect.e("clear")
+                      ]),
+                      onClick: _ctx.handleClearClick
+                    }, {
+                      default: withCtx(() => [
+                        (openBlock(), createElementBlock("svg", {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "12",
+                          height: "12",
+                          viewBox: "0 0 12 12"
+                        }, [
+                          createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
+                        ]))
+                      ]),
+                      _: 1
+                    }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true),
+                    _ctx.$slots.suffixAfterIcon ? renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : createCommentVNode("v-if", true),
+                    _ctx.validateState && _ctx.validateIcon ? (openBlock(), createBlock(_component_el_icon, {
+                      key: 5,
+                      class: normalizeClass([
+                        _ctx.nsInput.e("icon"),
+                        _ctx.nsInput.e("validateIcon"),
+                        _ctx.nsInput.is("loading", _ctx.validateState === "validating")
+                      ]),
+                      innerHTML: _ctx.validateIcon
+                    }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true)
+                  ], 2)
+                ], 10, ["onClick"])
+              ];
+            }),
+            content: withCtx(() => [
+              createVNode(_component_el_select_menu, { ref: "menuRef" }, {
+                default: withCtx(() => [
+                  _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
                     key: 0,
-                    class: "iconItemWrap"
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "header")),
+                    onClick: withModifiers(() => {
+                    }, ["stop"])
                   }, [
-                    renderSlot(_ctx.$slots, "itemIcon", {
-                      item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
-                      index: _ctx.getOption(_ctx.modelValue).index,
-                      label: _ctx.currentPlaceholder,
-                      value: _ctx.modelValue
-                    }),
-                    createElementVNode("span", { class: "itemPlaceholder" }, toDisplayString(_ctx.currentPlaceholder), 1)
-                  ])) : (openBlock(), createElementBlock("span", { key: 1 }, toDisplayString(_ctx.currentPlaceholder), 1))
-                ])
-              ], 2)) : createCommentVNode("v-if", true)
-            ], 2),
-            createElementVNode("div", {
-              ref: "suffixRef",
-              class: normalizeClass(_ctx.nsSelect.e("suffix"))
-            }, [
-              createTextVNode(toDisplayString(_ctx.labelSuffix) + " ", 1),
-              _ctx.$slots.info ? renderSlot(_ctx.$slots, "info", { key: 0 }) : createCommentVNode("v-if", true),
-              _ctx.$slots.suffixBeforeIcon ? renderSlot(_ctx.$slots, "suffixBeforeIcon", { key: 1 }) : createCommentVNode("v-if", true),
-              _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.validateError && !_ctx.$slots.info ? (openBlock(), createBlock(_component_el_icon, {
-                key: 2,
-                class: normalizeClass([_ctx.nsSelect.e("caret"), _ctx.nsSelect.e("icon"), _ctx.iconReverse])
-              }, {
-                default: withCtx(() => [
-                  (openBlock(), createElementBlock("svg", {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    width: "12",
-                    height: "12",
-                    viewBox: "0 0 12 12"
-                  }, [
-                    createElementVNode("path", { d: "M5.99992 7.75002C5.86862 7.75024 5.73856 7.72452 5.61723 7.67432C5.4959 7.62413 5.38569 7.55045 5.29292 7.45752L2.64642 4.81052L3.35342 4.10352L5.99992 6.75002L8.64642 4.10352L9.35342 4.81052L6.70692 7.45702C6.6142 7.55004 6.50401 7.62381 6.38267 7.67409C6.26134 7.72438 6.13126 7.75018 5.99992 7.75002Z" })
-                  ]))
-                ]),
-                _: 1
-              }, 8, ["class"])) : createCommentVNode("v-if", true),
-              _ctx.showClearBtn && _ctx.clearIcon ? (openBlock(), createBlock(_component_el_icon, {
-                key: 3,
-                class: normalizeClass([
-                  _ctx.nsSelect.e("caret"),
-                  _ctx.nsSelect.e("icon"),
-                  _ctx.nsSelect.e("clear")
-                ]),
-                onClick: _ctx.handleClearClick
-              }, {
-                default: withCtx(() => [
-                  (openBlock(), createElementBlock("svg", {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    width: "12",
-                    height: "12",
-                    viewBox: "0 0 12 12"
-                  }, [
-                    createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
-                  ]))
-                ]),
-                _: 1
-              }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true),
-              _ctx.$slots.suffixAfterIcon ? renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : createCommentVNode("v-if", true),
-              _ctx.validateError ? (openBlock(), createBlock(_component_el_tooltip, {
-                key: 5,
-                content: _ctx.validateMsg,
-                effect: "light",
-                placement: "top",
-                offset: 4
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_el_icon, {
-                    class: "error-icon",
-                    color: "#A1160A"
+                    renderSlot(_ctx.$slots, "header")
+                  ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+                  withDirectives(createVNode(_component_el_scrollbar, {
+                    id: _ctx.contentId,
+                    ref: "scrollbarRef",
+                    tag: "ul",
+                    "wrap-class": _ctx.nsSelect.be("dropdown", "wrap"),
+                    "view-class": _ctx.nsSelect.be("dropdown", "list"),
+                    class: normalizeClass([_ctx.nsSelect.is("empty", _ctx.filteredOptionsCount === 0)]),
+                    role: "listbox",
+                    "aria-label": _ctx.ariaLabel,
+                    "aria-orientation": "vertical",
+                    onScroll: _ctx.popupScroll
                   }, {
                     default: withCtx(() => [
-                      (openBlock(), createElementBlock("svg", {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        width: "12",
-                        height: "12",
-                        viewBox: "0 0 12 12"
-                      }, [
-                        createElementVNode("path", { d: "M6.00041 1C8.00045 1 6.75037 5.25 6.75037 5.25C6.75037 5.25 10.1112 2.75 11.0004 4.5C11.8896 6.25 7.25037 6.75 7.25037 6.75C7.25037 6.75 10.7186 9.88284 9.25035 10.9496C7.78208 12.0164 6.00037 7.5 6.00037 7.5C6.00037 7.5 4.23586 12.0164 2.76759 10.9496C1.29932 9.88283 4.75037 6.75 4.75037 6.75C4.75037 6.75 0.250258 6.25 1.00035 4.5C1.75045 2.75 5.25037 5.25 5.25037 5.25C5.25037 5.25 4.00037 1 6.00041 1Z" })
-                      ]))
-                    ]),
-                    _: 1
-                  })
-                ]),
-                _: 1
-              }, 8, ["content"])) : createCommentVNode("v-if", true),
-              _ctx.validateState && _ctx.validateIcon ? (openBlock(), createBlock(_component_el_icon, {
-                key: 6,
-                class: normalizeClass([
-                  _ctx.nsInput.e("icon"),
-                  _ctx.nsInput.e("validateIcon"),
-                  _ctx.nsInput.is("loading", _ctx.validateState === "validating")
-                ]),
-                innerHTML: _ctx.validateIcon
-              }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true)
-            ], 2)
-          ], 10, ["onClick"])
-        ];
-      }),
-      content: withCtx(() => [
-        createVNode(_component_el_select_menu, { ref: "menuRef" }, {
-          default: withCtx(() => [
-            _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
-              key: 0,
-              class: normalizeClass(_ctx.nsSelect.be("dropdown", "header")),
-              onClick: withModifiers(() => {
-              }, ["stop"])
-            }, [
-              renderSlot(_ctx.$slots, "header")
-            ], 10, ["onClick"])) : createCommentVNode("v-if", true),
-            withDirectives(createVNode(_component_el_scrollbar, {
-              id: _ctx.contentId,
-              ref: "scrollbarRef",
-              tag: "ul",
-              "wrap-class": _ctx.nsSelect.be("dropdown", "wrap"),
-              "view-class": _ctx.nsSelect.be("dropdown", "list"),
-              class: normalizeClass([_ctx.nsSelect.is("empty", _ctx.filteredOptionsCount === 0)]),
-              role: "listbox",
-              "aria-label": _ctx.ariaLabel,
-              "aria-orientation": "vertical",
-              onScroll: _ctx.popupScroll
-            }, {
-              default: withCtx(() => [
-                _ctx.states.selected.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
-                  key: 0,
-                  class: "select-all-item"
-                }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
-                _ctx.addShowTip && _ctx.filterable ? (openBlock(), createElementBlock("div", {
-                  key: 1,
-                  class: "select-add-tip"
-                }, toDisplayString(_ctx.addShowTip), 1)) : createCommentVNode("v-if", true),
-                _ctx.showNewOption ? (openBlock(), createBlock(_component_el_option, {
-                  key: 2,
-                  value: _ctx.states.inputValue,
-                  created: true
-                }, null, 8, ["value"])) : createCommentVNode("v-if", true),
-                createVNode(_component_el_options, null, {
-                  default: withCtx(() => [
-                    renderSlot(_ctx.$slots, "default", {}, () => [
-                      (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option, index) => {
-                        var _a;
-                        return openBlock(), createElementBlock(Fragment, { key: index }, [
-                          ((_a = _ctx.getOptions(option)) == null ? void 0 : _a.length) ? (openBlock(), createBlock(_component_el_option_group, {
-                            key: 0,
-                            label: _ctx.getLabel(option),
-                            disabled: _ctx.getDisabled(option)
-                          }, {
-                            default: withCtx(() => [
-                              (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.getOptions(option), (item) => {
-                                return openBlock(), createBlock(_component_el_option, mergeProps({
-                                  key: _ctx.getValue(item)
-                                }, _ctx.getOptionProps(item)), null, 16);
-                              }), 128))
-                            ]),
-                            _: 2
-                          }, 1032, ["label", "disabled"])) : (openBlock(), createBlock(_component_el_option, normalizeProps(mergeProps({ key: 1 }, _ctx.getOptionProps(option))), null, 16))
-                        ], 64);
-                      }), 128))
-                    ])
-                  ]),
-                  _: 3
-                })
-              ]),
-              _: 3
-            }, 8, ["id", "wrap-class", "view-class", "class", "aria-label", "onScroll"]), [
-              [vShow, (_ctx.states.options.size > 0 || _ctx.addItem) && !_ctx.loading]
-            ]),
-            _ctx.$slots.loading && _ctx.loading ? (openBlock(), createElementBlock("div", {
-              key: 1,
-              class: normalizeClass(_ctx.nsSelect.be("dropdown", "loading"))
-            }, [
-              renderSlot(_ctx.$slots, "loading")
-            ], 2)) : _ctx.loading || _ctx.filteredOptionsCount === 0 ? (openBlock(), createElementBlock("div", {
-              key: 2,
-              class: normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
-            }, [
-              renderSlot(_ctx.$slots, "empty", {}, () => [
-                !_ctx.addItem ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(_ctx.emptyText), 1)) : (openBlock(), createElementBlock("div", {
-                  key: 1,
-                  class: "el-select-dropdown__item add-item",
-                  onClick: _ctx.handleAddSelect
-                }, [
-                  createVNode(_component_el_icon, { color: "#4f566" }, {
-                    default: withCtx(() => [
-                      (openBlock(), createElementBlock("svg", {
-                        width: "12",
-                        height: "12",
-                        viewBox: "0 0 12 12",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }, [
-                        createElementVNode("g", { "clip-path": "url(#clip0_743_39597)" }, [
-                          createElementVNode("path", { d: "M12 5.25H6.75V0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25Z" })
+                      _ctx.states.selected.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
+                        key: 0,
+                        class: "select-all-item"
+                      }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
+                      _ctx.addShowTip && _ctx.filterable ? (openBlock(), createElementBlock("div", {
+                        key: 1,
+                        class: "select-add-tip"
+                      }, toDisplayString(_ctx.addShowTip), 1)) : createCommentVNode("v-if", true),
+                      _ctx.showNewOption ? (openBlock(), createBlock(_component_el_option, {
+                        key: 2,
+                        value: _ctx.states.inputValue,
+                        created: true
+                      }, null, 8, ["value"])) : createCommentVNode("v-if", true),
+                      createVNode(_component_el_options, null, {
+                        default: withCtx(() => [
+                          renderSlot(_ctx.$slots, "default", {}, () => [
+                            (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option, index) => {
+                              var _a;
+                              return openBlock(), createElementBlock(Fragment, { key: index }, [
+                                ((_a = _ctx.getOptions(option)) == null ? void 0 : _a.length) ? (openBlock(), createBlock(_component_el_option_group, {
+                                  key: 0,
+                                  label: _ctx.getLabel(option),
+                                  disabled: _ctx.getDisabled(option)
+                                }, {
+                                  default: withCtx(() => [
+                                    (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.getOptions(option), (item) => {
+                                      return openBlock(), createBlock(_component_el_option, mergeProps({
+                                        key: _ctx.getValue(item)
+                                      }, _ctx.getOptionProps(item)), null, 16);
+                                    }), 128))
+                                  ]),
+                                  _: 2
+                                }, 1032, ["label", "disabled"])) : (openBlock(), createBlock(_component_el_option, normalizeProps(mergeProps({ key: 1 }, _ctx.getOptionProps(option))), null, 16))
+                              ], 64);
+                            }), 128))
+                          ])
                         ]),
-                        createElementVNode("defs", null, [
-                          createElementVNode("clipPath", { id: "clip0_743_39597" }, [
-                            createElementVNode("rect", {
+                        _: 3
+                      })
+                    ]),
+                    _: 3
+                  }, 8, ["id", "wrap-class", "view-class", "class", "aria-label", "onScroll"]), [
+                    [vShow, (_ctx.states.options.size > 0 || _ctx.addItem) && !_ctx.loading]
+                  ]),
+                  _ctx.$slots.loading && _ctx.loading ? (openBlock(), createElementBlock("div", {
+                    key: 1,
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "loading"))
+                  }, [
+                    renderSlot(_ctx.$slots, "loading")
+                  ], 2)) : _ctx.loading || _ctx.filteredOptionsCount === 0 ? (openBlock(), createElementBlock("div", {
+                    key: 2,
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
+                  }, [
+                    renderSlot(_ctx.$slots, "empty", {}, () => [
+                      !_ctx.addItem ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(_ctx.emptyText), 1)) : (openBlock(), createElementBlock("div", {
+                        key: 1,
+                        class: "el-select-dropdown__item add-item",
+                        onClick: _ctx.handleAddSelect
+                      }, [
+                        createVNode(_component_el_icon, { color: "#4f566" }, {
+                          default: withCtx(() => [
+                            (openBlock(), createElementBlock("svg", {
                               width: "12",
                               height: "12",
-                              fill: "white"
-                            })
-                          ])
-                        ])
-                      ]))
-                    ]),
-                    _: 1
-                  }),
-                  createElementVNode("span", { class: "tip" }, toDisplayString(_ctx.states.inputValue), 1)
-                ], 8, ["onClick"]))
-              ])
-            ], 2)) : createCommentVNode("v-if", true),
-            _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
-              key: 3,
-              class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
-              onClick: withModifiers(() => {
-              }, ["stop"])
-            }, [
-              renderSlot(_ctx.$slots, "footer")
-            ], 10, ["onClick"])) : createCommentVNode("v-if", true)
-          ]),
-          _: 3
-        }, 512)
+                              viewBox: "0 0 12 12",
+                              xmlns: "http://www.w3.org/2000/svg"
+                            }, [
+                              createElementVNode("g", { "clip-path": "url(#clip0_743_39597)" }, [
+                                createElementVNode("path", { d: "M12 5.25H6.75V0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25Z" })
+                              ]),
+                              createElementVNode("defs", null, [
+                                createElementVNode("clipPath", { id: "clip0_743_39597" }, [
+                                  createElementVNode("rect", {
+                                    width: "12",
+                                    height: "12",
+                                    fill: "white"
+                                  })
+                                ])
+                              ])
+                            ]))
+                          ]),
+                          _: 1
+                        }),
+                        createElementVNode("span", { class: "tip" }, toDisplayString(_ctx.states.inputValue), 1)
+                      ], 8, ["onClick"]))
+                    ])
+                  ], 2)) : createCommentVNode("v-if", true),
+                  _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+                    key: 3,
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
+                    onClick: withModifiers(() => {
+                    }, ["stop"])
+                  }, [
+                    renderSlot(_ctx.$slots, "footer")
+                  ], 10, ["onClick"])) : createCommentVNode("v-if", true)
+                ]),
+                _: 3
+              }, 512)
+            ]),
+            _: 3
+          }, 8, ["visible", "placement", "teleported", "popper-class", "popper-style", "popper-options", "fallback-placements", "effect", "transition", "persistent", "append-to", "offset", "onBeforeShow", "onHide"])
+        ])
       ]),
       _: 3
-    }, 8, ["visible", "placement", "teleported", "popper-class", "popper-style", "popper-options", "fallback-placements", "effect", "transition", "persistent", "append-to", "offset", "onBeforeShow", "onHide"])
+    }, 8, ["content", "disabled"])
   ], 16, ["onMouseleave"])), [
     [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
   ]);
@@ -44598,6 +44553,16 @@ const createGrid = ({
           scrollTop: getRowOffset(props, rowIndex, alignment, _states.scrollTop, _cache, estimatedHeight > props.height ? scrollBarWidth : 0)
         });
       };
+      const scrollToRow = (rowIndex = 0, alignment = AUTO_ALIGNMENT) => {
+        const _states = unref(states);
+        rowIndex = Math.max(0, Math.min(rowIndex, props.totalRow - 1));
+        const scrollBarWidth = getScrollBarWidth(ns.namespace.value);
+        const _cache = unref(cache);
+        const estimatedHeight = getEstimatedTotalHeight(props, _cache);
+        scrollTo({
+          scrollTop: getRowOffset(props, rowIndex, alignment, _states.scrollTop, _cache, estimatedHeight > props.height ? scrollBarWidth : 0)
+        });
+      };
       const getItemStyle = (rowIndex, columnIndex) => {
         const { columnWidth, direction, rowHeight } = props;
         const itemStyleCache = getItemStyleCache.value(clearCache && columnWidth, clearCache && rowHeight, clearCache && direction);
@@ -44676,6 +44641,7 @@ const createGrid = ({
         getItemStyleCache,
         scrollTo,
         scrollToItem,
+        scrollToRow,
         states,
         resetAfterColumnIndex,
         resetAfterRowIndex,
@@ -45638,6 +45604,10 @@ const selectV2Props = buildProps({
     type: String
   },
   automaticDropdown: Boolean,
+  inputType: {
+    type: String,
+    values: ["error", "info", "warning"]
+  },
   clearable: Boolean,
   clearIcon: {
     type: iconPropType,
@@ -46342,6 +46312,17 @@ const useSelect$1 = (props, emit) => {
   const hasModelValue = computed(() => {
     return props.multiple ? isArray$1(props.modelValue) && props.modelValue.length > 0 : !isEmptyValue(props.modelValue);
   });
+  const tryAutoSelectSingleOption = () => {
+    if (props.multiple || props.clearable || hasModelValue.value)
+      return;
+    const availableOptions = allOptions.value.filter((option) => option.type !== "Group" && !getDisabled(option));
+    if (availableOptions.length !== 1)
+      return;
+    const optionValue = getValue(availableOptions[0]);
+    if (isEmptyValue(optionValue))
+      return;
+    emit(UPDATE_MODEL_EVENT, optionValue);
+  };
   const showClearBtn = computed(() => {
     return props.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
   });
@@ -46945,6 +46926,7 @@ const useSelect$1 = (props, emit) => {
   });
   watch(() => props.options, () => {
     const input = inputRef.value;
+    tryAutoSelectSingleOption();
     if (!input || input && document.activeElement !== input) {
       initStates();
     }
@@ -46978,6 +46960,7 @@ const useSelect$1 = (props, emit) => {
     }
   });
   onMounted(() => {
+    tryAutoSelectSingleOption();
     initStates();
   });
   useResizeObserver(selectRef, handleResize);
@@ -47091,6 +47074,15 @@ const _sfc_main$Q = defineComponent({
     const contentId = useId();
     const validateError = computed(() => (API == null ? void 0 : API.validateState.value) === "error");
     const validateMsg = computed(() => (API == null ? void 0 : API.validateMessage.value) || "");
+    const showEmptyErrorTooltip = computed(() => props.inputType === "error" && !API.hasModelValue.value);
+    const errorTooltipContent = computed(() => {
+      if (validateError.value && validateMsg.value)
+        return validateMsg.value;
+      if (showEmptyErrorTooltip.value)
+        return "Required";
+      return "";
+    });
+    const errorTooltipDisabled = computed(() => !errorTooltipContent.value);
     provide(selectV2InjectionKey, {
       props: reactive({
         ...toRefs(props),
@@ -47119,6 +47111,8 @@ const _sfc_main$Q = defineComponent({
       inputStyle,
       validateError,
       validateMsg,
+      errorTooltipContent,
+      errorTooltipDisabled,
       contentId,
       BORDER_HORIZONTAL_WIDTH
     };
@@ -47135,411 +47129,407 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     class: normalizeClass([
       _ctx.nsSelect.b(),
       _ctx.nsSelect.m(_ctx.selectSize),
+      _ctx.nsSelect.m(_ctx.inputType),
+      {
+        [_ctx.nsSelect.m("inputType")]: !!_ctx.inputType,
+        [_ctx.nsSelect.m("filled")]: !!_ctx.inputType && _ctx.hasModelValue
+      },
       _ctx.multiple && _ctx.isFocused ? "multi-select" : ""
     ]),
     onMouseenter: ($event) => _ctx.states.inputHovering = true,
     onMouseleave: ($event) => _ctx.states.inputHovering = false
   }, [
     createVNode(_component_el_tooltip, {
-      ref: "tooltipRef",
-      visible: _ctx.dropdownMenuVisible,
-      teleported: _ctx.teleported,
-      "popper-class": [_ctx.nsSelect.e("popper"), _ctx.popperClass],
-      "popper-style": _ctx.popperStyle,
-      "gpu-acceleration": false,
-      "stop-popper-mouse-event": false,
-      "popper-options": _ctx.popperOptions,
-      "fallback-placements": _ctx.fallbackPlacements,
-      effect: _ctx.effect,
-      placement: _ctx.placement,
-      pure: "",
-      transition: `${_ctx.nsSelect.namespace.value}-zoom-in-top`,
-      trigger: "click",
-      persistent: _ctx.persistent,
-      "append-to": _ctx.appendTo,
-      "show-arrow": _ctx.showArrow,
-      offset: _ctx.offset,
-      onBeforeShow: _ctx.handleMenuEnter,
-      onHide: ($event) => _ctx.states.isBeforeHide = false
+      trigger: "hover",
+      effect: "light",
+      placement: "top",
+      offset: 4,
+      content: _ctx.errorTooltipContent,
+      disabled: _ctx.errorTooltipDisabled
     }, {
-      default: withCtx(() => {
-        var _a, _b, _c;
-        return [
-          createElementVNode("div", {
-            ref: "wrapperRef",
-            class: normalizeClass([
-              _ctx.nsSelect.e("wrapper"),
-              _ctx.nsSelect.is("focused", _ctx.isFocused),
-              _ctx.nsSelect.is("all", !!_ctx.haveAll),
-              _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
-              _ctx.nsSelect.is("filterable", _ctx.filterable),
-              _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-              _ctx.nsSelect.is("value", _ctx.hasModelValue)
-            ]),
-            onClick: withModifiers(_ctx.toggleMenu, ["prevent"])
-          }, [
-            _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
-              key: 0,
-              class: "float-label"
-            }, toDisplayString(_ctx.placeholder), 1)) : createCommentVNode("v-if", true),
-            _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
-              key: 1,
-              ref: "prefixRef",
-              class: normalizeClass(_ctx.nsSelect.e("prefix"))
-            }, [
-              renderSlot(_ctx.$slots, "prefix")
-            ], 2)) : createCommentVNode("v-if", true),
-            createElementVNode("div", {
-              ref: "selectionRef",
-              class: normalizeClass([
-                _ctx.nsSelect.e("selection"),
-                _ctx.nsSelect.is("near", _ctx.multiple && !_ctx.$slots.prefix && !!_ctx.modelValue.length)
-              ])
-            }, [
-              _ctx.multiple ? renderSlot(_ctx.$slots, "tag", {
-                key: 0,
-                data: _ctx.states.cachedOptions,
-                deleteTag: _ctx.deleteTag,
-                selectDisabled: _ctx.selectDisabled
-              }, () => [
-                _ctx.haveAll && !_ctx.states.cachedOptions.length ? (openBlock(), createElementBlock("span", {
-                  key: 0,
-                  class: "select-all-tag"
-                }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
-                (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.showTagList, (item) => {
-                  return openBlock(), createElementBlock("div", {
-                    key: _ctx.getValueKey(_ctx.getValue(item)),
-                    class: normalizeClass(_ctx.nsSelect.e("selected-item"))
-                  }, [
-                    createVNode(_component_el_tag, {
-                      closable: !_ctx.selectDisabled && !_ctx.getDisabled(item),
-                      size: _ctx.collapseTagSize,
-                      type: _ctx.tagType,
-                      effect: _ctx.tagEffect,
-                      "disable-transitions": "",
-                      style: normalizeStyle(_ctx.tagStyle),
-                      onClose: ($event) => _ctx.deleteTag($event, item)
-                    }, {
-                      default: withCtx(() => [
-                        createElementVNode("span", {
-                          class: normalizeClass(_ctx.nsSelect.e("tags-text"))
-                        }, [
-                          renderSlot(_ctx.$slots, "label", {
-                            index: _ctx.getIndex(item),
-                            label: _ctx.getLabel(item),
-                            value: _ctx.getValue(item)
-                          }, () => [
-                            createTextVNode(toDisplayString(_ctx.getLabel(item)), 1)
-                          ])
-                        ], 2)
-                      ]),
-                      _: 2
-                    }, 1032, ["closable", "size", "type", "effect", "style", "onClose"])
-                  ], 2);
-                }), 128)),
-                _ctx.collapseTags && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
-                  key: 1,
-                  ref: "tagTooltipRef",
-                  disabled: _ctx.dropdownMenuVisible || !_ctx.collapseTagsTooltip,
-                  "fallback-placements": ["bottom", "top", "right", "left"],
-                  effect: _ctx.effect,
-                  placement: "bottom",
-                  "popper-class": _ctx.popperClass,
-                  "popper-style": _ctx.popperStyle,
-                  teleported: _ctx.teleported
-                }, {
-                  default: withCtx(() => [
-                    createElementVNode("div", {
-                      ref: "collapseItemRef",
-                      class: normalizeClass(_ctx.nsSelect.e("selected-item"))
-                    }, [
-                      createVNode(_component_el_tag, {
-                        closable: false,
-                        size: _ctx.collapseTagSize,
-                        type: _ctx.tagType,
-                        effect: _ctx.tagEffect,
-                        style: normalizeStyle(_ctx.collapseTagStyle),
-                        "disable-transitions": ""
-                      }, {
-                        default: withCtx(() => [
-                          createElementVNode("span", {
-                            class: normalizeClass(_ctx.nsSelect.e("tags-text"))
-                          }, " + " + toDisplayString(_ctx.modelValue.length - _ctx.maxCollapseTags), 3)
-                        ]),
-                        _: 1
-                      }, 8, ["size", "type", "effect", "style"])
-                    ], 2)
+      default: withCtx(() => [
+        createElementVNode("div", null, [
+          createVNode(_component_el_tooltip, {
+            ref: "tooltipRef",
+            visible: _ctx.dropdownMenuVisible,
+            teleported: _ctx.teleported,
+            "popper-class": [_ctx.nsSelect.e("popper"), _ctx.popperClass],
+            "popper-style": _ctx.popperStyle,
+            "gpu-acceleration": false,
+            "stop-popper-mouse-event": false,
+            "popper-options": _ctx.popperOptions,
+            "fallback-placements": _ctx.fallbackPlacements,
+            effect: _ctx.effect,
+            placement: _ctx.placement,
+            pure: "",
+            transition: `${_ctx.nsSelect.namespace.value}-zoom-in-top`,
+            trigger: "click",
+            persistent: _ctx.persistent,
+            "append-to": _ctx.appendTo,
+            "show-arrow": _ctx.showArrow,
+            offset: _ctx.offset,
+            onBeforeShow: _ctx.handleMenuEnter,
+            onHide: ($event) => _ctx.states.isBeforeHide = false
+          }, {
+            default: withCtx(() => {
+              var _a, _b, _c;
+              return [
+                createElementVNode("div", {
+                  ref: "wrapperRef",
+                  class: normalizeClass([
+                    _ctx.nsSelect.e("wrapper"),
+                    _ctx.nsSelect.is("focused", _ctx.isFocused),
+                    _ctx.nsSelect.is("all", !!_ctx.haveAll),
+                    _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
+                    _ctx.nsSelect.is("filterable", _ctx.filterable),
+                    _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
+                    _ctx.nsSelect.is("value", _ctx.hasModelValue)
                   ]),
-                  content: withCtx(() => [
-                    createElementVNode("div", {
-                      ref: "tagMenuRef",
-                      class: normalizeClass(_ctx.nsSelect.e("selection"))
-                    }, [
-                      (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.collapseTagList, (selected) => {
+                  onClick: withModifiers(_ctx.toggleMenu, ["prevent"])
+                }, [
+                  _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
+                    key: 0,
+                    class: "float-label"
+                  }, toDisplayString(_ctx.placeholder), 1)) : createCommentVNode("v-if", true),
+                  _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
+                    key: 1,
+                    ref: "prefixRef",
+                    class: normalizeClass(_ctx.nsSelect.e("prefix"))
+                  }, [
+                    renderSlot(_ctx.$slots, "prefix")
+                  ], 2)) : createCommentVNode("v-if", true),
+                  createElementVNode("div", {
+                    ref: "selectionRef",
+                    class: normalizeClass([
+                      _ctx.nsSelect.e("selection"),
+                      _ctx.nsSelect.is("near", _ctx.multiple && !_ctx.$slots.prefix && !!_ctx.modelValue.length)
+                    ])
+                  }, [
+                    _ctx.multiple ? renderSlot(_ctx.$slots, "tag", {
+                      key: 0,
+                      data: _ctx.states.cachedOptions,
+                      deleteTag: _ctx.deleteTag,
+                      selectDisabled: _ctx.selectDisabled
+                    }, () => [
+                      _ctx.haveAll && !_ctx.states.cachedOptions.length ? (openBlock(), createElementBlock("span", {
+                        key: 0,
+                        class: "select-all-tag"
+                      }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
+                      (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.showTagList, (item) => {
                         return openBlock(), createElementBlock("div", {
-                          key: _ctx.getValueKey(_ctx.getValue(selected)),
+                          key: _ctx.getValueKey(_ctx.getValue(item)),
                           class: normalizeClass(_ctx.nsSelect.e("selected-item"))
                         }, [
                           createVNode(_component_el_tag, {
-                            class: "in-tooltip",
-                            closable: !_ctx.selectDisabled && !_ctx.getDisabled(selected),
+                            closable: !_ctx.selectDisabled && !_ctx.getDisabled(item),
                             size: _ctx.collapseTagSize,
                             type: _ctx.tagType,
                             effect: _ctx.tagEffect,
                             "disable-transitions": "",
-                            onClose: ($event) => _ctx.deleteTag($event, selected)
+                            style: normalizeStyle(_ctx.tagStyle),
+                            onClose: ($event) => _ctx.deleteTag($event, item)
                           }, {
                             default: withCtx(() => [
                               createElementVNode("span", {
                                 class: normalizeClass(_ctx.nsSelect.e("tags-text"))
                               }, [
                                 renderSlot(_ctx.$slots, "label", {
-                                  index: _ctx.getIndex(selected),
-                                  label: _ctx.getLabel(selected),
-                                  value: _ctx.getValue(selected)
+                                  index: _ctx.getIndex(item),
+                                  label: _ctx.getLabel(item),
+                                  value: _ctx.getValue(item)
                                 }, () => [
-                                  createTextVNode(toDisplayString(_ctx.getLabel(selected)), 1)
+                                  createTextVNode(toDisplayString(_ctx.getLabel(item)), 1)
                                 ])
                               ], 2)
                             ]),
                             _: 2
-                          }, 1032, ["closable", "size", "type", "effect", "onClose"])
+                          }, 1032, ["closable", "size", "type", "effect", "style", "onClose"])
                         ], 2);
-                      }), 128))
-                    ], 2)
-                  ]),
-                  _: 3
-                }, 8, ["disabled", "effect", "popper-class", "popper-style", "teleported"])) : createCommentVNode("v-if", true)
-              ]) : createCommentVNode("v-if", true),
-              createElementVNode("div", {
-                class: normalizeClass([
-                  _ctx.nsSelect.e("selected-item"),
-                  _ctx.nsSelect.e("input-wrapper"),
-                  _ctx.nsSelect.is("hidden", !_ctx.filterable)
-                ])
-              }, [
-                withDirectives(createElementVNode("input", {
-                  id: _ctx.inputId,
-                  ref: "inputRef",
-                  "onUpdate:modelValue": ($event) => _ctx.states.inputValue = $event,
-                  style: normalizeStyle(_ctx.inputStyle),
-                  autocomplete: _ctx.autocomplete,
-                  tabindex: _ctx.tabindex,
-                  "aria-autocomplete": "none",
-                  "aria-haspopup": "listbox",
-                  autocapitalize: "off",
-                  "aria-expanded": _ctx.expanded,
-                  "aria-label": _ctx.ariaLabel,
-                  class: normalizeClass([_ctx.nsSelect.e("input"), _ctx.nsSelect.is(_ctx.selectSize)]),
-                  disabled: _ctx.selectDisabled,
-                  role: "combobox",
-                  "aria-controls": _ctx.contentId,
-                  "aria-activedescendant": _ctx.states.hoveringIndex >= 0 ? `${_ctx.contentId}-${_ctx.states.hoveringIndex}` : "",
-                  readonly: !_ctx.filterable,
-                  spellcheck: "false",
-                  type: "text",
-                  name: _ctx.name,
-                  onInput: _ctx.onInput,
-                  onCompositionstart: _ctx.handleCompositionStart,
-                  onCompositionupdate: _ctx.handleCompositionUpdate,
-                  onCompositionend: _ctx.handleCompositionEnd,
-                  onKeydown: [
-                    withKeys(withModifiers(($event) => _ctx.onKeyboardNavigate("backward"), ["stop", "prevent"]), ["up"]),
-                    withKeys(withModifiers(($event) => _ctx.onKeyboardNavigate("forward"), ["stop", "prevent"]), ["down"]),
-                    withKeys(withModifiers(_ctx.onKeyboardSelect, ["stop", "prevent"]), ["enter"]),
-                    withKeys(withModifiers(_ctx.handleEsc, ["stop", "prevent"]), ["esc"]),
-                    withKeys(withModifiers(_ctx.handleDel, ["stop"]), ["delete"])
-                  ],
-                  onClick: withModifiers(_ctx.toggleMenu, ["stop"])
-                }, null, 46, ["id", "onUpdate:modelValue", "autocomplete", "tabindex", "aria-expanded", "aria-label", "disabled", "aria-controls", "aria-activedescendant", "readonly", "name", "onInput", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onKeydown", "onClick"]), [
-                  [vModelText, _ctx.states.inputValue]
-                ]),
-                _ctx.filterable ? (openBlock(), createElementBlock("span", {
-                  key: 0,
-                  ref: "calculatorRef",
-                  "aria-hidden": "true",
-                  class: normalizeClass(_ctx.nsSelect.e("input-calculator")),
-                  textContent: toDisplayString(_ctx.states.inputValue)
-                }, null, 10, ["textContent"])) : createCommentVNode("v-if", true)
-              ], 2),
-              _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (openBlock(), createElementBlock("div", {
-                key: 1,
-                class: normalizeClass([
-                  _ctx.nsSelect.e("selected-item"),
-                  _ctx.nsSelect.e("placeholder"),
-                  _ctx.nsSelect.is("transparent", !_ctx.hasModelValue || _ctx.expanded && !_ctx.states.inputValue)
-                ])
-              }, [
-                renderSlot(_ctx.$slots, "label", {
-                  index: (_b = (_a = _ctx.allOptionsValueMap.get(_ctx.modelValue)) == null ? void 0 : _a.index) != null ? _b : -1,
-                  label: _ctx.currentPlaceholder,
-                  value: _ctx.modelValue
-                }, () => [
-                  createElementVNode("span", null, toDisplayString(_ctx.currentPlaceholder), 1)
-                ])
-              ], 2)) : createCommentVNode("v-if", true)
-            ], 2),
-            createElementVNode("div", {
-              ref: "suffixRef",
-              class: normalizeClass(_ctx.nsSelect.e("suffix"))
-            }, [
-              _ctx.iconComponent && !_ctx.validateError ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-                ((_c = _ctx.$slots) == null ? void 0 : _c.suffix) ? withDirectives((openBlock(), createElementBlock("div", {
-                  key: 0,
-                  class: "tip-wrap"
-                }, [
-                  renderSlot(_ctx.$slots, "suffix")
-                ], 512)), [
-                  [vShow, !_ctx.showClearBtn]
-                ]) : withDirectives((openBlock(), createBlock(_component_el_icon, {
-                  key: 1,
-                  class: normalizeClass([_ctx.nsSelect.e("caret"), _ctx.nsInput.e("icon"), _ctx.iconReverse])
-                }, {
-                  default: withCtx(() => [
-                    (openBlock(), createElementBlock("svg", {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "12",
-                      height: "12",
-                      viewBox: "0 0 12 12"
+                      }), 128)),
+                      _ctx.collapseTags && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
+                        key: 1,
+                        ref: "tagTooltipRef",
+                        disabled: _ctx.dropdownMenuVisible || !_ctx.collapseTagsTooltip,
+                        "fallback-placements": ["bottom", "top", "right", "left"],
+                        effect: _ctx.effect,
+                        placement: "bottom",
+                        "popper-class": _ctx.popperClass,
+                        "popper-style": _ctx.popperStyle,
+                        teleported: _ctx.teleported
+                      }, {
+                        default: withCtx(() => [
+                          createElementVNode("div", {
+                            ref: "collapseItemRef",
+                            class: normalizeClass(_ctx.nsSelect.e("selected-item"))
+                          }, [
+                            createVNode(_component_el_tag, {
+                              closable: false,
+                              size: _ctx.collapseTagSize,
+                              type: _ctx.tagType,
+                              effect: _ctx.tagEffect,
+                              style: normalizeStyle(_ctx.collapseTagStyle),
+                              "disable-transitions": ""
+                            }, {
+                              default: withCtx(() => [
+                                createElementVNode("span", {
+                                  class: normalizeClass(_ctx.nsSelect.e("tags-text"))
+                                }, " + " + toDisplayString(_ctx.modelValue.length - _ctx.maxCollapseTags), 3)
+                              ]),
+                              _: 1
+                            }, 8, ["size", "type", "effect", "style"])
+                          ], 2)
+                        ]),
+                        content: withCtx(() => [
+                          createElementVNode("div", {
+                            ref: "tagMenuRef",
+                            class: normalizeClass(_ctx.nsSelect.e("selection"))
+                          }, [
+                            (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.collapseTagList, (selected) => {
+                              return openBlock(), createElementBlock("div", {
+                                key: _ctx.getValueKey(_ctx.getValue(selected)),
+                                class: normalizeClass(_ctx.nsSelect.e("selected-item"))
+                              }, [
+                                createVNode(_component_el_tag, {
+                                  class: "in-tooltip",
+                                  closable: !_ctx.selectDisabled && !_ctx.getDisabled(selected),
+                                  size: _ctx.collapseTagSize,
+                                  type: _ctx.tagType,
+                                  effect: _ctx.tagEffect,
+                                  "disable-transitions": "",
+                                  onClose: ($event) => _ctx.deleteTag($event, selected)
+                                }, {
+                                  default: withCtx(() => [
+                                    createElementVNode("span", {
+                                      class: normalizeClass(_ctx.nsSelect.e("tags-text"))
+                                    }, [
+                                      renderSlot(_ctx.$slots, "label", {
+                                        index: _ctx.getIndex(selected),
+                                        label: _ctx.getLabel(selected),
+                                        value: _ctx.getValue(selected)
+                                      }, () => [
+                                        createTextVNode(toDisplayString(_ctx.getLabel(selected)), 1)
+                                      ])
+                                    ], 2)
+                                  ]),
+                                  _: 2
+                                }, 1032, ["closable", "size", "type", "effect", "onClose"])
+                              ], 2);
+                            }), 128))
+                          ], 2)
+                        ]),
+                        _: 3
+                      }, 8, ["disabled", "effect", "popper-class", "popper-style", "teleported"])) : createCommentVNode("v-if", true)
+                    ]) : createCommentVNode("v-if", true),
+                    createElementVNode("div", {
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("selected-item"),
+                        _ctx.nsSelect.e("input-wrapper"),
+                        _ctx.nsSelect.is("hidden", !_ctx.filterable)
+                      ])
                     }, [
-                      createElementVNode("path", { d: "M5.99992 7.75002C5.86862 7.75024 5.73856 7.72452 5.61723 7.67432C5.4959 7.62413 5.38569 7.55045 5.29292 7.45752L2.64642 4.81052L3.35342 4.10352L5.99992 6.75002L8.64642 4.10352L9.35342 4.81052L6.70692 7.45702C6.6142 7.55004 6.50401 7.62381 6.38267 7.67409C6.26134 7.72438 6.13126 7.75018 5.99992 7.75002Z" })
-                    ]))
-                  ]),
-                  _: 1
-                }, 8, ["class"])), [
-                  [vShow, !_ctx.showClearBtn]
-                ])
-              ], 64)) : createCommentVNode("v-if", true),
-              _ctx.showClearBtn && _ctx.clearIcon ? (openBlock(), createBlock(_component_el_icon, {
-                key: 1,
-                class: normalizeClass([
-                  _ctx.nsSelect.e("caret"),
-                  _ctx.nsInput.e("icon"),
-                  _ctx.nsSelect.e("clear")
-                ]),
-                onClick: withModifiers(_ctx.handleClear, ["prevent", "stop"])
-              }, {
-                default: withCtx(() => [
-                  (openBlock(), createElementBlock("svg", {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    width: "12",
-                    height: "12",
-                    viewBox: "0 0 12 12"
+                      withDirectives(createElementVNode("input", {
+                        id: _ctx.inputId,
+                        ref: "inputRef",
+                        "onUpdate:modelValue": ($event) => _ctx.states.inputValue = $event,
+                        style: normalizeStyle(_ctx.inputStyle),
+                        autocomplete: _ctx.autocomplete,
+                        tabindex: _ctx.tabindex,
+                        "aria-autocomplete": "none",
+                        "aria-haspopup": "listbox",
+                        autocapitalize: "off",
+                        "aria-expanded": _ctx.expanded,
+                        "aria-label": _ctx.ariaLabel,
+                        class: normalizeClass([_ctx.nsSelect.e("input"), _ctx.nsSelect.is(_ctx.selectSize)]),
+                        disabled: _ctx.selectDisabled,
+                        role: "combobox",
+                        "aria-controls": _ctx.contentId,
+                        "aria-activedescendant": _ctx.states.hoveringIndex >= 0 ? `${_ctx.contentId}-${_ctx.states.hoveringIndex}` : "",
+                        readonly: !_ctx.filterable,
+                        spellcheck: "false",
+                        type: "text",
+                        name: _ctx.name,
+                        onInput: _ctx.onInput,
+                        onCompositionstart: _ctx.handleCompositionStart,
+                        onCompositionupdate: _ctx.handleCompositionUpdate,
+                        onCompositionend: _ctx.handleCompositionEnd,
+                        onKeydown: [
+                          withKeys(withModifiers(($event) => _ctx.onKeyboardNavigate("backward"), ["stop", "prevent"]), ["up"]),
+                          withKeys(withModifiers(($event) => _ctx.onKeyboardNavigate("forward"), ["stop", "prevent"]), ["down"]),
+                          withKeys(withModifiers(_ctx.onKeyboardSelect, ["stop", "prevent"]), ["enter"]),
+                          withKeys(withModifiers(_ctx.handleEsc, ["stop", "prevent"]), ["esc"]),
+                          withKeys(withModifiers(_ctx.handleDel, ["stop"]), ["delete"])
+                        ],
+                        onClick: withModifiers(_ctx.toggleMenu, ["stop"])
+                      }, null, 46, ["id", "onUpdate:modelValue", "autocomplete", "tabindex", "aria-expanded", "aria-label", "disabled", "aria-controls", "aria-activedescendant", "readonly", "name", "onInput", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onKeydown", "onClick"]), [
+                        [vModelText, _ctx.states.inputValue]
+                      ]),
+                      _ctx.filterable ? (openBlock(), createElementBlock("span", {
+                        key: 0,
+                        ref: "calculatorRef",
+                        "aria-hidden": "true",
+                        class: normalizeClass(_ctx.nsSelect.e("input-calculator")),
+                        textContent: toDisplayString(_ctx.states.inputValue)
+                      }, null, 10, ["textContent"])) : createCommentVNode("v-if", true)
+                    ], 2),
+                    _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (openBlock(), createElementBlock("div", {
+                      key: 1,
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("selected-item"),
+                        _ctx.nsSelect.e("placeholder"),
+                        _ctx.nsSelect.is("transparent", !_ctx.hasModelValue || _ctx.expanded && !_ctx.states.inputValue)
+                      ])
+                    }, [
+                      renderSlot(_ctx.$slots, "label", {
+                        index: (_b = (_a = _ctx.allOptionsValueMap.get(_ctx.modelValue)) == null ? void 0 : _a.index) != null ? _b : -1,
+                        label: _ctx.currentPlaceholder,
+                        value: _ctx.modelValue
+                      }, () => [
+                        createElementVNode("span", null, toDisplayString(_ctx.currentPlaceholder), 1)
+                      ])
+                    ], 2)) : createCommentVNode("v-if", true)
+                  ], 2),
+                  createElementVNode("div", {
+                    ref: "suffixRef",
+                    class: normalizeClass(_ctx.nsSelect.e("suffix"))
                   }, [
-                    createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
-                  ]))
-                ]),
-                _: 1
-              }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true),
-              _ctx.validateError ? (openBlock(), createBlock(_component_el_tooltip, {
-                key: 2,
-                content: _ctx.validateMsg,
-                effect: "light",
-                placement: "top",
-                offset: 4
-              }, {
-                default: withCtx(() => [
-                  createVNode(_component_el_icon, {
-                    class: "error-icon",
-                    color: "#A1160A"
-                  }, {
-                    default: withCtx(() => [
-                      (openBlock(), createElementBlock("svg", {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        width: "12",
-                        height: "12",
-                        viewBox: "0 0 12 12"
+                    _ctx.iconComponent && !_ctx.validateError ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                      ((_c = _ctx.$slots) == null ? void 0 : _c.suffix) ? withDirectives((openBlock(), createElementBlock("div", {
+                        key: 0,
+                        class: "tip-wrap"
                       }, [
-                        createElementVNode("path", { d: "M6.00041 1C8.00045 1 6.75037 5.25 6.75037 5.25C6.75037 5.25 10.1112 2.75 11.0004 4.5C11.8896 6.25 7.25037 6.75 7.25037 6.75C7.25037 6.75 10.7186 9.88284 9.25035 10.9496C7.78208 12.0164 6.00037 7.5 6.00037 7.5C6.00037 7.5 4.23586 12.0164 2.76759 10.9496C1.29932 9.88283 4.75037 6.75 4.75037 6.75C4.75037 6.75 0.250258 6.25 1.00035 4.5C1.75045 2.75 5.25037 5.25 5.25037 5.25C5.25037 5.25 4.00037 1 6.00041 1Z" })
-                      ]))
-                    ]),
-                    _: 1
-                  })
+                        renderSlot(_ctx.$slots, "suffix")
+                      ], 512)), [
+                        [vShow, !_ctx.showClearBtn]
+                      ]) : withDirectives((openBlock(), createBlock(_component_el_icon, {
+                        key: 1,
+                        class: normalizeClass([
+                          _ctx.nsSelect.e("caret"),
+                          _ctx.nsInput.e("icon"),
+                          _ctx.iconReverse
+                        ])
+                      }, {
+                        default: withCtx(() => [
+                          (openBlock(), createElementBlock("svg", {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "12",
+                            height: "12",
+                            viewBox: "0 0 12 12"
+                          }, [
+                            createElementVNode("path", { d: "M5.99992 7.75002C5.86862 7.75024 5.73856 7.72452 5.61723 7.67432C5.4959 7.62413 5.38569 7.55045 5.29292 7.45752L2.64642 4.81052L3.35342 4.10352L5.99992 6.75002L8.64642 4.10352L9.35342 4.81052L6.70692 7.45702C6.6142 7.55004 6.50401 7.62381 6.38267 7.67409C6.26134 7.72438 6.13126 7.75018 5.99992 7.75002Z" })
+                          ]))
+                        ]),
+                        _: 1
+                      }, 8, ["class"])), [
+                        [vShow, !_ctx.showClearBtn]
+                      ])
+                    ], 64)) : createCommentVNode("v-if", true),
+                    _ctx.showClearBtn && _ctx.clearIcon ? (openBlock(), createBlock(_component_el_icon, {
+                      key: 1,
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("caret"),
+                        _ctx.nsInput.e("icon"),
+                        _ctx.nsSelect.e("clear")
+                      ]),
+                      onClick: withModifiers(_ctx.handleClear, ["prevent", "stop"])
+                    }, {
+                      default: withCtx(() => [
+                        (openBlock(), createElementBlock("svg", {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "12",
+                          height: "12",
+                          viewBox: "0 0 12 12"
+                        }, [
+                          createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
+                        ]))
+                      ]),
+                      _: 1
+                    }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true),
+                    _ctx.validateState && _ctx.validateIcon && _ctx.needStatusIcon ? (openBlock(), createBlock(_component_el_icon, {
+                      key: 2,
+                      class: normalizeClass([
+                        _ctx.nsInput.e("icon"),
+                        _ctx.nsInput.e("validateIcon"),
+                        _ctx.nsInput.is("loading", _ctx.validateState === "validating")
+                      ]),
+                      innerHTML: _ctx.validateIcon
+                    }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true)
+                  ], 2)
+                ], 10, ["onClick"])
+              ];
+            }),
+            content: withCtx(() => [
+              createVNode(_component_el_select_menu, {
+                id: _ctx.contentId,
+                ref: "menuRef",
+                data: _ctx.filteredOptions,
+                width: _ctx.popperSize - _ctx.BORDER_HORIZONTAL_WIDTH,
+                "hovering-index": _ctx.states.hoveringIndex,
+                "scrollbar-always-on": _ctx.scrollbarAlwaysOn,
+                "aria-label": _ctx.ariaLabel
+              }, createSlots({
+                default: withCtx((scope) => [
+                  renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(scope)))
                 ]),
-                _: 1
-              }, 8, ["content"])) : createCommentVNode("v-if", true),
-              _ctx.validateState && _ctx.validateIcon && _ctx.needStatusIcon ? (openBlock(), createBlock(_component_el_icon, {
-                key: 3,
-                class: normalizeClass([
-                  _ctx.nsInput.e("icon"),
-                  _ctx.nsInput.e("validateIcon"),
-                  _ctx.nsInput.is("loading", _ctx.validateState === "validating")
-                ]),
-                innerHTML: _ctx.validateIcon
-              }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true)
-            ], 2)
-          ], 10, ["onClick"])
-        ];
-      }),
-      content: withCtx(() => [
-        createVNode(_component_el_select_menu, {
-          id: _ctx.contentId,
-          ref: "menuRef",
-          data: _ctx.filteredOptions,
-          width: _ctx.popperSize - _ctx.BORDER_HORIZONTAL_WIDTH,
-          "hovering-index": _ctx.states.hoveringIndex,
-          "scrollbar-always-on": _ctx.scrollbarAlwaysOn,
-          "aria-label": _ctx.ariaLabel
-        }, createSlots({
-          default: withCtx((scope) => [
-            renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps(scope)))
-          ]),
-          _: 2
-        }, [
-          _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? {
-            name: "header",
-            fn: withCtx(() => [
-              _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
-                key: 0,
-                class: normalizeClass(_ctx.nsSelect.be("dropdown", "header")),
-                onClick: withModifiers(() => {
-                }, ["stop"])
+                _: 2
               }, [
-                renderSlot(_ctx.$slots, "header")
-              ], 10, ["onClick"])) : createCommentVNode("v-if", true),
-              _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
-                key: 1,
-                class: "select-all-item"
-              }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true)
-            ])
-          } : void 0,
-          _ctx.$slots.loading && _ctx.loading ? {
-            name: "loading",
-            fn: withCtx(() => [
-              createElementVNode("div", {
-                class: normalizeClass(_ctx.nsSelect.be("dropdown", "loading"))
-              }, [
-                renderSlot(_ctx.$slots, "loading")
-              ], 2)
-            ])
-          } : _ctx.loading || _ctx.filteredOptions.length === 0 ? {
-            name: "empty",
-            fn: withCtx(() => [
-              createElementVNode("div", {
-                class: normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
-              }, [
-                renderSlot(_ctx.$slots, "empty", {}, () => [
-                  createElementVNode("span", null, toDisplayString(_ctx.emptyText), 1)
-                ])
-              ], 2)
-            ])
-          } : void 0,
-          _ctx.$slots.footer ? {
-            name: "footer",
-            fn: withCtx(() => [
-              createElementVNode("div", {
-                class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
-                onClick: withModifiers(() => {
-                }, ["stop"])
-              }, [
-                renderSlot(_ctx.$slots, "footer")
-              ], 10, ["onClick"])
-            ])
-          } : void 0
-        ]), 1032, ["id", "data", "width", "hovering-index", "scrollbar-always-on", "aria-label"])
+                _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? {
+                  name: "header",
+                  fn: withCtx(() => [
+                    _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
+                      key: 0,
+                      class: normalizeClass(_ctx.nsSelect.be("dropdown", "header")),
+                      onClick: withModifiers(() => {
+                      }, ["stop"])
+                    }, [
+                      renderSlot(_ctx.$slots, "header")
+                    ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+                    _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
+                      key: 1,
+                      class: "select-all-item"
+                    }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true)
+                  ])
+                } : void 0,
+                _ctx.$slots.loading && _ctx.loading ? {
+                  name: "loading",
+                  fn: withCtx(() => [
+                    createElementVNode("div", {
+                      class: normalizeClass(_ctx.nsSelect.be("dropdown", "loading"))
+                    }, [
+                      renderSlot(_ctx.$slots, "loading")
+                    ], 2)
+                  ])
+                } : _ctx.loading || _ctx.filteredOptions.length === 0 ? {
+                  name: "empty",
+                  fn: withCtx(() => [
+                    createElementVNode("div", {
+                      class: normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
+                    }, [
+                      renderSlot(_ctx.$slots, "empty", {}, () => [
+                        createElementVNode("span", null, toDisplayString(_ctx.emptyText), 1)
+                      ])
+                    ], 2)
+                  ])
+                } : void 0,
+                _ctx.$slots.footer ? {
+                  name: "footer",
+                  fn: withCtx(() => [
+                    createElementVNode("div", {
+                      class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
+                      onClick: withModifiers(() => {
+                      }, ["stop"])
+                    }, [
+                      renderSlot(_ctx.$slots, "footer")
+                    ], 10, ["onClick"])
+                  ])
+                } : void 0
+              ]), 1032, ["id", "data", "width", "hovering-index", "scrollbar-always-on", "aria-label"])
+            ]),
+            _: 3
+          }, 8, ["visible", "teleported", "popper-class", "popper-style", "popper-options", "fallback-placements", "effect", "placement", "transition", "persistent", "append-to", "show-arrow", "offset", "onBeforeShow", "onHide"])
+        ])
       ]),
       _: 3
-    }, 8, ["visible", "teleported", "popper-class", "popper-style", "popper-options", "fallback-placements", "effect", "placement", "transition", "persistent", "append-to", "show-arrow", "offset", "onBeforeShow", "onHide"])
+    }, 8, ["content", "disabled"])
   ], 42, ["onMouseenter", "onMouseleave"])), [
     [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
   ]);
@@ -49617,12 +49607,42 @@ const _sfc_main$G = /* @__PURE__ */ defineComponent({
   props: { total: Number, updateTime: String },
   setup(__props) {
     return (_ctx, _cache) => {
+      const _component_el_icon = resolveComponent("el-icon");
       return openBlock(), createElementBlock("div", { class: "footer-text" }, [
         createElementVNode("div", { class: "count" }, toDisplayString(__props.total) + " items", 1),
         __props.updateTime ? (openBlock(), createElementBlock("div", {
           key: 0,
           class: "time"
-        }, "Last Updated " + toDisplayString(__props.updateTime), 1)) : createCommentVNode("v-if", true)
+        }, [
+          createVNode(_component_el_icon, {
+            color: "#2a3f4d",
+            size: "12px"
+          }, {
+            default: withCtx(() => [
+              (openBlock(), createElementBlock("svg", {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "12",
+                height: "12",
+                viewBox: "0 0 12 12"
+              }, [
+                createElementVNode("g", { "clip-path": "url(#clip0_8022_3776)" }, [
+                  createElementVNode("path", { d: "M1.52007 6.00039C1.5157 7.04669 1.87454 8.06209 2.53535 8.87331C3.19616 9.68454 4.118 10.2413 5.14355 10.4487C6.16911 10.656 7.23484 10.501 8.15888 10.0102C9.08292 9.51938 9.80802 8.72312 10.2104 7.75729C10.6128 6.79147 10.6676 5.71593 10.3655 4.7142C10.0633 3.71248 9.4229 2.84664 8.55353 2.26445C7.68416 1.68225 6.6397 1.41977 5.59838 1.5218C4.55706 1.62382 3.58341 2.08403 2.84357 2.82389L4.02007 4.00039H1.06557C0.993914 4.00046 0.922949 3.98639 0.856736 3.959C0.790524 3.93161 0.730363 3.89143 0.679695 3.84077C0.629027 3.7901 0.588848 3.72994 0.561458 3.66372C0.534067 3.59751 0.520002 3.52655 0.520068 3.45489V0.500393L1.78457 1.76489C2.76669 0.787428 4.05732 0.180689 5.43659 0.0480311C6.81587 -0.0846262 8.19848 0.265004 9.3489 1.03736C10.4993 1.80972 11.3464 2.95704 11.7458 4.28386C12.1452 5.61069 12.0723 7.03495 11.5394 8.31404C11.0066 9.59312 10.0467 10.6479 8.82343 11.2987C7.60014 11.9495 6.18904 12.1561 4.83053 11.8832C3.47202 11.6104 2.25012 10.875 1.37299 9.8023C0.495848 8.72963 0.0177259 7.38603 0.0200682 6.00039H1.52007Z" })
+                ]),
+                createElementVNode("defs", null, [
+                  createElementVNode("clipPath", { id: "clip0_8022_3776" }, [
+                    createElementVNode("rect", {
+                      width: "12",
+                      height: "12",
+                      fill: "white"
+                    })
+                  ])
+                ])
+              ]))
+            ]),
+            _: 1
+          }),
+          createTextVNode(" Last Updated " + toDisplayString(__props.updateTime), 1)
+        ])) : createCommentVNode("v-if", true)
       ]);
     };
   }
@@ -51682,6 +51702,13 @@ var TableHeader = defineComponent({
     },
     showAddColumnTrigger: {
       type: Boolean
+    },
+    addColumnButton: {
+      type: Boolean,
+      default: true
+    },
+    editTable: {
+      type: Boolean
     }
   },
   setup(props, { emit }) {
@@ -51739,6 +51766,20 @@ var TableHeader = defineComponent({
       getHeaderCellClass
     } = useStyle$2(props);
     const { isGroup, toggleAllSelection, columnRows } = useUtils$1(props);
+    const handleAddColumn = (event) => {
+      event.stopPropagation();
+      const columns = props.store.states.columns.value;
+      const columnIndex = columns.length - 1;
+      const column = columns[columnIndex];
+      if (!column)
+        return;
+      emit("tail-add-column", {
+        column,
+        columnIndex,
+        insertIndex: columnIndex + 1,
+        event
+      });
+    };
     instance.state = {
       onColumnsChange,
       onScrollableChange
@@ -51766,6 +51807,7 @@ var TableHeader = defineComponent({
       toggleAllSelection,
       saveIndexSelection,
       isTableLayoutAuto,
+      handleAddColumn,
       theadRef,
       updateFixedColumnStyle
     };
@@ -51809,6 +51851,19 @@ var TableHeader = defineComponent({
       }
       const diagonalHeader = column.diagonalHeader;
       const isDiagonalHeaderCell = !!diagonalHeader;
+      const headerContent = isDiagonalHeaderCell ? [
+        h$1("span", {
+          class: ns.e("diagonal-header-text")
+        }, diagonalHeader.from),
+        h$1("span", {
+          class: ns.e("diagonal-header-text")
+        }, diagonalHeader.to)
+      ] : column.renderHeader ? column.renderHeader({
+        column,
+        $index: cellIndex,
+        store,
+        _self: $parent
+      }) : column.label;
       return h$1("th", {
         class: [
           _class,
@@ -51842,19 +51897,7 @@ var TableHeader = defineComponent({
             column.filteredValue && column.filteredValue.length > 0 ? "highlight" : ""
           ]
         }, [
-          isDiagonalHeaderCell ? [
-            h$1("span", {
-              class: ns.e("diagonal-header-text")
-            }, diagonalHeader.from),
-            h$1("span", {
-              class: ns.e("diagonal-header-text")
-            }, diagonalHeader.to)
-          ] : column.renderHeader ? column.renderHeader({
-            column,
-            $index: cellIndex,
-            store,
-            _self: $parent
-          }) : column.label,
+          headerContent,
           column.sortable && h$1("span", {
             class: "icon-wrap",
             onClick: ($event) => handleSortClick($event, column)
@@ -51881,6 +51924,9 @@ var TableHeader = defineComponent({
     }))));
   }
 });
+
+const ghostRowSign$1 = "__ep_table_ghost_row__";
+const ghostRowKey$1 = "__ep_table_ghost_row_key__";
 
 function useEvents(props, emit) {
   const parent = inject(TABLE_INJECTION_KEY);
@@ -51959,7 +52005,7 @@ function useEvents(props, emit) {
   }, 30);
   const handleRowMouseMove = (event, row, rowIndex) => {
     var _a;
-    if (!(parent == null ? void 0 : parent.props.showAddRowTrigger) || !(parent == null ? void 0 : parent.props.border)) {
+    if (!(parent == null ? void 0 : parent.props.showAddRowTrigger) || !(parent == null ? void 0 : parent.props.editTable) || !(parent == null ? void 0 : parent.props.border)) {
       clearAddRowTrigger();
       return;
     }
@@ -51970,6 +52016,7 @@ function useEvents(props, emit) {
     const rect = currentTarget.getBoundingClientRect();
     const nearTop = rect.height > 12 && event.clientY - rect.top < 8;
     const nearBottom = rect.height > 12 && rect.bottom - event.clientY < 8;
+    const isGhostRow = Boolean(row == null ? void 0 : row[ghostRowSign$1]);
     if (nearTop) {
       emit("update-add-row-trigger", {
         row,
@@ -51978,7 +52025,7 @@ function useEvents(props, emit) {
         top: rect.top - tableRect.top,
         placement: "below"
       });
-    } else if (nearBottom) {
+    } else if (nearBottom && !isGhostRow) {
       emit("update-add-row-trigger", {
         row,
         rowIndex,
@@ -52235,9 +52282,6 @@ const _sfc_main$D = /* @__PURE__ */ defineComponent({
 });
 var TdWrapper = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__file", "td-wrapper.vue"]]);
 
-const ghostRowSign = "__ep_table_ghost_row__";
-const ghostRowKey = "__ep_table_ghost_row_key__";
-
 function useRender$1(props, emit) {
   const parent = inject(TABLE_INJECTION_KEY);
   const ns = useNamespace("table");
@@ -52270,8 +52314,8 @@ function useRender$1(props, emit) {
   });
   const getKeyOfRow = (row, index) => {
     var _a, _b;
-    if (row == null ? void 0 : row[ghostRowSign]) {
-      return (_a = row[ghostRowKey]) != null ? _a : `${ghostRowKey}_${index}`;
+    if (row == null ? void 0 : row[ghostRowSign$1]) {
+      return (_a = row[ghostRowKey$1]) != null ? _a : `${ghostRowKey$1}_${index}`;
     }
     const rowKey = (_b = parent == null ? void 0 : parent.props) == null ? void 0 : _b.rowKey;
     if (rowKey) {
@@ -52290,7 +52334,7 @@ function useRender$1(props, emit) {
     } = props;
     const { indent, columns } = store.states;
     const rowClasses = [];
-    const isGhostRow = Boolean(row == null ? void 0 : row[ghostRowSign]);
+    const isGhostRow = Boolean(row == null ? void 0 : row[ghostRowSign$1]);
     let display = true;
     if (treeRowData) {
       rowClasses.push(ns.em("row", `level-${treeRowData.level}`));
@@ -53219,6 +53263,10 @@ var defaultProps$2 = {
     default: void 0
   },
   showAddColumnTrigger: Boolean,
+  addColumnButton: {
+    type: Boolean,
+    default: true
+  },
   showAddRowTrigger: Boolean,
   allowDragLastColumn: {
     type: Boolean,
@@ -53330,8 +53378,8 @@ const _sfc_main$C = defineComponent({
     const editingRow = ref(null);
     const activeEditableCell = ref(null);
     const ghostRowData = ref({
-      [ghostRowSign]: true,
-      [ghostRowKey]: "ghost-row"
+      [ghostRowSign$1]: true,
+      [ghostRowKey$1]: "ghost-row"
     });
     const addColumnTrigger = shallowRef(null);
     const addRowTrigger = ref(null);
@@ -53371,12 +53419,6 @@ const _sfc_main$C = defineComponent({
       Object.assign(editingRow.value.row, editingRow.value.draft);
       return editingRow.value;
     };
-    table.editingRow = editingRow;
-    table.activeEditableCell = activeEditableCell;
-    table.ghostRowData = ghostRowData;
-    table.startRowEdit = startRowEdit;
-    table.clearEditingRow = clearEditingRow;
-    table.applyEditingRow = applyEditingRow;
     const layout = new TableLayout$1({
       store: table.store,
       table,
@@ -53437,6 +53479,10 @@ const _sfc_main$C = defineComponent({
       });
       clearAddColumnTrigger();
     };
+    const handleAddColumnTailClick = (payload) => {
+      emit("add-column", payload);
+      clearAddColumnTrigger();
+    };
     const clearAddRowTrigger = () => {
       addRowTrigger.value = null;
     };
@@ -53466,7 +53512,36 @@ const _sfc_main$C = defineComponent({
       emit("scroll", event);
     };
     const { scrollBarRef, scrollTo, setScrollLeft, setScrollTop } = useScrollbar$1();
+    let stopPendingGhostRowScrollWatch;
+    const clearPendingGhostRowScrollWatch = () => {
+      stopPendingGhostRowScrollWatch == null ? void 0 : stopPendingGhostRowScrollWatch();
+      stopPendingGhostRowScrollWatch = void 0;
+    };
+    const scheduleGhostRowScroll = () => {
+      clearPendingGhostRowScrollWatch();
+      const previousLength = props.data.length;
+      stopPendingGhostRowScrollWatch = watch(() => props.data.length, async (length) => {
+        var _a, _b;
+        if (length <= previousLength)
+          return;
+        clearPendingGhostRowScrollWatch();
+        await nextTick();
+        const scrollHeight = (_b = (_a = scrollBarRef.value) == null ? void 0 : _a.wrapRef) == null ? void 0 : _b.scrollHeight;
+        if (scrollHeight != null) {
+          setScrollTop(scrollHeight);
+        }
+      }, {
+        flush: "post"
+      });
+    };
     const debouncedUpdateLayout = debounce(doLayout, 50);
+    table.editingRow = editingRow;
+    table.activeEditableCell = activeEditableCell;
+    table.ghostRowData = ghostRowData;
+    table.scheduleGhostRowScroll = scheduleGhostRowScroll;
+    table.startRowEdit = startRowEdit;
+    table.clearEditingRow = clearEditingRow;
+    table.applyEditingRow = applyEditingRow;
     const tableId = `${ns.namespace.value}-table_${tableIdSeed++}`;
     table.tableId = tableId;
     table.state = {
@@ -53476,6 +53551,8 @@ const _sfc_main$C = defineComponent({
       debouncedUpdateLayout
     };
     const hasEditingRow = computed(() => !!editingRow.value);
+    const effectiveShowAddColumnTrigger = computed(() => props.editTable && props.showAddColumnTrigger);
+    const effectiveShowAddRowTrigger = computed(() => props.editTable && props.showAddRowTrigger);
     const computedSumText = computed(() => {
       var _a;
       return (_a = props.sumText) != null ? _a : t("el.table.sumText");
@@ -53484,6 +53561,17 @@ const _sfc_main$C = defineComponent({
       var _a;
       return (_a = props.emptyText) != null ? _a : t("el.table.emptyText");
     });
+    const isEmptyRequiredValue = (value) => value === "" || value === null || value === void 0;
+    const validateRequiredColumns = () => {
+      const requiredColumns = store.states.columns.value.filter((column) => !!column.required && !!column.property);
+      if (!requiredColumns.length)
+        return true;
+      return props.data.every((row) => {
+        var _a;
+        const source = ((_a = editingRow.value) == null ? void 0 : _a.row) === row ? editingRow.value.draft : row;
+        return requiredColumns.every((column) => !isEmptyRequiredValue(source == null ? void 0 : source[column.property]));
+      });
+    };
     const addColumnTriggerStyle = computed(() => {
       if (!addColumnTrigger.value)
         return {};
@@ -53498,11 +53586,22 @@ const _sfc_main$C = defineComponent({
         top: `${addRowTrigger.value.top}px`
       };
     });
+    watch(effectiveShowAddColumnTrigger, (enabled) => {
+      if (!enabled) {
+        clearAddColumnTrigger();
+      }
+    });
+    watch(effectiveShowAddRowTrigger, (enabled) => {
+      if (!enabled) {
+        clearAddRowTrigger();
+      }
+    });
     const columns = computed(() => {
       return convertToRows(store.states.originColumns.value)[0];
     });
     useKeyRender(table);
     onBeforeUnmount(() => {
+      clearPendingGhostRowScrollWatch();
       debouncedUpdateLayout.cancel();
     });
     return {
@@ -53545,8 +53644,11 @@ const _sfc_main$C = defineComponent({
       clearEditingRow,
       applyEditingRow,
       hasEditingRow,
+      effectiveShowAddColumnTrigger,
+      effectiveShowAddRowTrigger,
       addColumnTrigger,
       addColumnTriggerStyle,
+      handleAddColumnTailClick,
       handleAddColumnClick,
       updateAddColumnTrigger,
       addRowTrigger,
@@ -53564,8 +53666,9 @@ const _sfc_main$C = defineComponent({
       setScrollLeft,
       setScrollTop,
       allowDragLastColumn: props.allowDragLastColumn,
-      showAddColumnTrigger: props.showAddColumnTrigger,
-      showAddRowTrigger: props.showAddRowTrigger
+      showAddColumnTrigger: effectiveShowAddColumnTrigger,
+      showAddRowTrigger: effectiveShowAddRowTrigger,
+      validateRequiredColumns
     };
   }
 });
@@ -53593,8 +53696,8 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
         [_ctx.ns.m("fluid-height")]: _ctx.maxHeight,
         [_ctx.ns.m("scrollable-x")]: _ctx.layout.scrollX.value,
         [_ctx.ns.m("scrollable-y")]: _ctx.layout.scrollY.value,
-        [_ctx.ns.m("with-add-column-trigger")]: _ctx.showAddColumnTrigger,
-        [_ctx.ns.m("with-add-row-trigger")]: _ctx.showAddRowTrigger,
+        [_ctx.ns.m("with-add-column-trigger")]: _ctx.effectiveShowAddColumnTrigger,
+        [_ctx.ns.m("with-add-row-trigger")]: _ctx.effectiveShowAddRowTrigger,
         [_ctx.ns.m("enable-row-hover")]: !_ctx.store.states.isComplex.value,
         [_ctx.ns.m("enable-row-transition")]: (_ctx.store.states.data.value || []).length !== 0 && (_ctx.store.states.data.value || []).length < 100,
         "has-footer": _ctx.showSummary
@@ -53641,10 +53744,13 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
             store: _ctx.store,
             "append-filter-panel-to": _ctx.appendFilterPanelTo,
             "allow-drag-last-column": _ctx.allowDragLastColumn,
-            "show-add-column-trigger": _ctx.showAddColumnTrigger,
+            "show-add-column-trigger": _ctx.effectiveShowAddColumnTrigger,
+            "add-column-button": _ctx.addColumnButton,
+            "edit-table": _ctx.editTable,
             onSetDragVisible: _ctx.setDragVisible,
-            onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger
-          }, null, 8, ["border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "onSetDragVisible", "onUpdateAddColumnTrigger"])
+            onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger,
+            onTailAddColumn: _ctx.handleAddColumnTailClick
+          }, null, 8, ["border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "add-column-button", "edit-table", "onSetDragVisible", "onUpdateAddColumnTrigger", "onTailAddColumn"])
         ], 6)
       ], 2)), [
         [_directive_mousewheel, _ctx.handleHeaderFooterMousewheel]
@@ -53687,10 +53793,13 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
                 store: _ctx.store,
                 "append-filter-panel-to": _ctx.appendFilterPanelTo,
                 "allow-drag-last-column": _ctx.allowDragLastColumn,
-                "show-add-column-trigger": _ctx.showAddColumnTrigger,
+                "show-add-column-trigger": _ctx.effectiveShowAddColumnTrigger,
+                "add-column-button": _ctx.addColumnButton,
+                "edit-table": _ctx.editTable,
                 onSetDragVisible: _ctx.setDragVisible,
-                onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger
-              }, null, 8, ["class", "border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "onSetDragVisible", "onUpdateAddColumnTrigger"])) : createCommentVNode("v-if", true),
+                onUpdateAddColumnTrigger: _ctx.updateAddColumnTrigger,
+                onTailAddColumn: _ctx.handleAddColumnTailClick
+              }, null, 8, ["class", "border", "default-sort", "store", "append-filter-panel-to", "allow-drag-last-column", "show-add-column-trigger", "add-column-button", "edit-table", "onSetDragVisible", "onUpdateAddColumnTrigger", "onTailAddColumn"])) : createCommentVNode("v-if", true),
               createVNode(_component_table_body, {
                 context: _ctx.context,
                 "row-draggable": _ctx.rowDraggable,
@@ -53703,7 +53812,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
                 "row-style": _ctx.rowStyle,
                 store: _ctx.store,
                 stripe: _ctx.stripe,
-                "show-add-row-trigger": _ctx.showAddRowTrigger,
+                "show-add-row-trigger": _ctx.effectiveShowAddRowTrigger,
                 onUpdateAddRowTrigger: _ctx.updateAddRowTrigger
               }, null, 8, ["context", "row-draggable", "on-dragend", "on-dragstart", "highlight", "row-class-name", "tooltip-effect", "tooltip-options", "row-style", "store", "stripe", "show-add-row-trigger", "onUpdateAddRowTrigger"]),
               _ctx.showSummary && _ctx.tableLayout === "auto" ? (openBlock(), createBlock(_component_table_footer, {
@@ -53829,7 +53938,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
       })
     ], 6), [
-      [vShow, _ctx.addColumnTrigger]
+      [vShow, _ctx.effectiveShowAddColumnTrigger && _ctx.addColumnTrigger]
     ]),
     withDirectives(createElementVNode("div", {
       class: normalizeClass([_ctx.ns.e("add-row-trigger")]),
@@ -53880,7 +53989,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
       })
     ], 6), [
-      [vShow, _ctx.addRowTrigger]
+      [vShow, _ctx.effectiveShowAddRowTrigger && _ctx.addRowTrigger]
     ])
   ], 46, ["data-prefix", "onMouseleave"]);
 }
@@ -54188,19 +54297,33 @@ const _sfc_main$B = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const props = __props;
     const table = inject(TABLE_INJECTION_KEY);
-    const handleAdd = (event) => {
+    const isEmptyValue = (value) => value === "" || value === null || value === void 0;
+    const requiredColumns = computed(() => {
+      var _a, _b, _c, _d;
+      const columns = (_d = (_c = (_b = (_a = table == null ? void 0 : table.store) == null ? void 0 : _a.states) == null ? void 0 : _b.columns) == null ? void 0 : _c.value) != null ? _d : [];
+      return columns.filter((column) => !!column.required && !!column.property);
+    });
+    const isDisabled = computed(() => requiredColumns.value.some((column) => {
       var _a;
+      return isEmptyValue((_a = props.row) == null ? void 0 : _a[column.property]);
+    }));
+    const handleAdd = (event) => {
+      var _a, _b;
+      if (isDisabled.value)
+        return;
+      (_a = table == null ? void 0 : table.scheduleGhostRowScroll) == null ? void 0 : _a.call(table);
       table == null ? void 0 : table.emit("add-ghost-row", {
         event,
         row: props.row,
         rowIndex: -1,
-        rowKey: (_a = props.row) == null ? void 0 : _a[ghostRowKey]
+        rowKey: (_b = props.row) == null ? void 0 : _b[ghostRowKey$1]
       });
     };
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(ElButton), {
         class: "icon-button",
         text: "",
+        disabled: unref(isDisabled),
         onClick: handleAdd
       }, {
         default: withCtx(() => [
@@ -54219,12 +54342,43 @@ const _sfc_main$B = /* @__PURE__ */ defineComponent({
           })
         ]),
         _: 1
-      });
+      }, 8, ["disabled"]);
     };
   }
 });
 var GhostRowAddButton = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__file", "ghost-row-add-button.vue"]]);
 
+const isEmptyRequiredValue$1 = (value) => value === "" || value === null || value === void 0;
+const hasGhostRowValue = (row) => {
+  return Object.entries(row != null ? row : {}).some(([key, value]) => {
+    if (key === ghostRowSign$1 || key === ghostRowKey$1)
+      return false;
+    return !isEmptyRequiredValue$1(value);
+  });
+};
+const isElInputVNode$1 = (vnode) => {
+  const type = vnode.type;
+  return (type == null ? void 0 : type.name) === "ElInput" || (type == null ? void 0 : type.__name) === "ElInput";
+};
+const applyRequiredInputState$1 = (vnodes, column, row) => {
+  if (!column.required || !column.property)
+    return vnodes;
+  if ((row == null ? void 0 : row[ghostRowSign$1]) && !hasGhostRowValue(row))
+    return vnodes;
+  if (!isEmptyRequiredValue$1(row == null ? void 0 : row[column.property]))
+    return vnodes;
+  const patchVNode = (vnode) => {
+    var _a, _b, _c, _d, _e;
+    if (!isElInputVNode$1(vnode))
+      return vnode;
+    const vnodeProps = (_a = vnode.props) != null ? _a : {};
+    return cloneVNode(vnode, {
+      inputType: (_c = (_b = vnodeProps.inputType) != null ? _b : vnodeProps["input-type"]) != null ? _c : "error",
+      infoTip: (_e = (_d = vnodeProps.infoTip) != null ? _d : vnodeProps["info-tip"]) != null ? _e : "Required"
+    });
+  };
+  return isArray$1(vnodes) ? vnodes.map((vnode) => patchVNode(vnode)) : patchVNode(vnodes);
+};
 function useRender(props, slots, owner) {
   const instance = getCurrentInstance();
   const columnId = ref("");
@@ -54344,7 +54498,7 @@ function useRender(props, slots, owner) {
         let children = null;
         const { columns } = owner.value.store.states;
         const columnCount = columns.value.length;
-        const shouldRenderAddButton = owner.value.props.ghostTable && owner.value.props.editTable && !!((_a = data.row) == null ? void 0 : _a[ghostRowSign]) && (columnCount === 1 ? data.cellIndex === 0 : data.cellIndex === columnCount - 1);
+        const shouldRenderAddButton = owner.value.props.ghostTable && owner.value.props.editTable && !!((_a = data.row) == null ? void 0 : _a[ghostRowSign$1]) && (columnCount === 1 ? data.cellIndex === 0 : data.cellIndex === columnCount - 1);
         const shouldRenderEditCell = owner.value.props.ghostTable && owner.value.props.editTable && !!column.renderEditCell;
         if (shouldRenderAddButton) {
           children = [
@@ -54353,7 +54507,7 @@ function useRender(props, slots, owner) {
             })
           ];
         } else if (shouldRenderEditCell) {
-          const vnodes = column.renderEditCell(data);
+          const vnodes = applyRequiredInputState$1(column.renderEditCell(data), column, data.row);
           const editVNodes = isArray$1(vnodes) ? vnodes : [vnodes];
           children = editVNodes.some((v) => v.type !== Comment) ? vnodes : originRenderCell(data);
         } else if (slots.default) {
@@ -54364,7 +54518,7 @@ function useRender(props, slots, owner) {
           children = originRenderCell(data);
         }
         const firstUserColumnIndex = columns.value.findIndex((item) => item.type === "default");
-        const shouldCreatePlaceholder = hasTreeColumn.value && !((_b = data.row) == null ? void 0 : _b[ghostRowSign]) && data.cellIndex === firstUserColumnIndex;
+        const shouldCreatePlaceholder = hasTreeColumn.value && !((_b = data.row) == null ? void 0 : _b[ghostRowSign$1]) && data.cellIndex === firstUserColumnIndex;
         const prefix = treeCellPrefix(data, shouldCreatePlaceholder);
         const props2 = {
           class: "cell",
@@ -54756,6 +54910,31 @@ const _sfc_main$A = /* @__PURE__ */ defineComponent({
       var _a;
       return (_a = table == null ? void 0 : table.activeEditableCell) == null ? void 0 : _a.value;
     });
+    const currentColumn = computed(() => {
+      var _a, _b, _c, _d;
+      const columns = (_c = (_b = (_a = table == null ? void 0 : table.store) == null ? void 0 : _a.states) == null ? void 0 : _b.columns) == null ? void 0 : _c.value;
+      if (!(columns == null ? void 0 : columns.length))
+        return void 0;
+      return (_d = columns.find((column) => column.property === props.property)) != null ? _d : columns[props.cellData.cellIndex];
+    });
+    const isRequiredEmptyInput = computed(() => {
+      var _a;
+      if (props.editor !== "input")
+        return false;
+      if (!((_a = currentColumn.value) == null ? void 0 : _a.required))
+        return false;
+      return currentValue.value === "" || currentValue.value === null || currentValue.value === void 0;
+    });
+    const resolvedInputProps = computed(() => {
+      var _a, _b;
+      if (!isRequiredEmptyInput.value)
+        return props.inputProps;
+      return {
+        ...props.inputProps,
+        inputType: (_a = props.inputProps.inputType) != null ? _a : "error",
+        infoTip: (_b = props.inputProps.infoTip) != null ? _b : "Required"
+      };
+    });
     const currentValue = computed(() => {
       var _a;
       if (((_a = table == null ? void 0 : table.editingRow) == null ? void 0 : _a.value) && table.editingRow.value.row === props.cellData.row) {
@@ -54865,7 +55044,7 @@ const _sfc_main$A = /* @__PURE__ */ defineComponent({
           editor: __props.editor,
           isEditing: unref(isEditing),
           options: __props.options,
-          inputProps: __props.inputProps,
+          inputProps: unref(resolvedInputProps),
           selectProps: __props.selectProps,
           updateModelValue,
           commitValue,
@@ -54899,7 +55078,7 @@ const _sfc_main$A = /* @__PURE__ */ defineComponent({
           modelValue: unref(editorModel),
           "onUpdate:modelValue": ($event) => isRef(editorModel) ? editorModel.value = $event : null,
           clearable: __props.clearable
-        }, __props.inputProps, {
+        }, unref(resolvedInputProps), {
           autofocus: unref(isActiveEditingCell),
           onBlur: handleInputBlur,
           onChange: handleInputChange
@@ -55079,8 +55258,13 @@ const oppositeOrderMap = {
 const placeholderSign = Symbol("placeholder");
 const rowDeleteColumnKey = "__ep_table_v2_row_delete__";
 const rowDeleteColumnWidth = 36;
+const rowDeletePlaceholderMergedSign = "__ep_table_v2_row_delete_placeholder_merged__";
 const rowAddKey = "__ep_table_v2_add_row__";
 const rowAddSign = "__ep_table_v2_is_add_row__";
+const ghostRowSign = "__ep_table_v2_ghost_row__";
+const ghostRowKey = "__ep_table_v2_ghost_row_key__";
+const ghostRowFieldKey = "__ep_table_v2_ghost_row_field__";
+const ghostRowTouchedSign = "__ep_table_v2_ghost_row_touched__";
 
 const calcColumnStyle = (column, fixedColumn, fixed) => {
   var _a;
@@ -55110,29 +55294,98 @@ const calcColumnStyle = (column, fixedColumn, fixed) => {
   return style;
 };
 
-function useColumns(props, columns, fixed) {
+const AUTO_COLUMN_PADDING = 48;
+const FALLBACK_HEADER_CHAR_WIDTH = 8;
+const textWidthCache = /* @__PURE__ */ new Map();
+const PERCENTAGE_WIDTH_RE = /^\s*(-?\d+(?:\.\d+)?)%\s*$/;
+const PIXEL_WIDTH_RE = /^\s*(-?\d+(?:\.\d+)?)(?:px)?\s*$/;
+const measureHeaderTextWidth = (text) => {
+  if (textWidthCache.has(text))
+    return textWidthCache.get(text);
+  let width = text.length * FALLBACK_HEADER_CHAR_WIDTH;
+  const isJsdom = typeof navigator !== "undefined" && /jsdom/i.test(navigator.userAgent);
+  if (typeof document !== "undefined" && !isJsdom) {
+    try {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      if (context) {
+        context.font = "400 14px Inter, sans-serif";
+        width = Math.ceil(context.measureText(text).width);
+      }
+    } catch (e) {
+    }
+  }
+  textWidthCache.set(text, width);
+  return width;
+};
+const getAutoColumnWidth = (column) => {
+  var _a;
+  return measureHeaderTextWidth(String((_a = column.title) != null ? _a : "")) + AUTO_COLUMN_PADDING;
+};
+const resolveColumnWidth = (width, referenceWidth) => {
+  if (typeof width === "number")
+    return width;
+  if (typeof width !== "string")
+    return void 0;
+  const percentageMatch = width.match(PERCENTAGE_WIDTH_RE);
+  if (percentageMatch) {
+    return Math.round(referenceWidth * Number(percentageMatch[1]) / 100);
+  }
+  const pixelMatch = width.match(PIXEL_WIDTH_RE);
+  if (pixelMatch) {
+    return Number(pixelMatch[1]);
+  }
+  return void 0;
+};
+function useColumns(props, columns, fixed, effectiveWidth, reservedVScrollbarWidth) {
+  const columnWidths = ref({});
   const _columns = computed(() => {
+    const availableWidth = Math.max(unref(effectiveWidth) - unref(reservedVScrollbarWidth), 0);
     const normalizedColumns = unref(columns).map((column, index) => {
-      var _a, _b;
+      var _a, _b, _c;
+      const key = (_b = (_a = column.key) != null ? _a : column.dataKey) != null ? _b : index;
       return {
         ...column,
-        key: (_b = (_a = column.key) != null ? _a : column.dataKey) != null ? _b : index
+        key,
+        resizable: column.resizable !== false,
+        width: (_c = columnWidths.value[key]) != null ? _c : resolveColumnWidth(column.width, availableWidth)
       };
     });
-    if (!(props.canEditTable && props.editable)) {
-      return normalizedColumns;
-    }
     const rowDeleteColumn = {
       key: rowDeleteColumnKey,
       dataKey: rowDeleteColumnKey,
       title: "",
       width: rowDeleteColumnWidth,
+      resizable: false,
       fixed: FixedDir.RIGHT,
       align: "center",
       class: "is-row-delete-column",
       headerClass: "is-row-delete-column"
     };
-    return [...normalizedColumns, rowDeleteColumn];
+    const shouldAppendActionColumn = props.canEditTable && props.editable || props.ghostTable && props.editTable;
+    const columnsWithEditAction = shouldAppendActionColumn ? [...normalizedColumns, rowDeleteColumn] : normalizedColumns;
+    const visibleColumns2 = columnsWithEditAction.filter((column) => !column.hidden);
+    const autoWidthCandidates = visibleColumns2.filter((column) => column.width == null);
+    if (!autoWidthCandidates.length)
+      return columnsWithEditAction;
+    const stretchColumn = autoWidthCandidates[autoWidthCandidates.length - 1];
+    const resolvedColumns = columnsWithEditAction.map((column) => {
+      if (column.width != null)
+        return column;
+      return {
+        ...column,
+        width: getAutoColumnWidth(column)
+      };
+    });
+    const otherWidth = resolvedColumns.filter((column) => {
+      var _a;
+      return !column.hidden && ((_a = column.key) != null ? _a : column.dataKey) !== stretchColumn.key;
+    }).reduce((width, column) => width + (typeof column.width === "number" ? column.width : 0), 0);
+    const stretchWidth = Math.max(getAutoColumnWidth(stretchColumn), availableWidth - otherWidth);
+    return resolvedColumns.map((column) => column.key === stretchColumn.key ? {
+      ...column,
+      width: stretchWidth
+    } : column);
   });
   const visibleColumns = computed(() => {
     return unref(_columns).filter((column) => !column.hidden);
@@ -55140,8 +55393,14 @@ function useColumns(props, columns, fixed) {
   const fixedColumnsOnLeft = computed(() => unref(visibleColumns).filter((column) => column.fixed === "left" || column.fixed === true));
   const fixedColumnsOnRight = computed(() => unref(visibleColumns).filter((column) => column.fixed === "right"));
   const normalColumns = computed(() => unref(visibleColumns).filter((column) => !column.fixed));
+  const rowDeletePlaceholderMerge = computed(() => {
+    const rowDeleteColumn = unref(fixedColumnsOnRight).find((column) => column.key === rowDeleteColumnKey);
+    const targetColumn = [...unref(normalColumns)].reverse().find((column) => column.key !== rowDeleteColumnKey);
+    return rowDeleteColumn && targetColumn ? { rowDeleteColumn, targetColumn } : void 0;
+  });
   const mainColumns = computed(() => {
     const ret = [];
+    const merge = unref(rowDeletePlaceholderMerge);
     unref(fixedColumnsOnLeft).forEach((column) => {
       ret.push({
         ...column,
@@ -55149,9 +55408,14 @@ function useColumns(props, columns, fixed) {
       });
     });
     unref(normalColumns).forEach((column) => {
-      ret.push(column);
+      ret.push(column.key === (merge == null ? void 0 : merge.targetColumn.key) ? {
+        ...column,
+        [rowDeletePlaceholderMergedSign]: true
+      } : column);
     });
     unref(fixedColumnsOnRight).forEach((column) => {
+      if (column.key === (merge == null ? void 0 : merge.rowDeleteColumn.key))
+        return;
       ret.push({
         ...column,
         placeholderSign
@@ -55163,14 +55427,25 @@ function useColumns(props, columns, fixed) {
     return unref(fixedColumnsOnLeft).length || unref(fixedColumnsOnRight).length;
   });
   const columnsStyles = computed(() => {
-    return unref(_columns).reduce((style, column) => {
+    const styles = unref(_columns).reduce((style, column) => {
       const key = column.key;
       style[key] = calcColumnStyle(column, unref(fixed), props.fixed);
       return style;
     }, {});
+    const merge = unref(rowDeletePlaceholderMerge);
+    if (merge) {
+      const targetKey = merge.targetColumn.key;
+      const targetWidth = typeof merge.targetColumn.width === "number" ? merge.targetColumn.width : 0;
+      const rowDeleteWidth = typeof merge.rowDeleteColumn.width === "number" ? merge.rowDeleteColumn.width : 0;
+      styles[targetKey] = {
+        ...styles[targetKey],
+        width: targetWidth + rowDeleteWidth
+      };
+    }
+    return styles;
   });
   const columnsTotalWidth = computed(() => {
-    return unref(visibleColumns).reduce((width, column) => width + column.width, 0);
+    return unref(visibleColumns).reduce((width, column) => width + (typeof column.width === "number" ? column.width : 0), 0);
   });
   const getColumn = (key) => {
     return unref(_columns).find((column) => column.key === key);
@@ -55179,6 +55454,10 @@ function useColumns(props, columns, fixed) {
     return unref(columnsStyles)[key];
   };
   const updateColumnWidth = (column, width) => {
+    columnWidths.value = {
+      ...columnWidths.value,
+      [column.key]: width
+    };
     column.width = width;
   };
   function onColumnSorted(e) {
@@ -55462,24 +55741,40 @@ const useStyles = (props, {
   columnsTotalWidth,
   rowsHeight,
   fixedColumnsOnLeft,
-  fixedColumnsOnRight
+  fixedColumnsOnRight,
+  effectiveWidth,
+  reservedVScrollbarWidth,
+  showEmpty
 }) => {
-  const addRowHeight = computed(() => props.canEditTable && props.editable ? props.rowHeight : 0);
+  const availableBodyWidth = computed(() => Math.max(unref(effectiveWidth) - unref(reservedVScrollbarWidth), 0));
+  const hasHorizontalScrollbar = computed(() => props.fixed && unref(columnsTotalWidth) > unref(availableBodyWidth));
+  const effectiveHScrollbarSize = computed(() => hasHorizontalScrollbar.value ? props.hScrollbarSize : 0);
+  const addRowHeight = computed(() => props.canEditTable && props.editable || props.ghostTable && props.editTable ? props.rowHeight : 0);
+  const shouldUseDefaultFooterHeight = computed(() => props.isFooterDefault && props.footerHeight === 0);
+  const effectiveFooterHeight = computed(() => shouldUseDefaultFooterHeight.value ? 44 : props.footerHeight);
+  const contentHeight = computed(() => {
+    const _fixedRowsHeight = unref(fixedRowsHeight);
+    const _rowsHeight = unref(rowsHeight);
+    const _headerHeight = unref(headerHeight);
+    return _headerHeight + _fixedRowsHeight + _rowsHeight + (unref(showEmpty) ? props.rowHeight : 0) + unref(effectiveHScrollbarSize);
+  });
   const bodyWidth = computed(() => {
-    const { fixed, width, vScrollbarSize } = props;
-    const ret = width - vScrollbarSize;
+    const { fixed } = props;
+    const ret = unref(availableBodyWidth);
     return fixed ? Math.max(Math.round(unref(columnsTotalWidth)), ret) : ret;
   });
   const mainTableHeight = computed(() => {
-    const { height = 0, maxHeight = 0, footerHeight: footerHeight2, hScrollbarSize } = props;
+    const { height, maxHeight = 0 } = props;
+    const footerHeight2 = unref(effectiveFooterHeight);
+    const addRowSpace = unref(addRowHeight);
+    const availableMaxHeight = Math.max(maxHeight - footerHeight2 - addRowSpace, 0);
     if (maxHeight > 0) {
-      const _fixedRowsHeight = unref(fixedRowsHeight);
-      const _rowsHeight = unref(rowsHeight);
-      const _headerHeight = unref(headerHeight);
-      const total = _headerHeight + _fixedRowsHeight + _rowsHeight + hScrollbarSize;
-      return Math.min(total, maxHeight - footerHeight2 - unref(addRowHeight));
+      return Math.min(unref(contentHeight), availableMaxHeight);
     }
-    return height - footerHeight2 - unref(addRowHeight);
+    if (isNumber(height)) {
+      return Math.max(height - footerHeight2 - addRowSpace, 0);
+    }
+    return unref(contentHeight);
   });
   const fixedTableHeight = computed(() => {
     const { maxHeight } = props;
@@ -55489,7 +55784,7 @@ const useStyles = (props, {
     const totalHeight = unref(rowsHeight) + unref(headerHeight) + unref(fixedRowsHeight);
     return Math.min(tableHeight, totalHeight);
   });
-  const mapColumn = (column) => column.width;
+  const mapColumn = (column) => typeof column.width === "number" ? column.width : 0;
   const leftTableWidth = computed(() => sum(unref(fixedColumnsOnLeft).map(mapColumn)));
   const rightTableWidth = computed(() => sum(unref(fixedColumnsOnRight).map(mapColumn)));
   const headerHeight = computed(() => sum(props.headerHeight));
@@ -55500,32 +55795,40 @@ const useStyles = (props, {
   const windowHeight = computed(() => {
     return unref(mainTableHeight) - unref(headerHeight) - unref(fixedRowsHeight);
   });
+  const rootHeight = computed(() => {
+    return unref(mainTableHeight) + unref(effectiveFooterHeight) + unref(addRowHeight);
+  });
   const rootStyle = computed(() => {
-    const { style = {}, height, width } = props;
+    const { style = {}, height, maxHeight, width } = props;
     return enforceUnit({
       ...style,
-      height,
-      width
+      height: height != null ? height : unref(rootHeight),
+      maxHeight: height == null ? addUnit(maxHeight) : void 0,
+      width: width != null ? width : "100%"
     });
   });
-  const footerHeight = computed(() => enforceUnit({ height: props.footerHeight }));
+  const footerHeight = computed(() => enforceUnit({ height: unref(effectiveFooterHeight) }));
   const emptyStyle = computed(() => ({
     top: addUnit(unref(headerHeight)),
-    bottom: addUnit(props.footerHeight + unref(addRowHeight)),
-    width: addUnit(props.width)
+    height: addUnit(props.rowHeight),
+    width: addUnit(unref(effectiveWidth))
   }));
   return {
     addRowHeight,
     bodyWidth,
+    effectiveHScrollbarSize,
     fixedTableHeight,
     mainTableHeight,
     leftTableWidth,
     rightTableWidth,
     windowHeight,
     footerHeight,
+    effectiveFooterHeight,
     emptyStyle,
     rootStyle,
-    headerHeight
+    headerHeight,
+    effectiveWidth,
+    rootHeight
   };
 };
 
@@ -55567,6 +55870,16 @@ function useTable(props) {
   const mainTableRef = ref();
   const leftTableRef = ref();
   const rightTableRef = ref();
+  const containerRef = ref();
+  const observedWidth = ref(0);
+  const effectiveWidth = computed(() => {
+    var _a;
+    return (_a = props.width) != null ? _a : observedWidth.value;
+  });
+  const reservedVScrollbarWidth = computed(() => props.canEditTable && props.editable || props.ghostTable && props.editTable ? props.vScrollbarSize : 0);
+  useResizeObserver(containerRef, ([entry]) => {
+    observedWidth.value = entry.contentRect.width;
+  });
   const {
     columns,
     columnsStyles,
@@ -55575,8 +55888,10 @@ function useTable(props) {
     fixedColumnsOnRight,
     hasFixedColumns,
     mainColumns,
+    visibleColumns,
+    updateColumnWidth,
     onColumnSorted
-  } = useColumns(props, toRef(props, "columns"), toRef(props, "fixed"));
+  } = useColumns(props, toRef(props, "columns"), toRef(props, "fixed"), effectiveWidth, reservedVScrollbarWidth);
   const {
     scrollTo,
     scrollToLeft,
@@ -55618,6 +55933,10 @@ function useTable(props) {
     lastRenderedRowIndex,
     resetAfterIndex
   });
+  const showEmpty = computed(() => {
+    const noData = unref(data).length === 0;
+    return isArray$1(props.fixedData) ? props.fixedData.length === 0 && noData : noData;
+  });
   const rowsHeight = computed(() => {
     const { estimatedRowHeight, rowHeight } = props;
     const _data = unref(data);
@@ -55629,12 +55948,14 @@ function useTable(props) {
   const {
     addRowHeight,
     bodyWidth,
+    effectiveHScrollbarSize,
     fixedTableHeight,
     mainTableHeight,
     leftTableWidth,
     rightTableWidth,
     windowHeight,
     footerHeight,
+    effectiveFooterHeight,
     emptyStyle,
     rootStyle,
     headerHeight
@@ -55642,12 +55963,10 @@ function useTable(props) {
     columnsTotalWidth,
     fixedColumnsOnLeft,
     fixedColumnsOnRight,
-    rowsHeight
-  });
-  const containerRef = ref();
-  const showEmpty = computed(() => {
-    const noData = unref(data).length === 0;
-    return isArray$1(props.fixedData) ? props.fixedData.length === 0 && noData : noData;
+    rowsHeight,
+    showEmpty,
+    effectiveWidth,
+    reservedVScrollbarWidth
   });
   function getRowHeight(rowIndex) {
     const { estimatedRowHeight, rowHeight, rowKey } = props;
@@ -55663,7 +55982,7 @@ function useTable(props) {
     const { scrollTop } = unref(scrollPos);
     const _totalHeight = unref(rowsHeight);
     const clientHeight = unref(windowHeight);
-    const remainDistance = _totalHeight - (scrollTop + clientHeight) + props.hScrollbarSize;
+    const remainDistance = _totalHeight - (scrollTop + clientHeight) + unref(effectiveHScrollbarSize);
     if (!isEndReached.value && unref(lastRenderedRowIndex) >= 0 && _totalHeight <= scrollTop + unref(mainTableHeight) - unref(headerHeight)) {
       isEndReached.value = true;
       onEndReached(remainDistance);
@@ -55693,17 +56012,22 @@ function useTable(props) {
     fixedColumnsOnLeft,
     fixedColumnsOnRight,
     mainColumns,
+    visibleColumns,
     addRowHeight,
     bodyWidth,
     emptyStyle,
+    effectiveHScrollbarSize,
     rootStyle,
+    effectiveWidth,
     footerHeight,
+    effectiveFooterHeight,
     mainTableHeight,
     fixedTableHeight,
     leftTableWidth,
     rightTableWidth,
     showEmpty,
     getRowHeight,
+    updateColumnWidth,
     onColumnSorted,
     onRowHovered,
     onRowExpanded,
@@ -55718,6 +56042,63 @@ function useTable(props) {
     scrollPos
   };
 }
+
+const isEmptyRequiredValue = (value) => value === "" || value === null || value === void 0;
+const isGhostTableRow = (row) => Boolean(row == null ? void 0 : row[ghostRowSign]);
+const isGhostRowTouched = (row) => Boolean(row == null ? void 0 : row[ghostRowTouchedSign]);
+const getGhostRowPayload = (row) => {
+  const rowField = row == null ? void 0 : row[ghostRowFieldKey];
+  const internalKeys = /* @__PURE__ */ new Set([
+    ghostRowSign,
+    ghostRowKey,
+    ghostRowFieldKey,
+    ghostRowTouchedSign,
+    rowField
+  ]);
+  return Reflect.ownKeys(row).reduce((payload, key) => {
+    if (!internalKeys.has(key) && Object.prototype.propertyIsEnumerable.call(row, key)) {
+      payload[key] = row[key];
+    }
+    return payload;
+  }, {});
+};
+const getVNodeComponentName = (vnode) => {
+  var _a;
+  const type = vnode.type;
+  return (_a = type == null ? void 0 : type.name) != null ? _a : type == null ? void 0 : type.__name;
+};
+const isElInputVNode = (vnode) => {
+  return getVNodeComponentName(vnode) === "ElInput";
+};
+const isElSelectVNode = (vnode) => {
+  const name = getVNodeComponentName(vnode);
+  return name === "ElSelect" || name === "ElSelectV2";
+};
+const applyRequiredInputState = (vnodes, column, row) => {
+  if (!column.required || column.dataKey == null)
+    return vnodes;
+  if (isGhostTableRow(row) && !isGhostRowTouched(row))
+    return vnodes;
+  if (!isEmptyRequiredValue(row == null ? void 0 : row[column.dataKey]))
+    return vnodes;
+  const patchVNode = (vnode) => {
+    var _a, _b, _c, _d, _e, _f, _g;
+    const vnodeProps = (_a = vnode.props) != null ? _a : {};
+    if (isElInputVNode(vnode)) {
+      return cloneVNode(vnode, {
+        inputType: (_c = (_b = vnodeProps.inputType) != null ? _b : vnodeProps["input-type"]) != null ? _c : "error",
+        infoTip: (_e = (_d = vnodeProps.infoTip) != null ? _d : vnodeProps["info-tip"]) != null ? _e : "Required"
+      });
+    }
+    if (isElSelectVNode(vnode)) {
+      return cloneVNode(vnode, {
+        inputType: (_g = (_f = vnodeProps.inputType) != null ? _f : vnodeProps["input-type"]) != null ? _g : "error"
+      });
+    }
+    return vnode;
+  };
+  return isArray$1(vnodes) ? vnodes.map((vnode) => patchVNode(vnode)) : patchVNode(vnodes);
+};
 
 const TableV2InjectionKey = Symbol("tableV2");
 const TABLE_V2_GRID_INJECTION_KEY = "tableV2GridScrollLeft";
@@ -55742,6 +56123,9 @@ const expandKeys = {
 const requiredNumber = {
   type: Number,
   required: true
+};
+const optionalNumber = {
+  type: Number
 };
 const rowKey = {
   type: definePropType([String, Number, Symbol]),
@@ -55852,8 +56236,12 @@ const tableV2GridProps = buildProps({
 
 const tableV2Emits = {
   "update:expandedRowKeys": (expandedRowKeys) => Array.isArray(expandedRowKeys),
+  "header-dragend": (newWidth, oldWidth, column, event) => Number.isFinite(newWidth) && Number.isFinite(oldWidth) && Boolean(column) && event instanceof MouseEvent,
   "row-delete": (params) => Boolean(params),
-  "row-add": (params) => Boolean(params)
+  "row-add": (params) => Boolean(params),
+  "add-column": (params) => Boolean(params),
+  "add-row": (params) => Boolean(params),
+  "add-ghost-row": (params) => Boolean(params)
 };
 const tableV2Props = buildProps({
   cache: tableV2GridProps.cache,
@@ -55891,6 +56279,18 @@ const tableV2Props = buildProps({
     default: true
   },
   canEditTable: Boolean,
+  ghostTable: Boolean,
+  editTable: Boolean,
+  ghostRowTemplate: {
+    type: definePropType(Object),
+    default: () => ({})
+  },
+  showAddColumnTrigger: Boolean,
+  addColumnButton: {
+    type: Boolean,
+    default: true
+  },
+  showAddRowTrigger: Boolean,
   total: {
     type: Number,
     default: 0
@@ -55929,8 +56329,8 @@ const tableV2Props = buildProps({
   style: {
     type: definePropType(Object)
   },
-  width: requiredNumber,
-  height: requiredNumber,
+  width: optionalNumber,
+  height: optionalNumber,
   maxHeight: Number,
   useIsScrolling: Boolean,
   indentSize: {
@@ -56124,9 +56524,9 @@ const TableV2Header = defineComponent({
         });
       });
     };
-    onUpdated(() => {
-      if (scrollLeftInfo == null ? void 0 : scrollLeftInfo.value) {
-        scrollToLeft(scrollLeftInfo.value);
+    watch(() => scrollLeftInfo == null ? void 0 : scrollLeftInfo.value, (left) => {
+      if (typeof left === "number") {
+        scrollToLeft(left);
       }
     });
     expose({
@@ -56489,7 +56889,7 @@ const useTableGrid = (props) => {
   }
   function scrollToRow(row, strategy) {
     var _a;
-    (_a = unref(bodyRef)) == null ? void 0 : _a.scrollToItem(row, 1, strategy);
+    (_a = unref(bodyRef)) == null ? void 0 : _a.scrollToRow(row, strategy);
   }
   function forceUpdate() {
     var _a, _b;
@@ -56714,11 +57114,17 @@ const RowRenderer = (props, {
     rowIndex,
     style,
     isScrolling,
+    canEditTable,
+    editable,
+    editTable,
+    ghostTable,
     rowProps,
     rowClass,
     rowKey,
     rowEventHandlers,
     onRowAdd,
+    onAddRowTriggerChange,
+    showAddRowTrigger,
     ns,
     onRowHovered,
     onRowExpanded
@@ -56738,10 +57144,14 @@ const RowRenderer = (props, {
   const canExpand = Boolean(expandColumnKey);
   const isFixedRow = rowIndex < 0;
   const isAddRow = Boolean(rowData[rowAddSign]);
-  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
+  const isGhostRow = Boolean(rowData[ghostRowSign]);
+  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
     [ns.e(`row-depth-${depth}`)]: canExpand && rowIndex >= 0
   }];
   const onRowHover = hasFixedColumns ? onRowHovered : void 0;
+  const clearAddRowTrigger = () => {
+    onAddRowTriggerChange == null ? void 0 : onAddRowTriggerChange(null);
+  };
   const _rowProps = {
     ...additionalProps,
     columns,
@@ -56785,8 +57195,60 @@ const RowRenderer = (props, {
       rowKey: _rowKey
     });
   };
+  const handlerMouseMove = (e) => {
+    const canUseAddRowTrigger = ghostTable ? editTable : canEditTable && editable;
+    if (!showAddRowTrigger || !canUseAddRowTrigger) {
+      clearAddRowTrigger();
+      return;
+    }
+    const currentTarget = e.currentTarget;
+    const root = currentTarget == null ? void 0 : currentTarget.closest(`.${ns.b()}`);
+    if (!currentTarget || !root || rowIndex < 0) {
+      clearAddRowTrigger();
+      return;
+    }
+    const rect = currentTarget.getBoundingClientRect();
+    const rootRect = root.getBoundingClientRect();
+    const nearTop = rect.height > 12 && e.clientY - rect.top < 8;
+    const nearBottom = rect.height > 12 && rect.bottom - e.clientY < 8;
+    if (nearTop) {
+      onAddRowTriggerChange == null ? void 0 : onAddRowTriggerChange({
+        row: rowData,
+        rowIndex,
+        insertIndex: rowIndex,
+        top: rect.top - rootRect.top,
+        placement: "below"
+      });
+      return;
+    }
+    if (nearBottom && !isAddRow && !isGhostRow) {
+      onAddRowTriggerChange == null ? void 0 : onAddRowTriggerChange({
+        row: rowData,
+        rowIndex,
+        insertIndex: rowIndex + 1,
+        top: rect.bottom - rootRect.top,
+        placement: "above"
+      });
+      return;
+    }
+    clearAddRowTrigger();
+  };
+  const handlerMouseOut = (e) => {
+    const currentTarget = e.currentTarget;
+    const relatedTarget = e.relatedTarget;
+    const triggerSelector = `.${ns.e("add-row-trigger")}`;
+    if (currentTarget && relatedTarget && currentTarget.contains(relatedTarget)) {
+      return;
+    }
+    if (relatedTarget instanceof HTMLElement && relatedTarget.closest(triggerSelector)) {
+      return;
+    }
+    clearAddRowTrigger();
+  };
   return createVNode(Row, mergeProps(_rowProps, {
     "onClick": handlerClick,
+    "onMousemove": handlerMouseMove,
+    "onMouseout": handlerMouseOut,
     "onRowExpand": onRowExpanded,
     "onMouseenter": handlerMouseEnter,
     "onMouseleave": handlerMouseLeave,
@@ -56807,15 +57269,20 @@ const CellRenderer = ({
   rowIndex,
   style,
   expandedRowKeys,
+  visibleColumns,
   ns,
   canEditTable,
   cellProps: _cellProps,
   editable,
+  editTable,
   expandColumnKey,
+  ghostTable,
   indentSize,
   iconSize,
+  onAddGhostRow,
   onRowAdd,
   onRowDelete,
+  rowActionRenderer,
   rowKey
 }, {
   slots
@@ -56830,7 +57297,8 @@ const CellRenderer = ({
   const {
     cellRenderer,
     dataKey,
-    dataGetter
+    dataGetter,
+    editCellRenderer
   } = column;
   const getCellData = () => isFunction$1(dataGetter) ? dataGetter({
     columns,
@@ -56839,22 +57307,44 @@ const CellRenderer = ({
     rowData,
     rowIndex
   }) : get(rowData, dataKey != null ? dataKey : "");
+  const markGhostRowTouched = (key, value) => {
+    if (!isGhostTableRow(rowData) || key == null)
+      return;
+    const rowField = rowData == null ? void 0 : rowData[ghostRowFieldKey];
+    if (key === ghostRowSign || key === ghostRowKey || key === ghostRowFieldKey || key === ghostRowTouchedSign || key === rowField) {
+      return;
+    }
+    const currentValue = typeof key === "symbol" ? rowData[key] : get(rowData, String(key));
+    if (currentValue !== value) {
+      rowData[ghostRowTouchedSign] = true;
+    }
+  };
   const setCellData = (value) => {
     if (!rowData || dataKey == null)
       return;
+    markGhostRowTouched(dataKey, value);
     if (typeof dataKey === "symbol") {
       rowData[dataKey] = value;
       return;
     }
     set(rowData, dataKey, value);
   };
+  const renderRowData = isGhostTableRow(rowData) ? new Proxy(rowData, {
+    get(target, key) {
+      return Reflect.get(target, key);
+    },
+    set(target, key, value) {
+      markGhostRowTouched(key, value);
+      return Reflect.set(target, key, value);
+    }
+  }) : rowData;
   const baseCellProps = {
     class: ns.e("cell-text"),
     columns,
     column,
     columnIndex,
     isScrolling,
-    rowData,
+    rowData: renderRowData,
     rowIndex
   };
   const cellProps = Object.defineProperty(baseCellProps, "cellData", {
@@ -56865,12 +57355,51 @@ const CellRenderer = ({
   });
   const extraCellProps = tryCall(_cellProps, cellProps);
   const isAddRow = Boolean(rowData[rowAddSign]);
+  const isGhostRow = isGhostTableRow(rowData);
   const isRowDeleteColumn = column.key === rowDeleteColumnKey;
   const columnCellRenderer = componentToSlot(cellRenderer);
+  const editColumnCellRenderer = componentToSlot(editCellRenderer);
   const shouldRenderEditor = canEditTable ? editable : true;
-  const Cell = isRowDeleteColumn ? isAddRow ? createVNode(ElButton, {
-    "type": "text",
+  const actualColumns = visibleColumns.filter((item) => item.placeholderSign !== placeholderSign);
+  const shouldRenderGhostAddButton = ghostTable && editTable && isGhostRow && isRowDeleteColumn;
+  const shouldRenderGhostEditCell = ghostTable && editTable && Boolean(editColumnCellRenderer) && !isRowDeleteColumn && !shouldRenderGhostAddButton;
+  const requiredColumns = actualColumns.filter((item) => item.required && item.dataKey != null && item.key !== rowDeleteColumnKey);
+  const isGhostRowAddDisabled = requiredColumns.some((item) => {
+    var _a;
+    return isEmptyRequiredValue(get(rowData, (_a = item.dataKey) != null ? _a : ""));
+  });
+  const Cell = isRowDeleteColumn ? shouldRenderGhostAddButton ? createVNode(ElButton, {
+    "text": true,
     "class": "icon-button",
+    "disabled": isGhostRowAddDisabled,
+    "onClick": (event) => {
+      var _a;
+      event.stopPropagation();
+      if (isGhostRowAddDisabled)
+        return;
+      onAddGhostRow == null ? void 0 : onAddGhostRow({
+        event,
+        row: rowData,
+        rowIndex,
+        rowKey: (_a = rowData[ghostRowKey]) != null ? _a : rowData[rowKey]
+      });
+    }
+  }, {
+    default: () => [createVNode(ElIcon, {
+      "size": 12
+    }, {
+      default: () => [createVNode("svg", {
+        "xmlns": "http://www.w3.org/2000/svg",
+        "width": "12",
+        "height": "12",
+        "viewBox": "0 0 12 12"
+      }, [createVNode("path", {
+        "d": "M3.82026 11.0062C3.64674 11.0063 3.4749 10.9711 3.3146 10.9026C3.1543 10.8341 3.00868 10.7337 2.88608 10.6072L0 7.6341L1.10129 6.49954L3.82026 9.30198L10.8987 2.00623L12 3.14079L4.75443 10.6072C4.63183 10.7337 4.48621 10.8341 4.32591 10.9026C4.16561 10.9711 3.99378 11.0063 3.82026 11.0062Z"
+      }, null)])]
+    })]
+  }) : isAddRow ? createVNode(ElButton, {
+    "text": true,
+    "class": [ns.e("row-add-button"), "icon-button"],
     "onClick": (event) => {
       event.stopPropagation();
       onRowAdd == null ? void 0 : onRowAdd({
@@ -56893,6 +57422,13 @@ const CellRenderer = ({
         "d": "M3.82026 11.0062C3.64674 11.0063 3.4749 10.9711 3.3146 10.9026C3.1543 10.8341 3.00868 10.7337 2.88608 10.6072L0 7.6341L1.10129 6.49954L3.82026 9.30198L10.8987 2.00623L12 3.14079L4.75443 10.6072C4.63183 10.7337 4.48621 10.8341 4.32591 10.9026C4.16561 10.9711 3.99378 11.0063 3.82026 11.0062Z"
       }, null)])]
     })]
+  }) : rowActionRenderer ? rowActionRenderer({
+    columns,
+    column,
+    columnIndex,
+    rowData: renderRowData,
+    rowIndex,
+    rowKey: rowData[rowKey]
   }) : createVNode(ElButton, {
     "link": true,
     "class": ns.e("row-delete-button"),
@@ -56919,8 +57455,11 @@ const CellRenderer = ({
         "d": "M11.334 2.66667V1.33333C11.334 0.979711 11.1935 0.640573 10.9435 0.390524C10.6934 0.140476 10.3543 0 10.0007 0L6.00065 0C5.64703 0 5.30789 0.140476 5.05784 0.390524C4.80779 0.640573 4.66732 0.979711 4.66732 1.33333V2.66667H1.33398V4H2.66732V14C2.66732 14.5304 2.87803 15.0391 3.2531 15.4142C3.62818 15.7893 4.13688 16 4.66732 16H11.334C11.8644 16 12.3731 15.7893 12.7482 15.4142C13.1233 15.0391 13.334 14.5304 13.334 14V4H14.6673V2.66667H11.334ZM7.33398 11.3333H6.00065V7.33333H7.33398V11.3333ZM10.0007 11.3333H8.66732V7.33333H10.0007V11.3333ZM10.0007 2.66667H6.00065V1.33333H10.0007V2.66667Z"
       }, null)])]
     })]
-  }) : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(TableCell, cellProps, null)]);
-  const kls = [ns.e("row-cell"), column.required && "required-column", column.class, column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right")];
+  }) : shouldRenderGhostEditCell ? (() => {
+    const rendered = editColumnCellRenderer(cellProps);
+    return applyRequiredInputState(rendered, column, rowData);
+  })() : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(TableCell, cellProps, null)]);
+  const kls = [ns.e("row-cell"), column.diagonalHeader && "is-diagonal-header-column", ghostTable && "is-full-width", isGhostRow && ns.is("ghost-row"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), column.class, column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right")];
   const expandable = rowIndex >= 0 && expandColumnKey && column.key === expandColumnKey;
   const expanded = rowIndex >= 0 && expandedRowKeys.includes(rowData[rowKey]);
   let IconOrPlaceholder;
@@ -56988,7 +57527,16 @@ const HeaderCellRenderer = (props, {
     column,
     ns,
     style,
-    onColumnSorted
+    onColumnSorted,
+    updateColumnWidth,
+    visibleColumns,
+    canEditTable,
+    editable,
+    editTable,
+    ghostTable,
+    showAddColumnTrigger,
+    onAddColumnTriggerChange,
+    onHeaderDragend
   } = props;
   const cellStyle = enforceUnit(style);
   if (column.placeholderSign === placeholderSign) {
@@ -56998,6 +57546,7 @@ const HeaderCellRenderer = (props, {
     }, null);
   }
   const {
+    diagonalHeader,
     headerCellRenderer,
     headerClass,
     sortable
@@ -57007,7 +57556,14 @@ const HeaderCellRenderer = (props, {
     class: ns.e("header-cell-text")
   };
   const columnCellRenderer = componentToSlot(headerCellRenderer);
-  const Cell = columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(HeaderCell$1, cellProps, null)]);
+  const diagonalHeaderContent = diagonalHeader ? createVNode("div", {
+    "class": [ns.e("diagonal-header"), ns.e("header-cell-text")]
+  }, [createVNode("span", {
+    "class": ns.e("diagonal-header-text")
+  }, [diagonalHeader.from]), createVNode("span", {
+    "class": ns.e("diagonal-header-text")
+  }, [diagonalHeader.to])]) : null;
+  const Cell = columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [diagonalHeaderContent != null ? diagonalHeaderContent : createVNode(HeaderCell$1, cellProps, null)]);
   const {
     sortBy,
     sortState,
@@ -57022,10 +57578,102 @@ const HeaderCellRenderer = (props, {
     sorting = column.key === sortBy.key;
     sortOrder = sorting ? sortBy.order : SortOrder.ASC;
   }
-  const cellKls = [ns.e("header-cell"), column.required && "required-column", tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
+  const cellKls = [ns.e("header-cell"), diagonalHeader && ns.is("diagonal-header"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
+  const clearAddColumnTrigger = () => {
+    onAddColumnTriggerChange == null ? void 0 : onAddColumnTriggerChange(null);
+  };
+  const getVisibleColumnIndex = () => visibleColumns.findIndex((item) => item.key === column.key);
+  const emitAddColumnTrigger = (insertIndex, left, columnIndex = getVisibleColumnIndex()) => {
+    if (columnIndex < 0) {
+      clearAddColumnTrigger();
+      return;
+    }
+    onAddColumnTriggerChange == null ? void 0 : onAddColumnTriggerChange({
+      column,
+      columnIndex,
+      insertIndex,
+      left
+    });
+  };
+  const getColumnWidth = () => Number(column.width) || 0;
+  const getMinWidth = () => Number(column.minWidth) > 0 ? Number(column.minWidth) : 88;
+  const getMaxWidth = () => Number(column.maxWidth) > 0 ? Number(column.maxWidth) : Number.POSITIVE_INFINITY;
+  const handleResizeMouseDown = (event) => {
+    if (event.button !== 0 || column.resizable === false)
+      return;
+    event.preventDefault();
+    event.stopPropagation();
+    const startX = event.clientX;
+    const oldWidth = getColumnWidth();
+    const minWidth = getMinWidth();
+    const maxWidth = getMaxWidth();
+    const previousCursor = document.body.style.cursor;
+    const previousUserSelect = document.body.style.userSelect;
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+    const handleMouseMove = (moveEvent) => {
+      const deltaX = moveEvent.clientX - startX;
+      const nextWidth = Math.min(maxWidth, Math.max(minWidth, oldWidth + deltaX));
+      updateColumnWidth(column, nextWidth);
+    };
+    const handleMouseUp = (upEvent) => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+      document.body.style.cursor = previousCursor;
+      document.body.style.userSelect = previousUserSelect;
+      onHeaderDragend == null ? void 0 : onHeaderDragend(getColumnWidth(), oldWidth, column, upEvent);
+    };
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+  };
+  const handleHeaderMouseMove = (event) => {
+    const canUseAddColumnTrigger = ghostTable ? editTable : canEditTable && editable;
+    if (!showAddColumnTrigger || !canUseAddColumnTrigger || column.placeholderSign === placeholderSign) {
+      clearAddColumnTrigger();
+      return;
+    }
+    const currentTarget = event.currentTarget;
+    const root = currentTarget == null ? void 0 : currentTarget.closest(`.${ns.b()}`);
+    if (!currentTarget || !root) {
+      clearAddColumnTrigger();
+      return;
+    }
+    if (column.key === rowDeleteColumnKey) {
+      clearAddColumnTrigger();
+      return;
+    }
+    const rect = currentTarget.getBoundingClientRect();
+    const rootRect = root.getBoundingClientRect();
+    const columnIndex = getVisibleColumnIndex();
+    if (columnIndex < 0 || rect.width <= 8) {
+      clearAddColumnTrigger();
+      return;
+    }
+    const isLeftHalf = event.clientX < rect.left + rect.width / 2;
+    const disableInsertBeforeFirstColumn = columnIndex === 0 && isLeftHalf && column.allowInsertBeforeFirstColumn === false;
+    if (disableInsertBeforeFirstColumn) {
+      clearAddColumnTrigger();
+      return;
+    }
+    emitAddColumnTrigger(isLeftHalf ? columnIndex : columnIndex + 1, isLeftHalf ? rect.left - rootRect.left : rect.right - rootRect.left, columnIndex);
+  };
+  const handleHeaderMouseOut = (event) => {
+    const currentTarget = event.currentTarget;
+    const relatedTarget = event.relatedTarget;
+    const triggerSelector = `.${ns.e("add-column-trigger")}`;
+    if (currentTarget && relatedTarget && currentTarget.contains(relatedTarget)) {
+      return;
+    }
+    if (relatedTarget instanceof HTMLElement && relatedTarget.closest(triggerSelector)) {
+      return;
+    }
+    clearAddColumnTrigger();
+  };
   const cellWrapperProps = {
     ...tryCall(headerCellProps, props),
     onClick: column.sortable ? onColumnSorted : void 0,
+    onMousemove: handleHeaderMouseMove,
+    onMouseout: handleHeaderMouseOut,
     class: cellKls,
     style: cellStyle,
     ["data-key"]: column.key
@@ -57036,6 +57684,10 @@ const HeaderCellRenderer = (props, {
     "class": [ns.e("sort-icon"), sorting && ns.is("sorting")],
     "sortOrder": sortOrder,
     "sorting": sorting
+  }, null), column.resizable !== false && createVNode("div", {
+    "class": ns.e("column-resizer"),
+    "onClick": (event) => event.stopPropagation(),
+    "onMousedown": handleResizeMouseDown
   }, null)]);
 };
 
@@ -57058,7 +57710,27 @@ const FooterDefault = (props) => {
     "class": "count"
   }, [props.total, createTextVNode(" items")]), props.updateTime && createVNode("div", {
     "class": "time"
-  }, [createTextVNode("Last Updated "), props.updateTime])]);
+  }, [createVNode(resolveComponent("el-icon"), {
+    "color": "#2a3f4d",
+    "size": "12px"
+  }, {
+    default: () => [createVNode("svg", {
+      "xmlns": "http://www.w3.org/2000/svg",
+      "width": "12",
+      "height": "12",
+      "viewBox": "0 0 12 12"
+    }, [createVNode("g", {
+      "clip-path": "url(#clip0_8022_3776)"
+    }, [createVNode("path", {
+      "d": "M1.52007 6.00039C1.5157 7.04669 1.87454 8.06209 2.53535 8.87331C3.19616 9.68454 4.118 10.2413 5.14355 10.4487C6.16911 10.656 7.23484 10.501 8.15888 10.0102C9.08292 9.51938 9.80802 8.72312 10.2104 7.75729C10.6128 6.79147 10.6676 5.71593 10.3655 4.7142C10.0633 3.71248 9.4229 2.84664 8.55353 2.26445C7.68416 1.68225 6.6397 1.41977 5.59838 1.5218C4.55706 1.62382 3.58341 2.08403 2.84357 2.82389L4.02007 4.00039H1.06557C0.993914 4.00046 0.922949 3.98639 0.856736 3.959C0.790524 3.93161 0.730363 3.89143 0.679695 3.84077C0.629027 3.7901 0.588848 3.72994 0.561458 3.66372C0.534067 3.59751 0.520002 3.52655 0.520068 3.45489V0.500393L1.78457 1.76489C2.76669 0.787428 4.05732 0.180689 5.43659 0.0480311C6.81587 -0.0846262 8.19848 0.265004 9.3489 1.03736C10.4993 1.80972 11.3464 2.95704 11.7458 4.28386C12.1452 5.61069 12.0723 7.03495 11.5394 8.31404C11.0066 9.59312 10.0467 10.6479 8.82343 11.2987C7.60014 11.9495 6.18904 12.1561 4.83053 11.8832C3.47202 11.6104 2.25012 10.875 1.37299 9.8023C0.495848 8.72963 0.0177259 7.38603 0.0200682 6.00039H1.52007Z"
+    }, null)]), createVNode("defs", null, [createVNode("clipPath", {
+      "id": "clip0_8022_3776"
+    }, [createVNode("rect", {
+      "width": "12",
+      "height": "12",
+      "fill": "white"
+    }, null)])])])]
+  }), createTextVNode("Last Updated "), props.updateTime])]);
 };
 FooterDefault.displayName = "ElTableV2FooterDefault";
 
@@ -57103,6 +57775,7 @@ const TableV2 = defineComponent({
       fixedColumnsOnLeft,
       fixedColumnsOnRight,
       mainColumns,
+      visibleColumns,
       mainTableHeight,
       fixedTableHeight,
       leftTableWidth,
@@ -57111,6 +57784,7 @@ const TableV2 = defineComponent({
       depthMap,
       expandedRowKeys,
       hasFixedColumns,
+      containerRef,
       mainTableRef,
       leftTableRef,
       rightTableRef,
@@ -57119,15 +57793,19 @@ const TableV2 = defineComponent({
       isScrolling,
       bodyWidth,
       addRowHeight,
+      effectiveHScrollbarSize,
       emptyStyle,
       rootStyle,
       footerHeight,
+      effectiveFooterHeight,
+      effectiveWidth,
       showEmpty,
       scrollTo,
       scrollToLeft,
       scrollToTop,
       scrollToRow,
       getRowHeight,
+      updateColumnWidth,
       onColumnSorted,
       onRowHeightChange,
       onRowHovered,
@@ -57137,11 +57815,130 @@ const TableV2 = defineComponent({
       onVerticalScroll,
       scrollPos
     } = useTable(props);
+    const addColumnTrigger = shallowRef(null);
+    const addRowTrigger = ref(null);
+    const createGhostRowData = () => {
+      var _a;
+      return {
+        ...(_a = props.ghostRowTemplate) != null ? _a : {},
+        [props.rowKey]: "ghost-row",
+        [ghostRowKey]: "ghost-row",
+        [ghostRowFieldKey]: props.rowKey,
+        [ghostRowSign]: true,
+        [ghostRowTouchedSign]: false
+      };
+    };
+    const ghostRowDraft = ref(createGhostRowData());
+    const isLegacyEditMode = computed(() => props.canEditTable && props.editable);
+    const isGhostEditMode = computed(() => props.ghostTable && props.editTable);
+    let stopPendingGhostRowScrollWatch;
+    const clearAddColumnTrigger = () => {
+      addColumnTrigger.value = null;
+    };
+    const updateAddColumnTrigger = (payload) => {
+      addColumnTrigger.value = payload;
+    };
+    const clearAddRowTrigger = () => {
+      addRowTrigger.value = null;
+    };
+    const updateAddRowTrigger = (payload) => {
+      addRowTrigger.value = payload;
+    };
+    const clearPendingGhostRowScrollWatch = () => {
+      stopPendingGhostRowScrollWatch == null ? void 0 : stopPendingGhostRowScrollWatch();
+      stopPendingGhostRowScrollWatch = void 0;
+    };
+    const scheduleGhostRowScroll = () => {
+      clearPendingGhostRowScrollWatch();
+      const previousLength = props.data.length;
+      stopPendingGhostRowScrollWatch = watch(() => props.data.length, async (length) => {
+        if (length <= previousLength)
+          return;
+        clearPendingGhostRowScrollWatch();
+        await nextTick();
+        scrollToRow(length - 1, "end");
+      }, {
+        flush: "post"
+      });
+    };
+    const handleAddColumnClick = (event) => {
+      const trigger = addColumnTrigger.value;
+      if (!trigger)
+        return;
+      emit("add-column", {
+        column: trigger.column,
+        columnIndex: trigger.columnIndex,
+        insertIndex: trigger.insertIndex,
+        event
+      });
+      clearAddColumnTrigger();
+    };
+    const handleAddColumnTailClick = (payload) => {
+      emit("add-column", payload);
+      clearAddColumnTrigger();
+    };
+    const handleAddRowClick = (event) => {
+      const trigger = addRowTrigger.value;
+      if (!trigger)
+        return;
+      emit("add-row", {
+        row: trigger.row,
+        rowIndex: trigger.rowIndex,
+        insertIndex: trigger.insertIndex,
+        event
+      });
+      clearAddRowTrigger();
+    };
+    const handleTableMouseLeave = () => {
+      clearAddColumnTrigger();
+      clearAddRowTrigger();
+    };
+    const validateRequiredColumns = () => {
+      const requiredColumns = props.columns.filter((column) => column.required && column.dataKey != null);
+      if (!requiredColumns.length)
+        return true;
+      return props.data.every((row) => requiredColumns.every((column) => !isEmptyRequiredValue(row == null ? void 0 : row[column.dataKey])));
+    };
+    const handleTableScroll = (params) => {
+      clearAddColumnTrigger();
+      clearAddRowTrigger();
+      onScroll(params);
+    };
+    const handleVerticalTableScroll = (params) => {
+      clearAddColumnTrigger();
+      clearAddRowTrigger();
+      onVerticalScroll(params);
+    };
+    const effectiveShowAddColumnTrigger = computed(() => (isLegacyEditMode.value || isGhostEditMode.value) && props.showAddColumnTrigger);
+    const effectiveShowAddRowTrigger = computed(() => (isLegacyEditMode.value || isGhostEditMode.value) && props.showAddRowTrigger);
+    const addColumnTriggerStyle = computed(() => {
+      if (!addColumnTrigger.value)
+        return {};
+      return {
+        left: `${addColumnTrigger.value.left}px`
+      };
+    });
+    const addRowTriggerStyle = computed(() => {
+      if (!addRowTrigger.value)
+        return {};
+      return {
+        top: `${addRowTrigger.value.top}px`
+      };
+    });
+    watch(effectiveShowAddColumnTrigger, (enabled) => {
+      if (!enabled)
+        clearAddColumnTrigger();
+    });
+    watch(effectiveShowAddRowTrigger, (enabled) => {
+      if (!enabled)
+        clearAddRowTrigger();
+    });
     expose({
       scrollTo,
       scrollToLeft,
       scrollToTop,
-      scrollToRow
+      scrollToRow,
+      validateRequiredColumns
     });
     provide(TableV2InjectionKey, {
       ns,
@@ -57154,6 +57951,17 @@ const TableV2 = defineComponent({
     };
     const onRowAdd = (params) => {
       emit("row-add", params);
+    };
+    const onAddGhostRow = (params) => {
+      scheduleGhostRowScroll();
+      emit("add-ghost-row", {
+        ...params,
+        row: getGhostRowPayload(params.row)
+      });
+      ghostRowDraft.value = createGhostRowData();
+    };
+    const onHeaderDragend = (newWidth, oldWidth, column, event) => {
+      emit("header-dragend", newWidth, oldWidth, column, event);
     };
     return () => {
       const {
@@ -57177,8 +57985,7 @@ const TableV2 = defineComponent({
         indentSize,
         iconSize,
         useIsScrolling,
-        vScrollbarSize,
-        width
+        vScrollbarSize
       } = props;
       const _data = unref(data);
       const mainTableProps = {
@@ -57199,13 +58006,14 @@ const TableV2 = defineComponent({
         scrollbarStartGap: 2,
         scrollbarEndGap: vScrollbarSize,
         useIsScrolling,
-        width,
+        width: unref(effectiveWidth),
         getRowHeight,
         onRowsRendered,
-        onScroll
+        onScroll: handleTableScroll
       };
       const leftColumnsWidth = unref(leftTableWidth);
       const _fixedTableHeight = unref(fixedTableHeight);
+      const mainContentWidth = unref(bodyWidth);
       const leftTableProps = {
         cache,
         class: ns.e("left"),
@@ -57226,7 +58034,7 @@ const TableV2 = defineComponent({
         useIsScrolling,
         width: leftColumnsWidth,
         getRowHeight,
-        onScroll: onVerticalScroll
+        onScroll: handleVerticalTableScroll
       };
       const rightColumnsWidth = unref(rightTableWidth);
       const rightTableProps = {
@@ -57250,7 +58058,7 @@ const TableV2 = defineComponent({
         style: `${ns.cssVarName("table-scrollbar-size")}: ${vScrollbarSize}px`,
         useIsScrolling,
         getRowHeight,
-        onScroll: onVerticalScroll
+        onScroll: handleVerticalTableScroll
       };
       const _columnsStyles = unref(columnsStyles);
       const tableRowProps = {
@@ -57268,19 +58076,30 @@ const TableV2 = defineComponent({
         onRowAdd,
         onRowHovered,
         onRowExpanded,
-        onRowHeightChange
+        onRowHeightChange,
+        onAddRowTriggerChange: updateAddRowTrigger,
+        canEditTable: props.canEditTable,
+        editable: props.editable,
+        editTable: props.editTable,
+        ghostTable: props.ghostTable,
+        showAddRowTrigger: effectiveShowAddRowTrigger.value
       };
       const tableCellProps = {
         canEditTable: props.canEditTable,
         cellProps,
         editable: props.editable,
+        editTable: props.editTable,
         expandColumnKey,
+        ghostTable: props.ghostTable,
         indentSize,
         iconSize,
+        onAddGhostRow,
         onRowAdd,
         onRowDelete,
+        rowActionRenderer: slots["row-action"],
         rowKey,
         expandedRowKeys: unref(expandedRowKeys),
+        visibleColumns: unref(visibleColumns),
         ns
       };
       const tableHeaderProps = {
@@ -57294,7 +58113,18 @@ const TableV2 = defineComponent({
         sortBy,
         sortState,
         headerCellProps,
-        onColumnSorted
+        canEditTable: props.canEditTable,
+        editable: props.editable,
+        editTable: props.editTable,
+        ghostTable: props.ghostTable,
+        showAddColumnTrigger: effectiveShowAddColumnTrigger.value,
+        addColumnButton: props.addColumnButton,
+        onHeaderDragend,
+        onAddColumnTriggerChange: updateAddColumnTrigger,
+        onTailAddColumn: handleAddColumnTailClick,
+        onColumnSorted,
+        updateColumnWidth,
+        visibleColumns: unref(visibleColumns)
       };
       const tableSlots = {
         row: (props2) => createVNode(RowRenderer, mergeProps(props2, tableRowProps), {
@@ -57324,18 +58154,20 @@ const TableV2 = defineComponent({
           }
         })
       };
-      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic))];
+      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostEditMode.value) && ns.m("with-ghost-row")];
       const footerProps = {
         class: ns.e("footer"),
         style: unref(footerHeight),
         total: props.total,
         updateTime: props.updateTime
       };
-      const showAddRow = props.canEditTable && props.editable;
+      const showAddRow = isLegacyEditMode.value && !isGhostEditMode.value;
+      const showGhostRow = isGhostEditMode.value;
       const addRowData = {
         [rowKey]: rowAddKey,
         [rowAddSign]: true
       };
+      const ghostRowData = unref(ghostRowDraft);
       const addRowHeaderProps = {
         fixedHeaderData: [addRowData],
         headerData: _data,
@@ -57343,12 +58175,26 @@ const TableV2 = defineComponent({
         rowHeight,
         height: unref(addRowHeight)
       };
+      const ghostRowHeaderProps = {
+        fixedHeaderData: [ghostRowData],
+        headerData: _data,
+        headerHeight: [],
+        rowHeight,
+        height: unref(addRowHeight)
+      };
       const addRowWrapperStyle = {
-        bottom: `${props.footerHeight}px`
+        bottom: `${unref(effectiveFooterHeight) + unref(effectiveHScrollbarSize)}px`
+      };
+      const tableRootStyle = {
+        ...unref(rootStyle),
+        [ns.cssVarName("table-v2-ghost-row-height")]: `${unref(addRowHeight)}px`,
+        [ns.cssVarName("table-v2-row-delete-width")]: `${rowDeleteColumnWidth}px`
       };
       return createVNode("div", {
+        "ref": containerRef,
         "class": rootKls,
-        "style": unref(rootStyle)
+        "style": tableRootStyle,
+        "onMouseleave": handleTableMouseLeave
       }, [createVNode(MainTable, mainTableProps, _isSlot(tableSlots) ? tableSlots : {
         default: () => [tableSlots]
       }), createVNode(LeftTable, leftTableProps, _isSlot(tableSlots) ? tableSlots : {
@@ -57360,9 +58206,9 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(mainColumns),
-        "class": ns.e("add-row-main-inner"),
-        "rowWidth": width,
-        "width": width
+        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
+        "rowWidth": mainContentWidth,
+        "width": unref(effectiveWidth)
       }), {
         fixed: tableSlots.row
       })]), leftColumnsWidth > 0 && createVNode("div", {
@@ -57370,7 +58216,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnLeft),
-        "class": ns.e("add-row-left-inner"),
+        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": leftColumnsWidth,
         "width": leftColumnsWidth
       }), {
@@ -57380,7 +58226,37 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnRight),
-        "class": ns.e("add-row-right-inner"),
+        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
+        "rowWidth": rightColumnsWidth,
+        "width": rightColumnsWidth
+      }), {
+        fixed: tableSlots.row
+      })])]), showGhostRow && createVNode(Fragment, null, [createVNode("div", {
+        "class": ns.e("add-row-main"),
+        "style": addRowWrapperStyle
+      }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
+        "columns": unref(mainColumns),
+        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
+        "rowWidth": mainContentWidth,
+        "width": unref(effectiveWidth)
+      }), {
+        fixed: tableSlots.row
+      })]), leftColumnsWidth > 0 && createVNode("div", {
+        "class": ns.e("add-row-left"),
+        "style": addRowWrapperStyle
+      }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
+        "columns": unref(fixedColumnsOnLeft),
+        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
+        "rowWidth": leftColumnsWidth,
+        "width": leftColumnsWidth
+      }), {
+        fixed: tableSlots.row
+      })]), rightColumnsWidth > 0 && createVNode("div", {
+        "class": ns.e("add-row-right"),
+        "style": addRowWrapperStyle
+      }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
+        "columns": unref(fixedColumnsOnRight),
+        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": rightColumnsWidth,
         "width": rightColumnsWidth
       }), {
@@ -57398,7 +58274,74 @@ const TableV2 = defineComponent({
         "class": ns.e("overlay")
       }, {
         default: slots.overlay
-      })]);
+      }), effectiveShowAddColumnTrigger.value && addColumnTrigger.value && createVNode("div", {
+        "class": ns.e("add-column-trigger"),
+        "style": unref(addColumnTriggerStyle)
+      }, [createVNode(ElTooltip, {
+        "content": "Add Column",
+        "placement": "top"
+      }, {
+        default: () => [createVNode(ElButton, {
+          "class": [ns.e("add-column-trigger-button"), "icon-button"],
+          "onClick": handleAddColumnClick
+        }, {
+          default: () => [createVNode(ElIcon, {
+            "color": "#2A3F4D",
+            "size": "12px"
+          }, {
+            default: () => [createVNode("svg", {
+              "xmlns": "http://www.w3.org/2000/svg",
+              "width": "12",
+              "height": "12",
+              "viewBox": "0 0 12 12"
+            }, [createVNode("g", {
+              "clip-path": "url(#clip0_35669_24470)"
+            }, [createVNode("path", {
+              "d": "M12 5.25H6.75V0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25Z"
+            }, null)]), createVNode("defs", null, [createVNode("clipPath", {
+              "id": "clip0_35669_24470"
+            }, [createVNode("rect", {
+              "width": "12",
+              "height": "12",
+              "fill": "white"
+            }, null)])])])]
+          })]
+        })]
+      })]), effectiveShowAddRowTrigger.value && addRowTrigger.value && createVNode("div", {
+        "class": ns.e("add-row-trigger"),
+        "style": unref(addRowTriggerStyle)
+      }, [createVNode(ElTooltip, {
+        "content": "Add Row",
+        "placement": "top"
+      }, {
+        default: () => [createVNode(ElButton, {
+          "class": [ns.e("add-row-trigger-button"), "icon-button"],
+          "aria-label": "Add Row",
+          "onClick": handleAddRowClick
+        }, {
+          default: () => [createVNode(ElIcon, {
+            "color": "#2A3F4D",
+            "size": "12px"
+          }, {
+            default: () => [createVNode("svg", {
+              "xmlns": "http://www.w3.org/2000/svg",
+              "width": "12",
+              "height": "12",
+              "viewBox": "0 0 12 12"
+            }, [createVNode("g", {
+              "clip-path": "url(#clip0_35669_24470)"
+            }, [createVNode("path", {
+              "d": "M12 5.25H6.75V0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25Z"
+            }, null)]), createVNode("defs", null, [createVNode("clipPath", {
+              "id": "clip0_35669_24470"
+            }, [createVNode("rect", {
+              "width": "12",
+              "height": "12",
+              "fill": "white"
+            }, null)])])])]
+          })]
+        })]
+      })])]);
     };
   }
 });

@@ -29,6 +29,9 @@ export declare const requiredNumber: {
     readonly type: NumberConstructor;
     readonly required: true;
 };
+export declare const optionalNumber: {
+    readonly type: NumberConstructor;
+};
 export declare const rowKey: {
     readonly type: import("vue").PropType<KeyType>;
     readonly default: "id";

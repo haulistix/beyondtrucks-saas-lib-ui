@@ -36,6 +36,10 @@ const selectProps = buildProps({
   },
   disabled: Boolean,
   addItem: Boolean,
+  inputType: {
+    type: String,
+    values: ["error", "info", "warning"]
+  },
   clearable: Boolean,
   filterable: Boolean,
   beforeChange: {

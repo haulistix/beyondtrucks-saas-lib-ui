@@ -17,13 +17,11 @@
 
 .el-popper.is-light[role='tooltip'] {
   min-height: 32px;
-  box-shadow: var(--shadow-200);
-  color: #0e171f;
-  font-size: var(--p-font-size-400);
-  font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-500);
-  border: none;
+  color: var(--color-gray-990);
+  font-size: 12px;
+  line-height: 16px;
   display: flex;
+  border:1px solid var(--color-gray-100);
   align-items: center;
 
   .el-button + .el-button {

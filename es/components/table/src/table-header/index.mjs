@@ -42,6 +42,13 @@ var TableHeader = defineComponent({
     },
     showAddColumnTrigger: {
       type: Boolean
+    },
+    addColumnButton: {
+      type: Boolean,
+      default: true
+    },
+    editTable: {
+      type: Boolean
     }
   },
   setup(props, { emit }) {
@@ -99,6 +106,20 @@ var TableHeader = defineComponent({
       getHeaderCellClass
     } = useStyle(props);
     const { isGroup, toggleAllSelection, columnRows } = useUtils(props);
+    const handleAddColumn = (event) => {
+      event.stopPropagation();
+      const columns = props.store.states.columns.value;
+      const columnIndex = columns.length - 1;
+      const column = columns[columnIndex];
+      if (!column)
+        return;
+      emit("tail-add-column", {
+        column,
+        columnIndex,
+        insertIndex: columnIndex + 1,
+        event
+      });
+    };
     instance.state = {
       onColumnsChange,
       onScrollableChange
@@ -126,6 +147,7 @@ var TableHeader = defineComponent({
       toggleAllSelection,
       saveIndexSelection,
       isTableLayoutAuto,
+      handleAddColumn,
       theadRef,
       updateFixedColumnStyle
     };
@@ -169,6 +191,19 @@ var TableHeader = defineComponent({
       }
       const diagonalHeader = column.diagonalHeader;
       const isDiagonalHeaderCell = !!diagonalHeader;
+      const headerContent = isDiagonalHeaderCell ? [
+        h("span", {
+          class: ns.e("diagonal-header-text")
+        }, diagonalHeader.from),
+        h("span", {
+          class: ns.e("diagonal-header-text")
+        }, diagonalHeader.to)
+      ] : column.renderHeader ? column.renderHeader({
+        column,
+        $index: cellIndex,
+        store,
+        _self: $parent
+      }) : column.label;
       return h("th", {
         class: [
           _class,
@@ -202,19 +237,7 @@ var TableHeader = defineComponent({
             column.filteredValue && column.filteredValue.length > 0 ? "highlight" : ""
           ]
         }, [
-          isDiagonalHeaderCell ? [
-            h("span", {
-              class: ns.e("diagonal-header-text")
-            }, diagonalHeader.from),
-            h("span", {
-              class: ns.e("diagonal-header-text")
-            }, diagonalHeader.to)
-          ] : column.renderHeader ? column.renderHeader({
-            column,
-            $index: cellIndex,
-            store,
-            _self: $parent
-          }) : column.label,
+          headerContent,
           column.sortable && h("span", {
             class: "icon-wrap",
             onClick: ($event) => handleSortClick($event, column)

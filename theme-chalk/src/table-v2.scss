@@ -71,6 +71,26 @@
     }
   }
 
+  @include m('with-add-column-trigger') {
+    overflow: visible;
+  }
+
+  @include m('with-add-row-trigger') {
+    overflow: visible;
+  }
+
+  @include m('with-ghost-row') {
+    @include e('main') {
+      overflow: visible;
+
+      .#{$namespace}-vl__horizontal {
+        transform: translateY(
+          calc(#{getCssVar('table-v2', 'ghost-row-height')} + 2px)
+        );
+      }
+    }
+  }
+
   @include e('main') {
     @include table-root;
     left: 0;
@@ -144,6 +164,9 @@
       .time {
         margin-left: auto;
         text-align: right;
+        display: flex;
+        gap: 4px;
+        align-items: center;
       }
     }
   }
@@ -151,6 +174,14 @@
   @include e('empty') {
     position: absolute;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    .el-empty {
+      padding: 12px 0;
+    }
   }
 
   @include e('overlay') {
@@ -188,12 +219,25 @@
     box-shadow: -2px 0 4px 0 rgb(0 0 0 / 6%);
   }
 
+  @include e('add-row-main-inner') {
+    overflow: hidden;
+  }
+
+  @include e('add-row-left-inner') {
+    overflow: hidden;
+  }
+
+  @include e('add-row-right-inner') {
+    overflow: hidden;
+  }
+
   @include e('header-row') {
     display: flex;
     border-bottom: getCssVar('table', 'border');
     background-color: getCssVar('table-header-bg-color');
 
     @include e('header-cell') {
+      position: relative;
       height: 100%;
       user-select: none;
       overflow: hidden;
@@ -222,6 +266,30 @@
         padding: 0;
         justify-content: center;
       }
+
+      @include when(row-delete-placeholder-merged) {
+        padding-right: calc(8px + #{getCssVar('table-v2', 'row-delete-width')});
+      }
+
+      &.is-diagonal-header {
+        padding: 0;
+        overflow: hidden;
+
+        &::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to bottom left,
+            transparent calc(50% - 0.5px),
+            var(--color-gray-300) calc(50% - 0.5px),
+            var(--color-gray-300) calc(50% + 0.5px),
+            transparent calc(50% + 0.5px)
+          );
+          pointer-events: none;
+          z-index: 0;
+        }
+      }
     }
 
     @include e('sort-icon') {
@@ -247,8 +315,17 @@
       cursor: pointer;
     }
 
+    @include when('ghost-row') {
+      background-color: #fff;
+      box-shadow: var(--shadow-ghost-row);
+    }
+
     &:hover {
       background-color: getCssVar('table-row', 'hover-bg-color');
+    }
+
+    &.is-ghost-row:hover {
+      background-color: #fff;
     }
 
     @include e('row-cell') {
@@ -258,8 +335,22 @@
       @include cell-padding;
       @include cell-alignment;
 
+      &.is-diagonal-header-column {
+        background-color: getCssVar('table-header-bg-color');
+      }
+
       &.is-row-delete-column {
         padding: 0;
+      }
+
+      @include when(row-delete-placeholder-merged) {
+        padding-right: calc(8px + #{getCssVar('table-v2', 'row-delete-width')});
+      }
+
+      &.is-full-width {
+        > * {
+          width: 100%;
+        }
       }
     }
 
@@ -294,6 +385,98 @@
 
   @include e('row-add-button') {
     padding: 0;
+  }
+
+  @include e('add-column-trigger') {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 10;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      background-color: var(--color-blue-600);
+    }
+  }
+
+  @include e('add-column-trigger-button') {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+
+    .el-icon {
+      margin-left: 0 !important;
+    }
+  }
+
+  @include e('add-row-trigger') {
+    position: absolute;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 10;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 2px;
+      background-color: var(--color-blue-600);
+    }
+  }
+
+  @include e('add-row-trigger-button') {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+
+    .el-icon {
+      margin-left: 0 !important;
+    }
+  }
+
+  @include e('column-resizer') {
+    position: absolute;
+    top: 0;
+    right: -2px;
+    width: 4px;
+    height: 100%;
+    cursor: col-resize;
+    z-index: 2;
+  }
+
+  @include e('diagonal-header') {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 0 8px;
+    line-height: normal;
+    overflow: hidden;
+  }
+
+  @include e('diagonal-header-text') {
+    font-size: 11px;
+    color: var(--color-gray-500);
   }
 
   @include when(dynamic) {

@@ -120,6 +120,10 @@ declare const _default: import("vue").DefineComponent<{
         default: undefined;
     };
     showAddColumnTrigger: BooleanConstructor;
+    addColumnButton: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     showAddRowTrigger: BooleanConstructor;
     allowDragLastColumn: {
         type: BooleanConstructor;
@@ -788,6 +792,8 @@ declare const _default: import("vue").DefineComponent<{
     clearEditingRow: () => void;
     applyEditingRow: () => any;
     hasEditingRow: import("vue").ComputedRef<boolean>;
+    effectiveShowAddColumnTrigger: import("vue").ComputedRef<boolean>;
+    effectiveShowAddRowTrigger: import("vue").ComputedRef<boolean>;
     addColumnTrigger: import("vue").ShallowRef<{
         column: TableColumnCtx<any>;
         columnIndex: number;
@@ -796,6 +802,12 @@ declare const _default: import("vue").DefineComponent<{
         top: number;
     } | null>;
     addColumnTriggerStyle: import("vue").ComputedRef<CSSProperties>;
+    handleAddColumnTailClick: (payload: {
+        column: TableColumnCtx<any>;
+        columnIndex: number;
+        insertIndex: number;
+        event: MouseEvent;
+    }) => void;
     handleAddColumnClick: (event: MouseEvent) => void;
     updateAddColumnTrigger: (payload: {
         column: TableColumnCtx<any>;
@@ -858,11 +870,15 @@ declare const _default: import("vue").DefineComponent<{
     /**
      * @description whether to show an add-column trigger when hovering a header divider
      */
-    showAddColumnTrigger: boolean;
+    showAddColumnTrigger: import("vue").ComputedRef<boolean>;
     /**
      * @description whether to show an add-row trigger when hovering a row divider
      */
-    showAddRowTrigger: boolean;
+    showAddRowTrigger: import("vue").ComputedRef<boolean>;
+    /**
+     * @description validates required columns in the table data, returns `false` when any required cell is empty
+     */
+    validateRequiredColumns: () => boolean;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     data: {
         type: import("vue").PropType<any[]>;
@@ -981,6 +997,10 @@ declare const _default: import("vue").DefineComponent<{
         default: undefined;
     };
     showAddColumnTrigger: BooleanConstructor;
+    addColumnButton: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     showAddRowTrigger: BooleanConstructor;
     allowDragLastColumn: {
         type: BooleanConstructor;
@@ -1027,6 +1047,8 @@ declare const _default: import("vue").DefineComponent<{
     scrollbarAlwaysOn: boolean;
     allowDragLastColumn: boolean;
     showAddColumnTrigger: boolean;
+    addColumnButton: boolean;
+    editTable: boolean;
     tooltipOptions: Partial<Pick<import("element-plus").ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">> | undefined;
     treeProps: import("./table/defaults").TreeProps | undefined;
     updateTime: string;
@@ -1041,7 +1063,6 @@ declare const _default: import("vue").DefineComponent<{
     rowDraggable: any;
     flexible: boolean;
     ghostTable: boolean;
-    editTable: boolean;
     haveTableText: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;

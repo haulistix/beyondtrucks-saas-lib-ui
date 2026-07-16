@@ -16,6 +16,12 @@ declare const _default: import("vue").DefineComponent<{
     effect: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string) | (() => import("element-plus").PopperEffect) | ((new (...args: any[]) => string) | (() => import("element-plus").PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;
+    inputType: {
+        readonly type: import("vue").PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
     beforeChange: {
@@ -134,6 +140,8 @@ declare const _default: import("vue").DefineComponent<{
     }>;
     validateError: import("vue").ComputedRef<boolean>;
     validateMsg: import("vue").ComputedRef<string>;
+    errorTooltipContent: import("vue").ComputedRef<string>;
+    errorTooltipDisabled: import("vue").ComputedRef<boolean>;
     handleAddSelect: () => void;
     getLabel: (option: import("../../select-v2/src/select.types.js").Option) => any;
     isEmpty: (val: unknown) => boolean;
@@ -317,6 +325,12 @@ declare const _default: import("vue").DefineComponent<{
     effect: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string) | (() => import("element-plus").PopperEffect) | ((new (...args: any[]) => string) | (() => import("element-plus").PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;
+    inputType: {
+        readonly type: import("vue").PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     clearable: BooleanConstructor;
     filterable: BooleanConstructor;
     beforeChange: {
@@ -456,8 +470,8 @@ declare const _default: import("vue").DefineComponent<{
     showArrow: boolean;
     autocomplete: string;
     floatLabel: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     clearable: boolean;
+    validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     valueKey: string;
     debounce: number;
     fitInputWidth: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;

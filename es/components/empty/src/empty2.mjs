@@ -1,5 +1,4 @@
-import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, normalizeStyle, renderSlot, createVNode, toDisplayString, createCommentVNode } from 'vue';
-import ImgEmpty from './img-empty.mjs';
+import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, normalizeStyle, renderSlot, toDisplayString, createCommentVNode } from 'vue';
 import { emptyProps } from './empty.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useLocale } from '../../../hooks/use-locale/index.mjs';
@@ -32,9 +31,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             key: 0,
             src: _ctx.image,
             ondragstart: "return false"
-          }, null, 8, ["src"])) : renderSlot(_ctx.$slots, "image", { key: 1 }, () => [
-            createVNode(ImgEmpty)
-          ])
+          }, null, 8, ["src"])) : renderSlot(_ctx.$slots, "image", { key: 1 })
         ], 6),
         createElementVNode("div", {
           class: normalizeClass(unref(ns).e("description"))

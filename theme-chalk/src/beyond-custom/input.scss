@@ -27,10 +27,44 @@
       border-color: var(--color-gray-100);
     }
   }
+
+  &.el-input--error {
+    .el-input__wrapper {
+      background-color: var(--color-red-200);
+    }
+  }
+
+  &.el-input--warning {
+    .el-input__wrapper {
+      background-color: var(--color-yellow-100);
+    }
+  }
+
+  &.el-input--inputType {
+    .el-input__wrapper.is-focus {
+      background-color: #fff;
+    }
+
+    &.el-input--filled {
+      .el-input__wrapper {
+        background-color: #fff;
+      }
+    }
+
+    .float-label {
+      background-color: transparent;
+    }
+  }
 }
 
 .el-textarea {
-  --el-border-color-custom: var(--color-gray-300);
+  &.el-input--inputType {
+    &.el-input--filled {
+      .el-textarea__inner {
+        background-color: #fff;
+      }
+    }
+  }
 
   &.is-disabled {
     border-color: var(--color-gray-100);
@@ -85,12 +119,6 @@
     .float-label.has-value {
       transform: translate(-20px, -15px);
     }
-  }
-
-  .error-icon {
-    position: absolute;
-    right: 8px;
-    top: 10px;
   }
 
   // textarea-suffix

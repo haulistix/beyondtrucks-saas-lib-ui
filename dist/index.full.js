@@ -40694,7 +40694,10 @@
       values: ["error", "info", "warning"]
     },
     clearable: Boolean,
-    filterable: Boolean,
+    filterable: {
+      type: Boolean,
+      default: true
+    },
     beforeChange: {
       type: definePropType(Function)
     },
@@ -45648,7 +45651,10 @@
       type: Number,
       default: void 0
     },
-    filterable: Boolean,
+    filterable: {
+      type: Boolean,
+      default: true
+    },
     beforeChange: {
       type: definePropType(Function)
     },
@@ -47213,8 +47219,11 @@
                   }, [
                     _ctx.floatLabel ? (vue.openBlock(), vue.createElementBlock("span", {
                       key: 0,
-                      class: "float-label"
-                    }, vue.toDisplayString(_ctx.placeholder), 1)) : vue.createCommentVNode("v-if", true),
+                      class: vue.normalizeClass(["float-label", {
+                        "prefix-label": _ctx.$slots.prefix,
+                        "select-visible": _ctx.dropdownMenuVisible || !!_ctx.states.inputValue
+                      }])
+                    }, vue.toDisplayString(_ctx.placeholder), 3)) : vue.createCommentVNode("v-if", true),
                     _ctx.$slots.prefix ? (vue.openBlock(), vue.createElementBlock("div", {
                       key: 1,
                       ref: "prefixRef",

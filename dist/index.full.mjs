@@ -40690,7 +40690,10 @@ const selectProps = buildProps({
     values: ["error", "info", "warning"]
   },
   clearable: Boolean,
-  filterable: Boolean,
+  filterable: {
+    type: Boolean,
+    default: true
+  },
   beforeChange: {
     type: definePropType(Function)
   },
@@ -45644,7 +45647,10 @@ const selectV2Props = buildProps({
     type: Number,
     default: void 0
   },
-  filterable: Boolean,
+  filterable: {
+    type: Boolean,
+    default: true
+  },
   beforeChange: {
     type: definePropType(Function)
   },
@@ -47209,8 +47215,11 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                 }, [
                   _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
                     key: 0,
-                    class: "float-label"
-                  }, toDisplayString(_ctx.placeholder), 1)) : createCommentVNode("v-if", true),
+                    class: normalizeClass(["float-label", {
+                      "prefix-label": _ctx.$slots.prefix,
+                      "select-visible": _ctx.dropdownMenuVisible || !!_ctx.states.inputValue
+                    }])
+                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
                   _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
                     key: 1,
                     ref: "prefixRef",

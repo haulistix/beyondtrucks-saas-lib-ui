@@ -161,8 +161,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 }, [
                   _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
                     key: 0,
-                    class: "float-label"
-                  }, toDisplayString(_ctx.placeholder), 1)) : createCommentVNode("v-if", true),
+                    class: normalizeClass(["float-label", {
+                      "prefix-label": _ctx.$slots.prefix,
+                      "select-visible": _ctx.dropdownMenuVisible || !!_ctx.states.inputValue
+                    }])
+                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
                   _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
                     key: 1,
                     ref: "prefixRef",

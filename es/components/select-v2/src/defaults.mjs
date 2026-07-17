@@ -50,7 +50,10 @@ const selectV2Props = buildProps({
     type: Number,
     default: void 0
   },
-  filterable: Boolean,
+  filterable: {
+    type: Boolean,
+    default: true
+  },
   beforeChange: {
     type: definePropType(Function)
   },

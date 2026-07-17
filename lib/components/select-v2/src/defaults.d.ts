@@ -40,7 +40,7 @@ export declare const selectV2Props: {
     readonly defaultFirstOption: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
-    readonly filterable: BooleanConstructor;
+    readonly filterable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: import("vue").PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
         readonly required: false;

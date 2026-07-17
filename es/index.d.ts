@@ -15973,7 +15973,7 @@ declare const _default_73: DefineComponent<{
         __epPropKey: true;
     };
     clearable: BooleanConstructor;
-    filterable: BooleanConstructor;
+    filterable: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     beforeChange: {
         readonly type: PropType<(value: OptionValue | OptionValue[] | null | undefined, oldValue: OptionValue | OptionValue[] | null | undefined) => Awaitable<boolean>>;
         readonly required: false;
@@ -16282,7 +16282,7 @@ declare const _default_73: DefineComponent<{
         __epPropKey: true;
     };
     clearable: BooleanConstructor;
-    filterable: BooleanConstructor;
+    filterable: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     beforeChange: {
         readonly type: PropType<(value: OptionValue | OptionValue[] | null | undefined, oldValue: OptionValue | OptionValue[] | null | undefined) => Awaitable<boolean>>;
         readonly required: false;
@@ -16426,7 +16426,7 @@ declare const _default_73: DefineComponent<{
     debounce: number;
     fitInputWidth: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     automaticDropdown: boolean;
-    filterable: boolean;
+    filterable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     collapseTags: boolean;
     maxCollapseTags: number;
     collapseTagsTooltip: boolean;
@@ -16619,7 +16619,7 @@ declare const _default_76: DefineComponent<{
     readonly defaultFirstOption: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
-    readonly filterable: BooleanConstructor;
+    readonly filterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
         readonly required: false;
@@ -17006,7 +17006,7 @@ declare const _default_76: DefineComponent<{
     readonly defaultFirstOption: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
-    readonly filterable: BooleanConstructor;
+    readonly filterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
         readonly required: false;
@@ -17262,7 +17262,7 @@ declare const _default_76: DefineComponent<{
         NumberConstructor
     ], unknown, number | boolean>;
     readonly automaticDropdown: boolean;
-    readonly filterable: boolean;
+    readonly filterable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly collapseTags: boolean;
     readonly maxCollapseTags: number;
     readonly collapseTagsTooltip: boolean;
@@ -25258,7 +25258,7 @@ export declare const selectProps: {
         __epPropKey: true;
     };
     clearable: BooleanConstructor;
-    filterable: BooleanConstructor;
+    filterable: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     beforeChange: {
         readonly type: PropType<(value: OptionValue | OptionValue[] | null | undefined, oldValue: OptionValue | OptionValue[] | null | undefined) => Awaitable<boolean>>;
         readonly required: false;
@@ -25450,7 +25450,7 @@ declare const selectV2Props: {
     readonly defaultFirstOption: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
-    readonly filterable: BooleanConstructor;
+    readonly filterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
         readonly required: false;

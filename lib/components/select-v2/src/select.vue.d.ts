@@ -32,7 +32,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly defaultFirstOption: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
-    readonly filterable: BooleanConstructor;
+    readonly filterable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: import("vue").PropType<(value: import("./defaults").SelectV2ModelValue, oldValue: import("./defaults").SelectV2ModelValue) => import("element-plus/es/utils").Awaitable<boolean>>;
         readonly required: false;
@@ -408,7 +408,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly defaultFirstOption: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
-    readonly filterable: BooleanConstructor;
+    readonly filterable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: import("vue").PropType<(value: import("./defaults").SelectV2ModelValue, oldValue: import("./defaults").SelectV2ModelValue) => import("element-plus/es/utils").Awaitable<boolean>>;
         readonly required: false;
@@ -647,7 +647,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly debounce: number;
     readonly fitInputWidth: import("element-plus/es/utils").EpPropMergeType<readonly [BooleanConstructor, NumberConstructor], unknown, number | boolean>;
     readonly automaticDropdown: boolean;
-    readonly filterable: boolean;
+    readonly filterable: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly collapseTags: boolean;
     readonly maxCollapseTags: number;
     readonly collapseTagsTooltip: boolean;

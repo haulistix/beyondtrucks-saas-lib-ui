@@ -23,7 +23,7 @@ declare const _default: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     clearable: BooleanConstructor;
-    filterable: BooleanConstructor;
+    filterable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     beforeChange: {
         readonly type: import("vue").PropType<(value: import("./type").OptionValue | import("./type").OptionValue[] | null | undefined, oldValue: import("./type").OptionValue | import("./type").OptionValue[] | null | undefined) => import("element-plus/es/utils").Awaitable<boolean>>;
         readonly required: false;
@@ -332,7 +332,7 @@ declare const _default: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     clearable: BooleanConstructor;
-    filterable: BooleanConstructor;
+    filterable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     beforeChange: {
         readonly type: import("vue").PropType<(value: import("./type").OptionValue | import("./type").OptionValue[] | null | undefined, oldValue: import("./type").OptionValue | import("./type").OptionValue[] | null | undefined) => import("element-plus/es/utils").Awaitable<boolean>>;
         readonly required: false;
@@ -476,7 +476,7 @@ declare const _default: import("vue").DefineComponent<{
     debounce: number;
     fitInputWidth: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     automaticDropdown: boolean;
-    filterable: boolean;
+    filterable: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     collapseTags: boolean;
     maxCollapseTags: number;
     collapseTagsTooltip: boolean;

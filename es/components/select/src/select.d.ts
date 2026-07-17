@@ -29,7 +29,7 @@ export declare const selectProps: {
         __epPropKey: true;
     };
     clearable: BooleanConstructor;
-    filterable: BooleanConstructor;
+    filterable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     beforeChange: {
         readonly type: import("vue").PropType<(value: OptionValue | OptionValue[] | null | undefined, oldValue: OptionValue | OptionValue[] | null | undefined) => Awaitable<boolean>>;
         readonly required: false;

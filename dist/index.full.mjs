@@ -16992,25 +16992,25 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
         onMouseenter: handleMouseEnter,
         onMouseleave: handleMouseLeave
       }, [
-        createVNode(ElTooltip$1, {
-          content: unref(inputTooltipContent),
-          placement: "top-start",
-          disabled: unref(inputTooltipDisabled),
-          offset: 12,
-          trigger: unref(inputTooltipTrigger)
-        }, {
-          default: withCtx(() => {
-            var _a;
-            return [
-              createCommentVNode(" input "),
-              _ctx.type !== "textarea" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-                createCommentVNode(" prepend slot "),
-                _ctx.$slots.prepend ? (openBlock(), createElementBlock("div", {
-                  key: 0,
-                  class: normalizeClass(unref(nsInput).be("group", "prepend"))
-                }, [
-                  renderSlot(_ctx.$slots, "prepend")
-                ], 2)) : createCommentVNode("v-if", true),
+        createCommentVNode(" input "),
+        _ctx.type !== "textarea" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+          createCommentVNode(" prepend slot "),
+          _ctx.$slots.prepend ? (openBlock(), createElementBlock("div", {
+            key: 0,
+            class: normalizeClass(unref(nsInput).be("group", "prepend"))
+          }, [
+            renderSlot(_ctx.$slots, "prepend")
+          ], 2)) : createCommentVNode("v-if", true),
+          createVNode(ElTooltip$1, {
+            content: unref(inputTooltipContent),
+            placement: "top-start",
+            disabled: unref(inputTooltipDisabled),
+            offset: 12,
+            trigger: unref(inputTooltipTrigger)
+          }, {
+            default: withCtx(() => {
+              var _a;
+              return [
                 createElementVNode("div", {
                   ref_key: "wrapperRef",
                   ref: wrapperRef,
@@ -17212,74 +17212,85 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
                       }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true)
                     ], 2)
                   ], 2)) : createCommentVNode("v-if", true)
-                ], 2),
-                createCommentVNode(" append slot "),
-                _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
-                  key: 1,
-                  class: normalizeClass(unref(nsInput).be("group", "append"))
-                }, [
-                  renderSlot(_ctx.$slots, "append")
-                ], 2)) : createCommentVNode("v-if", true)
-              ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-                createCommentVNode(" textarea "),
-                createElementVNode("textarea", mergeProps({
-                  id: unref(inputId),
-                  ref_key: "textarea",
-                  ref: textarea,
-                  class: [unref(nsTextarea).e("inner"), unref(nsInput).is("focus", unref(isFocused))]
-                }, unref(attrs), {
-                  minlength: _ctx.minlength,
-                  maxlength: _ctx.maxlength,
-                  tabindex: _ctx.tabindex,
-                  disabled: unref(inputDisabled),
-                  readonly: _ctx.readonly,
-                  autocomplete: _ctx.autocomplete,
-                  style: unref(textareaStyle),
-                  "aria-label": _ctx.ariaLabel,
-                  placeholder: !_ctx.floatLabel ? _ctx.placeholder : "",
-                  form: _ctx.form,
-                  autofocus: _ctx.autofocus,
-                  rows: _ctx.rows,
-                  role: _ctx.containerRole,
-                  onCompositionstart: unref(handleCompositionStart),
-                  onCompositionupdate: unref(handleCompositionUpdate),
-                  onCompositionend: unref(handleCompositionEnd),
-                  onInput: handleInput,
-                  onFocus: unref(handleFocus),
-                  onBlur: unref(handleBlur),
-                  onChange: handleChange,
-                  onKeydown: handleKeydown
-                }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"]),
-                _ctx.$slots.textareaPrefix ? (openBlock(), createElementBlock("span", {
-                  key: 0,
-                  class: "textarea-prefix"
-                }, [
-                  renderSlot(_ctx.$slots, "textareaPrefix")
-                ])) : createCommentVNode("v-if", true),
-                _ctx.$slots.textareaSuffix ? (openBlock(), createElementBlock("span", {
-                  key: 1,
-                  class: "textarea-suffix"
-                }, [
-                  renderSlot(_ctx.$slots, "textareaSuffix")
-                ])) : createCommentVNode("v-if", true),
-                _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
-                  key: 2,
-                  class: normalizeClass(["float-label", { "has-value": !unref(isEmpty)(_ctx.modelValue) }]),
-                  onClick: handleTextareaFocus
-                }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
-                unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
-                  key: 3,
-                  style: normalizeStyle(countStyle.value),
-                  class: normalizeClass([
-                    unref(nsInput).e("count"),
-                    unref(nsInput).is("outside", _ctx.wordLimitPosition === "outside")
-                  ])
-                }, toDisplayString(unref(textLength)) + " / " + toDisplayString(_ctx.maxlength), 7)) : createCommentVNode("v-if", true)
-              ], 64))
-            ];
-          }),
-          _: 3
-        }, 8, ["content", "disabled", "trigger"])
+                ], 2)
+              ];
+            }),
+            _: 3
+          }, 8, ["content", "disabled", "trigger"]),
+          createCommentVNode(" append slot "),
+          _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
+            key: 1,
+            class: normalizeClass(unref(nsInput).be("group", "append"))
+          }, [
+            renderSlot(_ctx.$slots, "append")
+          ], 2)) : createCommentVNode("v-if", true)
+        ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+          createCommentVNode(" textarea "),
+          createVNode(ElTooltip$1, {
+            content: unref(inputTooltipContent),
+            placement: "top-start",
+            disabled: unref(inputTooltipDisabled),
+            offset: 12,
+            trigger: unref(inputTooltipTrigger)
+          }, {
+            default: withCtx(() => [
+              createElementVNode("textarea", mergeProps({
+                id: unref(inputId),
+                ref_key: "textarea",
+                ref: textarea,
+                class: [unref(nsTextarea).e("inner"), unref(nsInput).is("focus", unref(isFocused))]
+              }, unref(attrs), {
+                minlength: _ctx.minlength,
+                maxlength: _ctx.maxlength,
+                tabindex: _ctx.tabindex,
+                disabled: unref(inputDisabled),
+                readonly: _ctx.readonly,
+                autocomplete: _ctx.autocomplete,
+                style: unref(textareaStyle),
+                "aria-label": _ctx.ariaLabel,
+                placeholder: !_ctx.floatLabel ? _ctx.placeholder : "",
+                form: _ctx.form,
+                autofocus: _ctx.autofocus,
+                rows: _ctx.rows,
+                role: _ctx.containerRole,
+                onCompositionstart: unref(handleCompositionStart),
+                onCompositionupdate: unref(handleCompositionUpdate),
+                onCompositionend: unref(handleCompositionEnd),
+                onInput: handleInput,
+                onFocus: unref(handleFocus),
+                onBlur: unref(handleBlur),
+                onChange: handleChange,
+                onKeydown: handleKeydown
+              }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"])
+            ]),
+            _: 1
+          }, 8, ["content", "disabled", "trigger"]),
+          _ctx.$slots.textareaPrefix ? (openBlock(), createElementBlock("span", {
+            key: 0,
+            class: "textarea-prefix"
+          }, [
+            renderSlot(_ctx.$slots, "textareaPrefix")
+          ])) : createCommentVNode("v-if", true),
+          _ctx.$slots.textareaSuffix ? (openBlock(), createElementBlock("span", {
+            key: 1,
+            class: "textarea-suffix"
+          }, [
+            renderSlot(_ctx.$slots, "textareaSuffix")
+          ])) : createCommentVNode("v-if", true),
+          _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
+            key: 2,
+            class: normalizeClass(["float-label", { "has-value": !unref(isEmpty)(_ctx.modelValue) }]),
+            onClick: handleTextareaFocus
+          }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+          unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
+            key: 3,
+            style: normalizeStyle(countStyle.value),
+            class: normalizeClass([
+              unref(nsInput).e("count"),
+              unref(nsInput).is("outside", _ctx.wordLimitPosition === "outside")
+            ])
+          }, toDisplayString(unref(textLength)) + " / " + toDisplayString(_ctx.maxlength), 7)) : createCommentVNode("v-if", true)
+        ], 64))
       ], 38);
     };
   }

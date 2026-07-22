@@ -15,6 +15,7 @@ const optionProps = buildProps({
     type: Boolean,
     default: true
   },
+  tip: String,
   placement: {
     type: definePropType(String),
     values: placements,

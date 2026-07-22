@@ -20,7 +20,7 @@ const _sfc_main = defineComponent({
   setup(props) {
     const ns = useNamespace("select");
     const id = useId();
-    const disabled = ref(false);
+    const isTextOverflowing = ref(false);
     const containerKls = computed(() => [
       ns.be("dropdown", "item"),
       ns.is("disabled", unref(isDisabled)),
@@ -101,7 +101,7 @@ const _sfc_main = defineComponent({
       if (!cellChild)
         return;
       if (cellChild && !(cellChild == null ? void 0 : cellChild.childNodes.length)) {
-        disabled.value = false;
+        isTextOverflowing.value = false;
         return;
       }
       const range = document.createRange();
@@ -112,7 +112,7 @@ const _sfc_main = defineComponent({
       const { top, left, right, bottom } = getPadding(cellChild);
       const horizontalPadding = left + right;
       const verticalPadding = top + bottom;
-      disabled.value = !(isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth));
+      isTextOverflowing.value = isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth);
     };
     return {
       multiple,
@@ -127,8 +127,9 @@ const _sfc_main = defineComponent({
       visible,
       hover,
       states,
-      disabled,
+      isTextOverflowing,
       showTip: props.showTip,
+      tip: computed(() => props.tip),
       placement: props.placement,
       optionStyle,
       handleCellMouseEnter,
@@ -164,11 +165,14 @@ function _sfc_render(_ctx, _cache) {
         createVNode(_component_el_tooltip, {
           ref: "tooltipRef",
           effect: "light",
-          disabled: !_ctx.showTip || _ctx.disabled,
-          content: _ctx.currentLabel,
+          disabled: !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
           placement: _ctx.placement,
           "popper-class": "optionPopperClass"
         }, {
+          content: withCtx(() => [
+            _ctx.isTextOverflowing ? (openBlock(), createElementBlock("div", { key: 0 }, toDisplayString(_ctx.currentLabel), 1)) : createCommentVNode("v-if", true),
+            _ctx.tip ? (openBlock(), createElementBlock("div", { key: 1 }, toDisplayString(_ctx.tip), 1)) : createCommentVNode("v-if", true)
+          ]),
           default: withCtx(() => {
             var _a;
             return [
@@ -184,7 +188,7 @@ function _sfc_render(_ctx, _cache) {
             ];
           }),
           _: 3
-        }, 8, ["disabled", "content", "placement"]),
+        }, 8, ["disabled", "placement"]),
         _ctx.itemSelected && !_ctx.multiple ? (openBlock(), createElementBlock("div", {
           key: 1,
           class: "option-wrap-icon"

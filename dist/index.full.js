@@ -24649,7 +24649,8 @@
               class: vue.normalizeClass(vue.unref(ns).e("inner"))
             }, null, 2)
           ], 2),
-          vue.createElementVNode("span", {
+          _ctx.$slots.default || _ctx.label !== void 0 && _ctx.label !== null && _ctx.label !== "" ? (vue.openBlock(), vue.createElementBlock("span", {
+            key: 0,
             class: vue.normalizeClass(vue.unref(ns).e("label")),
             onKeydown: vue.withModifiers(() => {
             }, ["stop"])
@@ -24657,7 +24658,7 @@
             vue.renderSlot(_ctx.$slots, "default", {}, () => [
               vue.createTextVNode(vue.toDisplayString(_ctx.label), 1)
             ])
-          ], 42, ["onKeydown"])
+          ], 42, ["onKeydown"])) : vue.createCommentVNode("v-if", true)
         ], 2);
       };
     }
@@ -39534,7 +39535,8 @@
     label: "label",
     value: "value",
     disabled: "disabled",
-    options: "options"
+    options: "options",
+    tip: "tip"
   };
   function useProps(props) {
     const aliasProps = vue.computed(() => ({ ...defaultProps$5, ...props.props }));
@@ -39542,12 +39544,14 @@
     const getValue = (option) => get(option, aliasProps.value.value);
     const getDisabled = (option) => get(option, aliasProps.value.disabled);
     const getOptions = (option) => get(option, aliasProps.value.options);
+    const getTip = (option) => get(option, aliasProps.value.tip);
     return {
       aliasProps,
       getLabel,
       getValue,
       getDisabled,
-      getOptions
+      getOptions,
+      getTip
     };
   }
 
@@ -39568,6 +39572,7 @@
       type: Boolean,
       default: true
     },
+    tip: String,
     placement: {
       type: definePropType(String),
       values: Ee,
@@ -39671,7 +39676,7 @@
     setup(props) {
       const ns = useNamespace("select");
       const id = useId();
-      const disabled = vue.ref(false);
+      const isTextOverflowing = vue.ref(false);
       const containerKls = vue.computed(() => [
         ns.be("dropdown", "item"),
         ns.is("disabled", vue.unref(isDisabled)),
@@ -39752,7 +39757,7 @@
         if (!cellChild)
           return;
         if (cellChild && !(cellChild == null ? void 0 : cellChild.childNodes.length)) {
-          disabled.value = false;
+          isTextOverflowing.value = false;
           return;
         }
         const range = document.createRange();
@@ -39763,7 +39768,7 @@
         const { top, left, right, bottom } = getPadding(cellChild);
         const horizontalPadding = left + right;
         const verticalPadding = top + bottom;
-        disabled.value = !(isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth));
+        isTextOverflowing.value = isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth);
       };
       return {
         multiple,
@@ -39778,8 +39783,9 @@
         visible,
         hover,
         states,
-        disabled,
+        isTextOverflowing,
         showTip: props.showTip,
+        tip: vue.computed(() => props.tip),
         placement: props.placement,
         optionStyle,
         handleCellMouseEnter,
@@ -39815,11 +39821,14 @@
           vue.createVNode(_component_el_tooltip, {
             ref: "tooltipRef",
             effect: "light",
-            disabled: !_ctx.showTip || _ctx.disabled,
-            content: _ctx.currentLabel,
+            disabled: !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
             placement: _ctx.placement,
             "popper-class": "optionPopperClass"
           }, {
+            content: vue.withCtx(() => [
+              _ctx.isTextOverflowing ? (vue.openBlock(), vue.createElementBlock("div", { key: 0 }, vue.toDisplayString(_ctx.currentLabel), 1)) : vue.createCommentVNode("v-if", true),
+              _ctx.tip ? (vue.openBlock(), vue.createElementBlock("div", { key: 1 }, vue.toDisplayString(_ctx.tip), 1)) : vue.createCommentVNode("v-if", true)
+            ]),
             default: vue.withCtx(() => {
               var _a;
               return [
@@ -39835,7 +39844,7 @@
               ];
             }),
             _: 3
-          }, 8, ["disabled", "content", "placement"]),
+          }, 8, ["disabled", "placement"]),
           _ctx.itemSelected && !_ctx.multiple ? (vue.openBlock(), vue.createElementBlock("div", {
             key: 1,
             class: "option-wrap-icon"
@@ -40975,7 +40984,7 @@
       });
       const API = useSelect$3(_props, emit);
       const { calculatorRef, inputStyle } = useCalcInputWidth();
-      const { getLabel, getValue, getOptions, getDisabled } = useProps(props);
+      const { getLabel, getValue, getOptions, getDisabled, getTip } = useProps(props);
       const validateError = vue.computed(() => (API == null ? void 0 : API.validateState.value) === "error");
       const validateMsg = vue.computed(() => (API == null ? void 0 : API.validateMessage.value) || "");
       const showEmptyErrorTooltip = vue.computed(() => props.inputType === "error" && !API.hasModelValue.value);
@@ -40991,6 +41000,7 @@
         label: getLabel(option),
         value: getValue(option),
         disabled: getDisabled(option),
+        tip: getTip(option),
         rawOption: option
       });
       const flatTreeSelectData = (data) => {
@@ -45809,11 +45819,12 @@
     emits: optionV2Emits,
     setup(props, { emit }) {
       const select = vue.inject(selectV2InjectionKey);
-      const showTip = vue.ref(true);
+      const isTextOverflowing = vue.ref(false);
       const ns = useNamespace("select");
       const multiple = vue.computed(() => select.props.multiple);
       const { hoverItem, selectOptionClick } = useOption(props, { emit });
-      const { getLabel, getValue } = useProps(select.props);
+      const { getLabel, getValue, getTip } = useProps(select.props);
+      const currentTip = vue.computed(() => getTip(props.item));
       const contentId = select.contentId;
       const isItemSelected = (item) => {
         if (!item || item.type === "Group" || !multiple.value)
@@ -45845,7 +45856,7 @@
         if (!cellChild)
           return;
         if (cellChild && !(cellChild == null ? void 0 : cellChild.childNodes.length)) {
-          showTip.value = false;
+          isTextOverflowing.value = false;
           return;
         }
         const range = document.createRange();
@@ -45856,13 +45867,14 @@
         const { top, left, right, bottom } = getPadding(cellChild);
         const horizontalPadding = left + right;
         const verticalPadding = top + bottom;
-        showTip.value = !(isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth));
+        isTextOverflowing.value = isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth);
       };
       return {
         ns,
         contentId,
         multiple,
-        showTip,
+        isTextOverflowing,
+        currentTip,
         optionStyle,
         hoverItem,
         selectOptionClick,
@@ -45906,11 +45918,14 @@
           vue.createVNode(_component_el_tooltip, {
             ref: "tooltipRef",
             effect: "light",
-            disabled: _ctx.disabled || _ctx.showTip,
-            content: _ctx.getLabel(_ctx.item),
+            disabled: _ctx.disabled || !_ctx.isTextOverflowing && !_ctx.currentTip,
             placement: "right",
             "popper-class": "optionPopperClass"
           }, {
+            content: vue.withCtx(() => [
+              _ctx.isTextOverflowing ? (vue.openBlock(), vue.createElementBlock("div", { key: 0 }, vue.toDisplayString(_ctx.getLabel(_ctx.item)), 1)) : vue.createCommentVNode("v-if", true),
+              _ctx.currentTip ? (vue.openBlock(), vue.createElementBlock("div", { key: 1 }, vue.toDisplayString(_ctx.currentTip), 1)) : vue.createCommentVNode("v-if", true)
+            ]),
             default: vue.withCtx(() => {
               var _a;
               return [
@@ -45923,7 +45938,7 @@
               ];
             }),
             _: 3
-          }, 8, ["disabled", "content"]),
+          }, 8, ["disabled"]),
           _ctx.selected && !_ctx.multiple ? (vue.openBlock(), vue.createElementBlock("div", {
             key: 1,
             class: "option-wrap-icon"
@@ -55324,6 +55339,7 @@
   const ElTableEditableRowActions = withNoopInstall(TableEditableRowActions);
 
   var SortOrder = /* @__PURE__ */ ((SortOrder2) => {
+    SortOrder2["DEFAULT"] = "";
     SortOrder2["ASC"] = "asc";
     SortOrder2["DESC"] = "desc";
     return SortOrder2;
@@ -55339,9 +55355,10 @@
     FixedDir2["RIGHT"] = "right";
     return FixedDir2;
   })(FixedDir || {});
-  const oppositeOrderMap = {
+  const nextSortOrderMap = {
+    ["" /* DEFAULT */]: "asc" /* ASC */,
     ["asc" /* ASC */]: "desc" /* DESC */,
-    ["desc" /* DESC */]: "asc" /* ASC */
+    ["desc" /* DESC */]: "" /* DEFAULT */
   };
 
   const placeholderSign = Symbol("placeholder");
@@ -55558,9 +55575,9 @@
       const { sortState, sortBy } = props;
       let order = SortOrder.ASC;
       if (isObject$1(sortState)) {
-        order = (_a = oppositeOrderMap[sortState[key]]) != null ? _a : SortOrder.ASC;
+        order = nextSortOrderMap[(_a = sortState[key]) != null ? _a : SortOrder.DEFAULT];
       } else {
-        order = sortBy.key === key ? (_b = oppositeOrderMap[sortBy.order]) != null ? _b : SortOrder.ASC : SortOrder.ASC;
+        order = sortBy.key === key ? nextSortOrderMap[(_b = sortBy.order) != null ? _b : SortOrder.DEFAULT] : SortOrder.ASC;
       }
       (_c = props.onColumnSort) == null ? void 0 : _c.call(props, { column: getColumn(key), key, order });
     }
@@ -56872,7 +56889,7 @@
     return vue.createVNode(ElIcon, {
       "size": 12,
       "class": props.class,
-      "color": sorting ? "#ff5b05" : "#9FB1BD"
+      "color": sorting ? "var(--color-gray-800)" : "var(--color-gray-400)"
     }, {
       default: () => [sortOrder === SortOrder.ASC ? vue.createVNode(FilterIconUp, null, null) : vue.createVNode(FilterIconDown, null, null)]
     });
@@ -57662,11 +57679,11 @@
     let sorting, sortOrder;
     if (sortState) {
       const order = sortState[column.key];
-      sorting = Boolean(oppositeOrderMap[order]);
-      sortOrder = sorting ? order : SortOrder.ASC;
+      sorting = order === SortOrder.ASC || order === SortOrder.DESC;
+      sortOrder = sorting ? order : SortOrder.DESC;
     } else {
-      sorting = column.key === sortBy.key;
-      sortOrder = sorting ? sortBy.order : SortOrder.ASC;
+      sorting = column.key === sortBy.key && (sortBy.order === SortOrder.ASC || sortBy.order === SortOrder.DESC);
+      sortOrder = sorting ? sortBy.order : SortOrder.DESC;
     }
     const cellKls = [ns.e("header-cell"), diagonalHeader && ns.is("diagonal-header"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
     const clearAddColumnTrigger = () => {

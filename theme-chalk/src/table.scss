@@ -138,10 +138,7 @@
 
     th {
       font-weight: 400;
-
-      &.#{$namespace}-table__cell {
-        padding: 6px 0;
-      }
+      height: 44px;
     }
 
     &.is-group {
@@ -322,10 +319,6 @@
     &.is-diagonal-header-column {
       background-color: getCssVar('table-header-bg-color');
     }
-  }
-
-  th.#{$namespace}-table__cell.is-sortable {
-    cursor: pointer;
   }
 
   th.#{$namespace}-table__cell {

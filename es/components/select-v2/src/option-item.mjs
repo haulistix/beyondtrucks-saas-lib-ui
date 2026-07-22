@@ -17,11 +17,12 @@ const _sfc_main = defineComponent({
   emits: optionV2Emits,
   setup(props, { emit }) {
     const select = inject(selectV2InjectionKey);
-    const showTip = ref(true);
+    const isTextOverflowing = ref(false);
     const ns = useNamespace("select");
     const multiple = computed(() => select.props.multiple);
     const { hoverItem, selectOptionClick } = useOption(props, { emit });
-    const { getLabel, getValue } = useProps(select.props);
+    const { getLabel, getValue, getTip } = useProps(select.props);
+    const currentTip = computed(() => getTip(props.item));
     const contentId = select.contentId;
     const isItemSelected = (item) => {
       if (!item || item.type === "Group" || !multiple.value)
@@ -53,7 +54,7 @@ const _sfc_main = defineComponent({
       if (!cellChild)
         return;
       if (cellChild && !(cellChild == null ? void 0 : cellChild.childNodes.length)) {
-        showTip.value = false;
+        isTextOverflowing.value = false;
         return;
       }
       const range = document.createRange();
@@ -64,13 +65,14 @@ const _sfc_main = defineComponent({
       const { top, left, right, bottom } = getPadding(cellChild);
       const horizontalPadding = left + right;
       const verticalPadding = top + bottom;
-      showTip.value = !(isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth));
+      isTextOverflowing.value = isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth);
     };
     return {
       ns,
       contentId,
       multiple,
-      showTip,
+      isTextOverflowing,
+      currentTip,
       optionStyle,
       hoverItem,
       selectOptionClick,
@@ -114,11 +116,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         createVNode(_component_el_tooltip, {
           ref: "tooltipRef",
           effect: "light",
-          disabled: _ctx.disabled || _ctx.showTip,
-          content: _ctx.getLabel(_ctx.item),
+          disabled: _ctx.disabled || !_ctx.isTextOverflowing && !_ctx.currentTip,
           placement: "right",
           "popper-class": "optionPopperClass"
         }, {
+          content: withCtx(() => [
+            _ctx.isTextOverflowing ? (openBlock(), createElementBlock("div", { key: 0 }, toDisplayString(_ctx.getLabel(_ctx.item)), 1)) : createCommentVNode("v-if", true),
+            _ctx.currentTip ? (openBlock(), createElementBlock("div", { key: 1 }, toDisplayString(_ctx.currentTip), 1)) : createCommentVNode("v-if", true)
+          ]),
           default: withCtx(() => {
             var _a;
             return [
@@ -131,7 +136,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             ];
           }),
           _: 3
-        }, 8, ["disabled", "content"]),
+        }, 8, ["disabled"]),
         _ctx.selected && !_ctx.multiple ? (openBlock(), createElementBlock("div", {
           key: 1,
           class: "option-wrap-icon"

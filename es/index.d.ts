@@ -16102,6 +16102,7 @@ declare const _default_73: DefineComponent<{
         label: any;
         value: any;
         disabled: any;
+        tip: any;
         rawOption: Record<string, any>;
     };
     inputId: Ref<string | undefined>;
@@ -16457,6 +16458,7 @@ declare const _default_74: DefineComponent<{
     };
     created: BooleanConstructor;
     showTip: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+    tip: StringConstructor;
     placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
     rawOption: {
@@ -16500,8 +16502,9 @@ declare const _default_74: DefineComponent<{
         visible: boolean;
         hover: boolean;
     };
-    disabled: Ref<boolean>;
+    isTextOverflowing: Ref<boolean>;
     showTip: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    tip: ComputedRef<string | undefined>;
     placement: EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown>;
     optionStyle: ComputedRef<{
         order?: undefined;
@@ -16529,6 +16532,7 @@ declare const _default_74: DefineComponent<{
     };
     created: BooleanConstructor;
     showTip: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+    tip: StringConstructor;
     placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
     rawOption: {
@@ -24180,6 +24184,7 @@ declare const optionProps: {
     };
     created: BooleanConstructor;
     showTip: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+    tip: StringConstructor;
     placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
     rawOption: {
@@ -24763,6 +24768,7 @@ declare interface Props_2 {
     value?: string;
     disabled?: string;
     options?: string;
+    tip?: string;
 }
 export declare type PropValidator<T> = (props: T) => void;
 export declare const provideGlobalConfig: (config: MaybeRef<ConfigProviderContext>, app?: App, global?: boolean) => ComputedRef<Partial<ConfigProviderProps>> | undefined;
@@ -27437,6 +27443,7 @@ export declare const tableV2RowProps: {
 };
 export declare type TableV2RowPropsPublic = __ExtractPublicPropTypes<typeof tableV2RowProps>;
 export declare enum TableV2SortOrder {
+    DEFAULT = "",
     ASC = "asc",
     DESC = "desc"
 }

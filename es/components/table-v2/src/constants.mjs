@@ -1,4 +1,5 @@
 var SortOrder = /* @__PURE__ */ ((SortOrder2) => {
+  SortOrder2["DEFAULT"] = "";
   SortOrder2["ASC"] = "asc";
   SortOrder2["DESC"] = "desc";
   return SortOrder2;
@@ -14,11 +15,16 @@ var FixedDir = /* @__PURE__ */ ((FixedDir2) => {
   FixedDir2["RIGHT"] = "right";
   return FixedDir2;
 })(FixedDir || {});
-const oppositeOrderMap = {
+const nextSortOrderMap = {
+  ["" /* DEFAULT */]: "asc" /* ASC */,
   ["asc" /* ASC */]: "desc" /* DESC */,
-  ["desc" /* DESC */]: "asc" /* ASC */
+  ["desc" /* DESC */]: "" /* DEFAULT */
 };
-const sortOrders = ["asc" /* ASC */, "desc" /* DESC */];
+const sortOrders = [
+  "" /* DEFAULT */,
+  "asc" /* ASC */,
+  "desc" /* DESC */
+];
 
-export { Alignment, FixedDir, SortOrder, oppositeOrderMap, sortOrders };
+export { Alignment, FixedDir, SortOrder, nextSortOrderMap, sortOrders };
 //# sourceMappingURL=constants.mjs.map

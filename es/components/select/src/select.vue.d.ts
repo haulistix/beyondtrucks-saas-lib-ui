@@ -152,6 +152,7 @@ declare const _default: import("vue").DefineComponent<{
         label: any;
         value: any;
         disabled: any;
+        tip: any;
         rawOption: Record<string, any>;
     };
     inputId: import("vue").Ref<string | undefined>;

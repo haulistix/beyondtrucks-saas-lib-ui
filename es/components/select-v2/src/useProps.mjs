@@ -5,7 +5,8 @@ const defaultProps = {
   label: "label",
   value: "value",
   disabled: "disabled",
-  options: "options"
+  options: "options",
+  tip: "tip"
 };
 function useProps(props) {
   const aliasProps = computed(() => ({ ...defaultProps, ...props.props }));
@@ -13,12 +14,14 @@ function useProps(props) {
   const getValue = (option) => get(option, aliasProps.value.value);
   const getDisabled = (option) => get(option, aliasProps.value.disabled);
   const getOptions = (option) => get(option, aliasProps.value.options);
+  const getTip = (option) => get(option, aliasProps.value.tip);
   return {
     aliasProps,
     getLabel,
     getValue,
     getDisabled,
-    getOptions
+    getOptions,
+    getTip
   };
 }
 

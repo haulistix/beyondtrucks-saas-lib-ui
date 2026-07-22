@@ -5,6 +5,7 @@ export interface Props {
     value?: string;
     disabled?: string;
     options?: string;
+    tip?: string;
 }
 export declare const defaultProps: Required<Props>;
 export declare function useProps(props: Pick<SelectV2Props, 'props'>): {
@@ -13,9 +14,11 @@ export declare function useProps(props: Pick<SelectV2Props, 'props'>): {
         value: string;
         disabled: string;
         options: string;
+        tip: string;
     }>;
     getLabel: (option: Option) => any;
     getValue: (option: Option) => any;
     getDisabled: (option: Option) => any;
     getOptions: (option: Option) => any;
+    getTip: (option: Option) => any;
 };

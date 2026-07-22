@@ -1,4 +1,5 @@
 export declare enum SortOrder {
+    DEFAULT = "",
     ASC = "asc",
     DESC = "desc"
 }
@@ -11,8 +12,9 @@ export declare enum FixedDir {
     LEFT = "left",
     RIGHT = "right"
 }
-export declare const oppositeOrderMap: {
+export declare const nextSortOrderMap: {
+    "": SortOrder;
     asc: SortOrder;
     desc: SortOrder;
 };
-export declare const sortOrders: readonly [SortOrder.ASC, SortOrder.DESC];
+export declare const sortOrders: readonly [SortOrder.DEFAULT, SortOrder.ASC, SortOrder.DESC];

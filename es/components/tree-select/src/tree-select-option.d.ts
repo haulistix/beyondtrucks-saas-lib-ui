@@ -25,6 +25,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             };
             created: BooleanConstructor;
             showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+            tip: StringConstructor;
             placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
             disabled: BooleanConstructor;
             rawOption: {
@@ -60,6 +61,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             };
             created: BooleanConstructor;
             showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+            tip: StringConstructor;
             placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
             disabled: BooleanConstructor;
             rawOption: {
@@ -103,8 +105,9 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
                 visible: boolean;
                 hover: boolean;
             };
-            disabled: import("vue").Ref<boolean>;
+            isTextOverflowing: import("vue").Ref<boolean>;
             showTip: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+            tip: import("vue").ComputedRef<string | undefined>;
             placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
             optionStyle: import("vue").ComputedRef<{
                 order?: undefined;
@@ -157,6 +160,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         };
         created: BooleanConstructor;
         showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+        tip: StringConstructor;
         placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
         disabled: BooleanConstructor;
         rawOption: {
@@ -200,8 +204,9 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             visible: boolean;
             hover: boolean;
         };
-        disabled: import("vue").Ref<boolean>;
+        isTextOverflowing: import("vue").Ref<boolean>;
         showTip: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+        tip: import("vue").ComputedRef<string | undefined>;
         placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
         optionStyle: import("vue").ComputedRef<{
             order?: undefined;
@@ -233,6 +238,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
     };
     created: BooleanConstructor;
     showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+    tip: StringConstructor;
     placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
     rawOption: {
@@ -276,8 +282,9 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         visible: boolean;
         hover: boolean;
     };
-    disabled: import("vue").Ref<boolean>;
+    isTextOverflowing: import("vue").Ref<boolean>;
     showTip: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    tip: import("vue").ComputedRef<string | undefined>;
     placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
     optionStyle: import("vue").ComputedRef<{
         order?: undefined;
@@ -321,6 +328,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             };
             created: BooleanConstructor;
             showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+            tip: StringConstructor;
             placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
             disabled: BooleanConstructor;
             rawOption: {
@@ -356,6 +364,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             };
             created: BooleanConstructor;
             showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+            tip: StringConstructor;
             placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
             disabled: BooleanConstructor;
             rawOption: {
@@ -399,8 +408,9 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
                 visible: boolean;
                 hover: boolean;
             };
-            disabled: import("vue").Ref<boolean>;
+            isTextOverflowing: import("vue").Ref<boolean>;
             showTip: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+            tip: import("vue").ComputedRef<string | undefined>;
             placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
             optionStyle: import("vue").ComputedRef<{
                 order?: undefined;
@@ -453,6 +463,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         };
         created: BooleanConstructor;
         showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+        tip: StringConstructor;
         placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
         disabled: BooleanConstructor;
         rawOption: {
@@ -496,8 +507,9 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             visible: boolean;
             hover: boolean;
         };
-        disabled: import("vue").Ref<boolean>;
+        isTextOverflowing: import("vue").Ref<boolean>;
         showTip: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+        tip: import("vue").ComputedRef<string | undefined>;
         placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
         optionStyle: import("vue").ComputedRef<{
             order?: undefined;
@@ -529,6 +541,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
     };
     created: BooleanConstructor;
     showTip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
+    tip: StringConstructor;
     placement: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown, string, boolean>;
     disabled: BooleanConstructor;
     rawOption: {
@@ -572,8 +585,9 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         visible: boolean;
         hover: boolean;
     };
-    disabled: import("vue").Ref<boolean>;
+    isTextOverflowing: import("vue").Ref<boolean>;
     showTip: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    tip: import("vue").ComputedRef<string | undefined>;
     placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
     optionStyle: import("vue").ComputedRef<{
         order?: undefined;

@@ -1,5 +1,5 @@
 import { ref, computed, unref } from 'vue';
-import { FixedDir, SortOrder, oppositeOrderMap } from '../constants.mjs';
+import { FixedDir, SortOrder, nextSortOrderMap } from '../constants.mjs';
 import { rowDeleteColumnKey, rowDeleteColumnWidth, placeholderSign, rowDeletePlaceholderMergedSign } from '../private.mjs';
 import { calcColumnStyle } from './utils.mjs';
 import { isObject } from '@vue/shared';
@@ -179,9 +179,9 @@ function useColumns(props, columns, fixed, effectiveWidth, reservedVScrollbarWid
     const { sortState, sortBy } = props;
     let order = SortOrder.ASC;
     if (isObject(sortState)) {
-      order = (_a = oppositeOrderMap[sortState[key]]) != null ? _a : SortOrder.ASC;
+      order = nextSortOrderMap[(_a = sortState[key]) != null ? _a : SortOrder.DEFAULT];
     } else {
-      order = sortBy.key === key ? (_b = oppositeOrderMap[sortBy.order]) != null ? _b : SortOrder.ASC : SortOrder.ASC;
+      order = sortBy.key === key ? nextSortOrderMap[(_b = sortBy.order) != null ? _b : SortOrder.DEFAULT] : SortOrder.ASC;
     }
     (_c = props.onColumnSort) == null ? void 0 : _c.call(props, { column: getColumn(key), key, order });
   }

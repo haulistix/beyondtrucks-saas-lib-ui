@@ -1,5 +1,5 @@
 import { createVNode, renderSlot, mergeProps } from 'vue';
-import { oppositeOrderMap, SortOrder, Alignment } from '../constants.mjs';
+import { SortOrder, Alignment } from '../constants.mjs';
 import { placeholderSign, rowDeletePlaceholderMergedSign, rowDeleteColumnKey } from '../private.mjs';
 import { enforceUnit, componentToSlot, tryCall } from '../utils.mjs';
 import HeaderCell$1 from '../components/header-cell.mjs';
@@ -57,11 +57,11 @@ const HeaderCellRenderer = (props, {
   let sorting, sortOrder;
   if (sortState) {
     const order = sortState[column.key];
-    sorting = Boolean(oppositeOrderMap[order]);
-    sortOrder = sorting ? order : SortOrder.ASC;
+    sorting = order === SortOrder.ASC || order === SortOrder.DESC;
+    sortOrder = sorting ? order : SortOrder.DESC;
   } else {
-    sorting = column.key === sortBy.key;
-    sortOrder = sorting ? sortBy.order : SortOrder.ASC;
+    sorting = column.key === sortBy.key && (sortBy.order === SortOrder.ASC || sortBy.order === SortOrder.DESC);
+    sortOrder = sorting ? sortBy.order : SortOrder.DESC;
   }
   const cellKls = [ns.e("header-cell"), diagonalHeader && ns.is("diagonal-header"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
   const clearAddColumnTrigger = () => {

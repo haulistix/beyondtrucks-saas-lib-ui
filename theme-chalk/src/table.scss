@@ -323,7 +323,6 @@
 
   th.#{$namespace}-table__cell {
     background-color: getCssVar('table-header-bg-color');
-    vertical-align: baseline;
 
     > .cell.highlight {
       color: getCssVar('color-primary');

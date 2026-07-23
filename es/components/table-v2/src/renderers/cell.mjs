@@ -1,4 +1,4 @@
-import { createVNode, renderSlot, mergeProps } from 'vue';
+import { createVNode, nextTick, renderSlot, mergeProps } from 'vue';
 import { ElIcon } from '../../../icon/index.mjs';
 import { ElButton } from '../../../button/index.mjs';
 import { get, set } from 'lodash-unified';
@@ -120,15 +120,24 @@ const CellRenderer = ({
     var _a;
     return isEmptyRequiredValue(get(rowData, (_a = item.dataKey) != null ? _a : ""));
   });
+  const commitGhostRowEditor = (event) => {
+    var _a, _b;
+    const activeElement = (_b = (_a = event.currentTarget) == null ? void 0 : _a.ownerDocument) == null ? void 0 : _b.activeElement;
+    if (activeElement && activeElement !== event.currentTarget && "blur" in activeElement) {
+      activeElement.blur();
+    }
+  };
   const Cell = isRowDeleteColumn ? shouldRenderGhostAddButton ? createVNode(ElButton, {
     "text": true,
     "class": "icon-button",
     "disabled": isGhostRowAddDisabled,
-    "onClick": (event) => {
+    "onClick": async (event) => {
       var _a;
       event.stopPropagation();
       if (isGhostRowAddDisabled)
         return;
+      commitGhostRowEditor(event);
+      await nextTick();
       onAddGhostRow == null ? void 0 : onAddGhostRow({
         event,
         row: rowData,
@@ -210,7 +219,9 @@ const CellRenderer = ({
   }) : shouldRenderGhostEditCell ? (() => {
     const rendered = editColumnCellRenderer(cellProps);
     return applyRequiredInputState(rendered, column, rowData);
-  })() : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(TableCell, cellProps, null)]);
+  })() : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(TableCell, mergeProps(cellProps, {
+    "showOverflowTooltip": column.showOverflowTooltip
+  }), null)]);
   const kls = [ns.e("row-cell"), column.diagonalHeader && "is-diagonal-header-column", ghostTable && "is-full-width", isGhostRow && ns.is("ghost-row"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), column.class, column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right")];
   const expandable = rowIndex >= 0 && expandColumnKey && column.key === expandColumnKey;
   const expanded = rowIndex >= 0 && expandedRowKeys.includes(rowData[rowKey]);

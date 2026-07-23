@@ -142,6 +142,9 @@ declare const _default: import("vue").DefineComponent<{
     validateMsg: import("vue").ComputedRef<string>;
     errorTooltipContent: import("vue").ComputedRef<string>;
     errorTooltipDisabled: import("vue").ComputedRef<boolean>;
+    errorTooltipVisible: import("vue").Ref<boolean>;
+    handleSelectClick: () => void;
+    handleSelectClickOutside: (event: Event) => void;
     handleAddSelect: () => void;
     getLabel: (option: import("../../select-v2/src/select.types.js").Option) => any;
     isEmpty: (val: unknown) => boolean;

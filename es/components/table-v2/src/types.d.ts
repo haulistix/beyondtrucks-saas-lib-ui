@@ -1,9 +1,11 @@
 import type { CSSProperties, FunctionalComponent, RendererElement, RendererNode, VNode } from 'vue';
 import type { ColumnAlignment } from 'element-plus/es/constants';
+import type { ElTooltipProps } from 'element-plus/es/components/tooltip';
 import type { FixedDir, SortOrder } from './constants';
 export type Alignment = ColumnAlignment;
 export type FixedDirection = FixedDir;
 export type KeyType = string | number | symbol;
+export type TableV2OverflowTooltipOptions = Partial<Pick<ElTooltipProps, 'appendTo' | 'effect' | 'enterable' | 'hideAfter' | 'offset' | 'placement' | 'popperClass' | 'popperOptions' | 'showAfter' | 'showArrow' | 'transition'>>;
 /**
  * Param types
  */
@@ -69,6 +71,7 @@ export type Column<T = any> = {
     minWidth?: number;
     required?: boolean;
     resizable?: boolean;
+    showOverflowTooltip?: boolean | TableV2OverflowTooltipOptions;
     style?: CSSProperties;
     sortable?: boolean;
     width?: ColumnWidth;

@@ -16753,7 +16753,7 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
       return "";
     });
     const inputTooltipDisabled = computed(() => inputTooltipSource.value === "none");
-    const inputTooltipTrigger = computed(() => "hover");
+    const inputTooltipTrigger = computed(() => inputTooltipSource.value === "error" ? "click" : "hover");
     const showClear = computed(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (isFocused.value || hovering.value));
     const showPwdVisible = computed(() => props.showPassword && !inputDisabled.value && !!nativeInputValue.value);
     const showInfoTipIcon = computed(() => props.inputType === "info" && !!props.infoTip);
@@ -33761,7 +33761,7 @@ const getPanel = function(type) {
   }
 };
 
-function _isSlot$6(s) {
+function _isSlot$7(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 dayjs.extend(localeData);
@@ -33848,7 +33848,7 @@ var DatePicker = defineComponent({
             "modelValue": selectType.value,
             "onChange": handleRadioChange,
             "size": "small"
-          }, _isSlot$6(_slot = props.typeList.map((item) => createVNode(ElRadioButton, {
+          }, _isSlot$7(_slot = props.typeList.map((item) => createVNode(ElRadioButton, {
             "key": item.key,
             "value": item.key,
             "label": item.label,
@@ -40992,6 +40992,19 @@ const _sfc_main$10 = defineComponent({
       return "";
     });
     const errorTooltipDisabled = computed(() => !errorTooltipContent.value);
+    const errorTooltipVisible = ref(false);
+    const handleSelectClick = () => {
+      API.toggleMenu();
+      errorTooltipVisible.value = !errorTooltipDisabled.value && !errorTooltipVisible.value;
+    };
+    const handleSelectClickOutside = (event) => {
+      errorTooltipVisible.value = false;
+      API.handleClickOutside(event);
+    };
+    watch(errorTooltipDisabled, (disabled) => {
+      if (disabled)
+        errorTooltipVisible.value = false;
+    });
     const getOptionProps = (option) => ({
       label: getLabel(option),
       value: getValue(option),
@@ -41074,6 +41087,9 @@ const _sfc_main$10 = defineComponent({
       validateMsg,
       errorTooltipContent,
       errorTooltipDisabled,
+      errorTooltipVisible,
+      handleSelectClick,
+      handleSelectClickOutside,
       handleAddSelect,
       getLabel,
       isEmpty,
@@ -41110,12 +41126,13 @@ function _sfc_render$b(_ctx, _cache) {
     onMouseleave: ($event) => _ctx.states.inputHovering = false
   }, [
     createVNode(_component_el_tooltip, {
-      trigger: "hover",
+      trigger: "click",
       effect: "light",
       placement: "top",
       offset: 4,
       content: _ctx.errorTooltipContent,
-      disabled: _ctx.errorTooltipDisabled
+      disabled: _ctx.errorTooltipDisabled,
+      visible: _ctx.errorTooltipVisible
     }, {
       default: withCtx(() => [
         createElementVNode("div", {
@@ -41160,7 +41177,7 @@ function _sfc_render$b(_ctx, _cache) {
                     _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
                     _ctx.nsSelect.is("value", _ctx.hasModelValue)
                   ]),
-                  onClick: withModifiers(_ctx.toggleMenu, ["prevent"])
+                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
                 }, [
                   _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
                     key: 0,
@@ -41583,9 +41600,9 @@ function _sfc_render$b(_ctx, _cache) {
         ], 2)
       ]),
       _: 3
-    }, 8, ["content", "disabled"])
+    }, 8, ["content", "disabled", "visible"])
   ], 16, ["onMouseleave"])), [
-    [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
+    [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
   ]);
 }
 var Select$1 = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$b], ["__file", "select.vue"]]);
@@ -47130,6 +47147,19 @@ const _sfc_main$Q = defineComponent({
       return "";
     });
     const errorTooltipDisabled = computed(() => !errorTooltipContent.value);
+    const errorTooltipVisible = ref(false);
+    const handleSelectClick = () => {
+      API.toggleMenu();
+      errorTooltipVisible.value = !errorTooltipDisabled.value && !errorTooltipVisible.value;
+    };
+    const handleSelectClickOutside = (event) => {
+      errorTooltipVisible.value = false;
+      API.handleClickOutside(event);
+    };
+    watch(errorTooltipDisabled, (disabled) => {
+      if (disabled)
+        errorTooltipVisible.value = false;
+    });
     provide(selectV2InjectionKey, {
       props: reactive({
         ...toRefs(props),
@@ -47160,6 +47190,9 @@ const _sfc_main$Q = defineComponent({
       validateMsg,
       errorTooltipContent,
       errorTooltipDisabled,
+      errorTooltipVisible,
+      handleSelectClick,
+      handleSelectClickOutside,
       contentId,
       BORDER_HORIZONTAL_WIDTH
     };
@@ -47187,12 +47220,13 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     onMouseleave: ($event) => _ctx.states.inputHovering = false
   }, [
     createVNode(_component_el_tooltip, {
-      trigger: "hover",
+      trigger: "click",
       effect: "light",
       placement: "top",
       offset: 4,
       content: _ctx.errorTooltipContent,
-      disabled: _ctx.errorTooltipDisabled
+      disabled: _ctx.errorTooltipDisabled,
+      visible: _ctx.errorTooltipVisible
     }, {
       default: withCtx(() => [
         createElementVNode("div", {
@@ -47237,7 +47271,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
                     _ctx.nsSelect.is("value", _ctx.hasModelValue)
                   ]),
-                  onClick: withModifiers(_ctx.toggleMenu, ["prevent"])
+                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
                 }, [
                   _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
                     key: 0,
@@ -47594,9 +47628,9 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
         ], 2)
       ]),
       _: 3
-    }, 8, ["content", "disabled"])
+    }, 8, ["content", "disabled", "visible"])
   ], 42, ["onMouseenter", "onMouseleave"])), [
-    [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
+    [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
   ]);
 }
 var Select = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$8], ["__file", "select.vue"]]);
@@ -56216,6 +56250,9 @@ const columns = {
   type: definePropType(Array),
   required: true
 };
+const column = {
+  type: definePropType(Object)
+};
 const fixedDataType = {
   type: definePropType(Array)
 };
@@ -56475,24 +56512,82 @@ const tableV2Props = buildProps({
   rowEventHandlers: tableV2RowProps.rowEventHandlers
 });
 
-const TableV2Cell = (props, {
-  slots
-}) => {
-  var _a;
-  const {
-    cellData,
-    style
-  } = props;
-  const displayText = ((_a = cellData == null ? void 0 : cellData.toString) == null ? void 0 : _a.call(cellData)) || "";
-  const defaultSlot = renderSlot(slots, "default", props, () => [displayText]);
-  return createVNode("div", {
-    "class": props.class,
-    "title": displayText,
-    "style": style
-  }, [defaultSlot]);
-};
-TableV2Cell.displayName = "ElTableV2Cell";
-TableV2Cell.inheritAttrs = false;
+const tableV2CellProps = buildProps({
+  class: String,
+  cellData: {
+    type: definePropType([String, Boolean, Number, Object])
+  },
+  column,
+  columnIndex: Number,
+  style: {
+    type: definePropType([String, Array, Object])
+  },
+  rowData: {
+    type: definePropType(Object)
+  },
+  rowIndex: Number,
+  showOverflowTooltip: {
+    type: definePropType([
+      Boolean,
+      Object
+    ]),
+    default: false
+  }
+});
+
+function _isSlot$6(s) {
+  return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
+}
+const TableV2Cell = defineComponent({
+  name: "ElTableV2Cell",
+  inheritAttrs: false,
+  props: tableV2CellProps,
+  setup(props, {
+    slots
+  }) {
+    const contentRef = ref();
+    const isOverflowing = ref(false);
+    const updateOverflow = () => {
+      const element = contentRef.value;
+      if (!props.showOverflowTooltip || !element) {
+        isOverflowing.value = false;
+        return;
+      }
+      isOverflowing.value = Boolean(element.scrollWidth > element.clientWidth || element.scrollHeight > element.clientHeight);
+    };
+    onMounted(updateOverflow);
+    onUpdated(updateOverflow);
+    return () => {
+      var _a;
+      const {
+        cellData,
+        showOverflowTooltip,
+        style
+      } = props;
+      const displayText = ((_a = cellData == null ? void 0 : cellData.toString) == null ? void 0 : _a.call(cellData)) || "";
+      const defaultSlot = renderSlot(slots, "default", props, () => [displayText]);
+      const content = createVNode("div", {
+        "ref": contentRef,
+        "class": props.class,
+        "title": showOverflowTooltip ? void 0 : displayText,
+        "style": style,
+        "onMouseenter": showOverflowTooltip ? updateOverflow : void 0
+      }, [defaultSlot]);
+      if (!showOverflowTooltip)
+        return content;
+      const tooltipOptions = typeof showOverflowTooltip === "object" ? showOverflowTooltip : {};
+      return createVNode(ElTooltip, mergeProps({
+        "effect": "light",
+        "placement": "top"
+      }, tooltipOptions, {
+        "content": displayText,
+        "disabled": !isOverflowing.value
+      }), _isSlot$6(content) ? content : {
+        default: () => [content]
+      });
+    };
+  }
+});
 var TableCell = TableV2Cell;
 
 const HeaderCell = (props, {
@@ -57476,15 +57571,24 @@ const CellRenderer = ({
     var _a;
     return isEmptyRequiredValue(get(rowData, (_a = item.dataKey) != null ? _a : ""));
   });
+  const commitGhostRowEditor = (event) => {
+    var _a, _b;
+    const activeElement = (_b = (_a = event.currentTarget) == null ? void 0 : _a.ownerDocument) == null ? void 0 : _b.activeElement;
+    if (activeElement && activeElement !== event.currentTarget && "blur" in activeElement) {
+      activeElement.blur();
+    }
+  };
   const Cell = isRowDeleteColumn ? shouldRenderGhostAddButton ? createVNode(ElButton, {
     "text": true,
     "class": "icon-button",
     "disabled": isGhostRowAddDisabled,
-    "onClick": (event) => {
+    "onClick": async (event) => {
       var _a;
       event.stopPropagation();
       if (isGhostRowAddDisabled)
         return;
+      commitGhostRowEditor(event);
+      await nextTick();
       onAddGhostRow == null ? void 0 : onAddGhostRow({
         event,
         row: rowData,
@@ -57566,7 +57670,9 @@ const CellRenderer = ({
   }) : shouldRenderGhostEditCell ? (() => {
     const rendered = editColumnCellRenderer(cellProps);
     return applyRequiredInputState(rendered, column, rowData);
-  })() : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(TableCell, cellProps, null)]);
+  })() : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(TableCell, mergeProps(cellProps, {
+    "showOverflowTooltip": column.showOverflowTooltip
+  }), null)]);
   const kls = [ns.e("row-cell"), column.diagonalHeader && "is-diagonal-header-column", ghostTable && "is-full-width", isGhostRow && ns.is("ghost-row"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), column.class, column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right")];
   const expandable = rowIndex >= 0 && expandColumnKey && column.key === expandColumnKey;
   const expanded = rowIndex >= 0 && expandedRowKeys.includes(rowData[rowKey]);

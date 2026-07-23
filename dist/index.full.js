@@ -16757,7 +16757,7 @@
         return "";
       });
       const inputTooltipDisabled = vue.computed(() => inputTooltipSource.value === "none");
-      const inputTooltipTrigger = vue.computed(() => "hover");
+      const inputTooltipTrigger = vue.computed(() => inputTooltipSource.value === "error" ? "click" : "hover");
       const showClear = vue.computed(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (isFocused.value || hovering.value));
       const showPwdVisible = vue.computed(() => props.showPassword && !inputDisabled.value && !!nativeInputValue.value);
       const showInfoTipIcon = vue.computed(() => props.inputType === "info" && !!props.infoTip);
@@ -33765,7 +33765,7 @@
     }
   };
 
-  function _isSlot$6(s) {
+  function _isSlot$7(s) {
     return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
   }
   dayjs.extend(localeData);
@@ -33852,7 +33852,7 @@
               "modelValue": selectType.value,
               "onChange": handleRadioChange,
               "size": "small"
-            }, _isSlot$6(_slot = props.typeList.map((item) => vue.createVNode(ElRadioButton, {
+            }, _isSlot$7(_slot = props.typeList.map((item) => vue.createVNode(ElRadioButton, {
               "key": item.key,
               "value": item.key,
               "label": item.label,
@@ -40996,6 +40996,19 @@
         return "";
       });
       const errorTooltipDisabled = vue.computed(() => !errorTooltipContent.value);
+      const errorTooltipVisible = vue.ref(false);
+      const handleSelectClick = () => {
+        API.toggleMenu();
+        errorTooltipVisible.value = !errorTooltipDisabled.value && !errorTooltipVisible.value;
+      };
+      const handleSelectClickOutside = (event) => {
+        errorTooltipVisible.value = false;
+        API.handleClickOutside(event);
+      };
+      vue.watch(errorTooltipDisabled, (disabled) => {
+        if (disabled)
+          errorTooltipVisible.value = false;
+      });
       const getOptionProps = (option) => ({
         label: getLabel(option),
         value: getValue(option),
@@ -41078,6 +41091,9 @@
         validateMsg,
         errorTooltipContent,
         errorTooltipDisabled,
+        errorTooltipVisible,
+        handleSelectClick,
+        handleSelectClickOutside,
         handleAddSelect,
         getLabel,
         isEmpty,
@@ -41114,12 +41130,13 @@
       onMouseleave: ($event) => _ctx.states.inputHovering = false
     }, [
       vue.createVNode(_component_el_tooltip, {
-        trigger: "hover",
+        trigger: "click",
         effect: "light",
         placement: "top",
         offset: 4,
         content: _ctx.errorTooltipContent,
-        disabled: _ctx.errorTooltipDisabled
+        disabled: _ctx.errorTooltipDisabled,
+        visible: _ctx.errorTooltipVisible
       }, {
         default: vue.withCtx(() => [
           vue.createElementVNode("div", {
@@ -41164,7 +41181,7 @@
                       _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
                       _ctx.nsSelect.is("value", _ctx.hasModelValue)
                     ]),
-                    onClick: vue.withModifiers(_ctx.toggleMenu, ["prevent"])
+                    onClick: vue.withModifiers(_ctx.handleSelectClick, ["prevent"])
                   }, [
                     _ctx.floatLabel ? (vue.openBlock(), vue.createElementBlock("span", {
                       key: 0,
@@ -41587,9 +41604,9 @@
           ], 2)
         ]),
         _: 3
-      }, 8, ["content", "disabled"])
+      }, 8, ["content", "disabled", "visible"])
     ], 16, ["onMouseleave"])), [
-      [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
+      [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
     ]);
   }
   var Select$1 = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$b], ["__file", "select.vue"]]);
@@ -47134,6 +47151,19 @@
         return "";
       });
       const errorTooltipDisabled = vue.computed(() => !errorTooltipContent.value);
+      const errorTooltipVisible = vue.ref(false);
+      const handleSelectClick = () => {
+        API.toggleMenu();
+        errorTooltipVisible.value = !errorTooltipDisabled.value && !errorTooltipVisible.value;
+      };
+      const handleSelectClickOutside = (event) => {
+        errorTooltipVisible.value = false;
+        API.handleClickOutside(event);
+      };
+      vue.watch(errorTooltipDisabled, (disabled) => {
+        if (disabled)
+          errorTooltipVisible.value = false;
+      });
       vue.provide(selectV2InjectionKey, {
         props: vue.reactive({
           ...vue.toRefs(props),
@@ -47164,6 +47194,9 @@
         validateMsg,
         errorTooltipContent,
         errorTooltipDisabled,
+        errorTooltipVisible,
+        handleSelectClick,
+        handleSelectClickOutside,
         contentId,
         BORDER_HORIZONTAL_WIDTH
       };
@@ -47191,12 +47224,13 @@
       onMouseleave: ($event) => _ctx.states.inputHovering = false
     }, [
       vue.createVNode(_component_el_tooltip, {
-        trigger: "hover",
+        trigger: "click",
         effect: "light",
         placement: "top",
         offset: 4,
         content: _ctx.errorTooltipContent,
-        disabled: _ctx.errorTooltipDisabled
+        disabled: _ctx.errorTooltipDisabled,
+        visible: _ctx.errorTooltipVisible
       }, {
         default: vue.withCtx(() => [
           vue.createElementVNode("div", {
@@ -47241,7 +47275,7 @@
                       _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
                       _ctx.nsSelect.is("value", _ctx.hasModelValue)
                     ]),
-                    onClick: vue.withModifiers(_ctx.toggleMenu, ["prevent"])
+                    onClick: vue.withModifiers(_ctx.handleSelectClick, ["prevent"])
                   }, [
                     _ctx.floatLabel ? (vue.openBlock(), vue.createElementBlock("span", {
                       key: 0,
@@ -47598,9 +47632,9 @@
           ], 2)
         ]),
         _: 3
-      }, 8, ["content", "disabled"])
+      }, 8, ["content", "disabled", "visible"])
     ], 42, ["onMouseenter", "onMouseleave"])), [
-      [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
+      [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
     ]);
   }
   var Select = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$8], ["__file", "select.vue"]]);
@@ -56220,6 +56254,9 @@
     type: definePropType(Array),
     required: true
   };
+  const column = {
+    type: definePropType(Object)
+  };
   const fixedDataType = {
     type: definePropType(Array)
   };
@@ -56479,24 +56516,82 @@
     rowEventHandlers: tableV2RowProps.rowEventHandlers
   });
 
-  const TableV2Cell = (props, {
-    slots
-  }) => {
-    var _a;
-    const {
-      cellData,
-      style
-    } = props;
-    const displayText = ((_a = cellData == null ? void 0 : cellData.toString) == null ? void 0 : _a.call(cellData)) || "";
-    const defaultSlot = vue.renderSlot(slots, "default", props, () => [displayText]);
-    return vue.createVNode("div", {
-      "class": props.class,
-      "title": displayText,
-      "style": style
-    }, [defaultSlot]);
-  };
-  TableV2Cell.displayName = "ElTableV2Cell";
-  TableV2Cell.inheritAttrs = false;
+  const tableV2CellProps = buildProps({
+    class: String,
+    cellData: {
+      type: definePropType([String, Boolean, Number, Object])
+    },
+    column,
+    columnIndex: Number,
+    style: {
+      type: definePropType([String, Array, Object])
+    },
+    rowData: {
+      type: definePropType(Object)
+    },
+    rowIndex: Number,
+    showOverflowTooltip: {
+      type: definePropType([
+        Boolean,
+        Object
+      ]),
+      default: false
+    }
+  });
+
+  function _isSlot$6(s) {
+    return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
+  }
+  const TableV2Cell = vue.defineComponent({
+    name: "ElTableV2Cell",
+    inheritAttrs: false,
+    props: tableV2CellProps,
+    setup(props, {
+      slots
+    }) {
+      const contentRef = vue.ref();
+      const isOverflowing = vue.ref(false);
+      const updateOverflow = () => {
+        const element = contentRef.value;
+        if (!props.showOverflowTooltip || !element) {
+          isOverflowing.value = false;
+          return;
+        }
+        isOverflowing.value = Boolean(element.scrollWidth > element.clientWidth || element.scrollHeight > element.clientHeight);
+      };
+      vue.onMounted(updateOverflow);
+      vue.onUpdated(updateOverflow);
+      return () => {
+        var _a;
+        const {
+          cellData,
+          showOverflowTooltip,
+          style
+        } = props;
+        const displayText = ((_a = cellData == null ? void 0 : cellData.toString) == null ? void 0 : _a.call(cellData)) || "";
+        const defaultSlot = vue.renderSlot(slots, "default", props, () => [displayText]);
+        const content = vue.createVNode("div", {
+          "ref": contentRef,
+          "class": props.class,
+          "title": showOverflowTooltip ? void 0 : displayText,
+          "style": style,
+          "onMouseenter": showOverflowTooltip ? updateOverflow : void 0
+        }, [defaultSlot]);
+        if (!showOverflowTooltip)
+          return content;
+        const tooltipOptions = typeof showOverflowTooltip === "object" ? showOverflowTooltip : {};
+        return vue.createVNode(ElTooltip, vue.mergeProps({
+          "effect": "light",
+          "placement": "top"
+        }, tooltipOptions, {
+          "content": displayText,
+          "disabled": !isOverflowing.value
+        }), _isSlot$6(content) ? content : {
+          default: () => [content]
+        });
+      };
+    }
+  });
   var TableCell = TableV2Cell;
 
   const HeaderCell = (props, {
@@ -57480,15 +57575,24 @@
       var _a;
       return isEmptyRequiredValue(get(rowData, (_a = item.dataKey) != null ? _a : ""));
     });
+    const commitGhostRowEditor = (event) => {
+      var _a, _b;
+      const activeElement = (_b = (_a = event.currentTarget) == null ? void 0 : _a.ownerDocument) == null ? void 0 : _b.activeElement;
+      if (activeElement && activeElement !== event.currentTarget && "blur" in activeElement) {
+        activeElement.blur();
+      }
+    };
     const Cell = isRowDeleteColumn ? shouldRenderGhostAddButton ? vue.createVNode(ElButton, {
       "text": true,
       "class": "icon-button",
       "disabled": isGhostRowAddDisabled,
-      "onClick": (event) => {
+      "onClick": async (event) => {
         var _a;
         event.stopPropagation();
         if (isGhostRowAddDisabled)
           return;
+        commitGhostRowEditor(event);
+        await vue.nextTick();
         onAddGhostRow == null ? void 0 : onAddGhostRow({
           event,
           row: rowData,
@@ -57570,7 +57674,9 @@
     }) : shouldRenderGhostEditCell ? (() => {
       const rendered = editColumnCellRenderer(cellProps);
       return applyRequiredInputState(rendered, column, rowData);
-    })() : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : vue.renderSlot(slots, "default", cellProps, () => [vue.createVNode(TableCell, cellProps, null)]);
+    })() : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : vue.renderSlot(slots, "default", cellProps, () => [vue.createVNode(TableCell, vue.mergeProps(cellProps, {
+      "showOverflowTooltip": column.showOverflowTooltip
+    }), null)]);
     const kls = [ns.e("row-cell"), column.diagonalHeader && "is-diagonal-header-column", ghostTable && "is-full-width", isGhostRow && ns.is("ghost-row"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), column.class, column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right")];
     const expandable = rowIndex >= 0 && expandColumnKey && column.key === expandColumnKey;
     const expanded = rowIndex >= 0 && expandedRowKeys.includes(rowData[rowKey]);

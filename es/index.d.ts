@@ -13380,6 +13380,7 @@ export declare type Column<T = any> = {
     minWidth?: number;
     required?: boolean;
     resizable?: boolean;
+    showOverflowTooltip?: boolean | TableV2OverflowTooltipOptions;
     style?: CSSProperties;
     sortable?: boolean;
     width?: ColumnWidth;
@@ -16092,6 +16093,9 @@ declare const _default_73: DefineComponent<{
     validateMsg: ComputedRef<string>;
     errorTooltipContent: ComputedRef<string>;
     errorTooltipDisabled: ComputedRef<boolean>;
+    errorTooltipVisible: Ref<boolean>;
+    handleSelectClick: () => void;
+    handleSelectClickOutside: (event: Event) => void;
     handleAddSelect: () => void;
     getLabel: (option: Option_2) => any;
     isEmpty: (val: unknown) => boolean;
@@ -16851,6 +16855,9 @@ declare const _default_76: DefineComponent<{
     validateMsg: ComputedRef<string>;
     errorTooltipContent: ComputedRef<string>;
     errorTooltipDisabled: ComputedRef<boolean>;
+    errorTooltipVisible: Ref<boolean>;
+    handleSelectClick: () => void;
+    handleSelectClickOutside: (event: Event) => void;
     contentId: Ref<string>;
     BORDER_HORIZONTAL_WIDTH: number;
     inputId: Ref<string | undefined>;
@@ -27207,6 +27214,7 @@ export declare type TableV2Instance = InstanceType<typeof TableV2> & {
      */
     validateRequiredColumns: () => boolean;
 };
+export declare type TableV2OverflowTooltipOptions = Partial<Pick<ElTooltipProps, "appendTo" | "effect" | "enterable" | "hideAfter" | "offset" | "placement" | "popperClass" | "popperOptions" | "showAfter" | "showArrow" | "transition">>;
 export declare const TableV2Placeholder: unique symbol;
 export declare type TableV2Props = ExtractPropTypes<typeof tableV2Props>;
 export declare const tableV2Props: {

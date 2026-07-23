@@ -27,6 +27,7 @@ export declare const tableV2CellProps: {
         __epPropKey: true;
     };
     readonly rowIndex: NumberConstructor;
+    readonly showOverflowTooltip: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => boolean | Partial<Pick<import("element-plus").ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">>) | (() => boolean | Partial<Pick<import("element-plus").ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">>) | ((new (...args: any[]) => boolean | Partial<Pick<import("element-plus").ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">>) | (() => boolean | Partial<Pick<import("element-plus").ElTooltipProps, "offset" | "transition" | "placement" | "effect" | "showAfter" | "hideAfter" | "popperOptions" | "enterable" | "popperClass" | "appendTo" | "showArrow">>))[], unknown, unknown, false, boolean>;
 };
 export type TableV2CellProps = ExtractPropTypes<typeof tableV2CellProps>;
 export type TableV2CellPropsPublic = __ExtractPublicPropTypes<typeof tableV2CellProps>;

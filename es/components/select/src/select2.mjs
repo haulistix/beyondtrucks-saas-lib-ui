@@ -1,10 +1,10 @@
-import { defineComponent, getCurrentInstance, computed, reactive, toRefs, watch, provide, onBeforeUnmount, resolveComponent, resolveDirective, withDirectives, openBlock, createElementBlock, normalizeClass, toHandlerKey, createVNode, withCtx, createElementVNode, withModifiers, toDisplayString, createCommentVNode, renderSlot, Fragment, renderList, normalizeStyle, createTextVNode, createBlock, withKeys, vModelText, mergeProps, normalizeProps, vShow } from 'vue';
+import { defineComponent, getCurrentInstance, computed, reactive, toRefs, ref, watch, provide, onBeforeUnmount, resolveComponent, resolveDirective, withDirectives, openBlock, createElementBlock, normalizeClass, toHandlerKey, createVNode, withCtx, createElementVNode, withModifiers, toDisplayString, createCommentVNode, renderSlot, Fragment, renderList, normalizeStyle, createTextVNode, createBlock, withKeys, vModelText, mergeProps, normalizeProps, vShow } from 'vue';
 import { ElTooltip } from '../../tooltip/index.mjs';
 import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { useProps } from '../../select-v2/src/useProps.mjs';
-import Option from './option.mjs';
+import Option from './option2.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
 import { useSelect } from './useSelect.mjs';
 import { selectKey } from './token.mjs';
@@ -81,6 +81,19 @@ const _sfc_main = defineComponent({
       return "";
     });
     const errorTooltipDisabled = computed(() => !errorTooltipContent.value);
+    const errorTooltipVisible = ref(false);
+    const handleSelectClick = () => {
+      API.toggleMenu();
+      errorTooltipVisible.value = !errorTooltipDisabled.value && !errorTooltipVisible.value;
+    };
+    const handleSelectClickOutside = (event) => {
+      errorTooltipVisible.value = false;
+      API.handleClickOutside(event);
+    };
+    watch(errorTooltipDisabled, (disabled) => {
+      if (disabled)
+        errorTooltipVisible.value = false;
+    });
     const getOptionProps = (option) => ({
       label: getLabel(option),
       value: getValue(option),
@@ -163,6 +176,9 @@ const _sfc_main = defineComponent({
       validateMsg,
       errorTooltipContent,
       errorTooltipDisabled,
+      errorTooltipVisible,
+      handleSelectClick,
+      handleSelectClickOutside,
       handleAddSelect,
       getLabel,
       isEmpty,
@@ -199,12 +215,13 @@ function _sfc_render(_ctx, _cache) {
     onMouseleave: ($event) => _ctx.states.inputHovering = false
   }, [
     createVNode(_component_el_tooltip, {
-      trigger: "hover",
+      trigger: "click",
       effect: "light",
       placement: "top",
       offset: 4,
       content: _ctx.errorTooltipContent,
-      disabled: _ctx.errorTooltipDisabled
+      disabled: _ctx.errorTooltipDisabled,
+      visible: _ctx.errorTooltipVisible
     }, {
       default: withCtx(() => [
         createElementVNode("div", {
@@ -249,7 +266,7 @@ function _sfc_render(_ctx, _cache) {
                     _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
                     _ctx.nsSelect.is("value", _ctx.hasModelValue)
                   ]),
-                  onClick: withModifiers(_ctx.toggleMenu, ["prevent"])
+                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
                 }, [
                   _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
                     key: 0,
@@ -672,9 +689,9 @@ function _sfc_render(_ctx, _cache) {
         ], 2)
       ]),
       _: 3
-    }, 8, ["content", "disabled"])
+    }, 8, ["content", "disabled", "visible"])
   ], 16, ["onMouseleave"])), [
-    [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
+    [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
   ]);
 }
 var Select = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "select.vue"]]);

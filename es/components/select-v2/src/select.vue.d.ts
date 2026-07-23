@@ -249,6 +249,9 @@ declare const _default: import("vue").DefineComponent<{
     validateMsg: import("vue").ComputedRef<string>;
     errorTooltipContent: import("vue").ComputedRef<string>;
     errorTooltipDisabled: import("vue").ComputedRef<boolean>;
+    errorTooltipVisible: import("vue").Ref<boolean>;
+    handleSelectClick: () => void;
+    handleSelectClickOutside: (event: Event) => void;
     contentId: import("vue").Ref<string>;
     BORDER_HORIZONTAL_WIDTH: number;
     inputId: import("vue").Ref<string | undefined>;

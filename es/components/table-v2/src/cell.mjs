@@ -14,7 +14,14 @@ const tableV2CellProps = buildProps({
   rowData: {
     type: definePropType(Object)
   },
-  rowIndex: Number
+  rowIndex: Number,
+  showOverflowTooltip: {
+    type: definePropType([
+      Boolean,
+      Object
+    ]),
+    default: false
+  }
 });
 
 export { tableV2CellProps };

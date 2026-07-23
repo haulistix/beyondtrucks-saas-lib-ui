@@ -115,8 +115,17 @@
   }
 }
 
-.el-button--success, .el-button--info, .el-button--warning, .el-button--danger, .el-button--error {
+.el-button--success,
+.el-button--info,
+.el-button--warning,
+.el-button--danger,
+.el-button--error {
   --el-border: none;
+}
+
+.el-button--error {
+  --el-button-hover-bg-color: var(--color-red-800);
+  --el-button-hover-border-color: var(--color-red-800);
 }
 
 .el-button--text {

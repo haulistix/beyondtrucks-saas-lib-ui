@@ -7,7 +7,7 @@ export * from './src/auto-resizer';
 export { placeholderSign as TableV2Placeholder } from './src/private';
 export declare const ElTableV2: SFCWithInstall<typeof TableV2>;
 export declare const ElAutoResizer: SFCWithInstall<typeof AutoResizer>;
-export type { Column, Columns, SortBy, SortState, TableV2CustomizedHeaderSlotParam, } from './src/types';
+export type { Column, Columns, SortBy, SortState, TableV2CustomizedHeaderSlotParam, TableV2OverflowTooltipOptions, } from './src/types';
 export type { TableV2Instance } from './src/table-v2';
 export * from './src/table';
 export * from './src/row';

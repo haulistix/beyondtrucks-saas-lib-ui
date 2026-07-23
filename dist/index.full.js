@@ -45918,7 +45918,7 @@
           vue.createVNode(_component_el_tooltip, {
             ref: "tooltipRef",
             effect: "light",
-            disabled: _ctx.disabled || !_ctx.isTextOverflowing && !_ctx.currentTip,
+            disabled: !_ctx.isTextOverflowing && !_ctx.currentTip,
             placement: "right",
             "popper-class": "optionPopperClass"
           }, {
@@ -50848,13 +50848,14 @@
       return false;
     }
     updateColumnsWidth() {
-      var _a, _b, _c;
+      var _a, _b, _c, _d, _e, _f, _g;
       if (!isClient)
         return;
       const fit = this.fit;
       const bodyWidth = (_a = this.table.vnode.el) == null ? void 0 : _a.clientWidth;
       let bodyMinWidth = 0;
       const flattenColumns = this.getFlattenColumns();
+      const lastNonFixedColumn = [...flattenColumns].reverse().find((column) => !column.fixed);
       const flexColumns = flattenColumns.filter((column) => !isNumber(column.width));
       flattenColumns.forEach((column) => {
         if (isNumber(column.width)) {
@@ -50868,14 +50869,11 @@
         if (bodyMinWidth <= bodyWidth) {
           this.scrollX.value = false;
           const totalFlexWidth = bodyWidth - bodyMinWidth;
-          if (flexColumns.length === 1) {
-            flexColumns[0].realWidth = Number(flexColumns[0].minWidth || 80) + totalFlexWidth;
-          } else {
-            flexColumns.forEach((column) => {
-              column.realWidth = Number(column.minWidth || 80);
-            });
-            const lastFlexColumn = flexColumns[flexColumns.length - 1];
-            lastFlexColumn.realWidth = Number((_c = (_b = lastFlexColumn.realWidth) != null ? _b : lastFlexColumn.minWidth) != null ? _c : 80) + totalFlexWidth;
+          flexColumns.forEach((column) => {
+            column.realWidth = Number(column.minWidth || 80);
+          });
+          if (lastNonFixedColumn) {
+            lastNonFixedColumn.realWidth = Number((_d = (_c = (_b = lastNonFixedColumn.realWidth) != null ? _b : lastNonFixedColumn.width) != null ? _c : lastNonFixedColumn.minWidth) != null ? _d : 80) + totalFlexWidth;
           }
         } else {
           this.scrollX.value = true;
@@ -50894,8 +50892,15 @@
           }
           bodyMinWidth += column.realWidth;
         });
-        this.scrollX.value = bodyMinWidth > bodyWidth;
-        this.bodyWidth.value = bodyMinWidth;
+        if (fit && bodyMinWidth <= bodyWidth && lastNonFixedColumn) {
+          this.scrollX.value = false;
+          lastNonFixedColumn.realWidth = Number((_g = (_f = (_e = lastNonFixedColumn.realWidth) != null ? _e : lastNonFixedColumn.width) != null ? _f : lastNonFixedColumn.minWidth) != null ? _g : 80) + (bodyWidth - bodyMinWidth);
+          this.bodyWidth.value = bodyWidth;
+          this.table.state.resizeState.value.width = bodyWidth;
+        } else {
+          this.scrollX.value = bodyMinWidth > bodyWidth;
+          this.bodyWidth.value = bodyMinWidth;
+        }
       }
       const fixedColumns = this.store.states.fixedColumns.value;
       if (fixedColumns.length > 0) {

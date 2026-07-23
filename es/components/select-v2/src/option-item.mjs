@@ -116,7 +116,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         createVNode(_component_el_tooltip, {
           ref: "tooltipRef",
           effect: "light",
-          disabled: _ctx.disabled || !_ctx.isTextOverflowing && !_ctx.currentTip,
+          disabled: !_ctx.isTextOverflowing && !_ctx.currentTip,
           placement: "right",
           "popper-class": "optionPopperClass"
         }, {

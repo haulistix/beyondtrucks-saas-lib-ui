@@ -2,7 +2,7 @@ import { defineComponent, ref, onMounted, computed, provide, reactive, toRefs, w
 import { radioGroupProps, radioGroupEmits, radioDefaultProps } from './radio-group.mjs';
 import { radioGroupKey } from './constants.mjs';
 import { isEqual, omit } from 'lodash-unified';
-import Radio from './radio.mjs';
+import Radio from './radio2.mjs';
 import RadioButton from './radio-button2.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';

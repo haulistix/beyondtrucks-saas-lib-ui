@@ -50882,19 +50882,17 @@
       return false;
     }
     updateColumnsWidth() {
-      var _a, _b, _c, _d, _e, _f, _g;
+      var _a;
       if (!isClient)
         return;
       const fit = this.fit;
       const bodyWidth = (_a = this.table.vnode.el) == null ? void 0 : _a.clientWidth;
       let bodyMinWidth = 0;
       const flattenColumns = this.getFlattenColumns();
-      const lastNonFixedColumn = [...flattenColumns].reverse().find((column) => !column.fixed);
       const flexColumns = flattenColumns.filter((column) => !isNumber(column.width));
       flattenColumns.forEach((column) => {
-        if (isNumber(column.width)) {
-          column.realWidth = column.width;
-        }
+        if (isNumber(column.width) && column.realWidth)
+          column.realWidth = null;
       });
       if (flexColumns.length > 0 && fit) {
         flattenColumns.forEach((column) => {
@@ -50903,11 +50901,20 @@
         if (bodyMinWidth <= bodyWidth) {
           this.scrollX.value = false;
           const totalFlexWidth = bodyWidth - bodyMinWidth;
-          flexColumns.forEach((column) => {
-            column.realWidth = Number(column.minWidth || 80);
-          });
-          if (lastNonFixedColumn) {
-            lastNonFixedColumn.realWidth = Number((_d = (_c = (_b = lastNonFixedColumn.realWidth) != null ? _b : lastNonFixedColumn.width) != null ? _c : lastNonFixedColumn.minWidth) != null ? _d : 80) + totalFlexWidth;
+          if (flexColumns.length === 1) {
+            flexColumns[0].realWidth = Number(flexColumns[0].minWidth || 80) + totalFlexWidth;
+          } else {
+            const allColumnsWidth = flexColumns.reduce((prev, column) => prev + Number(column.minWidth || 80), 0);
+            const flexWidthPerPixel = totalFlexWidth / allColumnsWidth;
+            let noneFirstWidth = 0;
+            flexColumns.forEach((column, index) => {
+              if (index === 0)
+                return;
+              const flexWidth = Math.floor(Number(column.minWidth || 80) * flexWidthPerPixel);
+              noneFirstWidth += flexWidth;
+              column.realWidth = Number(column.minWidth || 80) + flexWidth;
+            });
+            flexColumns[0].realWidth = Number(flexColumns[0].minWidth || 80) + totalFlexWidth - noneFirstWidth;
           }
         } else {
           this.scrollX.value = true;
@@ -50926,15 +50933,8 @@
           }
           bodyMinWidth += column.realWidth;
         });
-        if (fit && bodyMinWidth <= bodyWidth && lastNonFixedColumn) {
-          this.scrollX.value = false;
-          lastNonFixedColumn.realWidth = Number((_g = (_f = (_e = lastNonFixedColumn.realWidth) != null ? _e : lastNonFixedColumn.width) != null ? _f : lastNonFixedColumn.minWidth) != null ? _g : 80) + (bodyWidth - bodyMinWidth);
-          this.bodyWidth.value = bodyWidth;
-          this.table.state.resizeState.value.width = bodyWidth;
-        } else {
-          this.scrollX.value = bodyMinWidth > bodyWidth;
-          this.bodyWidth.value = bodyMinWidth;
-        }
+        this.scrollX.value = bodyMinWidth > bodyWidth;
+        this.bodyWidth.value = bodyMinWidth;
       }
       const fixedColumns = this.store.states.fixedColumns.value;
       if (fixedColumns.length > 0) {
@@ -54307,31 +54307,6 @@
     return ele;
   }
 
-  const AUTO_COLUMN_PADDING$1 = 48;
-  const MIN_AUTO_COLUMN_WIDTH$1 = 80;
-  const FALLBACK_HEADER_CHAR_WIDTH$1 = 8;
-  const textWidthCache$1 = /* @__PURE__ */ new Map();
-  const measureHeaderTextWidth$1 = (text) => {
-    if (textWidthCache$1.has(text))
-      return textWidthCache$1.get(text);
-    let width = text.length * FALLBACK_HEADER_CHAR_WIDTH$1;
-    const isJsdom = typeof navigator !== "undefined" && /jsdom/i.test(navigator.userAgent);
-    if (typeof document !== "undefined" && !isJsdom) {
-      try {
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
-        if (context) {
-          context.font = "400 14px Inter, sans-serif";
-          width = Math.ceil(context.measureText(text).width);
-        }
-      } catch (e) {
-      }
-    }
-    textWidthCache$1.set(text, width);
-    return width;
-  };
-  const getAutoColumnWidth$1 = (label) => Math.max(MIN_AUTO_COLUMN_WIDTH$1, measureHeaderTextWidth$1(String(label != null ? label : "")) + AUTO_COLUMN_PADDING$1);
-
   function getAllAliases(props, aliases) {
     return props.reduce((prev, cur) => {
       prev[cur] = cur;
@@ -54351,7 +54326,6 @@
         const columnKey = aliases[key];
         if (hasOwn(props_, columnKey)) {
           vue.watch(() => props_[columnKey], (newVal) => {
-            var _a;
             let value = newVal;
             if (columnKey === "width" && key === "realWidth") {
               value = parseWidth(newVal);
@@ -54359,14 +54333,8 @@
             if (columnKey === "minWidth" && key === "realMinWidth") {
               value = parseMinWidth(newVal);
             }
-            const autoWidth = !parseWidth(props_.width) && !parseMinWidth((_a = props_.minWidth) != null ? _a : "");
             instance.columnConfig.value[columnKey] = value;
             instance.columnConfig.value[key] = value;
-            instance.columnConfig.value.autoWidth = autoWidth;
-            if (autoWidth) {
-              const width = getAutoColumnWidth$1(instance.columnConfig.value.label);
-              instance.columnConfig.value.minWidth = width;
-            }
             const updateColumns = columnKey === "fixed";
             owner.value.store.scheduleLayout(updateColumns);
           });
@@ -54404,11 +54372,6 @@
         if (hasOwn(props_, columnKey)) {
           vue.watch(() => props_[columnKey], (newVal) => {
             instance.columnConfig.value[key] = newVal;
-            if (key === "label" && instance.columnConfig.value.autoWidth) {
-              const width = getAutoColumnWidth$1(newVal);
-              instance.columnConfig.value.minWidth = width;
-              owner.value.store.scheduleLayout();
-            }
           });
         }
       });
@@ -54560,10 +54523,7 @@
       if (!realWidth.value && realMinWidth.value) {
         column.width = void 0;
       }
-      column.autoWidth = isUndefined(column.width) && !realWidth.value && !realMinWidth.value;
-      if (column.autoWidth) {
-        column.minWidth = getAutoColumnWidth$1(column.label);
-      } else if (!column.minWidth) {
+      if (!column.minWidth) {
         column.minWidth = 80;
       }
       column.realWidth = Number(isUndefined(column.width) ? column.minWidth : column.width);

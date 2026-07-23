@@ -1,5 +1,4 @@
 import { getCurrentInstance, watch } from 'vue';
-import { getAutoColumnWidth } from '../column-width.mjs';
 import { parseWidth, parseMinWidth } from '../util.mjs';
 import { hasOwn } from '@vue/shared';
 
@@ -22,7 +21,6 @@ function useWatcher(owner, props_) {
       const columnKey = aliases[key];
       if (hasOwn(props_, columnKey)) {
         watch(() => props_[columnKey], (newVal) => {
-          var _a;
           let value = newVal;
           if (columnKey === "width" && key === "realWidth") {
             value = parseWidth(newVal);
@@ -30,14 +28,8 @@ function useWatcher(owner, props_) {
           if (columnKey === "minWidth" && key === "realMinWidth") {
             value = parseMinWidth(newVal);
           }
-          const autoWidth = !parseWidth(props_.width) && !parseMinWidth((_a = props_.minWidth) != null ? _a : "");
           instance.columnConfig.value[columnKey] = value;
           instance.columnConfig.value[key] = value;
-          instance.columnConfig.value.autoWidth = autoWidth;
-          if (autoWidth) {
-            const width = getAutoColumnWidth(instance.columnConfig.value.label);
-            instance.columnConfig.value.minWidth = width;
-          }
           const updateColumns = columnKey === "fixed";
           owner.value.store.scheduleLayout(updateColumns);
         });
@@ -75,11 +67,6 @@ function useWatcher(owner, props_) {
       if (hasOwn(props_, columnKey)) {
         watch(() => props_[columnKey], (newVal) => {
           instance.columnConfig.value[key] = newVal;
-          if (key === "label" && instance.columnConfig.value.autoWidth) {
-            const width = getAutoColumnWidth(newVal);
-            instance.columnConfig.value.minWidth = width;
-            owner.value.store.scheduleLayout();
-          }
         });
       }
     });

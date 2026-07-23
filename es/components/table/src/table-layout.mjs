@@ -100,19 +100,17 @@ class TableLayout {
     return false;
   }
   updateColumnsWidth() {
-    var _a, _b, _c, _d, _e, _f, _g;
+    var _a;
     if (!isClient)
       return;
     const fit = this.fit;
     const bodyWidth = (_a = this.table.vnode.el) == null ? void 0 : _a.clientWidth;
     let bodyMinWidth = 0;
     const flattenColumns = this.getFlattenColumns();
-    const lastNonFixedColumn = [...flattenColumns].reverse().find((column) => !column.fixed);
     const flexColumns = flattenColumns.filter((column) => !isNumber(column.width));
     flattenColumns.forEach((column) => {
-      if (isNumber(column.width)) {
-        column.realWidth = column.width;
-      }
+      if (isNumber(column.width) && column.realWidth)
+        column.realWidth = null;
     });
     if (flexColumns.length > 0 && fit) {
       flattenColumns.forEach((column) => {
@@ -121,11 +119,20 @@ class TableLayout {
       if (bodyMinWidth <= bodyWidth) {
         this.scrollX.value = false;
         const totalFlexWidth = bodyWidth - bodyMinWidth;
-        flexColumns.forEach((column) => {
-          column.realWidth = Number(column.minWidth || 80);
-        });
-        if (lastNonFixedColumn) {
-          lastNonFixedColumn.realWidth = Number((_d = (_c = (_b = lastNonFixedColumn.realWidth) != null ? _b : lastNonFixedColumn.width) != null ? _c : lastNonFixedColumn.minWidth) != null ? _d : 80) + totalFlexWidth;
+        if (flexColumns.length === 1) {
+          flexColumns[0].realWidth = Number(flexColumns[0].minWidth || 80) + totalFlexWidth;
+        } else {
+          const allColumnsWidth = flexColumns.reduce((prev, column) => prev + Number(column.minWidth || 80), 0);
+          const flexWidthPerPixel = totalFlexWidth / allColumnsWidth;
+          let noneFirstWidth = 0;
+          flexColumns.forEach((column, index) => {
+            if (index === 0)
+              return;
+            const flexWidth = Math.floor(Number(column.minWidth || 80) * flexWidthPerPixel);
+            noneFirstWidth += flexWidth;
+            column.realWidth = Number(column.minWidth || 80) + flexWidth;
+          });
+          flexColumns[0].realWidth = Number(flexColumns[0].minWidth || 80) + totalFlexWidth - noneFirstWidth;
         }
       } else {
         this.scrollX.value = true;
@@ -144,15 +151,8 @@ class TableLayout {
         }
         bodyMinWidth += column.realWidth;
       });
-      if (fit && bodyMinWidth <= bodyWidth && lastNonFixedColumn) {
-        this.scrollX.value = false;
-        lastNonFixedColumn.realWidth = Number((_g = (_f = (_e = lastNonFixedColumn.realWidth) != null ? _e : lastNonFixedColumn.width) != null ? _f : lastNonFixedColumn.minWidth) != null ? _g : 80) + (bodyWidth - bodyMinWidth);
-        this.bodyWidth.value = bodyWidth;
-        this.table.state.resizeState.value.width = bodyWidth;
-      } else {
-        this.scrollX.value = bodyMinWidth > bodyWidth;
-        this.bodyWidth.value = bodyMinWidth;
-      }
+      this.scrollX.value = bodyMinWidth > bodyWidth;
+      this.bodyWidth.value = bodyMinWidth;
     }
     const fixedColumns = this.store.states.fixedColumns.value;
     if (fixedColumns.length > 0) {

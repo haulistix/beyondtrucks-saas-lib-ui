@@ -1,6 +1,12 @@
 import dayjs from 'dayjs';
 declare const _default: import("vue").DefineComponent<{
     selectionMode: import("element-plus/es/utils").EpPropFinalized<StringConstructor, string, unknown, string, boolean>;
+    rangePickType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     cycle: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     settDefaultDate: StringConstructor;
     cycleType: StringConstructor;
@@ -49,6 +55,12 @@ declare const _default: import("vue").DefineComponent<{
     changerange: (...args: any[]) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     selectionMode: import("element-plus/es/utils").EpPropFinalized<StringConstructor, string, unknown, string, boolean>;
+    rangePickType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     cycle: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     settDefaultDate: StringConstructor;
     cycleType: StringConstructor;

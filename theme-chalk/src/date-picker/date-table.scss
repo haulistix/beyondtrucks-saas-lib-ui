@@ -118,14 +118,14 @@
 
     &.start-date {
       background-color: getCssVar('color-primary');
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
     }
 
     &.end-date {
       background-color: getCssVar('color-primary');
-      border-top-right-radius: 8px;
-      border-bottom-right-radius: 8px;
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
     }
 
     &.start-date .#{$namespace}-date-table-cell,
@@ -142,7 +142,6 @@
         width: 4px;
         height: 4px;
         border-radius: 50%;
-        bottom: -2px;
         left: 10px;
       }
     }
@@ -150,6 +149,7 @@
     &.start-date .#{$namespace}-date-table-cell__text,
     {
       &::after {
+        top: -2px;
         border: 1px solid #fff;
       }
     }
@@ -157,6 +157,7 @@
 
     &.end-date .#{$namespace}-date-table-cell__text {
       &::after {
+        bottom: -2px;
         background-color: #fff;
       }
     }

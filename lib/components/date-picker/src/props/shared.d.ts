@@ -5,8 +5,20 @@ export type RangeState = {
     endDate: null | Dayjs;
     selecting: boolean;
 };
+export declare const rangePickTypes: readonly ["start", "end"];
+export type RangePickType = (typeof rangePickTypes)[number];
+export declare const rangePickTypeProp: {
+    type: import("vue").PropType<"end" | "start">;
+    values: readonly ["start", "end"];
+};
 export type DisabledDateType = (date: Date) => boolean;
 export declare const datePickerSharedProps: {
+    readonly rangePickType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly cycle: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly settDefaultDate: StringConstructor;
     readonly cycleType: StringConstructor;
@@ -58,6 +70,12 @@ export declare const panelSharedProps: {
     readonly showWeekNumber: BooleanConstructor;
 };
 export declare const panelRangeSharedProps: {
+    readonly rangePickType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly unlinkPanels: BooleanConstructor;
     readonly visible: BooleanConstructor;
     readonly parsedValue: {

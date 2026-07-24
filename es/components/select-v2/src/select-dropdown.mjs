@@ -34,7 +34,6 @@ var ElSelectMenu = defineComponent({
     const select = inject(selectV2InjectionKey);
     const ns = useNamespace("select");
     const {
-      getLabel,
       getValue,
       getDisabled
     } = useProps(select.props);
@@ -157,7 +156,7 @@ var ElSelectMenu = defineComponent({
       }), {
         default: (props3) => {
           var _a;
-          return ((_a = slots.default) == null ? void 0 : _a.call(slots, props3)) || createVNode("span", null, [getLabel(item)]);
+          return (_a = slots.default) == null ? void 0 : _a.call(slots, props3);
         }
       });
     };

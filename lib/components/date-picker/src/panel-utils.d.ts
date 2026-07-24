@@ -185,6 +185,12 @@ export declare const getPanel: (type: IDatePickerType) => ({
             readonly visible: boolean;
             readonly unlinkPanels: boolean;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
+            readonly rangePickType: {
+                readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+                readonly required: false;
+                readonly validator: ((val: unknown) => boolean) | undefined;
+                __epPropKey: true;
+            };
             readonly unlinkPanels: BooleanConstructor;
             readonly visible: BooleanConstructor;
             readonly parsedValue: {
@@ -206,6 +212,12 @@ export declare const getPanel: (type: IDatePickerType) => ({
         $emit: (event: string, ...args: any[]) => void;
         $el: any;
         $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
+            readonly rangePickType: {
+                readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+                readonly required: false;
+                readonly validator: ((val: unknown) => boolean) | undefined;
+                __epPropKey: true;
+            };
             readonly unlinkPanels: BooleanConstructor;
             readonly visible: BooleanConstructor;
             readonly parsedValue: {
@@ -240,6 +252,12 @@ export declare const getPanel: (type: IDatePickerType) => ({
         $nextTick: typeof import("vue").nextTick;
         $watch(source: string | Function, cb: Function, options?: import("vue").WatchOptions): import("vue").WatchStopHandle;
     } & Readonly<import("vue").ExtractPropTypes<{
+        readonly rangePickType: {
+            readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+            readonly required: false;
+            readonly validator: ((val: unknown) => boolean) | undefined;
+            __epPropKey: true;
+        };
         readonly unlinkPanels: BooleanConstructor;
         readonly visible: BooleanConstructor;
         readonly parsedValue: {
@@ -253,6 +271,12 @@ export declare const getPanel: (type: IDatePickerType) => ({
     __isTeleport?: never;
     __isSuspense?: never;
 } & import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
+    readonly rangePickType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly unlinkPanels: BooleanConstructor;
     readonly visible: BooleanConstructor;
     readonly parsedValue: {
@@ -286,6 +310,12 @@ export declare const getPanel: (type: IDatePickerType) => ({
             readonly showWeekNumber: boolean;
             readonly unlinkPanels: boolean;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
+            readonly rangePickType: {
+                readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+                readonly required: false;
+                readonly validator: ((val: unknown) => boolean) | undefined;
+                __epPropKey: true;
+            };
             readonly unlinkPanels: BooleanConstructor;
             readonly visible: BooleanConstructor;
             readonly parsedValue: {
@@ -322,6 +352,12 @@ export declare const getPanel: (type: IDatePickerType) => ({
         $emit: ((event: "calendar-change", ...args: any[]) => void) & ((event: "panel-change", ...args: any[]) => void) & ((event: "pick", ...args: any[]) => void) & ((event: "set-picker-option", ...args: any[]) => void);
         $el: any;
         $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
+            readonly rangePickType: {
+                readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+                readonly required: false;
+                readonly validator: ((val: unknown) => boolean) | undefined;
+                __epPropKey: true;
+            };
             readonly unlinkPanels: BooleanConstructor;
             readonly visible: BooleanConstructor;
             readonly parsedValue: {
@@ -376,6 +412,12 @@ export declare const getPanel: (type: IDatePickerType) => ({
         $nextTick: typeof import("vue").nextTick;
         $watch(source: string | Function, cb: Function, options?: import("vue").WatchOptions): import("vue").WatchStopHandle;
     } & Readonly<import("vue").ExtractPropTypes<{
+        readonly rangePickType: {
+            readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+            readonly required: false;
+            readonly validator: ((val: unknown) => boolean) | undefined;
+            __epPropKey: true;
+        };
         readonly unlinkPanels: BooleanConstructor;
         readonly visible: BooleanConstructor;
         readonly parsedValue: {
@@ -404,6 +446,12 @@ export declare const getPanel: (type: IDatePickerType) => ({
     __isTeleport?: never;
     __isSuspense?: never;
 } & import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
+    readonly rangePickType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly unlinkPanels: BooleanConstructor;
     readonly visible: BooleanConstructor;
     readonly parsedValue: {

@@ -13951,6 +13951,12 @@ declare type DatePickerExpose = {
 export declare type DatePickerInstance = ComponentPublicInstance<DatePickerProps, DatePickerExpose>;
 export declare type DatePickerProps = ExtractPropTypes<typeof datePickerProps>;
 export declare const datePickerProps: {
+    readonly rangePickType: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly type: EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
     readonly typeList: EpPropFinalized<{
         (arrayLength: number): SelectType[];
@@ -14690,6 +14696,12 @@ declare const _default_38: __VLS_WithTemplateSlots_36<typeof __VLS_component_36,
 declare const _default_39: __VLS_WithTemplateSlots_37<typeof __VLS_component_37, ReturnType<typeof __VLS_template_37>>;
 declare const _default_4: __VLS_WithTemplateSlots_3<typeof __VLS_component_3, ReturnType<typeof __VLS_template_8>>;
 declare const _default_40: DefineComponent<{
+    readonly rangePickType: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly type: EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
     readonly typeList: EpPropFinalized<{
         (arrayLength: number): SelectType[];
@@ -14838,6 +14850,12 @@ declare const _default_40: DefineComponent<{
     };
     readonly isRange: BooleanConstructor;
 }, () => JSX.Element, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, "update:modelValue"[], "update:modelValue", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly rangePickType: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly type: EpPropFinalized<(new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType) | ((new (...args: any[]) => "year" | "years" | "month" | "months" | "date" | "dates" | "week" | "datetime" | "datetimerange" | "daterange" | "datestartrange" | "dateendrange" | "monthrange" | "yearrange") | (() => IDatePickerType))[], unknown, unknown, "date", boolean>;
     readonly typeList: EpPropFinalized<{
         (arrayLength: number): SelectType[];
@@ -16492,6 +16510,7 @@ declare const _default_74: DefineComponent<{
         cssVarBlockName: (name: string) => string;
     };
     id: Ref<string>;
+    hasDefaultSlot: ComputedRef<boolean>;
     containerKls: ComputedRef<string[]>;
     rawOption: Record<string, any> | undefined;
     currentLabel: ComputedRef<boolean | EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;

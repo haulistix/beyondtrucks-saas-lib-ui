@@ -114,7 +114,9 @@ var DatePicker = defineComponent({
             }
           }, null))) ? _slot : {
             default: () => [_slot]
-          }), createVNode(Component, scopedProps, {
+          }), createVNode(Component, mergeProps(scopedProps, {
+            "rangePickType": props.rangePickType
+          }), {
             "prev-month": slots["prev-month"],
             "next-month": slots["next-month"],
             "prev-year": slots["prev-year"],

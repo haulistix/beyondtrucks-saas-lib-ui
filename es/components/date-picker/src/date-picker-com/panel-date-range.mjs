@@ -214,7 +214,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       getSelectingDate: void 0
     });
     const handleRangePick = (val, close = true) => {
-      var _a;
+      var _a, _b, _c;
       const min_ = val.minDate;
       const max_ = val.maxDate;
       const minDate_ = formatEmit(min_, 0);
@@ -225,10 +225,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       if (maxDate.value === maxDate_ && minDate.value === minDate_) {
         return;
       }
-      emit("calendar-change", [min_.toDate(), max_ && max_.toDate()]);
+      emit("calendar-change", [(_a = min_ == null ? void 0 : min_.toDate()) != null ? _a : null, (_b = max_ == null ? void 0 : max_.toDate()) != null ? _b : null]);
       maxDate.value = maxDate_;
       minDate.value = minDate_;
-      if (!close || showTime.value || ((_a = slots.option) == null ? void 0 : _a.call(slots)))
+      if (!close || showTime.value || ((_c = slots.option) == null ? void 0 : _c.call(slots)))
         return;
       handleRangeConfirm();
     };
@@ -644,6 +644,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 "min-date": unref(minDate),
                 "max-date": unref(maxDate),
                 "range-state": unref(rangeState),
+                "range-pick-type": _ctx.rangePickType,
                 cycle: unref(cycle),
                 "sett-default-date": unref(settDefaultDate),
                 "cycle-type": unref(cycleType),
@@ -653,7 +654,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 onChangerange: unref(handleChangeRange),
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
-              }, null, 8, ["date", "min-date", "max-date", "range-state", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
+              }, null, 8, ["date", "min-date", "max-date", "range-state", "range-pick-type", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
               unref(leftCurrentView) === "year" ? (openBlock(), createBlock(YearTable, {
                 key: 1,
                 ref_key: "leftCurrentViewRef",
@@ -789,6 +790,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 "min-date": unref(minDate),
                 "max-date": unref(maxDate),
                 "range-state": unref(rangeState),
+                "range-pick-type": _ctx.rangePickType,
                 cycle: unref(cycle),
                 "sett-default-date": unref(settDefaultDate),
                 "cycle-type": unref(cycleType),
@@ -798,7 +800,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 onChangerange: unref(handleChangeRange),
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
-              }, null, 8, ["date", "min-date", "max-date", "range-state", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
+              }, null, 8, ["date", "min-date", "max-date", "range-state", "range-pick-type", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
               unref(rightCurrentView) === "year" ? (openBlock(), createBlock(YearTable, {
                 key: 1,
                 ref_key: "rightCurrentViewRef",

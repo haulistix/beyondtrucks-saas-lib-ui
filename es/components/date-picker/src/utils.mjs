@@ -2,6 +2,37 @@ import dayjs from 'dayjs';
 import { isArray, isString } from '@vue/shared';
 import { rangeArr } from '../../time-picker/src/utils.mjs';
 
+const getSequentialRangePick = (firstEndpoint, selectingSecondEndpoint, value, range) => {
+  const [startDate, endDate] = range;
+  if (firstEndpoint === "start") {
+    if (selectingSecondEndpoint && startDate && value.isBefore(startDate)) {
+      return {
+        range: [value, void 0],
+        completed: false
+      };
+    }
+    return selectingSecondEndpoint ? {
+      range: [startDate, value],
+      completed: true
+    } : {
+      range: [value, void 0],
+      completed: false
+    };
+  }
+  if (selectingSecondEndpoint && endDate && value.isAfter(endDate)) {
+    return {
+      range: [void 0, value],
+      completed: false
+    };
+  }
+  return selectingSecondEndpoint ? {
+    range: [value, endDate],
+    completed: true
+  } : {
+    range: [void 0, value],
+    completed: false
+  };
+};
 const isValidRange = (range) => {
   if (!isArray(range))
     return false;
@@ -150,5 +181,5 @@ const correctlyParseUserInput = (value, format, lang, defaultFormat) => {
   return dayjs(value, format).locale(lang);
 };
 
-export { buildPickerTable, correctlyParseUserInput, datesInMonth, getDefaultValue, getPartialRangePayload, getValidDateOfMonth, getValidDateOfYear, isValidPartialRange, isValidRange, normalizePartialRange };
+export { buildPickerTable, correctlyParseUserInput, datesInMonth, getDefaultValue, getPartialRangePayload, getSequentialRangePick, getValidDateOfMonth, getValidDateOfYear, isValidPartialRange, isValidRange, normalizePartialRange };
 //# sourceMappingURL=utils.mjs.map

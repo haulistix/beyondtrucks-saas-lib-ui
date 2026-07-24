@@ -1,8 +1,10 @@
+import { rangePickTypeProp } from './shared.mjs';
 import { timePickerDefaultProps } from '../../../time-picker/src/common/props.mjs';
 import { buildProps, definePropType } from '../../../../utils/vue/props/runtime.mjs';
 
 const datePickerProps = buildProps({
   ...timePickerDefaultProps,
+  rangePickType: rangePickTypeProp,
   type: {
     type: definePropType(String),
     default: "date"

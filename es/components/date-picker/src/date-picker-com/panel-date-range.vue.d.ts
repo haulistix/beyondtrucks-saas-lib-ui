@@ -14,6 +14,12 @@ declare function __VLS_template(): {
     "next-month"?(_: {}): any;
 };
 declare const __VLS_component: import("vue").DefineComponent<{
+    readonly rangePickType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly unlinkPanels: BooleanConstructor;
     readonly visible: BooleanConstructor;
     readonly parsedValue: {
@@ -38,6 +44,12 @@ declare const __VLS_component: import("vue").DefineComponent<{
     pick: (...args: any[]) => void;
     "set-picker-option": (...args: any[]) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    readonly rangePickType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly unlinkPanels: BooleanConstructor;
     readonly visible: BooleanConstructor;
     readonly parsedValue: {

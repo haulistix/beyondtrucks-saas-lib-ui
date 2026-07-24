@@ -1,5 +1,11 @@
 import type { ExtractPropTypes, __ExtractPublicPropTypes } from 'vue';
 export declare const panelDateRangeProps: {
+    readonly rangePickType: {
+        readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "end" | "start") | (() => "end" | "start") | ((new (...args: any[]) => "end" | "start") | (() => "end" | "start"))[], "end" | "start", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly unlinkPanels: BooleanConstructor;
     readonly visible: BooleanConstructor;
     readonly parsedValue: {

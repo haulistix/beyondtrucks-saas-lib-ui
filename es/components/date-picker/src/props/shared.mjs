@@ -12,7 +12,13 @@ const selectionModes = [
   "week",
   "range"
 ];
+const rangePickTypes = ["start", "end"];
+const rangePickTypeProp = {
+  type: definePropType(String),
+  values: rangePickTypes
+};
 const datePickerSharedProps = buildProps({
+  rangePickType: rangePickTypeProp,
   cycle: {
     type: Number,
     default: 0
@@ -58,6 +64,7 @@ const panelSharedProps = buildProps({
   showWeekNumber: Boolean
 });
 const panelRangeSharedProps = buildProps({
+  rangePickType: rangePickTypeProp,
   unlinkPanels: Boolean,
   visible: Boolean,
   parsedValue: {
@@ -75,5 +82,5 @@ const rangePickerSharedEmits = {
   pick: (range) => isArray(range)
 };
 
-export { datePickerSharedProps, panelRangeSharedProps, panelSharedProps, rangePickerSharedEmits, selectionModeWithDefault };
+export { datePickerSharedProps, panelRangeSharedProps, panelSharedProps, rangePickTypeProp, rangePickTypes, rangePickerSharedEmits, selectionModeWithDefault };
 //# sourceMappingURL=shared.mjs.map

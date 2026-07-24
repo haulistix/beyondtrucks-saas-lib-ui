@@ -34,6 +34,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     contentId: import("vue").Ref<string>;
     multiple: import("vue").ComputedRef<boolean>;
+    hasDefaultSlot: import("vue").ComputedRef<boolean>;
     isTextOverflowing: import("vue").Ref<boolean>;
     currentTip: import("vue").ComputedRef<any>;
     optionStyle: import("vue").ComputedRef<{

@@ -5,7 +5,7 @@ import { ElIcon } from '../../../icon/index.mjs';
 import { DArrowRight, ArrowRight, DArrowLeft, ArrowLeft } from '@element-plus/icons-vue';
 import { panelDateRangeProps } from '../props/panel-date-range.mjs';
 import { useRangePicker } from '../composables/use-range-picker.mjs';
-import { isValidPartialRange, getPartialRangePayload, getDefaultValue, correctlyParseUserInput } from '../utils.mjs';
+import { isValidPartialRange, getPartialRangePayload, getSequentialRangePick, getDefaultValue, correctlyParseUserInput } from '../utils.mjs';
 import { usePanelDateRange } from '../composables/use-panel-date-range.mjs';
 import { ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY } from '../constants.mjs';
 import YearTable from './basic-year-table.mjs';
@@ -61,13 +61,20 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       var _a;
       return (_a = maxDate.value) != null ? _a : minDate.value;
     });
+    const selectingStartDate = ref(false);
     const displayMinDate = computed(() => {
+      if (selectingStartDate.value && maxDate.value && rangeState.value.endDate) {
+        return maxDate.value;
+      }
       if (rangeState.value.selecting && minDate.value && rangeState.value.endDate) {
         return minDate.value;
       }
       return minDate.value && maxDate.value ? minDate.value : void 0;
     });
     const displayMaxDate = computed(() => {
+      if (selectingStartDate.value && maxDate.value && rangeState.value.endDate) {
+        return rangeState.value.endDate;
+      }
       if (rangeState.value.selecting && minDate.value && rangeState.value.endDate) {
         return rangeState.value.endDate;
       }
@@ -181,10 +188,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       }
     };
     const handleDatePick = (value, keepOpen = false) => {
-      const nextMaxDate = formatEmit(value, 1);
-      if (!nextMaxDate)
+      const endpointIndex = selectingStartDate.value ? 0 : 1;
+      const nextDate = formatEmit(value, endpointIndex);
+      if (!nextDate)
         return;
-      updateRangeValue(minDate.value, nextMaxDate, keepOpen);
+      const { range, completed } = getSequentialRangePick("end", selectingStartDate.value, nextDate, [minDate.value, maxDate.value]);
+      selectingStartDate.value = !completed;
+      updateRangeValue(range[0], range[1], !completed || keepOpen);
+      syncHoverRangeState();
     };
     const handleClear = () => {
       maxDate.value = void 0;
@@ -213,7 +224,18 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
     const syncHoverRangeState = () => {
       var _a;
-      if (!props.visible || !minDate.value) {
+      if (!props.visible) {
+        selectingStartDate.value = false;
+        rangeState.value.selecting = false;
+        rangeState.value.endDate = null;
+        return;
+      }
+      if (selectingStartDate.value && maxDate.value) {
+        rangeState.value.selecting = true;
+        rangeState.value.endDate = maxDate.value;
+        return;
+      }
+      if (!minDate.value) {
         rangeState.value.selecting = false;
         rangeState.value.endDate = null;
         return;

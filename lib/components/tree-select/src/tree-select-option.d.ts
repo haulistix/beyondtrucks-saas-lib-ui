@@ -91,6 +91,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
                 cssVarBlockName: (name: string) => string;
             };
             id: import("vue").Ref<string>;
+            hasDefaultSlot: import("vue").ComputedRef<boolean>;
             containerKls: import("vue").ComputedRef<string[]>;
             rawOption: Record<string, any> | undefined;
             currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
@@ -190,6 +191,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             cssVarBlockName: (name: string) => string;
         };
         id: import("vue").Ref<string>;
+        hasDefaultSlot: import("vue").ComputedRef<boolean>;
         containerKls: import("vue").ComputedRef<string[]>;
         rawOption: Record<string, any> | undefined;
         currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
@@ -268,6 +270,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         cssVarBlockName: (name: string) => string;
     };
     id: import("vue").Ref<string>;
+    hasDefaultSlot: import("vue").ComputedRef<boolean>;
     containerKls: import("vue").ComputedRef<string[]>;
     rawOption: Record<string, any> | undefined;
     currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
@@ -394,6 +397,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
                 cssVarBlockName: (name: string) => string;
             };
             id: import("vue").Ref<string>;
+            hasDefaultSlot: import("vue").ComputedRef<boolean>;
             containerKls: import("vue").ComputedRef<string[]>;
             rawOption: Record<string, any> | undefined;
             currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
@@ -493,6 +497,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             cssVarBlockName: (name: string) => string;
         };
         id: import("vue").Ref<string>;
+        hasDefaultSlot: import("vue").ComputedRef<boolean>;
         containerKls: import("vue").ComputedRef<string[]>;
         rawOption: Record<string, any> | undefined;
         currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;
@@ -571,6 +576,7 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         cssVarBlockName: (name: string) => string;
     };
     id: import("vue").Ref<string>;
+    hasDefaultSlot: import("vue").ComputedRef<boolean>;
     containerKls: import("vue").ComputedRef<string[]>;
     rawOption: Record<string, any> | undefined;
     currentLabel: import("vue").ComputedRef<boolean | import("element-plus/es/utils").EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>>;

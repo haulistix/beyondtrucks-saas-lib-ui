@@ -28883,18 +28883,6 @@
   const ROOT_PICKER_INJECTION_KEY = Symbol();
   const ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY = "ElIsDefaultFormat";
 
-  const datePickerProps = buildProps({
-    ...timePickerDefaultProps,
-    type: {
-      type: definePropType(String),
-      default: "date"
-    },
-    typeList: {
-      type: Array,
-      default: () => []
-    }
-  });
-
   const selectionModes = [
     "date",
     "dates",
@@ -28905,7 +28893,13 @@
     "week",
     "range"
   ];
+  const rangePickTypes = ["start", "end"];
+  const rangePickTypeProp = {
+    type: definePropType(String),
+    values: rangePickTypes
+  };
   const datePickerSharedProps = buildProps({
+    rangePickType: rangePickTypeProp,
     cycle: {
       type: Number,
       default: 0
@@ -28951,6 +28945,7 @@
     showWeekNumber: Boolean
   });
   const panelRangeSharedProps = buildProps({
+    rangePickType: rangePickTypeProp,
     unlinkPanels: Boolean,
     visible: Boolean,
     parsedValue: {
@@ -28964,6 +28959,19 @@
       default: mode
     };
   };
+
+  const datePickerProps = buildProps({
+    ...timePickerDefaultProps,
+    rangePickType: rangePickTypeProp,
+    type: {
+      type: definePropType(String),
+      default: "date"
+    },
+    typeList: {
+      type: Array,
+      default: () => []
+    }
+  });
 
   const panelDatePickProps = buildProps({
     ...panelSharedProps,
@@ -28979,6 +28987,37 @@
     }
   });
 
+  const getSequentialRangePick = (firstEndpoint, selectingSecondEndpoint, value, range) => {
+    const [startDate, endDate] = range;
+    if (firstEndpoint === "start") {
+      if (selectingSecondEndpoint && startDate && value.isBefore(startDate)) {
+        return {
+          range: [value, void 0],
+          completed: false
+        };
+      }
+      return selectingSecondEndpoint ? {
+        range: [startDate, value],
+        completed: true
+      } : {
+        range: [value, void 0],
+        completed: false
+      };
+    }
+    if (selectingSecondEndpoint && endDate && value.isAfter(endDate)) {
+      return {
+        range: [void 0, value],
+        completed: false
+      };
+    }
+    return selectingSecondEndpoint ? {
+      range: [value, endDate],
+      completed: true
+    } : {
+      range: [void 0, value],
+      completed: false
+    };
+  };
   const isValidRange = (range) => {
     if (!isArray$1(range))
       return false;
@@ -29226,14 +29265,15 @@
     };
     const rows = vue.computed(() => {
       const { minDate, maxDate, rangeState, showWeekNumber } = props;
+      const rangeAnchorDate = props.rangePickType === "end" && rangeState.selecting && maxDate ? maxDate : minDate;
       const offset = vue.unref(offsetDay);
       const rows_ = vue.unref(tableRows);
       const dateUnit = "day";
       let count = 1;
       buildPickerTable({ row: 6, column: 7 }, rows_, {
-        startDate: minDate,
+        startDate: rangeAnchorDate,
         columnIndexOffset: showWeekNumber ? 1 : 0,
-        nextEndDate: rangeState.endDate || maxDate || rangeState.selecting && minDate || null,
+        nextEndDate: rangeState.endDate || maxDate || rangeState.selecting && rangeAnchorDate || null,
         now: dayjs().locale(vue.unref(lang)).startOf(dateUnit),
         unit: dateUnit,
         relativeDateGetter: (idx) => vue.unref(startDate).add(idx - offset, dateUnit),
@@ -29330,7 +29370,9 @@
       lastColumn.value = void 0;
     };
     const handleRangePick = (newDate) => {
-      if (!props.rangeState.selecting || !props.minDate) {
+      const rangePickType = props.rangePickType;
+      const anchorDate = rangePickType === "end" ? props.maxDate : props.minDate;
+      if (!props.rangeState.selecting || !anchorDate) {
         if (props.cycleType === "week") {
           const offsetWeek = newDate.day();
           newDate = newDate.subtract(offsetWeek, "days");
@@ -29350,17 +29392,27 @@
           emit("pick", { minDate: v3, maxDate }, false);
           emit("select", false);
         } else {
-          emit("pick", { minDate: newDate, maxDate: null });
+          emit("pick", rangePickType === "end" ? { minDate: null, maxDate: newDate } : { minDate: newDate, maxDate: null });
           emit("select", true);
         }
-      } else {
-        if (newDate >= props.minDate) {
-          emit("pick", { minDate: props.minDate, maxDate: newDate });
-        } else {
-          emit("pick", { minDate: newDate, maxDate: props.minDate });
-        }
-        emit("select", false);
+        return;
       }
+      if (rangePickType === "start" && newDate.isBefore(anchorDate)) {
+        emit("pick", { minDate: newDate, maxDate: null }, false);
+        emit("select", true);
+        return;
+      }
+      if (rangePickType === "end" && newDate.isAfter(anchorDate)) {
+        emit("pick", { minDate: null, maxDate: newDate }, false);
+        emit("select", true);
+        return;
+      }
+      if (newDate >= anchorDate) {
+        emit("pick", { minDate: anchorDate, maxDate: newDate });
+      } else {
+        emit("pick", { minDate: newDate, maxDate: anchorDate });
+      }
+      emit("select", false);
     };
     const handleWeekPick = (newDate) => {
       const weekNumber = newDate.week();
@@ -31218,7 +31270,7 @@
         getSelectingDate: void 0
       });
       const handleRangePick = (val, close = true) => {
-        var _a;
+        var _a, _b, _c;
         const min_ = val.minDate;
         const max_ = val.maxDate;
         const minDate_ = formatEmit(min_, 0);
@@ -31229,10 +31281,10 @@
         if (maxDate.value === maxDate_ && minDate.value === minDate_) {
           return;
         }
-        emit("calendar-change", [min_.toDate(), max_ && max_.toDate()]);
+        emit("calendar-change", [(_a = min_ == null ? void 0 : min_.toDate()) != null ? _a : null, (_b = max_ == null ? void 0 : max_.toDate()) != null ? _b : null]);
         maxDate.value = maxDate_;
         minDate.value = minDate_;
-        if (!close || showTime.value || ((_a = slots.option) == null ? void 0 : _a.call(slots)))
+        if (!close || showTime.value || ((_c = slots.option) == null ? void 0 : _c.call(slots)))
           return;
         handleRangeConfirm();
       };
@@ -31648,6 +31700,7 @@
                   "min-date": vue.unref(minDate),
                   "max-date": vue.unref(maxDate),
                   "range-state": vue.unref(rangeState),
+                  "range-pick-type": _ctx.rangePickType,
                   cycle: vue.unref(cycle),
                   "sett-default-date": vue.unref(settDefaultDate),
                   "cycle-type": vue.unref(cycleType),
@@ -31657,7 +31710,7 @@
                   onChangerange: vue.unref(handleChangeRange),
                   onPick: handleRangePick,
                   onSelect: vue.unref(onSelect)
-                }, null, 8, ["date", "min-date", "max-date", "range-state", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : vue.createCommentVNode("v-if", true),
+                }, null, 8, ["date", "min-date", "max-date", "range-state", "range-pick-type", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : vue.createCommentVNode("v-if", true),
                 vue.unref(leftCurrentView) === "year" ? (vue.openBlock(), vue.createBlock(YearTable, {
                   key: 1,
                   ref_key: "leftCurrentViewRef",
@@ -31793,6 +31846,7 @@
                   "min-date": vue.unref(minDate),
                   "max-date": vue.unref(maxDate),
                   "range-state": vue.unref(rangeState),
+                  "range-pick-type": _ctx.rangePickType,
                   cycle: vue.unref(cycle),
                   "sett-default-date": vue.unref(settDefaultDate),
                   "cycle-type": vue.unref(cycleType),
@@ -31802,7 +31856,7 @@
                   onChangerange: vue.unref(handleChangeRange),
                   onPick: handleRangePick,
                   onSelect: vue.unref(onSelect)
-                }, null, 8, ["date", "min-date", "max-date", "range-state", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : vue.createCommentVNode("v-if", true),
+                }, null, 8, ["date", "min-date", "max-date", "range-state", "range-pick-type", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : vue.createCommentVNode("v-if", true),
                 vue.unref(rightCurrentView) === "year" ? (vue.openBlock(), vue.createBlock(YearTable, {
                   key: 1,
                   ref_key: "rightCurrentViewRef",
@@ -32644,13 +32698,20 @@
         var _a;
         return (_a = minDate.value) != null ? _a : maxDate.value;
       });
+      const selectingEndDate = vue.ref(false);
       const displayMinDate = vue.computed(() => {
+        if (selectingEndDate.value && minDate.value && rangeState.value.endDate) {
+          return minDate.value;
+        }
         if (rangeState.value.selecting && maxDate.value && rangeState.value.endDate) {
           return maxDate.value;
         }
         return minDate.value && maxDate.value ? minDate.value : void 0;
       });
       const displayMaxDate = vue.computed(() => {
+        if (selectingEndDate.value && minDate.value && rangeState.value.endDate) {
+          return rangeState.value.endDate;
+        }
         if (rangeState.value.selecting && maxDate.value && rangeState.value.endDate) {
           return rangeState.value.endDate;
         }
@@ -32764,10 +32825,14 @@
         }
       };
       const handleDatePick = (value, keepOpen = false) => {
-        const nextMinDate = formatEmit(value, 0);
-        if (!nextMinDate)
+        const endpointIndex = selectingEndDate.value ? 1 : 0;
+        const nextDate = formatEmit(value, endpointIndex);
+        if (!nextDate)
           return;
-        updateRangeValue(nextMinDate, maxDate.value, keepOpen);
+        const { range, completed } = getSequentialRangePick("start", selectingEndDate.value, nextDate, [minDate.value, maxDate.value]);
+        selectingEndDate.value = !completed;
+        updateRangeValue(range[0], range[1], !completed || keepOpen);
+        syncHoverRangeState();
       };
       const handleClear = () => {
         minDate.value = void 0;
@@ -32796,7 +32861,18 @@
       };
       const syncHoverRangeState = () => {
         var _a;
-        if (!props.visible || !maxDate.value) {
+        if (!props.visible) {
+          selectingEndDate.value = false;
+          rangeState.value.selecting = false;
+          rangeState.value.endDate = null;
+          return;
+        }
+        if (selectingEndDate.value && minDate.value) {
+          rangeState.value.selecting = true;
+          rangeState.value.endDate = minDate.value;
+          return;
+        }
+        if (!maxDate.value) {
           rangeState.value.selecting = false;
           rangeState.value.endDate = null;
           return;
@@ -33215,13 +33291,20 @@
         var _a;
         return (_a = maxDate.value) != null ? _a : minDate.value;
       });
+      const selectingStartDate = vue.ref(false);
       const displayMinDate = vue.computed(() => {
+        if (selectingStartDate.value && maxDate.value && rangeState.value.endDate) {
+          return maxDate.value;
+        }
         if (rangeState.value.selecting && minDate.value && rangeState.value.endDate) {
           return minDate.value;
         }
         return minDate.value && maxDate.value ? minDate.value : void 0;
       });
       const displayMaxDate = vue.computed(() => {
+        if (selectingStartDate.value && maxDate.value && rangeState.value.endDate) {
+          return rangeState.value.endDate;
+        }
         if (rangeState.value.selecting && minDate.value && rangeState.value.endDate) {
           return rangeState.value.endDate;
         }
@@ -33335,10 +33418,14 @@
         }
       };
       const handleDatePick = (value, keepOpen = false) => {
-        const nextMaxDate = formatEmit(value, 1);
-        if (!nextMaxDate)
+        const endpointIndex = selectingStartDate.value ? 0 : 1;
+        const nextDate = formatEmit(value, endpointIndex);
+        if (!nextDate)
           return;
-        updateRangeValue(minDate.value, nextMaxDate, keepOpen);
+        const { range, completed } = getSequentialRangePick("end", selectingStartDate.value, nextDate, [minDate.value, maxDate.value]);
+        selectingStartDate.value = !completed;
+        updateRangeValue(range[0], range[1], !completed || keepOpen);
+        syncHoverRangeState();
       };
       const handleClear = () => {
         maxDate.value = void 0;
@@ -33367,7 +33454,18 @@
       };
       const syncHoverRangeState = () => {
         var _a;
-        if (!props.visible || !minDate.value) {
+        if (!props.visible) {
+          selectingStartDate.value = false;
+          rangeState.value.selecting = false;
+          rangeState.value.endDate = null;
+          return;
+        }
+        if (selectingStartDate.value && maxDate.value) {
+          rangeState.value.selecting = true;
+          rangeState.value.endDate = maxDate.value;
+          return;
+        }
+        if (!minDate.value) {
           rangeState.value.selecting = false;
           rangeState.value.endDate = null;
           return;
@@ -33861,7 +33959,9 @@
               }
             }, null))) ? _slot : {
               default: () => [_slot]
-            }), vue.createVNode(Component, scopedProps, {
+            }), vue.createVNode(Component, vue.mergeProps(scopedProps, {
+              "rangePickType": props.rangePickType
+            }), {
               "prev-month": slots["prev-month"],
               "next-month": slots["next-month"],
               "prev-year": slots["prev-year"],
@@ -39673,10 +39773,22 @@
       ElTooltip
     },
     props: optionProps,
-    setup(props) {
+    setup(props, { slots }) {
       const ns = useNamespace("select");
       const id = useId();
       const isTextOverflowing = vue.ref(false);
+      const hasDefaultSlot = vue.computed(() => {
+        var _a, _b;
+        return ((_b = (_a = slots.default) == null ? void 0 : _a.call(slots)) != null ? _b : []).some((node) => {
+          var _a2;
+          if (node.type === vue.Comment)
+            return false;
+          if (node.type === vue.Text) {
+            return Boolean(String((_a2 = node.children) != null ? _a2 : "").trim());
+          }
+          return true;
+        });
+      });
       const containerKls = vue.computed(() => [
         ns.be("dropdown", "item"),
         ns.is("disabled", vue.unref(isDisabled)),
@@ -39774,6 +39886,7 @@
         multiple,
         ns,
         id,
+        hasDefaultSlot,
         containerKls,
         rawOption: props.rawOption,
         currentLabel,
@@ -39810,63 +39923,68 @@
       onClick: vue.withModifiers(_ctx.selectOptionClick, ["stop"]),
       onMouseenter: _ctx.handleCellMouseEnter
     }, [
-      vue.renderSlot(_ctx.$slots, "default", {}, () => [
-        vue.createElementVNode("div", { class: "option-wrap" }, [
-          _ctx.multiple ? (vue.openBlock(), vue.createBlock(_component_el_checkbox, {
+      vue.createElementVNode("div", { class: "option-wrap" }, [
+        _ctx.multiple ? (vue.openBlock(), vue.createBlock(_component_el_checkbox, {
+          key: 0,
+          modelValue: _ctx.itemSelected,
+          "onUpdate:modelValue": ($event) => _ctx.itemSelected = $event,
+          disabled: _ctx.isDisabled
+        }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled"])) : vue.createCommentVNode("v-if", true),
+        _ctx.hasDefaultSlot ? (vue.openBlock(), vue.createElementBlock("div", {
+          key: 1,
+          class: "option-wrap-custom-content"
+        }, [
+          vue.renderSlot(_ctx.$slots, "default")
+        ])) : (vue.openBlock(), vue.createBlock(_component_el_tooltip, {
+          key: 2,
+          ref: "tooltipRef",
+          effect: "light",
+          disabled: !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
+          placement: _ctx.placement,
+          "popper-class": "optionPopperClass"
+        }, {
+          content: vue.withCtx(() => [
+            _ctx.isTextOverflowing ? (vue.openBlock(), vue.createElementBlock("div", { key: 0 }, vue.toDisplayString(_ctx.currentLabel), 1)) : vue.createCommentVNode("v-if", true),
+            _ctx.tip ? (vue.openBlock(), vue.createElementBlock("div", { key: 1 }, vue.toDisplayString(_ctx.tip), 1)) : vue.createCommentVNode("v-if", true)
+          ]),
+          default: vue.withCtx(() => {
+            var _a;
+            return [
+              vue.createElementVNode("div", { class: "option-wrap-content" }, [
+                vue.renderSlot(_ctx.$slots, "optionIcon", {
+                  item: _ctx.rawOption,
+                  value: _ctx.select.props.modelValue
+                }),
+                vue.createElementVNode("span", {
+                  class: vue.normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
+                }, vue.toDisplayString(_ctx.currentLabel), 3)
+              ])
+            ];
+          }),
+          _: 3
+        }, 8, ["disabled", "placement"])),
+        !_ctx.multiple ? (vue.openBlock(), vue.createElementBlock("div", {
+          key: 3,
+          class: "option-wrap-icon"
+        }, [
+          _ctx.itemSelected ? (vue.openBlock(), vue.createBlock(_component_el_icon, {
             key: 0,
-            modelValue: _ctx.itemSelected,
-            "onUpdate:modelValue": ($event) => _ctx.itemSelected = $event,
-            disabled: _ctx.isDisabled
-          }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled"])) : vue.createCommentVNode("v-if", true),
-          vue.createVNode(_component_el_tooltip, {
-            ref: "tooltipRef",
-            effect: "light",
-            disabled: !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
-            placement: _ctx.placement,
-            "popper-class": "optionPopperClass"
+            size: "16px",
+            color: "#2A3F4D"
           }, {
-            content: vue.withCtx(() => [
-              _ctx.isTextOverflowing ? (vue.openBlock(), vue.createElementBlock("div", { key: 0 }, vue.toDisplayString(_ctx.currentLabel), 1)) : vue.createCommentVNode("v-if", true),
-              _ctx.tip ? (vue.openBlock(), vue.createElementBlock("div", { key: 1 }, vue.toDisplayString(_ctx.tip), 1)) : vue.createCommentVNode("v-if", true)
+            default: vue.withCtx(() => [
+              (vue.openBlock(), vue.createElementBlock("svg", {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "16",
+                height: "16",
+                viewBox: "0 0 16 16"
+              }, [
+                vue.createElementVNode("path", { d: "M5.20006 14.2833C4.97716 14.2834 4.75643 14.2395 4.55052 14.1542C4.3446 14.0688 4.15754 13.9437 4.00006 13.786L0.292725 10.0807L1.70739 8.66665L5.20006 12.1593L14.2927 3.06665L15.7074 4.48065L6.40006 13.786C6.24257 13.9437 6.05552 14.0688 5.8496 14.1542C5.64369 14.2395 5.42296 14.2834 5.20006 14.2833Z" })
+              ]))
             ]),
-            default: vue.withCtx(() => {
-              var _a;
-              return [
-                vue.createElementVNode("div", { class: "option-wrap-content" }, [
-                  vue.renderSlot(_ctx.$slots, "optionIcon", {
-                    item: _ctx.rawOption,
-                    value: _ctx.select.props.modelValue
-                  }),
-                  vue.createElementVNode("span", {
-                    class: vue.normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
-                  }, vue.toDisplayString(_ctx.currentLabel), 3)
-                ])
-              ];
-            }),
-            _: 3
-          }, 8, ["disabled", "placement"]),
-          _ctx.itemSelected && !_ctx.multiple ? (vue.openBlock(), vue.createElementBlock("div", {
-            key: 1,
-            class: "option-wrap-icon"
-          }, [
-            vue.createVNode(_component_el_icon, {
-              size: "16px",
-              color: "#2A3F4D"
-            }, {
-              default: vue.withCtx(() => [
-                (vue.openBlock(), vue.createElementBlock("svg", {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "16",
-                  height: "16",
-                  viewBox: "0 0 16 16"
-                }, [
-                  vue.createElementVNode("path", { d: "M5.20006 14.2833C4.97716 14.2834 4.75643 14.2395 4.55052 14.1542C4.3446 14.0688 4.15754 13.9437 4.00006 13.786L0.292725 10.0807L1.70739 8.66665L5.20006 12.1593L14.2927 3.06665L15.7074 4.48065L6.40006 13.786C6.24257 13.9437 6.05552 14.0688 5.8496 14.1542C5.64369 14.2395 5.42296 14.2834 5.20006 14.2833Z" })
-                ]))
-              ]),
-              _: 1
-            })
-          ])) : vue.createCommentVNode("v-if", true)
-        ])
+            _: 1
+          })) : vue.createCommentVNode("v-if", true)
+        ])) : vue.createCommentVNode("v-if", true)
       ])
     ], 46, ["id", "aria-disabled", "aria-selected", "onMousemove", "onClick", "onMouseenter"])), [
       [vue.vShow, _ctx.visible]
@@ -40070,16 +40188,27 @@
         (_a = option.updateOption) == null ? void 0 : _a.call(option, states.inputValue);
       });
     };
+    const noPendingAutoSelection = Symbol("noPendingAutoSelection");
+    let pendingAutoSelectValue = noPendingAutoSelection;
     const tryAutoSelectSingleOption = () => {
-      if (props.multiple || props.clearable || hasModelValue.value)
+      if (props.multiple || props.clearable || hasModelValue.value) {
+        pendingAutoSelectValue = noPendingAutoSelection;
         return;
+      }
       const availableOptions = optionsArray.value.filter((option2) => !option2.isDisabled);
-      if (availableOptions.length !== 1)
+      if (availableOptions.length !== 1) {
+        pendingAutoSelectValue = noPendingAutoSelection;
         return;
+      }
       const [option] = availableOptions;
       if (isEmptyValue(option.value))
         return;
+      if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual$1(pendingAutoSelectValue, option.value)) {
+        return;
+      }
+      pendingAutoSelectValue = option.value;
       emit(UPDATE_MODEL_EVENT, option.value);
+      emitChange(option.value);
     };
     const selectSize = useFormSize();
     const collapseTagSize = vue.computed(() => ["small"].includes(selectSize.value) ? "small" : "default");
@@ -40105,6 +40234,9 @@
     });
     const mouseEnterEventName = vue.computed(() => isIOS ? null : "mouseenter");
     vue.watch(() => props.modelValue, (val, oldVal) => {
+      if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual$1(val, pendingAutoSelectValue)) {
+        pendingAutoSelectValue = noPendingAutoSelection;
+      }
       if (props.multiple) {
         if (props.filterable && !props.reserveKeyword) {
           states.inputValue = "";
@@ -45830,11 +45962,32 @@
 
   const selectV2InjectionKey = Symbol("ElSelectV2Injection");
 
+  const hasMeaningfulSlotContent = (content) => {
+    var _a;
+    if (Array.isArray(content)) {
+      return content.some(hasMeaningfulSlotContent);
+    }
+    if (typeof content === "string" || typeof content === "number") {
+      return Boolean(String(content).trim());
+    }
+    if (!content || typeof content !== "object")
+      return false;
+    const node = content;
+    if (node.type === vue.Comment)
+      return false;
+    if (node.type === vue.Text) {
+      return Boolean(String((_a = node.children) != null ? _a : "").trim());
+    }
+    if (node.type === vue.Fragment) {
+      return hasMeaningfulSlotContent(node.children);
+    }
+    return true;
+  };
   const _sfc_main$R = vue.defineComponent({
     components: { ElCheckbox, ElIcon, ElTooltip },
     props: optionV2Props,
     emits: optionV2Emits,
-    setup(props, { emit }) {
+    setup(props, { emit, slots }) {
       const select = vue.inject(selectV2InjectionKey);
       const isTextOverflowing = vue.ref(false);
       const ns = useNamespace("select");
@@ -45842,6 +45995,14 @@
       const { hoverItem, selectOptionClick } = useOption(props, { emit });
       const { getLabel, getValue, getTip } = useProps(select.props);
       const currentTip = vue.computed(() => getTip(props.item));
+      const hasDefaultSlot = vue.computed(() => {
+        var _a, _b;
+        return hasMeaningfulSlotContent((_b = (_a = slots.default) == null ? void 0 : _a.call(slots, {
+          item: props.item,
+          index: props.index,
+          disabled: props.disabled
+        })) != null ? _b : []);
+      });
       const contentId = select.contentId;
       const isItemSelected = (item) => {
         if (!item || item.type === "Group" || !multiple.value)
@@ -45890,6 +46051,7 @@
         ns,
         contentId,
         multiple,
+        hasDefaultSlot,
         isTextOverflowing,
         currentTip,
         optionStyle,
@@ -45921,63 +46083,68 @@
       onClick: vue.withModifiers(_ctx.selectOptionClick, ["stop"]),
       onMouseenter: _ctx.handleCellMouseEnter
     }, [
-      vue.renderSlot(_ctx.$slots, "default", {
-        item: _ctx.item,
-        index: _ctx.index,
-        disabled: _ctx.disabled
-      }, () => [
-        vue.createElementVNode("div", { class: "option-wrap" }, [
-          _ctx.multiple ? (vue.openBlock(), vue.createBlock(_component_el_checkbox, {
-            key: 0,
-            "model-value": _ctx.selected,
+      vue.createElementVNode("div", { class: "option-wrap" }, [
+        _ctx.multiple ? (vue.openBlock(), vue.createBlock(_component_el_checkbox, {
+          key: 0,
+          "model-value": _ctx.selected,
+          disabled: _ctx.disabled
+        }, null, 8, ["model-value", "disabled"])) : vue.createCommentVNode("v-if", true),
+        _ctx.hasDefaultSlot ? (vue.openBlock(), vue.createElementBlock("div", {
+          key: 1,
+          class: "option-wrap-custom-content"
+        }, [
+          vue.renderSlot(_ctx.$slots, "default", {
+            item: _ctx.item,
+            index: _ctx.index,
             disabled: _ctx.disabled
-          }, null, 8, ["model-value", "disabled"])) : vue.createCommentVNode("v-if", true),
-          vue.createVNode(_component_el_tooltip, {
-            ref: "tooltipRef",
-            effect: "light",
-            disabled: !_ctx.isTextOverflowing && !_ctx.currentTip,
-            placement: "right",
-            "popper-class": "optionPopperClass"
+          })
+        ])) : (vue.openBlock(), vue.createBlock(_component_el_tooltip, {
+          key: 2,
+          ref: "tooltipRef",
+          effect: "light",
+          disabled: !_ctx.isTextOverflowing && !_ctx.currentTip,
+          placement: "right",
+          "popper-class": "optionPopperClass"
+        }, {
+          content: vue.withCtx(() => [
+            _ctx.isTextOverflowing ? (vue.openBlock(), vue.createElementBlock("div", { key: 0 }, vue.toDisplayString(_ctx.getLabel(_ctx.item)), 1)) : vue.createCommentVNode("v-if", true),
+            _ctx.currentTip ? (vue.openBlock(), vue.createElementBlock("div", { key: 1 }, vue.toDisplayString(_ctx.currentTip), 1)) : vue.createCommentVNode("v-if", true)
+          ]),
+          default: vue.withCtx(() => {
+            var _a;
+            return [
+              vue.createElementVNode("div", { class: "option-wrap-content" }, [
+                vue.renderSlot(_ctx.$slots, "optionIcon"),
+                vue.createElementVNode("span", {
+                  class: vue.normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
+                }, vue.toDisplayString(_ctx.getLabel(_ctx.item)), 3)
+              ])
+            ];
+          }),
+          _: 3
+        }, 8, ["disabled"])),
+        !_ctx.multiple ? (vue.openBlock(), vue.createElementBlock("div", {
+          key: 3,
+          class: "option-wrap-icon"
+        }, [
+          _ctx.selected ? (vue.openBlock(), vue.createBlock(_component_el_icon, {
+            key: 0,
+            size: "16px",
+            color: "#2A3F4D"
           }, {
-            content: vue.withCtx(() => [
-              _ctx.isTextOverflowing ? (vue.openBlock(), vue.createElementBlock("div", { key: 0 }, vue.toDisplayString(_ctx.getLabel(_ctx.item)), 1)) : vue.createCommentVNode("v-if", true),
-              _ctx.currentTip ? (vue.openBlock(), vue.createElementBlock("div", { key: 1 }, vue.toDisplayString(_ctx.currentTip), 1)) : vue.createCommentVNode("v-if", true)
+            default: vue.withCtx(() => [
+              (vue.openBlock(), vue.createElementBlock("svg", {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "16",
+                height: "16",
+                viewBox: "0 0 16 16"
+              }, [
+                vue.createElementVNode("path", { d: "M5.20006 14.2833C4.97716 14.2834 4.75643 14.2395 4.55052 14.1542C4.3446 14.0688 4.15754 13.9437 4.00006 13.786L0.292725 10.0807L1.70739 8.66665L5.20006 12.1593L14.2927 3.06665L15.7074 4.48065L6.40006 13.786C6.24257 13.9437 6.05552 14.0688 5.8496 14.1542C5.64369 14.2395 5.42296 14.2834 5.20006 14.2833Z" })
+              ]))
             ]),
-            default: vue.withCtx(() => {
-              var _a;
-              return [
-                vue.createElementVNode("div", { class: "option-wrap-content" }, [
-                  vue.renderSlot(_ctx.$slots, "optionIcon"),
-                  vue.createElementVNode("span", {
-                    class: vue.normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
-                  }, vue.toDisplayString(_ctx.getLabel(_ctx.item)), 3)
-                ])
-              ];
-            }),
-            _: 3
-          }, 8, ["disabled"]),
-          _ctx.selected && !_ctx.multiple ? (vue.openBlock(), vue.createElementBlock("div", {
-            key: 1,
-            class: "option-wrap-icon"
-          }, [
-            vue.createVNode(_component_el_icon, {
-              size: "16px",
-              color: "#2A3F4D"
-            }, {
-              default: vue.withCtx(() => [
-                (vue.openBlock(), vue.createElementBlock("svg", {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "16",
-                  height: "16",
-                  viewBox: "0 0 16 16"
-                }, [
-                  vue.createElementVNode("path", { d: "M5.20006 14.2833C4.97716 14.2834 4.75643 14.2395 4.55052 14.1542C4.3446 14.0688 4.15754 13.9437 4.00006 13.786L0.292725 10.0807L1.70739 8.66665L5.20006 12.1593L14.2927 3.06665L15.7074 4.48065L6.40006 13.786C6.24257 13.9437 6.05552 14.0688 5.8496 14.1542C5.64369 14.2395 5.42296 14.2834 5.20006 14.2833Z" })
-                ]))
-              ]),
-              _: 1
-            })
-          ])) : vue.createCommentVNode("v-if", true)
-        ])
+            _: 1
+          })) : vue.createCommentVNode("v-if", true)
+        ])) : vue.createCommentVNode("v-if", true)
       ])
     ], 46, ["id", "aria-selected", "aria-disabled", "onMousemove", "onClick", "onMouseenter"]);
   }
@@ -46004,7 +46171,6 @@
       const select = vue.inject(selectV2InjectionKey);
       const ns = useNamespace("select");
       const {
-        getLabel,
         getValue,
         getDisabled
       } = useProps(select.props);
@@ -46127,7 +46293,7 @@
         }), {
           default: (props3) => {
             var _a;
-            return ((_a = slots.default) == null ? void 0 : _a.call(slots, props3)) || vue.createVNode("span", null, [getLabel(item)]);
+            return (_a = slots.default) == null ? void 0 : _a.call(slots, props3);
           }
         });
       };
@@ -46380,16 +46546,26 @@
     const hasModelValue = vue.computed(() => {
       return props.multiple ? isArray$1(props.modelValue) && props.modelValue.length > 0 : !isEmptyValue(props.modelValue);
     });
+    const noPendingAutoSelection = Symbol("noPendingAutoSelection");
+    let pendingAutoSelectValue = noPendingAutoSelection;
     const tryAutoSelectSingleOption = () => {
-      if (props.multiple || props.clearable || hasModelValue.value)
+      if (props.multiple || props.clearable || hasModelValue.value) {
+        pendingAutoSelectValue = noPendingAutoSelection;
         return;
+      }
       const availableOptions = allOptions.value.filter((option) => option.type !== "Group" && !getDisabled(option));
-      if (availableOptions.length !== 1)
+      if (availableOptions.length !== 1) {
+        pendingAutoSelectValue = noPendingAutoSelection;
         return;
+      }
       const optionValue = getValue(availableOptions[0]);
       if (isEmptyValue(optionValue))
         return;
-      emit(UPDATE_MODEL_EVENT, optionValue);
+      if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual$1(pendingAutoSelectValue, optionValue)) {
+        return;
+      }
+      pendingAutoSelectValue = optionValue;
+      update(optionValue);
     };
     const showClearBtn = vue.computed(() => {
       return props.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
@@ -46982,6 +47158,9 @@
     });
     vue.watch(() => props.modelValue, (val, oldVal) => {
       var _a;
+      if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual$1(val, pendingAutoSelectValue)) {
+        pendingAutoSelectValue = noPendingAutoSelection;
+      }
       const isValEmpty = !val || isArray$1(val) && val.length === 0;
       if (isValEmpty || props.multiple && !isEqual$1(val.toString(), states.previousValue) || !props.multiple && getValueKey(val) !== getValueKey(states.previousValue)) {
         initStates(true);

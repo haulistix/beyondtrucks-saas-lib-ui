@@ -149,16 +149,27 @@ const useSelect = (props, emit) => {
       (_a = option.updateOption) == null ? void 0 : _a.call(option, states.inputValue);
     });
   };
+  const noPendingAutoSelection = Symbol("noPendingAutoSelection");
+  let pendingAutoSelectValue = noPendingAutoSelection;
   const tryAutoSelectSingleOption = () => {
-    if (props.multiple || props.clearable || hasModelValue.value)
+    if (props.multiple || props.clearable || hasModelValue.value) {
+      pendingAutoSelectValue = noPendingAutoSelection;
       return;
+    }
     const availableOptions = optionsArray.value.filter((option2) => !option2.isDisabled);
-    if (availableOptions.length !== 1)
+    if (availableOptions.length !== 1) {
+      pendingAutoSelectValue = noPendingAutoSelection;
       return;
+    }
     const [option] = availableOptions;
     if (isEmptyValue(option.value))
       return;
+    if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual(pendingAutoSelectValue, option.value)) {
+      return;
+    }
+    pendingAutoSelectValue = option.value;
     emit(UPDATE_MODEL_EVENT, option.value);
+    emitChange(option.value);
   };
   const selectSize = useFormSize();
   const collapseTagSize = computed(() => ["small"].includes(selectSize.value) ? "small" : "default");
@@ -184,6 +195,9 @@ const useSelect = (props, emit) => {
   });
   const mouseEnterEventName = computed(() => isIOS ? null : "mouseenter");
   watch(() => props.modelValue, (val, oldVal) => {
+    if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual(val, pendingAutoSelectValue)) {
+      pendingAutoSelectValue = noPendingAutoSelection;
+    }
     if (props.multiple) {
       if (props.filterable && !props.reserveKeyword) {
         states.inputValue = "";

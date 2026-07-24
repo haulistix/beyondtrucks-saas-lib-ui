@@ -193,6 +193,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 4px;
 
     .el-checkbox {
       margin-right: 8px;
@@ -200,9 +201,16 @@
 
     &-icon {
       width: 16px;
+      flex: 0 0 16px;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    &-custom-content {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
     }
 
     &-content {

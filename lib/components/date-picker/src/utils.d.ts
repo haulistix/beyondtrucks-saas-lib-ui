@@ -5,6 +5,11 @@ import type { DateCell } from './date-picker.type';
 import type { DisabledDateType } from './props/shared';
 type DayRange = [Dayjs | undefined, Dayjs | undefined];
 type PartialDateRange = [Date | null, Date | null];
+export type RangeEndpoint = 'start' | 'end';
+export declare const getSequentialRangePick: (firstEndpoint: RangeEndpoint, selectingSecondEndpoint: boolean, value: Dayjs, range: DayRange) => {
+    range: DayRange;
+    completed: boolean;
+};
 export declare const isValidRange: (range: DayRange) => boolean;
 export declare const normalizePartialRange: (range: Array<Dayjs | null>) => [Dayjs | undefined, Dayjs | undefined];
 export declare const isValidPartialRange: (range: Array<Dayjs | null>, disabledDate?: DisabledDateType) => boolean;

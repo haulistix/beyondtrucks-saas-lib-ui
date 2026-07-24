@@ -1,4 +1,4 @@
-import { defineComponent, inject, ref, computed, Comment, Text, Fragment, resolveComponent, openBlock, createElementBlock, normalizeStyle, normalizeClass, withModifiers, createElementVNode, createBlock, createCommentVNode, renderSlot, withCtx, toDisplayString } from 'vue';
+import { defineComponent, inject, ref, computed, Comment, Text, Fragment, resolveComponent, openBlock, createElementBlock, normalizeStyle, normalizeClass, withModifiers, createElementVNode, createBlock, createCommentVNode, createVNode, withCtx, toDisplayString, renderSlot } from 'vue';
 import { isObject, get } from 'lodash-unified';
 import { getPadding, isGreaterThan } from '../../table/src/util.mjs';
 import { ElCheckbox } from '../../checkbox/index.mjs';
@@ -138,22 +138,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         "model-value": _ctx.selected,
         disabled: _ctx.disabled
       }, null, 8, ["model-value", "disabled"])) : createCommentVNode("v-if", true),
-      _ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", {
-        key: 1,
-        class: "option-wrap-custom-content"
-      }, [
-        renderSlot(_ctx.$slots, "default", {
-          item: _ctx.item,
-          index: _ctx.index,
-          disabled: _ctx.disabled
-        })
-      ])) : (openBlock(), createBlock(_component_el_tooltip, {
-        key: 2,
+      createVNode(_component_el_tooltip, {
         ref: "tooltipRef",
         effect: "light",
         disabled: !_ctx.isTextOverflowing && !_ctx.currentTip,
         placement: "right",
-        "popper-class": "optionPopperClass"
+        "popper-class": "tipPopperClass"
       }, {
         content: withCtx(() => [
           _ctx.isTextOverflowing ? (openBlock(), createElementBlock("div", { key: 0 }, toDisplayString(_ctx.getLabel(_ctx.item)), 1)) : createCommentVNode("v-if", true),
@@ -162,18 +152,27 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         default: withCtx(() => {
           var _a;
           return [
-            createElementVNode("div", { class: "option-wrap-content" }, [
-              renderSlot(_ctx.$slots, "optionIcon"),
-              createElementVNode("span", {
-                class: normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
-              }, toDisplayString(_ctx.getLabel(_ctx.item)), 3)
-            ])
+            createElementVNode("div", {
+              class: normalizeClass(["option-wrap-content", { "option-wrap-custom-content": _ctx.hasDefaultSlot }])
+            }, [
+              _ctx.hasDefaultSlot ? renderSlot(_ctx.$slots, "default", {
+                key: 0,
+                item: _ctx.item,
+                index: _ctx.index,
+                disabled: _ctx.disabled
+              }) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                renderSlot(_ctx.$slots, "optionIcon"),
+                createElementVNode("span", {
+                  class: normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
+                }, toDisplayString(_ctx.getLabel(_ctx.item)), 3)
+              ], 64))
+            ], 2)
           ];
         }),
         _: 3
-      }, 8, ["disabled"])),
+      }, 8, ["disabled"]),
       !_ctx.multiple ? (openBlock(), createElementBlock("div", {
-        key: 3,
+        key: 1,
         class: "option-wrap-icon"
       }, [
         _ctx.selected ? (openBlock(), createBlock(_component_el_icon, {

@@ -5,7 +5,7 @@ import Prev from './components/prev2.mjs';
 import Next from './components/next.mjs';
 import Sizes from './components/sizes2.mjs';
 import Jumper from './components/jumper.mjs';
-import Total from './components/total2.mjs';
+import Total from './components/total.mjs';
 import Pager from './components/pager2.mjs';
 import { useSizeProp, useGlobalSize } from '../../../hooks/use-size/index.mjs';
 import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs';

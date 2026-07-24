@@ -13368,6 +13368,7 @@ export declare type Column<T = any> = {
     class?: string | ClassNameGetter<T>;
     key?: KeyType_2;
     dataKey?: KeyType_2;
+    labelKey?: KeyType_2;
     fixed?: true | FixedDirection;
     flexGrow?: CSSProperties["flexGrow"];
     flexShrink?: CSSProperties["flexShrink"];

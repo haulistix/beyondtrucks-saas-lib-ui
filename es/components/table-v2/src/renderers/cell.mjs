@@ -8,7 +8,7 @@ import { isGhostTableRow, isEmptyRequiredValue, applyRequiredInputState } from '
 import { enforceUnit, tryCall, componentToSlot } from '../utils.mjs';
 import TableCell from '../components/cell.mjs';
 import ExpandIcon from '../components/expand-icon.mjs';
-import { isObject, isFunction } from '@vue/shared';
+import { isFunction, isObject } from '@vue/shared';
 
 const CellRenderer = ({
   columns,
@@ -50,7 +50,8 @@ const CellRenderer = ({
     cellRenderer,
     dataKey,
     dataGetter,
-    editCellRenderer
+    editCellRenderer,
+    labelKey
   } = column;
   const getCellData = () => isFunction(dataGetter) ? dataGetter({
     columns,
@@ -59,6 +60,7 @@ const CellRenderer = ({
     rowData,
     rowIndex
   }) : get(rowData, dataKey != null ? dataKey : "");
+  const getDisplayCellData = () => labelKey == null ? getCellData() : get(rowData, labelKey);
   const markGhostRowTouched = (key, value) => {
     if (!isGhostTableRow(rowData) || key == null)
       return;
@@ -220,6 +222,7 @@ const CellRenderer = ({
     const rendered = editColumnCellRenderer(cellProps);
     return applyRequiredInputState(rendered, column, rowData);
   })() : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(TableCell, mergeProps(cellProps, {
+    "cellData": getDisplayCellData(),
     "showOverflowTooltip": column.showOverflowTooltip
   }), null)]);
   const kls = [ns.e("row-cell"), column.diagonalHeader && "is-diagonal-header-column", ghostTable && "is-full-width", isGhostRow && ns.is("ghost-row"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), column.class, column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right")];

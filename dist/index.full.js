@@ -46089,22 +46089,12 @@
           "model-value": _ctx.selected,
           disabled: _ctx.disabled
         }, null, 8, ["model-value", "disabled"])) : vue.createCommentVNode("v-if", true),
-        _ctx.hasDefaultSlot ? (vue.openBlock(), vue.createElementBlock("div", {
-          key: 1,
-          class: "option-wrap-custom-content"
-        }, [
-          vue.renderSlot(_ctx.$slots, "default", {
-            item: _ctx.item,
-            index: _ctx.index,
-            disabled: _ctx.disabled
-          })
-        ])) : (vue.openBlock(), vue.createBlock(_component_el_tooltip, {
-          key: 2,
+        vue.createVNode(_component_el_tooltip, {
           ref: "tooltipRef",
           effect: "light",
           disabled: !_ctx.isTextOverflowing && !_ctx.currentTip,
           placement: "right",
-          "popper-class": "optionPopperClass"
+          "popper-class": "tipPopperClass"
         }, {
           content: vue.withCtx(() => [
             _ctx.isTextOverflowing ? (vue.openBlock(), vue.createElementBlock("div", { key: 0 }, vue.toDisplayString(_ctx.getLabel(_ctx.item)), 1)) : vue.createCommentVNode("v-if", true),
@@ -46113,18 +46103,27 @@
           default: vue.withCtx(() => {
             var _a;
             return [
-              vue.createElementVNode("div", { class: "option-wrap-content" }, [
-                vue.renderSlot(_ctx.$slots, "optionIcon"),
-                vue.createElementVNode("span", {
-                  class: vue.normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
-                }, vue.toDisplayString(_ctx.getLabel(_ctx.item)), 3)
-              ])
+              vue.createElementVNode("div", {
+                class: vue.normalizeClass(["option-wrap-content", { "option-wrap-custom-content": _ctx.hasDefaultSlot }])
+              }, [
+                _ctx.hasDefaultSlot ? vue.renderSlot(_ctx.$slots, "default", {
+                  key: 0,
+                  item: _ctx.item,
+                  index: _ctx.index,
+                  disabled: _ctx.disabled
+                }) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
+                  vue.renderSlot(_ctx.$slots, "optionIcon"),
+                  vue.createElementVNode("span", {
+                    class: vue.normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
+                  }, vue.toDisplayString(_ctx.getLabel(_ctx.item)), 3)
+                ], 64))
+              ], 2)
             ];
           }),
           _: 3
-        }, 8, ["disabled"])),
+        }, 8, ["disabled"]),
         !_ctx.multiple ? (vue.openBlock(), vue.createElementBlock("div", {
-          key: 3,
+          key: 1,
           class: "option-wrap-icon"
         }, [
           _ctx.selected ? (vue.openBlock(), vue.createBlock(_component_el_icon, {
@@ -57644,7 +57643,8 @@
       cellRenderer,
       dataKey,
       dataGetter,
-      editCellRenderer
+      editCellRenderer,
+      labelKey
     } = column;
     const getCellData = () => isFunction$1(dataGetter) ? dataGetter({
       columns,
@@ -57653,6 +57653,7 @@
       rowData,
       rowIndex
     }) : get(rowData, dataKey != null ? dataKey : "");
+    const getDisplayCellData = () => labelKey == null ? getCellData() : get(rowData, labelKey);
     const markGhostRowTouched = (key, value) => {
       if (!isGhostTableRow(rowData) || key == null)
         return;
@@ -57814,6 +57815,7 @@
       const rendered = editColumnCellRenderer(cellProps);
       return applyRequiredInputState(rendered, column, rowData);
     })() : shouldRenderEditor && columnCellRenderer ? columnCellRenderer(cellProps) : vue.renderSlot(slots, "default", cellProps, () => [vue.createVNode(TableCell, vue.mergeProps(cellProps, {
+      "cellData": getDisplayCellData(),
       "showOverflowTooltip": column.showOverflowTooltip
     }), null)]);
     const kls = [ns.e("row-cell"), column.diagonalHeader && "is-diagonal-header-column", ghostTable && "is-full-width", isGhostRow && ns.is("ghost-row"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), column.class, column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right")];

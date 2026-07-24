@@ -59,6 +59,7 @@ export type Column<T = any> = {
     class?: string | ClassNameGetter<T>;
     key?: KeyType;
     dataKey?: KeyType;
+    labelKey?: KeyType;
     fixed?: true | FixedDirection;
     flexGrow?: CSSProperties['flexGrow'];
     flexShrink?: CSSProperties['flexShrink'];

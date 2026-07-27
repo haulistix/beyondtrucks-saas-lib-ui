@@ -52,8 +52,7 @@ function useWatcher(owner, props_) {
       "allowInsertBeforeFirstColumn",
       "filterClassName",
       "showOverflowTooltip",
-      "tooltipFormatter",
-      "resizable"
+      "tooltipFormatter"
     ];
     const parentProps = ["showOverflowTooltip"];
     const aliases = {
@@ -77,6 +76,9 @@ function useWatcher(owner, props_) {
         });
       }
     });
+    watch([() => props_.resizable, () => props_.width], ([resizable, width]) => {
+      instance.columnConfig.value.resizable = Boolean(resizable) && !parseWidth(width);
+    }, { immediate: true });
   };
   return {
     registerComplexWatchers,

@@ -39720,9 +39720,11 @@ function useOption$1(props, states) {
     }
   };
   const hoverItem = () => {
-    if (!props.disabled && !selectGroup.disabled) {
-      select.states.hoveringIndex = select.optionsArray.indexOf(instance.proxy);
+    if (isDisabled.value) {
+      select.states.hoveringIndex = -1;
+      return;
     }
+    select.states.hoveringIndex = select.optionsArray.indexOf(instance.proxy);
   };
   const updateOption = (query) => {
     const regexp = new RegExp(escapeStringRegexp(query), "i");
@@ -45766,9 +45768,7 @@ const ensurePosition = (style, key) => {
 function useOption(props, { emit }) {
   return {
     hoverItem: () => {
-      if (!props.disabled) {
-        emit("hover", props.index);
-      }
+      emit("hover", props.disabled ? -1 : props.index);
     },
     selectOptionClick: () => {
       if (!props.disabled) {
@@ -54531,8 +54531,7 @@ function useWatcher(owner, props_) {
       "allowInsertBeforeFirstColumn",
       "filterClassName",
       "showOverflowTooltip",
-      "tooltipFormatter",
-      "resizable"
+      "tooltipFormatter"
     ];
     const parentProps = ["showOverflowTooltip"];
     const aliases = {
@@ -54556,6 +54555,9 @@ function useWatcher(owner, props_) {
         });
       }
     });
+    watch([() => props_.resizable, () => props_.width], ([resizable, width]) => {
+      instance.columnConfig.value.resizable = Boolean(resizable) && !parseWidth(width);
+    }, { immediate: true });
   };
   return {
     registerComplexWatchers,

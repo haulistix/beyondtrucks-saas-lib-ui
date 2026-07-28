@@ -83,13 +83,13 @@ var TableBody = defineComponent({
     };
   },
   render() {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g;
     const { wrappedRowRender, store } = this;
     const data = (store == null ? void 0 : store.states.data.value) || [];
     const rows = data.reduce((acc, row) => {
       return acc.concat(wrappedRowRender(row, acc.length));
     }, []);
-    const shouldRenderGhostRow = ((_b = (_a = this.context) == null ? void 0 : _a.props) == null ? void 0 : _b.ghostTable) && ((_d = (_c = this.context) == null ? void 0 : _c.props) == null ? void 0 : _d.editTable) && ((_e = this.context) == null ? void 0 : _e.ghostRowData);
+    const shouldRenderGhostRow = ((_b = (_a = this.context) == null ? void 0 : _a.props) == null ? void 0 : _b.ghostTable) && ((_d = (_c = this.context) == null ? void 0 : _c.props) == null ? void 0 : _d.editTable) && ((_f = (_e = this.context) == null ? void 0 : _e.props) == null ? void 0 : _f.showGhostRow) && ((_g = this.context) == null ? void 0 : _g.ghostRowData);
     const bodyRows = shouldRenderGhostRow ? (() => {
       var _a2, _b2;
       const ghostRow = (_b2 = (_a2 = this.context.ghostRowData) == null ? void 0 : _a2.value) != null ? _b2 : this.context.ghostRowData;

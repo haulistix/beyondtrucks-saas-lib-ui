@@ -177,11 +177,11 @@ function useColumns(props, columns, fixed, effectiveWidth, reservedVScrollbarWid
     if (!key)
       return;
     const { sortState, sortBy } = props;
-    let order = SortOrder.ASC;
+    let order = SortOrder.DESC;
     if (isObject(sortState)) {
       order = nextSortOrderMap[(_a = sortState[key]) != null ? _a : SortOrder.DEFAULT];
     } else {
-      order = sortBy.key === key ? nextSortOrderMap[(_b = sortBy.order) != null ? _b : SortOrder.DEFAULT] : SortOrder.ASC;
+      order = sortBy.key === key ? nextSortOrderMap[(_b = sortBy.order) != null ? _b : SortOrder.DEFAULT] : SortOrder.DESC;
     }
     (_c = props.onColumnSort) == null ? void 0 : _c.call(props, { column: getColumn(key), key, order });
   }

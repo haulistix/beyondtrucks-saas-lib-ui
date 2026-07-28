@@ -85,9 +85,30 @@
 
       .#{$namespace}-vl__horizontal {
         transform: translateY(
-          calc(#{getCssVar('table-v2', 'ghost-row-height')} + 2px)
+            calc(#{getCssVar('table-v2', 'ghost-row-height')} + 2px)
         );
       }
+    }
+  }
+
+  @include m('without-horizontal-scroll') {
+    @include e('left') {
+      box-shadow: none;
+    }
+
+    @include e('right') {
+      box-shadow: none;
+      .el-table-v2__header-wrapper {
+        border-left: var(--el-table-border);
+      }
+    }
+
+    @include e('add-row-left') {
+      box-shadow: none;
+    }
+
+    @include e('add-row-right') {
+      box-shadow: none;
     }
   }
 
@@ -280,11 +301,11 @@
           position: absolute;
           inset: 0;
           background: linear-gradient(
-            to bottom left,
-            transparent calc(50% - 0.5px),
-            var(--color-gray-300) calc(50% - 0.5px),
-            var(--color-gray-300) calc(50% + 0.5px),
-            transparent calc(50% + 0.5px)
+              to bottom left,
+              transparent calc(50% - 0.5px),
+              var(--color-gray-300) calc(50% - 0.5px),
+              var(--color-gray-300) calc(50% + 0.5px),
+              transparent calc(50% + 0.5px)
           );
           pointer-events: none;
           z-index: 0;

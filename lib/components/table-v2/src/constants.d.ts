@@ -14,7 +14,7 @@ export declare enum FixedDir {
 }
 export declare const nextSortOrderMap: {
     "": SortOrder;
-    asc: SortOrder;
     desc: SortOrder;
+    asc: SortOrder;
 };
-export declare const sortOrders: readonly [SortOrder.DEFAULT, SortOrder.ASC, SortOrder.DESC];
+export declare const sortOrders: readonly [SortOrder.DEFAULT, SortOrder.DESC, SortOrder.ASC];

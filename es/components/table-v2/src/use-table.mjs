@@ -78,6 +78,9 @@ function useTable(props) {
   });
   const showEmpty = computed(() => {
     const noData = unref(data).length === 0;
+    const isEditMode = props.canEditTable && props.editable || props.ghostTable && props.editTable;
+    if (isEditMode)
+      return false;
     return isArray(props.fixedData) ? props.fixedData.length === 0 && noData : noData;
   });
   const rowsHeight = computed(() => {
@@ -92,6 +95,7 @@ function useTable(props) {
     addRowHeight,
     bodyWidth,
     effectiveHScrollbarSize,
+    hasHorizontalScrollbar,
     fixedTableHeight,
     mainTableHeight,
     leftTableWidth,
@@ -160,6 +164,7 @@ function useTable(props) {
     bodyWidth,
     emptyStyle,
     effectiveHScrollbarSize,
+    hasHorizontalScrollbar,
     rootStyle,
     effectiveWidth,
     footerHeight,

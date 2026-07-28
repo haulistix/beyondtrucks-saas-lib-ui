@@ -41133,15 +41133,14 @@
       const errorTooltipVisible = vue.ref(false);
       const handleSelectClick = () => {
         API.toggleMenu();
-        errorTooltipVisible.value = !errorTooltipDisabled.value && !errorTooltipVisible.value;
+        errorTooltipVisible.value = !errorTooltipDisabled.value;
       };
       const handleSelectClickOutside = (event) => {
         errorTooltipVisible.value = false;
         API.handleClickOutside(event);
       };
-      vue.watch(errorTooltipDisabled, (disabled) => {
-        if (disabled)
-          errorTooltipVisible.value = false;
+      vue.watch([API.isFocused, errorTooltipDisabled], ([focused, disabled]) => {
+        errorTooltipVisible.value = focused && !disabled;
       });
       const getOptionProps = (option) => ({
         label: getLabel(option),
@@ -47332,15 +47331,14 @@
       const errorTooltipVisible = vue.ref(false);
       const handleSelectClick = () => {
         API.toggleMenu();
-        errorTooltipVisible.value = !errorTooltipDisabled.value && !errorTooltipVisible.value;
+        errorTooltipVisible.value = !errorTooltipDisabled.value;
       };
       const handleSelectClickOutside = (event) => {
         errorTooltipVisible.value = false;
         API.handleClickOutside(event);
       };
-      vue.watch(errorTooltipDisabled, (disabled) => {
-        if (disabled)
-          errorTooltipVisible.value = false;
+      vue.watch([API.isFocused, errorTooltipDisabled], ([focused, disabled]) => {
+        errorTooltipVisible.value = focused && !disabled;
       });
       vue.provide(selectV2InjectionKey, {
         props: vue.reactive({
@@ -52916,13 +52914,13 @@
       };
     },
     render() {
-      var _a, _b, _c, _d, _e;
+      var _a, _b, _c, _d, _e, _f, _g;
       const { wrappedRowRender, store } = this;
       const data = (store == null ? void 0 : store.states.data.value) || [];
       const rows = data.reduce((acc, row) => {
         return acc.concat(wrappedRowRender(row, acc.length));
       }, []);
-      const shouldRenderGhostRow = ((_b = (_a = this.context) == null ? void 0 : _a.props) == null ? void 0 : _b.ghostTable) && ((_d = (_c = this.context) == null ? void 0 : _c.props) == null ? void 0 : _d.editTable) && ((_e = this.context) == null ? void 0 : _e.ghostRowData);
+      const shouldRenderGhostRow = ((_b = (_a = this.context) == null ? void 0 : _a.props) == null ? void 0 : _b.ghostTable) && ((_d = (_c = this.context) == null ? void 0 : _c.props) == null ? void 0 : _d.editTable) && ((_f = (_e = this.context) == null ? void 0 : _e.props) == null ? void 0 : _f.showGhostRow) && ((_g = this.context) == null ? void 0 : _g.ghostRowData);
       const bodyRows = shouldRenderGhostRow ? (() => {
         var _a2, _b2;
         const ghostRow = (_b2 = (_a2 = this.context.ghostRowData) == null ? void 0 : _a2.value) != null ? _b2 : this.context.ghostRowData;
@@ -53514,6 +53512,10 @@
     flexible: Boolean,
     editable: Boolean,
     ghostTable: Boolean,
+    showGhostRow: {
+      type: Boolean,
+      default: true
+    },
     editTable: Boolean,
     total: {
       type: Number,
@@ -54915,7 +54917,7 @@
     sortOrders: {
       type: Array,
       default: () => {
-        return ["ascending", "descending", null];
+        return ["descending", "ascending", null];
       },
       validator: (val) => {
         return val.every((order) => ["ascending", "descending", null].includes(order));
@@ -55535,9 +55537,9 @@
     return FixedDir2;
   })(FixedDir || {});
   const nextSortOrderMap = {
-    ["" /* DEFAULT */]: "asc" /* ASC */,
-    ["asc" /* ASC */]: "desc" /* DESC */,
-    ["desc" /* DESC */]: "" /* DEFAULT */
+    ["" /* DEFAULT */]: "desc" /* DESC */,
+    ["desc" /* DESC */]: "asc" /* ASC */,
+    ["asc" /* ASC */]: "" /* DEFAULT */
   };
 
   const placeholderSign = Symbol("placeholder");
@@ -55752,11 +55754,11 @@
       if (!key)
         return;
       const { sortState, sortBy } = props;
-      let order = SortOrder.ASC;
+      let order = SortOrder.DESC;
       if (isObject$1(sortState)) {
         order = nextSortOrderMap[(_a = sortState[key]) != null ? _a : SortOrder.DEFAULT];
       } else {
-        order = sortBy.key === key ? nextSortOrderMap[(_b = sortBy.order) != null ? _b : SortOrder.DEFAULT] : SortOrder.ASC;
+        order = sortBy.key === key ? nextSortOrderMap[(_b = sortBy.order) != null ? _b : SortOrder.DEFAULT] : SortOrder.DESC;
       }
       (_c = props.onColumnSort) == null ? void 0 : _c.call(props, { column: getColumn(key), key, order });
     }
@@ -56035,7 +56037,7 @@
     const availableBodyWidth = vue.computed(() => Math.max(vue.unref(effectiveWidth) - vue.unref(reservedVScrollbarWidth), 0));
     const hasHorizontalScrollbar = vue.computed(() => props.fixed && vue.unref(columnsTotalWidth) > vue.unref(availableBodyWidth));
     const effectiveHScrollbarSize = vue.computed(() => hasHorizontalScrollbar.value ? props.hScrollbarSize : 0);
-    const addRowHeight = vue.computed(() => props.canEditTable && props.editable || props.ghostTable && props.editTable ? props.rowHeight : 0);
+    const addRowHeight = vue.computed(() => props.canEditTable && props.editable || props.ghostTable && props.editTable && props.showGhostRow ? props.rowHeight : 0);
     const shouldUseDefaultFooterHeight = vue.computed(() => props.isFooterDefault && props.footerHeight === 0);
     const effectiveFooterHeight = vue.computed(() => shouldUseDefaultFooterHeight.value ? 44 : props.footerHeight);
     const contentHeight = vue.computed(() => {
@@ -56103,6 +56105,7 @@
       addRowHeight,
       bodyWidth,
       effectiveHScrollbarSize,
+      hasHorizontalScrollbar,
       fixedTableHeight,
       mainTableHeight,
       leftTableWidth,
@@ -56221,6 +56224,9 @@
     });
     const showEmpty = vue.computed(() => {
       const noData = vue.unref(data).length === 0;
+      const isEditMode = props.canEditTable && props.editable || props.ghostTable && props.editTable;
+      if (isEditMode)
+        return false;
       return isArray$1(props.fixedData) ? props.fixedData.length === 0 && noData : noData;
     });
     const rowsHeight = vue.computed(() => {
@@ -56235,6 +56241,7 @@
       addRowHeight,
       bodyWidth,
       effectiveHScrollbarSize,
+      hasHorizontalScrollbar,
       fixedTableHeight,
       mainTableHeight,
       leftTableWidth,
@@ -56303,6 +56310,7 @@
       bodyWidth,
       emptyStyle,
       effectiveHScrollbarSize,
+      hasHorizontalScrollbar,
       rootStyle,
       effectiveWidth,
       footerHeight,
@@ -56569,6 +56577,10 @@
     },
     canEditTable: Boolean,
     ghostTable: Boolean,
+    showGhostRow: {
+      type: Boolean,
+      default: true
+    },
     editTable: Boolean,
     ghostRowTemplate: {
       type: definePropType(Object),
@@ -58155,6 +58167,7 @@
         bodyWidth,
         addRowHeight,
         effectiveHScrollbarSize,
+        hasHorizontalScrollbar,
         emptyStyle,
         rootStyle,
         footerHeight,
@@ -58192,6 +58205,7 @@
       const ghostRowDraft = vue.ref(createGhostRowData());
       const isLegacyEditMode = vue.computed(() => props.canEditTable && props.editable);
       const isGhostEditMode = vue.computed(() => props.ghostTable && props.editTable);
+      const isGhostRowVisible = vue.computed(() => isGhostEditMode.value && props.showGhostRow);
       let stopPendingGhostRowScrollWatch;
       const clearAddColumnTrigger = () => {
         addColumnTrigger.value = null;
@@ -58515,7 +58529,7 @@
             }
           })
         };
-        const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", vue.unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostEditMode.value) && ns.m("with-ghost-row")];
+        const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", vue.unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !vue.unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll")];
         const footerProps = {
           class: ns.e("footer"),
           style: vue.unref(footerHeight),
@@ -58523,7 +58537,7 @@
           updateTime: props.updateTime
         };
         const showAddRow = isLegacyEditMode.value && !isGhostEditMode.value;
-        const showGhostRow = isGhostEditMode.value;
+        const showGhostRow = isGhostRowVisible.value;
         const addRowData = {
           [rowKey]: rowAddKey,
           [rowAddSign]: true

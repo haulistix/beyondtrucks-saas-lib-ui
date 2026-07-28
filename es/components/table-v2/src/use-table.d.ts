@@ -23,6 +23,7 @@ declare function useTable(props: TableV2Props): {
     bodyWidth: import("vue").ComputedRef<number>;
     emptyStyle: import("vue").ComputedRef<import("vue").CSSProperties>;
     effectiveHScrollbarSize: import("vue").ComputedRef<number>;
+    hasHorizontalScrollbar: import("vue").ComputedRef<boolean>;
     rootStyle: import("vue").ComputedRef<import("vue").CSSProperties>;
     effectiveWidth: import("vue").ComputedRef<number>;
     footerHeight: import("vue").ComputedRef<import("vue").CSSProperties>;

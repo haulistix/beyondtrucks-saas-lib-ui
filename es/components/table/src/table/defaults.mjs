@@ -82,6 +82,10 @@ var defaultProps = {
   flexible: Boolean,
   editable: Boolean,
   ghostTable: Boolean,
+  showGhostRow: {
+    type: Boolean,
+    default: true
+  },
   editTable: Boolean,
   total: {
     type: Number,

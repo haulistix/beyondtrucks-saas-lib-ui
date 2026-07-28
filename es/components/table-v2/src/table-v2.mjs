@@ -59,6 +59,7 @@ const TableV2 = defineComponent({
       bodyWidth,
       addRowHeight,
       effectiveHScrollbarSize,
+      hasHorizontalScrollbar,
       emptyStyle,
       rootStyle,
       footerHeight,
@@ -96,6 +97,7 @@ const TableV2 = defineComponent({
     const ghostRowDraft = ref(createGhostRowData());
     const isLegacyEditMode = computed(() => props.canEditTable && props.editable);
     const isGhostEditMode = computed(() => props.ghostTable && props.editTable);
+    const isGhostRowVisible = computed(() => isGhostEditMode.value && props.showGhostRow);
     let stopPendingGhostRowScrollWatch;
     const clearAddColumnTrigger = () => {
       addColumnTrigger.value = null;
@@ -419,7 +421,7 @@ const TableV2 = defineComponent({
           }
         })
       };
-      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostEditMode.value) && ns.m("with-ghost-row")];
+      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll")];
       const footerProps = {
         class: ns.e("footer"),
         style: unref(footerHeight),
@@ -427,7 +429,7 @@ const TableV2 = defineComponent({
         updateTime: props.updateTime
       };
       const showAddRow = isLegacyEditMode.value && !isGhostEditMode.value;
-      const showGhostRow = isGhostEditMode.value;
+      const showGhostRow = isGhostRowVisible.value;
       const addRowData = {
         [rowKey]: rowAddKey,
         [rowAddSign]: true

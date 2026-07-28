@@ -100,6 +100,7 @@ export declare const tableV2Props: {
     readonly editable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
+    readonly showGhostRow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;

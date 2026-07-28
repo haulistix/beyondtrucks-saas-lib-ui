@@ -16,14 +16,14 @@ var FixedDir = /* @__PURE__ */ ((FixedDir2) => {
   return FixedDir2;
 })(FixedDir || {});
 const nextSortOrderMap = {
-  ["" /* DEFAULT */]: "asc" /* ASC */,
-  ["asc" /* ASC */]: "desc" /* DESC */,
-  ["desc" /* DESC */]: "" /* DEFAULT */
+  ["" /* DEFAULT */]: "desc" /* DESC */,
+  ["desc" /* DESC */]: "asc" /* ASC */,
+  ["asc" /* ASC */]: "" /* DEFAULT */
 };
 const sortOrders = [
   "" /* DEFAULT */,
-  "asc" /* ASC */,
-  "desc" /* DESC */
+  "desc" /* DESC */,
+  "asc" /* ASC */
 ];
 
 export { Alignment, FixedDir, SortOrder, nextSortOrderMap, sortOrders };

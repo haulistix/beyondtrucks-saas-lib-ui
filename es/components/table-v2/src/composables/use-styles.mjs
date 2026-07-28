@@ -15,7 +15,7 @@ const useStyles = (props, {
   const availableBodyWidth = computed(() => Math.max(unref(effectiveWidth) - unref(reservedVScrollbarWidth), 0));
   const hasHorizontalScrollbar = computed(() => props.fixed && unref(columnsTotalWidth) > unref(availableBodyWidth));
   const effectiveHScrollbarSize = computed(() => hasHorizontalScrollbar.value ? props.hScrollbarSize : 0);
-  const addRowHeight = computed(() => props.canEditTable && props.editable || props.ghostTable && props.editTable ? props.rowHeight : 0);
+  const addRowHeight = computed(() => props.canEditTable && props.editable || props.ghostTable && props.editTable && props.showGhostRow ? props.rowHeight : 0);
   const shouldUseDefaultFooterHeight = computed(() => props.isFooterDefault && props.footerHeight === 0);
   const effectiveFooterHeight = computed(() => shouldUseDefaultFooterHeight.value ? 44 : props.footerHeight);
   const contentHeight = computed(() => {
@@ -83,6 +83,7 @@ const useStyles = (props, {
     addRowHeight,
     bodyWidth,
     effectiveHScrollbarSize,
+    hasHorizontalScrollbar,
     fixedTableHeight,
     mainTableHeight,
     leftTableWidth,

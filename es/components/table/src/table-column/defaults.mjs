@@ -58,7 +58,7 @@ var defaultProps = {
   sortOrders: {
     type: Array,
     default: () => {
-      return ["ascending", "descending", null];
+      return ["descending", "ascending", null];
     },
     validator: (val) => {
       return val.every((order) => ["ascending", "descending", null].includes(order));

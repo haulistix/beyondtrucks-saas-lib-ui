@@ -41129,15 +41129,14 @@ const _sfc_main$10 = defineComponent({
     const errorTooltipVisible = ref(false);
     const handleSelectClick = () => {
       API.toggleMenu();
-      errorTooltipVisible.value = !errorTooltipDisabled.value && !errorTooltipVisible.value;
+      errorTooltipVisible.value = !errorTooltipDisabled.value;
     };
     const handleSelectClickOutside = (event) => {
       errorTooltipVisible.value = false;
       API.handleClickOutside(event);
     };
-    watch(errorTooltipDisabled, (disabled) => {
-      if (disabled)
-        errorTooltipVisible.value = false;
+    watch([API.isFocused, errorTooltipDisabled], ([focused, disabled]) => {
+      errorTooltipVisible.value = focused && !disabled;
     });
     const getOptionProps = (option) => ({
       label: getLabel(option),
@@ -47328,15 +47327,14 @@ const _sfc_main$Q = defineComponent({
     const errorTooltipVisible = ref(false);
     const handleSelectClick = () => {
       API.toggleMenu();
-      errorTooltipVisible.value = !errorTooltipDisabled.value && !errorTooltipVisible.value;
+      errorTooltipVisible.value = !errorTooltipDisabled.value;
     };
     const handleSelectClickOutside = (event) => {
       errorTooltipVisible.value = false;
       API.handleClickOutside(event);
     };
-    watch(errorTooltipDisabled, (disabled) => {
-      if (disabled)
-        errorTooltipVisible.value = false;
+    watch([API.isFocused, errorTooltipDisabled], ([focused, disabled]) => {
+      errorTooltipVisible.value = focused && !disabled;
     });
     provide(selectV2InjectionKey, {
       props: reactive({
@@ -52912,13 +52910,13 @@ var TableBody = defineComponent({
     };
   },
   render() {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g;
     const { wrappedRowRender, store } = this;
     const data = (store == null ? void 0 : store.states.data.value) || [];
     const rows = data.reduce((acc, row) => {
       return acc.concat(wrappedRowRender(row, acc.length));
     }, []);
-    const shouldRenderGhostRow = ((_b = (_a = this.context) == null ? void 0 : _a.props) == null ? void 0 : _b.ghostTable) && ((_d = (_c = this.context) == null ? void 0 : _c.props) == null ? void 0 : _d.editTable) && ((_e = this.context) == null ? void 0 : _e.ghostRowData);
+    const shouldRenderGhostRow = ((_b = (_a = this.context) == null ? void 0 : _a.props) == null ? void 0 : _b.ghostTable) && ((_d = (_c = this.context) == null ? void 0 : _c.props) == null ? void 0 : _d.editTable) && ((_f = (_e = this.context) == null ? void 0 : _e.props) == null ? void 0 : _f.showGhostRow) && ((_g = this.context) == null ? void 0 : _g.ghostRowData);
     const bodyRows = shouldRenderGhostRow ? (() => {
       var _a2, _b2;
       const ghostRow = (_b2 = (_a2 = this.context.ghostRowData) == null ? void 0 : _a2.value) != null ? _b2 : this.context.ghostRowData;
@@ -53510,6 +53508,10 @@ var defaultProps$2 = {
   flexible: Boolean,
   editable: Boolean,
   ghostTable: Boolean,
+  showGhostRow: {
+    type: Boolean,
+    default: true
+  },
   editTable: Boolean,
   total: {
     type: Number,
@@ -54911,7 +54913,7 @@ var defaultProps$1 = {
   sortOrders: {
     type: Array,
     default: () => {
-      return ["ascending", "descending", null];
+      return ["descending", "ascending", null];
     },
     validator: (val) => {
       return val.every((order) => ["ascending", "descending", null].includes(order));
@@ -55531,9 +55533,9 @@ var FixedDir = /* @__PURE__ */ ((FixedDir2) => {
   return FixedDir2;
 })(FixedDir || {});
 const nextSortOrderMap = {
-  ["" /* DEFAULT */]: "asc" /* ASC */,
-  ["asc" /* ASC */]: "desc" /* DESC */,
-  ["desc" /* DESC */]: "" /* DEFAULT */
+  ["" /* DEFAULT */]: "desc" /* DESC */,
+  ["desc" /* DESC */]: "asc" /* ASC */,
+  ["asc" /* ASC */]: "" /* DEFAULT */
 };
 
 const placeholderSign = Symbol("placeholder");
@@ -55748,11 +55750,11 @@ function useColumns(props, columns, fixed, effectiveWidth, reservedVScrollbarWid
     if (!key)
       return;
     const { sortState, sortBy } = props;
-    let order = SortOrder.ASC;
+    let order = SortOrder.DESC;
     if (isObject$1(sortState)) {
       order = nextSortOrderMap[(_a = sortState[key]) != null ? _a : SortOrder.DEFAULT];
     } else {
-      order = sortBy.key === key ? nextSortOrderMap[(_b = sortBy.order) != null ? _b : SortOrder.DEFAULT] : SortOrder.ASC;
+      order = sortBy.key === key ? nextSortOrderMap[(_b = sortBy.order) != null ? _b : SortOrder.DEFAULT] : SortOrder.DESC;
     }
     (_c = props.onColumnSort) == null ? void 0 : _c.call(props, { column: getColumn(key), key, order });
   }
@@ -56031,7 +56033,7 @@ const useStyles = (props, {
   const availableBodyWidth = computed(() => Math.max(unref(effectiveWidth) - unref(reservedVScrollbarWidth), 0));
   const hasHorizontalScrollbar = computed(() => props.fixed && unref(columnsTotalWidth) > unref(availableBodyWidth));
   const effectiveHScrollbarSize = computed(() => hasHorizontalScrollbar.value ? props.hScrollbarSize : 0);
-  const addRowHeight = computed(() => props.canEditTable && props.editable || props.ghostTable && props.editTable ? props.rowHeight : 0);
+  const addRowHeight = computed(() => props.canEditTable && props.editable || props.ghostTable && props.editTable && props.showGhostRow ? props.rowHeight : 0);
   const shouldUseDefaultFooterHeight = computed(() => props.isFooterDefault && props.footerHeight === 0);
   const effectiveFooterHeight = computed(() => shouldUseDefaultFooterHeight.value ? 44 : props.footerHeight);
   const contentHeight = computed(() => {
@@ -56099,6 +56101,7 @@ const useStyles = (props, {
     addRowHeight,
     bodyWidth,
     effectiveHScrollbarSize,
+    hasHorizontalScrollbar,
     fixedTableHeight,
     mainTableHeight,
     leftTableWidth,
@@ -56217,6 +56220,9 @@ function useTable(props) {
   });
   const showEmpty = computed(() => {
     const noData = unref(data).length === 0;
+    const isEditMode = props.canEditTable && props.editable || props.ghostTable && props.editTable;
+    if (isEditMode)
+      return false;
     return isArray$1(props.fixedData) ? props.fixedData.length === 0 && noData : noData;
   });
   const rowsHeight = computed(() => {
@@ -56231,6 +56237,7 @@ function useTable(props) {
     addRowHeight,
     bodyWidth,
     effectiveHScrollbarSize,
+    hasHorizontalScrollbar,
     fixedTableHeight,
     mainTableHeight,
     leftTableWidth,
@@ -56299,6 +56306,7 @@ function useTable(props) {
     bodyWidth,
     emptyStyle,
     effectiveHScrollbarSize,
+    hasHorizontalScrollbar,
     rootStyle,
     effectiveWidth,
     footerHeight,
@@ -56565,6 +56573,10 @@ const tableV2Props = buildProps({
   },
   canEditTable: Boolean,
   ghostTable: Boolean,
+  showGhostRow: {
+    type: Boolean,
+    default: true
+  },
   editTable: Boolean,
   ghostRowTemplate: {
     type: definePropType(Object),
@@ -58151,6 +58163,7 @@ const TableV2 = defineComponent({
       bodyWidth,
       addRowHeight,
       effectiveHScrollbarSize,
+      hasHorizontalScrollbar,
       emptyStyle,
       rootStyle,
       footerHeight,
@@ -58188,6 +58201,7 @@ const TableV2 = defineComponent({
     const ghostRowDraft = ref(createGhostRowData());
     const isLegacyEditMode = computed(() => props.canEditTable && props.editable);
     const isGhostEditMode = computed(() => props.ghostTable && props.editTable);
+    const isGhostRowVisible = computed(() => isGhostEditMode.value && props.showGhostRow);
     let stopPendingGhostRowScrollWatch;
     const clearAddColumnTrigger = () => {
       addColumnTrigger.value = null;
@@ -58511,7 +58525,7 @@ const TableV2 = defineComponent({
           }
         })
       };
-      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostEditMode.value) && ns.m("with-ghost-row")];
+      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll")];
       const footerProps = {
         class: ns.e("footer"),
         style: unref(footerHeight),
@@ -58519,7 +58533,7 @@ const TableV2 = defineComponent({
         updateTime: props.updateTime
       };
       const showAddRow = isLegacyEditMode.value && !isGhostEditMode.value;
-      const showGhostRow = isGhostEditMode.value;
+      const showGhostRow = isGhostRowVisible.value;
       const addRowData = {
         [rowKey]: rowAddKey,
         [rowAddSign]: true

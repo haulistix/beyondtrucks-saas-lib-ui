@@ -14,6 +14,7 @@ export declare const useStyles: (props: TableV2Props, { columnsTotalWidth, rowsH
     addRowHeight: ComputedRef<number>;
     bodyWidth: ComputedRef<number>;
     effectiveHScrollbarSize: ComputedRef<number>;
+    hasHorizontalScrollbar: ComputedRef<boolean>;
     fixedTableHeight: ComputedRef<number>;
     mainTableHeight: ComputedRef<number>;
     leftTableWidth: ComputedRef<number>;

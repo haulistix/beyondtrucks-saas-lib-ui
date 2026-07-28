@@ -17583,6 +17583,10 @@ declare const _default_84: DefineComponent<{
     flexible: BooleanConstructor;
     editable: BooleanConstructor;
     ghostTable: BooleanConstructor;
+    showGhostRow: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     editTable: BooleanConstructor;
     total: {
         type: NumberConstructor;
@@ -18460,6 +18464,10 @@ declare const _default_84: DefineComponent<{
     flexible: BooleanConstructor;
     editable: BooleanConstructor;
     ghostTable: BooleanConstructor;
+    showGhostRow: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     editTable: BooleanConstructor;
     total: {
         type: NumberConstructor;
@@ -18556,6 +18564,7 @@ declare const _default_84: DefineComponent<{
     rowDraggable: any;
     flexible: boolean;
     ghostTable: boolean;
+    showGhostRow: boolean;
     haveTableText: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;
@@ -26748,6 +26757,7 @@ export declare interface TableProps<T extends DefaultRow> {
     flexible?: boolean;
     editable?: boolean;
     ghostTable?: boolean;
+    showGhostRow?: boolean;
     editTable?: boolean;
     total?: number;
     updateTime?: string;
@@ -26816,6 +26826,7 @@ export declare const TableV2: DefineComponent<{
     readonly editable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
+    readonly showGhostRow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;
@@ -26985,6 +26996,7 @@ export declare const TableV2: DefineComponent<{
     readonly editable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
+    readonly showGhostRow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;
@@ -27138,6 +27150,7 @@ export declare const TableV2: DefineComponent<{
     readonly editTable: boolean;
     readonly updateTime: string;
     readonly ghostTable: boolean;
+    readonly showGhostRow: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly showAddRowTrigger: boolean;
     readonly headerHeight: EpPropMergeType<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown>;
     readonly footerHeight: number;
@@ -27270,6 +27283,7 @@ export declare const tableV2Props: {
     readonly editable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
+    readonly showGhostRow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;
@@ -29851,6 +29865,7 @@ declare function useTable(props: TableV2Props): {
     bodyWidth: ComputedRef<number>;
     emptyStyle: ComputedRef<CSSProperties>;
     effectiveHScrollbarSize: ComputedRef<number>;
+    hasHorizontalScrollbar: ComputedRef<boolean>;
     rootStyle: ComputedRef<CSSProperties>;
     effectiveWidth: ComputedRef<number>;
     footerHeight: ComputedRef<CSSProperties>;

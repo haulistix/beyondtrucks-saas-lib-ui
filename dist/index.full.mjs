@@ -40188,26 +40188,6 @@ const useSelect$3 = (props, emit) => {
   };
   const noPendingAutoSelection = Symbol("noPendingAutoSelection");
   let pendingAutoSelectValue = noPendingAutoSelection;
-  const tryAutoSelectSingleOption = () => {
-    if (props.multiple || props.clearable || hasModelValue.value) {
-      pendingAutoSelectValue = noPendingAutoSelection;
-      return;
-    }
-    const availableOptions = optionsArray.value.filter((option2) => !option2.isDisabled);
-    if (availableOptions.length !== 1) {
-      pendingAutoSelectValue = noPendingAutoSelection;
-      return;
-    }
-    const [option] = availableOptions;
-    if (isEmptyValue(option.value))
-      return;
-    if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual$1(pendingAutoSelectValue, option.value)) {
-      return;
-    }
-    pendingAutoSelectValue = option.value;
-    emit(UPDATE_MODEL_EVENT, option.value);
-    emitChange(option.value);
-  };
   const selectSize = useFormSize();
   const collapseTagSize = computed(() => ["small"].includes(selectSize.value) ? "small" : "default");
   const dropdownMenuVisible = computed({
@@ -40262,7 +40242,6 @@ const useSelect$3 = (props, emit) => {
   watch(() => states.options.entries(), () => {
     if (!isClient)
       return;
-    tryAutoSelectSingleOption();
     setSelected();
     if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptionsCount.value) {
       checkDefaultFirstOption();
@@ -40696,7 +40675,6 @@ const useSelect$3 = (props, emit) => {
     }
   });
   onMounted(() => {
-    tryAutoSelectSingleOption();
     setSelected();
   });
   return {
@@ -46542,25 +46520,6 @@ const useSelect$1 = (props, emit) => {
   });
   const noPendingAutoSelection = Symbol("noPendingAutoSelection");
   let pendingAutoSelectValue = noPendingAutoSelection;
-  const tryAutoSelectSingleOption = () => {
-    if (props.multiple || props.clearable || hasModelValue.value) {
-      pendingAutoSelectValue = noPendingAutoSelection;
-      return;
-    }
-    const availableOptions = allOptions.value.filter((option) => option.type !== "Group" && !getDisabled(option));
-    if (availableOptions.length !== 1) {
-      pendingAutoSelectValue = noPendingAutoSelection;
-      return;
-    }
-    const optionValue = getValue(availableOptions[0]);
-    if (isEmptyValue(optionValue))
-      return;
-    if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual$1(pendingAutoSelectValue, optionValue)) {
-      return;
-    }
-    pendingAutoSelectValue = optionValue;
-    update(optionValue);
-  };
   const showClearBtn = computed(() => {
     return props.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
   });
@@ -47167,7 +47126,6 @@ const useSelect$1 = (props, emit) => {
   });
   watch(() => props.options, () => {
     const input = inputRef.value;
-    tryAutoSelectSingleOption();
     if (!input || input && document.activeElement !== input) {
       initStates();
     }
@@ -47201,7 +47159,6 @@ const useSelect$1 = (props, emit) => {
     }
   });
   onMounted(() => {
-    tryAutoSelectSingleOption();
     initStates();
   });
   useResizeObserver(selectRef, handleResize);

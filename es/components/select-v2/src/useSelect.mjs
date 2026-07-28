@@ -107,25 +107,6 @@ const useSelect = (props, emit) => {
   });
   const noPendingAutoSelection = Symbol("noPendingAutoSelection");
   let pendingAutoSelectValue = noPendingAutoSelection;
-  const tryAutoSelectSingleOption = () => {
-    if (props.multiple || props.clearable || hasModelValue.value) {
-      pendingAutoSelectValue = noPendingAutoSelection;
-      return;
-    }
-    const availableOptions = allOptions.value.filter((option) => option.type !== "Group" && !getDisabled(option));
-    if (availableOptions.length !== 1) {
-      pendingAutoSelectValue = noPendingAutoSelection;
-      return;
-    }
-    const optionValue = getValue(availableOptions[0]);
-    if (isEmptyValue(optionValue))
-      return;
-    if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual(pendingAutoSelectValue, optionValue)) {
-      return;
-    }
-    pendingAutoSelectValue = optionValue;
-    update(optionValue);
-  };
   const showClearBtn = computed(() => {
     return props.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
   });
@@ -732,7 +713,6 @@ const useSelect = (props, emit) => {
   });
   watch(() => props.options, () => {
     const input = inputRef.value;
-    tryAutoSelectSingleOption();
     if (!input || input && document.activeElement !== input) {
       initStates();
     }
@@ -766,7 +746,6 @@ const useSelect = (props, emit) => {
     }
   });
   onMounted(() => {
-    tryAutoSelectSingleOption();
     initStates();
   });
   useResizeObserver(selectRef, handleResize);

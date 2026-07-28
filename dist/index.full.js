@@ -40192,26 +40192,6 @@
     };
     const noPendingAutoSelection = Symbol("noPendingAutoSelection");
     let pendingAutoSelectValue = noPendingAutoSelection;
-    const tryAutoSelectSingleOption = () => {
-      if (props.multiple || props.clearable || hasModelValue.value) {
-        pendingAutoSelectValue = noPendingAutoSelection;
-        return;
-      }
-      const availableOptions = optionsArray.value.filter((option2) => !option2.isDisabled);
-      if (availableOptions.length !== 1) {
-        pendingAutoSelectValue = noPendingAutoSelection;
-        return;
-      }
-      const [option] = availableOptions;
-      if (isEmptyValue(option.value))
-        return;
-      if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual$1(pendingAutoSelectValue, option.value)) {
-        return;
-      }
-      pendingAutoSelectValue = option.value;
-      emit(UPDATE_MODEL_EVENT, option.value);
-      emitChange(option.value);
-    };
     const selectSize = useFormSize();
     const collapseTagSize = vue.computed(() => ["small"].includes(selectSize.value) ? "small" : "default");
     const dropdownMenuVisible = vue.computed({
@@ -40266,7 +40246,6 @@
     vue.watch(() => states.options.entries(), () => {
       if (!isClient)
         return;
-      tryAutoSelectSingleOption();
       setSelected();
       if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptionsCount.value) {
         checkDefaultFirstOption();
@@ -40700,7 +40679,6 @@
       }
     });
     vue.onMounted(() => {
-      tryAutoSelectSingleOption();
       setSelected();
     });
     return {
@@ -46546,25 +46524,6 @@
     });
     const noPendingAutoSelection = Symbol("noPendingAutoSelection");
     let pendingAutoSelectValue = noPendingAutoSelection;
-    const tryAutoSelectSingleOption = () => {
-      if (props.multiple || props.clearable || hasModelValue.value) {
-        pendingAutoSelectValue = noPendingAutoSelection;
-        return;
-      }
-      const availableOptions = allOptions.value.filter((option) => option.type !== "Group" && !getDisabled(option));
-      if (availableOptions.length !== 1) {
-        pendingAutoSelectValue = noPendingAutoSelection;
-        return;
-      }
-      const optionValue = getValue(availableOptions[0]);
-      if (isEmptyValue(optionValue))
-        return;
-      if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual$1(pendingAutoSelectValue, optionValue)) {
-        return;
-      }
-      pendingAutoSelectValue = optionValue;
-      update(optionValue);
-    };
     const showClearBtn = vue.computed(() => {
       return props.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
     });
@@ -47171,7 +47130,6 @@
     });
     vue.watch(() => props.options, () => {
       const input = inputRef.value;
-      tryAutoSelectSingleOption();
       if (!input || input && document.activeElement !== input) {
         initStates();
       }
@@ -47205,7 +47163,6 @@
       }
     });
     vue.onMounted(() => {
-      tryAutoSelectSingleOption();
       initStates();
     });
     useResizeObserver(selectRef, handleResize);

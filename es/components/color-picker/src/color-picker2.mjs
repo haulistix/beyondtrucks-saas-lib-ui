@@ -10,7 +10,7 @@ import { ElColorPickerPanel } from '../../color-picker-panel/index.mjs';
 import Color from '../../color-picker-panel/src/utils/color.mjs';
 import { useCommonColor } from '../../color-picker-panel/src/composables/use-common-color.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
-import { colorPickerPanelProps, ROOT_COMMON_COLOR_INJECTION_KEY } from '../../color-picker-panel/src/color-picker-panel2.mjs';
+import { colorPickerPanelProps, ROOT_COMMON_COLOR_INJECTION_KEY } from '../../color-picker-panel/src/color-picker-panel.mjs';
 import ClickOutside from '../../../directives/click-outside/index.mjs';
 import { useLocale } from '../../../hooks/use-locale/index.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';

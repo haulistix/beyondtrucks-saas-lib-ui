@@ -153,11 +153,16 @@
 
 .el-popper.is-light.optionPopperClass {
   max-width: 220px;
-  display: flex;
-  flex-direction: column;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 
+  div,
   span {
     width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 
@@ -165,9 +170,16 @@
   max-width: 220px;
   flex-direction: column;
   align-items: flex-start;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 
+  div,
   span {
     width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 

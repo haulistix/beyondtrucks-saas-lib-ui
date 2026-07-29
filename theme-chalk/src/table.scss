@@ -8,6 +8,10 @@
   @include set-component-css-var('table', $table);
 }
 
+.#{$namespace}-popper.table-header-tooltip {
+  white-space: pre-line;
+}
+
 @include b(table) {
   position: relative;
   overflow: hidden;

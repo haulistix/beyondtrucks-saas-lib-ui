@@ -4,6 +4,7 @@ var defaultProps = {
     default: "default"
   },
   label: String,
+  summary: [String, Number],
   className: String,
   labelClassName: String,
   property: String,

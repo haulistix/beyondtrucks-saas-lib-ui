@@ -54,6 +54,10 @@ const selectV2Props = buildProps({
     type: Boolean,
     default: true
   },
+  showOptionTooltip: {
+    type: Boolean,
+    default: true
+  },
   beforeChange: {
     type: definePropType(Function)
   },

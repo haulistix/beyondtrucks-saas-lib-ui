@@ -191,6 +191,8 @@ var TableHeader = defineComponent({
       }
       const diagonalHeader = column.diagonalHeader;
       const isDiagonalHeaderCell = !!diagonalHeader;
+      const rowHasSummary = subColumns.some((item) => !item.diagonalHeader && item.summary !== void 0 && item.summary !== null);
+      const hasSummary = !isDiagonalHeaderCell && column.summary !== void 0 && column.summary !== null;
       const headerContent = isDiagonalHeaderCell ? [
         h("span", {
           class: ns.e("diagonal-header-text")
@@ -204,11 +206,22 @@ var TableHeader = defineComponent({
         store,
         _self: $parent
       }) : column.label;
+      const headerMainContent = rowHasSummary && !isDiagonalHeaderCell ? h("div", {
+        class: ns.e("header-content")
+      }, [
+        h("div", {
+          class: ns.e("header-title")
+        }, [headerContent]),
+        h("div", {
+          class: ns.e("header-summary")
+        }, hasSummary ? String(column.summary) : "")
+      ]) : headerContent;
       return h("th", {
         class: [
           _class,
           {
-            [ns.is("diagonal-header")]: isDiagonalHeaderCell
+            [ns.is("diagonal-header")]: isDiagonalHeaderCell,
+            [ns.is("summary-row")]: rowHasSummary && !isDiagonalHeaderCell
           }
         ],
         colspan: column.colSpan,
@@ -237,7 +250,7 @@ var TableHeader = defineComponent({
             column.filteredValue && column.filteredValue.length > 0 ? "highlight" : ""
           ]
         }, [
-          headerContent,
+          headerMainContent,
           column.sortable && h("span", {
             class: "icon-wrap",
             onClick: ($event) => handleSortClick($event, column)

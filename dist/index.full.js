@@ -39943,7 +39943,7 @@
           key: 2,
           ref: "tooltipRef",
           effect: "light",
-          disabled: !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
+          disabled: !_ctx.select.props.showOptionTooltip || !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
           placement: _ctx.placement,
           "popper-class": "optionPopperClass"
         }, {
@@ -40913,6 +40913,10 @@
     optionWidth: {
       type: [String, Number],
       default: void 0
+    },
+    showOptionTooltip: {
+      type: Boolean,
+      default: true
     },
     suffixIcon: {
       type: iconPropType,
@@ -45804,6 +45808,10 @@
       type: Boolean,
       default: true
     },
+    showOptionTooltip: {
+      type: Boolean,
+      default: true
+    },
     beforeChange: {
       type: definePropType(Function)
     },
@@ -46028,6 +46036,7 @@
       };
       return {
         ns,
+        select,
         contentId,
         multiple,
         hasDefaultSlot,
@@ -46071,7 +46080,7 @@
         vue.createVNode(_component_el_tooltip, {
           ref: "tooltipRef",
           effect: "light",
-          disabled: !_ctx.isTextOverflowing && !_ctx.currentTip,
+          disabled: _ctx.select.props.showOptionTooltip === false || !_ctx.isTextOverflowing && !_ctx.currentTip,
           placement: "right",
           "popper-class": "tipPopperClass"
         }, {
@@ -51460,7 +51469,7 @@
     const instance = vue.getCurrentInstance();
     const parent = vue.inject(TABLE_INJECTION_KEY);
     const handleCellMouseEnter = (event, row) => {
-      var _a, _b, _c, _d, _e, _f;
+      var _a, _b, _c, _d, _e, _f, _g;
       if (!parent)
         return;
       const table = parent;
@@ -51477,8 +51486,9 @@
           toggleRowClassByCell(cell.rowSpan, event, addClass);
         }
       }
-      const cellChild = event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
-      if (!cellChild.childNodes.length)
+      const summaryHeaderTitle = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-title`) : null;
+      const cellChild = summaryHeaderTitle != null ? summaryHeaderTitle : event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
+      if (!(cellChild == null ? void 0 : cellChild.childNodes.length))
         return;
       const range = document.createRange();
       range.setStart(cellChild, 0);
@@ -51490,9 +51500,9 @@
       const verticalPadding = top + bottom;
       const limitWidth = rangeWidth + horizontalPadding;
       if (isGreaterThan(limitWidth, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth)) {
-        createTablePopper({ effect: "light" }, (_d = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _d : "", row, column, cell, table);
-      } else if (((_e = removePopper) == null ? void 0 : _e.trigger) === cell) {
-        (_f = removePopper) == null ? void 0 : _f();
+        createTablePopper({ effect: "light" }, summaryHeaderTitle ? (_d = cellChild.innerText || cellChild.textContent) != null ? _d : "" : (_e = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _e : "", row, column, cell, table);
+      } else if (((_f = removePopper) == null ? void 0 : _f.trigger) === cell) {
+        (_g = removePopper) == null ? void 0 : _g();
       }
     };
     const handleFilterClick = (event) => {
@@ -52089,6 +52099,8 @@
         }
         const diagonalHeader = column.diagonalHeader;
         const isDiagonalHeaderCell = !!diagonalHeader;
+        const rowHasSummary = subColumns.some((item) => !item.diagonalHeader && item.summary !== void 0 && item.summary !== null);
+        const hasSummary = !isDiagonalHeaderCell && column.summary !== void 0 && column.summary !== null;
         const headerContent = isDiagonalHeaderCell ? [
           vue.h("span", {
             class: ns.e("diagonal-header-text")
@@ -52102,11 +52114,22 @@
           store,
           _self: $parent
         }) : column.label;
+        const headerMainContent = rowHasSummary && !isDiagonalHeaderCell ? vue.h("div", {
+          class: ns.e("header-content")
+        }, [
+          vue.h("div", {
+            class: ns.e("header-title")
+          }, [headerContent]),
+          vue.h("div", {
+            class: ns.e("header-summary")
+          }, hasSummary ? String(column.summary) : "")
+        ]) : headerContent;
         return vue.h("th", {
           class: [
             _class,
             {
-              [ns.is("diagonal-header")]: isDiagonalHeaderCell
+              [ns.is("diagonal-header")]: isDiagonalHeaderCell,
+              [ns.is("summary-row")]: rowHasSummary && !isDiagonalHeaderCell
             }
           ],
           colspan: column.colSpan,
@@ -52135,7 +52158,7 @@
               column.filteredValue && column.filteredValue.length > 0 ? "highlight" : ""
             ]
           }, [
-            headerContent,
+            headerMainContent,
             column.sortable && vue.h("span", {
               class: "icon-wrap",
               onClick: ($event) => handleSortClick($event, column)
@@ -54483,6 +54506,7 @@
     const registerNormalWatchers = () => {
       const props = [
         "label",
+        "summary",
         "filters",
         "filterMultiple",
         "filteredValue",
@@ -54822,6 +54846,7 @@
       default: "default"
     },
     label: String,
+    summary: [String, Number],
     className: String,
     labelClassName: String,
     property: String,
@@ -54946,6 +54971,7 @@
         const basicProps = [
           "columnKey",
           "label",
+          "summary",
           "className",
           "labelClassName",
           "type",

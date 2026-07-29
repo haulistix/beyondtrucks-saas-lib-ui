@@ -183,7 +183,7 @@ function _sfc_render(_ctx, _cache) {
         key: 2,
         ref: "tooltipRef",
         effect: "light",
-        disabled: !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
+        disabled: !_ctx.select.props.showOptionTooltip || !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
         placement: _ctx.placement,
         "popper-class": "optionPopperClass"
       }, {

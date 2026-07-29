@@ -39939,7 +39939,7 @@ function _sfc_render$e(_ctx, _cache) {
         key: 2,
         ref: "tooltipRef",
         effect: "light",
-        disabled: !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
+        disabled: !_ctx.select.props.showOptionTooltip || !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
         placement: _ctx.placement,
         "popper-class": "optionPopperClass"
       }, {
@@ -40909,6 +40909,10 @@ const selectProps = buildProps({
   optionWidth: {
     type: [String, Number],
     default: void 0
+  },
+  showOptionTooltip: {
+    type: Boolean,
+    default: true
   },
   suffixIcon: {
     type: iconPropType,
@@ -45800,6 +45804,10 @@ const selectV2Props = buildProps({
     type: Boolean,
     default: true
   },
+  showOptionTooltip: {
+    type: Boolean,
+    default: true
+  },
   beforeChange: {
     type: definePropType(Function)
   },
@@ -46024,6 +46032,7 @@ const _sfc_main$R = defineComponent({
     };
     return {
       ns,
+      select,
       contentId,
       multiple,
       hasDefaultSlot,
@@ -46067,7 +46076,7 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
       createVNode(_component_el_tooltip, {
         ref: "tooltipRef",
         effect: "light",
-        disabled: !_ctx.isTextOverflowing && !_ctx.currentTip,
+        disabled: _ctx.select.props.showOptionTooltip === false || !_ctx.isTextOverflowing && !_ctx.currentTip,
         placement: "right",
         "popper-class": "tipPopperClass"
       }, {
@@ -51456,7 +51465,7 @@ function useEvent(props, emit) {
   const instance = getCurrentInstance();
   const parent = inject(TABLE_INJECTION_KEY);
   const handleCellMouseEnter = (event, row) => {
-    var _a, _b, _c, _d, _e, _f;
+    var _a, _b, _c, _d, _e, _f, _g;
     if (!parent)
       return;
     const table = parent;
@@ -51473,8 +51482,9 @@ function useEvent(props, emit) {
         toggleRowClassByCell(cell.rowSpan, event, addClass);
       }
     }
-    const cellChild = event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
-    if (!cellChild.childNodes.length)
+    const summaryHeaderTitle = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-title`) : null;
+    const cellChild = summaryHeaderTitle != null ? summaryHeaderTitle : event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
+    if (!(cellChild == null ? void 0 : cellChild.childNodes.length))
       return;
     const range = document.createRange();
     range.setStart(cellChild, 0);
@@ -51486,9 +51496,9 @@ function useEvent(props, emit) {
     const verticalPadding = top + bottom;
     const limitWidth = rangeWidth + horizontalPadding;
     if (isGreaterThan(limitWidth, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth)) {
-      createTablePopper({ effect: "light" }, (_d = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _d : "", row, column, cell, table);
-    } else if (((_e = removePopper) == null ? void 0 : _e.trigger) === cell) {
-      (_f = removePopper) == null ? void 0 : _f();
+      createTablePopper({ effect: "light" }, summaryHeaderTitle ? (_d = cellChild.innerText || cellChild.textContent) != null ? _d : "" : (_e = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _e : "", row, column, cell, table);
+    } else if (((_f = removePopper) == null ? void 0 : _f.trigger) === cell) {
+      (_g = removePopper) == null ? void 0 : _g();
     }
   };
   const handleFilterClick = (event) => {
@@ -52085,6 +52095,8 @@ var TableHeader = defineComponent({
       }
       const diagonalHeader = column.diagonalHeader;
       const isDiagonalHeaderCell = !!diagonalHeader;
+      const rowHasSummary = subColumns.some((item) => !item.diagonalHeader && item.summary !== void 0 && item.summary !== null);
+      const hasSummary = !isDiagonalHeaderCell && column.summary !== void 0 && column.summary !== null;
       const headerContent = isDiagonalHeaderCell ? [
         h$1("span", {
           class: ns.e("diagonal-header-text")
@@ -52098,11 +52110,22 @@ var TableHeader = defineComponent({
         store,
         _self: $parent
       }) : column.label;
+      const headerMainContent = rowHasSummary && !isDiagonalHeaderCell ? h$1("div", {
+        class: ns.e("header-content")
+      }, [
+        h$1("div", {
+          class: ns.e("header-title")
+        }, [headerContent]),
+        h$1("div", {
+          class: ns.e("header-summary")
+        }, hasSummary ? String(column.summary) : "")
+      ]) : headerContent;
       return h$1("th", {
         class: [
           _class,
           {
-            [ns.is("diagonal-header")]: isDiagonalHeaderCell
+            [ns.is("diagonal-header")]: isDiagonalHeaderCell,
+            [ns.is("summary-row")]: rowHasSummary && !isDiagonalHeaderCell
           }
         ],
         colspan: column.colSpan,
@@ -52131,7 +52154,7 @@ var TableHeader = defineComponent({
             column.filteredValue && column.filteredValue.length > 0 ? "highlight" : ""
           ]
         }, [
-          headerContent,
+          headerMainContent,
           column.sortable && h$1("span", {
             class: "icon-wrap",
             onClick: ($event) => handleSortClick($event, column)
@@ -54479,6 +54502,7 @@ function useWatcher(owner, props_) {
   const registerNormalWatchers = () => {
     const props = [
       "label",
+      "summary",
       "filters",
       "filterMultiple",
       "filteredValue",
@@ -54818,6 +54842,7 @@ var defaultProps$1 = {
     default: "default"
   },
   label: String,
+  summary: [String, Number],
   className: String,
   labelClassName: String,
   property: String,
@@ -54942,6 +54967,7 @@ var ElTableColumn$1 = defineComponent({
       const basicProps = [
         "columnKey",
         "label",
+        "summary",
         "className",
         "labelClassName",
         "type",

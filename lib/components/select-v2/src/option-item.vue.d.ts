@@ -32,6 +32,7 @@ declare const _default: import("vue").DefineComponent<{
         cssVarBlock: (object: Record<string, string>) => Record<string, string>;
         cssVarBlockName: (name: string) => string;
     };
+    select: import("./token").SelectV2Context;
     contentId: import("vue").Ref<string>;
     multiple: import("vue").ComputedRef<boolean>;
     hasDefaultSlot: import("vue").ComputedRef<boolean>;

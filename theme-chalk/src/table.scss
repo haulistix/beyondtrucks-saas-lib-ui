@@ -365,6 +365,43 @@
     color: var(--color-gray-500);
   }
 
+  @include e(header-content) {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @include e(header-title) {
+    min-width: 0;
+    overflow: hidden;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @include e(header-summary) {
+    min-width: 0;
+    min-height: 14px;
+    overflow: hidden;
+    color: var(--color-gray-500);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  th.#{$namespace}-table__cell.is-summary-row {
+    > .cell {
+      .icon-wrap {
+        align-self: flex-start;
+        margin-top: 5px;
+      }
+    }
+  }
+
   td.#{$namespace}-table__cell {
     &.gutter {
       width: 0;

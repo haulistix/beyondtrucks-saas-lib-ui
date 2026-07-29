@@ -39,6 +39,7 @@ function useWatcher(owner, props_) {
   const registerNormalWatchers = () => {
     const props = [
       "label",
+      "summary",
       "filters",
       "filterMultiple",
       "filteredValue",

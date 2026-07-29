@@ -98,6 +98,7 @@ const _sfc_main = defineComponent({
     };
     return {
       ns,
+      select,
       contentId,
       multiple,
       hasDefaultSlot,
@@ -141,7 +142,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       createVNode(_component_el_tooltip, {
         ref: "tooltipRef",
         effect: "light",
-        disabled: !_ctx.isTextOverflowing && !_ctx.currentTip,
+        disabled: _ctx.select.props.showOptionTooltip === false || !_ctx.isTextOverflowing && !_ctx.currentTip,
         placement: "right",
         "popper-class": "tipPopperClass"
       }, {

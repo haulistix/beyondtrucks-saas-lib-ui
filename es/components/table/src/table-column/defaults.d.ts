@@ -23,6 +23,7 @@ type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     realWidth: number | null;
     type: string;
     label: string;
+    summary?: string | number;
     className: string;
     labelClassName: string;
     property: string;
@@ -93,6 +94,10 @@ declare const _default: {
      * @description column label
      */
     label: StringConstructor;
+    /**
+     * @description supplementary text displayed below the column label
+     */
+    summary: (NumberConstructor | StringConstructor)[];
     /**
      * @description class name of cells in the column
      */

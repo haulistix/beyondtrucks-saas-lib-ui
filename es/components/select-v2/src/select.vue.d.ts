@@ -33,6 +33,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showOptionTooltip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: import("vue").PropType<(value: import("./defaults").SelectV2ModelValue, oldValue: import("./defaults").SelectV2ModelValue) => import("element-plus/es/utils").Awaitable<boolean>>;
         readonly required: false;
@@ -412,6 +413,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showOptionTooltip: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: import("vue").PropType<(value: import("./defaults").SelectV2ModelValue, oldValue: import("./defaults").SelectV2ModelValue) => import("element-plus/es/utils").Awaitable<boolean>>;
         readonly required: false;
@@ -658,6 +660,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly tagEffect: import("element-plus/es/utils").EpPropMergeType<StringConstructor, "dark" | "light" | "plain", unknown>;
     readonly scrollbarAlwaysOn: boolean;
     readonly estimatedOptionHeight: number;
+    readonly showOptionTooltip: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly itemHeight: number;
     readonly multipleLimit: number;
     readonly reserveKeyword: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;

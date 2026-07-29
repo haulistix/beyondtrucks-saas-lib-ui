@@ -58,6 +58,13 @@
 }
 
 .el-textarea {
+  &.el-input--error {
+    .el-textarea__inner, .el-input__count, .float-label {
+      background-color: var(--color-red-200);
+    }
+  }
+
+
   &.el-input--inputType {
     &.el-input--filled {
       .el-textarea__inner {

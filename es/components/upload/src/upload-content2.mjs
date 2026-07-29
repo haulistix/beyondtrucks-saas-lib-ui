@@ -1,6 +1,6 @@
 import { defineComponent, shallowRef, openBlock, createElementBlock, normalizeClass, unref, withKeys, withModifiers, createBlock, withCtx, renderSlot, createElementVNode } from 'vue';
 import { cloneDeep, isEqual } from 'lodash-unified';
-import UploadDragger from './upload-dragger.mjs';
+import UploadDragger from './upload-dragger2.mjs';
 import { uploadContentProps } from './upload-content.mjs';
 import { genFileId } from './upload.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';

@@ -16060,6 +16060,7 @@ declare const _default_73: DefineComponent<{
     };
     fitInputWidth: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     optionWidth: EpPropFinalized<(NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
+    showOptionTooltip: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     suffixIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -16373,6 +16374,7 @@ declare const _default_73: DefineComponent<{
     };
     fitInputWidth: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     optionWidth: EpPropFinalized<(NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
+    showOptionTooltip: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     suffixIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -16456,6 +16458,7 @@ declare const _default_73: DefineComponent<{
     collapseTagsTooltip: boolean;
     tagType: EpPropMergeType<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown>;
     tagEffect: EpPropMergeType<StringConstructor, "dark" | "light" | "plain", unknown>;
+    showOptionTooltip: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     multipleLimit: number;
     reserveKeyword: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     allowCreate: boolean;
@@ -16648,6 +16651,7 @@ declare const _default_76: DefineComponent<{
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showOptionTooltip: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
         readonly required: false;
@@ -17038,6 +17042,7 @@ declare const _default_76: DefineComponent<{
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showOptionTooltip: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
         readonly required: false;
@@ -17301,6 +17306,7 @@ declare const _default_76: DefineComponent<{
     readonly tagEffect: EpPropMergeType<StringConstructor, "dark" | "light" | "plain", unknown>;
     readonly scrollbarAlwaysOn: boolean;
     readonly estimatedOptionHeight: number;
+    readonly showOptionTooltip: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly itemHeight: number;
     readonly multipleLimit: number;
     readonly reserveKeyword: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -18577,6 +18583,7 @@ declare const _default_85: DefineComponent<{
         default: string;
     };
     label: StringConstructor;
+    summary: (NumberConstructor | StringConstructor)[];
     className: StringConstructor;
     labelClassName: StringConstructor;
     property: StringConstructor;
@@ -18639,6 +18646,7 @@ declare const _default_85: DefineComponent<{
         default: string;
     };
     label: StringConstructor;
+    summary: (NumberConstructor | StringConstructor)[];
     className: StringConstructor;
     labelClassName: StringConstructor;
     property: StringConstructor;
@@ -25367,6 +25375,7 @@ export declare const selectProps: {
     };
     fitInputWidth: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     optionWidth: EpPropFinalized<(NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
+    showOptionTooltip: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     suffixIcon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
         readonly required: false;
@@ -25493,6 +25502,7 @@ declare const selectV2Props: {
     readonly disabled: BooleanConstructor;
     readonly estimatedOptionHeight: EpPropFinalized<NumberConstructor, unknown, unknown, undefined, boolean>;
     readonly filterable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showOptionTooltip: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly beforeChange: {
         readonly type: PropType<(value: SelectV2ModelValue, oldValue: SelectV2ModelValue) => Awaitable<boolean>>;
         readonly required: false;
@@ -26381,6 +26391,7 @@ export declare type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     realWidth: number | null;
     type: string;
     label: string;
+    summary?: string | number;
     className: string;
     labelClassName: string;
     property: string;

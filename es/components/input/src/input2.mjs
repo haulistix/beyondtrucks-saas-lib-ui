@@ -373,7 +373,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             placement: "top-start",
             disabled: unref(inputTooltipDisabled),
             offset: 12,
-            trigger: unref(inputTooltipTrigger)
+            trigger: unref(inputTooltipTrigger),
+            "trigger-keys": []
           }, {
             default: withCtx(() => {
               var _a;
@@ -598,7 +599,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             placement: "top-start",
             disabled: unref(inputTooltipDisabled),
             offset: 12,
-            trigger: unref(inputTooltipTrigger)
+            trigger: unref(inputTooltipTrigger),
+            "trigger-keys": []
           }, {
             default: withCtx(() => [
               createElementVNode("textarea", mergeProps({

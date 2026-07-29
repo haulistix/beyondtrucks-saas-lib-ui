@@ -17010,7 +17010,8 @@
               placement: "top-start",
               disabled: vue.unref(inputTooltipDisabled),
               offset: 12,
-              trigger: vue.unref(inputTooltipTrigger)
+              trigger: vue.unref(inputTooltipTrigger),
+              "trigger-keys": []
             }, {
               default: vue.withCtx(() => {
                 var _a;
@@ -17235,7 +17236,8 @@
               placement: "top-start",
               disabled: vue.unref(inputTooltipDisabled),
               offset: 12,
-              trigger: vue.unref(inputTooltipTrigger)
+              trigger: vue.unref(inputTooltipTrigger),
+              "trigger-keys": []
             }, {
               default: vue.withCtx(() => [
                 vue.createElementVNode("textarea", vue.mergeProps({

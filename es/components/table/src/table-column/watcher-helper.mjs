@@ -77,8 +77,8 @@ function useWatcher(owner, props_) {
         });
       }
     });
-    watch([() => props_.resizable, () => props_.width], ([resizable, width]) => {
-      instance.columnConfig.value.resizable = Boolean(resizable) && !parseWidth(width);
+    watch(() => props_.resizable, (resizable) => {
+      instance.columnConfig.value.resizable = Boolean(resizable);
     }, { immediate: true });
   };
   return {

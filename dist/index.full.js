@@ -54542,8 +54542,8 @@
           });
         }
       });
-      vue.watch([() => props_.resizable, () => props_.width], ([resizable, width]) => {
-        instance.columnConfig.value.resizable = Boolean(resizable) && !parseWidth(width);
+      vue.watch(() => props_.resizable, (resizable) => {
+        instance.columnConfig.value.resizable = Boolean(resizable);
       }, { immediate: true });
     };
     return {

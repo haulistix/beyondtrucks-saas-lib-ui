@@ -495,7 +495,7 @@ function _sfc_render(_ctx, _cache) {
                     createTextVNode(toDisplayString(_ctx.labelSuffix) + " ", 1),
                     _ctx.$slots.info ? renderSlot(_ctx.$slots, "info", { key: 0 }) : createCommentVNode("v-if", true),
                     _ctx.$slots.suffixBeforeIcon ? renderSlot(_ctx.$slots, "suffixBeforeIcon", { key: 1 }) : createCommentVNode("v-if", true),
-                    _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.validateError && !_ctx.$slots.info ? (openBlock(), createBlock(_component_el_icon, {
+                    _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.$slots.info ? (openBlock(), createBlock(_component_el_icon, {
                       key: 2,
                       class: normalizeClass([
                         _ctx.nsSelect.e("caret"),
@@ -536,16 +536,7 @@ function _sfc_render(_ctx, _cache) {
                       ]),
                       _: 1
                     }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true),
-                    _ctx.$slots.suffixAfterIcon ? renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : createCommentVNode("v-if", true),
-                    _ctx.validateState && _ctx.validateIcon ? (openBlock(), createBlock(_component_el_icon, {
-                      key: 5,
-                      class: normalizeClass([
-                        _ctx.nsInput.e("icon"),
-                        _ctx.nsInput.e("validateIcon"),
-                        _ctx.nsInput.is("loading", _ctx.validateState === "validating")
-                      ]),
-                      innerHTML: _ctx.validateIcon
-                    }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true)
+                    _ctx.$slots.suffixAfterIcon ? renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : createCommentVNode("v-if", true)
                   ], 2)
                 ], 10, ["onClick"])
               ];

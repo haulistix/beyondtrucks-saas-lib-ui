@@ -41528,7 +41528,7 @@
                       vue.createTextVNode(vue.toDisplayString(_ctx.labelSuffix) + " ", 1),
                       _ctx.$slots.info ? vue.renderSlot(_ctx.$slots, "info", { key: 0 }) : vue.createCommentVNode("v-if", true),
                       _ctx.$slots.suffixBeforeIcon ? vue.renderSlot(_ctx.$slots, "suffixBeforeIcon", { key: 1 }) : vue.createCommentVNode("v-if", true),
-                      _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.validateError && !_ctx.$slots.info ? (vue.openBlock(), vue.createBlock(_component_el_icon, {
+                      _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.$slots.info ? (vue.openBlock(), vue.createBlock(_component_el_icon, {
                         key: 2,
                         class: vue.normalizeClass([
                           _ctx.nsSelect.e("caret"),
@@ -41569,16 +41569,7 @@
                         ]),
                         _: 1
                       }, 8, ["class", "onClick"])) : vue.createCommentVNode("v-if", true),
-                      _ctx.$slots.suffixAfterIcon ? vue.renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : vue.createCommentVNode("v-if", true),
-                      _ctx.validateState && _ctx.validateIcon ? (vue.openBlock(), vue.createBlock(_component_el_icon, {
-                        key: 5,
-                        class: vue.normalizeClass([
-                          _ctx.nsInput.e("icon"),
-                          _ctx.nsInput.e("validateIcon"),
-                          _ctx.nsInput.is("loading", _ctx.validateState === "validating")
-                        ]),
-                        innerHTML: _ctx.validateIcon
-                      }, null, 8, ["class", "innerHTML"])) : vue.createCommentVNode("v-if", true)
+                      _ctx.$slots.suffixAfterIcon ? vue.renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : vue.createCommentVNode("v-if", true)
                     ], 2)
                   ], 10, ["onClick"])
                 ];
@@ -47629,7 +47620,7 @@
                       ref: "suffixRef",
                       class: vue.normalizeClass(_ctx.nsSelect.e("suffix"))
                     }, [
-                      _ctx.iconComponent && !_ctx.validateError ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
+                      _ctx.iconComponent ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
                         ((_c = _ctx.$slots) == null ? void 0 : _c.suffix) ? vue.withDirectives((vue.openBlock(), vue.createElementBlock("div", {
                           key: 0,
                           class: "tip-wrap"
@@ -47680,16 +47671,7 @@
                           ]))
                         ]),
                         _: 1
-                      }, 8, ["class", "onClick"])) : vue.createCommentVNode("v-if", true),
-                      _ctx.validateState && _ctx.validateIcon && _ctx.needStatusIcon ? (vue.openBlock(), vue.createBlock(_component_el_icon, {
-                        key: 2,
-                        class: vue.normalizeClass([
-                          _ctx.nsInput.e("icon"),
-                          _ctx.nsInput.e("validateIcon"),
-                          _ctx.nsInput.is("loading", _ctx.validateState === "validating")
-                        ]),
-                        innerHTML: _ctx.validateIcon
-                      }, null, 8, ["class", "innerHTML"])) : vue.createCommentVNode("v-if", true)
+                      }, 8, ["class", "onClick"])) : vue.createCommentVNode("v-if", true)
                     ], 2)
                   ], 10, ["onClick"])
                 ];

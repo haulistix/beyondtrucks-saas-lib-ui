@@ -383,7 +383,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     ref: "suffixRef",
                     class: normalizeClass(_ctx.nsSelect.e("suffix"))
                   }, [
-                    _ctx.iconComponent && !_ctx.validateError ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                    _ctx.iconComponent ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
                       ((_c = _ctx.$slots) == null ? void 0 : _c.suffix) ? withDirectives((openBlock(), createElementBlock("div", {
                         key: 0,
                         class: "tip-wrap"
@@ -434,16 +434,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                         ]))
                       ]),
                       _: 1
-                    }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true),
-                    _ctx.validateState && _ctx.validateIcon && _ctx.needStatusIcon ? (openBlock(), createBlock(_component_el_icon, {
-                      key: 2,
-                      class: normalizeClass([
-                        _ctx.nsInput.e("icon"),
-                        _ctx.nsInput.e("validateIcon"),
-                        _ctx.nsInput.is("loading", _ctx.validateState === "validating")
-                      ]),
-                      innerHTML: _ctx.validateIcon
-                    }, null, 8, ["class", "innerHTML"])) : createCommentVNode("v-if", true)
+                    }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true)
                   ], 2)
                 ], 10, ["onClick"])
               ];

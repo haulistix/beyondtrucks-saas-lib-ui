@@ -176,7 +176,9 @@
     }
 
     @include when(right) {
-      text-align: right;
+      .cell-height {
+        justify-content: flex-end;
+      }
     }
 
     &.gutter {

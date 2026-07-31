@@ -41249,7 +41249,7 @@
       vue.createVNode(_component_el_tooltip, {
         trigger: "click",
         effect: "light",
-        placement: "top",
+        placement: "top-start",
         offset: 4,
         content: _ctx.errorTooltipContent,
         disabled: _ctx.errorTooltipDisabled,
@@ -47361,7 +47361,7 @@
       vue.createVNode(_component_el_tooltip, {
         trigger: "click",
         effect: "light",
-        placement: "top",
+        placement: "top-start",
         offset: 4,
         content: _ctx.errorTooltipContent,
         disabled: _ctx.errorTooltipDisabled,

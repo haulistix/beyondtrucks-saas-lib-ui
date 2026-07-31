@@ -77,5 +77,6 @@ jobs:
           message: |
             Repository：${{ github.repository }}
             Branch：${{ github.ref_name }}
+            tag_name: v${{ steps.prepare.outputs.version }}
             Author：${{ github.actor }}
             👉 [Detail](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})

@@ -41245,7 +41245,7 @@ function _sfc_render$b(_ctx, _cache) {
     createVNode(_component_el_tooltip, {
       trigger: "click",
       effect: "light",
-      placement: "top",
+      placement: "top-start",
       offset: 4,
       content: _ctx.errorTooltipContent,
       disabled: _ctx.errorTooltipDisabled,
@@ -47357,7 +47357,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     createVNode(_component_el_tooltip, {
       trigger: "click",
       effect: "light",
-      placement: "top",
+      placement: "top-start",
       offset: 4,
       content: _ctx.errorTooltipContent,
       disabled: _ctx.errorTooltipDisabled,

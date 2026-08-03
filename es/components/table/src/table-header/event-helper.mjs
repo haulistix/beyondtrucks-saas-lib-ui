@@ -1,5 +1,5 @@
 import { getCurrentInstance, inject, ref } from 'vue';
-import { getThCell, getColumnByCell, toggleRowClassByCell, createTablePopper, removePopper, getPadding, isGreaterThan } from '../util.mjs';
+import { getThCell, getColumnByCell, toggleRowClassByCell, createTablePopper, removePopper } from '../util.mjs';
 import { isNull } from 'lodash-unified';
 import { TABLE_INJECTION_KEY } from '../tokens.mjs';
 import { addClass, hasClass, removeClass } from '../../../../utils/dom/style.mjs';
@@ -9,19 +9,8 @@ import { isElement } from '../../../../utils/types.mjs';
 function useEvent(props, emit) {
   const instance = getCurrentInstance();
   const parent = inject(TABLE_INJECTION_KEY);
-  const isContentOverflowing = (element) => {
-    if (!(element == null ? void 0 : element.childNodes.length))
-      return false;
-    const range = document.createRange();
-    range.setStart(element, 0);
-    range.setEnd(element, element.childNodes.length);
-    const { width: rangeWidth, height: rangeHeight } = range.getBoundingClientRect();
-    const { width: elementWidth, height: elementHeight } = element.getBoundingClientRect();
-    const { top, left, right, bottom } = getPadding(element);
-    return isGreaterThan(rangeWidth + left + right, elementWidth) || isGreaterThan(rangeHeight + top + bottom, elementHeight) || isGreaterThan(element.scrollWidth, elementWidth);
-  };
   const handleCellMouseEnter = (event, row) => {
-    var _a, _b, _c, _d, _e, _f, _g, _h;
+    var _a, _b, _c, _d, _e, _f, _g;
     if (!parent)
       return;
     const table = parent;
@@ -42,12 +31,13 @@ function useEvent(props, emit) {
     const summaryHeaderText = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-summary`) : null;
     if (summaryHeaderTitle) {
       const tooltipLines = [
-        isContentOverflowing(summaryHeaderTitle) ? summaryHeaderTitle.innerText || summaryHeaderTitle.textContent : null,
-        isContentOverflowing(summaryHeaderText) ? (summaryHeaderText == null ? void 0 : summaryHeaderText.innerText) || (summaryHeaderText == null ? void 0 : summaryHeaderText.textContent) : null
+        summaryHeaderTitle.innerText || summaryHeaderTitle.textContent,
+        (summaryHeaderText == null ? void 0 : summaryHeaderText.innerText) || (summaryHeaderText == null ? void 0 : summaryHeaderText.textContent)
       ].filter((content) => !!content);
       if (tooltipLines.length) {
         createTablePopper({
           effect: "light",
+          placement: "top-start",
           popperClass: "table-header-tooltip"
         }, tooltipLines.join("\n"), row, column, cell, table);
       } else if (((_d = removePopper) == null ? void 0 : _d.trigger) === cell) {
@@ -56,10 +46,15 @@ function useEvent(props, emit) {
       return;
     }
     const cellChild = event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
-    if (isContentOverflowing(cellChild)) {
-      createTablePopper({ effect: "light" }, (_f = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _f : "", row, column, cell, table);
-    } else if (((_g = removePopper) == null ? void 0 : _g.trigger) === cell) {
-      (_h = removePopper) == null ? void 0 : _h();
+    const tooltipContent = (cellChild == null ? void 0 : cellChild.innerText) || (cellChild == null ? void 0 : cellChild.textContent) || (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent) || "";
+    if (tooltipContent) {
+      createTablePopper({
+        effect: "light",
+        placement: "top-start",
+        popperClass: "table-header-tooltip"
+      }, tooltipContent, row, column, cell, table);
+    } else if (((_f = removePopper) == null ? void 0 : _f.trigger) === cell) {
+      (_g = removePopper) == null ? void 0 : _g();
     }
   };
   const handleFilterClick = (event) => {

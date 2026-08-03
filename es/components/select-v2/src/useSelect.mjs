@@ -359,6 +359,24 @@ const useSelect = (props, emit) => {
       emit(CHANGE_EVENT, val);
     }
   };
+  const buildOrderedCachedOptions = (values, cachedOptions = []) => {
+    const orderedOptions = [];
+    allOptions.value.forEach((option) => {
+      if (option.type === "Group")
+        return;
+      if (getValueIndex(values, getValue(option)) > -1) {
+        orderedOptions.push(option);
+      }
+    });
+    values.forEach((value) => {
+      const option = getOption(value, cachedOptions);
+      if (orderedOptions.some((selectedOption) => getValueKey(getValue(selectedOption)) === getValueKey(getValue(option)))) {
+        return;
+      }
+      orderedOptions.push(option);
+    });
+    return orderedOptions;
+  };
   const update = (val) => {
     emit(UPDATE_MODEL_EVENT, val);
     emitChange(val);
@@ -366,7 +384,7 @@ const useSelect = (props, emit) => {
     nextTick(() => {
       if (props.multiple && isArray(props.modelValue)) {
         const cachedOptions = states.cachedOptions.slice();
-        const selectedOptions = props.modelValue.map((value) => getOption(value, cachedOptions));
+        const selectedOptions = buildOrderedCachedOptions(props.modelValue, cachedOptions);
         if (!isEqual(states.cachedOptions, selectedOptions)) {
           states.cachedOptions = selectedOptions;
         }
@@ -649,12 +667,8 @@ const useSelect = (props, emit) => {
     if (props.multiple) {
       if (props.modelValue.length > 0) {
         const cachedOptions = states.cachedOptions.slice();
-        states.cachedOptions.length = 0;
         states.previousValue = props.modelValue.toString();
-        for (const value of props.modelValue) {
-          const option = getOption(value, cachedOptions);
-          states.cachedOptions.push(option);
-        }
+        states.cachedOptions = buildOrderedCachedOptions(props.modelValue, cachedOptions);
       } else {
         states.cachedOptions = [];
         states.previousValue = void 0;

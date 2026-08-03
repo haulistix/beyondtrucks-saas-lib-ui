@@ -260,12 +260,20 @@ const useSelect = (props, emit) => {
     } else {
       states.selectedLabel = "";
     }
+    const selectedValues = isUndefined(props.modelValue) ? [] : castArray(props.modelValue);
     const result = [];
-    if (!isUndefined(props.modelValue)) {
-      castArray(props.modelValue).forEach((value) => {
-        result.push(getOption(value));
-      });
-    }
+    optionsArray.value.forEach((option) => {
+      if (getValueIndex(selectedValues, option) > -1) {
+        result.push(getOption(option.value));
+      }
+    });
+    selectedValues.forEach((value) => {
+      const selectedOption = getOption(value);
+      if (result.some((option) => getValueKey(option) === getValueKey(selectedOption))) {
+        return;
+      }
+      result.push(selectedOption);
+    });
     states.selected = result;
   };
   const findCachedOption = (value) => {

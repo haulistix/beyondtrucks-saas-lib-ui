@@ -41253,7 +41253,7 @@ function _sfc_render$b(_ctx, _cache) {
     createVNode(_component_el_tooltip, {
       trigger: "click",
       effect: "light",
-      placement: "top-start",
+      placement: "top",
       offset: 4,
       content: _ctx.errorTooltipContent,
       disabled: _ctx.errorTooltipDisabled,
@@ -47379,7 +47379,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     createVNode(_component_el_tooltip, {
       trigger: "click",
       effect: "light",
-      placement: "top-start",
+      placement: "top",
       offset: 4,
       content: _ctx.errorTooltipContent,
       disabled: _ctx.errorTooltipDisabled,
@@ -49888,7 +49888,7 @@ const _sfc_main$G = /* @__PURE__ */ defineComponent({
             ]),
             _: 1
           }),
-          createTextVNode(" " + toDisplayString(__props.updateTime), 1)
+          createTextVNode(" Last Updated " + toDisplayString(__props.updateTime), 1)
         ])) : createCommentVNode("v-if", true)
       ]);
     };
@@ -51468,8 +51468,19 @@ const TABLE_INJECTION_KEY = Symbol("ElTable");
 function useEvent(props, emit) {
   const instance = getCurrentInstance();
   const parent = inject(TABLE_INJECTION_KEY);
+  const isContentOverflowing = (element) => {
+    if (!(element == null ? void 0 : element.childNodes.length))
+      return false;
+    const range = document.createRange();
+    range.setStart(element, 0);
+    range.setEnd(element, element.childNodes.length);
+    const { width: rangeWidth, height: rangeHeight } = range.getBoundingClientRect();
+    const { width: elementWidth, height: elementHeight } = element.getBoundingClientRect();
+    const { top, left, right, bottom } = getPadding(element);
+    return isGreaterThan(rangeWidth + left + right, elementWidth) || isGreaterThan(rangeHeight + top + bottom, elementHeight) || isGreaterThan(element.scrollWidth, elementWidth);
+  };
   const handleCellMouseEnter = (event, row) => {
-    var _a, _b, _c, _d, _e, _f, _g;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
     if (!parent)
       return;
     const table = parent;
@@ -51490,13 +51501,12 @@ function useEvent(props, emit) {
     const summaryHeaderText = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-summary`) : null;
     if (summaryHeaderTitle) {
       const tooltipLines = [
-        summaryHeaderTitle.innerText || summaryHeaderTitle.textContent,
-        (summaryHeaderText == null ? void 0 : summaryHeaderText.innerText) || (summaryHeaderText == null ? void 0 : summaryHeaderText.textContent)
+        isContentOverflowing(summaryHeaderTitle) ? summaryHeaderTitle.innerText || summaryHeaderTitle.textContent : null,
+        isContentOverflowing(summaryHeaderText) ? (summaryHeaderText == null ? void 0 : summaryHeaderText.innerText) || (summaryHeaderText == null ? void 0 : summaryHeaderText.textContent) : null
       ].filter((content) => !!content);
       if (tooltipLines.length) {
         createTablePopper({
           effect: "light",
-          placement: "top-start",
           popperClass: "table-header-tooltip"
         }, tooltipLines.join("\n"), row, column, cell, table);
       } else if (((_d = removePopper) == null ? void 0 : _d.trigger) === cell) {
@@ -51505,15 +51515,10 @@ function useEvent(props, emit) {
       return;
     }
     const cellChild = event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
-    const tooltipContent = (cellChild == null ? void 0 : cellChild.innerText) || (cellChild == null ? void 0 : cellChild.textContent) || (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent) || "";
-    if (tooltipContent) {
-      createTablePopper({
-        effect: "light",
-        placement: "top-start",
-        popperClass: "table-header-tooltip"
-      }, tooltipContent, row, column, cell, table);
-    } else if (((_f = removePopper) == null ? void 0 : _f.trigger) === cell) {
-      (_g = removePopper) == null ? void 0 : _g();
+    if (isContentOverflowing(cellChild)) {
+      createTablePopper({ effect: "light" }, (_f = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _f : "", row, column, cell, table);
+    } else if (((_g = removePopper) == null ? void 0 : _g.trigger) === cell) {
+      (_h = removePopper) == null ? void 0 : _h();
     }
   };
   const handleFilterClick = (event) => {
@@ -53604,7 +53609,6 @@ const useScrollbar$1 = () => {
 };
 
 let tableIdSeed = 1;
-const GHOST_ROW_SCROLL_SHADOW_DURATION$1 = 100;
 const _sfc_main$C = defineComponent({
   name: "ElTable",
   directives: {
@@ -53654,9 +53658,6 @@ const _sfc_main$C = defineComponent({
     table.store = store;
     const editingRow = ref(null);
     const activeEditableCell = ref(null);
-    const isGhostRowScrolling = ref(false);
-    let previousGhostRowScrollTop = 0;
-    let ghostRowScrollTimer;
     const ghostRowData = ref({
       [ghostRowSign$1]: true,
       [ghostRowKey$1]: "ghost-row"
@@ -53787,15 +53788,6 @@ const _sfc_main$C = defineComponent({
       clearAddRowTrigger();
     };
     const handleScrollbarScroll = (event) => {
-      if (event.scrollTop !== previousGhostRowScrollTop) {
-        previousGhostRowScrollTop = event.scrollTop;
-        isGhostRowScrolling.value = true;
-        clearTimeout(ghostRowScrollTimer);
-        ghostRowScrollTimer = setTimeout(() => {
-          isGhostRowScrolling.value = false;
-          ghostRowScrollTimer = void 0;
-        }, GHOST_ROW_SCROLL_SHADOW_DURATION$1);
-      }
       clearAddColumnTrigger();
       clearAddRowTrigger();
       emit("scroll", event);
@@ -53890,7 +53882,6 @@ const _sfc_main$C = defineComponent({
     });
     useKeyRender(table);
     onBeforeUnmount(() => {
-      clearTimeout(ghostRowScrollTimer);
       clearPendingGhostRowScrollWatch();
       debouncedUpdateLayout.cancel();
     });
@@ -53930,7 +53921,6 @@ const _sfc_main$C = defineComponent({
       context: table,
       editingRow,
       activeEditableCell,
-      isGhostRowScrolling,
       startRowEdit,
       clearEditingRow,
       applyEditingRow,
@@ -53982,7 +53972,6 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
         [_ctx.ns.m("striped")]: _ctx.stripe,
         [_ctx.ns.m("border")]: _ctx.border || _ctx.isGroup,
         [_ctx.ns.m("hidden")]: _ctx.isHidden,
-        [_ctx.ns.is("ghost-row-scrolling")]: _ctx.isGhostRowScrolling,
         [_ctx.ns.is("row-editing")]: _ctx.hasEditingRow,
         [_ctx.ns.m("group")]: _ctx.isGroup,
         [_ctx.ns.m("fluid-height")]: _ctx.maxHeight,
@@ -55847,12 +55836,18 @@ const useScrollbar = (props, {
   };
 };
 
-const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling }) => {
+const useRow = (props, {
+  mainTableRef,
+  leftTableRef,
+  rightTableRef,
+  tableInstance,
+  ns,
+  isScrolling
+}) => {
   const vm = getCurrentInstance();
   const { emit } = vm;
   const isResetting = shallowRef(false);
   const expandedRowKeys = ref(props.defaultExpandedRowKeys || []);
-  const hoveredRowIndex = shallowRef();
   const lastRenderedRowIndex = ref(-1);
   const resetIndex = shallowRef(null);
   const rowHeights = ref({});
@@ -55868,16 +55863,19 @@ const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling 
       lastRenderedRowIndex.value = params.rowCacheEnd;
     }
   }
-  function onRowHovered({ hovered, rowIndex }) {
+  function onRowHovered({ hovered, rowKey }) {
     if (isScrolling.value) {
-      hoveredRowIndex.value = void 0;
       return;
     }
-    if (hovered) {
-      hoveredRowIndex.value = rowIndex;
-    } else if (hoveredRowIndex.value === rowIndex) {
-      hoveredRowIndex.value = void 0;
-    }
+    const tableRoot = tableInstance.vnode.el;
+    const rows = tableRoot.querySelectorAll(`[rowkey="${String(rowKey)}"]`);
+    rows.forEach((row) => {
+      if (hovered) {
+        row.classList.add(ns.is("hovered"));
+      } else {
+        row.classList.remove(ns.is("hovered"));
+      }
+    });
   }
   function onRowExpanded({
     expanded,
@@ -55904,6 +55902,11 @@ const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling 
       rowKey
     });
     (_b = props.onExpandedRowsChange) == null ? void 0 : _b.call(props, _expandedRowKeys);
+    const tableRoot = tableInstance.vnode.el;
+    const hoverRow = tableRoot.querySelector(`.${ns.is("hovered")}[rowkey="${String(rowKey)}"]`);
+    if (hoverRow) {
+      nextTick(() => onRowHovered({ hovered: true, rowKey }));
+    }
   }
   const flushingRowHeights = debounce(() => {
     var _a, _b, _c, _d;
@@ -55956,7 +55959,6 @@ const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling 
   }
   return {
     expandedRowKeys,
-    hoveredRowIndex,
     lastRenderedRowIndex,
     isDynamic,
     isResetting,
@@ -56194,10 +56196,11 @@ function useTable(props) {
     rightTableRef,
     onMaybeEndReached
   });
+  const ns = useNamespace("table-v2");
+  const instance = getCurrentInstance();
   const isScrolling = shallowRef(false);
   const {
     expandedRowKeys,
-    hoveredRowIndex,
     lastRenderedRowIndex,
     isDynamic,
     isResetting,
@@ -56211,6 +56214,8 @@ function useTable(props) {
     mainTableRef,
     leftTableRef,
     rightTableRef,
+    tableInstance: instance,
+    ns,
     isScrolling
   });
   const { data, depthMap } = useData(props, {
@@ -56293,7 +56298,6 @@ function useTable(props) {
     isResetting,
     isScrolling,
     hasFixedColumns,
-    hoveredRowIndex,
     columnsStyles,
     columnsTotalWidth,
     data,
@@ -56745,20 +56749,13 @@ var TableCell = TableV2Cell;
 
 const HeaderCell = (props, {
   slots
-}) => {
+}) => renderSlot(slots, "default", props, () => {
   var _a, _b;
-  const title = (_b = (_a = props.column) == null ? void 0 : _a.title) != null ? _b : "";
-  return renderSlot(slots, "default", props, () => [createVNode(ElTooltip, {
-    "content": title,
-    "disabled": !title,
-    "effect": "light",
-    "placement": "top-start"
-  }, {
-    default: () => [createVNode("div", {
-      "class": props.class
-    }, [title])]
-  })]);
-};
+  return [createVNode("div", {
+    "class": props.class,
+    "title": (_a = props.column) == null ? void 0 : _a.title
+  }, [(_b = props.column) == null ? void 0 : _b.title])];
+});
 HeaderCell.displayName = "ElTableV2HeaderCell";
 HeaderCell.inheritAttrs = false;
 var HeaderCell$1 = HeaderCell;
@@ -57473,7 +57470,6 @@ const RowRenderer = (props, {
     expandedRowKeys,
     estimatedRowHeight,
     hasFixedColumns,
-    hoveredRowIndex,
     rowData,
     rowIndex,
     style,
@@ -57509,7 +57505,7 @@ const RowRenderer = (props, {
   const isFixedRow = rowIndex < 0;
   const isAddRow = Boolean(rowData[rowAddSign]);
   const isGhostRow = Boolean(rowData[ghostRowSign]);
-  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("hovered", rowIndex === hoveredRowIndex), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
+  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
     [ns.e(`row-depth-${depth}`)]: canExpand && rowIndex >= 0
   }];
   const onRowHover = hasFixedColumns ? onRowHovered : void 0;
@@ -58108,7 +58104,7 @@ const FooterDefault = (props) => {
       "height": "12",
       "fill": "white"
     }, null)])])])]
-  }), props.updateTime])]);
+  }), createTextVNode("Last Updated "), props.updateTime])]);
 };
 FooterDefault.displayName = "ElTableV2FooterDefault";
 
@@ -58138,7 +58134,6 @@ function _isSlot(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 const COMPONENT_NAME$5 = "ElTableV2";
-const GHOST_ROW_SCROLL_SHADOW_DURATION = 100;
 const TableV2 = defineComponent({
   name: COMPONENT_NAME$5,
   props: tableV2Props,
@@ -58170,7 +58165,6 @@ const TableV2 = defineComponent({
       isDynamic,
       isResetting,
       isScrolling,
-      hoveredRowIndex,
       bodyWidth,
       addRowHeight,
       effectiveHScrollbarSize,
@@ -58213,23 +58207,6 @@ const TableV2 = defineComponent({
     const isLegacyEditMode = computed(() => props.canEditTable && props.editable);
     const isGhostEditMode = computed(() => props.ghostTable && props.editTable);
     const isGhostRowVisible = computed(() => isGhostEditMode.value && props.showGhostRow);
-    const isBottomEditRowVisible = computed(() => isLegacyEditMode.value && !isGhostEditMode.value || isGhostRowVisible.value);
-    const isGhostRowScrolling = shallowRef(false);
-    let ghostRowScrollTimer;
-    const updateGhostRowScrolling = (scrollTop) => {
-      if (!isBottomEditRowVisible.value || scrollTop === unref(scrollPos).scrollTop) {
-        return;
-      }
-      isGhostRowScrolling.value = true;
-      clearTimeout(ghostRowScrollTimer);
-      ghostRowScrollTimer = setTimeout(() => {
-        isGhostRowScrolling.value = false;
-        ghostRowScrollTimer = void 0;
-      }, GHOST_ROW_SCROLL_SHADOW_DURATION);
-    };
-    onBeforeUnmount(() => {
-      clearTimeout(ghostRowScrollTimer);
-    });
     let stopPendingGhostRowScrollWatch;
     const clearAddColumnTrigger = () => {
       addColumnTrigger.value = null;
@@ -58299,13 +58276,11 @@ const TableV2 = defineComponent({
       return props.data.every((row) => requiredColumns.every((column) => !isEmptyRequiredValue(row == null ? void 0 : row[column.dataKey])));
     };
     const handleTableScroll = (params) => {
-      updateGhostRowScrolling(params.scrollTop);
       clearAddColumnTrigger();
       clearAddRowTrigger();
       onScroll(params);
     };
     const handleVerticalTableScroll = (params) => {
-      updateGhostRowScrolling(params.scrollTop);
       clearAddColumnTrigger();
       clearAddRowTrigger();
       onVerticalScroll(params);
@@ -58470,7 +58445,6 @@ const TableV2 = defineComponent({
         expandedRowKeys: unref(expandedRowKeys),
         estimatedRowHeight,
         hasFixedColumns: unref(hasFixedColumns),
-        hoveredRowIndex: unref(hoveredRowIndex),
         rowProps,
         rowClass,
         rowKey,
@@ -58556,7 +58530,7 @@ const TableV2 = defineComponent({
           }
         })
       };
-      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll"), unref(isGhostRowScrolling) && ns.is("ghost-row-scrolling")];
+      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll")];
       const footerProps = {
         class: ns.e("footer"),
         style: unref(footerHeight),
@@ -58604,11 +58578,11 @@ const TableV2 = defineComponent({
       }), createVNode(RightTable, rightTableProps, _isSlot(tableSlots) ? tableSlots : {
         default: () => [tableSlots]
       }), showAddRow && createVNode(Fragment, null, [createVNode("div", {
-        "class": [ns.e("add-row-main"), ns.is("ghost-row")],
+        "class": ns.e("add-row-main"),
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(mainColumns),
-        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": mainContentWidth,
         "width": unref(effectiveWidth)
       }), {
@@ -58618,7 +58592,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnLeft),
-        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": leftColumnsWidth,
         "width": leftColumnsWidth
       }), {
@@ -58628,17 +58602,17 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnRight),
-        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": rightColumnsWidth,
         "width": rightColumnsWidth
       }), {
         fixed: tableSlots.row
       })])]), showGhostRow && createVNode(Fragment, null, [createVNode("div", {
-        "class": [ns.e("add-row-main"), ns.is("ghost-row")],
+        "class": ns.e("add-row-main"),
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(mainColumns),
-        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": mainContentWidth,
         "width": unref(effectiveWidth)
       }), {
@@ -58648,7 +58622,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnLeft),
-        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": leftColumnsWidth,
         "width": leftColumnsWidth
       }), {
@@ -58658,7 +58632,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnRight),
-        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": rightColumnsWidth,
         "width": rightColumnsWidth
       }), {

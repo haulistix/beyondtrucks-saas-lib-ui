@@ -62,6 +62,7 @@
 
 @include b(pagination) {
   @include set-component-css-var('pagination', $pagination);
+
   white-space: nowrap;
   color: getCssVar('pagination-text-color');
   font-size: getCssVar('pagination-font-size');

@@ -103,19 +103,20 @@
   }
 
   & .#{$namespace}-input__count {
-    color: var(--color-gray-990);
+    color: getCssVar('color-info');
     background: getCssVar('fill-color', 'blank');
     position: absolute;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 12px;
+    line-height: 14px;
     bottom: 5px;
     right: 10px;
     @include when(outside) {
       position: absolute;
       background: transparent;
       padding-top: 2px;
+      top: 100%;
       right: 0;
-      bottom: -18px;
+      bottom: unset;
       line-height: 1;
     }
   }
@@ -178,9 +179,8 @@
     height: 100%;
     display: inline-flex;
     align-items: center;
-    color: var(--color-gray-990);
-    font-size: 14px;
-    line-height: 20px;
+    color: getCssVar('color-info');
+    font-size: 12px;
 
     .#{$namespace}-input__count-inner {
       background: getCssVar('fill-color', 'blank');
@@ -193,6 +193,7 @@
       height: unset;
       position: absolute;
       padding-top: 2px;
+      top: 100%;
       right: 0;
       .#{$namespace}-input__count-inner {
         background: transparent;
@@ -227,7 +228,7 @@
       left: 12px;
       color: getCssVar(
           'input-placeholder-color'
-      );
+      ) ;
       background-color: #fff;
       display: inline-block;
       overflow: hidden;
@@ -389,9 +390,6 @@
     .#{$namespace}-input__inner {
       color: var(--color-gray-990);
       -webkit-text-fill-color: var(--color-gray-990);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
       cursor: not-allowed;
 
       &::placeholder {

@@ -1,6 +1,6 @@
 import { defineComponent, getCurrentInstance, provide, ref, shallowRef, computed, watch, onBeforeUnmount, toRaw, nextTick, resolveComponent, resolveDirective, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, withDirectives, createVNode, createCommentVNode, withCtx, createBlock, createTextVNode, toDisplayString, vShow, withModifiers } from 'vue';
 import TableText from './table-footer/tableText.mjs';
-import ElTooltip from '../../tooltip/src/tooltip.mjs';
+import ElTooltip from '../../tooltip/src/tooltip2.mjs';
 import { debounce, cloneDeep } from 'lodash-unified';
 import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { createStore } from './store/helper.mjs';
@@ -23,7 +23,6 @@ import { useLocale } from '../../../hooks/use-locale/index.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 
 let tableIdSeed = 1;
-const GHOST_ROW_SCROLL_SHADOW_DURATION = 100;
 const _sfc_main = defineComponent({
   name: "ElTable",
   directives: {
@@ -73,9 +72,6 @@ const _sfc_main = defineComponent({
     table.store = store;
     const editingRow = ref(null);
     const activeEditableCell = ref(null);
-    const isGhostRowScrolling = ref(false);
-    let previousGhostRowScrollTop = 0;
-    let ghostRowScrollTimer;
     const ghostRowData = ref({
       [ghostRowSign]: true,
       [ghostRowKey]: "ghost-row"
@@ -206,15 +202,6 @@ const _sfc_main = defineComponent({
       clearAddRowTrigger();
     };
     const handleScrollbarScroll = (event) => {
-      if (event.scrollTop !== previousGhostRowScrollTop) {
-        previousGhostRowScrollTop = event.scrollTop;
-        isGhostRowScrolling.value = true;
-        clearTimeout(ghostRowScrollTimer);
-        ghostRowScrollTimer = setTimeout(() => {
-          isGhostRowScrolling.value = false;
-          ghostRowScrollTimer = void 0;
-        }, GHOST_ROW_SCROLL_SHADOW_DURATION);
-      }
       clearAddColumnTrigger();
       clearAddRowTrigger();
       emit("scroll", event);
@@ -309,7 +296,6 @@ const _sfc_main = defineComponent({
     });
     useKeyRender(table);
     onBeforeUnmount(() => {
-      clearTimeout(ghostRowScrollTimer);
       clearPendingGhostRowScrollWatch();
       debouncedUpdateLayout.cancel();
     });
@@ -349,7 +335,6 @@ const _sfc_main = defineComponent({
       context: table,
       editingRow,
       activeEditableCell,
-      isGhostRowScrolling,
       startRowEdit,
       clearEditingRow,
       applyEditingRow,
@@ -401,7 +386,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         [_ctx.ns.m("striped")]: _ctx.stripe,
         [_ctx.ns.m("border")]: _ctx.border || _ctx.isGroup,
         [_ctx.ns.m("hidden")]: _ctx.isHidden,
-        [_ctx.ns.is("ghost-row-scrolling")]: _ctx.isGhostRowScrolling,
         [_ctx.ns.is("row-editing")]: _ctx.hasEditingRow,
         [_ctx.ns.m("group")]: _ctx.isGroup,
         [_ctx.ns.m("fluid-height")]: _ctx.maxHeight,

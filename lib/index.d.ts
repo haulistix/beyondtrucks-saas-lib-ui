@@ -18291,7 +18291,6 @@ declare const _default_84: DefineComponent<{
     context: Table<any>;
     editingRow: any;
     activeEditableCell: any;
-    isGhostRowScrolling: Ref<boolean>;
     startRowEdit: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow: () => void;
     applyEditingRow: () => any;
@@ -29864,7 +29863,6 @@ declare function useTable(props: TableV2Props): {
     isResetting: ShallowRef<boolean>;
     isScrolling: ShallowRef<boolean>;
     hasFixedColumns: ComputedRef<number>;
-    hoveredRowIndex: ShallowRef<number | undefined>;
     columnsStyles: ComputedRef<Record<KeyType_2, CSSProperties>>;
     columnsTotalWidth: ComputedRef<number>;
     data: ComputedRef<any[]>;
@@ -29891,7 +29889,7 @@ declare function useTable(props: TableV2Props): {
     getRowHeight: (rowIndex: number) => number;
     updateColumnWidth: (column: Column<any>, width: number) => void;
     onColumnSorted: (e: MouseEvent) => void;
-    onRowHovered: ({ hovered, rowIndex }: RowHoverParams) => void;
+    onRowHovered: ({ hovered, rowKey }: RowHoverParams) => void;
     onRowExpanded: ({ expanded, rowData, rowIndex, rowKey, }: RowExpandParams) => void;
     onRowsRendered: (params: onRowRenderedParams) => void;
     onRowHeightChange: ({ rowKey, height, rowIndex }: RowHeightChangedParams, fixedDir: FixedDirection) => void;

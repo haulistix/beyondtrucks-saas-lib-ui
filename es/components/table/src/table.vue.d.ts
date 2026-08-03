@@ -792,7 +792,6 @@ declare const _default: import("vue").DefineComponent<{
     context: Table<any>;
     editingRow: any;
     activeEditableCell: any;
-    isGhostRowScrolling: import("vue").Ref<boolean>;
     startRowEdit: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow: () => void;
     applyEditingRow: () => any;

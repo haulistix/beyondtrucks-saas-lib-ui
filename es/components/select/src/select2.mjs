@@ -4,7 +4,7 @@ import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { useProps } from '../../select-v2/src/useProps.mjs';
-import Option from './option.mjs';
+import Option from './option2.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
 import { useSelect } from './useSelect.mjs';
 import { selectKey } from './token.mjs';
@@ -216,7 +216,7 @@ function _sfc_render(_ctx, _cache) {
     createVNode(_component_el_tooltip, {
       trigger: "click",
       effect: "light",
-      placement: "top",
+      placement: "top-start",
       offset: 4,
       content: _ctx.errorTooltipContent,
       disabled: _ctx.errorTooltipDisabled,

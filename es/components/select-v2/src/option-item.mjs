@@ -6,7 +6,7 @@ import { ElIcon } from '../../icon/index.mjs';
 import { ElTooltip } from '../../tooltip/index.mjs';
 import { useOption } from './useOption.mjs';
 import { useProps } from './useProps.mjs';
-import { optionV2Props, optionV2Emits } from './defaults.mjs';
+import { optionV2Props, optionV2Emits, SELECT_V2_DEFAULT_ITEM_HEIGHT } from './defaults.mjs';
 import { selectV2InjectionKey } from './token.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
@@ -72,9 +72,12 @@ const _sfc_main = defineComponent({
       return !props.selected && multiple.value && selectedCount.value > 0 && props.index === selectedCount.value;
     });
     const optionStyle = computed(() => {
-      var _a;
+      const virtualStyle = { ...props.style };
+      if (virtualStyle.height === `${SELECT_V2_DEFAULT_ITEM_HEIGHT}px`) {
+        delete virtualStyle.height;
+      }
       return {
-        ...(_a = props.style) != null ? _a : {},
+        ...virtualStyle,
         borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : "none"
       };
     });

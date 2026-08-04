@@ -12,6 +12,7 @@
   border-radius: 8px;
   padding: 16px;
   border: none;
+  max-width: none;
 }
 
 @include b(date-picker) {

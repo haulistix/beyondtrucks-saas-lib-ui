@@ -40986,6 +40986,7 @@ const _sfc_main$11 = defineComponent({
     disabled: Boolean
   },
   setup(props) {
+    const select = inject(selectKey);
     const ns = useNamespace("select");
     const groupRef = ref();
     const instance = getCurrentInstance();
@@ -40994,6 +40995,10 @@ const _sfc_main$11 = defineComponent({
       ...toRefs(props)
     }));
     const visible = computed(() => children.value.some((option) => option.visible === true));
+    const isFirstVisibleGroup = computed(() => {
+      const firstVisibleOption = select.optionsArray.find((option) => option.visible);
+      return !!firstVisibleOption && children.value.includes(firstVisibleOption);
+    });
     const isOption = (node) => {
       var _a;
       return node.type.name === "ElOption" && !!((_a = node.component) == null ? void 0 : _a.proxy);
@@ -41029,6 +41034,7 @@ const _sfc_main$11 = defineComponent({
     return {
       groupRef,
       visible,
+      isFirstVisibleGroup,
       ns
     };
   }
@@ -41039,7 +41045,7 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "groupRef",
     class: normalizeClass(_ctx.ns.be("group", "wrap"))
   }, [
-    createVNode(_component_el_divider),
+    !_ctx.isFirstVisibleGroup ? (openBlock(), createBlock(_component_el_divider, { key: 0 })) : createCommentVNode("v-if", true),
     createElementVNode("li", {
       class: normalizeClass(_ctx.ns.be("group", "title"))
     }, toDisplayString(_ctx.label), 3),
@@ -41253,7 +41259,7 @@ function _sfc_render$b(_ctx, _cache) {
     createVNode(_component_el_tooltip, {
       trigger: "click",
       effect: "light",
-      placement: "top",
+      placement: "top-start",
       offset: 4,
       content: _ctx.errorTooltipContent,
       disabled: _ctx.errorTooltipDisabled,
@@ -45262,6 +45268,9 @@ const DynamicSizeGrid = createGrid$1({
 var DynamicSizeGrid$1 = DynamicSizeGrid;
 
 const _sfc_main$S = defineComponent({
+  components: {
+    ElDivider
+  },
   props: {
     item: {
       type: Object,
@@ -45270,20 +45279,39 @@ const _sfc_main$S = defineComponent({
     style: {
       type: Object
     },
-    height: Number
+    showDivider: {
+      type: Boolean,
+      default: true
+    }
   },
-  setup() {
+  setup(props) {
     const ns = useNamespace("select");
+    const groupStyle = computed(() => {
+      const positionStyle = { ...props.style };
+      delete positionStyle.height;
+      delete positionStyle.lineHeight;
+      return positionStyle;
+    });
     return {
-      ns
+      ns,
+      groupStyle
     };
   }
 });
 function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_el_divider = resolveComponent("el-divider");
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.ns.be("group", "title")),
-    style: normalizeStyle({ ..._ctx.style, lineHeight: `${_ctx.height}px` })
-  }, toDisplayString(_ctx.item.label), 7);
+    class: normalizeClass(_ctx.ns.be("group", "wrap")),
+    style: normalizeStyle(_ctx.groupStyle)
+  }, [
+    _ctx.showDivider ? (openBlock(), createBlock(_component_el_divider, {
+      key: 0,
+      margin: "8px 0"
+    })) : createCommentVNode("v-if", true),
+    createElementVNode("div", {
+      class: normalizeClass(_ctx.ns.be("group", "title"))
+    }, toDisplayString(_ctx.item.label), 3)
+  ], 6);
 }
 var GroupItem = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$a], ["__file", "group-item.vue"]]);
 
@@ -45760,6 +45788,9 @@ function useOption(props, { emit }) {
   };
 }
 
+const SELECT_V2_GROUP_DIVIDER_SIZE = 17;
+const SELECT_V2_GROUP_TITLE_HEIGHT = 24;
+const SELECT_V2_DEFAULT_ITEM_HEIGHT = 40;
 const selectV2Props = buildProps({
   allowCreate: Boolean,
   autocomplete: {
@@ -45819,7 +45850,7 @@ const selectV2Props = buildProps({
   },
   itemHeight: {
     type: Number,
-    default: 34
+    default: SELECT_V2_DEFAULT_ITEM_HEIGHT
   },
   id: String,
   loading: Boolean,
@@ -46005,9 +46036,12 @@ const _sfc_main$R = defineComponent({
       return !props.selected && multiple.value && selectedCount.value > 0 && props.index === selectedCount.value;
     });
     const optionStyle = computed(() => {
-      var _a;
+      const virtualStyle = { ...props.style };
+      if (virtualStyle.height === `${SELECT_V2_DEFAULT_ITEM_HEIGHT}px`) {
+        delete virtualStyle.height;
+      }
       return {
-        ...(_a = props.style) != null ? _a : {},
+        ...virtualStyle,
         borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : "none"
       };
     });
@@ -46164,16 +46198,32 @@ var ElSelectMenu = defineComponent({
       (_b = (_a = select.tooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
     });
     const isSized = computed(() => isUndefined(select.props.estimatedOptionHeight));
+    const hasGroups = computed(() => props2.data.some((item) => item.type === "Group"));
+    const usesDynamicSizeList = computed(() => !isSized.value || hasGroups.value);
     const listProps = computed(() => {
-      if (isSized.value) {
+      var _a;
+      if (!usesDynamicSizeList.value) {
         return {
           itemSize: select.props.itemHeight
         };
       }
+      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
       return {
-        estimatedSize: select.props.estimatedOptionHeight,
-        itemSize: (idx) => cachedHeights.value[idx]
+        estimatedSize,
+        itemSize: (idx) => {
+          var _a2, _b;
+          if (((_a2 = props2.data[idx]) == null ? void 0 : _a2.type) === "Group") {
+            return SELECT_V2_GROUP_TITLE_HEIGHT + (idx > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
+          }
+          return (_b = cachedHeights.value[idx]) != null ? _b : estimatedSize;
+        }
       };
+    });
+    const listLayoutKey = computed(() => {
+      var _a;
+      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
+      const groupIndexes = props2.data.reduce((key, item, index) => item.type === "Group" ? `${key}-${index}` : key, "");
+      return `select-v2-${estimatedSize}${groupIndexes}`;
     });
     const contains = (arr = [], target) => {
       const {
@@ -46241,11 +46291,6 @@ var ElSelectMenu = defineComponent({
         data,
         style
       } = itemProps;
-      const sized = unref(isSized);
-      const {
-        itemSize,
-        estimatedSize
-      } = unref(listProps);
       const {
         modelValue
       } = select.props;
@@ -46258,7 +46303,7 @@ var ElSelectMenu = defineComponent({
         return createVNode(GroupItem, {
           "item": item,
           "style": style,
-          "height": sized ? itemSize : estimatedSize
+          "showDivider": index > 0
         }, null);
       }
       const isSelected = isItemSelected(modelValue, item);
@@ -46333,13 +46378,14 @@ var ElSelectMenu = defineComponent({
       const isScrollbarAlwaysOn = computed(() => {
         return isIOS ? true : scrollbarAlwaysOn;
       });
-      const List = unref(isSized) ? FixedSizeList$1 : DynamicSizeList$1;
+      const List = unref(usesDynamicSizeList) ? DynamicSizeList$1 : FixedSizeList$1;
       return createVNode("div", {
         "class": [ns.b("dropdown"), ns.is("multiple", multiple)],
         "style": {
           width: `${width}px`
         }
       }, [(_a = slots.header) == null ? void 0 : _a.call(slots), ((_b = slots.loading) == null ? void 0 : _b.call(slots)) || ((_c = slots.empty) == null ? void 0 : _c.call(slots)) || createVNode(List, mergeProps({
+        "key": unref(listLayoutKey),
         "ref": listRef
       }, unref(listProps), {
         "className": ns.be("dropdown", "list"),
@@ -46522,7 +46568,12 @@ const useSelect$1 = (props, emit) => {
     return (_a = elForm == null ? void 0 : elForm.statusIcon) != null ? _a : false;
   });
   const popupHeight = computed(() => {
-    const totalHeight = filteredOptions.value.length * props.itemHeight;
+    const totalHeight = filteredOptions.value.reduce((height, option, index) => {
+      if (option.type === "Group") {
+        return height + SELECT_V2_GROUP_TITLE_HEIGHT + (index > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
+      }
+      return height + props.itemHeight;
+    }, 0);
     return totalHeight > props.height ? props.height : totalHeight;
   });
   const hasModelValue = computed(() => {
@@ -47379,7 +47430,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     createVNode(_component_el_tooltip, {
       trigger: "click",
       effect: "light",
-      placement: "top",
+      placement: "top-start",
       offset: 4,
       content: _ctx.errorTooltipContent,
       disabled: _ctx.errorTooltipDisabled,
@@ -49888,7 +49939,7 @@ const _sfc_main$G = /* @__PURE__ */ defineComponent({
             ]),
             _: 1
           }),
-          createTextVNode(" Last Updated " + toDisplayString(__props.updateTime), 1)
+          createTextVNode(" " + toDisplayString(__props.updateTime), 1)
         ])) : createCommentVNode("v-if", true)
       ]);
     };
@@ -50963,14 +51014,23 @@ class TableLayout {
     }
   }
   updateScrollY() {
+    var _a;
     const height = this.height.value;
     if (isNull(height))
       return false;
+    const prevScrollY = this.scrollY.value;
+    const hasHeightConstraint = this.table.props.height != null || this.table.props.maxHeight != null;
+    if (!hasHeightConstraint) {
+      this.scrollY.value = false;
+      return prevScrollY;
+    }
     const scrollBarRef = this.table.refs.scrollBarRef;
     if (this.table.vnode.el && (scrollBarRef == null ? void 0 : scrollBarRef.wrapRef)) {
-      let scrollY = true;
-      const prevScrollY = this.scrollY.value;
-      scrollY = scrollBarRef.wrapRef.scrollHeight > scrollBarRef.wrapRef.clientHeight;
+      const wrap = scrollBarRef.wrapRef;
+      const view = wrap.firstElementChild;
+      const contentHeight = (_a = view == null ? void 0 : view.getBoundingClientRect().height) != null ? _a : 0;
+      const viewportHeight = wrap.getBoundingClientRect().height;
+      const scrollY = view ? contentHeight > viewportHeight : wrap.scrollHeight > wrap.clientHeight;
       this.scrollY.value = scrollY;
       return prevScrollY !== scrollY;
     }
@@ -51025,7 +51085,7 @@ class TableLayout {
     }
     return false;
   }
-  updateColumnsWidth() {
+  updateColumnsWidth(distributeRemainingWidth = false) {
     var _a;
     if (!isClient)
       return;
@@ -51034,11 +51094,28 @@ class TableLayout {
     let bodyMinWidth = 0;
     const flattenColumns = this.getFlattenColumns();
     const flexColumns = flattenColumns.filter((column) => !isNumber(column.width));
-    flattenColumns.forEach((column) => {
-      if (isNumber(column.width) && column.realWidth)
-        column.realWidth = null;
-    });
-    if (flexColumns.length > 0 && fit) {
+    const lastNonFixedColumn = distributeRemainingWidth ? [...flattenColumns].reverse().find((column) => !column.fixed) : void 0;
+    if (fit && lastNonFixedColumn) {
+      flattenColumns.forEach((column) => {
+        var _a2, _b, _c;
+        column.realWidth = Number((_c = (_b = (_a2 = column.realWidth) != null ? _a2 : column.width) != null ? _b : column.minWidth) != null ? _c : 80);
+        bodyMinWidth += column.realWidth;
+      });
+      const remainingWidth = bodyWidth - bodyMinWidth;
+      if (remainingWidth > 0) {
+        const width = Number(lastNonFixedColumn.realWidth) + remainingWidth;
+        lastNonFixedColumn.width = width;
+        lastNonFixedColumn.realWidth = width;
+        bodyMinWidth = bodyWidth;
+      }
+      this.scrollX.value = bodyMinWidth > bodyWidth;
+      this.bodyWidth.value = bodyMinWidth;
+      this.table.state.resizeState.value.width = this.bodyWidth.value;
+    } else if (flexColumns.length > 0 && fit) {
+      flattenColumns.forEach((column) => {
+        if (isNumber(column.width) && column.realWidth)
+          column.realWidth = null;
+      });
       flattenColumns.forEach((column) => {
         bodyMinWidth += Number(column.width || column.minWidth || 80);
       });
@@ -51468,19 +51545,8 @@ const TABLE_INJECTION_KEY = Symbol("ElTable");
 function useEvent(props, emit) {
   const instance = getCurrentInstance();
   const parent = inject(TABLE_INJECTION_KEY);
-  const isContentOverflowing = (element) => {
-    if (!(element == null ? void 0 : element.childNodes.length))
-      return false;
-    const range = document.createRange();
-    range.setStart(element, 0);
-    range.setEnd(element, element.childNodes.length);
-    const { width: rangeWidth, height: rangeHeight } = range.getBoundingClientRect();
-    const { width: elementWidth, height: elementHeight } = element.getBoundingClientRect();
-    const { top, left, right, bottom } = getPadding(element);
-    return isGreaterThan(rangeWidth + left + right, elementWidth) || isGreaterThan(rangeHeight + top + bottom, elementHeight) || isGreaterThan(element.scrollWidth, elementWidth);
-  };
   const handleCellMouseEnter = (event, row) => {
-    var _a, _b, _c, _d, _e, _f, _g, _h;
+    var _a, _b, _c, _d, _e, _f, _g;
     if (!parent)
       return;
     const table = parent;
@@ -51501,12 +51567,13 @@ function useEvent(props, emit) {
     const summaryHeaderText = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-summary`) : null;
     if (summaryHeaderTitle) {
       const tooltipLines = [
-        isContentOverflowing(summaryHeaderTitle) ? summaryHeaderTitle.innerText || summaryHeaderTitle.textContent : null,
-        isContentOverflowing(summaryHeaderText) ? (summaryHeaderText == null ? void 0 : summaryHeaderText.innerText) || (summaryHeaderText == null ? void 0 : summaryHeaderText.textContent) : null
+        summaryHeaderTitle.innerText || summaryHeaderTitle.textContent,
+        (summaryHeaderText == null ? void 0 : summaryHeaderText.innerText) || (summaryHeaderText == null ? void 0 : summaryHeaderText.textContent)
       ].filter((content) => !!content);
       if (tooltipLines.length) {
         createTablePopper({
           effect: "light",
+          placement: "top-start",
           popperClass: "table-header-tooltip"
         }, tooltipLines.join("\n"), row, column, cell, table);
       } else if (((_d = removePopper) == null ? void 0 : _d.trigger) === cell) {
@@ -51515,10 +51582,15 @@ function useEvent(props, emit) {
       return;
     }
     const cellChild = event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
-    if (isContentOverflowing(cellChild)) {
-      createTablePopper({ effect: "light" }, (_f = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _f : "", row, column, cell, table);
-    } else if (((_g = removePopper) == null ? void 0 : _g.trigger) === cell) {
-      (_h = removePopper) == null ? void 0 : _h();
+    const tooltipContent = (cellChild == null ? void 0 : cellChild.innerText) || (cellChild == null ? void 0 : cellChild.textContent) || (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent) || "";
+    if (tooltipContent) {
+      createTablePopper({
+        effect: "light",
+        placement: "top-start",
+        popperClass: "table-header-tooltip"
+      }, tooltipContent, row, column, cell, table);
+    } else if (((_f = removePopper) == null ? void 0 : _f.trigger) === cell) {
+      (_g = removePopper) == null ? void 0 : _g();
     }
   };
   const handleFilterClick = (event) => {
@@ -51608,7 +51680,7 @@ function useEvent(props, emit) {
           column.width = column.realWidth = columnWidth;
           table == null ? void 0 : table.emit("header-dragend", column.width, startLeft - startColumnLeft, column, event);
           requestAnimationFrame(() => {
-            props.store.scheduleLayout(false, true);
+            table == null ? void 0 : table.state.doLayout(true);
           });
           document.body.style.cursor = "";
           dragging.value = false;
@@ -53211,11 +53283,11 @@ function useStyle(props, layout, store, table) {
       width: layout.bodyWidth.value ? `${layout.bodyWidth.value}px` : ""
     };
   });
-  const doLayout = () => {
+  const doLayout = (distributeRemainingWidth = false) => {
     if (shouldUpdateHeight.value) {
       layout.updateElsHeight();
     }
-    layout.updateColumnsWidth();
+    layout.updateColumnsWidth(distributeRemainingWidth);
     if (typeof window === "undefined")
       return;
     requestAnimationFrame(syncPosition);
@@ -53224,7 +53296,7 @@ function useStyle(props, layout, store, table) {
     await nextTick();
     store.updateColumns();
     bindEvents();
-    requestAnimationFrame(doLayout);
+    requestAnimationFrame(() => doLayout());
     const el = table.vnode.el;
     const tableHeader = table.refs.headerWrapper;
     if (props.flexible && el && el.parentElement) {
@@ -53609,6 +53681,7 @@ const useScrollbar$1 = () => {
 };
 
 let tableIdSeed = 1;
+const GHOST_ROW_SCROLL_SHADOW_DURATION$1 = 100;
 const _sfc_main$C = defineComponent({
   name: "ElTable",
   directives: {
@@ -53658,6 +53731,9 @@ const _sfc_main$C = defineComponent({
     table.store = store;
     const editingRow = ref(null);
     const activeEditableCell = ref(null);
+    const isGhostRowScrolling = ref(false);
+    let previousGhostRowScrollTop = 0;
+    let ghostRowScrollTimer;
     const ghostRowData = ref({
       [ghostRowSign$1]: true,
       [ghostRowKey$1]: "ghost-row"
@@ -53788,6 +53864,15 @@ const _sfc_main$C = defineComponent({
       clearAddRowTrigger();
     };
     const handleScrollbarScroll = (event) => {
+      if (event.scrollTop !== previousGhostRowScrollTop) {
+        previousGhostRowScrollTop = event.scrollTop;
+        isGhostRowScrolling.value = true;
+        clearTimeout(ghostRowScrollTimer);
+        ghostRowScrollTimer = setTimeout(() => {
+          isGhostRowScrolling.value = false;
+          ghostRowScrollTimer = void 0;
+        }, GHOST_ROW_SCROLL_SHADOW_DURATION$1);
+      }
       clearAddColumnTrigger();
       clearAddRowTrigger();
       emit("scroll", event);
@@ -53882,6 +53967,7 @@ const _sfc_main$C = defineComponent({
     });
     useKeyRender(table);
     onBeforeUnmount(() => {
+      clearTimeout(ghostRowScrollTimer);
       clearPendingGhostRowScrollWatch();
       debouncedUpdateLayout.cancel();
     });
@@ -53921,6 +54007,7 @@ const _sfc_main$C = defineComponent({
       context: table,
       editingRow,
       activeEditableCell,
+      isGhostRowScrolling,
       startRowEdit,
       clearEditingRow,
       applyEditingRow,
@@ -53972,6 +54059,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
         [_ctx.ns.m("striped")]: _ctx.stripe,
         [_ctx.ns.m("border")]: _ctx.border || _ctx.isGroup,
         [_ctx.ns.m("hidden")]: _ctx.isHidden,
+        [_ctx.ns.is("ghost-row-scrolling")]: _ctx.isGhostRowScrolling,
         [_ctx.ns.is("row-editing")]: _ctx.hasEditingRow,
         [_ctx.ns.m("group")]: _ctx.isGroup,
         [_ctx.ns.m("fluid-height")]: _ctx.maxHeight,
@@ -55836,18 +55924,12 @@ const useScrollbar = (props, {
   };
 };
 
-const useRow = (props, {
-  mainTableRef,
-  leftTableRef,
-  rightTableRef,
-  tableInstance,
-  ns,
-  isScrolling
-}) => {
+const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling }) => {
   const vm = getCurrentInstance();
   const { emit } = vm;
   const isResetting = shallowRef(false);
   const expandedRowKeys = ref(props.defaultExpandedRowKeys || []);
+  const hoveredRowIndex = shallowRef();
   const lastRenderedRowIndex = ref(-1);
   const resetIndex = shallowRef(null);
   const rowHeights = ref({});
@@ -55863,19 +55945,16 @@ const useRow = (props, {
       lastRenderedRowIndex.value = params.rowCacheEnd;
     }
   }
-  function onRowHovered({ hovered, rowKey }) {
+  function onRowHovered({ hovered, rowIndex }) {
     if (isScrolling.value) {
+      hoveredRowIndex.value = void 0;
       return;
     }
-    const tableRoot = tableInstance.vnode.el;
-    const rows = tableRoot.querySelectorAll(`[rowkey="${String(rowKey)}"]`);
-    rows.forEach((row) => {
-      if (hovered) {
-        row.classList.add(ns.is("hovered"));
-      } else {
-        row.classList.remove(ns.is("hovered"));
-      }
-    });
+    if (hovered) {
+      hoveredRowIndex.value = rowIndex;
+    } else if (hoveredRowIndex.value === rowIndex) {
+      hoveredRowIndex.value = void 0;
+    }
   }
   function onRowExpanded({
     expanded,
@@ -55902,11 +55981,6 @@ const useRow = (props, {
       rowKey
     });
     (_b = props.onExpandedRowsChange) == null ? void 0 : _b.call(props, _expandedRowKeys);
-    const tableRoot = tableInstance.vnode.el;
-    const hoverRow = tableRoot.querySelector(`.${ns.is("hovered")}[rowkey="${String(rowKey)}"]`);
-    if (hoverRow) {
-      nextTick(() => onRowHovered({ hovered: true, rowKey }));
-    }
   }
   const flushingRowHeights = debounce(() => {
     var _a, _b, _c, _d;
@@ -55959,6 +56033,7 @@ const useRow = (props, {
   }
   return {
     expandedRowKeys,
+    hoveredRowIndex,
     lastRenderedRowIndex,
     isDynamic,
     isResetting,
@@ -56196,11 +56271,10 @@ function useTable(props) {
     rightTableRef,
     onMaybeEndReached
   });
-  const ns = useNamespace("table-v2");
-  const instance = getCurrentInstance();
   const isScrolling = shallowRef(false);
   const {
     expandedRowKeys,
+    hoveredRowIndex,
     lastRenderedRowIndex,
     isDynamic,
     isResetting,
@@ -56214,8 +56288,6 @@ function useTable(props) {
     mainTableRef,
     leftTableRef,
     rightTableRef,
-    tableInstance: instance,
-    ns,
     isScrolling
   });
   const { data, depthMap } = useData(props, {
@@ -56298,6 +56370,7 @@ function useTable(props) {
     isResetting,
     isScrolling,
     hasFixedColumns,
+    hoveredRowIndex,
     columnsStyles,
     columnsTotalWidth,
     data,
@@ -56749,13 +56822,20 @@ var TableCell = TableV2Cell;
 
 const HeaderCell = (props, {
   slots
-}) => renderSlot(slots, "default", props, () => {
+}) => {
   var _a, _b;
-  return [createVNode("div", {
-    "class": props.class,
-    "title": (_a = props.column) == null ? void 0 : _a.title
-  }, [(_b = props.column) == null ? void 0 : _b.title])];
-});
+  const title = (_b = (_a = props.column) == null ? void 0 : _a.title) != null ? _b : "";
+  return renderSlot(slots, "default", props, () => [createVNode(ElTooltip, {
+    "content": title,
+    "disabled": !title,
+    "effect": "light",
+    "placement": "top-start"
+  }, {
+    default: () => [createVNode("div", {
+      "class": props.class
+    }, [title])]
+  })]);
+};
 HeaderCell.displayName = "ElTableV2HeaderCell";
 HeaderCell.inheritAttrs = false;
 var HeaderCell$1 = HeaderCell;
@@ -57470,6 +57550,7 @@ const RowRenderer = (props, {
     expandedRowKeys,
     estimatedRowHeight,
     hasFixedColumns,
+    hoveredRowIndex,
     rowData,
     rowIndex,
     style,
@@ -57505,7 +57586,7 @@ const RowRenderer = (props, {
   const isFixedRow = rowIndex < 0;
   const isAddRow = Boolean(rowData[rowAddSign]);
   const isGhostRow = Boolean(rowData[ghostRowSign]);
-  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
+  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("hovered", rowIndex === hoveredRowIndex), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
     [ns.e(`row-depth-${depth}`)]: canExpand && rowIndex >= 0
   }];
   const onRowHover = hasFixedColumns ? onRowHovered : void 0;
@@ -58104,7 +58185,7 @@ const FooterDefault = (props) => {
       "height": "12",
       "fill": "white"
     }, null)])])])]
-  }), createTextVNode("Last Updated "), props.updateTime])]);
+  }), props.updateTime])]);
 };
 FooterDefault.displayName = "ElTableV2FooterDefault";
 
@@ -58134,6 +58215,7 @@ function _isSlot(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 const COMPONENT_NAME$5 = "ElTableV2";
+const GHOST_ROW_SCROLL_SHADOW_DURATION = 100;
 const TableV2 = defineComponent({
   name: COMPONENT_NAME$5,
   props: tableV2Props,
@@ -58165,6 +58247,7 @@ const TableV2 = defineComponent({
       isDynamic,
       isResetting,
       isScrolling,
+      hoveredRowIndex,
       bodyWidth,
       addRowHeight,
       effectiveHScrollbarSize,
@@ -58207,6 +58290,23 @@ const TableV2 = defineComponent({
     const isLegacyEditMode = computed(() => props.canEditTable && props.editable);
     const isGhostEditMode = computed(() => props.ghostTable && props.editTable);
     const isGhostRowVisible = computed(() => isGhostEditMode.value && props.showGhostRow);
+    const isBottomEditRowVisible = computed(() => isLegacyEditMode.value && !isGhostEditMode.value || isGhostRowVisible.value);
+    const isGhostRowScrolling = shallowRef(false);
+    let ghostRowScrollTimer;
+    const updateGhostRowScrolling = (scrollTop) => {
+      if (!isBottomEditRowVisible.value || scrollTop === unref(scrollPos).scrollTop) {
+        return;
+      }
+      isGhostRowScrolling.value = true;
+      clearTimeout(ghostRowScrollTimer);
+      ghostRowScrollTimer = setTimeout(() => {
+        isGhostRowScrolling.value = false;
+        ghostRowScrollTimer = void 0;
+      }, GHOST_ROW_SCROLL_SHADOW_DURATION);
+    };
+    onBeforeUnmount(() => {
+      clearTimeout(ghostRowScrollTimer);
+    });
     let stopPendingGhostRowScrollWatch;
     const clearAddColumnTrigger = () => {
       addColumnTrigger.value = null;
@@ -58276,11 +58376,13 @@ const TableV2 = defineComponent({
       return props.data.every((row) => requiredColumns.every((column) => !isEmptyRequiredValue(row == null ? void 0 : row[column.dataKey])));
     };
     const handleTableScroll = (params) => {
+      updateGhostRowScrolling(params.scrollTop);
       clearAddColumnTrigger();
       clearAddRowTrigger();
       onScroll(params);
     };
     const handleVerticalTableScroll = (params) => {
+      updateGhostRowScrolling(params.scrollTop);
       clearAddColumnTrigger();
       clearAddRowTrigger();
       onVerticalScroll(params);
@@ -58445,6 +58547,7 @@ const TableV2 = defineComponent({
         expandedRowKeys: unref(expandedRowKeys),
         estimatedRowHeight,
         hasFixedColumns: unref(hasFixedColumns),
+        hoveredRowIndex: unref(hoveredRowIndex),
         rowProps,
         rowClass,
         rowKey,
@@ -58530,7 +58633,7 @@ const TableV2 = defineComponent({
           }
         })
       };
-      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll")];
+      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll"), unref(isGhostRowScrolling) && ns.is("ghost-row-scrolling")];
       const footerProps = {
         class: ns.e("footer"),
         style: unref(footerHeight),
@@ -58578,11 +58681,11 @@ const TableV2 = defineComponent({
       }), createVNode(RightTable, rightTableProps, _isSlot(tableSlots) ? tableSlots : {
         default: () => [tableSlots]
       }), showAddRow && createVNode(Fragment, null, [createVNode("div", {
-        "class": ns.e("add-row-main"),
+        "class": [ns.e("add-row-main"), ns.is("ghost-row")],
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(mainColumns),
-        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
+        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
         "rowWidth": mainContentWidth,
         "width": unref(effectiveWidth)
       }), {
@@ -58592,7 +58695,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnLeft),
-        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
+        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
         "rowWidth": leftColumnsWidth,
         "width": leftColumnsWidth
       }), {
@@ -58602,17 +58705,17 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnRight),
-        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
+        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
         "rowWidth": rightColumnsWidth,
         "width": rightColumnsWidth
       }), {
         fixed: tableSlots.row
       })])]), showGhostRow && createVNode(Fragment, null, [createVNode("div", {
-        "class": ns.e("add-row-main"),
+        "class": [ns.e("add-row-main"), ns.is("ghost-row")],
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(mainColumns),
-        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
+        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
         "rowWidth": mainContentWidth,
         "width": unref(effectiveWidth)
       }), {
@@ -58622,7 +58725,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnLeft),
-        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
+        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
         "rowWidth": leftColumnsWidth,
         "width": leftColumnsWidth
       }), {
@@ -58632,7 +58735,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnRight),
-        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
+        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
         "rowWidth": rightColumnsWidth,
         "width": rightColumnsWidth
       }), {

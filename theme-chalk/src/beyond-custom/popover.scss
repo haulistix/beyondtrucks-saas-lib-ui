@@ -21,8 +21,9 @@
   font-size: 12px;
   line-height: 16px;
   display: flex;
-  border:1px solid var(--color-gray-100);
+  border: 1px solid var(--color-gray-100);
   align-items: center;
+  max-width: 416px;
 
   .el-button + .el-button {
     margin-left: 4px;

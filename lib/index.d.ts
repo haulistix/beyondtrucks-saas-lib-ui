@@ -16586,6 +16586,7 @@ declare const _default_75: DefineComponent<{
 }, {
     groupRef: Ref<HTMLElement | undefined>;
     visible: ComputedRef<boolean>;
+    isFirstVisibleGroup: ComputedRef<boolean>;
     ns: {
         namespace: ComputedRef<string>;
         b: (blockSuffix?: string) => string;
@@ -16665,7 +16666,7 @@ declare const _default_76: DefineComponent<{
         __epPropKey: true;
     };
     readonly height: EpPropFinalized<NumberConstructor, unknown, unknown, 274, boolean>;
-    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 34, boolean>;
+    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 40, boolean>;
     readonly id: StringConstructor;
     readonly loading: BooleanConstructor;
     readonly loadingText: StringConstructor;
@@ -17056,7 +17057,7 @@ declare const _default_76: DefineComponent<{
         __epPropKey: true;
     };
     readonly height: EpPropFinalized<NumberConstructor, unknown, unknown, 274, boolean>;
-    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 34, boolean>;
+    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 40, boolean>;
     readonly id: StringConstructor;
     readonly loading: BooleanConstructor;
     readonly loadingText: StringConstructor;
@@ -18237,7 +18238,7 @@ declare const _default_84: DefineComponent<{
         width: string;
         height: string;
     } | undefined>;
-    debouncedUpdateLayout: DebouncedFunc<() => void>;
+    debouncedUpdateLayout: DebouncedFunc<(distributeRemainingWidth?: boolean) => void>;
     /**
     * @description used in single selection Table, set a certain row selected. If called without any parameter, it will clear selection
     */
@@ -18277,7 +18278,7 @@ declare const _default_84: DefineComponent<{
     /**
     * @description refresh the layout of Table. When the visibility of Table changes, you may need to call this method to get a correct layout
     */
-    doLayout: () => void;
+    doLayout: (distributeRemainingWidth?: boolean) => void;
     /**
     * @description sort Table manually. Property `prop` is used to set sort column, property `order` is used to set sort order
     */
@@ -18291,6 +18292,7 @@ declare const _default_84: DefineComponent<{
     context: Table<any>;
     editingRow: any;
     activeEditableCell: any;
+    isGhostRowScrolling: Ref<boolean>;
     startRowEdit: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow: () => void;
     applyEditingRow: () => any;
@@ -24799,7 +24801,7 @@ export declare interface Props {
 declare const props: {
     loading: BooleanConstructor;
     data: {
-        type: ArrayConstructor;
+        type: PropType<Option_2[]>;
         required: true;
     };
     hoveringIndex: NumberConstructor;
@@ -25516,7 +25518,7 @@ declare const selectV2Props: {
         __epPropKey: true;
     };
     readonly height: EpPropFinalized<NumberConstructor, unknown, unknown, 274, boolean>;
-    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 34, boolean>;
+    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 40, boolean>;
     readonly id: StringConstructor;
     readonly loading: BooleanConstructor;
     readonly loadingText: StringConstructor;
@@ -26702,7 +26704,7 @@ declare class TableLayout<T extends DefaultRow> {
     getFlattenColumns(): TableColumnCtx<T>[];
     updateElsHeight(): void;
     headerDisplayNone(elm: HTMLElement): boolean;
-    updateColumnsWidth(): void;
+    updateColumnsWidth(distributeRemainingWidth?: boolean): void;
     addObserver(observer: TableHeader): void;
     removeObserver(observer: TableHeader): void;
     notifyObservers(event: string): void;
@@ -26799,7 +26801,7 @@ declare interface TableState {
         width: any;
         height: any;
     }>;
-    doLayout: () => void;
+    doLayout: (distributeRemainingWidth?: boolean) => void;
     debouncedUpdateLayout: () => void;
 }
 export declare type TableTooltipData<T extends DefaultRow> = Parameters<TableOverflowTooltipFormatter<T>>[0];
@@ -29863,6 +29865,7 @@ declare function useTable(props: TableV2Props): {
     isResetting: ShallowRef<boolean>;
     isScrolling: ShallowRef<boolean>;
     hasFixedColumns: ComputedRef<number>;
+    hoveredRowIndex: ShallowRef<number | undefined>;
     columnsStyles: ComputedRef<Record<KeyType_2, CSSProperties>>;
     columnsTotalWidth: ComputedRef<number>;
     data: ComputedRef<any[]>;
@@ -29889,7 +29892,7 @@ declare function useTable(props: TableV2Props): {
     getRowHeight: (rowIndex: number) => number;
     updateColumnWidth: (column: Column<any>, width: number) => void;
     onColumnSorted: (e: MouseEvent) => void;
-    onRowHovered: ({ hovered, rowKey }: RowHoverParams) => void;
+    onRowHovered: ({ hovered, rowIndex }: RowHoverParams) => void;
     onRowExpanded: ({ expanded, rowData, rowIndex, rowKey, }: RowExpandParams) => void;
     onRowsRendered: (params: onRowRenderedParams) => void;
     onRowHeightChange: ({ rowKey, height, rowIndex }: RowHeightChangedParams, fixedDir: FixedDirection) => void;

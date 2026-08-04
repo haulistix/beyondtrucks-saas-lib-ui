@@ -93,6 +93,18 @@
       .el-date-table-cell__text {
         color: var(--color-gray-990) !important;
       }
+
+      &.start-date .#{$namespace}-date-table-cell__text {
+        &::before {
+          border-color: var(--color-gray-990);
+        }
+      }
+
+      &.end-date .#{$namespace}-date-table-cell__text {
+        &::after {
+          background-color: var(--color-gray-990);
+        }
+      }
     }
 
     &.in-range {
@@ -133,9 +145,20 @@
       color: $color-white;
     }
 
-    &.start-date .#{$namespace}-date-table-cell__text,
-    &.end-date .#{$namespace}-date-table-cell__text {
+    &.start-date .#{$namespace}-date-table-cell__text {
+      &::before {
+        position: absolute;
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        left: 10px;
+        top: -2px;
+        border: 1px solid #fff;
+      }
+    }
 
+    &.end-date .#{$namespace}-date-table-cell__text {
       &::after {
         position: absolute;
         content: '';
@@ -143,24 +166,11 @@
         height: 4px;
         border-radius: 50%;
         left: 10px;
-      }
-    }
-
-    &.start-date .#{$namespace}-date-table-cell__text,
-    {
-      &::after {
-        top: -2px;
-        border: 1px solid #fff;
-      }
-    }
-
-
-    &.end-date .#{$namespace}-date-table-cell__text {
-      &::after {
         bottom: -2px;
         background-color: #fff;
       }
     }
+
 
     &.start-date .#{$namespace}-date-table-cell {
       margin-left: 5px;

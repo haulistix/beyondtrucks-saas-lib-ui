@@ -22,7 +22,7 @@ interface TableState {
         width: any;
         height: any;
     }>;
-    doLayout: () => void;
+    doLayout: (distributeRemainingWidth?: boolean) => void;
     debouncedUpdateLayout: () => void;
 }
 interface TreeProps {

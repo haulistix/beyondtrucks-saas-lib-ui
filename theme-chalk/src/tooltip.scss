@@ -1,6 +1,8 @@
 @use 'mixins/mixins' as *;
 
 @include b(tooltip) {
+  white-space: normal;
+
   @include e(overlay) {
     background-color: transparent;
   }

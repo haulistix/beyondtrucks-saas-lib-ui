@@ -738,7 +738,7 @@ declare const _default: import("vue").DefineComponent<{
         width: string;
         height: string;
     } | undefined>;
-    debouncedUpdateLayout: import("lodash").DebouncedFunc<() => void>;
+    debouncedUpdateLayout: import("lodash").DebouncedFunc<(distributeRemainingWidth?: boolean) => void>;
     /**
      * @description used in single selection Table, set a certain row selected. If called without any parameter, it will clear selection
      */
@@ -778,7 +778,7 @@ declare const _default: import("vue").DefineComponent<{
     /**
      * @description refresh the layout of Table. When the visibility of Table changes, you may need to call this method to get a correct layout
      */
-    doLayout: () => void;
+    doLayout: (distributeRemainingWidth?: boolean) => void;
     /**
      * @description sort Table manually. Property `prop` is used to set sort column, property `order` is used to set sort order
      */
@@ -792,6 +792,7 @@ declare const _default: import("vue").DefineComponent<{
     context: Table<any>;
     editingRow: any;
     activeEditableCell: any;
+    isGhostRowScrolling: import("vue").Ref<boolean>;
     startRowEdit: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow: () => void;
     applyEditingRow: () => any;

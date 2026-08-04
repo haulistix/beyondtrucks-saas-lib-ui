@@ -1,14 +1,22 @@
 import { renderSlot, createVNode } from 'vue';
+import { ElTooltip } from '../../../tooltip/index.mjs';
 
 const HeaderCell = (props, {
   slots
-}) => renderSlot(slots, "default", props, () => {
+}) => {
   var _a, _b;
-  return [createVNode("div", {
-    "class": props.class,
-    "title": (_a = props.column) == null ? void 0 : _a.title
-  }, [(_b = props.column) == null ? void 0 : _b.title])];
-});
+  const title = (_b = (_a = props.column) == null ? void 0 : _a.title) != null ? _b : "";
+  return renderSlot(slots, "default", props, () => [createVNode(ElTooltip, {
+    "content": title,
+    "disabled": !title,
+    "effect": "light",
+    "placement": "top-start"
+  }, {
+    default: () => [createVNode("div", {
+      "class": props.class
+    }, [title])]
+  })]);
+};
 HeaderCell.displayName = "ElTableV2HeaderCell";
 HeaderCell.inheritAttrs = false;
 var HeaderCell$1 = HeaderCell;

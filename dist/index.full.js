@@ -40990,6 +40990,7 @@
       disabled: Boolean
     },
     setup(props) {
+      const select = vue.inject(selectKey);
       const ns = useNamespace("select");
       const groupRef = vue.ref();
       const instance = vue.getCurrentInstance();
@@ -40998,6 +40999,10 @@
         ...vue.toRefs(props)
       }));
       const visible = vue.computed(() => children.value.some((option) => option.visible === true));
+      const isFirstVisibleGroup = vue.computed(() => {
+        const firstVisibleOption = select.optionsArray.find((option) => option.visible);
+        return !!firstVisibleOption && children.value.includes(firstVisibleOption);
+      });
       const isOption = (node) => {
         var _a;
         return node.type.name === "ElOption" && !!((_a = node.component) == null ? void 0 : _a.proxy);
@@ -41033,6 +41038,7 @@
       return {
         groupRef,
         visible,
+        isFirstVisibleGroup,
         ns
       };
     }
@@ -41043,7 +41049,7 @@
       ref: "groupRef",
       class: vue.normalizeClass(_ctx.ns.be("group", "wrap"))
     }, [
-      vue.createVNode(_component_el_divider),
+      !_ctx.isFirstVisibleGroup ? (vue.openBlock(), vue.createBlock(_component_el_divider, { key: 0 })) : vue.createCommentVNode("v-if", true),
       vue.createElementVNode("li", {
         class: vue.normalizeClass(_ctx.ns.be("group", "title"))
       }, vue.toDisplayString(_ctx.label), 3),
@@ -41257,7 +41263,7 @@
       vue.createVNode(_component_el_tooltip, {
         trigger: "click",
         effect: "light",
-        placement: "top",
+        placement: "top-start",
         offset: 4,
         content: _ctx.errorTooltipContent,
         disabled: _ctx.errorTooltipDisabled,
@@ -45266,6 +45272,9 @@
   var DynamicSizeGrid$1 = DynamicSizeGrid;
 
   const _sfc_main$S = vue.defineComponent({
+    components: {
+      ElDivider
+    },
     props: {
       item: {
         type: Object,
@@ -45274,20 +45283,39 @@
       style: {
         type: Object
       },
-      height: Number
+      showDivider: {
+        type: Boolean,
+        default: true
+      }
     },
-    setup() {
+    setup(props) {
       const ns = useNamespace("select");
+      const groupStyle = vue.computed(() => {
+        const positionStyle = { ...props.style };
+        delete positionStyle.height;
+        delete positionStyle.lineHeight;
+        return positionStyle;
+      });
       return {
-        ns
+        ns,
+        groupStyle
       };
     }
   });
   function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_el_divider = vue.resolveComponent("el-divider");
     return vue.openBlock(), vue.createElementBlock("div", {
-      class: vue.normalizeClass(_ctx.ns.be("group", "title")),
-      style: vue.normalizeStyle({ ..._ctx.style, lineHeight: `${_ctx.height}px` })
-    }, vue.toDisplayString(_ctx.item.label), 7);
+      class: vue.normalizeClass(_ctx.ns.be("group", "wrap")),
+      style: vue.normalizeStyle(_ctx.groupStyle)
+    }, [
+      _ctx.showDivider ? (vue.openBlock(), vue.createBlock(_component_el_divider, {
+        key: 0,
+        margin: "8px 0"
+      })) : vue.createCommentVNode("v-if", true),
+      vue.createElementVNode("div", {
+        class: vue.normalizeClass(_ctx.ns.be("group", "title"))
+      }, vue.toDisplayString(_ctx.item.label), 3)
+    ], 6);
   }
   var GroupItem = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$a], ["__file", "group-item.vue"]]);
 
@@ -45764,6 +45792,9 @@
     };
   }
 
+  const SELECT_V2_GROUP_DIVIDER_SIZE = 17;
+  const SELECT_V2_GROUP_TITLE_HEIGHT = 24;
+  const SELECT_V2_DEFAULT_ITEM_HEIGHT = 40;
   const selectV2Props = buildProps({
     allowCreate: Boolean,
     autocomplete: {
@@ -45823,7 +45854,7 @@
     },
     itemHeight: {
       type: Number,
-      default: 34
+      default: SELECT_V2_DEFAULT_ITEM_HEIGHT
     },
     id: String,
     loading: Boolean,
@@ -46009,9 +46040,12 @@
         return !props.selected && multiple.value && selectedCount.value > 0 && props.index === selectedCount.value;
       });
       const optionStyle = vue.computed(() => {
-        var _a;
+        const virtualStyle = { ...props.style };
+        if (virtualStyle.height === `${SELECT_V2_DEFAULT_ITEM_HEIGHT}px`) {
+          delete virtualStyle.height;
+        }
         return {
-          ...(_a = props.style) != null ? _a : {},
+          ...virtualStyle,
           borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : "none"
         };
       });
@@ -46168,16 +46202,32 @@
         (_b = (_a = select.tooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
       });
       const isSized = vue.computed(() => isUndefined(select.props.estimatedOptionHeight));
+      const hasGroups = vue.computed(() => props2.data.some((item) => item.type === "Group"));
+      const usesDynamicSizeList = vue.computed(() => !isSized.value || hasGroups.value);
       const listProps = vue.computed(() => {
-        if (isSized.value) {
+        var _a;
+        if (!usesDynamicSizeList.value) {
           return {
             itemSize: select.props.itemHeight
           };
         }
+        const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
         return {
-          estimatedSize: select.props.estimatedOptionHeight,
-          itemSize: (idx) => cachedHeights.value[idx]
+          estimatedSize,
+          itemSize: (idx) => {
+            var _a2, _b;
+            if (((_a2 = props2.data[idx]) == null ? void 0 : _a2.type) === "Group") {
+              return SELECT_V2_GROUP_TITLE_HEIGHT + (idx > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
+            }
+            return (_b = cachedHeights.value[idx]) != null ? _b : estimatedSize;
+          }
         };
+      });
+      const listLayoutKey = vue.computed(() => {
+        var _a;
+        const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
+        const groupIndexes = props2.data.reduce((key, item, index) => item.type === "Group" ? `${key}-${index}` : key, "");
+        return `select-v2-${estimatedSize}${groupIndexes}`;
       });
       const contains = (arr = [], target) => {
         const {
@@ -46245,11 +46295,6 @@
           data,
           style
         } = itemProps;
-        const sized = vue.unref(isSized);
-        const {
-          itemSize,
-          estimatedSize
-        } = vue.unref(listProps);
         const {
           modelValue
         } = select.props;
@@ -46262,7 +46307,7 @@
           return vue.createVNode(GroupItem, {
             "item": item,
             "style": style,
-            "height": sized ? itemSize : estimatedSize
+            "showDivider": index > 0
           }, null);
         }
         const isSelected = isItemSelected(modelValue, item);
@@ -46337,13 +46382,14 @@
         const isScrollbarAlwaysOn = vue.computed(() => {
           return isIOS ? true : scrollbarAlwaysOn;
         });
-        const List = vue.unref(isSized) ? FixedSizeList$1 : DynamicSizeList$1;
+        const List = vue.unref(usesDynamicSizeList) ? DynamicSizeList$1 : FixedSizeList$1;
         return vue.createVNode("div", {
           "class": [ns.b("dropdown"), ns.is("multiple", multiple)],
           "style": {
             width: `${width}px`
           }
         }, [(_a = slots.header) == null ? void 0 : _a.call(slots), ((_b = slots.loading) == null ? void 0 : _b.call(slots)) || ((_c = slots.empty) == null ? void 0 : _c.call(slots)) || vue.createVNode(List, vue.mergeProps({
+          "key": vue.unref(listLayoutKey),
           "ref": listRef
         }, vue.unref(listProps), {
           "className": ns.be("dropdown", "list"),
@@ -46526,7 +46572,12 @@
       return (_a = elForm == null ? void 0 : elForm.statusIcon) != null ? _a : false;
     });
     const popupHeight = vue.computed(() => {
-      const totalHeight = filteredOptions.value.length * props.itemHeight;
+      const totalHeight = filteredOptions.value.reduce((height, option, index) => {
+        if (option.type === "Group") {
+          return height + SELECT_V2_GROUP_TITLE_HEIGHT + (index > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
+        }
+        return height + props.itemHeight;
+      }, 0);
       return totalHeight > props.height ? props.height : totalHeight;
     });
     const hasModelValue = vue.computed(() => {
@@ -47383,7 +47434,7 @@
       vue.createVNode(_component_el_tooltip, {
         trigger: "click",
         effect: "light",
-        placement: "top",
+        placement: "top-start",
         offset: 4,
         content: _ctx.errorTooltipContent,
         disabled: _ctx.errorTooltipDisabled,
@@ -49892,7 +49943,7 @@
               ]),
               _: 1
             }),
-            vue.createTextVNode(" Last Updated " + vue.toDisplayString(__props.updateTime), 1)
+            vue.createTextVNode(" " + vue.toDisplayString(__props.updateTime), 1)
           ])) : vue.createCommentVNode("v-if", true)
         ]);
       };
@@ -50967,14 +51018,23 @@
       }
     }
     updateScrollY() {
+      var _a;
       const height = this.height.value;
       if (isNull(height))
         return false;
+      const prevScrollY = this.scrollY.value;
+      const hasHeightConstraint = this.table.props.height != null || this.table.props.maxHeight != null;
+      if (!hasHeightConstraint) {
+        this.scrollY.value = false;
+        return prevScrollY;
+      }
       const scrollBarRef = this.table.refs.scrollBarRef;
       if (this.table.vnode.el && (scrollBarRef == null ? void 0 : scrollBarRef.wrapRef)) {
-        let scrollY = true;
-        const prevScrollY = this.scrollY.value;
-        scrollY = scrollBarRef.wrapRef.scrollHeight > scrollBarRef.wrapRef.clientHeight;
+        const wrap = scrollBarRef.wrapRef;
+        const view = wrap.firstElementChild;
+        const contentHeight = (_a = view == null ? void 0 : view.getBoundingClientRect().height) != null ? _a : 0;
+        const viewportHeight = wrap.getBoundingClientRect().height;
+        const scrollY = view ? contentHeight > viewportHeight : wrap.scrollHeight > wrap.clientHeight;
         this.scrollY.value = scrollY;
         return prevScrollY !== scrollY;
       }
@@ -51029,7 +51089,7 @@
       }
       return false;
     }
-    updateColumnsWidth() {
+    updateColumnsWidth(distributeRemainingWidth = false) {
       var _a;
       if (!isClient)
         return;
@@ -51038,11 +51098,28 @@
       let bodyMinWidth = 0;
       const flattenColumns = this.getFlattenColumns();
       const flexColumns = flattenColumns.filter((column) => !isNumber(column.width));
-      flattenColumns.forEach((column) => {
-        if (isNumber(column.width) && column.realWidth)
-          column.realWidth = null;
-      });
-      if (flexColumns.length > 0 && fit) {
+      const lastNonFixedColumn = distributeRemainingWidth ? [...flattenColumns].reverse().find((column) => !column.fixed) : void 0;
+      if (fit && lastNonFixedColumn) {
+        flattenColumns.forEach((column) => {
+          var _a2, _b, _c;
+          column.realWidth = Number((_c = (_b = (_a2 = column.realWidth) != null ? _a2 : column.width) != null ? _b : column.minWidth) != null ? _c : 80);
+          bodyMinWidth += column.realWidth;
+        });
+        const remainingWidth = bodyWidth - bodyMinWidth;
+        if (remainingWidth > 0) {
+          const width = Number(lastNonFixedColumn.realWidth) + remainingWidth;
+          lastNonFixedColumn.width = width;
+          lastNonFixedColumn.realWidth = width;
+          bodyMinWidth = bodyWidth;
+        }
+        this.scrollX.value = bodyMinWidth > bodyWidth;
+        this.bodyWidth.value = bodyMinWidth;
+        this.table.state.resizeState.value.width = this.bodyWidth.value;
+      } else if (flexColumns.length > 0 && fit) {
+        flattenColumns.forEach((column) => {
+          if (isNumber(column.width) && column.realWidth)
+            column.realWidth = null;
+        });
         flattenColumns.forEach((column) => {
           bodyMinWidth += Number(column.width || column.minWidth || 80);
         });
@@ -51472,19 +51549,8 @@
   function useEvent(props, emit) {
     const instance = vue.getCurrentInstance();
     const parent = vue.inject(TABLE_INJECTION_KEY);
-    const isContentOverflowing = (element) => {
-      if (!(element == null ? void 0 : element.childNodes.length))
-        return false;
-      const range = document.createRange();
-      range.setStart(element, 0);
-      range.setEnd(element, element.childNodes.length);
-      const { width: rangeWidth, height: rangeHeight } = range.getBoundingClientRect();
-      const { width: elementWidth, height: elementHeight } = element.getBoundingClientRect();
-      const { top, left, right, bottom } = getPadding(element);
-      return isGreaterThan(rangeWidth + left + right, elementWidth) || isGreaterThan(rangeHeight + top + bottom, elementHeight) || isGreaterThan(element.scrollWidth, elementWidth);
-    };
     const handleCellMouseEnter = (event, row) => {
-      var _a, _b, _c, _d, _e, _f, _g, _h;
+      var _a, _b, _c, _d, _e, _f, _g;
       if (!parent)
         return;
       const table = parent;
@@ -51505,12 +51571,13 @@
       const summaryHeaderText = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-summary`) : null;
       if (summaryHeaderTitle) {
         const tooltipLines = [
-          isContentOverflowing(summaryHeaderTitle) ? summaryHeaderTitle.innerText || summaryHeaderTitle.textContent : null,
-          isContentOverflowing(summaryHeaderText) ? (summaryHeaderText == null ? void 0 : summaryHeaderText.innerText) || (summaryHeaderText == null ? void 0 : summaryHeaderText.textContent) : null
+          summaryHeaderTitle.innerText || summaryHeaderTitle.textContent,
+          (summaryHeaderText == null ? void 0 : summaryHeaderText.innerText) || (summaryHeaderText == null ? void 0 : summaryHeaderText.textContent)
         ].filter((content) => !!content);
         if (tooltipLines.length) {
           createTablePopper({
             effect: "light",
+            placement: "top-start",
             popperClass: "table-header-tooltip"
           }, tooltipLines.join("\n"), row, column, cell, table);
         } else if (((_d = removePopper) == null ? void 0 : _d.trigger) === cell) {
@@ -51519,10 +51586,15 @@
         return;
       }
       const cellChild = event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
-      if (isContentOverflowing(cellChild)) {
-        createTablePopper({ effect: "light" }, (_f = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _f : "", row, column, cell, table);
-      } else if (((_g = removePopper) == null ? void 0 : _g.trigger) === cell) {
-        (_h = removePopper) == null ? void 0 : _h();
+      const tooltipContent = (cellChild == null ? void 0 : cellChild.innerText) || (cellChild == null ? void 0 : cellChild.textContent) || (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent) || "";
+      if (tooltipContent) {
+        createTablePopper({
+          effect: "light",
+          placement: "top-start",
+          popperClass: "table-header-tooltip"
+        }, tooltipContent, row, column, cell, table);
+      } else if (((_f = removePopper) == null ? void 0 : _f.trigger) === cell) {
+        (_g = removePopper) == null ? void 0 : _g();
       }
     };
     const handleFilterClick = (event) => {
@@ -51612,7 +51684,7 @@
             column.width = column.realWidth = columnWidth;
             table == null ? void 0 : table.emit("header-dragend", column.width, startLeft - startColumnLeft, column, event);
             requestAnimationFrame(() => {
-              props.store.scheduleLayout(false, true);
+              table == null ? void 0 : table.state.doLayout(true);
             });
             document.body.style.cursor = "";
             dragging.value = false;
@@ -53215,11 +53287,11 @@
         width: layout.bodyWidth.value ? `${layout.bodyWidth.value}px` : ""
       };
     });
-    const doLayout = () => {
+    const doLayout = (distributeRemainingWidth = false) => {
       if (shouldUpdateHeight.value) {
         layout.updateElsHeight();
       }
-      layout.updateColumnsWidth();
+      layout.updateColumnsWidth(distributeRemainingWidth);
       if (typeof window === "undefined")
         return;
       requestAnimationFrame(syncPosition);
@@ -53228,7 +53300,7 @@
       await vue.nextTick();
       store.updateColumns();
       bindEvents();
-      requestAnimationFrame(doLayout);
+      requestAnimationFrame(() => doLayout());
       const el = table.vnode.el;
       const tableHeader = table.refs.headerWrapper;
       if (props.flexible && el && el.parentElement) {
@@ -53613,6 +53685,7 @@
   };
 
   let tableIdSeed = 1;
+  const GHOST_ROW_SCROLL_SHADOW_DURATION$1 = 100;
   const _sfc_main$C = vue.defineComponent({
     name: "ElTable",
     directives: {
@@ -53662,6 +53735,9 @@
       table.store = store;
       const editingRow = vue.ref(null);
       const activeEditableCell = vue.ref(null);
+      const isGhostRowScrolling = vue.ref(false);
+      let previousGhostRowScrollTop = 0;
+      let ghostRowScrollTimer;
       const ghostRowData = vue.ref({
         [ghostRowSign$1]: true,
         [ghostRowKey$1]: "ghost-row"
@@ -53792,6 +53868,15 @@
         clearAddRowTrigger();
       };
       const handleScrollbarScroll = (event) => {
+        if (event.scrollTop !== previousGhostRowScrollTop) {
+          previousGhostRowScrollTop = event.scrollTop;
+          isGhostRowScrolling.value = true;
+          clearTimeout(ghostRowScrollTimer);
+          ghostRowScrollTimer = setTimeout(() => {
+            isGhostRowScrolling.value = false;
+            ghostRowScrollTimer = void 0;
+          }, GHOST_ROW_SCROLL_SHADOW_DURATION$1);
+        }
         clearAddColumnTrigger();
         clearAddRowTrigger();
         emit("scroll", event);
@@ -53886,6 +53971,7 @@
       });
       useKeyRender(table);
       vue.onBeforeUnmount(() => {
+        clearTimeout(ghostRowScrollTimer);
         clearPendingGhostRowScrollWatch();
         debouncedUpdateLayout.cancel();
       });
@@ -53925,6 +54011,7 @@
         context: table,
         editingRow,
         activeEditableCell,
+        isGhostRowScrolling,
         startRowEdit,
         clearEditingRow,
         applyEditingRow,
@@ -53976,6 +54063,7 @@
           [_ctx.ns.m("striped")]: _ctx.stripe,
           [_ctx.ns.m("border")]: _ctx.border || _ctx.isGroup,
           [_ctx.ns.m("hidden")]: _ctx.isHidden,
+          [_ctx.ns.is("ghost-row-scrolling")]: _ctx.isGhostRowScrolling,
           [_ctx.ns.is("row-editing")]: _ctx.hasEditingRow,
           [_ctx.ns.m("group")]: _ctx.isGroup,
           [_ctx.ns.m("fluid-height")]: _ctx.maxHeight,
@@ -55840,18 +55928,12 @@
     };
   };
 
-  const useRow = (props, {
-    mainTableRef,
-    leftTableRef,
-    rightTableRef,
-    tableInstance,
-    ns,
-    isScrolling
-  }) => {
+  const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling }) => {
     const vm = vue.getCurrentInstance();
     const { emit } = vm;
     const isResetting = vue.shallowRef(false);
     const expandedRowKeys = vue.ref(props.defaultExpandedRowKeys || []);
+    const hoveredRowIndex = vue.shallowRef();
     const lastRenderedRowIndex = vue.ref(-1);
     const resetIndex = vue.shallowRef(null);
     const rowHeights = vue.ref({});
@@ -55867,19 +55949,16 @@
         lastRenderedRowIndex.value = params.rowCacheEnd;
       }
     }
-    function onRowHovered({ hovered, rowKey }) {
+    function onRowHovered({ hovered, rowIndex }) {
       if (isScrolling.value) {
+        hoveredRowIndex.value = void 0;
         return;
       }
-      const tableRoot = tableInstance.vnode.el;
-      const rows = tableRoot.querySelectorAll(`[rowkey="${String(rowKey)}"]`);
-      rows.forEach((row) => {
-        if (hovered) {
-          row.classList.add(ns.is("hovered"));
-        } else {
-          row.classList.remove(ns.is("hovered"));
-        }
-      });
+      if (hovered) {
+        hoveredRowIndex.value = rowIndex;
+      } else if (hoveredRowIndex.value === rowIndex) {
+        hoveredRowIndex.value = void 0;
+      }
     }
     function onRowExpanded({
       expanded,
@@ -55906,11 +55985,6 @@
         rowKey
       });
       (_b = props.onExpandedRowsChange) == null ? void 0 : _b.call(props, _expandedRowKeys);
-      const tableRoot = tableInstance.vnode.el;
-      const hoverRow = tableRoot.querySelector(`.${ns.is("hovered")}[rowkey="${String(rowKey)}"]`);
-      if (hoverRow) {
-        vue.nextTick(() => onRowHovered({ hovered: true, rowKey }));
-      }
     }
     const flushingRowHeights = debounce(() => {
       var _a, _b, _c, _d;
@@ -55963,6 +56037,7 @@
     }
     return {
       expandedRowKeys,
+      hoveredRowIndex,
       lastRenderedRowIndex,
       isDynamic,
       isResetting,
@@ -56200,11 +56275,10 @@
       rightTableRef,
       onMaybeEndReached
     });
-    const ns = useNamespace("table-v2");
-    const instance = vue.getCurrentInstance();
     const isScrolling = vue.shallowRef(false);
     const {
       expandedRowKeys,
+      hoveredRowIndex,
       lastRenderedRowIndex,
       isDynamic,
       isResetting,
@@ -56218,8 +56292,6 @@
       mainTableRef,
       leftTableRef,
       rightTableRef,
-      tableInstance: instance,
-      ns,
       isScrolling
     });
     const { data, depthMap } = useData(props, {
@@ -56302,6 +56374,7 @@
       isResetting,
       isScrolling,
       hasFixedColumns,
+      hoveredRowIndex,
       columnsStyles,
       columnsTotalWidth,
       data,
@@ -56753,13 +56826,20 @@
 
   const HeaderCell = (props, {
     slots
-  }) => vue.renderSlot(slots, "default", props, () => {
+  }) => {
     var _a, _b;
-    return [vue.createVNode("div", {
-      "class": props.class,
-      "title": (_a = props.column) == null ? void 0 : _a.title
-    }, [(_b = props.column) == null ? void 0 : _b.title])];
-  });
+    const title = (_b = (_a = props.column) == null ? void 0 : _a.title) != null ? _b : "";
+    return vue.renderSlot(slots, "default", props, () => [vue.createVNode(ElTooltip, {
+      "content": title,
+      "disabled": !title,
+      "effect": "light",
+      "placement": "top-start"
+    }, {
+      default: () => [vue.createVNode("div", {
+        "class": props.class
+      }, [title])]
+    })]);
+  };
   HeaderCell.displayName = "ElTableV2HeaderCell";
   HeaderCell.inheritAttrs = false;
   var HeaderCell$1 = HeaderCell;
@@ -57474,6 +57554,7 @@
       expandedRowKeys,
       estimatedRowHeight,
       hasFixedColumns,
+      hoveredRowIndex,
       rowData,
       rowIndex,
       style,
@@ -57509,7 +57590,7 @@
     const isFixedRow = rowIndex < 0;
     const isAddRow = Boolean(rowData[rowAddSign]);
     const isGhostRow = Boolean(rowData[ghostRowSign]);
-    const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
+    const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("hovered", rowIndex === hoveredRowIndex), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
       [ns.e(`row-depth-${depth}`)]: canExpand && rowIndex >= 0
     }];
     const onRowHover = hasFixedColumns ? onRowHovered : void 0;
@@ -58108,7 +58189,7 @@
         "height": "12",
         "fill": "white"
       }, null)])])])]
-    }), vue.createTextVNode("Last Updated "), props.updateTime])]);
+    }), props.updateTime])]);
   };
   FooterDefault.displayName = "ElTableV2FooterDefault";
 
@@ -58138,6 +58219,7 @@
     return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
   }
   const COMPONENT_NAME$5 = "ElTableV2";
+  const GHOST_ROW_SCROLL_SHADOW_DURATION = 100;
   const TableV2 = vue.defineComponent({
     name: COMPONENT_NAME$5,
     props: tableV2Props,
@@ -58169,6 +58251,7 @@
         isDynamic,
         isResetting,
         isScrolling,
+        hoveredRowIndex,
         bodyWidth,
         addRowHeight,
         effectiveHScrollbarSize,
@@ -58211,6 +58294,23 @@
       const isLegacyEditMode = vue.computed(() => props.canEditTable && props.editable);
       const isGhostEditMode = vue.computed(() => props.ghostTable && props.editTable);
       const isGhostRowVisible = vue.computed(() => isGhostEditMode.value && props.showGhostRow);
+      const isBottomEditRowVisible = vue.computed(() => isLegacyEditMode.value && !isGhostEditMode.value || isGhostRowVisible.value);
+      const isGhostRowScrolling = vue.shallowRef(false);
+      let ghostRowScrollTimer;
+      const updateGhostRowScrolling = (scrollTop) => {
+        if (!isBottomEditRowVisible.value || scrollTop === vue.unref(scrollPos).scrollTop) {
+          return;
+        }
+        isGhostRowScrolling.value = true;
+        clearTimeout(ghostRowScrollTimer);
+        ghostRowScrollTimer = setTimeout(() => {
+          isGhostRowScrolling.value = false;
+          ghostRowScrollTimer = void 0;
+        }, GHOST_ROW_SCROLL_SHADOW_DURATION);
+      };
+      vue.onBeforeUnmount(() => {
+        clearTimeout(ghostRowScrollTimer);
+      });
       let stopPendingGhostRowScrollWatch;
       const clearAddColumnTrigger = () => {
         addColumnTrigger.value = null;
@@ -58280,11 +58380,13 @@
         return props.data.every((row) => requiredColumns.every((column) => !isEmptyRequiredValue(row == null ? void 0 : row[column.dataKey])));
       };
       const handleTableScroll = (params) => {
+        updateGhostRowScrolling(params.scrollTop);
         clearAddColumnTrigger();
         clearAddRowTrigger();
         onScroll(params);
       };
       const handleVerticalTableScroll = (params) => {
+        updateGhostRowScrolling(params.scrollTop);
         clearAddColumnTrigger();
         clearAddRowTrigger();
         onVerticalScroll(params);
@@ -58449,6 +58551,7 @@
           expandedRowKeys: vue.unref(expandedRowKeys),
           estimatedRowHeight,
           hasFixedColumns: vue.unref(hasFixedColumns),
+          hoveredRowIndex: vue.unref(hoveredRowIndex),
           rowProps,
           rowClass,
           rowKey,
@@ -58534,7 +58637,7 @@
             }
           })
         };
-        const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", vue.unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !vue.unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll")];
+        const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", vue.unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !vue.unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll"), vue.unref(isGhostRowScrolling) && ns.is("ghost-row-scrolling")];
         const footerProps = {
           class: ns.e("footer"),
           style: vue.unref(footerHeight),
@@ -58582,11 +58685,11 @@
         }), vue.createVNode(RightTable, rightTableProps, _isSlot(tableSlots) ? tableSlots : {
           default: () => [tableSlots]
         }), showAddRow && vue.createVNode(vue.Fragment, null, [vue.createVNode("div", {
-          "class": ns.e("add-row-main"),
+          "class": [ns.e("add-row-main"), ns.is("ghost-row")],
           "style": addRowWrapperStyle
         }, [vue.createVNode(Header, vue.mergeProps(addRowHeaderProps, tableHeaderProps, {
           "columns": vue.unref(mainColumns),
-          "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
+          "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
           "rowWidth": mainContentWidth,
           "width": vue.unref(effectiveWidth)
         }), {
@@ -58596,7 +58699,7 @@
           "style": addRowWrapperStyle
         }, [vue.createVNode(Header, vue.mergeProps(addRowHeaderProps, tableHeaderProps, {
           "columns": vue.unref(fixedColumnsOnLeft),
-          "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
+          "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
           "rowWidth": leftColumnsWidth,
           "width": leftColumnsWidth
         }), {
@@ -58606,17 +58709,17 @@
           "style": addRowWrapperStyle
         }, [vue.createVNode(Header, vue.mergeProps(addRowHeaderProps, tableHeaderProps, {
           "columns": vue.unref(fixedColumnsOnRight),
-          "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
+          "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
           "rowWidth": rightColumnsWidth,
           "width": rightColumnsWidth
         }), {
           fixed: tableSlots.row
         })])]), showGhostRow && vue.createVNode(vue.Fragment, null, [vue.createVNode("div", {
-          "class": ns.e("add-row-main"),
+          "class": [ns.e("add-row-main"), ns.is("ghost-row")],
           "style": addRowWrapperStyle
         }, [vue.createVNode(Header, vue.mergeProps(ghostRowHeaderProps, tableHeaderProps, {
           "columns": vue.unref(mainColumns),
-          "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
+          "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
           "rowWidth": mainContentWidth,
           "width": vue.unref(effectiveWidth)
         }), {
@@ -58626,7 +58729,7 @@
           "style": addRowWrapperStyle
         }, [vue.createVNode(Header, vue.mergeProps(ghostRowHeaderProps, tableHeaderProps, {
           "columns": vue.unref(fixedColumnsOnLeft),
-          "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
+          "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
           "rowWidth": leftColumnsWidth,
           "width": leftColumnsWidth
         }), {
@@ -58636,7 +58739,7 @@
           "style": addRowWrapperStyle
         }, [vue.createVNode(Header, vue.mergeProps(ghostRowHeaderProps, tableHeaderProps, {
           "columns": vue.unref(fixedColumnsOnRight),
-          "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
+          "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
           "rowWidth": rightColumnsWidth,
           "width": rightColumnsWidth
         }), {

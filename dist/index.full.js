@@ -17007,6 +17007,7 @@
             ], 2)) : vue.createCommentVNode("v-if", true),
             vue.createVNode(ElTooltip$1, {
               content: vue.unref(inputTooltipContent),
+              "popper-class": vue.unref(nsInput).e("tooltip"),
               placement: "top-start",
               disabled: vue.unref(inputTooltipDisabled),
               offset: 12,
@@ -17090,6 +17091,7 @@
                           key: 0,
                           placement: "top",
                           content: _ctx.infoTip,
+                          "popper-class": vue.unref(nsInput).e("tooltip"),
                           offset: 12,
                           disabled: vue.unref(infoTipTooltipDisabled)
                         }, {
@@ -17126,7 +17128,7 @@
                             }, 8, ["class"])
                           ]),
                           _: 1
-                        }, 8, ["content", "disabled"])) : vue.createCommentVNode("v-if", true),
+                        }, 8, ["content", "popper-class", "disabled"])) : vue.createCommentVNode("v-if", true),
                         vue.unref(showClear) ? (vue.openBlock(), vue.createBlock(vue.unref(ElIcon), {
                           key: 1,
                           class: vue.normalizeClass([vue.unref(nsInput).e("icon"), vue.unref(nsInput).e("clear")]),
@@ -17138,9 +17140,13 @@
                               xmlns: "http://www.w3.org/2000/svg",
                               width: "12",
                               height: "12",
-                              viewBox: "0 0 12 12"
+                              viewBox: "0 0 12 12",
+                              fill: "none"
                             }, [
-                              vue.createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
+                              vue.createElementVNode("path", {
+                                d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                                fill: "#2A3F4D"
+                              })
                             ]))
                           ]),
                           _: 1
@@ -17221,7 +17227,7 @@
                 ];
               }),
               _: 3
-            }, 8, ["content", "disabled", "trigger"]),
+            }, 8, ["content", "popper-class", "disabled", "trigger"]),
             vue.createCommentVNode(" append slot "),
             _ctx.$slots.append ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 1,
@@ -17233,6 +17239,7 @@
             vue.createCommentVNode(" textarea "),
             vue.createVNode(ElTooltip$1, {
               content: vue.unref(inputTooltipContent),
+              "popper-class": vue.unref(nsInput).e("tooltip"),
               placement: "top-start",
               disabled: vue.unref(inputTooltipDisabled),
               offset: 12,
@@ -17270,7 +17277,7 @@
                 }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"])
               ]),
               _: 1
-            }, 8, ["content", "disabled", "trigger"]),
+            }, 8, ["content", "popper-class", "disabled", "trigger"]),
             _ctx.$slots.textareaPrefix ? (vue.openBlock(), vue.createElementBlock("span", {
               key: 0,
               class: "textarea-prefix"
@@ -21293,30 +21300,8 @@
                 }, ["stop"])
               }, {
                 suffix: vue.withCtx(() => [
-                  showClose.value && _ctx.clearIcon ? (vue.openBlock(), vue.createBlock(vue.unref(ElIcon), {
-                    key: 0,
-                    class: vue.normalizeClass(`${vue.unref(nsInput).e("icon")} clear-icon`),
-                    onMousedown: vue.withModifiers(vue.unref(NOOP), ["prevent"]),
-                    onClick: onClearIconClick
-                  }, {
-                    default: vue.withCtx(() => [
-                      (vue.openBlock(), vue.createElementBlock("svg", {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        width: "12",
-                        height: "12",
-                        viewBox: "0 0 12 12",
-                        fill: "none"
-                      }, [
-                        vue.createElementVNode("path", {
-                          d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
-                          fill: "#2A3F4D"
-                        })
-                      ]))
-                    ]),
-                    _: 1
-                  }, 8, ["class", "onMousedown"])) : vue.createCommentVNode("v-if", true),
                   vue.unref(triggerIcon) ? (vue.openBlock(), vue.createBlock(vue.unref(ElIcon), {
-                    key: 1,
+                    key: 0,
                     color: "#2A3F4D",
                     class: vue.normalizeClass(vue.unref(nsInput).e("icon")),
                     onMousedown: vue.withModifiers(onMouseDownInput, ["prevent"]),
@@ -25841,9 +25826,13 @@
                 xmlns: "http://www.w3.org/2000/svg",
                 width: "12",
                 height: "12",
-                viewBox: "0 0 12 12"
+                viewBox: "0 0 12 12",
+                fill: "none"
               }, [
-                vue.createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
+                vue.createElementVNode("path", {
+                  d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                  fill: "#2A3F4D"
+                })
               ]))
             ]),
             _: 1
@@ -25875,9 +25864,13 @@
                     xmlns: "http://www.w3.org/2000/svg",
                     width: "12",
                     height: "12",
-                    viewBox: "0 0 12 12"
+                    viewBox: "0 0 12 12",
+                    fill: "none"
                   }, [
-                    vue.createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
+                    vue.createElementVNode("path", {
+                      d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                      fill: "#2A3F4D"
+                    })
                   ]))
                 ]),
                 _: 1
@@ -41576,9 +41569,13 @@
                             xmlns: "http://www.w3.org/2000/svg",
                             width: "12",
                             height: "12",
-                            viewBox: "0 0 12 12"
+                            viewBox: "0 0 12 12",
+                            fill: "none"
                           }, [
-                            vue.createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
+                            vue.createElementVNode("path", {
+                              d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                              fill: "#2A3F4D"
+                            })
                           ]))
                         ]),
                         _: 1
@@ -46113,7 +46110,7 @@
         vue.createVNode(_component_el_tooltip, {
           ref: "tooltipRef",
           effect: "light",
-          disabled: _ctx.select.props.showOptionTooltip === false || !_ctx.isTextOverflowing && !_ctx.currentTip,
+          disabled: _ctx.select.props.showOptionTooltip === false || !_ctx.isTextOverflowing,
           placement: "right",
           "popper-class": "tipPopperClass"
         }, {
@@ -47738,9 +47735,13 @@
                             xmlns: "http://www.w3.org/2000/svg",
                             width: "12",
                             height: "12",
-                            viewBox: "0 0 12 12"
+                            viewBox: "0 0 12 12",
+                            fill: "none"
                           }, [
-                            vue.createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
+                            vue.createElementVNode("path", {
+                              d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                              fill: "#2A3F4D"
+                            })
                           ]))
                         ]),
                         _: 1

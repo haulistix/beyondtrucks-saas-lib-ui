@@ -370,6 +370,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           ], 2)) : createCommentVNode("v-if", true),
           createVNode(ElTooltip, {
             content: unref(inputTooltipContent),
+            "popper-class": unref(nsInput).e("tooltip"),
             placement: "top-start",
             disabled: unref(inputTooltipDisabled),
             offset: 12,
@@ -453,6 +454,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                         key: 0,
                         placement: "top",
                         content: _ctx.infoTip,
+                        "popper-class": unref(nsInput).e("tooltip"),
                         offset: 12,
                         disabled: unref(infoTipTooltipDisabled)
                       }, {
@@ -489,7 +491,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                           }, 8, ["class"])
                         ]),
                         _: 1
-                      }, 8, ["content", "disabled"])) : createCommentVNode("v-if", true),
+                      }, 8, ["content", "popper-class", "disabled"])) : createCommentVNode("v-if", true),
                       unref(showClear) ? (openBlock(), createBlock(unref(ElIcon), {
                         key: 1,
                         class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("clear")]),
@@ -501,9 +503,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                             xmlns: "http://www.w3.org/2000/svg",
                             width: "12",
                             height: "12",
-                            viewBox: "0 0 12 12"
+                            viewBox: "0 0 12 12",
+                            fill: "none"
                           }, [
-                            createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
+                            createElementVNode("path", {
+                              d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                              fill: "#2A3F4D"
+                            })
                           ]))
                         ]),
                         _: 1
@@ -584,7 +590,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               ];
             }),
             _: 3
-          }, 8, ["content", "disabled", "trigger"]),
+          }, 8, ["content", "popper-class", "disabled", "trigger"]),
           createCommentVNode(" append slot "),
           _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
             key: 1,
@@ -596,6 +602,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           createCommentVNode(" textarea "),
           createVNode(ElTooltip, {
             content: unref(inputTooltipContent),
+            "popper-class": unref(nsInput).e("tooltip"),
             placement: "top-start",
             disabled: unref(inputTooltipDisabled),
             offset: 12,
@@ -633,7 +640,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"])
             ]),
             _: 1
-          }, 8, ["content", "disabled", "trigger"]),
+          }, 8, ["content", "popper-class", "disabled", "trigger"]),
           _ctx.$slots.textareaPrefix ? (openBlock(), createElementBlock("span", {
             key: 0,
             class: "textarea-prefix"

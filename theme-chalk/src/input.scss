@@ -148,6 +148,20 @@
   @include set-component-css-var('input', $input);
 }
 
+.#{$namespace}-popper.#{$namespace}-input__tooltip {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  div,
+  span {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
 @include b(input) {
   @include css-var-from-global('input-height', 'component-size');
   font-weight: 400;

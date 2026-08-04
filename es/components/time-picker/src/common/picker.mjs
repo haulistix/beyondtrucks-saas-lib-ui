@@ -528,30 +528,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               }, ["stop"])
             }, {
               suffix: withCtx(() => [
-                showClose.value && _ctx.clearIcon ? (openBlock(), createBlock(unref(ElIcon), {
-                  key: 0,
-                  class: normalizeClass(`${unref(nsInput).e("icon")} clear-icon`),
-                  onMousedown: withModifiers(unref(NOOP), ["prevent"]),
-                  onClick: onClearIconClick
-                }, {
-                  default: withCtx(() => [
-                    (openBlock(), createElementBlock("svg", {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "12",
-                      height: "12",
-                      viewBox: "0 0 12 12",
-                      fill: "none"
-                    }, [
-                      createElementVNode("path", {
-                        d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
-                        fill: "#2A3F4D"
-                      })
-                    ]))
-                  ]),
-                  _: 1
-                }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
                 unref(triggerIcon) ? (openBlock(), createBlock(unref(ElIcon), {
-                  key: 1,
+                  key: 0,
                   color: "#2A3F4D",
                   class: normalizeClass(unref(nsInput).e("icon")),
                   onMousedown: withModifiers(onMouseDownInput, ["prevent"]),

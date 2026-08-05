@@ -7,3 +7,9 @@
     background-color: transparent;
   }
 }
+
+.#{$namespace}-popper.#{$namespace}-tooltip.text-overflow-tooltip {
+  max-width: 416px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}

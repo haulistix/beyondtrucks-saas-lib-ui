@@ -16757,6 +16757,10 @@
         return "";
       });
       const inputTooltipDisabled = vue.computed(() => inputTooltipSource.value === "none");
+      const inputTooltipPopperClass = vue.computed(() => [
+        nsInput.e("tooltip"),
+        inputTooltipSource.value === "overflow" ? "text-overflow-tooltip" : ""
+      ].filter(Boolean).join(" "));
       const inputTooltipTrigger = vue.computed(() => inputTooltipSource.value === "error" ? "click" : "hover");
       const showClear = vue.computed(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (isFocused.value || hovering.value));
       const showPwdVisible = vue.computed(() => props.showPassword && !inputDisabled.value && !!nativeInputValue.value);
@@ -17007,7 +17011,7 @@
             ], 2)) : vue.createCommentVNode("v-if", true),
             vue.createVNode(ElTooltip$1, {
               content: vue.unref(inputTooltipContent),
-              "popper-class": vue.unref(nsInput).e("tooltip"),
+              "popper-class": vue.unref(inputTooltipPopperClass),
               placement: "top-start",
               disabled: vue.unref(inputTooltipDisabled),
               offset: 12,
@@ -17239,7 +17243,7 @@
             vue.createCommentVNode(" textarea "),
             vue.createVNode(ElTooltip$1, {
               content: vue.unref(inputTooltipContent),
-              "popper-class": vue.unref(nsInput).e("tooltip"),
+              "popper-class": vue.unref(inputTooltipPopperClass),
               placement: "top-start",
               disabled: vue.unref(inputTooltipDisabled),
               offset: 12,
@@ -20654,6 +20658,10 @@
     },
     showWeekNumber: Boolean
   });
+  const commonPickerProps = buildProps({
+    ...timePickerDefaultProps,
+    allowPartialRange: Boolean
+  });
   const timePickerRangeTriggerProps = buildProps({
     id: {
       type: definePropType(Array)
@@ -20799,7 +20807,7 @@
   });
   const _sfc_main$2c = /* @__PURE__ */ vue.defineComponent({
     ...__default__$1A,
-    props: timePickerDefaultProps,
+    props: commonPickerProps,
     emits: [
       UPDATE_MODEL_EVENT,
       CHANGE_EVENT,
@@ -20971,8 +20979,8 @@
             }
           }
         }
-        const isPartialRangeType = props.type === "datestartrange" || props.type === "dateendrange";
-        if (isArray$1(dayOrDays) && (dayOrDays.every((day) => !day) || !isPartialRangeType && dayOrDays.some((day) => !day))) {
+        const allowsPartialRange = props.allowPartialRange || props.type === "datestartrange" || props.type === "dateendrange";
+        if (isArray$1(dayOrDays) && (dayOrDays.every((day) => !day) || !allowsPartialRange && dayOrDays.some((day) => !day))) {
           dayOrDays = [];
         }
         return dayOrDays;
@@ -29169,7 +29177,7 @@
     showWeekNumber: Boolean,
     selectionMode: selectionModeWithDefault("date")
   });
-  const basicDateTableEmits = ["changerange", "pick", "select"];
+  const basicDateTableEmits = ["changerange", "navigate", "pick", "select"];
 
   const isNormalDay = (type = "") => {
     return ["normal", "today"].includes(type);
@@ -29366,7 +29374,9 @@
     };
     const handleRangePick = (newDate) => {
       const rangePickType = props.rangePickType;
-      const anchorDate = rangePickType === "end" ? props.maxDate : props.minDate;
+      const currentMinDate = props.minDate;
+      const currentMaxDate = props.maxDate;
+      const anchorDate = rangePickType === "end" ? currentMaxDate : currentMinDate;
       if (!props.rangeState.selecting || !anchorDate) {
         if (props.cycleType === "week") {
           const offsetWeek = newDate.day();
@@ -29385,6 +29395,12 @@
           const v3 = v1 !== 0 ? date.subtract(props.cycle * 7, "days") : newDate;
           const maxDate = v3.add(props.cycle * 7 - 1, "days");
           emit("pick", { minDate: v3, maxDate }, false);
+          emit("select", false);
+        } else if (rangePickType === "start" && currentMaxDate && newDate.isBefore(currentMaxDate)) {
+          emit("pick", { minDate: newDate, maxDate: currentMaxDate });
+          emit("select", false);
+        } else if (rangePickType === "end" && currentMinDate && newDate.isAfter(currentMinDate)) {
+          emit("pick", { minDate: currentMinDate, maxDate: newDate });
           emit("select", false);
         } else {
           emit("pick", rangePickType === "end" ? { minDate: null, maxDate: newDate } : { minDate: newDate, maxDate: null });
@@ -29433,6 +29449,9 @@
       if (cell.disabled || cell.type === "week")
         return;
       const newDate = getDateOfCell(row, column);
+      if (cell.type === "prev-month" || cell.type === "next-month") {
+        emit("navigate", newDate);
+      }
       switch (props.selectionMode) {
         case "range": {
           handleRangePick(newDate);
@@ -29511,8 +29530,11 @@
       if (isCurrent(cell)) {
         classes.push("current");
       }
-      if (cell.inRange && (isNormalDay(cell.type) || props.selectionMode === "week")) {
+      const isRangeCell = isNormalDay(cell.type) || props.selectionMode === "week";
+      if (cell.inRange && isRangeCell) {
         classes.push("in-range");
+      }
+      if (isRangeCell) {
         if (cell.start) {
           classes.push("start-date");
         }
@@ -31240,6 +31262,20 @@
         rightDate.value = rightDate.value.subtract(1, "month");
         handlePanelChange("month");
       };
+      const handleLeftAdjacentDate = (date) => {
+        leftDate.value = date;
+        if (!props.unlinkPanels || !leftDate.value.isBefore(rightDate.value, unit$4)) {
+          rightDate.value = leftDate.value.add(1, unit$4);
+        }
+        handlePanelChange("month");
+      };
+      const handleRightAdjacentDate = (date) => {
+        rightDate.value = date;
+        if (!props.unlinkPanels || !rightDate.value.isAfter(leftDate.value, unit$4)) {
+          leftDate.value = rightDate.value.subtract(1, unit$4);
+        }
+        handlePanelChange("month");
+      };
       const enableMonthArrow = vue.computed(() => {
         const nextMonth = (leftMonth.value + 1) % 12;
         const yearOffset = leftMonth.value + 1 >= 12 ? 1 : 0;
@@ -31398,7 +31434,7 @@
         emit("pick", valueOnClear);
       };
       const formatToString = (value) => {
-        return isArray$1(value) ? value.map((_) => _.format(format.value)) : value.format(format.value);
+        return isArray$1(value) ? value.map((_) => _ ? _.format(format.value) : "") : value.format(format.value);
       };
       const parseUserInput = (value) => {
         return correctlyParseUserInput(value, format.value, lang.value, isDefaultFormat);
@@ -31703,6 +31739,7 @@
                   "cell-class-name": vue.unref(cellClassName),
                   "show-week-number": _ctx.showWeekNumber,
                   onChangerange: vue.unref(handleChangeRange),
+                  onNavigate: handleLeftAdjacentDate,
                   onPick: handleRangePick,
                   onSelect: vue.unref(onSelect)
                 }, null, 8, ["date", "min-date", "max-date", "range-state", "range-pick-type", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : vue.createCommentVNode("v-if", true),
@@ -31849,6 +31886,7 @@
                   "cell-class-name": vue.unref(cellClassName),
                   "show-week-number": _ctx.showWeekNumber,
                   onChangerange: vue.unref(handleChangeRange),
+                  onNavigate: handleRightAdjacentDate,
                   onPick: handleRangePick,
                   onSelect: vue.unref(onSelect)
                 }, null, 8, ["date", "min-date", "max-date", "range-state", "range-pick-type", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : vue.createCommentVNode("v-if", true),
@@ -33935,6 +33973,7 @@
         return vue.createVNode(CommonPicker, vue.mergeProps(props, {
           "format": format,
           "type": componentType.value,
+          "allowPartialRange": !!props.rangePickType,
           "ref": commonPicker,
           "onUpdate:modelValue": onModelValueUpdated
         }), {
@@ -41111,7 +41150,10 @@
       const { calculatorRef, inputStyle } = useCalcInputWidth();
       const { getLabel, getValue, getOptions, getDisabled, getTip } = useProps(props);
       const validateError = vue.computed(() => (API == null ? void 0 : API.validateState.value) === "error");
-      const validateMsg = vue.computed(() => (API == null ? void 0 : API.validateMessage.value) || "");
+      const validateMsg = vue.computed(() => {
+        var _a;
+        return String((_a = API == null ? void 0 : API.validateMessage.value) != null ? _a : "");
+      });
       const showEmptyErrorTooltip = vue.computed(() => props.inputType === "error" && !API.hasModelValue.value);
       const errorTooltipContent = vue.computed(() => {
         if (validateError.value && validateMsg.value)
@@ -45630,6 +45672,7 @@
       slotContent: null,
       content: tooltipFormatterContent != null ? tooltipFormatterContent : innerText,
       ...props,
+      popperClass: [props.popperClass, "text-overflow-tooltip"].filter(Boolean).join(" "),
       popperOptions
     };
   };
@@ -56811,10 +56854,12 @@
         if (!showOverflowTooltip)
           return content;
         const tooltipOptions = typeof showOverflowTooltip === "object" ? showOverflowTooltip : {};
+        const popperClass = [tooltipOptions.popperClass, "text-overflow-tooltip"].filter(Boolean).join(" ");
         return vue.createVNode(ElTooltip, vue.mergeProps({
           "effect": "light",
           "placement": "top"
         }, tooltipOptions, {
+          "popperClass": popperClass,
           "content": displayText,
           "disabled": !isOverflowing.value
         }), _isSlot$6(content) ? content : {
@@ -56834,7 +56879,8 @@
       "content": title,
       "disabled": !title,
       "effect": "light",
-      "placement": "top-start"
+      "placement": "top-start",
+      "popperClass": "text-overflow-tooltip"
     }, {
       default: () => [vue.createVNode("div", {
         "class": props.class
@@ -63645,6 +63691,7 @@
       default: "file"
     },
     drag: Boolean,
+    dragClickable: Boolean,
     withCredentials: Boolean,
     showFileList: {
       type: Boolean,
@@ -64010,6 +64057,7 @@
       const props = __props;
       const ns = useNamespace("upload");
       const disabled = useFormDisabled();
+      const clickable = vue.computed(() => !disabled.value && (!props.drag || props.dragClickable));
       const requests = vue.shallowRef({});
       const inputRef = vue.shallowRef();
       const uploadFiles = (files) => {
@@ -64126,7 +64174,7 @@
         uploadFiles(Array.from(files));
       };
       const handleClick = () => {
-        if (!disabled.value) {
+        if (clickable.value) {
           inputRef.value.value = "";
           inputRef.value.click();
         }
@@ -64152,9 +64200,10 @@
             vue.unref(ns).b(),
             vue.unref(ns).m(_ctx.listType),
             vue.unref(ns).is("drag", _ctx.drag),
+            vue.unref(ns).is("drag-clickable", _ctx.drag && _ctx.dragClickable),
             vue.unref(ns).is("disabled", vue.unref(disabled))
           ]),
-          tabindex: vue.unref(disabled) ? "-1" : "0",
+          tabindex: vue.unref(clickable) ? "0" : "-1",
           onClick: handleClick,
           onKeydown: vue.withKeys(vue.withModifiers(handleKeydown, ["self"]), ["enter", "space"])
         }, [
@@ -71070,6 +71119,7 @@
   exports.colorPickerEmits = colorPickerEmits;
   exports.colorPickerProps = colorPickerProps;
   exports.columnAlignment = columnAlignment;
+  exports.commonPickerProps = commonPickerProps;
   exports.componentSizeMap = componentSizeMap;
   exports.componentSizes = componentSizes;
   exports.configProviderContextKey = configProviderContextKey;

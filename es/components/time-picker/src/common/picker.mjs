@@ -7,7 +7,7 @@ import { ElTooltip } from '../../../tooltip/index.mjs';
 import { Clock, Calendar } from '@element-plus/icons-vue';
 import { valueEquals, parseDate, dayOrDaysToDate, formatter } from '../utils.mjs';
 import { PICKER_POPPER_OPTIONS_INJECTION_KEY, PICKER_BASE_INJECTION_KEY } from '../constants.mjs';
-import { timePickerDefaultProps } from './props.mjs';
+import { commonPickerProps } from './props.mjs';
 import PickerRangeTrigger from './picker-range-trigger.mjs';
 import _export_sfc from '../../../../_virtual/plugin-vue_export-helper.mjs';
 import { useEmptyValues } from '../../../../hooks/use-empty-values/index.mjs';
@@ -27,7 +27,7 @@ const __default__ = defineComponent({
 });
 const _sfc_main = /* @__PURE__ */ defineComponent({
   ...__default__,
-  props: timePickerDefaultProps,
+  props: commonPickerProps,
   emits: [
     UPDATE_MODEL_EVENT,
     CHANGE_EVENT,
@@ -199,8 +199,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           }
         }
       }
-      const isPartialRangeType = props.type === "datestartrange" || props.type === "dateendrange";
-      if (isArray(dayOrDays) && (dayOrDays.every((day) => !day) || !isPartialRangeType && dayOrDays.some((day) => !day))) {
+      const allowsPartialRange = props.allowPartialRange || props.type === "datestartrange" || props.type === "dateendrange";
+      if (isArray(dayOrDays) && (dayOrDays.every((day) => !day) || !allowsPartialRange && dayOrDays.some((day) => !day))) {
         dayOrDays = [];
       }
       return dayOrDays;

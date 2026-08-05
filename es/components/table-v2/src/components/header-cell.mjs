@@ -10,7 +10,8 @@ const HeaderCell = (props, {
     "content": title,
     "disabled": !title,
     "effect": "light",
-    "placement": "top-start"
+    "placement": "top-start",
+    "popperClass": "text-overflow-tooltip"
   }, {
     default: () => [createVNode("div", {
       "class": props.class

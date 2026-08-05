@@ -1,1 +1,1 @@
-.el-tooltip{white-space:normal}.el-tooltip__overlay{background-color:transparent}
+.el-tooltip{white-space:normal}.el-tooltip__overlay{background-color:transparent}.el-popper.el-tooltip.text-overflow-tooltip{max-width:416px;overflow-wrap:anywhere;word-break:break-word}

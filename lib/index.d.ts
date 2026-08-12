@@ -17739,6 +17739,7 @@ declare const _default_84: DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    disableEmptyGhostRowSave: BooleanConstructor;
     editTable: BooleanConstructor;
     total: {
         type: NumberConstructor;
@@ -18621,6 +18622,7 @@ declare const _default_84: DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    disableEmptyGhostRowSave: BooleanConstructor;
     editTable: BooleanConstructor;
     total: {
         type: NumberConstructor;
@@ -18718,6 +18720,7 @@ declare const _default_84: DefineComponent<{
     flexible: boolean;
     ghostTable: boolean;
     showGhostRow: boolean;
+    disableEmptyGhostRowSave: boolean;
     haveTableText: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;
@@ -21189,6 +21192,8 @@ export declare interface ElMessageBoxOptions {
     beforeClose?: (action: Action, instance: MessageBoxState, done: () => void) => void;
     /** Custom class name for MessageBox */
     customClass?: string;
+    /** Width of MessageBox */
+    width?: string | number;
     /** Custom inline style for MessageBox */
     customStyle?: CSSProperties;
     /** Whether a mask is displayed */
@@ -23994,6 +23999,7 @@ export declare interface MessageBoxInputData {
 export declare type MessageBoxInputValidator = ((value: string) => boolean | string) | undefined;
 export declare interface MessageBoxState {
     autofocus: boolean;
+    width: string | number;
     title: string | undefined;
     message: string;
     type: MessageType_2;
@@ -26916,6 +26922,7 @@ export declare interface TableProps<T extends DefaultRow> {
     editable?: boolean;
     ghostTable?: boolean;
     showGhostRow?: boolean;
+    disableEmptyGhostRowSave?: boolean;
     editTable?: boolean;
     total?: number;
     updateTime?: string;
@@ -26985,6 +26992,7 @@ export declare const TableV2: DefineComponent<{
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
     readonly showGhostRow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly disableEmptyGhostRowSave: BooleanConstructor;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;
@@ -27155,6 +27163,7 @@ export declare const TableV2: DefineComponent<{
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
     readonly showGhostRow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly disableEmptyGhostRowSave: BooleanConstructor;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;
@@ -27309,6 +27318,7 @@ export declare const TableV2: DefineComponent<{
     readonly updateTime: string;
     readonly ghostTable: boolean;
     readonly showGhostRow: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly disableEmptyGhostRowSave: boolean;
     readonly showAddRowTrigger: boolean;
     readonly headerHeight: EpPropMergeType<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown>;
     readonly footerHeight: number;
@@ -27442,6 +27452,7 @@ export declare const tableV2Props: {
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
     readonly showGhostRow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly disableEmptyGhostRowSave: BooleanConstructor;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;

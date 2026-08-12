@@ -376,6 +376,7 @@ const TableV2 = defineComponent({
       const tableCellProps = {
         canEditTable: props.canEditTable,
         cellProps,
+        disableEmptyGhostRowSave: props.disableEmptyGhostRowSave,
         editable: props.editable,
         editTable: props.editTable,
         expandColumnKey,

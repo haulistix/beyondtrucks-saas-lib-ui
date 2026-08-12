@@ -94,6 +94,7 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    disableEmptyGhostRowSave: BooleanConstructor;
     editTable: BooleanConstructor;
     total: {
         type: NumberConstructor;
@@ -976,6 +977,7 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    disableEmptyGhostRowSave: BooleanConstructor;
     editTable: BooleanConstructor;
     total: {
         type: NumberConstructor;
@@ -1073,6 +1075,7 @@ declare const _default: import("vue").DefineComponent<{
     flexible: boolean;
     ghostTable: boolean;
     showGhostRow: boolean;
+    disableEmptyGhostRowSave: boolean;
     haveTableText: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;

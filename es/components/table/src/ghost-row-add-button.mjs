@@ -2,7 +2,7 @@ import { defineComponent, inject, computed, openBlock, createBlock, unref, withC
 import { ElButton } from '../../button/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { TABLE_INJECTION_KEY } from './tokens.mjs';
-import { ghostRowKey } from './private.mjs';
+import { ghostRowSign, ghostRowKey } from './private.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 
 const _sfc_main = /* @__PURE__ */ defineComponent({
@@ -17,15 +17,26 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const props = __props;
     const table = inject(TABLE_INJECTION_KEY);
     const isEmptyValue = (value) => value === "" || value === null || value === void 0;
+    const hasGhostRowValue = computed(() => {
+      var _a;
+      return Object.entries((_a = props.row) != null ? _a : {}).some(([key, value]) => {
+        if (key === ghostRowSign || key === ghostRowKey)
+          return false;
+        return !isEmptyValue(value);
+      });
+    });
     const requiredColumns = computed(() => {
       var _a, _b, _c, _d;
       const columns = (_d = (_c = (_b = (_a = table == null ? void 0 : table.store) == null ? void 0 : _a.states) == null ? void 0 : _b.columns) == null ? void 0 : _c.value) != null ? _d : [];
       return columns.filter((column) => !!column.required && !!column.property);
     });
-    const isDisabled = computed(() => requiredColumns.value.some((column) => {
+    const isDisabled = computed(() => {
       var _a;
-      return isEmptyValue((_a = props.row) == null ? void 0 : _a[column.property]);
-    }));
+      return ((_a = table == null ? void 0 : table.props) == null ? void 0 : _a.disableEmptyGhostRowSave) && !hasGhostRowValue.value || requiredColumns.value.some((column) => {
+        var _a2;
+        return isEmptyValue((_a2 = props.row) == null ? void 0 : _a2[column.property]);
+      });
+    });
     const handleAdd = (event) => {
       var _a, _b;
       if (isDisabled.value)

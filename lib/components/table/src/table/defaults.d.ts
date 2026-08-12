@@ -152,6 +152,7 @@ interface TableProps<T extends DefaultRow> {
     editable?: boolean;
     ghostTable?: boolean;
     showGhostRow?: boolean;
+    disableEmptyGhostRowSave?: boolean;
     editTable?: boolean;
     total?: number;
     updateTime?: string;
@@ -408,6 +409,10 @@ declare const _default: {
         type: BooleanConstructor;
         default: boolean;
     };
+    /**
+     * @description whether to disable the ghost row save button when every draft value is empty
+     */
+    disableEmptyGhostRowSave: BooleanConstructor;
     /**
      * @description whether to render edit cells for ghost table
      */

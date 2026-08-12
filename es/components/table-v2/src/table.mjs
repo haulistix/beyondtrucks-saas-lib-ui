@@ -55,6 +55,7 @@ const tableV2Props = buildProps({
     type: Boolean,
     default: true
   },
+  disableEmptyGhostRowSave: Boolean,
   editTable: Boolean,
   ghostRowTemplate: {
     type: definePropType(Object),

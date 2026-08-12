@@ -86,6 +86,7 @@ var defaultProps = {
     type: Boolean,
     default: true
   },
+  disableEmptyGhostRowSave: Boolean,
   editTable: Boolean,
   total: {
     type: Number,

@@ -37,6 +37,7 @@ declare const TableV2: import("vue").DefineComponent<{
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
     readonly showGhostRow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly disableEmptyGhostRowSave: BooleanConstructor;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;
@@ -207,6 +208,7 @@ declare const TableV2: import("vue").DefineComponent<{
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
     readonly showGhostRow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly disableEmptyGhostRowSave: BooleanConstructor;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;
@@ -361,6 +363,7 @@ declare const TableV2: import("vue").DefineComponent<{
     readonly updateTime: string;
     readonly ghostTable: boolean;
     readonly showGhostRow: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly disableEmptyGhostRowSave: boolean;
     readonly showAddRowTrigger: boolean;
     readonly headerHeight: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown>;
     readonly footerHeight: number;

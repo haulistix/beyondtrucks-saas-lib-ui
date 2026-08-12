@@ -53630,6 +53630,7 @@ var defaultProps$2 = {
     type: Boolean,
     default: true
   },
+  disableEmptyGhostRowSave: Boolean,
   editTable: Boolean,
   total: {
     type: Number,
@@ -54714,15 +54715,26 @@ const _sfc_main$B = /* @__PURE__ */ defineComponent({
     const props = __props;
     const table = inject(TABLE_INJECTION_KEY);
     const isEmptyValue = (value) => value === "" || value === null || value === void 0;
+    const hasGhostRowValue = computed(() => {
+      var _a;
+      return Object.entries((_a = props.row) != null ? _a : {}).some(([key, value]) => {
+        if (key === ghostRowSign$1 || key === ghostRowKey$1)
+          return false;
+        return !isEmptyValue(value);
+      });
+    });
     const requiredColumns = computed(() => {
       var _a, _b, _c, _d;
       const columns = (_d = (_c = (_b = (_a = table == null ? void 0 : table.store) == null ? void 0 : _a.states) == null ? void 0 : _b.columns) == null ? void 0 : _c.value) != null ? _d : [];
       return columns.filter((column) => !!column.required && !!column.property);
     });
-    const isDisabled = computed(() => requiredColumns.value.some((column) => {
+    const isDisabled = computed(() => {
       var _a;
-      return isEmptyValue((_a = props.row) == null ? void 0 : _a[column.property]);
-    }));
+      return ((_a = table == null ? void 0 : table.props) == null ? void 0 : _a.disableEmptyGhostRowSave) && !hasGhostRowValue.value || requiredColumns.value.some((column) => {
+        var _a2;
+        return isEmptyValue((_a2 = props.row) == null ? void 0 : _a2[column.property]);
+      });
+    });
     const handleAdd = (event) => {
       var _a, _b;
       if (isDisabled.value)
@@ -54765,7 +54777,7 @@ const _sfc_main$B = /* @__PURE__ */ defineComponent({
 var GhostRowAddButton = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__file", "ghost-row-add-button.vue"]]);
 
 const isEmptyRequiredValue$1 = (value) => value === "" || value === null || value === void 0;
-const hasGhostRowValue = (row) => {
+const hasGhostRowValue$1 = (row) => {
   return Object.entries(row != null ? row : {}).some(([key, value]) => {
     if (key === ghostRowSign$1 || key === ghostRowKey$1)
       return false;
@@ -54779,7 +54791,7 @@ const isElInputVNode$1 = (vnode) => {
 const applyRequiredInputState$1 = (vnodes, column, row) => {
   if (!column.required || !column.property)
     return vnodes;
-  if ((row == null ? void 0 : row[ghostRowSign$1]) && !hasGhostRowValue(row))
+  if ((row == null ? void 0 : row[ghostRowSign$1]) && !hasGhostRowValue$1(row))
     return vnodes;
   if (!isEmptyRequiredValue$1(row == null ? void 0 : row[column.property]))
     return vnodes;
@@ -56474,6 +56486,15 @@ const getGhostRowPayload = (row) => {
     return payload;
   }, {});
 };
+const hasGhostRowValue = (row) => {
+  const rowField = row == null ? void 0 : row[ghostRowFieldKey];
+  return Object.entries(row != null ? row : {}).some(([key, value]) => {
+    if (key === ghostRowSign || key === ghostRowKey || key === ghostRowFieldKey || key === ghostRowTouchedSign || key === rowField) {
+      return false;
+    }
+    return !isEmptyRequiredValue(value);
+  });
+};
 const getVNodeComponentName = (vnode) => {
   var _a;
   const type = vnode.type;
@@ -56699,6 +56720,7 @@ const tableV2Props = buildProps({
     type: Boolean,
     default: true
   },
+  disableEmptyGhostRowSave: Boolean,
   editTable: Boolean,
   ghostRowTemplate: {
     type: definePropType(Object),
@@ -57761,6 +57783,7 @@ const CellRenderer = ({
   ns,
   canEditTable,
   cellProps: _cellProps,
+  disableEmptyGhostRowSave,
   editable,
   editTable,
   expandColumnKey,
@@ -57854,7 +57877,7 @@ const CellRenderer = ({
   const shouldRenderGhostAddButton = ghostTable && editTable && isGhostRow && isRowDeleteColumn;
   const shouldRenderGhostEditCell = ghostTable && editTable && Boolean(editColumnCellRenderer) && !isRowDeleteColumn && !shouldRenderGhostAddButton;
   const requiredColumns = actualColumns.filter((item) => item.required && item.dataKey != null && item.key !== rowDeleteColumnKey);
-  const isGhostRowAddDisabled = requiredColumns.some((item) => {
+  const isGhostRowAddDisabled = disableEmptyGhostRowSave && !hasGhostRowValue(rowData) || requiredColumns.some((item) => {
     var _a;
     return isEmptyRequiredValue(get(rowData, (_a = item.dataKey) != null ? _a : ""));
   });
@@ -58613,6 +58636,7 @@ const TableV2 = defineComponent({
       const tableCellProps = {
         canEditTable: props.canEditTable,
         cellProps,
+        disableEmptyGhostRowSave: props.disableEmptyGhostRowSave,
         editable: props.editable,
         editTable: props.editTable,
         expandColumnKey,
@@ -69952,6 +69976,7 @@ const _sfc_main$1 = defineComponent({
     const visible = ref(false);
     const state = reactive({
       autofocus: true,
+      width: "630px",
       beforeClose: null,
       callback: null,
       cancelButtonText: "",
@@ -69992,6 +70017,10 @@ const _sfc_main$1 = defineComponent({
       const type = state.type;
       return { [ns.bm("icon", type)]: type && TypeComponentsMap[type] };
     });
+    const boxStyle = computed(() => ({
+      [`--${ns.namespace.value}-messagebox-width`]: addUnit(state.width),
+      ...state.customStyle
+    }));
     const contentId = useId();
     const inputId = useId();
     const iconComponent = computed(() => {
@@ -70143,6 +70172,7 @@ const _sfc_main$1 = defineComponent({
       btnSize,
       iconComponent,
       confirmButtonClasses,
+      boxStyle,
       rootRef,
       focusStartRef,
       headerRef,
@@ -70204,7 +70234,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.ns.is("dragging", _ctx.isDragging),
                     { [_ctx.ns.m("center")]: _ctx.center }
                   ]),
-                  style: normalizeStyle(_ctx.customStyle),
+                  style: normalizeStyle(_ctx.boxStyle),
                   tabindex: "-1",
                   onClick: withModifiers(() => {
                   }, ["stop"])

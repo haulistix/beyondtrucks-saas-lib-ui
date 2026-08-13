@@ -8,7 +8,9 @@
   }
 }
 
-.#{$namespace}-popper.#{$namespace}-tooltip.text-overflow-tooltip {
+.#{$namespace}-popper.#{$namespace}-tooltip:not(.is-pure):not(
+    .#{$namespace}-popover
+  ) {
   max-width: 416px;
   overflow-wrap: anywhere;
   word-break: break-word;

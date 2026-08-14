@@ -58103,7 +58103,7 @@ const HeaderCellRenderer = (props, {
     sorting = column.key === sortBy.key && (sortBy.order === SortOrder.ASC || sortBy.order === SortOrder.DESC);
     sortOrder = sorting ? sortBy.order : SortOrder.DESC;
   }
-  const cellKls = [ns.e("header-cell"), diagonalHeader && ns.is("diagonal-header"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
+  const cellKls = [ns.e("header-cell"), diagonalHeader && ns.is("diagonal-header"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), sortable && ns.is("sortable")];
   const clearAddColumnTrigger = () => {
     onAddColumnTriggerChange == null ? void 0 : onAddColumnTriggerChange(null);
   };

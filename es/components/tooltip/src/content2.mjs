@@ -9,7 +9,7 @@ import { isTriggerType } from './utils.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { usePopperContainerId } from '../../../hooks/use-popper-container/index.mjs';
 import { castArray } from '../../../utils/arrays.mjs';
-import ElPopperContent from '../../popper/src/content2.mjs';
+import ElPopperContent from '../../popper/src/content.mjs';
 import { useZIndex } from '../../../hooks/use-z-index/index.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { focusElement } from '../../../utils/dom/aria.mjs';

@@ -1,6 +1,6 @@
 import { defineComponent, getCurrentInstance, provide, ref, shallowRef, computed, watch, onBeforeUnmount, toRaw, nextTick, resolveComponent, resolveDirective, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, withDirectives, createVNode, createCommentVNode, withCtx, createBlock, createTextVNode, toDisplayString, vShow, withModifiers } from 'vue';
 import TableText from './table-footer/tableText.mjs';
-import ElTooltip from '../../tooltip/src/tooltip.mjs';
+import ElTooltip from '../../tooltip/src/tooltip2.mjs';
 import { debounce, cloneDeep } from 'lodash-unified';
 import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { createStore } from './store/helper.mjs';
@@ -265,6 +265,10 @@ const _sfc_main = defineComponent({
       var _a;
       return (_a = props.sumText) != null ? _a : t("el.table.sumText");
     });
+    const footerTotal = computed(() => {
+      var _a;
+      return (_a = props.total) != null ? _a : props.data.length;
+    });
     const computedEmptyText = computed(() => {
       var _a;
       return (_a = props.emptyText) != null ? _a : t("el.table.emptyText");
@@ -345,6 +349,7 @@ const _sfc_main = defineComponent({
       sort,
       updateKeyChildren,
       t,
+      footerTotal,
       setDragVisible,
       context: table,
       editingRow,
@@ -590,9 +595,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         [_directive_mousewheel, _ctx.handleHeaderFooterMousewheel]
       ]) : createCommentVNode("v-if", true)
     ], 2),
-    _ctx.haveTableText ? (openBlock(), createBlock(_component_table_text, {
+    _ctx.haveTableText || _ctx.showFooterText ? (openBlock(), createBlock(_component_table_text, {
       key: 0,
-      total: _ctx.total,
+      total: _ctx.footerTotal,
       "update-time": _ctx.updateTime
     }, null, 8, ["total", "update-time"])) : createCommentVNode("v-if", true),
     withDirectives(createElementVNode("div", {

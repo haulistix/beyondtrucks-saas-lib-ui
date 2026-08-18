@@ -5,8 +5,8 @@ import { POPPER_INJECTION_KEY } from './constants.mjs';
 import { popperTriggerProps } from './trigger.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useForwardRef } from '../../../hooks/use-forward-ref/index.mjs';
-import { OnlyChild } from '../../slot/src/only-child.mjs';
 import { isElement } from '../../../utils/types.mjs';
+import { OnlyChild } from '../../slot/src/only-child.mjs';
 import { isFocusable } from '../../../utils/dom/aria.mjs';
 
 const __default__ = defineComponent({

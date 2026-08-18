@@ -96,15 +96,13 @@ declare const _default: import("vue").DefineComponent<{
     };
     disableEmptyGhostRowSave: BooleanConstructor;
     editTable: BooleanConstructor;
-    total: {
-        type: NumberConstructor;
-        default: number;
-    };
+    total: NumberConstructor;
     updateTime: {
         type: StringConstructor;
         default: string;
     };
     haveTableText: BooleanConstructor;
+    showFooterText: BooleanConstructor;
     showOverflowTooltip: import("vue").PropType<import("./table/defaults").TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: import("vue").PropType<any>;
@@ -789,6 +787,7 @@ declare const _default: import("vue").DefineComponent<{
      */
     updateKeyChildren: (key: string, data: any[]) => void;
     t: import("element-plus/es/hooks").Translator;
+    footerTotal: import("vue").ComputedRef<number>;
     setDragVisible: (visible: boolean) => void;
     context: Table<any>;
     editingRow: any;
@@ -979,15 +978,13 @@ declare const _default: import("vue").DefineComponent<{
     };
     disableEmptyGhostRowSave: BooleanConstructor;
     editTable: BooleanConstructor;
-    total: {
-        type: NumberConstructor;
-        default: number;
-    };
+    total: NumberConstructor;
     updateTime: {
         type: StringConstructor;
         default: string;
     };
     haveTableText: BooleanConstructor;
+    showFooterText: BooleanConstructor;
     showOverflowTooltip: import("vue").PropType<import("./table/defaults").TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: import("vue").PropType<any>;
@@ -1048,7 +1045,6 @@ declare const _default: import("vue").DefineComponent<{
     style: CSSProperties;
     tableLayout: "fixed" | "auto";
     border: boolean;
-    total: number;
     className: string;
     onDragend: any;
     onDragstart: any;
@@ -1077,6 +1073,7 @@ declare const _default: import("vue").DefineComponent<{
     showGhostRow: boolean;
     disableEmptyGhostRowSave: boolean;
     haveTableText: boolean;
+    showFooterText: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;
     showAddRowTrigger: boolean;

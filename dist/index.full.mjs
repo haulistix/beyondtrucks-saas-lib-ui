@@ -15859,7 +15859,7 @@ const useTooltipContentProps = buildProps({
     type: teleportProps.to.type
   },
   content: {
-    type: String,
+    type: [String, Number, Boolean],
     default: ""
   },
   rawContent: Boolean,
@@ -34676,7 +34676,7 @@ const useDialog = (props, targetRef) => {
   });
   const _alignCenter = computed(() => {
     var _a2, _b, _c;
-    return (_c = (_b = props.alignCenter) != null ? _b : (_a2 = globalConfig.value) == null ? void 0 : _a2.alignCenter) != null ? _c : false;
+    return (_c = (_b = props.alignCenter) != null ? _b : (_a2 = globalConfig.value) == null ? void 0 : _a2.alignCenter) != null ? _c : true;
   });
   const _overflow = computed(() => {
     var _a2, _b, _c;
@@ -53632,15 +53632,13 @@ var defaultProps$2 = {
   },
   disableEmptyGhostRowSave: Boolean,
   editTable: Boolean,
-  total: {
-    type: Number,
-    default: 0
-  },
+  total: Number,
   updateTime: {
     type: String,
     default: ""
   },
   haveTableText: Boolean,
+  showFooterText: Boolean,
   showOverflowTooltip: [Boolean, Object],
   rowDraggable: {
     type: [Function, Boolean],
@@ -53968,6 +53966,10 @@ const _sfc_main$C = defineComponent({
       var _a;
       return (_a = props.sumText) != null ? _a : t("el.table.sumText");
     });
+    const footerTotal = computed(() => {
+      var _a;
+      return (_a = props.total) != null ? _a : props.data.length;
+    });
     const computedEmptyText = computed(() => {
       var _a;
       return (_a = props.emptyText) != null ? _a : t("el.table.emptyText");
@@ -54048,6 +54050,7 @@ const _sfc_main$C = defineComponent({
       sort,
       updateKeyChildren,
       t,
+      footerTotal,
       setDragVisible,
       context: table,
       editingRow,
@@ -54293,9 +54296,9 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
         [_directive_mousewheel, _ctx.handleHeaderFooterMousewheel]
       ]) : createCommentVNode("v-if", true)
     ], 2),
-    _ctx.haveTableText ? (openBlock(), createBlock(_component_table_text, {
+    _ctx.haveTableText || _ctx.showFooterText ? (openBlock(), createBlock(_component_table_text, {
       key: 0,
-      total: _ctx.total,
+      total: _ctx.footerTotal,
       "update-time": _ctx.updateTime
     }, null, 8, ["total", "update-time"])) : createCommentVNode("v-if", true),
     withDirectives(createElementVNode("div", {

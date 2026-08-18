@@ -157,6 +157,7 @@ interface TableProps<T extends DefaultRow> {
     total?: number;
     updateTime?: string;
     haveTableText?: boolean;
+    showFooterText?: boolean;
     showOverflowTooltip?: boolean | TableOverflowTooltipOptions;
     tooltipFormatter?: TableOverflowTooltipFormatter<T>;
     appendFilterPanelTo?: string;
@@ -418,12 +419,9 @@ declare const _default: {
      */
     editTable: BooleanConstructor;
     /**
-     * @description total item count shown in the default table text footer
+     * @description total item count shown in the default table text footer, defaults to data length
      */
-    total: {
-        type: NumberConstructor;
-        default: number;
-    };
+    total: NumberConstructor;
     /**
      * @description update time shown in the default table text footer
      */
@@ -435,6 +433,10 @@ declare const _default: {
      * @description whether to show the default table text footer
      */
     haveTableText: BooleanConstructor;
+    /**
+     * @description whether to show the entire default table text footer
+     */
+    showFooterText: BooleanConstructor;
     /**
      * @description whether to hide extra content and show them in a tooltip when hovering on the cell.It will affect all the table columns
      */

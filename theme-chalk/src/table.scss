@@ -178,6 +178,7 @@
     @include when(right) {
       .cell-height {
         text-align: right;
+        justify-content: flex-end;
       }
     }
 
@@ -667,7 +668,7 @@
   &:not(.#{$namespace}-table--scrollable-y) {
     @include e(body-wrapper) {
       > .#{$namespace}-scrollbar
-        > .#{$namespace}-scrollbar__bar.is-vertical {
+      > .#{$namespace}-scrollbar__bar.is-vertical {
         display: none;
       }
     }

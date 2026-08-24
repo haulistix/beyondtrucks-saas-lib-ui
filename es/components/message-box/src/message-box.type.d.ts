@@ -11,7 +11,6 @@ export interface MessageBoxInputData {
 export type MessageBoxInputValidator = ((value: string) => boolean | string) | undefined;
 export declare interface MessageBoxState {
     autofocus: boolean;
-    width: string | number;
     title: string | undefined;
     message: string;
     type: MessageType;
@@ -63,8 +62,6 @@ export interface ElMessageBoxOptions {
     beforeClose?: (action: Action, instance: MessageBoxState, done: () => void) => void;
     /** Custom class name for MessageBox */
     customClass?: string;
-    /** Width of MessageBox */
-    width?: string | number;
     /** Custom inline style for MessageBox */
     customStyle?: CSSProperties;
     /** Whether a mask is displayed */

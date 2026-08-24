@@ -9,7 +9,7 @@ const basicDateTableProps = buildProps({
   showWeekNumber: Boolean,
   selectionMode: selectionModeWithDefault("date")
 });
-const basicDateTableEmits = ["changerange", "navigate", "pick", "select"];
+const basicDateTableEmits = ["changerange", "pick", "select"];
 
 export { basicDateTableEmits, basicDateTableProps };
 //# sourceMappingURL=basic-date-table.mjs.map

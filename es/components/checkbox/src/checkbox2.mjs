@@ -1,5 +1,5 @@
 import { defineComponent, useSlots, computed, openBlock, createBlock, resolveDynamicComponent, unref, normalizeClass, withCtx, createElementVNode, withDirectives, mergeProps, isRef, withModifiers, vModelCheckbox, createVNode, createElementBlock, createCommentVNode, renderSlot, Fragment, createTextVNode, toDisplayString } from 'vue';
-import ElIcon from '../../icon/src/icon2.mjs';
+import ElIcon from '../../icon/src/icon.mjs';
 import { checkboxProps, checkboxEmits } from './checkbox.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useCheckbox } from './composables/use-checkbox.mjs';

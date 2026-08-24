@@ -6,7 +6,7 @@ import { ElIcon } from '../../icon/index.mjs';
 import { ElTooltip } from '../../tooltip/index.mjs';
 import { useOption } from './useOption.mjs';
 import { useProps } from './useProps.mjs';
-import { optionV2Props, optionV2Emits, SELECT_V2_DEFAULT_ITEM_HEIGHT } from './defaults.mjs';
+import { optionV2Props, optionV2Emits } from './defaults.mjs';
 import { selectV2InjectionKey } from './token.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
@@ -72,12 +72,9 @@ const _sfc_main = defineComponent({
       return !props.selected && multiple.value && selectedCount.value > 0 && props.index === selectedCount.value;
     });
     const optionStyle = computed(() => {
-      const virtualStyle = { ...props.style };
-      if (virtualStyle.height === `${SELECT_V2_DEFAULT_ITEM_HEIGHT}px`) {
-        delete virtualStyle.height;
-      }
+      var _a;
       return {
-        ...virtualStyle,
+        ...(_a = props.style) != null ? _a : {},
         borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : "none"
       };
     });
@@ -145,7 +142,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       createVNode(_component_el_tooltip, {
         ref: "tooltipRef",
         effect: "light",
-        disabled: _ctx.select.props.showOptionTooltip === false || !_ctx.isTextOverflowing,
+        disabled: _ctx.select.props.showOptionTooltip === false || !_ctx.isTextOverflowing && !_ctx.currentTip,
         placement: "right",
         "popper-class": "tipPopperClass"
       }, {

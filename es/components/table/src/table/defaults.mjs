@@ -86,15 +86,16 @@ var defaultProps = {
     type: Boolean,
     default: true
   },
-  disableEmptyGhostRowSave: Boolean,
   editTable: Boolean,
-  total: Number,
+  total: {
+    type: Number,
+    default: 0
+  },
   updateTime: {
     type: String,
     default: ""
   },
   haveTableText: Boolean,
-  showFooterText: Boolean,
   showOverflowTooltip: [Boolean, Object],
   rowDraggable: {
     type: [Function, Boolean],

@@ -27,7 +27,6 @@ declare function __VLS_template(): {
     }): any;
 };
 declare const __VLS_component: import("vue").DefineComponent<{
-    readonly allowPartialRange: BooleanConstructor;
     readonly showNow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
@@ -164,7 +163,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
     "panel-change": (...args: any[]) => void;
     "visible-change": (...args: any[]) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    readonly allowPartialRange: BooleanConstructor;
     readonly showNow: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showFooter: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
@@ -307,7 +305,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly arrowControl: boolean;
     readonly unlinkPanels: boolean;
     readonly isRange: boolean;
-    readonly allowPartialRange: boolean;
 }>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;

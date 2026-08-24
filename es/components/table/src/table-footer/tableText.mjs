@@ -40,7 +40,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             ]),
             _: 1
           }),
-          createTextVNode(" " + toDisplayString(__props.updateTime), 1)
+          createTextVNode(" Last Updated " + toDisplayString(__props.updateTime), 1)
         ])) : createCommentVNode("v-if", true)
       ]);
     };

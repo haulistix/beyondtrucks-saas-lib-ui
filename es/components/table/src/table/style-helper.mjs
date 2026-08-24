@@ -70,11 +70,11 @@ function useStyle(props, layout, store, table) {
       width: layout.bodyWidth.value ? `${layout.bodyWidth.value}px` : ""
     };
   });
-  const doLayout = (distributeRemainingWidth = false) => {
+  const doLayout = () => {
     if (shouldUpdateHeight.value) {
       layout.updateElsHeight();
     }
-    layout.updateColumnsWidth(distributeRemainingWidth);
+    layout.updateColumnsWidth();
     if (typeof window === "undefined")
       return;
     requestAnimationFrame(syncPosition);
@@ -83,7 +83,7 @@ function useStyle(props, layout, store, table) {
     await nextTick();
     store.updateColumns();
     bindEvents();
-    requestAnimationFrame(() => doLayout());
+    requestAnimationFrame(doLayout);
     const el = table.vnode.el;
     const tableHeader = table.refs.headerWrapper;
     if (props.flexible && el && el.parentElement) {

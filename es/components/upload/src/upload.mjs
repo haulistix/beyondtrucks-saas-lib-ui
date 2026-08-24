@@ -28,7 +28,6 @@ const uploadBaseProps = buildProps({
     default: "file"
   },
   drag: Boolean,
-  dragClickable: Boolean,
   withCredentials: Boolean,
   showFileList: {
     type: Boolean,

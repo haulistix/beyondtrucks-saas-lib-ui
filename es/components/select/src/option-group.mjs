@@ -1,7 +1,7 @@
-import { defineComponent, inject, ref, getCurrentInstance, provide, reactive, toRefs, computed, onMounted, resolveComponent, withDirectives, openBlock, createElementBlock, normalizeClass, createBlock, createCommentVNode, createElementVNode, toDisplayString, renderSlot, vShow, isVNode } from 'vue';
+import { defineComponent, ref, getCurrentInstance, provide, reactive, toRefs, computed, onMounted, resolveComponent, withDirectives, openBlock, createElementBlock, normalizeClass, createVNode, createElementVNode, toDisplayString, renderSlot, vShow, isVNode } from 'vue';
 import { useMutationObserver } from '@vueuse/core';
 import ElDivider from '../../divider/src/divider2.mjs';
-import { selectKey, selectGroupKey } from './token.mjs';
+import { selectGroupKey } from './token.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { castArray } from 'lodash-unified';
@@ -16,7 +16,6 @@ const _sfc_main = defineComponent({
     disabled: Boolean
   },
   setup(props) {
-    const select = inject(selectKey);
     const ns = useNamespace("select");
     const groupRef = ref();
     const instance = getCurrentInstance();
@@ -25,10 +24,6 @@ const _sfc_main = defineComponent({
       ...toRefs(props)
     }));
     const visible = computed(() => children.value.some((option) => option.visible === true));
-    const isFirstVisibleGroup = computed(() => {
-      const firstVisibleOption = select.optionsArray.find((option) => option.visible);
-      return !!firstVisibleOption && children.value.includes(firstVisibleOption);
-    });
     const isOption = (node) => {
       var _a;
       return node.type.name === "ElOption" && !!((_a = node.component) == null ? void 0 : _a.proxy);
@@ -64,7 +59,6 @@ const _sfc_main = defineComponent({
     return {
       groupRef,
       visible,
-      isFirstVisibleGroup,
       ns
     };
   }
@@ -75,7 +69,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "groupRef",
     class: normalizeClass(_ctx.ns.be("group", "wrap"))
   }, [
-    !_ctx.isFirstVisibleGroup ? (openBlock(), createBlock(_component_el_divider, { key: 0 })) : createCommentVNode("v-if", true),
+    createVNode(_component_el_divider),
     createElementVNode("li", {
       class: normalizeClass(_ctx.ns.be("group", "title"))
     }, toDisplayString(_ctx.label), 3),

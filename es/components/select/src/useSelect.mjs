@@ -412,10 +412,13 @@ const useSelect = (props, emit) => {
     const index = states.selected.indexOf(tag);
     if (index > -1 && !selectDisabled.value) {
       const value = castArray(props.modelValue).slice();
-      value.splice(index, 1);
-      emit(UPDATE_MODEL_EVENT, value);
-      emitChange(value);
-      emit("remove-tag", tag.value);
+      const targetIndex = value.indexOf(tag.value);
+      if (targetIndex >= 0) {
+        value.splice(targetIndex, 1);
+        emit(UPDATE_MODEL_EVENT, value);
+        emitChange(value);
+        emit("remove-tag", tag.value);
+      }
     }
     event.stopPropagation();
     focus();

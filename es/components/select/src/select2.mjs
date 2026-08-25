@@ -4,7 +4,7 @@ import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { useProps } from '../../select-v2/src/useProps.mjs';
-import Option from './option2.mjs';
+import Option from './option.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
 import { useSelect } from './useSelect.mjs';
 import { selectKey } from './token.mjs';
@@ -71,7 +71,10 @@ const _sfc_main = defineComponent({
     const { calculatorRef, inputStyle } = useCalcInputWidth();
     const { getLabel, getValue, getOptions, getDisabled, getTip } = useProps(props);
     const validateError = computed(() => (API == null ? void 0 : API.validateState.value) === "error");
-    const validateMsg = computed(() => (API == null ? void 0 : API.validateMessage.value) || "");
+    const validateMsg = computed(() => {
+      var _a;
+      return String((_a = API == null ? void 0 : API.validateMessage.value) != null ? _a : "");
+    });
     const showEmptyErrorTooltip = computed(() => props.inputType === "error" && !API.hasModelValue.value);
     const errorTooltipContent = computed(() => {
       if (validateError.value && validateMsg.value)
@@ -82,6 +85,26 @@ const _sfc_main = defineComponent({
     });
     const errorTooltipDisabled = computed(() => !errorTooltipContent.value);
     const errorTooltipVisible = ref(false);
+    const dropdownPlacement = ref(props.placement);
+    const dropdownPlacementModifier = {
+      name: "syncErrorTooltipPlacement",
+      enabled: true,
+      phase: "afterWrite",
+      fn: ({ state }) => {
+        dropdownPlacement.value = state.placement;
+      }
+    };
+    const dropdownPopperOptions = computed(() => {
+      var _a;
+      return {
+        ...props.popperOptions,
+        modifiers: [
+          ...(_a = props.popperOptions.modifiers) != null ? _a : [],
+          dropdownPlacementModifier
+        ]
+      };
+    });
+    const errorTooltipPlacement = computed(() => API.dropdownMenuVisible.value && dropdownPlacement.value.startsWith("top") ? "left-start" : "top-start");
     const handleSelectClick = () => {
       API.toggleMenu();
       errorTooltipVisible.value = !errorTooltipDisabled.value;
@@ -176,6 +199,8 @@ const _sfc_main = defineComponent({
       errorTooltipContent,
       errorTooltipDisabled,
       errorTooltipVisible,
+      errorTooltipPlacement,
+      dropdownPopperOptions,
       handleSelectClick,
       handleSelectClickOutside,
       handleAddSelect,
@@ -216,7 +241,7 @@ function _sfc_render(_ctx, _cache) {
     createVNode(_component_el_tooltip, {
       trigger: "click",
       effect: "light",
-      placement: "top",
+      placement: _ctx.errorTooltipPlacement,
       offset: 4,
       content: _ctx.errorTooltipContent,
       disabled: _ctx.errorTooltipDisabled,
@@ -236,7 +261,7 @@ function _sfc_render(_ctx, _cache) {
             teleported: _ctx.teleported,
             "popper-class": [_ctx.nsSelect.e("popper"), _ctx.popperClass],
             "popper-style": _ctx.popperStyle,
-            "popper-options": _ctx.popperOptions,
+            "popper-options": _ctx.dropdownPopperOptions,
             "fallback-placements": _ctx.fallbackPlacements,
             effect: _ctx.effect,
             pure: "",
@@ -529,9 +554,13 @@ function _sfc_render(_ctx, _cache) {
                           xmlns: "http://www.w3.org/2000/svg",
                           width: "12",
                           height: "12",
-                          viewBox: "0 0 12 12"
+                          viewBox: "0 0 12 12",
+                          fill: "none"
                         }, [
-                          createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
+                          createElementVNode("path", {
+                            d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                            fill: "#2A3F4D"
+                          })
                         ]))
                       ]),
                       _: 1
@@ -679,7 +708,7 @@ function _sfc_render(_ctx, _cache) {
         ], 2)
       ]),
       _: 3
-    }, 8, ["content", "disabled", "visible"])
+    }, 8, ["placement", "content", "disabled", "visible"])
   ], 16, ["onMouseleave"])), [
     [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
   ]);

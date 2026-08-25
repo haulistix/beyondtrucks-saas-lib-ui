@@ -20,7 +20,7 @@ declare function useStyle<T extends DefaultRow>(props: TableProps<T>, layout: Ta
         height: null | number;
         headerHeight: null | number;
     }>;
-    doLayout: (distributeRemainingWidth?: boolean) => void;
+    doLayout: () => void;
     tableBodyStyles: import("vue").ComputedRef<{
         width: string;
     }>;

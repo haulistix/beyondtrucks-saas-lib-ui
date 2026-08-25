@@ -130,10 +130,6 @@ const timePickerDefaultProps = buildProps({
   },
   showWeekNumber: Boolean
 });
-const commonPickerProps = buildProps({
-  ...timePickerDefaultProps,
-  allowPartialRange: Boolean
-});
 const timePickerRangeTriggerProps = buildProps({
   id: {
     type: definePropType(Array)
@@ -152,5 +148,5 @@ const timePickerRangeTriggerProps = buildProps({
 });
 const timePickerRngeTriggerProps = timePickerRangeTriggerProps;
 
-export { commonPickerProps, timePickerDefaultProps, timePickerRangeTriggerProps, timePickerRngeTriggerProps };
+export { timePickerDefaultProps, timePickerRangeTriggerProps, timePickerRngeTriggerProps };
 //# sourceMappingURL=props.mjs.map

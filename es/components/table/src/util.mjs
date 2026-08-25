@@ -320,7 +320,6 @@ const getTableOverflowTooltipProps = (props, innerText, row, column) => {
     slotContent: null,
     content: tooltipFormatterContent != null ? tooltipFormatterContent : innerText,
     ...props,
-    popperClass: [props.popperClass, "text-overflow-tooltip"].filter(Boolean).join(" "),
     popperOptions
   };
 };

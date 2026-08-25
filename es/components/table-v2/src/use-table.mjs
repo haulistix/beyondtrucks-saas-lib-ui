@@ -1,10 +1,11 @@
-import { ref, computed, toRef, shallowRef, unref, watch } from 'vue';
+import { ref, computed, toRef, getCurrentInstance, shallowRef, unref, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { useColumns } from './composables/use-columns.mjs';
 import { useScrollbar } from './composables/use-scrollbar.mjs';
 import { useRow } from './composables/use-row.mjs';
 import { useData } from './composables/use-data.mjs';
 import { useStyles } from './composables/use-styles.mjs';
+import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { isArray } from '@vue/shared';
 import { isNumber } from '../../../utils/types.mjs';
 
@@ -48,10 +49,11 @@ function useTable(props) {
     rightTableRef,
     onMaybeEndReached
   });
+  const ns = useNamespace("table-v2");
+  const instance = getCurrentInstance();
   const isScrolling = shallowRef(false);
   const {
     expandedRowKeys,
-    hoveredRowIndex,
     lastRenderedRowIndex,
     isDynamic,
     isResetting,
@@ -65,6 +67,8 @@ function useTable(props) {
     mainTableRef,
     leftTableRef,
     rightTableRef,
+    tableInstance: instance,
+    ns,
     isScrolling
   });
   const { data, depthMap } = useData(props, {
@@ -147,7 +151,6 @@ function useTable(props) {
     isResetting,
     isScrolling,
     hasFixedColumns,
-    hoveredRowIndex,
     columnsStyles,
     columnsTotalWidth,
     data,

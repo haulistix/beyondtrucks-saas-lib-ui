@@ -8,7 +8,7 @@
       }
     }
 
-    .el-select__wrapper:not(.is-focused), .el-input__count:not(.is-outside) {
+    .el-select__wrapper, .el-input__count {
       background-color: var(--color-red-200);
     }
 

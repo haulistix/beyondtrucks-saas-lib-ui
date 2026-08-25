@@ -15859,7 +15859,7 @@ const useTooltipContentProps = buildProps({
     type: teleportProps.to.type
   },
   content: {
-    type: [String, Number, Boolean],
+    type: String,
     default: ""
   },
   rawContent: Boolean,
@@ -16753,10 +16753,6 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
       return "";
     });
     const inputTooltipDisabled = computed(() => inputTooltipSource.value === "none");
-    const inputTooltipPopperClass = computed(() => [
-      nsInput.e("tooltip"),
-      inputTooltipSource.value === "overflow" ? "text-overflow-tooltip" : ""
-    ].filter(Boolean).join(" "));
     const inputTooltipTrigger = computed(() => inputTooltipSource.value === "error" ? "click" : "hover");
     const showClear = computed(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (isFocused.value || hovering.value));
     const showPwdVisible = computed(() => props.showPassword && !inputDisabled.value && !!nativeInputValue.value);
@@ -17007,7 +17003,6 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
           ], 2)) : createCommentVNode("v-if", true),
           createVNode(ElTooltip$1, {
             content: unref(inputTooltipContent),
-            "popper-class": unref(inputTooltipPopperClass),
             placement: "top-start",
             disabled: unref(inputTooltipDisabled),
             offset: 12,
@@ -17091,7 +17086,6 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
                         key: 0,
                         placement: "top",
                         content: _ctx.infoTip,
-                        "popper-class": unref(nsInput).e("tooltip"),
                         offset: 12,
                         disabled: unref(infoTipTooltipDisabled)
                       }, {
@@ -17128,7 +17122,7 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
                           }, 8, ["class"])
                         ]),
                         _: 1
-                      }, 8, ["content", "popper-class", "disabled"])) : createCommentVNode("v-if", true),
+                      }, 8, ["content", "disabled"])) : createCommentVNode("v-if", true),
                       unref(showClear) ? (openBlock(), createBlock(unref(ElIcon), {
                         key: 1,
                         class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("clear")]),
@@ -17140,13 +17134,9 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
                             xmlns: "http://www.w3.org/2000/svg",
                             width: "12",
                             height: "12",
-                            viewBox: "0 0 12 12",
-                            fill: "none"
+                            viewBox: "0 0 12 12"
                           }, [
-                            createElementVNode("path", {
-                              d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
-                              fill: "#2A3F4D"
-                            })
+                            createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
                           ]))
                         ]),
                         _: 1
@@ -17227,7 +17217,7 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
               ];
             }),
             _: 3
-          }, 8, ["content", "popper-class", "disabled", "trigger"]),
+          }, 8, ["content", "disabled", "trigger"]),
           createCommentVNode(" append slot "),
           _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
             key: 1,
@@ -17239,7 +17229,6 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
           createCommentVNode(" textarea "),
           createVNode(ElTooltip$1, {
             content: unref(inputTooltipContent),
-            "popper-class": unref(inputTooltipPopperClass),
             placement: "top-start",
             disabled: unref(inputTooltipDisabled),
             offset: 12,
@@ -17277,7 +17266,7 @@ const _sfc_main$2p = /* @__PURE__ */ defineComponent({
               }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"])
             ]),
             _: 1
-          }, 8, ["content", "popper-class", "disabled", "trigger"]),
+          }, 8, ["content", "disabled", "trigger"]),
           _ctx.$slots.textareaPrefix ? (openBlock(), createElementBlock("span", {
             key: 0,
             class: "textarea-prefix"
@@ -20654,10 +20643,6 @@ const timePickerDefaultProps = buildProps({
   },
   showWeekNumber: Boolean
 });
-const commonPickerProps = buildProps({
-  ...timePickerDefaultProps,
-  allowPartialRange: Boolean
-});
 const timePickerRangeTriggerProps = buildProps({
   id: {
     type: definePropType(Array)
@@ -20803,7 +20788,7 @@ const __default__$1A = defineComponent({
 });
 const _sfc_main$2c = /* @__PURE__ */ defineComponent({
   ...__default__$1A,
-  props: commonPickerProps,
+  props: timePickerDefaultProps,
   emits: [
     UPDATE_MODEL_EVENT,
     CHANGE_EVENT,
@@ -20975,8 +20960,8 @@ const _sfc_main$2c = /* @__PURE__ */ defineComponent({
           }
         }
       }
-      const allowsPartialRange = props.allowPartialRange || props.type === "datestartrange" || props.type === "dateendrange";
-      if (isArray$1(dayOrDays) && (dayOrDays.every((day) => !day) || !allowsPartialRange && dayOrDays.some((day) => !day))) {
+      const isPartialRangeType = props.type === "datestartrange" || props.type === "dateendrange";
+      if (isArray$1(dayOrDays) && (dayOrDays.every((day) => !day) || !isPartialRangeType && dayOrDays.some((day) => !day))) {
         dayOrDays = [];
       }
       return dayOrDays;
@@ -21304,8 +21289,30 @@ const _sfc_main$2c = /* @__PURE__ */ defineComponent({
               }, ["stop"])
             }, {
               suffix: withCtx(() => [
-                unref(triggerIcon) ? (openBlock(), createBlock(unref(ElIcon), {
+                showClose.value && _ctx.clearIcon ? (openBlock(), createBlock(unref(ElIcon), {
                   key: 0,
+                  class: normalizeClass(`${unref(nsInput).e("icon")} clear-icon`),
+                  onMousedown: withModifiers(unref(NOOP), ["prevent"]),
+                  onClick: onClearIconClick
+                }, {
+                  default: withCtx(() => [
+                    (openBlock(), createElementBlock("svg", {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "12",
+                      height: "12",
+                      viewBox: "0 0 12 12",
+                      fill: "none"
+                    }, [
+                      createElementVNode("path", {
+                        d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                        fill: "#2A3F4D"
+                      })
+                    ]))
+                  ]),
+                  _: 1
+                }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
+                unref(triggerIcon) ? (openBlock(), createBlock(unref(ElIcon), {
+                  key: 1,
                   color: "#2A3F4D",
                   class: normalizeClass(unref(nsInput).e("icon")),
                   onMousedown: withModifiers(onMouseDownInput, ["prevent"]),
@@ -25830,13 +25837,9 @@ const _sfc_main$1W = /* @__PURE__ */ defineComponent({
               xmlns: "http://www.w3.org/2000/svg",
               width: "12",
               height: "12",
-              viewBox: "0 0 12 12",
-              fill: "none"
+              viewBox: "0 0 12 12"
             }, [
-              createElementVNode("path", {
-                d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
-                fill: "#2A3F4D"
-              })
+              createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
             ]))
           ]),
           _: 1
@@ -25868,13 +25871,9 @@ const _sfc_main$1W = /* @__PURE__ */ defineComponent({
                   xmlns: "http://www.w3.org/2000/svg",
                   width: "12",
                   height: "12",
-                  viewBox: "0 0 12 12",
-                  fill: "none"
+                  viewBox: "0 0 12 12"
                 }, [
-                  createElementVNode("path", {
-                    d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
-                    fill: "#2A3F4D"
-                  })
+                  createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
                 ]))
               ]),
               _: 1
@@ -29173,7 +29172,7 @@ const basicDateTableProps = buildProps({
   showWeekNumber: Boolean,
   selectionMode: selectionModeWithDefault("date")
 });
-const basicDateTableEmits = ["changerange", "navigate", "pick", "select"];
+const basicDateTableEmits = ["changerange", "pick", "select"];
 
 const isNormalDay = (type = "") => {
   return ["normal", "today"].includes(type);
@@ -29370,9 +29369,7 @@ const useBasicDateTable = (props, emit) => {
   };
   const handleRangePick = (newDate) => {
     const rangePickType = props.rangePickType;
-    const currentMinDate = props.minDate;
-    const currentMaxDate = props.maxDate;
-    const anchorDate = rangePickType === "end" ? currentMaxDate : currentMinDate;
+    const anchorDate = rangePickType === "end" ? props.maxDate : props.minDate;
     if (!props.rangeState.selecting || !anchorDate) {
       if (props.cycleType === "week") {
         const offsetWeek = newDate.day();
@@ -29391,12 +29388,6 @@ const useBasicDateTable = (props, emit) => {
         const v3 = v1 !== 0 ? date.subtract(props.cycle * 7, "days") : newDate;
         const maxDate = v3.add(props.cycle * 7 - 1, "days");
         emit("pick", { minDate: v3, maxDate }, false);
-        emit("select", false);
-      } else if (rangePickType === "start" && currentMaxDate && newDate.isBefore(currentMaxDate)) {
-        emit("pick", { minDate: newDate, maxDate: currentMaxDate });
-        emit("select", false);
-      } else if (rangePickType === "end" && currentMinDate && newDate.isAfter(currentMinDate)) {
-        emit("pick", { minDate: currentMinDate, maxDate: newDate });
         emit("select", false);
       } else {
         emit("pick", rangePickType === "end" ? { minDate: null, maxDate: newDate } : { minDate: newDate, maxDate: null });
@@ -29445,9 +29436,6 @@ const useBasicDateTable = (props, emit) => {
     if (cell.disabled || cell.type === "week")
       return;
     const newDate = getDateOfCell(row, column);
-    if (cell.type === "prev-month" || cell.type === "next-month") {
-      emit("navigate", newDate);
-    }
     switch (props.selectionMode) {
       case "range": {
         handleRangePick(newDate);
@@ -29526,11 +29514,8 @@ const useBasicDateTableDOM = (props, {
     if (isCurrent(cell)) {
       classes.push("current");
     }
-    const isRangeCell = isNormalDay(cell.type) || props.selectionMode === "week";
-    if (cell.inRange && isRangeCell) {
+    if (cell.inRange && (isNormalDay(cell.type) || props.selectionMode === "week")) {
       classes.push("in-range");
-    }
-    if (isRangeCell) {
       if (cell.start) {
         classes.push("start-date");
       }
@@ -31258,20 +31243,6 @@ const _sfc_main$1z = /* @__PURE__ */ defineComponent({
       rightDate.value = rightDate.value.subtract(1, "month");
       handlePanelChange("month");
     };
-    const handleLeftAdjacentDate = (date) => {
-      leftDate.value = date;
-      if (!props.unlinkPanels || !leftDate.value.isBefore(rightDate.value, unit$4)) {
-        rightDate.value = leftDate.value.add(1, unit$4);
-      }
-      handlePanelChange("month");
-    };
-    const handleRightAdjacentDate = (date) => {
-      rightDate.value = date;
-      if (!props.unlinkPanels || !rightDate.value.isAfter(leftDate.value, unit$4)) {
-        leftDate.value = rightDate.value.subtract(1, unit$4);
-      }
-      handlePanelChange("month");
-    };
     const enableMonthArrow = computed(() => {
       const nextMonth = (leftMonth.value + 1) % 12;
       const yearOffset = leftMonth.value + 1 >= 12 ? 1 : 0;
@@ -31430,7 +31401,7 @@ const _sfc_main$1z = /* @__PURE__ */ defineComponent({
       emit("pick", valueOnClear);
     };
     const formatToString = (value) => {
-      return isArray$1(value) ? value.map((_) => _ ? _.format(format.value) : "") : value.format(format.value);
+      return isArray$1(value) ? value.map((_) => _.format(format.value)) : value.format(format.value);
     };
     const parseUserInput = (value) => {
       return correctlyParseUserInput(value, format.value, lang.value, isDefaultFormat);
@@ -31735,7 +31706,6 @@ const _sfc_main$1z = /* @__PURE__ */ defineComponent({
                 "cell-class-name": unref(cellClassName),
                 "show-week-number": _ctx.showWeekNumber,
                 onChangerange: unref(handleChangeRange),
-                onNavigate: handleLeftAdjacentDate,
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
               }, null, 8, ["date", "min-date", "max-date", "range-state", "range-pick-type", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
@@ -31882,7 +31852,6 @@ const _sfc_main$1z = /* @__PURE__ */ defineComponent({
                 "cell-class-name": unref(cellClassName),
                 "show-week-number": _ctx.showWeekNumber,
                 onChangerange: unref(handleChangeRange),
-                onNavigate: handleRightAdjacentDate,
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
               }, null, 8, ["date", "min-date", "max-date", "range-state", "range-pick-type", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
@@ -33969,7 +33938,6 @@ var DatePicker = defineComponent({
       return createVNode(CommonPicker, mergeProps(props, {
         "format": format,
         "type": componentType.value,
-        "allowPartialRange": !!props.rangePickType,
         "ref": commonPicker,
         "onUpdate:modelValue": onModelValueUpdated
       }), {
@@ -34676,7 +34644,7 @@ const useDialog = (props, targetRef) => {
   });
   const _alignCenter = computed(() => {
     var _a2, _b, _c;
-    return (_c = (_b = props.alignCenter) != null ? _b : (_a2 = globalConfig.value) == null ? void 0 : _a2.alignCenter) != null ? _c : true;
+    return (_c = (_b = props.alignCenter) != null ? _b : (_a2 = globalConfig.value) == null ? void 0 : _a2.alignCenter) != null ? _c : false;
   });
   const _overflow = computed(() => {
     var _a2, _b, _c;
@@ -41021,7 +40989,6 @@ const _sfc_main$11 = defineComponent({
     disabled: Boolean
   },
   setup(props) {
-    const select = inject(selectKey);
     const ns = useNamespace("select");
     const groupRef = ref();
     const instance = getCurrentInstance();
@@ -41030,10 +40997,6 @@ const _sfc_main$11 = defineComponent({
       ...toRefs(props)
     }));
     const visible = computed(() => children.value.some((option) => option.visible === true));
-    const isFirstVisibleGroup = computed(() => {
-      const firstVisibleOption = select.optionsArray.find((option) => option.visible);
-      return !!firstVisibleOption && children.value.includes(firstVisibleOption);
-    });
     const isOption = (node) => {
       var _a;
       return node.type.name === "ElOption" && !!((_a = node.component) == null ? void 0 : _a.proxy);
@@ -41069,7 +41032,6 @@ const _sfc_main$11 = defineComponent({
     return {
       groupRef,
       visible,
-      isFirstVisibleGroup,
       ns
     };
   }
@@ -41080,7 +41042,7 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "groupRef",
     class: normalizeClass(_ctx.ns.be("group", "wrap"))
   }, [
-    !_ctx.isFirstVisibleGroup ? (openBlock(), createBlock(_component_el_divider, { key: 0 })) : createCommentVNode("v-if", true),
+    createVNode(_component_el_divider),
     createElementVNode("li", {
       class: normalizeClass(_ctx.ns.be("group", "title"))
     }, toDisplayString(_ctx.label), 3),
@@ -41149,10 +41111,7 @@ const _sfc_main$10 = defineComponent({
     const { calculatorRef, inputStyle } = useCalcInputWidth();
     const { getLabel, getValue, getOptions, getDisabled, getTip } = useProps(props);
     const validateError = computed(() => (API == null ? void 0 : API.validateState.value) === "error");
-    const validateMsg = computed(() => {
-      var _a;
-      return String((_a = API == null ? void 0 : API.validateMessage.value) != null ? _a : "");
-    });
+    const validateMsg = computed(() => (API == null ? void 0 : API.validateMessage.value) || "");
     const showEmptyErrorTooltip = computed(() => props.inputType === "error" && !API.hasModelValue.value);
     const errorTooltipContent = computed(() => {
       if (validateError.value && validateMsg.value)
@@ -41632,13 +41591,9 @@ function _sfc_render$b(_ctx, _cache) {
                           xmlns: "http://www.w3.org/2000/svg",
                           width: "12",
                           height: "12",
-                          viewBox: "0 0 12 12",
-                          fill: "none"
+                          viewBox: "0 0 12 12"
                         }, [
-                          createElementVNode("path", {
-                            d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
-                            fill: "#2A3F4D"
-                          })
+                          createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
                         ]))
                       ]),
                       _: 1
@@ -45332,9 +45287,6 @@ const DynamicSizeGrid = createGrid$1({
 var DynamicSizeGrid$1 = DynamicSizeGrid;
 
 const _sfc_main$S = defineComponent({
-  components: {
-    ElDivider
-  },
   props: {
     item: {
       type: Object,
@@ -45343,39 +45295,20 @@ const _sfc_main$S = defineComponent({
     style: {
       type: Object
     },
-    showDivider: {
-      type: Boolean,
-      default: true
-    }
+    height: Number
   },
-  setup(props) {
+  setup() {
     const ns = useNamespace("select");
-    const groupStyle = computed(() => {
-      const positionStyle = { ...props.style };
-      delete positionStyle.height;
-      delete positionStyle.lineHeight;
-      return positionStyle;
-    });
     return {
-      ns,
-      groupStyle
+      ns
     };
   }
 });
 function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_el_divider = resolveComponent("el-divider");
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.ns.be("group", "wrap")),
-    style: normalizeStyle(_ctx.groupStyle)
-  }, [
-    _ctx.showDivider ? (openBlock(), createBlock(_component_el_divider, {
-      key: 0,
-      margin: "8px 0"
-    })) : createCommentVNode("v-if", true),
-    createElementVNode("div", {
-      class: normalizeClass(_ctx.ns.be("group", "title"))
-    }, toDisplayString(_ctx.item.label), 3)
-  ], 6);
+    class: normalizeClass(_ctx.ns.be("group", "title")),
+    style: normalizeStyle({ ..._ctx.style, lineHeight: `${_ctx.height}px` })
+  }, toDisplayString(_ctx.item.label), 7);
 }
 var GroupItem = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$a], ["__file", "group-item.vue"]]);
 
@@ -45693,7 +45626,6 @@ const getTableOverflowTooltipProps = (props, innerText, row, column) => {
     slotContent: null,
     content: tooltipFormatterContent != null ? tooltipFormatterContent : innerText,
     ...props,
-    popperClass: [props.popperClass, "text-overflow-tooltip"].filter(Boolean).join(" "),
     popperOptions
   };
 };
@@ -45853,9 +45785,6 @@ function useOption(props, { emit }) {
   };
 }
 
-const SELECT_V2_GROUP_DIVIDER_SIZE = 17;
-const SELECT_V2_GROUP_TITLE_HEIGHT = 24;
-const SELECT_V2_DEFAULT_ITEM_HEIGHT = 40;
 const selectV2Props = buildProps({
   allowCreate: Boolean,
   autocomplete: {
@@ -45915,7 +45844,7 @@ const selectV2Props = buildProps({
   },
   itemHeight: {
     type: Number,
-    default: SELECT_V2_DEFAULT_ITEM_HEIGHT
+    default: 34
   },
   id: String,
   loading: Boolean,
@@ -46101,12 +46030,9 @@ const _sfc_main$R = defineComponent({
       return !props.selected && multiple.value && selectedCount.value > 0 && props.index === selectedCount.value;
     });
     const optionStyle = computed(() => {
-      const virtualStyle = { ...props.style };
-      if (virtualStyle.height === `${SELECT_V2_DEFAULT_ITEM_HEIGHT}px`) {
-        delete virtualStyle.height;
-      }
+      var _a;
       return {
-        ...virtualStyle,
+        ...(_a = props.style) != null ? _a : {},
         borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : "none"
       };
     });
@@ -46174,7 +46100,7 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
       createVNode(_component_el_tooltip, {
         ref: "tooltipRef",
         effect: "light",
-        disabled: _ctx.select.props.showOptionTooltip === false || !_ctx.isTextOverflowing,
+        disabled: _ctx.select.props.showOptionTooltip === false || !_ctx.isTextOverflowing && !_ctx.currentTip,
         placement: "right",
         "popper-class": "tipPopperClass"
       }, {
@@ -46263,32 +46189,16 @@ var ElSelectMenu = defineComponent({
       (_b = (_a = select.tooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
     });
     const isSized = computed(() => isUndefined(select.props.estimatedOptionHeight));
-    const hasGroups = computed(() => props2.data.some((item) => item.type === "Group"));
-    const usesDynamicSizeList = computed(() => !isSized.value || hasGroups.value);
     const listProps = computed(() => {
-      var _a;
-      if (!usesDynamicSizeList.value) {
+      if (isSized.value) {
         return {
           itemSize: select.props.itemHeight
         };
       }
-      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
       return {
-        estimatedSize,
-        itemSize: (idx) => {
-          var _a2, _b;
-          if (((_a2 = props2.data[idx]) == null ? void 0 : _a2.type) === "Group") {
-            return SELECT_V2_GROUP_TITLE_HEIGHT + (idx > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
-          }
-          return (_b = cachedHeights.value[idx]) != null ? _b : estimatedSize;
-        }
+        estimatedSize: select.props.estimatedOptionHeight,
+        itemSize: (idx) => cachedHeights.value[idx]
       };
-    });
-    const listLayoutKey = computed(() => {
-      var _a;
-      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
-      const groupIndexes = props2.data.reduce((key, item, index) => item.type === "Group" ? `${key}-${index}` : key, "");
-      return `select-v2-${estimatedSize}${groupIndexes}`;
     });
     const contains = (arr = [], target) => {
       const {
@@ -46356,6 +46266,11 @@ var ElSelectMenu = defineComponent({
         data,
         style
       } = itemProps;
+      const sized = unref(isSized);
+      const {
+        itemSize,
+        estimatedSize
+      } = unref(listProps);
       const {
         modelValue
       } = select.props;
@@ -46368,7 +46283,7 @@ var ElSelectMenu = defineComponent({
         return createVNode(GroupItem, {
           "item": item,
           "style": style,
-          "showDivider": index > 0
+          "height": sized ? itemSize : estimatedSize
         }, null);
       }
       const isSelected = isItemSelected(modelValue, item);
@@ -46443,14 +46358,13 @@ var ElSelectMenu = defineComponent({
       const isScrollbarAlwaysOn = computed(() => {
         return isIOS ? true : scrollbarAlwaysOn;
       });
-      const List = unref(usesDynamicSizeList) ? DynamicSizeList$1 : FixedSizeList$1;
+      const List = unref(isSized) ? FixedSizeList$1 : DynamicSizeList$1;
       return createVNode("div", {
         "class": [ns.b("dropdown"), ns.is("multiple", multiple)],
         "style": {
           width: `${width}px`
         }
       }, [(_a = slots.header) == null ? void 0 : _a.call(slots), ((_b = slots.loading) == null ? void 0 : _b.call(slots)) || ((_c = slots.empty) == null ? void 0 : _c.call(slots)) || createVNode(List, mergeProps({
-        "key": unref(listLayoutKey),
         "ref": listRef
       }, unref(listProps), {
         "className": ns.be("dropdown", "list"),
@@ -46633,12 +46547,7 @@ const useSelect$1 = (props, emit) => {
     return (_a = elForm == null ? void 0 : elForm.statusIcon) != null ? _a : false;
   });
   const popupHeight = computed(() => {
-    const totalHeight = filteredOptions.value.reduce((height, option, index) => {
-      if (option.type === "Group") {
-        return height + SELECT_V2_GROUP_TITLE_HEIGHT + (index > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
-      }
-      return height + props.itemHeight;
-    }, 0);
+    const totalHeight = filteredOptions.value.length * props.itemHeight;
     return totalHeight > props.height ? props.height : totalHeight;
   });
   const hasModelValue = computed(() => {
@@ -47821,13 +47730,9 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                           xmlns: "http://www.w3.org/2000/svg",
                           width: "12",
                           height: "12",
-                          viewBox: "0 0 12 12",
-                          fill: "none"
+                          viewBox: "0 0 12 12"
                         }, [
-                          createElementVNode("path", {
-                            d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
-                            fill: "#2A3F4D"
-                          })
+                          createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
                         ]))
                       ]),
                       _: 1
@@ -50030,7 +49935,7 @@ const _sfc_main$G = /* @__PURE__ */ defineComponent({
             ]),
             _: 1
           }),
-          createTextVNode(" " + toDisplayString(__props.updateTime), 1)
+          createTextVNode(" Last Updated " + toDisplayString(__props.updateTime), 1)
         ])) : createCommentVNode("v-if", true)
       ]);
     };
@@ -51105,23 +51010,14 @@ class TableLayout {
     }
   }
   updateScrollY() {
-    var _a;
     const height = this.height.value;
     if (isNull(height))
       return false;
-    const prevScrollY = this.scrollY.value;
-    const hasHeightConstraint = this.table.props.height != null || this.table.props.maxHeight != null;
-    if (!hasHeightConstraint) {
-      this.scrollY.value = false;
-      return prevScrollY;
-    }
     const scrollBarRef = this.table.refs.scrollBarRef;
     if (this.table.vnode.el && (scrollBarRef == null ? void 0 : scrollBarRef.wrapRef)) {
-      const wrap = scrollBarRef.wrapRef;
-      const view = wrap.firstElementChild;
-      const contentHeight = (_a = view == null ? void 0 : view.getBoundingClientRect().height) != null ? _a : 0;
-      const viewportHeight = wrap.getBoundingClientRect().height;
-      const scrollY = view ? contentHeight > viewportHeight : wrap.scrollHeight > wrap.clientHeight;
+      let scrollY = true;
+      const prevScrollY = this.scrollY.value;
+      scrollY = scrollBarRef.wrapRef.scrollHeight > scrollBarRef.wrapRef.clientHeight;
       this.scrollY.value = scrollY;
       return prevScrollY !== scrollY;
     }
@@ -51176,7 +51072,7 @@ class TableLayout {
     }
     return false;
   }
-  updateColumnsWidth(distributeRemainingWidth = false) {
+  updateColumnsWidth() {
     var _a;
     if (!isClient)
       return;
@@ -51185,28 +51081,11 @@ class TableLayout {
     let bodyMinWidth = 0;
     const flattenColumns = this.getFlattenColumns();
     const flexColumns = flattenColumns.filter((column) => !isNumber(column.width));
-    const lastNonFixedColumn = distributeRemainingWidth ? [...flattenColumns].reverse().find((column) => !column.fixed) : void 0;
-    if (fit && lastNonFixedColumn) {
-      flattenColumns.forEach((column) => {
-        var _a2, _b, _c;
-        column.realWidth = Number((_c = (_b = (_a2 = column.realWidth) != null ? _a2 : column.width) != null ? _b : column.minWidth) != null ? _c : 80);
-        bodyMinWidth += column.realWidth;
-      });
-      const remainingWidth = bodyWidth - bodyMinWidth;
-      if (remainingWidth > 0) {
-        const width = Number(lastNonFixedColumn.realWidth) + remainingWidth;
-        lastNonFixedColumn.width = width;
-        lastNonFixedColumn.realWidth = width;
-        bodyMinWidth = bodyWidth;
-      }
-      this.scrollX.value = bodyMinWidth > bodyWidth;
-      this.bodyWidth.value = bodyMinWidth;
-      this.table.state.resizeState.value.width = this.bodyWidth.value;
-    } else if (flexColumns.length > 0 && fit) {
-      flattenColumns.forEach((column) => {
-        if (isNumber(column.width) && column.realWidth)
-          column.realWidth = null;
-      });
+    flattenColumns.forEach((column) => {
+      if (isNumber(column.width) && column.realWidth)
+        column.realWidth = null;
+    });
+    if (flexColumns.length > 0 && fit) {
       flattenColumns.forEach((column) => {
         bodyMinWidth += Number(column.width || column.minWidth || 80);
       });
@@ -51636,8 +51515,19 @@ const TABLE_INJECTION_KEY = Symbol("ElTable");
 function useEvent(props, emit) {
   const instance = getCurrentInstance();
   const parent = inject(TABLE_INJECTION_KEY);
+  const isContentOverflowing = (element) => {
+    if (!(element == null ? void 0 : element.childNodes.length))
+      return false;
+    const range = document.createRange();
+    range.setStart(element, 0);
+    range.setEnd(element, element.childNodes.length);
+    const { width: rangeWidth, height: rangeHeight } = range.getBoundingClientRect();
+    const { width: elementWidth, height: elementHeight } = element.getBoundingClientRect();
+    const { top, left, right, bottom } = getPadding(element);
+    return isGreaterThan(rangeWidth + left + right, elementWidth) || isGreaterThan(rangeHeight + top + bottom, elementHeight) || isGreaterThan(element.scrollWidth, elementWidth);
+  };
   const handleCellMouseEnter = (event, row) => {
-    var _a, _b, _c, _d, _e, _f, _g;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
     if (!parent)
       return;
     const table = parent;
@@ -51658,13 +51548,12 @@ function useEvent(props, emit) {
     const summaryHeaderText = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-summary`) : null;
     if (summaryHeaderTitle) {
       const tooltipLines = [
-        summaryHeaderTitle.innerText || summaryHeaderTitle.textContent,
-        (summaryHeaderText == null ? void 0 : summaryHeaderText.innerText) || (summaryHeaderText == null ? void 0 : summaryHeaderText.textContent)
+        isContentOverflowing(summaryHeaderTitle) ? summaryHeaderTitle.innerText || summaryHeaderTitle.textContent : null,
+        isContentOverflowing(summaryHeaderText) ? (summaryHeaderText == null ? void 0 : summaryHeaderText.innerText) || (summaryHeaderText == null ? void 0 : summaryHeaderText.textContent) : null
       ].filter((content) => !!content);
       if (tooltipLines.length) {
         createTablePopper({
           effect: "light",
-          placement: "top-start",
           popperClass: "table-header-tooltip"
         }, tooltipLines.join("\n"), row, column, cell, table);
       } else if (((_d = removePopper) == null ? void 0 : _d.trigger) === cell) {
@@ -51673,15 +51562,10 @@ function useEvent(props, emit) {
       return;
     }
     const cellChild = event.target.querySelector((column == null ? void 0 : column.sortable) ? ".cell-span" : ".cell");
-    const tooltipContent = (cellChild == null ? void 0 : cellChild.innerText) || (cellChild == null ? void 0 : cellChild.textContent) || (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent) || "";
-    if (tooltipContent) {
-      createTablePopper({
-        effect: "light",
-        placement: "top-start",
-        popperClass: "table-header-tooltip"
-      }, tooltipContent, row, column, cell, table);
-    } else if (((_f = removePopper) == null ? void 0 : _f.trigger) === cell) {
-      (_g = removePopper) == null ? void 0 : _g();
+    if (isContentOverflowing(cellChild)) {
+      createTablePopper({ effect: "light" }, (_f = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _f : "", row, column, cell, table);
+    } else if (((_g = removePopper) == null ? void 0 : _g.trigger) === cell) {
+      (_h = removePopper) == null ? void 0 : _h();
     }
   };
   const handleFilterClick = (event) => {
@@ -51771,7 +51655,7 @@ function useEvent(props, emit) {
           column.width = column.realWidth = columnWidth;
           table == null ? void 0 : table.emit("header-dragend", column.width, startLeft - startColumnLeft, column, event);
           requestAnimationFrame(() => {
-            table == null ? void 0 : table.state.doLayout(true);
+            props.store.scheduleLayout(false, true);
           });
           document.body.style.cursor = "";
           dragging.value = false;
@@ -53374,11 +53258,11 @@ function useStyle(props, layout, store, table) {
       width: layout.bodyWidth.value ? `${layout.bodyWidth.value}px` : ""
     };
   });
-  const doLayout = (distributeRemainingWidth = false) => {
+  const doLayout = () => {
     if (shouldUpdateHeight.value) {
       layout.updateElsHeight();
     }
-    layout.updateColumnsWidth(distributeRemainingWidth);
+    layout.updateColumnsWidth();
     if (typeof window === "undefined")
       return;
     requestAnimationFrame(syncPosition);
@@ -53387,7 +53271,7 @@ function useStyle(props, layout, store, table) {
     await nextTick();
     store.updateColumns();
     bindEvents();
-    requestAnimationFrame(() => doLayout());
+    requestAnimationFrame(doLayout);
     const el = table.vnode.el;
     const tableHeader = table.refs.headerWrapper;
     if (props.flexible && el && el.parentElement) {
@@ -53677,15 +53561,16 @@ var defaultProps$2 = {
     type: Boolean,
     default: true
   },
-  disableEmptyGhostRowSave: Boolean,
   editTable: Boolean,
-  total: Number,
+  total: {
+    type: Number,
+    default: 0
+  },
   updateTime: {
     type: String,
     default: ""
   },
   haveTableText: Boolean,
-  showFooterText: Boolean,
   showOverflowTooltip: [Boolean, Object],
   rowDraggable: {
     type: [Function, Boolean],
@@ -53771,7 +53656,6 @@ const useScrollbar$1 = () => {
 };
 
 let tableIdSeed = 1;
-const GHOST_ROW_SCROLL_SHADOW_DURATION$1 = 100;
 const _sfc_main$C = defineComponent({
   name: "ElTable",
   directives: {
@@ -53821,9 +53705,6 @@ const _sfc_main$C = defineComponent({
     table.store = store;
     const editingRow = ref(null);
     const activeEditableCell = ref(null);
-    const isGhostRowScrolling = ref(false);
-    let previousGhostRowScrollTop = 0;
-    let ghostRowScrollTimer;
     const ghostRowData = ref({
       [ghostRowSign$1]: true,
       [ghostRowKey$1]: "ghost-row"
@@ -53954,15 +53835,6 @@ const _sfc_main$C = defineComponent({
       clearAddRowTrigger();
     };
     const handleScrollbarScroll = (event) => {
-      if (event.scrollTop !== previousGhostRowScrollTop) {
-        previousGhostRowScrollTop = event.scrollTop;
-        isGhostRowScrolling.value = true;
-        clearTimeout(ghostRowScrollTimer);
-        ghostRowScrollTimer = setTimeout(() => {
-          isGhostRowScrolling.value = false;
-          ghostRowScrollTimer = void 0;
-        }, GHOST_ROW_SCROLL_SHADOW_DURATION$1);
-      }
       clearAddColumnTrigger();
       clearAddRowTrigger();
       emit("scroll", event);
@@ -54013,10 +53885,6 @@ const _sfc_main$C = defineComponent({
       var _a;
       return (_a = props.sumText) != null ? _a : t("el.table.sumText");
     });
-    const footerTotal = computed(() => {
-      var _a;
-      return (_a = props.total) != null ? _a : props.data.length;
-    });
     const computedEmptyText = computed(() => {
       var _a;
       return (_a = props.emptyText) != null ? _a : t("el.table.emptyText");
@@ -54061,7 +53929,6 @@ const _sfc_main$C = defineComponent({
     });
     useKeyRender(table);
     onBeforeUnmount(() => {
-      clearTimeout(ghostRowScrollTimer);
       clearPendingGhostRowScrollWatch();
       debouncedUpdateLayout.cancel();
     });
@@ -54097,12 +53964,10 @@ const _sfc_main$C = defineComponent({
       sort,
       updateKeyChildren,
       t,
-      footerTotal,
       setDragVisible,
       context: table,
       editingRow,
       activeEditableCell,
-      isGhostRowScrolling,
       startRowEdit,
       clearEditingRow,
       applyEditingRow,
@@ -54154,7 +54019,6 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
         [_ctx.ns.m("striped")]: _ctx.stripe,
         [_ctx.ns.m("border")]: _ctx.border || _ctx.isGroup,
         [_ctx.ns.m("hidden")]: _ctx.isHidden,
-        [_ctx.ns.is("ghost-row-scrolling")]: _ctx.isGhostRowScrolling,
         [_ctx.ns.is("row-editing")]: _ctx.hasEditingRow,
         [_ctx.ns.m("group")]: _ctx.isGroup,
         [_ctx.ns.m("fluid-height")]: _ctx.maxHeight,
@@ -54343,9 +54207,9 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
         [_directive_mousewheel, _ctx.handleHeaderFooterMousewheel]
       ]) : createCommentVNode("v-if", true)
     ], 2),
-    _ctx.haveTableText || _ctx.showFooterText ? (openBlock(), createBlock(_component_table_text, {
+    _ctx.haveTableText ? (openBlock(), createBlock(_component_table_text, {
       key: 0,
-      total: _ctx.footerTotal,
+      total: _ctx.total,
       "update-time": _ctx.updateTime
     }, null, 8, ["total", "update-time"])) : createCommentVNode("v-if", true),
     withDirectives(createElementVNode("div", {
@@ -54765,26 +54629,15 @@ const _sfc_main$B = /* @__PURE__ */ defineComponent({
     const props = __props;
     const table = inject(TABLE_INJECTION_KEY);
     const isEmptyValue = (value) => value === "" || value === null || value === void 0;
-    const hasGhostRowValue = computed(() => {
-      var _a;
-      return Object.entries((_a = props.row) != null ? _a : {}).some(([key, value]) => {
-        if (key === ghostRowSign$1 || key === ghostRowKey$1)
-          return false;
-        return !isEmptyValue(value);
-      });
-    });
     const requiredColumns = computed(() => {
       var _a, _b, _c, _d;
       const columns = (_d = (_c = (_b = (_a = table == null ? void 0 : table.store) == null ? void 0 : _a.states) == null ? void 0 : _b.columns) == null ? void 0 : _c.value) != null ? _d : [];
       return columns.filter((column) => !!column.required && !!column.property);
     });
-    const isDisabled = computed(() => {
+    const isDisabled = computed(() => requiredColumns.value.some((column) => {
       var _a;
-      return ((_a = table == null ? void 0 : table.props) == null ? void 0 : _a.disableEmptyGhostRowSave) && !hasGhostRowValue.value || requiredColumns.value.some((column) => {
-        var _a2;
-        return isEmptyValue((_a2 = props.row) == null ? void 0 : _a2[column.property]);
-      });
-    });
+      return isEmptyValue((_a = props.row) == null ? void 0 : _a[column.property]);
+    }));
     const handleAdd = (event) => {
       var _a, _b;
       if (isDisabled.value)
@@ -54827,7 +54680,7 @@ const _sfc_main$B = /* @__PURE__ */ defineComponent({
 var GhostRowAddButton = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__file", "ghost-row-add-button.vue"]]);
 
 const isEmptyRequiredValue$1 = (value) => value === "" || value === null || value === void 0;
-const hasGhostRowValue$1 = (row) => {
+const hasGhostRowValue = (row) => {
   return Object.entries(row != null ? row : {}).some(([key, value]) => {
     if (key === ghostRowSign$1 || key === ghostRowKey$1)
       return false;
@@ -54841,7 +54694,7 @@ const isElInputVNode$1 = (vnode) => {
 const applyRequiredInputState$1 = (vnodes, column, row) => {
   if (!column.required || !column.property)
     return vnodes;
-  if ((row == null ? void 0 : row[ghostRowSign$1]) && !hasGhostRowValue$1(row))
+  if ((row == null ? void 0 : row[ghostRowSign$1]) && !hasGhostRowValue(row))
     return vnodes;
   if (!isEmptyRequiredValue$1(row == null ? void 0 : row[column.property]))
     return vnodes;
@@ -56030,12 +55883,18 @@ const useScrollbar = (props, {
   };
 };
 
-const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling }) => {
+const useRow = (props, {
+  mainTableRef,
+  leftTableRef,
+  rightTableRef,
+  tableInstance,
+  ns,
+  isScrolling
+}) => {
   const vm = getCurrentInstance();
   const { emit } = vm;
   const isResetting = shallowRef(false);
   const expandedRowKeys = ref(props.defaultExpandedRowKeys || []);
-  const hoveredRowIndex = shallowRef();
   const lastRenderedRowIndex = ref(-1);
   const resetIndex = shallowRef(null);
   const rowHeights = ref({});
@@ -56051,16 +55910,19 @@ const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling 
       lastRenderedRowIndex.value = params.rowCacheEnd;
     }
   }
-  function onRowHovered({ hovered, rowIndex }) {
+  function onRowHovered({ hovered, rowKey }) {
     if (isScrolling.value) {
-      hoveredRowIndex.value = void 0;
       return;
     }
-    if (hovered) {
-      hoveredRowIndex.value = rowIndex;
-    } else if (hoveredRowIndex.value === rowIndex) {
-      hoveredRowIndex.value = void 0;
-    }
+    const tableRoot = tableInstance.vnode.el;
+    const rows = tableRoot.querySelectorAll(`[rowkey="${String(rowKey)}"]`);
+    rows.forEach((row) => {
+      if (hovered) {
+        row.classList.add(ns.is("hovered"));
+      } else {
+        row.classList.remove(ns.is("hovered"));
+      }
+    });
   }
   function onRowExpanded({
     expanded,
@@ -56087,6 +55949,11 @@ const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling 
       rowKey
     });
     (_b = props.onExpandedRowsChange) == null ? void 0 : _b.call(props, _expandedRowKeys);
+    const tableRoot = tableInstance.vnode.el;
+    const hoverRow = tableRoot.querySelector(`.${ns.is("hovered")}[rowkey="${String(rowKey)}"]`);
+    if (hoverRow) {
+      nextTick(() => onRowHovered({ hovered: true, rowKey }));
+    }
   }
   const flushingRowHeights = debounce(() => {
     var _a, _b, _c, _d;
@@ -56139,7 +56006,6 @@ const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling 
   }
   return {
     expandedRowKeys,
-    hoveredRowIndex,
     lastRenderedRowIndex,
     isDynamic,
     isResetting,
@@ -56377,10 +56243,11 @@ function useTable(props) {
     rightTableRef,
     onMaybeEndReached
   });
+  const ns = useNamespace("table-v2");
+  const instance = getCurrentInstance();
   const isScrolling = shallowRef(false);
   const {
     expandedRowKeys,
-    hoveredRowIndex,
     lastRenderedRowIndex,
     isDynamic,
     isResetting,
@@ -56394,6 +56261,8 @@ function useTable(props) {
     mainTableRef,
     leftTableRef,
     rightTableRef,
+    tableInstance: instance,
+    ns,
     isScrolling
   });
   const { data, depthMap } = useData(props, {
@@ -56476,7 +56345,6 @@ function useTable(props) {
     isResetting,
     isScrolling,
     hasFixedColumns,
-    hoveredRowIndex,
     columnsStyles,
     columnsTotalWidth,
     data,
@@ -56535,15 +56403,6 @@ const getGhostRowPayload = (row) => {
     }
     return payload;
   }, {});
-};
-const hasGhostRowValue = (row) => {
-  const rowField = row == null ? void 0 : row[ghostRowFieldKey];
-  return Object.entries(row != null ? row : {}).some(([key, value]) => {
-    if (key === ghostRowSign || key === ghostRowKey || key === ghostRowFieldKey || key === ghostRowTouchedSign || key === rowField) {
-      return false;
-    }
-    return !isEmptyRequiredValue(value);
-  });
 };
 const getVNodeComponentName = (vnode) => {
   var _a;
@@ -56770,7 +56629,6 @@ const tableV2Props = buildProps({
     type: Boolean,
     default: true
   },
-  disableEmptyGhostRowSave: Boolean,
   editTable: Boolean,
   ghostRowTemplate: {
     type: definePropType(Object),
@@ -56922,12 +56780,10 @@ const TableV2Cell = defineComponent({
       if (!showOverflowTooltip)
         return content;
       const tooltipOptions = typeof showOverflowTooltip === "object" ? showOverflowTooltip : {};
-      const popperClass = [tooltipOptions.popperClass, "text-overflow-tooltip"].filter(Boolean).join(" ");
       return createVNode(ElTooltip, mergeProps({
         "effect": "light",
         "placement": "top"
       }, tooltipOptions, {
-        "popperClass": popperClass,
         "content": displayText,
         "disabled": !isOverflowing.value
       }), _isSlot$6(content) ? content : {
@@ -56940,21 +56796,13 @@ var TableCell = TableV2Cell;
 
 const HeaderCell = (props, {
   slots
-}) => {
+}) => renderSlot(slots, "default", props, () => {
   var _a, _b;
-  const title = (_b = (_a = props.column) == null ? void 0 : _a.title) != null ? _b : "";
-  return renderSlot(slots, "default", props, () => [createVNode(ElTooltip, {
-    "content": title,
-    "disabled": !title,
-    "effect": "light",
-    "placement": "top-start",
-    "popperClass": "text-overflow-tooltip"
-  }, {
-    default: () => [createVNode("div", {
-      "class": props.class
-    }, [title])]
-  })]);
-};
+  return [createVNode("div", {
+    "class": props.class,
+    "title": (_a = props.column) == null ? void 0 : _a.title
+  }, [(_b = props.column) == null ? void 0 : _b.title])];
+});
 HeaderCell.displayName = "ElTableV2HeaderCell";
 HeaderCell.inheritAttrs = false;
 var HeaderCell$1 = HeaderCell;
@@ -57669,7 +57517,6 @@ const RowRenderer = (props, {
     expandedRowKeys,
     estimatedRowHeight,
     hasFixedColumns,
-    hoveredRowIndex,
     rowData,
     rowIndex,
     style,
@@ -57705,7 +57552,7 @@ const RowRenderer = (props, {
   const isFixedRow = rowIndex < 0;
   const isAddRow = Boolean(rowData[rowAddSign]);
   const isGhostRow = Boolean(rowData[ghostRowSign]);
-  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("hovered", rowIndex === hoveredRowIndex), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
+  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
     [ns.e(`row-depth-${depth}`)]: canExpand && rowIndex >= 0
   }];
   const onRowHover = hasFixedColumns ? onRowHovered : void 0;
@@ -57833,7 +57680,6 @@ const CellRenderer = ({
   ns,
   canEditTable,
   cellProps: _cellProps,
-  disableEmptyGhostRowSave,
   editable,
   editTable,
   expandColumnKey,
@@ -57927,7 +57773,7 @@ const CellRenderer = ({
   const shouldRenderGhostAddButton = ghostTable && editTable && isGhostRow && isRowDeleteColumn;
   const shouldRenderGhostEditCell = ghostTable && editTable && Boolean(editColumnCellRenderer) && !isRowDeleteColumn && !shouldRenderGhostAddButton;
   const requiredColumns = actualColumns.filter((item) => item.required && item.dataKey != null && item.key !== rowDeleteColumnKey);
-  const isGhostRowAddDisabled = disableEmptyGhostRowSave && !hasGhostRowValue(rowData) || requiredColumns.some((item) => {
+  const isGhostRowAddDisabled = requiredColumns.some((item) => {
     var _a;
     return isEmptyRequiredValue(get(rowData, (_a = item.dataKey) != null ? _a : ""));
   });
@@ -58153,7 +57999,7 @@ const HeaderCellRenderer = (props, {
     sorting = column.key === sortBy.key && (sortBy.order === SortOrder.ASC || sortBy.order === SortOrder.DESC);
     sortOrder = sorting ? sortBy.order : SortOrder.DESC;
   }
-  const cellKls = [ns.e("header-cell"), diagonalHeader && ns.is("diagonal-header"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), sortable && ns.is("sortable")];
+  const cellKls = [ns.e("header-cell"), diagonalHeader && ns.is("diagonal-header"), column.required && "required-column", column[rowDeletePlaceholderMergedSign] && ns.is("row-delete-placeholder-merged"), tryCall(headerClass, props, ""), column.align === Alignment.CENTER && ns.is("align-center"), column.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
   const clearAddColumnTrigger = () => {
     onAddColumnTriggerChange == null ? void 0 : onAddColumnTriggerChange(null);
   };
@@ -58305,7 +58151,7 @@ const FooterDefault = (props) => {
       "height": "12",
       "fill": "white"
     }, null)])])])]
-  }), props.updateTime])]);
+  }), createTextVNode("Last Updated "), props.updateTime])]);
 };
 FooterDefault.displayName = "ElTableV2FooterDefault";
 
@@ -58335,7 +58181,6 @@ function _isSlot(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 const COMPONENT_NAME$5 = "ElTableV2";
-const GHOST_ROW_SCROLL_SHADOW_DURATION = 100;
 const TableV2 = defineComponent({
   name: COMPONENT_NAME$5,
   props: tableV2Props,
@@ -58367,7 +58212,6 @@ const TableV2 = defineComponent({
       isDynamic,
       isResetting,
       isScrolling,
-      hoveredRowIndex,
       bodyWidth,
       addRowHeight,
       effectiveHScrollbarSize,
@@ -58410,23 +58254,6 @@ const TableV2 = defineComponent({
     const isLegacyEditMode = computed(() => props.canEditTable && props.editable);
     const isGhostEditMode = computed(() => props.ghostTable && props.editTable);
     const isGhostRowVisible = computed(() => isGhostEditMode.value && props.showGhostRow);
-    const isBottomEditRowVisible = computed(() => isLegacyEditMode.value && !isGhostEditMode.value || isGhostRowVisible.value);
-    const isGhostRowScrolling = shallowRef(false);
-    let ghostRowScrollTimer;
-    const updateGhostRowScrolling = (scrollTop) => {
-      if (!isBottomEditRowVisible.value || scrollTop === unref(scrollPos).scrollTop) {
-        return;
-      }
-      isGhostRowScrolling.value = true;
-      clearTimeout(ghostRowScrollTimer);
-      ghostRowScrollTimer = setTimeout(() => {
-        isGhostRowScrolling.value = false;
-        ghostRowScrollTimer = void 0;
-      }, GHOST_ROW_SCROLL_SHADOW_DURATION);
-    };
-    onBeforeUnmount(() => {
-      clearTimeout(ghostRowScrollTimer);
-    });
     let stopPendingGhostRowScrollWatch;
     const clearAddColumnTrigger = () => {
       addColumnTrigger.value = null;
@@ -58496,13 +58323,11 @@ const TableV2 = defineComponent({
       return props.data.every((row) => requiredColumns.every((column) => !isEmptyRequiredValue(row == null ? void 0 : row[column.dataKey])));
     };
     const handleTableScroll = (params) => {
-      updateGhostRowScrolling(params.scrollTop);
       clearAddColumnTrigger();
       clearAddRowTrigger();
       onScroll(params);
     };
     const handleVerticalTableScroll = (params) => {
-      updateGhostRowScrolling(params.scrollTop);
       clearAddColumnTrigger();
       clearAddRowTrigger();
       onVerticalScroll(params);
@@ -58667,7 +58492,6 @@ const TableV2 = defineComponent({
         expandedRowKeys: unref(expandedRowKeys),
         estimatedRowHeight,
         hasFixedColumns: unref(hasFixedColumns),
-        hoveredRowIndex: unref(hoveredRowIndex),
         rowProps,
         rowClass,
         rowKey,
@@ -58686,7 +58510,6 @@ const TableV2 = defineComponent({
       const tableCellProps = {
         canEditTable: props.canEditTable,
         cellProps,
-        disableEmptyGhostRowSave: props.disableEmptyGhostRowSave,
         editable: props.editable,
         editTable: props.editTable,
         expandColumnKey,
@@ -58754,7 +58577,7 @@ const TableV2 = defineComponent({
           }
         })
       };
-      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll"), unref(isGhostRowScrolling) && ns.is("ghost-row-scrolling")];
+      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll")];
       const footerProps = {
         class: ns.e("footer"),
         style: unref(footerHeight),
@@ -58802,11 +58625,11 @@ const TableV2 = defineComponent({
       }), createVNode(RightTable, rightTableProps, _isSlot(tableSlots) ? tableSlots : {
         default: () => [tableSlots]
       }), showAddRow && createVNode(Fragment, null, [createVNode("div", {
-        "class": [ns.e("add-row-main"), ns.is("ghost-row")],
+        "class": ns.e("add-row-main"),
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(mainColumns),
-        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": mainContentWidth,
         "width": unref(effectiveWidth)
       }), {
@@ -58816,7 +58639,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnLeft),
-        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": leftColumnsWidth,
         "width": leftColumnsWidth
       }), {
@@ -58826,17 +58649,17 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnRight),
-        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": rightColumnsWidth,
         "width": rightColumnsWidth
       }), {
         fixed: tableSlots.row
       })])]), showGhostRow && createVNode(Fragment, null, [createVNode("div", {
-        "class": [ns.e("add-row-main"), ns.is("ghost-row")],
+        "class": ns.e("add-row-main"),
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(mainColumns),
-        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": mainContentWidth,
         "width": unref(effectiveWidth)
       }), {
@@ -58846,7 +58669,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnLeft),
-        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": leftColumnsWidth,
         "width": leftColumnsWidth
       }), {
@@ -58856,7 +58679,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnRight),
-        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": rightColumnsWidth,
         "width": rightColumnsWidth
       }), {
@@ -63761,7 +63584,6 @@ const uploadBaseProps = buildProps({
     default: "file"
   },
   drag: Boolean,
-  dragClickable: Boolean,
   withCredentials: Boolean,
   showFileList: {
     type: Boolean,
@@ -64127,7 +63949,6 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
     const props = __props;
     const ns = useNamespace("upload");
     const disabled = useFormDisabled();
-    const clickable = computed(() => !disabled.value && (!props.drag || props.dragClickable));
     const requests = shallowRef({});
     const inputRef = shallowRef();
     const uploadFiles = (files) => {
@@ -64244,7 +64065,7 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
       uploadFiles(Array.from(files));
     };
     const handleClick = () => {
-      if (clickable.value) {
+      if (!disabled.value) {
         inputRef.value.value = "";
         inputRef.value.click();
       }
@@ -64270,10 +64091,9 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
           unref(ns).b(),
           unref(ns).m(_ctx.listType),
           unref(ns).is("drag", _ctx.drag),
-          unref(ns).is("drag-clickable", _ctx.drag && _ctx.dragClickable),
           unref(ns).is("disabled", unref(disabled))
         ]),
-        tabindex: unref(clickable) ? "0" : "-1",
+        tabindex: unref(disabled) ? "-1" : "0",
         onClick: handleClick,
         onKeydown: withKeys(withModifiers(handleKeydown, ["self"]), ["enter", "space"])
       }, [
@@ -70026,7 +69846,6 @@ const _sfc_main$1 = defineComponent({
     const visible = ref(false);
     const state = reactive({
       autofocus: true,
-      width: "630px",
       beforeClose: null,
       callback: null,
       cancelButtonText: "",
@@ -70067,10 +69886,6 @@ const _sfc_main$1 = defineComponent({
       const type = state.type;
       return { [ns.bm("icon", type)]: type && TypeComponentsMap[type] };
     });
-    const boxStyle = computed(() => ({
-      [`--${ns.namespace.value}-messagebox-width`]: addUnit(state.width),
-      ...state.customStyle
-    }));
     const contentId = useId();
     const inputId = useId();
     const iconComponent = computed(() => {
@@ -70222,7 +70037,6 @@ const _sfc_main$1 = defineComponent({
       btnSize,
       iconComponent,
       confirmButtonClasses,
-      boxStyle,
       rootRef,
       focusStartRef,
       headerRef,
@@ -70284,7 +70098,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.ns.is("dragging", _ctx.isDragging),
                     { [_ctx.ns.m("center")]: _ctx.center }
                   ]),
-                  style: normalizeStyle(_ctx.boxStyle),
+                  style: normalizeStyle(_ctx.customStyle),
                   tabindex: "-1",
                   onClick: withModifiers(() => {
                   }, ["stop"])
@@ -70951,4 +70765,4 @@ var installer = makeInstaller([...Components, ...Plugins]);
 const install = installer.install;
 const version = installer.version;
 
-export { BAR_MAP, BORDER_HORIZONTAL_WIDTH, CAROUSEL_ITEM_NAME, CASCADER_PANEL_INJECTION_KEY, CHANGE_EVENT, ClickOutside, CommonPicker, CommonProps, DEFAULT_DIALOG_TRANSITION, DEFAULT_EMPTY_VALUES, DEFAULT_FORMATS_DATE, DEFAULT_FORMATS_DATEPICKER, DEFAULT_FORMATS_TIME, DEFAULT_VALUE_ON_CLEAR, DROPDOWN_INJECTION_KEY, DROPDOWN_INSTANCE_INJECTION_KEY, DefaultProps, DynamicSizeGrid$1 as DynamicSizeGrid, DynamicSizeList$1 as DynamicSizeList, EVENT_CODE, Effect, ElAffix, ElAlert, ElAnchor, ElAnchorLink, ElAside, ElAutoResizer, ElAutocomplete, ElAvatar, ElBacktop, ElBadge, ElBreadcrumb, ElBreadcrumbItem, ElButton, ElButtonGroup$1 as ElButtonGroup, ElCalendar, ElCard, ElCarousel, ElCarouselItem, ElCascader, ElCascaderPanel, ElCheckTag, ElCheckbox, ElCheckboxButton, ElCheckboxGroup$1 as ElCheckboxGroup, ElCol, ElCollapse, ElCollapseItem, ElCollapseTransition, ElColorPicker, ElConfigProvider, ElContainer, ElCountdown, ElDatePicker, ElDescriptions, ElDescriptionsItem, ElDialog, ElDivider, ElDrawer, ElDropdown, ElDropdownItem, ElDropdownMenu, ElEmpty, ElFooter, ElForm, ElFormItem, ElHeader, ElIcon, ElImage, ElImageViewer, ElInfiniteScroll, ElInput, ElInputNumber, ElInputTag, ElLink, ElLoading, vLoading$1 as ElLoadingDirective, Loading$1 as ElLoadingService, ElMain, ElMention, ElMenu, ElMenuItem, ElMenuItemGroup, ElMessage, ElMessageBox, ElNotification, ElOption, ElOptionGroup, ElOverlay, ElPageHeader, ElPagination, ElPopconfirm, ElPopover, ElPopoverDirective, ElPopper, ElPopperArrow, ElPopperContent, ElPopperTrigger, ElProgress, ElRadio, ElRadioButton, ElRadioGroup, ElRate, ElResult, ElRow, ElScrollbar, ElSegmented, ElSelect, ElSelectV2, ElSkeleton, ElSkeletonItem, ElSlider, ElSpace, ElSplitter, ElSplitterPanel, ElStatistic, ElStep, ElSteps, ElSubMenu, ElSwitch, ElTabPane, ElTable, ElTableColumn, ElTableEditableCell, ElTableEditableRowActions, ElTableV2, ElTabs, ElTag, ElText, ElTimePicker, ElTimeSelect, ElTimeline, ElTimelineItem, ElTooltip, ElTour, ElTourStep, ElTransfer, ElTree, ElTreeSelect, ElTreeV2, ElUpload, ElWatermark, FIRST_KEYS, FIRST_LAST_KEYS, FORWARD_REF_INJECTION_KEY, FixedSizeGrid$1 as FixedSizeGrid, FixedSizeList$1 as FixedSizeList, GAP, ID_INJECTION_KEY, INPUT_EVENT, INSTALLED_KEY, IconComponentMap, IconMap, LAST_KEYS, LEFT_CHECK_CHANGE_EVENT, MENU_INJECTION_KEY, MESSAGE_DEFAULT_PLACEMENT, MINIMUM_INPUT_WIDTH, Mousewheel, NODE_INSTANCE_INJECTION_KEY, PICKER_BASE_INJECTION_KEY, PICKER_POPPER_OPTIONS_INJECTION_KEY, POPPER_CONTENT_INJECTION_KEY, POPPER_INJECTION_KEY, RIGHT_CHECK_CHANGE_EVENT, ROOT_COMMON_PICKER_INJECTION_KEY, ROOT_PICKER_INJECTION_KEY, ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY, ROOT_TREE_INJECTION_KEY$1 as ROOT_TREE_INJECTION_KEY, RowAlign, RowJustify, SCOPE$5 as SCOPE, SIZE_INJECTION_KEY, STEPS_INJECTION_KEY, SUB_MENU_INJECTION_KEY, TIMELINE_INJECTION_KEY, TOOLTIP_INJECTION_KEY, TREE_NODE_MAP_INJECTION_KEY, TableV2$1 as TableV2, Alignment as TableV2Alignment, FixedDir as TableV2FixedDir, placeholderSign as TableV2Placeholder, SortOrder as TableV2SortOrder, TimePickPanel, TrapFocus, UPDATE_MODEL_EVENT, WEEK_DAYS, ZINDEX_INJECTION_KEY, affixEmits, affixProps, alertEffects, alertEmits, alertProps, anchorEmits, anchorProps, ariaProps, arrowMiddleware, autoResizerProps, autocompleteEmits, autocompleteProps, avatarEmits, avatarProps, backtopEmits, backtopProps, badgeProps, breadcrumbItemProps, breadcrumbKey, breadcrumbProps, buildLocaleContext, buildTimeList, buildTranslator, buttonEmits, buttonGroupContextKey, buttonNativeTypes, buttonProps, buttonTypes, calendarEmits, calendarProps, cardContextKey, cardProps, carouselContextKey, carouselEmits, carouselItemProps, carouselProps, cascaderEmits, cascaderPanelEmits, cascaderPanelProps, cascaderProps, checkTagEmits, checkTagProps, checkboxDefaultProps, checkboxEmits, checkboxGroupContextKey, checkboxGroupEmits, checkboxGroupProps, checkboxProps, colProps, collapseContextKey, collapseEmits, collapseItemProps, collapseProps, colorPickerEmits, colorPickerProps, columnAlignment, commonPickerProps, componentSizeMap, componentSizes, configProviderContextKey, configProviderProps, countdownEmits, countdownProps, createModelToggleComposable, dateEquals, datePickTypes, datePickerProps, dayOrDaysToDate, dayjs, installer as default, defaultInitialZIndex, defaultNamespace, defaultProps, descriptionItemProps, descriptionProps, dialogContextKey, dialogEmits, dialogInjectionKey, dialogProps, dividerProps, drawerEmits, drawerProps, dropdownItemProps, dropdownMenuProps, dropdownProps, elPaginationKey, emitChangeFn, emptyProps, emptyValuesContextKey, extractDateFormat, extractTimeFormat, formContextKey, formEmits, formItemContextKey, formItemProps, formItemValidateStates, formMetaProps, formProps, formatter, genFileId, getPositionDataWithUnit, iconProps, imageEmits, imageProps, imageViewerEmits, imageViewerProps, inputEmits, inputNumberEmits, inputNumberProps, inputProps, inputTagEmits, inputTagProps, install, linkEmits, linkProps, localeContextKey, makeInstaller, makeList, mentionDefaultProps, mentionEmits, mentionProps, menuEmits, menuItemEmits, menuItemGroupProps, menuItemProps, menuProps, messageConfig, messageDefaults, messageEmits, messagePlacement, messageProps, messageTypes, namespaceContextKey, notificationEmits, notificationProps, notificationTypes, overlayEmits, overlayProps, pageHeaderEmits, pageHeaderProps, paginationEmits, paginationProps, parseDate, popconfirmEmits, popconfirmProps, popoverEmits, popoverProps, popperArrowProps, popperContentEmits, popperContentProps, popperCoreConfigProps, popperProps, popperTriggerProps, progressProps, provideGlobalConfig, radioButtonProps, radioDefaultProps, radioEmits, radioGroupEmits, radioGroupKey, radioGroupProps, radioProps, radioPropsBase, rangeArr, rateEmits, rateProps, renderThumbStyle$1 as renderThumbStyle, resultProps, roleTypes, rowContextKey, rowProps, scrollbarContextKey, scrollbarEmits, scrollbarProps, segmentedEmits, segmentedProps, selectEmits, selectGroupKey, selectKey, selectProps, selectV2InjectionKey, skeletonItemProps, skeletonProps, sliderContextKey, sliderEmits, sliderProps, spaceItemProps, spaceProps, splitterPanelProps, splitterProps, statisticProps, stepProps, stepsEmits, stepsProps, subMenuProps, switchEmits, switchProps, tabBarProps, tabNavEmits, tabNavProps, tabPaneProps, tableV2Emits, tableV2Props, tableV2RowProps, tabsEmits, tabsProps, tabsRootContextKey, tagEmits, tagProps, textProps, thumbProps, timePickerDefaultProps, timePickerRangeTriggerProps, timePickerRngeTriggerProps, timeSelectProps, timeUnits$1 as timeUnits, timelineItemProps, tooltipEmits, tourContentEmits, tourContentProps, tourEmits, tourPlacements, tourProps, tourStepEmits, tourStepProps, tourStrategies, transferCheckedChangeFn, transferEmits, transferProps, translate, treeEmits$1 as treeEmits, uploadBaseProps, uploadContentProps, uploadContextKey, uploadDraggerEmits, uploadDraggerProps, uploadListEmits, uploadListProps, uploadListTypes, uploadProps, useAriaProps, useAttrs, useCalcInputWidth, useCascaderConfig, useComposition, useCursor, useDelayedRender, useDelayedToggle, useDelayedToggleProps, useDeprecated, useDialog, useDisabled, useDraggable, useEmptyValues, useEmptyValuesProps, useEscapeKeydown, useFloating$1 as useFloating, useFloatingProps, useFocus, useFocusController, useFormDisabled, useFormItem, useFormItemInputId, useFormSize, useForwardRef, useForwardRefDirective, useGetDerivedNamespace, useGlobalComponentSettings, useGlobalConfig, useGlobalSize, useId, useIdInjection, useLocale, useLockscreen, useModal, useModelToggle, useModelToggleEmits, useModelToggleProps, useNamespace, useOrderedChildren, usePopper, usePopperArrowProps, usePopperContainer, usePopperContainerId, usePopperContentEmits, usePopperContentProps, usePopperCoreConfigProps, usePopperProps, usePopperTriggerProps, usePreventGlobal, useProp, useSameTarget, useSize$1 as useSize, useSizeProp, useSizeProps, useSpace, useTeleport, useThrottleRender, useTimeout, useTooltipContentProps, useTooltipModelToggle, useTooltipModelToggleEmits, useTooltipModelToggleProps, useTooltipProps, useTooltipTriggerProps, useTransitionFallthrough, useTransitionFallthroughEmits, useZIndex, vLoading$1 as vLoading, vRepeatClick, valueEquals, version, virtualizedGridProps, virtualizedListProps, virtualizedProps, virtualizedScrollbarProps, watermarkProps, zIndexContextKey };
+export { BAR_MAP, BORDER_HORIZONTAL_WIDTH, CAROUSEL_ITEM_NAME, CASCADER_PANEL_INJECTION_KEY, CHANGE_EVENT, ClickOutside, CommonPicker, CommonProps, DEFAULT_DIALOG_TRANSITION, DEFAULT_EMPTY_VALUES, DEFAULT_FORMATS_DATE, DEFAULT_FORMATS_DATEPICKER, DEFAULT_FORMATS_TIME, DEFAULT_VALUE_ON_CLEAR, DROPDOWN_INJECTION_KEY, DROPDOWN_INSTANCE_INJECTION_KEY, DefaultProps, DynamicSizeGrid$1 as DynamicSizeGrid, DynamicSizeList$1 as DynamicSizeList, EVENT_CODE, Effect, ElAffix, ElAlert, ElAnchor, ElAnchorLink, ElAside, ElAutoResizer, ElAutocomplete, ElAvatar, ElBacktop, ElBadge, ElBreadcrumb, ElBreadcrumbItem, ElButton, ElButtonGroup$1 as ElButtonGroup, ElCalendar, ElCard, ElCarousel, ElCarouselItem, ElCascader, ElCascaderPanel, ElCheckTag, ElCheckbox, ElCheckboxButton, ElCheckboxGroup$1 as ElCheckboxGroup, ElCol, ElCollapse, ElCollapseItem, ElCollapseTransition, ElColorPicker, ElConfigProvider, ElContainer, ElCountdown, ElDatePicker, ElDescriptions, ElDescriptionsItem, ElDialog, ElDivider, ElDrawer, ElDropdown, ElDropdownItem, ElDropdownMenu, ElEmpty, ElFooter, ElForm, ElFormItem, ElHeader, ElIcon, ElImage, ElImageViewer, ElInfiniteScroll, ElInput, ElInputNumber, ElInputTag, ElLink, ElLoading, vLoading$1 as ElLoadingDirective, Loading$1 as ElLoadingService, ElMain, ElMention, ElMenu, ElMenuItem, ElMenuItemGroup, ElMessage, ElMessageBox, ElNotification, ElOption, ElOptionGroup, ElOverlay, ElPageHeader, ElPagination, ElPopconfirm, ElPopover, ElPopoverDirective, ElPopper, ElPopperArrow, ElPopperContent, ElPopperTrigger, ElProgress, ElRadio, ElRadioButton, ElRadioGroup, ElRate, ElResult, ElRow, ElScrollbar, ElSegmented, ElSelect, ElSelectV2, ElSkeleton, ElSkeletonItem, ElSlider, ElSpace, ElSplitter, ElSplitterPanel, ElStatistic, ElStep, ElSteps, ElSubMenu, ElSwitch, ElTabPane, ElTable, ElTableColumn, ElTableEditableCell, ElTableEditableRowActions, ElTableV2, ElTabs, ElTag, ElText, ElTimePicker, ElTimeSelect, ElTimeline, ElTimelineItem, ElTooltip, ElTour, ElTourStep, ElTransfer, ElTree, ElTreeSelect, ElTreeV2, ElUpload, ElWatermark, FIRST_KEYS, FIRST_LAST_KEYS, FORWARD_REF_INJECTION_KEY, FixedSizeGrid$1 as FixedSizeGrid, FixedSizeList$1 as FixedSizeList, GAP, ID_INJECTION_KEY, INPUT_EVENT, INSTALLED_KEY, IconComponentMap, IconMap, LAST_KEYS, LEFT_CHECK_CHANGE_EVENT, MENU_INJECTION_KEY, MESSAGE_DEFAULT_PLACEMENT, MINIMUM_INPUT_WIDTH, Mousewheel, NODE_INSTANCE_INJECTION_KEY, PICKER_BASE_INJECTION_KEY, PICKER_POPPER_OPTIONS_INJECTION_KEY, POPPER_CONTENT_INJECTION_KEY, POPPER_INJECTION_KEY, RIGHT_CHECK_CHANGE_EVENT, ROOT_COMMON_PICKER_INJECTION_KEY, ROOT_PICKER_INJECTION_KEY, ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY, ROOT_TREE_INJECTION_KEY$1 as ROOT_TREE_INJECTION_KEY, RowAlign, RowJustify, SCOPE$5 as SCOPE, SIZE_INJECTION_KEY, STEPS_INJECTION_KEY, SUB_MENU_INJECTION_KEY, TIMELINE_INJECTION_KEY, TOOLTIP_INJECTION_KEY, TREE_NODE_MAP_INJECTION_KEY, TableV2$1 as TableV2, Alignment as TableV2Alignment, FixedDir as TableV2FixedDir, placeholderSign as TableV2Placeholder, SortOrder as TableV2SortOrder, TimePickPanel, TrapFocus, UPDATE_MODEL_EVENT, WEEK_DAYS, ZINDEX_INJECTION_KEY, affixEmits, affixProps, alertEffects, alertEmits, alertProps, anchorEmits, anchorProps, ariaProps, arrowMiddleware, autoResizerProps, autocompleteEmits, autocompleteProps, avatarEmits, avatarProps, backtopEmits, backtopProps, badgeProps, breadcrumbItemProps, breadcrumbKey, breadcrumbProps, buildLocaleContext, buildTimeList, buildTranslator, buttonEmits, buttonGroupContextKey, buttonNativeTypes, buttonProps, buttonTypes, calendarEmits, calendarProps, cardContextKey, cardProps, carouselContextKey, carouselEmits, carouselItemProps, carouselProps, cascaderEmits, cascaderPanelEmits, cascaderPanelProps, cascaderProps, checkTagEmits, checkTagProps, checkboxDefaultProps, checkboxEmits, checkboxGroupContextKey, checkboxGroupEmits, checkboxGroupProps, checkboxProps, colProps, collapseContextKey, collapseEmits, collapseItemProps, collapseProps, colorPickerEmits, colorPickerProps, columnAlignment, componentSizeMap, componentSizes, configProviderContextKey, configProviderProps, countdownEmits, countdownProps, createModelToggleComposable, dateEquals, datePickTypes, datePickerProps, dayOrDaysToDate, dayjs, installer as default, defaultInitialZIndex, defaultNamespace, defaultProps, descriptionItemProps, descriptionProps, dialogContextKey, dialogEmits, dialogInjectionKey, dialogProps, dividerProps, drawerEmits, drawerProps, dropdownItemProps, dropdownMenuProps, dropdownProps, elPaginationKey, emitChangeFn, emptyProps, emptyValuesContextKey, extractDateFormat, extractTimeFormat, formContextKey, formEmits, formItemContextKey, formItemProps, formItemValidateStates, formMetaProps, formProps, formatter, genFileId, getPositionDataWithUnit, iconProps, imageEmits, imageProps, imageViewerEmits, imageViewerProps, inputEmits, inputNumberEmits, inputNumberProps, inputProps, inputTagEmits, inputTagProps, install, linkEmits, linkProps, localeContextKey, makeInstaller, makeList, mentionDefaultProps, mentionEmits, mentionProps, menuEmits, menuItemEmits, menuItemGroupProps, menuItemProps, menuProps, messageConfig, messageDefaults, messageEmits, messagePlacement, messageProps, messageTypes, namespaceContextKey, notificationEmits, notificationProps, notificationTypes, overlayEmits, overlayProps, pageHeaderEmits, pageHeaderProps, paginationEmits, paginationProps, parseDate, popconfirmEmits, popconfirmProps, popoverEmits, popoverProps, popperArrowProps, popperContentEmits, popperContentProps, popperCoreConfigProps, popperProps, popperTriggerProps, progressProps, provideGlobalConfig, radioButtonProps, radioDefaultProps, radioEmits, radioGroupEmits, radioGroupKey, radioGroupProps, radioProps, radioPropsBase, rangeArr, rateEmits, rateProps, renderThumbStyle$1 as renderThumbStyle, resultProps, roleTypes, rowContextKey, rowProps, scrollbarContextKey, scrollbarEmits, scrollbarProps, segmentedEmits, segmentedProps, selectEmits, selectGroupKey, selectKey, selectProps, selectV2InjectionKey, skeletonItemProps, skeletonProps, sliderContextKey, sliderEmits, sliderProps, spaceItemProps, spaceProps, splitterPanelProps, splitterProps, statisticProps, stepProps, stepsEmits, stepsProps, subMenuProps, switchEmits, switchProps, tabBarProps, tabNavEmits, tabNavProps, tabPaneProps, tableV2Emits, tableV2Props, tableV2RowProps, tabsEmits, tabsProps, tabsRootContextKey, tagEmits, tagProps, textProps, thumbProps, timePickerDefaultProps, timePickerRangeTriggerProps, timePickerRngeTriggerProps, timeSelectProps, timeUnits$1 as timeUnits, timelineItemProps, tooltipEmits, tourContentEmits, tourContentProps, tourEmits, tourPlacements, tourProps, tourStepEmits, tourStepProps, tourStrategies, transferCheckedChangeFn, transferEmits, transferProps, translate, treeEmits$1 as treeEmits, uploadBaseProps, uploadContentProps, uploadContextKey, uploadDraggerEmits, uploadDraggerProps, uploadListEmits, uploadListProps, uploadListTypes, uploadProps, useAriaProps, useAttrs, useCalcInputWidth, useCascaderConfig, useComposition, useCursor, useDelayedRender, useDelayedToggle, useDelayedToggleProps, useDeprecated, useDialog, useDisabled, useDraggable, useEmptyValues, useEmptyValuesProps, useEscapeKeydown, useFloating$1 as useFloating, useFloatingProps, useFocus, useFocusController, useFormDisabled, useFormItem, useFormItemInputId, useFormSize, useForwardRef, useForwardRefDirective, useGetDerivedNamespace, useGlobalComponentSettings, useGlobalConfig, useGlobalSize, useId, useIdInjection, useLocale, useLockscreen, useModal, useModelToggle, useModelToggleEmits, useModelToggleProps, useNamespace, useOrderedChildren, usePopper, usePopperArrowProps, usePopperContainer, usePopperContainerId, usePopperContentEmits, usePopperContentProps, usePopperCoreConfigProps, usePopperProps, usePopperTriggerProps, usePreventGlobal, useProp, useSameTarget, useSize$1 as useSize, useSizeProp, useSizeProps, useSpace, useTeleport, useThrottleRender, useTimeout, useTooltipContentProps, useTooltipModelToggle, useTooltipModelToggleEmits, useTooltipModelToggleProps, useTooltipProps, useTooltipTriggerProps, useTransitionFallthrough, useTransitionFallthroughEmits, useZIndex, vLoading$1 as vLoading, vRepeatClick, valueEquals, version, virtualizedGridProps, virtualizedListProps, virtualizedProps, virtualizedScrollbarProps, watermarkProps, zIndexContextKey };

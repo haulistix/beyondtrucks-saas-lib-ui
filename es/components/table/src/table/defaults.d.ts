@@ -22,7 +22,7 @@ interface TableState {
         width: any;
         height: any;
     }>;
-    doLayout: (distributeRemainingWidth?: boolean) => void;
+    doLayout: () => void;
     debouncedUpdateLayout: () => void;
 }
 interface TreeProps {
@@ -152,12 +152,10 @@ interface TableProps<T extends DefaultRow> {
     editable?: boolean;
     ghostTable?: boolean;
     showGhostRow?: boolean;
-    disableEmptyGhostRowSave?: boolean;
     editTable?: boolean;
     total?: number;
     updateTime?: string;
     haveTableText?: boolean;
-    showFooterText?: boolean;
     showOverflowTooltip?: boolean | TableOverflowTooltipOptions;
     tooltipFormatter?: TableOverflowTooltipFormatter<T>;
     appendFilterPanelTo?: string;
@@ -411,17 +409,16 @@ declare const _default: {
         default: boolean;
     };
     /**
-     * @description whether to disable the ghost row save button when every draft value is empty
-     */
-    disableEmptyGhostRowSave: BooleanConstructor;
-    /**
      * @description whether to render edit cells for ghost table
      */
     editTable: BooleanConstructor;
     /**
-     * @description total item count shown in the default table text footer, defaults to data length
+     * @description total item count shown in the default table text footer
      */
-    total: NumberConstructor;
+    total: {
+        type: NumberConstructor;
+        default: number;
+    };
     /**
      * @description update time shown in the default table text footer
      */
@@ -433,10 +430,6 @@ declare const _default: {
      * @description whether to show the default table text footer
      */
     haveTableText: BooleanConstructor;
-    /**
-     * @description whether to show the entire default table text footer
-     */
-    showFooterText: BooleanConstructor;
     /**
      * @description whether to hide extra content and show them in a tooltip when hovering on the cell.It will affect all the table columns
      */

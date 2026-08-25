@@ -1,10 +1,10 @@
-import { defineComponent, ref, computed, watch, nextTick, provide, openBlock, createBlock, unref, withCtx, withDirectives, mergeProps, withKeys, createElementVNode, createVNode, normalizeClass, createTextVNode, toDisplayString, normalizeStyle, vShow } from 'vue';
+import { defineComponent, ref, computed, watch, nextTick, provide, openBlock, createBlock, unref, withCtx, withDirectives, mergeProps, withKeys, createElementVNode, createVNode, normalizeClass, createTextVNode, toDisplayString, normalizeStyle, createElementBlock, vShow } from 'vue';
 import { pick, debounce } from 'lodash-unified';
 import { ElIcon } from '../../icon/index.mjs';
 import { reactiveComputed } from '@vueuse/core';
 import { ElTooltip } from '../../tooltip/index.mjs';
 import { ElButton } from '../../button/index.mjs';
-import { ArrowDown, Close } from '@element-plus/icons-vue';
+import { Close } from '@element-plus/icons-vue';
 import { colorPickerProps, colorPickerEmits } from './color-picker.mjs';
 import { ElColorPickerPanel } from '../../color-picker-panel/index.mjs';
 import Color from '../../color-picker-panel/src/utils/color.mjs';
@@ -320,7 +320,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                     class: normalizeClass([unref(ns).be("picker", "icon"), unref(ns).is("icon-arrow-down")])
                   }, {
                     default: withCtx(() => [
-                      createVNode(unref(ArrowDown))
+                      (openBlock(), createElementBlock("svg", {
+                        width: "24",
+                        height: "24",
+                        viewBox: "0 0 24 24",
+                        xmlns: "http://www.w3.org/2000/svg"
+                      }, [
+                        createElementVNode("path", { d: "M5.00012 9H19.0001L12.7071 15.293C12.5196 15.4805 12.2653 15.5858 12.0001 15.5858C11.735 15.5858 11.4806 15.4805 11.2931 15.293L5.00012 9Z" })
+                      ]))
                     ]),
                     _: 1
                   }, 8, ["class"]), [

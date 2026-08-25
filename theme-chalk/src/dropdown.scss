@@ -28,7 +28,7 @@ $dropdown-item-divided-margin: () !default;
 $dropdown-item-divided-margin: map.merge(
   (
     'large': 8px 0,
-    'default': 6px 0,
+    'default': 8px 0,
     'small': 4px 0,
   ),
   $dropdown-item-divided-margin

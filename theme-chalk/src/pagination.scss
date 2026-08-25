@@ -10,7 +10,6 @@
   min-width: getCssVar('pagination-button-width');
   height: getCssVar('pagination-button-height');
   line-height: getCssVar('pagination-button-height');
-  background: getCssVar('pagination-bg-color');
   padding: 0 4px;
   border: none;
   border-radius: getCssVar('pagination-border-radius');
@@ -27,12 +26,12 @@
   }
 
   &:hover {
-    background-color: #e7ecef;
+    background-color: var(--color-gray-200);
   }
 
   &.is-active {
     cursor: default;
-    background-color: #e7ecef;
+    background-color: var(--color-gray-300);
     border-radius: 8px;
     width: 32px;
     height: 32px;
@@ -49,9 +48,12 @@
 
   &:disabled,
   &.is-disabled {
-    color: var(--color-gray-200);
-    background-color: getCssVar('pagination-button-disabled-bg-color');
+    color: var(--color-gray-300);
     cursor: not-allowed;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 
   &:focus-visible {
@@ -62,12 +64,13 @@
 
 @include b(pagination) {
   @include set-component-css-var('pagination', $pagination);
-
   white-space: nowrap;
   color: getCssVar('pagination-text-color');
   font-size: getCssVar('pagination-font-size');
   font-weight: 500;
   display: flex;
+  padding: 6px 0;
+  background-color: var(--color-cyan-100);
   align-items: center;
 
   .#{$namespace}-input__inner {
@@ -83,10 +86,13 @@
     color: getCssVar('pagination-button-color');
     @include pagination-button;
   }
-
+  .btn-next {
+    margin-left: 4px;
+  }
   .btn-prev,
   .btn-next {
     @include pagination-button;
+    background-color: transparent;
 
     .#{$namespace}-icon {
       display: block;
@@ -107,6 +113,7 @@
 
   .btn-prev {
     margin-left: getCssVar('pagination-item-gap');
+    margin-right: 4px;
   }
 
   @include e(sizes) {
@@ -238,9 +245,11 @@
   margin: 0;
   display: flex;
   align-items: center;
+  gap: 4px;
 
   li {
-    color: getCssVar('pagination-text-color');
+    font-weight: 600;
+    color: var(--color-gray-990);
     @include pagination-button;
   }
 }

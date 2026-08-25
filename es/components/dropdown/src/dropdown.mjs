@@ -1,4 +1,4 @@
-import { defineComponent, getCurrentInstance, ref, computed, provide, toRef, unref, resolveComponent, openBlock, createElementBlock, normalizeClass, createVNode, createSlots, withCtx, renderSlot, createBlock, mergeProps, createCommentVNode } from 'vue';
+import { defineComponent, getCurrentInstance, ref, computed, provide, toRef, unref, resolveComponent, openBlock, createElementBlock, normalizeClass, createVNode, createSlots, withCtx, renderSlot, createBlock, mergeProps, createElementVNode, createCommentVNode } from 'vue';
 import { ElButton } from '../../button/index.mjs';
 import { ElTooltip } from '../../tooltip/index.mjs';
 import { ElScrollbar } from '../../scrollbar/index.mjs';
@@ -138,7 +138,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_only_child = resolveComponent("el-only-child");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_button = resolveComponent("el-button");
-  const _component_arrow_down = resolveComponent("arrow-down");
   const _component_el_icon = resolveComponent("el-icon");
   const _component_el_button_group = resolveComponent("el-button-group");
   return openBlock(), createElementBlock("div", {
@@ -246,7 +245,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               class: normalizeClass(_ctx.ns.e("icon"))
             }, {
               default: withCtx(() => [
-                createVNode(_component_arrow_down)
+                (openBlock(), createElementBlock("svg", {
+                  width: "24",
+                  height: "24",
+                  viewBox: "0 0 24 24",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }, [
+                  createElementVNode("path", { d: "M5.00012 9H19.0001L12.7071 15.293C12.5196 15.4805 12.2653 15.5858 12.0001 15.5858C11.735 15.5858 11.4806 15.4805 11.2931 15.293L5.00012 9Z" })
+                ]))
               ]),
               _: 1
             }, 8, ["class"])

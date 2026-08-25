@@ -1,4 +1,4 @@
-import { defineComponent, shallowRef, openBlock, createElementBlock, normalizeClass, unref, withKeys, withModifiers, createBlock, withCtx, renderSlot, createElementVNode } from 'vue';
+import { defineComponent, computed, shallowRef, openBlock, createElementBlock, normalizeClass, unref, withKeys, withModifiers, createBlock, withCtx, renderSlot, createElementVNode } from 'vue';
 import { cloneDeep, isEqual } from 'lodash-unified';
 import UploadDragger from './upload-dragger.mjs';
 import { uploadContentProps } from './upload-content.mjs';
@@ -20,6 +20,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const props = __props;
     const ns = useNamespace("upload");
     const disabled = useFormDisabled();
+    const clickable = computed(() => !disabled.value && (!props.drag || props.dragClickable));
     const requests = shallowRef({});
     const inputRef = shallowRef();
     const uploadFiles = (files) => {
@@ -136,7 +137,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       uploadFiles(Array.from(files));
     };
     const handleClick = () => {
-      if (!disabled.value) {
+      if (clickable.value) {
         inputRef.value.value = "";
         inputRef.value.click();
       }
@@ -162,9 +163,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           unref(ns).b(),
           unref(ns).m(_ctx.listType),
           unref(ns).is("drag", _ctx.drag),
+          unref(ns).is("drag-clickable", _ctx.drag && _ctx.dragClickable),
           unref(ns).is("disabled", unref(disabled))
         ]),
-        tabindex: unref(disabled) ? "-1" : "0",
+        tabindex: unref(clickable) ? "0" : "-1",
         onClick: handleClick,
         onKeydown: withKeys(withModifiers(handleKeydown, ["self"]), ["enter", "space"])
       }, [

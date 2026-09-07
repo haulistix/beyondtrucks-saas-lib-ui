@@ -1,0 +1,53 @@
+@use 'mixins/mixins' as *;
+@use 'mixins/var' as *;
+
+@include b(input-select) {
+  display: inline-flex;
+  align-items: stretch;
+  width: 100%;
+  height: 32px;
+  vertical-align: middle;
+
+  @include e(control) {
+    position: relative;
+    flex: 1 1 0;
+    width: 0;
+    height: 32px;
+    min-width: 0;
+    --el-input-width: 100%;
+    --el-select-width: 100%;
+    --el-input-height: 32px;
+
+    .#{$namespace}-input__wrapper,
+    .#{$namespace}-select__wrapper {
+      height: 32px;
+      min-height: 32px;
+    }
+
+    .#{$namespace}-select__container {
+      height: 32px;
+    }
+
+    &:focus-within {
+      z-index: 1;
+    }
+
+    @include when(left) {
+      margin-right: -1px;
+
+      .#{$namespace}-input__wrapper,
+      .#{$namespace}-select__wrapper {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    @include when(right) {
+      .#{$namespace}-input__wrapper,
+      .#{$namespace}-select__wrapper {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}

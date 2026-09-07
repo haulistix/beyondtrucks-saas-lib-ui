@@ -2,6 +2,7 @@ declare function __VLS_template(): {
     default?(_: {}): any;
 };
 declare const __VLS_component: import("vue").DefineComponent<{
+    readonly error: BooleanConstructor;
     readonly border: BooleanConstructor;
     readonly modelValue: import("element-plus/es/utils").EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     readonly size: {
@@ -18,6 +19,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     "update:modelValue": (val: string | number | boolean | undefined) => void;
     change: (val: string | number | boolean | undefined) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    readonly error: BooleanConstructor;
     readonly border: BooleanConstructor;
     readonly modelValue: import("element-plus/es/utils").EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     readonly size: {
@@ -38,6 +40,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly disabled: boolean;
     readonly border: boolean;
     readonly value: import("element-plus/es/utils").EpPropMergeType<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
+    readonly error: boolean;
     readonly name: string;
     readonly modelValue: import("element-plus/es/utils").EpPropMergeType<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
 }>;

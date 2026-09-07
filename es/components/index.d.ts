@@ -32,6 +32,7 @@ export * from './icon';
 export * from './image';
 export * from './image-viewer';
 export * from './input';
+export * from './input-select';
 export * from './input-number';
 export * from './input-tag';
 export * from './link';

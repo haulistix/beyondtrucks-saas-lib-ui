@@ -26,6 +26,7 @@
     display: flex;
     align-items: stretch;
     width: 100%;
+    height: map.get($input-height, 'default');
 
     @include when(append) {
       @include e(wrapper) {
@@ -48,6 +49,7 @@
     font-size: 14px;
     padding: 6px 12px;
     gap: map.get($select-item-gap, 'default');
+    height: map.get($input-height, 'default');
     min-height: map.get($input-height, 'default');
     border-radius: getCssVar('border-radius-custom');
     background-color: getCssVar('fill-color', 'blank');
@@ -317,6 +319,10 @@
 
   @each $size in (large, small) {
     @include m($size) {
+      @include e(container) {
+        height: map.get($input-height, $size);
+      }
+
       @include e(append) {
         min-width: map.get($input-height, $size);
       }
@@ -324,6 +330,7 @@
       @include e(wrapper) {
         gap: map.get($select-item-gap, $size);
         padding: map.get($select-wrapper-padding, $size);
+        height: map.get($input-height, $size);
         min-height: map.get($input-height, $size);
         line-height: map.get($select-item-height, $size);
         font-size: map.get($input-font-size, $size);

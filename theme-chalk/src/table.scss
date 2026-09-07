@@ -173,6 +173,10 @@
 
     @include when(center) {
       text-align: center;
+      .cell, .cell-height {
+        text-align: center;
+        justify-content: center;
+      }
     }
 
     @include when(right) {

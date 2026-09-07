@@ -4446,8 +4446,8 @@ declare const __VLS_component_49: DefineComponent<{
     input: (value: string) => void;
     clear: () => void;
     blur: (evt: FocusEvent) => void;
-    "add-tag": (value: string | string[]) => void;
     "remove-tag": (value: string, index: number) => void;
+    "add-tag": (value: string | string[]) => void;
     "drag-tag": (oldIndex: number, newIndex: number, value: string) => void;
 }, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     readonly modelValue: {
@@ -4525,8 +4525,8 @@ declare const __VLS_component_49: DefineComponent<{
     onBlur?: ((evt: FocusEvent) => any) | undefined;
     onInput?: ((value: string) => any) | undefined;
     onClear?: (() => any) | undefined;
-    "onAdd-tag"?: ((value: string | string[]) => any) | undefined;
     "onRemove-tag"?: ((value: string, index: number) => any) | undefined;
+    "onAdd-tag"?: ((value: string | string[]) => any) | undefined;
     "onDrag-tag"?: ((oldIndex: number, newIndex: number, value: string) => any) | undefined;
 }, {
     readonly disabled: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -5678,6 +5678,7 @@ declare const __VLS_component_56: DefineComponent<{
     readonly stripedFlow: boolean;
 }>;
 declare const __VLS_component_57: DefineComponent<{
+    readonly error: BooleanConstructor;
     readonly border: BooleanConstructor;
     readonly modelValue: EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     readonly size: {
@@ -5694,6 +5695,7 @@ declare const __VLS_component_57: DefineComponent<{
     "update:modelValue": (val: string | number | boolean | undefined) => void;
     change: (val: string | number | boolean | undefined) => void;
 }, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly error: BooleanConstructor;
     readonly border: BooleanConstructor;
     readonly modelValue: EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     readonly size: {
@@ -5714,6 +5716,7 @@ declare const __VLS_component_57: DefineComponent<{
     readonly disabled: boolean;
     readonly border: boolean;
     readonly value: EpPropMergeType<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
+    readonly error: boolean;
     readonly name: string;
     readonly modelValue: EpPropMergeType<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
 }>;
@@ -5758,6 +5761,7 @@ declare const __VLS_component_59: DefineComponent<{
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly error: BooleanConstructor;
     readonly modelValue: EpPropFinalized<readonly [
         StringConstructor,
         NumberConstructor,
@@ -5788,6 +5792,7 @@ declare const __VLS_component_59: DefineComponent<{
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly error: BooleanConstructor;
     readonly modelValue: EpPropFinalized<readonly [
         StringConstructor,
         NumberConstructor,
@@ -5814,6 +5819,7 @@ declare const __VLS_component_59: DefineComponent<{
     readonly id: string;
     readonly type: EpPropMergeType<StringConstructor, "button" | "radio", unknown>;
     readonly props: radioOptionProp;
+    readonly error: boolean;
     readonly name: string;
     readonly modelValue: EpPropMergeType<readonly [
         StringConstructor,
@@ -11930,7 +11936,7 @@ export declare const anchorEmits: {
     change: (href: string) => boolean;
     click: (e: MouseEvent, href?: string) => boolean;
 };
-export declare type AnchorInstance = InstanceType<typeof _default_107> & unknown;
+export declare type AnchorInstance = InstanceType<typeof _default_108> & unknown;
 export declare type AnchorProps = ExtractPropTypes<typeof anchorProps>;
 export declare const anchorProps: {
     container: {
@@ -14315,24 +14321,25 @@ declare const _default: {
 };
 export default _default;
 declare const _default_10: __VLS_WithTemplateSlots_10<typeof __VLS_component_10, ReturnType<typeof __VLS_template_10>>;
-declare const _default_100: __VLS_WithTemplateSlots_78<typeof __VLS_component_78, ReturnType<typeof __VLS_template_78>>;
-declare const _default_101: __VLS_WithTemplateSlots_79<typeof __VLS_component_79, ReturnType<typeof __VLS_template_79>>;
-declare const _default_102: __VLS_WithTemplateSlots_80<typeof __VLS_component_80, ReturnType<typeof __VLS_template_80>>;
-declare const _default_103: __VLS_WithTemplateSlots_81<typeof __VLS_component_81, ReturnType<typeof __VLS_template_81>>;
-declare const _default_104: __VLS_WithTemplateSlots_82<typeof __VLS_component_82, ReturnType<typeof __VLS_template_82>>;
-declare const _default_105: __VLS_WithTemplateSlots_83<typeof __VLS_component_83, ReturnType<typeof __VLS_template_83>>;
-declare const _default_106: __VLS_WithTemplateSlots_84<typeof __VLS_component_84, ReturnType<typeof __VLS_template_84>>;
-declare const _default_107: __VLS_WithTemplateSlots_85<typeof __VLS_component_85, ReturnType<typeof __VLS_template_85>>;
-declare const _default_108: __VLS_WithTemplateSlots_86<typeof __VLS_component_86, ReturnType<typeof __VLS_template_86>>;
-declare const _default_109: __VLS_WithTemplateSlots_87<typeof __VLS_component_87, ReturnType<typeof __VLS_template_87>>;
+declare const _default_100: __VLS_WithTemplateSlots_77<typeof __VLS_component_77, ReturnType<typeof __VLS_template_77>>;
+declare const _default_101: __VLS_WithTemplateSlots_78<typeof __VLS_component_78, ReturnType<typeof __VLS_template_78>>;
+declare const _default_102: __VLS_WithTemplateSlots_79<typeof __VLS_component_79, ReturnType<typeof __VLS_template_79>>;
+declare const _default_103: __VLS_WithTemplateSlots_80<typeof __VLS_component_80, ReturnType<typeof __VLS_template_80>>;
+declare const _default_104: __VLS_WithTemplateSlots_81<typeof __VLS_component_81, ReturnType<typeof __VLS_template_81>>;
+declare const _default_105: __VLS_WithTemplateSlots_82<typeof __VLS_component_82, ReturnType<typeof __VLS_template_82>>;
+declare const _default_106: __VLS_WithTemplateSlots_83<typeof __VLS_component_83, ReturnType<typeof __VLS_template_83>>;
+declare const _default_107: __VLS_WithTemplateSlots_84<typeof __VLS_component_84, ReturnType<typeof __VLS_template_84>>;
+declare const _default_108: __VLS_WithTemplateSlots_85<typeof __VLS_component_85, ReturnType<typeof __VLS_template_85>>;
+declare const _default_109: __VLS_WithTemplateSlots_86<typeof __VLS_component_86, ReturnType<typeof __VLS_template_86>>;
 declare const _default_11: __VLS_WithTemplateSlots_11<typeof __VLS_component_11, ReturnType<typeof __VLS_template_11>>;
-declare const _default_110: __VLS_WithTemplateSlots_88<typeof __VLS_component_88, ReturnType<typeof __VLS_template_88>>;
-declare const _default_111: __VLS_WithTemplateSlots_89<typeof __VLS_component_89, ReturnType<typeof __VLS_template_89>>;
-declare const _default_112: __VLS_WithTemplateSlots_90<typeof __VLS_component_90, ReturnType<typeof __VLS_template_90>>;
-declare const _default_113: __VLS_WithTemplateSlots_91<typeof __VLS_component_91, ReturnType<typeof __VLS_template_91>>;
-declare const _default_114: __VLS_WithTemplateSlots_92<typeof __VLS_component_92, ReturnType<typeof __VLS_template_92>>;
-declare const _default_115: ObjectDirective;
-declare const _default_116: __VLS_WithTemplateSlots_93<typeof __VLS_component_93, ReturnType<typeof __VLS_template_93>>;
+declare const _default_110: __VLS_WithTemplateSlots_87<typeof __VLS_component_87, ReturnType<typeof __VLS_template_87>>;
+declare const _default_111: __VLS_WithTemplateSlots_88<typeof __VLS_component_88, ReturnType<typeof __VLS_template_88>>;
+declare const _default_112: __VLS_WithTemplateSlots_89<typeof __VLS_component_89, ReturnType<typeof __VLS_template_89>>;
+declare const _default_113: __VLS_WithTemplateSlots_90<typeof __VLS_component_90, ReturnType<typeof __VLS_template_90>>;
+declare const _default_114: __VLS_WithTemplateSlots_91<typeof __VLS_component_91, ReturnType<typeof __VLS_template_91>>;
+declare const _default_115: __VLS_WithTemplateSlots_92<typeof __VLS_component_92, ReturnType<typeof __VLS_template_92>>;
+declare const _default_116: ObjectDirective;
+declare const _default_117: __VLS_WithTemplateSlots_93<typeof __VLS_component_93, ReturnType<typeof __VLS_template_93>>;
 declare const _default_12: __VLS_WithTemplateSlots_12<typeof __VLS_component_12, ReturnType<typeof __VLS_template_12>>;
 declare const _default_13: __VLS_WithTemplateSlots_13<typeof __VLS_component_13, ReturnType<typeof __VLS_template_13>>;
 declare const _default_14: __VLS_WithTemplateSlots_14<typeof __VLS_component_14, ReturnType<typeof __VLS_template_14>>;
@@ -15704,10 +15711,129 @@ declare const _default_50: __VLS_WithTemplateSlots_44<typeof __VLS_component_44,
 declare const _default_51: __VLS_WithTemplateSlots_45<typeof __VLS_component_45, ReturnType<typeof __VLS_template_45>>;
 declare const _default_52: __VLS_WithTemplateSlots_46<typeof __VLS_component_46, ReturnType<typeof __VLS_template_46>>;
 declare const _default_53: __VLS_WithTemplateSlots_47<typeof __VLS_component_47, ReturnType<typeof __VLS_template_47>>;
-declare const _default_54: __VLS_WithTemplateSlots_48<typeof __VLS_component_48, ReturnType<typeof __VLS_template_48>>;
-declare const _default_55: __VLS_WithTemplateSlots_49<typeof __VLS_component_49, ReturnType<typeof __VLS_template_49>>;
-declare const _default_56: __VLS_WithTemplateSlots_50<typeof __VLS_component_50, ReturnType<typeof __VLS_template_50>>;
-declare const _default_57: DefineComponent<{
+declare const _default_54: DefineComponent<{
+    readonly layout: EpPropFinalized<(new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout) | ((new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout))[], unknown, InputSelectLayout, () => InputSelectLayout, boolean>;
+    readonly leftValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly rightValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+}, () => VNode<RendererNode, RendererElement, {
+    [key: string]: any;
+}>, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    "update:leftValue": (_value: InputSelectValue) => boolean;
+    "update:rightValue": (_value: InputSelectValue) => boolean;
+    "left-change": (_value: InputSelectValue) => boolean;
+    "right-change": (_value: InputSelectValue) => boolean;
+    "left-focus": (event: FocusEvent) => boolean;
+    "right-focus": (event: FocusEvent) => boolean;
+    "left-blur": (event: FocusEvent) => boolean;
+    "right-blur": (event: FocusEvent) => boolean;
+    "left-clear": () => boolean;
+    "right-clear": () => boolean;
+    "left-visible-change": (visible: boolean) => boolean;
+    "right-visible-change": (visible: boolean) => boolean;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly layout: EpPropFinalized<(new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout) | ((new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout))[], unknown, InputSelectLayout, () => InputSelectLayout, boolean>;
+    readonly leftValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly rightValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+}>> & {
+    "onUpdate:leftValue"?: ((_value: InputSelectValue) => any) | undefined;
+    "onUpdate:rightValue"?: ((_value: InputSelectValue) => any) | undefined;
+    "onLeft-change"?: ((_value: InputSelectValue) => any) | undefined;
+    "onRight-change"?: ((_value: InputSelectValue) => any) | undefined;
+    "onLeft-focus"?: ((event: FocusEvent) => any) | undefined;
+    "onRight-focus"?: ((event: FocusEvent) => any) | undefined;
+    "onLeft-blur"?: ((event: FocusEvent) => any) | undefined;
+    "onRight-blur"?: ((event: FocusEvent) => any) | undefined;
+    "onLeft-clear"?: (() => any) | undefined;
+    "onRight-clear"?: (() => any) | undefined;
+    "onLeft-visible-change"?: ((visible: boolean) => any) | undefined;
+    "onRight-visible-change"?: ((visible: boolean) => any) | undefined;
+}, {
+    readonly layout: EpPropMergeType<(new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout) | ((new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout))[], unknown, InputSelectLayout>;
+    readonly leftValue: EpPropMergeType<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown>;
+    readonly rightValue: EpPropMergeType<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown>;
+    readonly leftProps: EpPropMergeType<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown>;
+    readonly rightProps: EpPropMergeType<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown>;
+}>;
+declare const _default_55: __VLS_WithTemplateSlots_48<typeof __VLS_component_48, ReturnType<typeof __VLS_template_48>>;
+declare const _default_56: __VLS_WithTemplateSlots_49<typeof __VLS_component_49, ReturnType<typeof __VLS_template_49>>;
+declare const _default_57: __VLS_WithTemplateSlots_50<typeof __VLS_component_50, ReturnType<typeof __VLS_template_50>>;
+declare const _default_58: DefineComponent<{
     readonly mode: EpPropFinalized<StringConstructor, "horizontal" | "vertical", unknown, "vertical", boolean>;
     readonly defaultActive: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly defaultOpeneds: EpPropFinalized<(new (...args: any[]) => string[]) | (() => string[]) | ((new (...args: any[]) => string[]) | (() => string[]))[], unknown, unknown, () => [
@@ -15791,10 +15917,10 @@ declare const _default_57: DefineComponent<{
     readonly router: boolean;
     readonly closeOnClickOutside: boolean;
 }>;
-declare const _default_58: __VLS_WithTemplateSlots_51<typeof __VLS_component_51, ReturnType<typeof __VLS_template_51>>;
-declare const _default_59: __VLS_WithTemplateSlots_52<typeof __VLS_component_52, ReturnType<typeof __VLS_template_52>>;
+declare const _default_59: __VLS_WithTemplateSlots_51<typeof __VLS_component_51, ReturnType<typeof __VLS_template_51>>;
 declare const _default_6: __VLS_WithTemplateSlots_5<typeof __VLS_component_5, ReturnType<typeof __VLS_template_7>>;
-declare const _default_60: DefineComponent<{
+declare const _default_60: __VLS_WithTemplateSlots_52<typeof __VLS_component_52, ReturnType<typeof __VLS_template_52>>;
+declare const _default_61: DefineComponent<{
     readonly index: {
         readonly type: PropType<string>;
         readonly required: true;
@@ -15886,8 +16012,8 @@ declare const _default_60: DefineComponent<{
     readonly disabled: boolean;
     readonly teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-declare const _default_61: __VLS_WithTemplateSlots_53<typeof __VLS_component_53, ReturnType<typeof __VLS_template_53>>;
-declare const _default_62: DefineComponent<{
+declare const _default_62: __VLS_WithTemplateSlots_53<typeof __VLS_component_53, ReturnType<typeof __VLS_template_53>>;
+declare const _default_63: DefineComponent<{
     readonly pageSize: NumberConstructor;
     readonly defaultPageSize: NumberConstructor;
     readonly total: NumberConstructor;
@@ -16000,12 +16126,12 @@ declare const _default_62: DefineComponent<{
     readonly pagerCount: number;
     readonly hideOnSinglePage: boolean;
 }>;
-declare const _default_63: __VLS_WithTemplateSlots_54<typeof __VLS_component_54, ReturnType<typeof __VLS_template_54>>;
-declare const _default_64: __VLS_WithTemplateSlots_56<typeof __VLS_component_56, ReturnType<typeof __VLS_template_56>>;
-declare const _default_65: __VLS_WithTemplateSlots_57<typeof __VLS_component_57, ReturnType<typeof __VLS_template_57>>;
-declare const _default_66: __VLS_WithTemplateSlots_58<typeof __VLS_component_58, ReturnType<typeof __VLS_template_58>>;
-declare const _default_67: __VLS_WithTemplateSlots_59<typeof __VLS_component_59, ReturnType<typeof __VLS_template_59>>;
-declare const _default_68: DefineComponent<{
+declare const _default_64: __VLS_WithTemplateSlots_54<typeof __VLS_component_54, ReturnType<typeof __VLS_template_54>>;
+declare const _default_65: __VLS_WithTemplateSlots_56<typeof __VLS_component_56, ReturnType<typeof __VLS_template_56>>;
+declare const _default_66: __VLS_WithTemplateSlots_57<typeof __VLS_component_57, ReturnType<typeof __VLS_template_57>>;
+declare const _default_67: __VLS_WithTemplateSlots_58<typeof __VLS_component_58, ReturnType<typeof __VLS_template_58>>;
+declare const _default_68: __VLS_WithTemplateSlots_59<typeof __VLS_component_59, ReturnType<typeof __VLS_template_59>>;
+declare const _default_69: DefineComponent<{
     readonly ariaLabel: StringConstructor;
     readonly modelValue: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
@@ -16119,11 +16245,11 @@ declare const _default_68: DefineComponent<{
     readonly allowHalf: boolean;
     readonly showScore: boolean;
 }>;
-declare const _default_69: __VLS_WithTemplateSlots_60<typeof __VLS_component_60, ReturnType<typeof __VLS_template_60>>;
 declare const _default_7: __VLS_WithTemplateSlots_6<typeof __VLS_component_6, ReturnType<typeof __VLS_template_4>>;
-declare const _default_70: __VLS_WithTemplateSlots_61<typeof __VLS_component_61, ReturnType<typeof __VLS_template_61>>;
-declare const _default_71: __VLS_WithTemplateSlots_62<typeof __VLS_component_62, ReturnType<typeof __VLS_template_62>>;
-declare const _default_72: DefineComponent<{
+declare const _default_70: __VLS_WithTemplateSlots_60<typeof __VLS_component_60, ReturnType<typeof __VLS_template_60>>;
+declare const _default_71: __VLS_WithTemplateSlots_61<typeof __VLS_component_61, ReturnType<typeof __VLS_template_61>>;
+declare const _default_72: __VLS_WithTemplateSlots_62<typeof __VLS_component_62, ReturnType<typeof __VLS_template_62>>;
+declare const _default_73: DefineComponent<{
     readonly vertical: BooleanConstructor;
     readonly size: StringConstructor;
     readonly move: NumberConstructor;
@@ -16149,7 +16275,7 @@ declare const _default_72: DefineComponent<{
     readonly always: boolean;
     readonly vertical: boolean;
 }>;
-declare const _default_73: DefineComponent<{
+declare const _default_74: DefineComponent<{
     ariaLabel: StringConstructor;
     emptyValues: ArrayConstructor;
     valueOnClear: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown, undefined, boolean>;
@@ -16657,7 +16783,7 @@ declare const _default_73: DefineComponent<{
     optionWidth: EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>;
     remoteShowSuffix: boolean;
 }>;
-declare const _default_74: DefineComponent<{
+declare const _default_75: DefineComponent<{
     value: {
         readonly type: PropType<EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>>;
         readonly required: true;
@@ -16732,6 +16858,8 @@ declare const _default_74: DefineComponent<{
     hoverItem: () => void;
     updateOption: (query: string) => void;
     selectOptionClick: () => void;
+    handleGroupCheckboxClick: (event: MouseEvent) => void;
+    handleGroupCheckboxChange: () => void;
 }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     value: {
         readonly type: PropType<EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>>;
@@ -16762,7 +16890,7 @@ declare const _default_74: DefineComponent<{
     placement: EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown>;
     showTip: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-declare const _default_75: DefineComponent<{
+declare const _default_76: DefineComponent<{
     /**
     * @description name of the group
     */
@@ -16805,7 +16933,7 @@ declare const _default_75: DefineComponent<{
 }>>, {
     disabled: boolean;
 }>;
-declare const _default_76: DefineComponent<{
+declare const _default_77: DefineComponent<{
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
     readonly valueOnClear: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown, undefined, boolean>;
@@ -17510,15 +17638,16 @@ declare const _default_76: DefineComponent<{
     readonly defaultFirstOption: boolean;
     readonly remote: boolean;
 }>;
-declare const _default_77: __VLS_WithTemplateSlots_63<typeof __VLS_component_63, ReturnType<typeof __VLS_template_63>>;
-declare const _default_78: DefineComponent<{
+declare const _default_78: __VLS_WithTemplateSlots_63<typeof __VLS_component_63, ReturnType<typeof __VLS_template_63>>;
+declare const _default_79: DefineComponent<{
     readonly variant: EpPropFinalized<StringConstructor, "button" | "caption" | "h1" | "h3" | "p" | "circle" | "image" | "rect" | "text", unknown, "text", boolean>;
 }, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     readonly variant: EpPropFinalized<StringConstructor, "button" | "caption" | "h1" | "h3" | "p" | "circle" | "image" | "rect" | "text", unknown, "text", boolean>;
 }>>, {
     readonly variant: EpPropMergeType<StringConstructor, "button" | "caption" | "h1" | "h3" | "p" | "circle" | "image" | "rect" | "text", unknown>;
 }>;
-declare const _default_79: DefineComponent<{
+declare const _default_8: __VLS_WithTemplateSlots_7<typeof __VLS_component_7, ReturnType<typeof __VLS_template_6>>;
+declare const _default_80: DefineComponent<{
     readonly ariaLabel: StringConstructor;
     readonly modelValue: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => Arrayable<number>) | ((new (...args: any[]) => number | number[]) | (() => Arrayable<number>))[], unknown, unknown, 0, boolean>;
     readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
@@ -17692,12 +17821,11 @@ declare const _default_79: DefineComponent<{
     readonly showInput: boolean;
     readonly showStops: boolean;
 }>;
-declare const _default_8: __VLS_WithTemplateSlots_7<typeof __VLS_component_7, ReturnType<typeof __VLS_template_6>>;
-declare const _default_80: __VLS_WithTemplateSlots_64<typeof __VLS_component_64, ReturnType<typeof __VLS_template_64>>;
-declare const _default_81: __VLS_WithTemplateSlots_65<typeof __VLS_component_65, ReturnType<typeof __VLS_template_65>>;
-declare const _default_82: __VLS_WithTemplateSlots_66<typeof __VLS_component_66, ReturnType<typeof __VLS_template_66>>;
-declare const _default_83: __VLS_WithTemplateSlots_67<typeof __VLS_component_67, ReturnType<typeof __VLS_template_67>>;
-declare const _default_84: DefineComponent<{
+declare const _default_81: __VLS_WithTemplateSlots_64<typeof __VLS_component_64, ReturnType<typeof __VLS_template_64>>;
+declare const _default_82: __VLS_WithTemplateSlots_65<typeof __VLS_component_65, ReturnType<typeof __VLS_template_65>>;
+declare const _default_83: __VLS_WithTemplateSlots_66<typeof __VLS_component_66, ReturnType<typeof __VLS_template_66>>;
+declare const _default_84: __VLS_WithTemplateSlots_67<typeof __VLS_component_67, ReturnType<typeof __VLS_template_67>>;
+declare const _default_85: DefineComponent<{
     data: {
         type: PropType<any[]>;
         default: () => never[];
@@ -18774,7 +18902,7 @@ declare const _default_84: DefineComponent<{
     showAddRowTrigger: boolean;
     preserveExpandedContent: boolean;
 }>;
-declare const _default_85: DefineComponent<{
+declare const _default_86: DefineComponent<{
     type: {
         type: StringConstructor;
         default: string;
@@ -18913,10 +19041,11 @@ declare const _default_85: DefineComponent<{
     filterMultiple: boolean;
     allowInsertBeforeFirstColumn: boolean;
 }>;
-declare const _default_86: __VLS_WithTemplateSlots_68<typeof __VLS_component_68, ReturnType<typeof __VLS_template_68>>;
-declare const _default_87: __VLS_WithTemplateSlots_69<typeof __VLS_component_69, ReturnType<typeof __VLS_template_69>>;
-declare const _default_88: __VLS_WithTemplateSlots_70<typeof __VLS_component_70, ReturnType<typeof __VLS_template_70>>;
-declare const _default_89: DefineComponent<{
+declare const _default_87: __VLS_WithTemplateSlots_68<typeof __VLS_component_68, ReturnType<typeof __VLS_template_68>>;
+declare const _default_88: __VLS_WithTemplateSlots_69<typeof __VLS_component_69, ReturnType<typeof __VLS_template_69>>;
+declare const _default_89: __VLS_WithTemplateSlots_70<typeof __VLS_component_70, ReturnType<typeof __VLS_template_70>>;
+declare const _default_9: __VLS_WithTemplateSlots_9<typeof __VLS_component_9, ReturnType<typeof __VLS_template_9>>;
+declare const _default_90: DefineComponent<{
     readonly tabs: EpPropFinalized<(new (...args: any[]) => {
         uid: number;
         getVnode: () => VNode;
@@ -19140,10 +19269,9 @@ declare const _default_89: DefineComponent<{
         [key: number]: HTMLDivElement;
     };
 }>;
-declare const _default_9: __VLS_WithTemplateSlots_9<typeof __VLS_component_9, ReturnType<typeof __VLS_template_9>>;
-declare const _default_90: __VLS_WithTemplateSlots_71<typeof __VLS_component_71, ReturnType<typeof __VLS_template_71>>;
-declare const _default_91: __VLS_WithTemplateSlots_72<typeof __VLS_component_72, ReturnType<typeof __VLS_template_72>>;
-declare const _default_92: DefineComponent<{
+declare const _default_91: __VLS_WithTemplateSlots_71<typeof __VLS_component_71, ReturnType<typeof __VLS_template_71>>;
+declare const _default_92: __VLS_WithTemplateSlots_72<typeof __VLS_component_72, ReturnType<typeof __VLS_template_72>>;
+declare const _default_93: DefineComponent<{
     /**
     * @description whether to pick a time range
     */
@@ -19448,7 +19576,7 @@ declare const _default_92: DefineComponent<{
     unlinkPanels: boolean;
     isRange: boolean;
 }>;
-declare const _default_93: DefineComponent<{
+declare const _default_94: DefineComponent<{
     readonly emptyValues: ArrayConstructor;
     readonly valueOnClear: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown, undefined, boolean>;
     readonly format: EpPropFinalized<StringConstructor, unknown, unknown, "HH:mm", boolean>;
@@ -19578,10 +19706,10 @@ declare const _default_93: DefineComponent<{
     readonly step: string;
     readonly includeEndTime: boolean;
 }>;
-declare const _default_94: __VLS_WithTemplateSlots_74<typeof __VLS_component_74, ReturnType<typeof __VLS_template_74>>;
-declare const _default_95: __VLS_WithTemplateSlots_75<typeof __VLS_component_75, ReturnType<typeof __VLS_template_76>>;
-declare const _default_96: __VLS_WithTemplateSlots_76<typeof __VLS_component_76, ReturnType<typeof __VLS_template_75>>;
-declare const _default_97: DefineComponent<{
+declare const _default_95: __VLS_WithTemplateSlots_74<typeof __VLS_component_74, ReturnType<typeof __VLS_template_74>>;
+declare const _default_96: __VLS_WithTemplateSlots_75<typeof __VLS_component_75, ReturnType<typeof __VLS_template_76>>;
+declare const _default_97: __VLS_WithTemplateSlots_76<typeof __VLS_component_76, ReturnType<typeof __VLS_template_75>>;
+declare const _default_98: DefineComponent<{
     data: {
         type: PropType<TreeData>;
         default: () => never[];
@@ -20126,12 +20254,11 @@ declare const _default_97: DefineComponent<{
     expandOnClickNode: boolean;
     highlightCurrent: boolean;
 }>;
-declare const _default_98: DefineComponent<any, () => VNode<RendererNode, RendererElement, {
+declare const _default_99: DefineComponent<any, () => VNode<RendererNode, RendererElement, {
     [key: string]: any;
 }>, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<any>, {} | {
     [x: string]: any;
 }>;
-declare const _default_99: __VLS_WithTemplateSlots_77<typeof __VLS_component_77, ReturnType<typeof __VLS_template_77>>;
 export declare const DEFAULT_DIALOG_TRANSITION = "dialog-fade";
 export declare const DEFAULT_EMPTY_VALUES: (string | null | undefined)[];
 export declare const DEFAULT_FORMATS_DATE = "YYYY-MM-DD";
@@ -21083,10 +21210,10 @@ declare const effects: readonly [
 ];
 export declare const ElAffix: SFCWithInstall<typeof _default_2>;
 export declare const ElAlert: SFCWithInstall<typeof _default_3>;
-export declare const ElAnchor: SFCWithInstall<typeof _default_107> & {
-    AnchorLink: typeof _default_108;
+export declare const ElAnchor: SFCWithInstall<typeof _default_108> & {
+    AnchorLink: typeof _default_109;
 };
-export declare const ElAnchorLink: SFCWithInstall<typeof _default_108>;
+export declare const ElAnchorLink: SFCWithInstall<typeof _default_109>;
 export declare const ElAside: SFCWithInstall<typeof _default_35>;
 export declare const ElAutocomplete: SFCWithInstall<typeof _default_4>;
 export declare const ElAutoResizer: SFCWithInstall<typeof AutoResizer>;
@@ -21199,9 +21326,10 @@ export declare const ElInfiniteScroll: SFCWithInstall<ObjectDirective<HTMLElemen
     };
 }, () => void>>;
 export declare const ElInput: SFCWithInstall<typeof _default_5>;
-export declare const ElInputNumber: SFCWithInstall<typeof _default_54>;
-export declare const ElInputTag: SFCWithInstall<typeof _default_55>;
-export declare const ElLink: SFCWithInstall<typeof _default_56>;
+export declare const ElInputNumber: SFCWithInstall<typeof _default_55>;
+export declare const ElInputSelect: SFCWithInstall<typeof _default_54>;
+export declare const ElInputTag: SFCWithInstall<typeof _default_56>;
+export declare const ElLink: SFCWithInstall<typeof _default_57>;
 export declare const ElLoading: {
     install(app: App): void;
     directive: Directive<ElementLoading, LoadingBinding>;
@@ -21215,14 +21343,14 @@ export declare const ElLoadingService: {
     _context: AppContext | null;
 };
 export declare const ElMain: SFCWithInstall<typeof _default_38>;
-export declare const ElMention: SFCWithInstall<typeof _default_110>;
-export declare const ElMenu: SFCWithInstall<typeof _default_57> & {
-    MenuItem: typeof _default_58;
-    MenuItemGroup: typeof _default_59;
-    SubMenu: typeof _default_60;
+export declare const ElMention: SFCWithInstall<typeof _default_111>;
+export declare const ElMenu: SFCWithInstall<typeof _default_58> & {
+    MenuItem: typeof _default_59;
+    MenuItemGroup: typeof _default_60;
+    SubMenu: typeof _default_61;
 };
-export declare const ElMenuItem: SFCWithInstall<typeof _default_58>;
-export declare const ElMenuItemGroup: SFCWithInstall<typeof _default_59>;
+export declare const ElMenuItem: SFCWithInstall<typeof _default_59>;
+export declare const ElMenuItemGroup: SFCWithInstall<typeof _default_60>;
 export declare const ElMessage: SFCInstallWithContext<Message>;
 export declare const ElMessageBox: SFCWithInstall<IElMessageBox>;
 /** Options used in MessageBox */
@@ -21320,8 +21448,8 @@ export declare interface ElMessageBoxOptions {
 }
 export declare type ElMessageBoxShortcutMethod = ((message: ElMessageBoxOptions["message"], options?: ElMessageBoxOptions, appContext?: AppContext | null) => Promise<MessageBoxData>) & ((message: ElMessageBoxOptions["message"], title: ElMessageBoxOptions["title"], options?: ElMessageBoxOptions, appContext?: AppContext | null) => Promise<MessageBoxData>);
 export declare const ElNotification: SFCInstallWithContext<Notify>;
-export declare const ElOption: SFCWithInstall<typeof _default_74>;
-export declare const ElOptionGroup: SFCWithInstall<typeof _default_75>;
+export declare const ElOption: SFCWithInstall<typeof _default_75>;
+export declare const ElOptionGroup: SFCWithInstall<typeof _default_76>;
 export declare const ElOverlay: DefineComponent<{
     readonly mask: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly customMaskEvent: BooleanConstructor;
@@ -21362,8 +21490,8 @@ export declare const ElOverlay: DefineComponent<{
     readonly mask: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly customMaskEvent: boolean;
 }>;
-export declare const ElPageHeader: SFCWithInstall<typeof _default_61>;
-export declare const ElPagination: SFCWithInstall<typeof _default_62>;
+export declare const ElPageHeader: SFCWithInstall<typeof _default_62>;
+export declare const ElPagination: SFCWithInstall<typeof _default_63>;
 export declare interface ElPaginationContext {
     currentPage?: WritableComputedRef<number>;
     pageCount?: ComputedRef<number>;
@@ -21372,11 +21500,11 @@ export declare interface ElPaginationContext {
     handleSizeChange?: (val: number) => void;
 }
 export declare const elPaginationKey: InjectionKey<ElPaginationContext>;
-export declare const ElPopconfirm: SFCWithInstall<typeof _default_63>;
-export declare const ElPopover: SFCWithInstall<typeof _default_116> & {
+export declare const ElPopconfirm: SFCWithInstall<typeof _default_64>;
+export declare const ElPopover: SFCWithInstall<typeof _default_117> & {
     directive: typeof ElPopoverDirective;
 };
-export declare const ElPopoverDirective: SFCWithInstall<typeof _default_115>;
+export declare const ElPopoverDirective: SFCWithInstall<typeof _default_116>;
 export declare const ElPopper: SFCWithInstall<typeof _default_7>;
 export declare const ElPopperArrow: DefineComponent<{}, {
     /**
@@ -21408,17 +21536,17 @@ export declare type ElPopperInjectionContext = {
     role: ComputedRef<string>;
 };
 export declare const ElPopperTrigger: __VLS_WithTemplateSlots_55<typeof __VLS_component_55, ReturnType<typeof __VLS_template_55>>;
-export declare const ElProgress: SFCWithInstall<typeof _default_64>;
-export declare const ElRadio: SFCWithInstall<typeof _default_65> & {
-    RadioButton: typeof _default_66;
-    RadioGroup: typeof _default_67;
+export declare const ElProgress: SFCWithInstall<typeof _default_65>;
+export declare const ElRadio: SFCWithInstall<typeof _default_66> & {
+    RadioButton: typeof _default_67;
+    RadioGroup: typeof _default_68;
 };
-export declare const ElRadioButton: SFCWithInstall<typeof _default_66>;
-export declare const ElRadioGroup: SFCWithInstall<typeof _default_67>;
-export declare const ElRate: SFCWithInstall<typeof _default_68>;
-export declare const ElResult: SFCWithInstall<typeof _default_69>;
-export declare const ElRow: SFCWithInstall<typeof _default_70>;
-export declare const ElScrollbar: SFCWithInstall<typeof _default_71>;
+export declare const ElRadioButton: SFCWithInstall<typeof _default_67>;
+export declare const ElRadioGroup: SFCWithInstall<typeof _default_68>;
+export declare const ElRate: SFCWithInstall<typeof _default_69>;
+export declare const ElResult: SFCWithInstall<typeof _default_70>;
+export declare const ElRow: SFCWithInstall<typeof _default_71>;
+export declare const ElScrollbar: SFCWithInstall<typeof _default_72>;
 export declare const ElSegmented: SFCWithInstall<{
     new (...args: any[]): {
         $: ComponentInternalInstance;
@@ -21576,49 +21704,49 @@ export declare const ElSegmented: SFCWithInstall<{
         }): any;
     };
 })> & Record<string, any>;
-export declare const ElSelect: SFCWithInstall<typeof _default_73> & {
-    Option: typeof _default_74;
-    OptionGroup: typeof _default_75;
+export declare const ElSelect: SFCWithInstall<typeof _default_74> & {
+    Option: typeof _default_75;
+    OptionGroup: typeof _default_76;
 };
-export declare const ElSelectV2: SFCWithInstall<typeof _default_76>;
-export declare const ElSkeleton: SFCWithInstall<typeof _default_77> & {
-    SkeletonItem: typeof _default_78;
+export declare const ElSelectV2: SFCWithInstall<typeof _default_77>;
+export declare const ElSkeleton: SFCWithInstall<typeof _default_78> & {
+    SkeletonItem: typeof _default_79;
 };
-export declare const ElSkeletonItem: SFCWithInstall<typeof _default_78>;
-export declare const ElSlider: SFCWithInstall<typeof _default_79>;
+export declare const ElSkeletonItem: SFCWithInstall<typeof _default_79>;
+export declare const ElSlider: SFCWithInstall<typeof _default_80>;
 export declare const ElSpace: SFCWithInstall<typeof Space>;
-export declare const ElSplitter: SFCWithInstall<typeof _default_111> & {
-    SplitPanel: typeof _default_112;
+export declare const ElSplitter: SFCWithInstall<typeof _default_112> & {
+    SplitPanel: typeof _default_113;
 };
-export declare const ElSplitterPanel: SFCWithInstall<typeof _default_112>;
-export declare const ElStatistic: SFCWithInstall<typeof _default_80>;
-export declare const ElStep: SFCWithInstall<typeof _default_82>;
-export declare const ElSteps: SFCWithInstall<typeof _default_81> & {
-    Step: typeof _default_82;
+export declare const ElSplitterPanel: SFCWithInstall<typeof _default_113>;
+export declare const ElStatistic: SFCWithInstall<typeof _default_81>;
+export declare const ElStep: SFCWithInstall<typeof _default_83>;
+export declare const ElSteps: SFCWithInstall<typeof _default_82> & {
+    Step: typeof _default_83;
 };
-export declare const ElSubMenu: SFCWithInstall<typeof _default_60>;
-export declare const ElSwitch: SFCWithInstall<typeof _default_83>;
-export declare const ElTable: SFCWithInstall<typeof _default_84> & {
-    TableColumn: typeof _default_85;
-    TableEditableCell: typeof _default_86;
-    TableEditableRowActions: typeof _default_87;
+export declare const ElSubMenu: SFCWithInstall<typeof _default_61>;
+export declare const ElSwitch: SFCWithInstall<typeof _default_84>;
+export declare const ElTable: SFCWithInstall<typeof _default_85> & {
+    TableColumn: typeof _default_86;
+    TableEditableCell: typeof _default_87;
+    TableEditableRowActions: typeof _default_88;
 };
-export declare const ElTableColumn: SFCWithInstall<typeof _default_85>;
-export declare const ElTableEditableCell: SFCWithInstall<typeof _default_86>;
-export declare const ElTableEditableRowActions: SFCWithInstall<typeof _default_87>;
+export declare const ElTableColumn: SFCWithInstall<typeof _default_86>;
+export declare const ElTableEditableCell: SFCWithInstall<typeof _default_87>;
+export declare const ElTableEditableRowActions: SFCWithInstall<typeof _default_88>;
 export declare const ElTableV2: SFCWithInstall<typeof TableV2>;
-export declare const ElTabPane: SFCWithInstall<typeof _default_88>;
+export declare const ElTabPane: SFCWithInstall<typeof _default_89>;
 export declare const ElTabs: SFCWithInstall<typeof Tabs> & {
-    TabPane: typeof _default_88;
+    TabPane: typeof _default_89;
 };
-export declare const ElTag: SFCWithInstall<typeof _default_90>;
-export declare const ElText: SFCWithInstall<typeof _default_91>;
+export declare const ElTag: SFCWithInstall<typeof _default_91>;
+export declare const ElText: SFCWithInstall<typeof _default_92>;
 export declare const ElTimeline: SFCWithInstall<typeof Timeline> & {
-    TimelineItem: typeof _default_94;
+    TimelineItem: typeof _default_95;
 };
-export declare const ElTimelineItem: SFCWithInstall<typeof _default_94>;
-export declare const ElTimePicker: SFCWithInstall<typeof _default_92>;
-export declare const ElTimeSelect: SFCWithInstall<typeof _default_93>;
+export declare const ElTimelineItem: SFCWithInstall<typeof _default_95>;
+export declare const ElTimePicker: SFCWithInstall<typeof _default_93>;
+export declare const ElTimeSelect: SFCWithInstall<typeof _default_94>;
 export declare const ElTooltip: SFCWithInstall<typeof _default_6>;
 export declare type ElTooltipContentProps = ExtractPropTypes<typeof useTooltipContentProps>;
 export declare type ElTooltipContentPropsPublic = __ExtractPublicPropTypes<typeof useTooltipContentProps>;
@@ -21640,16 +21768,16 @@ export declare type ElTooltipProps = ExtractPropTypes<typeof useTooltipProps>;
 export declare type ElTooltipPropsPublic = __ExtractPublicPropTypes<typeof useTooltipProps>;
 export declare type ElTooltipTriggerProps = ExtractPropTypes<typeof useTooltipTriggerProps>;
 export declare type ElTooltipTriggerPropsPublic = __ExtractPublicPropTypes<typeof useTooltipTriggerProps>;
-export declare const ElTour: SFCWithInstall<typeof _default_105> & {
-    TourStep: typeof _default_106;
+export declare const ElTour: SFCWithInstall<typeof _default_106> & {
+    TourStep: typeof _default_107;
 };
-export declare const ElTourStep: SFCWithInstall<typeof _default_106>;
-export declare const ElTransfer: SFCWithInstall<typeof _default_95>;
-export declare const ElTree: SFCWithInstall<typeof _default_97>;
-export declare const ElTreeSelect: SFCWithInstall<typeof _default_98>;
-export declare const ElTreeV2: SFCWithInstall<typeof _default_99>;
-export declare const ElUpload: SFCWithInstall<typeof _default_100>;
-export declare const ElWatermark: SFCWithInstall<typeof _default_104>;
+export declare const ElTourStep: SFCWithInstall<typeof _default_107>;
+export declare const ElTransfer: SFCWithInstall<typeof _default_96>;
+export declare const ElTree: SFCWithInstall<typeof _default_98>;
+export declare const ElTreeSelect: SFCWithInstall<typeof _default_99>;
+export declare const ElTreeV2: SFCWithInstall<typeof _default_100>;
+export declare const ElUpload: SFCWithInstall<typeof _default_101>;
+export declare const ElWatermark: SFCWithInstall<typeof _default_105>;
 export declare interface ElZIndexInjectionContext {
     current: number;
 }
@@ -23252,7 +23380,7 @@ export declare const inputNumberEmits: {
     input: (val: number | null | undefined) => boolean;
     "update:modelValue": (val: number | undefined) => boolean;
 };
-export declare type InputNumberInstance = InstanceType<typeof _default_54> & unknown;
+export declare type InputNumberInstance = InstanceType<typeof _default_55> & unknown;
 export declare type InputNumberProps = ExtractPropTypes<typeof inputNumberProps>;
 export declare const inputNumberProps: {
     readonly inputmode: EpPropFinalized<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown, undefined, boolean>;
@@ -23417,6 +23545,75 @@ export declare const inputProps: {
     readonly rows: EpPropFinalized<NumberConstructor, unknown, unknown, 2, boolean>;
 };
 export declare type InputPropsPublic = __ExtractPublicPropTypes<typeof inputProps>;
+export declare type InputSelectControl = (typeof inputSelectControlTypes)[number];
+export declare type InputSelectControlProps = Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>;
+export declare const inputSelectControlTypes: readonly [
+    "input",
+    "select"
+];
+export declare type InputSelectEmits = typeof inputSelectEmits;
+export declare const inputSelectEmits: {
+    "update:leftValue": (_value: InputSelectValue) => boolean;
+    "update:rightValue": (_value: InputSelectValue) => boolean;
+    "left-change": (_value: InputSelectValue) => boolean;
+    "right-change": (_value: InputSelectValue) => boolean;
+    "left-focus": (event: FocusEvent) => boolean;
+    "right-focus": (event: FocusEvent) => boolean;
+    "left-blur": (event: FocusEvent) => boolean;
+    "right-blur": (event: FocusEvent) => boolean;
+    "left-clear": () => boolean;
+    "right-clear": () => boolean;
+    "left-visible-change": (visible: boolean) => boolean;
+    "right-visible-change": (visible: boolean) => boolean;
+};
+export declare type InputSelectInstance = InstanceType<typeof _default_54> & unknown;
+export declare type InputSelectLayout = [
+    "input",
+    "select"
+] | [
+    "select",
+    "select"
+] | [
+    "select",
+    "input"
+] | [
+    "input",
+    "input"
+];
+export declare type InputSelectProps = ExtractPropTypes<typeof inputSelectProps>;
+export declare const inputSelectProps: {
+    readonly layout: EpPropFinalized<(new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout) | ((new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout))[], unknown, InputSelectLayout, () => InputSelectLayout, boolean>;
+    readonly leftValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly rightValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+};
+export declare type InputSelectPropsPublic = __ExtractPublicPropTypes<typeof inputSelectProps>;
+export declare type InputSelectValue = InputPropsPublic["modelValue"] | SelectPropsPublic["modelValue"];
 export declare type InputTagEmits = typeof inputTagEmits;
 export declare const inputTagEmits: {
     "update:modelValue": (value?: string[]) => boolean;
@@ -23429,7 +23626,7 @@ export declare const inputTagEmits: {
     blur: (evt: FocusEvent) => boolean;
     clear: () => boolean;
 };
-export declare type InputTagInstance = InstanceType<typeof _default_55> & unknown;
+export declare type InputTagInstance = InstanceType<typeof _default_56> & unknown;
 export declare type InputTagProps = ExtractPropTypes<typeof inputTagProps>;
 export declare const inputTagProps: {
     readonly modelValue: {
@@ -23548,7 +23745,7 @@ export declare type LinkEmits = typeof linkEmits;
 export declare const linkEmits: {
     click: (evt: MouseEvent) => boolean;
 };
-export declare type LinkInstance = InstanceType<typeof _default_56> & unknown;
+export declare type LinkInstance = InstanceType<typeof _default_57> & unknown;
 export declare type LinkProps = ExtractPropTypes<typeof linkProps>;
 export declare const linkProps: {
     readonly type: EpPropFinalized<StringConstructor, "default" | "primary" | "success" | "warning" | "info" | "danger", unknown, undefined, boolean>;
@@ -23675,7 +23872,7 @@ export declare const mentionEmits: {
     focus: (evt: FocusEvent) => boolean;
     blur: (evt: FocusEvent) => boolean;
 };
-export declare type MentionInstance = InstanceType<typeof _default_110> & unknown;
+export declare type MentionInstance = InstanceType<typeof _default_111> & unknown;
 export declare type MentionOption = {
     value?: string;
     label?: string;
@@ -23941,7 +24138,7 @@ export declare const menuEmits: {
     open: (index: string, indexPath: string[]) => boolean;
     select: (index: string, indexPath: string[], item: MenuItemClicked, routerResult?: Promise<void | NavigationFailure>) => boolean;
 };
-export declare type MenuInstance = InstanceType<typeof _default_57> & {
+export declare type MenuInstance = InstanceType<typeof _default_58> & {
     open: (index: string) => void;
     close: (index: string) => void;
     handleResize: () => void;
@@ -23956,7 +24153,7 @@ export declare type MenuItemEmits = typeof menuItemEmits;
 export declare const menuItemEmits: {
     click: (item: MenuItemRegistered) => boolean;
 };
-export declare type MenuItemGroupInstance = InstanceType<typeof _default_59> & unknown;
+export declare type MenuItemGroupInstance = InstanceType<typeof _default_60> & unknown;
 export declare type MenuItemGroupProps = ExtractPropTypes<typeof menuItemGroupProps>;
 export declare const menuItemGroupProps: {
     /**
@@ -23965,7 +24162,7 @@ export declare const menuItemGroupProps: {
     readonly title: StringConstructor;
 };
 export declare type MenuItemGroupPropsPublic = __ExtractPublicPropTypes<typeof menuItemGroupProps>;
-export declare type MenuItemInstance = InstanceType<typeof _default_58> & unknown;
+export declare type MenuItemInstance = InstanceType<typeof _default_59> & unknown;
 export declare type MenuItemProps = ExtractPropTypes<typeof menuItemProps>;
 export declare const menuItemProps: {
     readonly index: EpPropFinalized<(new (...args: any[]) => string) | (() => string | null) | ((new (...args: any[]) => string) | (() => string | null))[], unknown, unknown, null, boolean>;
@@ -24130,7 +24327,7 @@ export declare interface MessageHandler {
      */
     close: () => void;
 }
-export declare type MessageInstance = InstanceType<typeof _default_113> & unknown;
+export declare type MessageInstance = InstanceType<typeof _default_114> & unknown;
 export declare type MessageOptions = Partial<Mutable<Omit<MessageProps, "id"> & {
     appendTo?: HTMLElement | string;
 }>>;
@@ -24278,7 +24475,7 @@ export declare const notificationEmits: {
 export declare interface NotificationHandle {
     close: () => void;
 }
-export declare type NotificationInstance = InstanceType<typeof _default_114> & unknown;
+export declare type NotificationInstance = InstanceType<typeof _default_115> & unknown;
 declare type NotificationOptions_2 = Omit<NotificationProps, "id" | "onClose"> & {
     /**
      * @description set the root element for the notification, default to `document.body`
@@ -24489,7 +24686,7 @@ export declare type PageHeaderEmits = typeof pageHeaderEmits;
 export declare const pageHeaderEmits: {
     back: () => boolean;
 };
-export declare type PageHeaderInstance = InstanceType<typeof _default_61> & unknown;
+export declare type PageHeaderInstance = InstanceType<typeof _default_62> & unknown;
 export declare type PageHeaderProps = ExtractPropTypes<typeof pageHeaderProps>;
 export declare const pageHeaderProps: {
     readonly icon: EpPropFinalized<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown, () => any, boolean>;
@@ -24599,7 +24796,7 @@ export declare const popconfirmEmits: {
      */
     cancel: (e: MouseEvent) => boolean;
 };
-export declare type PopconfirmInstance = InstanceType<typeof _default_63> & unknown;
+export declare type PopconfirmInstance = InstanceType<typeof _default_64> & unknown;
 export declare type PopconfirmProps = ExtractPropTypes<typeof popconfirmProps>;
 export declare const popconfirmProps: {
     readonly title: StringConstructor;
@@ -24641,7 +24838,7 @@ export declare const popoverEmits: {
     "after-enter": () => boolean;
     "after-leave": () => boolean;
 };
-export declare type PopoverInstance = InstanceType<typeof _default_116> & unknown;
+export declare type PopoverInstance = InstanceType<typeof _default_117> & unknown;
 export declare type PopoverProps = ExtractPropTypes<typeof popoverProps>;
 export declare const popoverProps: {
     readonly trigger: EpPropFinalized<(new (...args: any[]) => "click" | "focus" | "contextmenu" | "hover" | TooltipTriggerType[]) | (() => Arrayable<TooltipTriggerType>) | ((new (...args: any[]) => "click" | "focus" | "contextmenu" | "hover" | TooltipTriggerType[]) | (() => Arrayable<TooltipTriggerType>))[], unknown, unknown, "hover", boolean>;
@@ -24967,7 +25164,7 @@ export declare type ProgressColor = {
     percentage: number;
 };
 export declare type ProgressFn = (percentage: number) => string;
-export declare type ProgressInstance = InstanceType<typeof _default_64> & unknown;
+export declare type ProgressInstance = InstanceType<typeof _default_65> & unknown;
 export declare type ProgressProps = ExtractPropTypes<typeof progressProps>;
 export declare const progressProps: {
     readonly type: EpPropFinalized<StringConstructor, "circle" | "line" | "dashboard", unknown, "line", boolean>;
@@ -25020,7 +25217,7 @@ declare interface Props_2 {
 }
 export declare type PropValidator<T> = (props: T) => void;
 export declare const provideGlobalConfig: (config: MaybeRef<ConfigProviderContext>, app?: App, global?: boolean) => ComputedRef<Partial<ConfigProviderProps>> | undefined;
-export declare type RadioButtonInstance = InstanceType<typeof _default_66> & unknown;
+export declare type RadioButtonInstance = InstanceType<typeof _default_67> & unknown;
 export declare type RadioButtonProps = ExtractPropTypes<typeof radioButtonProps>;
 export declare const radioButtonProps: {
     readonly modelValue: EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
@@ -25050,7 +25247,7 @@ export declare const radioGroupEmits: {
     "update:modelValue": (val: string | number | boolean | undefined) => val is string | number | boolean;
     change: (val: string | number | boolean | undefined) => val is string | number | boolean;
 };
-export declare type RadioGroupInstance = InstanceType<typeof _default_67> & unknown;
+export declare type RadioGroupInstance = InstanceType<typeof _default_68> & unknown;
 export declare const radioGroupKey: InjectionKey<RadioGroupContext>;
 export declare type RadioGroupProps = ExtractPropTypes<typeof radioGroupProps>;
 export declare const radioGroupProps: {
@@ -25063,6 +25260,7 @@ export declare const radioGroupProps: {
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly error: BooleanConstructor;
     readonly modelValue: EpPropFinalized<readonly [
         StringConstructor,
         NumberConstructor,
@@ -25082,7 +25280,7 @@ export declare const radioGroupProps: {
     readonly type: EpPropFinalized<StringConstructor, "button" | "radio", unknown, "radio", boolean>;
 };
 export declare type RadioGroupPropsPublic = __ExtractPublicPropTypes<typeof radioGroupProps>;
-export declare type RadioInstance = InstanceType<typeof _default_65> & unknown;
+export declare type RadioInstance = InstanceType<typeof _default_66> & unknown;
 export declare type radioOption = RadioPropsPublic & Record<string, any>;
 export declare type radioOptionProp = {
     value?: string;
@@ -25091,6 +25289,7 @@ export declare type radioOptionProp = {
 };
 export declare type RadioProps = ExtractPropTypes<typeof radioProps>;
 export declare const radioProps: {
+    readonly error: BooleanConstructor;
     readonly border: BooleanConstructor;
     readonly modelValue: EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     readonly size: {
@@ -25124,7 +25323,7 @@ export declare const rateEmits: {
     change: (value: number) => boolean;
     "update:modelValue": (value: number) => boolean;
 };
-export declare type RateInstance = InstanceType<typeof _default_68> & unknown;
+export declare type RateInstance = InstanceType<typeof _default_69> & unknown;
 export declare type RateProps = ExtractPropTypes<typeof rateProps>;
 export declare const rateProps: {
     readonly ariaLabel: StringConstructor;
@@ -25225,7 +25424,7 @@ declare type ResolvePropType<T> = IfNever<T, never, ExtractPropType<{
     type: WritableArray<T>;
     required: true;
 }>>;
-export declare type ResultInstance = InstanceType<typeof _default_69> & unknown;
+export declare type ResultInstance = InstanceType<typeof _default_70> & unknown;
 export declare type ResultProps = ExtractPropTypes<typeof resultProps>;
 export declare const resultProps: {
     readonly title: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -25323,7 +25522,7 @@ export declare type RowInsertParams<T> = {
     insertIndex: number;
     event: MouseEvent;
 };
-export declare type RowInstance = InstanceType<typeof _default_70> & unknown;
+export declare type RowInstance = InstanceType<typeof _default_71> & unknown;
 export declare const RowJustify: readonly [
     "start",
     "center",
@@ -25365,7 +25564,7 @@ export declare const scrollbarEmits: {
 export declare type ScrollbarExpose = {
     onMouseUp: () => void;
 };
-export declare type ScrollbarInstance = InstanceType<typeof _default_71> & unknown;
+export declare type ScrollbarInstance = InstanceType<typeof _default_72> & unknown;
 export declare type ScrollbarProps = ExtractPropTypes<typeof scrollbarProps>;
 export declare const scrollbarProps: {
     readonly ariaLabel: StringConstructor;
@@ -25423,7 +25622,7 @@ export declare const segmentedEmits: {
     "update:modelValue": (val: any) => val is string | number | boolean;
     change: (val: any) => val is string | number | boolean;
 };
-export declare type SegmentedInstance = InstanceType<typeof _default_109> & unknown;
+export declare type SegmentedInstance = InstanceType<typeof _default_110> & unknown;
 export declare type SegmentedProps = ExtractPropTypes<typeof segmentedProps>;
 export declare const segmentedProps: {
     ariaLabel: StringConstructor;
@@ -25482,7 +25681,7 @@ declare interface SelectGroupContext {
     disabled: boolean;
 }
 export declare const selectGroupKey: InjectionKey<SelectGroupContext>;
-export declare type SelectInstance = InstanceType<typeof _default_73> & unknown;
+export declare type SelectInstance = InstanceType<typeof _default_74> & unknown;
 export declare const selectKey: InjectionKey<SelectContext>;
 export declare type SelectOptionProps = Props_2;
 export declare type SelectOptionProxy = ComponentPublicInstance<OptionProps, OptionExposed>;
@@ -25668,7 +25867,7 @@ export declare interface SelectV2Context {
     onKeyboardSelect: () => void;
 }
 export declare const selectV2InjectionKey: InjectionKey<SelectV2Context>;
-export declare type SelectV2Instance = InstanceType<typeof _default_76> & unknown;
+export declare type SelectV2Instance = InstanceType<typeof _default_77> & unknown;
 declare type SelectV2ModelValue = any[] | string | number | boolean | Record<string, any> | any;
 export declare type SelectV2Props = ExtractPropTypes<typeof selectV2Props>;
 declare const selectV2Props: {
@@ -25944,8 +26143,8 @@ export declare const SIZE_INJECTION_KEY: InjectionKey<SizeContext>;
 export declare interface SizeContext {
     size: Ref<ComponentSize>;
 }
-export declare type SkeletonInstance = InstanceType<typeof _default_77> & unknown;
-export declare type SkeletonItemInstance = InstanceType<typeof _default_78> & unknown;
+export declare type SkeletonInstance = InstanceType<typeof _default_78> & unknown;
+export declare type SkeletonItemInstance = InstanceType<typeof _default_79> & unknown;
 export declare type SkeletonItemProps = ExtractPropTypes<typeof skeletonItemProps>;
 export declare const skeletonItemProps: {
     readonly variant: EpPropFinalized<StringConstructor, "button" | "caption" | "h1" | "h3" | "p" | "circle" | "image" | "rect" | "text", unknown, "text", boolean>;
@@ -25994,7 +26193,7 @@ export declare interface SliderInitData {
     dragging: boolean;
     sliderSize: number;
 }
-export declare type SliderInstance = InstanceType<typeof _default_79> & unknown;
+export declare type SliderInstance = InstanceType<typeof _default_80> & unknown;
 declare type SliderMarkerProps = ExtractPropTypes<typeof sliderMarkerProps>;
 declare const sliderMarkerProps: {
     readonly mark: EpPropFinalized<(new (...args: any[]) => string | {
@@ -26224,8 +26423,8 @@ export declare const spaceProps: {
     };
 };
 export declare type SpacePropsPublic = __ExtractPublicPropTypes<typeof spaceProps>;
-export declare type SplitterInstance = InstanceType<typeof _default_111> & unknown;
-export declare type SplitterPanelInstance = InstanceType<typeof _default_112> & unknown;
+export declare type SplitterInstance = InstanceType<typeof _default_112> & unknown;
+export declare type SplitterPanelInstance = InstanceType<typeof _default_113> & unknown;
 export declare type SplitterPanelProps = ExtractPropTypes<typeof splitterPanelProps>;
 export declare const splitterPanelProps: {
     readonly min: {
@@ -26265,7 +26464,7 @@ export declare const splitterProps: {
     readonly lazy: BooleanConstructor;
 };
 export declare type SplitterPropsPublic = __ExtractPublicPropTypes<typeof splitterProps>;
-export declare type StatisticInstance = InstanceType<typeof _default_80> & unknown;
+export declare type StatisticInstance = InstanceType<typeof _default_81> & unknown;
 export declare type StatisticProps = ExtractPropTypes<typeof statisticProps>;
 export declare const statisticProps: {
     readonly decimalSeparator: EpPropFinalized<StringConstructor, unknown, unknown, ".", boolean>;
@@ -26284,7 +26483,7 @@ export declare const statisticProps: {
     };
 };
 export declare type StatisticPropsPublic = __ExtractPublicPropTypes<typeof statisticProps>;
-export declare type StepInstance = InstanceType<typeof _default_82> & unknown;
+export declare type StepInstance = InstanceType<typeof _default_83> & unknown;
 export declare type StepProps = ExtractPropTypes<typeof stepProps>;
 export declare const stepProps: {
     readonly title: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -26303,7 +26502,7 @@ export declare type StepsEmits = typeof stepsEmits;
 export declare const stepsEmits: {
     change: (newVal: number, oldVal: number) => boolean;
 };
-export declare type StepsInstance = InstanceType<typeof _default_81> & unknown;
+export declare type StepsInstance = InstanceType<typeof _default_82> & unknown;
 export declare type StepsProps = ExtractPropTypes<typeof stepsProps>;
 export declare const stepsProps: {
     readonly space: EpPropFinalized<readonly [
@@ -26331,7 +26530,7 @@ export declare type StepsPropsPublic = __ExtractPublicPropTypes<typeof stepsProp
 declare type Store<T extends DefaultRow> = HelperStore<T>["Return"];
 declare type StoreFilter = Record<string, string[]>;
 export declare const SUB_MENU_INJECTION_KEY = "subMenu:";
-export declare type SubMenuInstance = InstanceType<typeof _default_60> & unknown;
+export declare type SubMenuInstance = InstanceType<typeof _default_61> & unknown;
 export declare type SubMenuProps = ExtractPropTypes<typeof subMenuProps>;
 export declare const subMenuProps: {
     readonly index: {
@@ -26395,7 +26594,7 @@ export declare const switchEmits: {
     change: (val: boolean | string | number) => boolean;
     input: (val: boolean | string | number) => boolean;
 };
-export declare type SwitchInstance = InstanceType<typeof _default_83> & unknown;
+export declare type SwitchInstance = InstanceType<typeof _default_84> & unknown;
 export declare type SwitchProps = ExtractPropTypes<typeof switchProps>;
 export declare const switchProps: {
     readonly ariaLabel: StringConstructor;
@@ -26473,7 +26672,7 @@ export declare const switchProps: {
     };
 };
 export declare type SwitchPropsPublic = __ExtractPublicPropTypes<typeof switchProps>;
-export declare type TabBarInstance = InstanceType<typeof _default_89> & unknown;
+export declare type TabBarInstance = InstanceType<typeof _default_90> & unknown;
 export declare type TabBarProps = ExtractPropTypes<typeof tabBarProps>;
 export declare const tabBarProps: {
     readonly tabs: EpPropFinalized<(new (...args: any[]) => {
@@ -26645,7 +26844,7 @@ export declare type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     allowInsertBeforeFirstColumn: boolean;
     renderEditCell?: (data: any) => VNode | VNode[];
 };
-export declare type TableColumnInstance = InstanceType<typeof _default_85> & unknown;
+export declare type TableColumnInstance = InstanceType<typeof _default_86> & unknown;
 declare const TableGrid: DefineComponent<{
     readonly columns: {
         readonly type: PropType<AnyColumn[]>;
@@ -26880,7 +27079,7 @@ declare interface TableHeader extends ComponentInternalInstance {
     };
     filterPanels: Ref<DefaultRow>;
 }
-export declare type TableInstance = InstanceType<typeof _default_84> & unknown;
+export declare type TableInstance = InstanceType<typeof _default_85> & unknown;
 declare class TableLayout<T extends DefaultRow> {
     observers: TableHeader[];
     table: Table<T>;
@@ -28071,7 +28270,7 @@ export declare const tabNavProps: {
     readonly stretch: BooleanConstructor;
 };
 export declare type TabNavPropsPublic = __ExtractPublicPropTypes<typeof tabNavProps>;
-export declare type TabPaneInstance = InstanceType<typeof _default_88> & unknown;
+export declare type TabPaneInstance = InstanceType<typeof _default_89> & unknown;
 export declare type TabPaneName = string | number;
 export declare type TabPaneProps = ExtractPropTypes<typeof tabPaneProps>;
 export declare const tabPaneProps: {
@@ -28262,7 +28461,7 @@ export declare const tagEmits: {
     close: (evt: MouseEvent) => boolean;
     click: (evt: MouseEvent) => boolean;
 };
-export declare type TagInstance = InstanceType<typeof _default_90> & unknown;
+export declare type TagInstance = InstanceType<typeof _default_91> & unknown;
 export declare type TagProps = ExtractPropTypes<typeof tagProps>;
 export declare const tagProps: {
     readonly type: EpPropFinalized<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown, "primary", boolean>;
@@ -28302,7 +28501,7 @@ export declare type ThrottleType = {
     trailing?: number;
     initVal?: boolean;
 } | number;
-export declare type ThumbInstance = InstanceType<typeof _default_72> & unknown;
+export declare type ThumbInstance = InstanceType<typeof _default_73> & unknown;
 export declare type ThumbProps = ExtractPropTypes<typeof thumbProps>;
 export declare const thumbProps: {
     readonly vertical: BooleanConstructor;
@@ -28322,7 +28521,7 @@ declare const Timeline: DefineComponent<{}, () => VNode<RendererNode, RendererEl
 }>, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, EmitsOptions, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{}>>, {}>;
 export declare const TIMELINE_INJECTION_KEY = "timeline";
 export declare type TimelineInstance = InstanceType<typeof Timeline> & unknown;
-export declare type TimelineItemInstance = InstanceType<typeof _default_94> & unknown;
+export declare type TimelineItemInstance = InstanceType<typeof _default_95> & unknown;
 export declare type TimelineItemProps = ExtractPropTypes<typeof timelineItemProps>;
 export declare const timelineItemProps: {
     readonly timestamp: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -28583,7 +28782,7 @@ export declare const TimePickPanel: DefineComponent<{
     readonly format: string;
     readonly actualVisible: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-export declare type TimeSelectInstance = InstanceType<typeof _default_93> & unknown;
+export declare type TimeSelectInstance = InstanceType<typeof _default_94> & unknown;
 export declare type TimeSelectProps = ExtractPropTypes<typeof timeSelectProps>;
 export declare const timeSelectProps: {
     readonly emptyValues: ArrayConstructor;
@@ -28679,7 +28878,7 @@ export declare interface TourGap {
     ];
     radius?: number;
 }
-export declare type TourInstance = InstanceType<typeof _default_105> & unknown;
+export declare type TourInstance = InstanceType<typeof _default_106> & unknown;
 export declare type TourMask = boolean | {
     style?: CSSProperties;
     color?: string;
@@ -28827,9 +29026,9 @@ export declare interface TransferFormat {
     noChecked?: string;
     hasChecked?: string;
 }
-export declare type TransferInstance = InstanceType<typeof _default_95> & unknown;
+export declare type TransferInstance = InstanceType<typeof _default_96> & unknown;
 export declare type TransferKey = string | number;
-declare type TransferPanelInstance = InstanceType<typeof _default_96> & unknown;
+declare type TransferPanelInstance = InstanceType<typeof _default_97> & unknown;
 export declare type TransferProps = ExtractPropTypes<typeof transferProps>;
 export declare const transferProps: {
     readonly data: EpPropFinalized<(new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]) | ((new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]))[], unknown, unknown, () => never[], boolean>;
@@ -28951,7 +29150,7 @@ export declare const treeEmits: {
     "node-drag-enter": (draggingNode: Node_2, dropNode: Node_2, evt: DragEvent) => DragEvent;
     "node-drag-over": (draggingNode: Node_2, dropNode: Node_2, evt: DragEvent) => DragEvent;
 };
-export declare type TreeInstance = InstanceType<typeof _default_97> & unknown;
+export declare type TreeInstance = InstanceType<typeof _default_98> & unknown;
 export declare type TreeKey = string | number;
 declare type TreeKey_2 = string | number;
 export declare interface TreeNode {
@@ -29083,7 +29282,7 @@ export declare interface TreeStoreOptions {
     defaultExpandAll: boolean;
     filterNodeMethod?: FilterNodeMethodFunction;
 }
-export declare type TreeV2Instance = InstanceType<typeof _default_99> & unknown;
+export declare type TreeV2Instance = InstanceType<typeof _default_100> & unknown;
 declare const triggers: readonly [
     "click",
     "contextmenu",
@@ -29141,7 +29340,7 @@ export declare const uploadBaseProps: {
     readonly disabled: BooleanConstructor;
     readonly limit: NumberConstructor;
 };
-export declare type UploadContentInstance = InstanceType<typeof _default_101> & unknown;
+export declare type UploadContentInstance = InstanceType<typeof _default_102> & unknown;
 export declare type UploadContentProps = ExtractPropTypes<typeof uploadContentProps>;
 export declare const uploadContentProps: {
     readonly beforeUpload: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
@@ -29249,7 +29448,7 @@ export declare type UploadDraggerEmits = typeof uploadDraggerEmits;
 export declare const uploadDraggerEmits: {
     file: (file: File[]) => boolean;
 };
-export declare type UploadDraggerInstance = InstanceType<typeof _default_103> & unknown;
+export declare type UploadDraggerInstance = InstanceType<typeof _default_104> & unknown;
 export declare type UploadDraggerProps = ExtractPropTypes<typeof uploadDraggerProps>;
 export declare const uploadDraggerProps: {
     readonly disabled: BooleanConstructor;
@@ -29277,12 +29476,12 @@ export declare interface UploadHooks {
     onError: (error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => void;
     onExceed: (files: File[], uploadFiles: UploadUserFile[]) => void;
 }
-export declare type UploadInstance = InstanceType<typeof _default_100> & unknown;
+export declare type UploadInstance = InstanceType<typeof _default_101> & unknown;
 export declare type UploadListEmits = typeof uploadListEmits;
 export declare const uploadListEmits: {
     remove: (file: UploadFile) => boolean;
 };
-export declare type UploadListInstance = InstanceType<typeof _default_102> & unknown;
+export declare type UploadListInstance = InstanceType<typeof _default_103> & unknown;
 export declare type UploadListProps = ExtractPropTypes<typeof uploadListProps>;
 export declare const uploadListProps: {
     readonly files: EpPropFinalized<(new (...args: any[]) => UploadFiles) | (() => UploadFiles) | ((new (...args: any[]) => UploadFiles) | (() => UploadFiles))[], unknown, unknown, () => never[], boolean>;
@@ -31102,7 +31301,7 @@ export declare interface WatermarkFontType {
     textAlign?: "start" | "end" | "left" | "right" | "center";
     textBaseline?: "top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom";
 }
-export declare type WatermarkInstance = InstanceType<typeof _default_104> & unknown;
+export declare type WatermarkInstance = InstanceType<typeof _default_105> & unknown;
 export declare type WatermarkProps = ExtractPropTypes<typeof watermarkProps>;
 export declare const watermarkProps: {
     readonly zIndex: EpPropFinalized<NumberConstructor, unknown, unknown, 9, boolean>;

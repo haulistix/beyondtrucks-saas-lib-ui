@@ -3,6 +3,7 @@ import { radioGroupKey } from './constants.mjs';
 import { isPropAbsent } from '../../../utils/types.mjs';
 import { UPDATE_MODEL_EVENT } from '../../../constants/event.mjs';
 import { useFormSize, useFormDisabled } from '../../form/src/hooks/use-form-common-props.mjs';
+import { useFormItem } from '../../form/src/hooks/use-form-item.mjs';
 import { useDeprecated } from '../../../hooks/use-deprecated/index.mjs';
 
 const useRadio = (props, emit) => {
@@ -30,6 +31,8 @@ const useRadio = (props, emit) => {
   });
   const size = useFormSize(computed(() => radioGroup == null ? void 0 : radioGroup.size));
   const disabled = useFormDisabled(computed(() => radioGroup == null ? void 0 : radioGroup.disabled));
+  const { formItem } = useFormItem();
+  const error = computed(() => "error" in props && props.error || (radioGroup == null ? void 0 : radioGroup.error) || (formItem == null ? void 0 : formItem.validateState) === "error");
   const focus = ref(false);
   const tabIndex = computed(() => {
     return disabled.value || isGroup.value && modelValue.value !== actualValue.value ? -1 : 0;
@@ -48,6 +51,7 @@ const useRadio = (props, emit) => {
     focus,
     size,
     disabled,
+    error,
     tabIndex,
     modelValue,
     actualValue

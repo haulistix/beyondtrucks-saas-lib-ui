@@ -77,8 +77,8 @@ declare const __VLS_component: import("vue").DefineComponent<{
     input: (value: string) => void;
     clear: () => void;
     blur: (evt: FocusEvent) => void;
-    "add-tag": (value: string | string[]) => void;
     "remove-tag": (value: string, index: number) => void;
+    "add-tag": (value: string | string[]) => void;
     "drag-tag": (oldIndex: number, newIndex: number, value: string) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     readonly modelValue: {
@@ -144,8 +144,8 @@ declare const __VLS_component: import("vue").DefineComponent<{
     onBlur?: ((evt: FocusEvent) => any) | undefined;
     onInput?: ((value: string) => any) | undefined;
     onClear?: (() => any) | undefined;
-    "onAdd-tag"?: ((value: string | string[]) => any) | undefined;
     "onRemove-tag"?: ((value: string, index: number) => any) | undefined;
+    "onAdd-tag"?: ((value: string | string[]) => any) | undefined;
     "onDrag-tag"?: ((oldIndex: number, newIndex: number, value: string) => any) | undefined;
 }, {
     readonly disabled: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;

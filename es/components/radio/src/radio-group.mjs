@@ -1,9 +1,9 @@
-import { defineComponent, ref, onMounted, computed, provide, reactive, toRefs, watch, openBlock, createElementBlock, unref, normalizeClass, renderSlot, Fragment, renderList, createBlock, resolveDynamicComponent, mergeProps, nextTick } from 'vue';
+import { defineComponent, ref, computed, onMounted, provide, reactive, toRefs, watch, openBlock, createElementBlock, unref, normalizeClass, renderSlot, Fragment, renderList, createBlock, resolveDynamicComponent, mergeProps, nextTick } from 'vue';
 import { radioGroupProps, radioGroupEmits, radioDefaultProps } from './radio-group2.mjs';
 import { radioGroupKey } from './constants.mjs';
 import { isEqual, omit } from 'lodash-unified';
-import Radio from './radio.mjs';
-import RadioButton from './radio-button2.mjs';
+import Radio from './radio2.mjs';
+import RadioButton from './radio-button.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { useId } from '../../../hooks/use-id/index.mjs';
@@ -24,6 +24,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const radioId = useId();
     const radioGroupRef = ref();
     const { formItem } = useFormItem();
+    const isError = computed(() => props.error || (formItem == null ? void 0 : formItem.validateState) === "error");
     const { inputId: groupId, isLabeledByFormItem } = useFormItemInputId(props, {
       formItemContext: formItem
     });
@@ -70,7 +71,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         id: unref(groupId),
         ref_key: "radioGroupRef",
         ref: radioGroupRef,
-        class: normalizeClass(unref(ns).b("group")),
+        class: normalizeClass([unref(ns).b("group"), unref(ns).is("error", unref(isError))]),
         role: "radiogroup",
         "aria-label": !unref(isLabeledByFormItem) ? _ctx.ariaLabel || "radio-group" : void 0,
         "aria-labelledby": unref(isLabeledByFormItem) ? unref(formItem).labelId : void 0

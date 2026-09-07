@@ -73,6 +73,8 @@ declare const _default: import("vue").DefineComponent<{
     hoverItem: () => void;
     updateOption: (query: string) => void;
     selectOptionClick: () => void;
+    handleGroupCheckboxClick: (event: MouseEvent) => void;
+    handleGroupCheckboxChange: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     value: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>>;

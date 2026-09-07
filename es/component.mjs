@@ -32,6 +32,7 @@ import { ElIcon } from './components/icon/index.mjs';
 import { ElImage } from './components/image/index.mjs';
 import { ElImageViewer } from './components/image-viewer/index.mjs';
 import { ElInput } from './components/input/index.mjs';
+import { ElInputSelect } from './components/input-select/index.mjs';
 import { ElInputNumber } from './components/input-number/index.mjs';
 import { ElInputTag } from './components/input-tag/index.mjs';
 import { ElLink } from './components/link/index.mjs';
@@ -127,6 +128,7 @@ var Components = [
   ElImage,
   ElImageViewer,
   ElInput,
+  ElInputSelect,
   ElInputNumber,
   ElInputTag,
   ElLink,

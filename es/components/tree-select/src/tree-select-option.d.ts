@@ -121,6 +121,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             hoverItem: () => void;
             updateOption: (query: string) => void;
             selectOptionClick: () => void;
+            handleGroupCheckboxClick: (event: MouseEvent) => void;
+            handleGroupCheckboxChange: () => void;
         }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, {
             disabled: boolean;
             created: boolean;
@@ -221,6 +223,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         hoverItem: () => void;
         updateOption: (query: string) => void;
         selectOptionClick: () => void;
+        handleGroupCheckboxClick: (event: MouseEvent) => void;
+        handleGroupCheckboxChange: () => void;
     }> & {} & import("vue").ComponentCustomProperties;
     __isFragment?: never;
     __isTeleport?: never;
@@ -300,6 +304,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
     hoverItem: () => void;
     updateOption: (query: string) => void;
     selectOptionClick: () => void;
+    handleGroupCheckboxClick: (event: MouseEvent) => void;
+    handleGroupCheckboxChange: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, {
     disabled: boolean;
     created: boolean;
@@ -427,6 +433,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             hoverItem: () => void;
             updateOption: (query: string) => void;
             selectOptionClick: () => void;
+            handleGroupCheckboxClick: (event: MouseEvent) => void;
+            handleGroupCheckboxChange: () => void;
         }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, {
             disabled: boolean;
             created: boolean;
@@ -527,6 +535,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         hoverItem: () => void;
         updateOption: (query: string) => void;
         selectOptionClick: () => void;
+        handleGroupCheckboxClick: (event: MouseEvent) => void;
+        handleGroupCheckboxChange: () => void;
     }> & {} & import("vue").ComponentCustomProperties;
     __isFragment?: never;
     __isTeleport?: never;
@@ -606,6 +616,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
     hoverItem: () => void;
     updateOption: (query: string) => void;
     selectOptionClick: () => void;
+    handleGroupCheckboxClick: (event: MouseEvent) => void;
+    handleGroupCheckboxChange: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, {
     disabled: boolean;
     created: boolean;

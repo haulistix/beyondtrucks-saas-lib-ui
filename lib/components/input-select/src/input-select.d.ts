@@ -1,0 +1,32 @@
+import type { ExtractPropTypes, __ExtractPublicPropTypes } from 'vue';
+import type { InputPropsPublic } from 'element-plus/es/components/input';
+import type { SelectPropsPublic } from 'element-plus/es/components/select';
+export declare const inputSelectControlTypes: readonly ["input", "select"];
+export type InputSelectControl = (typeof inputSelectControlTypes)[number];
+export type InputSelectLayout = ['input', 'select'] | ['select', 'select'] | ['select', 'input'] | ['input', 'input'];
+export type InputSelectValue = InputPropsPublic['modelValue'] | SelectPropsPublic['modelValue'];
+export type InputSelectControlProps = Partial<Omit<InputPropsPublic, 'modelValue'>> | Partial<Omit<SelectPropsPublic, 'modelValue'>>;
+export declare const inputSelectProps: {
+    readonly layout: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => InputSelectLayout) | ((new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => InputSelectLayout))[], unknown, InputSelectLayout, () => InputSelectLayout, boolean>;
+    readonly leftValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly rightValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly leftProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+};
+export declare const inputSelectEmits: {
+    'update:leftValue': (_value: InputSelectValue) => boolean;
+    'update:rightValue': (_value: InputSelectValue) => boolean;
+    'left-change': (_value: InputSelectValue) => boolean;
+    'right-change': (_value: InputSelectValue) => boolean;
+    'left-focus': (event: FocusEvent) => boolean;
+    'right-focus': (event: FocusEvent) => boolean;
+    'left-blur': (event: FocusEvent) => boolean;
+    'right-blur': (event: FocusEvent) => boolean;
+    'left-clear': () => boolean;
+    'right-clear': () => boolean;
+    'left-visible-change': (visible: boolean) => boolean;
+    'right-visible-change': (visible: boolean) => boolean;
+};
+export type InputSelectProps = ExtractPropTypes<typeof inputSelectProps>;
+export type InputSelectPropsPublic = __ExtractPublicPropTypes<typeof inputSelectProps>;
+export type InputSelectEmits = typeof inputSelectEmits;

@@ -1,4 +1,4 @@
-import { radioEmits } from './radio2.mjs';
+import { radioEmits } from './radio.mjs';
 import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs';
 import { useSizeProp } from '../../../hooks/use-size/index.mjs';
 import { useAriaProps } from '../../../hooks/use-aria/index.mjs';
@@ -10,6 +10,7 @@ const radioGroupProps = buildProps({
   },
   size: useSizeProp,
   disabled: Boolean,
+  error: Boolean,
   modelValue: {
     type: [String, Number, Boolean],
     default: void 0

@@ -12,17 +12,21 @@
   & > .#{$namespace}-button {
     float: left;
     position: relative;
+
     & + .#{$namespace}-button {
       margin-left: 0;
     }
+
     &:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
+
     &:last-child {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
+
     &:first-child:last-child {
       border-top-right-radius: map.get($button-border-radius, 'default');
       border-bottom-right-radius: map.get($button-border-radius, 'default');
@@ -37,11 +41,13 @@
         border-radius: 50%;
       }
     }
+
     &:not(:first-child):not(:last-child) {
       border-radius: 0;
     }
-    &:not(:last-child) {
-      margin-right: -1px;
+
+    &:not(:first-child):not(.is-disabled) {
+      margin-left: -1px;
     }
 
     &:hover,
@@ -68,9 +74,11 @@
       &:first-child {
         border-right-color: getCssVar('button', 'divide-border-color');
       }
+
       &:last-child {
         border-left-color: getCssVar('button', 'divide-border-color');
       }
+
       &:not(:first-child):not(:last-child) {
         border-left-color: getCssVar('button', 'divide-border-color');
         border-right-color: getCssVar('button', 'divide-border-color');

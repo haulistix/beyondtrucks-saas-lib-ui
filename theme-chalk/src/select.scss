@@ -26,7 +26,10 @@
     display: flex;
     align-items: stretch;
     width: 100%;
-    height: map.get($input-height, 'default');
+
+    &:not(.is-multiple) {
+      height: map.get($input-height, 'default');
+    }
 
     @include when(append) {
       @include e(wrapper) {
@@ -49,8 +52,17 @@
     font-size: 14px;
     padding: 6px 12px;
     gap: map.get($select-item-gap, 'default');
-    height: map.get($input-height, 'default');
     min-height: map.get($input-height, 'default');
+
+    &:not(.is-multiple) {
+      height: map.get($input-height, 'default');
+    }
+
+    &.is-multiple {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+
     border-radius: getCssVar('border-radius-custom');
     background-color: getCssVar('fill-color', 'blank');
     transition: getCssVar('transition', 'duration');
@@ -320,7 +332,9 @@
   @each $size in (large, small) {
     @include m($size) {
       @include e(container) {
-        height: map.get($input-height, $size);
+        &:not(.is-multiple) {
+          height: map.get($input-height, $size);
+        }
       }
 
       @include e(append) {
@@ -330,8 +344,11 @@
       @include e(wrapper) {
         gap: map.get($select-item-gap, $size);
         padding: map.get($select-wrapper-padding, $size);
-        height: map.get($input-height, $size);
         min-height: map.get($input-height, $size);
+
+        &:not(.is-multiple) {
+          height: map.get($input-height, $size);
+        }
         line-height: map.get($select-item-height, $size);
         font-size: map.get($input-font-size, $size);
       }

@@ -38971,7 +38971,8 @@
           vue.createElementVNode("div", {
             class: vue.normalizeClass([
               _ctx.nsSelect.e("container"),
-              _ctx.nsSelect.is("append", !!_ctx.$slots.append)
+              _ctx.nsSelect.is("append", !!_ctx.$slots.append),
+              _ctx.nsSelect.is("multiple", _ctx.multiple)
             ])
           }, [
             vue.createVNode(_component_el_tooltip, {
@@ -39008,7 +39009,8 @@
                       _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
                       _ctx.nsSelect.is("filterable", _ctx.filterable),
                       _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-                      _ctx.nsSelect.is("value", _ctx.hasModelValue)
+                      _ctx.nsSelect.is("value", _ctx.hasModelValue),
+                      _ctx.nsSelect.is("multiple", _ctx.multiple)
                     ]),
                     onClick: vue.withModifiers(_ctx.handleSelectClick, ["prevent"])
                   }, [

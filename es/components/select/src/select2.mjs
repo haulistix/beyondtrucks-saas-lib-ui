@@ -251,7 +251,8 @@ function _sfc_render(_ctx, _cache) {
         createElementVNode("div", {
           class: normalizeClass([
             _ctx.nsSelect.e("container"),
-            _ctx.nsSelect.is("append", !!_ctx.$slots.append)
+            _ctx.nsSelect.is("append", !!_ctx.$slots.append),
+            _ctx.nsSelect.is("multiple", _ctx.multiple)
           ])
         }, [
           createVNode(_component_el_tooltip, {
@@ -288,7 +289,8 @@ function _sfc_render(_ctx, _cache) {
                     _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
                     _ctx.nsSelect.is("filterable", _ctx.filterable),
                     _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-                    _ctx.nsSelect.is("value", _ctx.hasModelValue)
+                    _ctx.nsSelect.is("value", _ctx.hasModelValue),
+                    _ctx.nsSelect.is("multiple", _ctx.multiple)
                   ]),
                   onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
                 }, [

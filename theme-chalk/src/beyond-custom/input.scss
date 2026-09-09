@@ -59,7 +59,7 @@
 
 .el-textarea {
   &.el-input--error {
-    .el-textarea__inner, .el-input__count:not(.is-outside), .float-label {
+    .el-textarea__inner, .el-input__count, .float-label {
       background-color: var(--color-red-200);
     }
   }

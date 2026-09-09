@@ -1,4 +1,4 @@
-import type { CSSProperties, ComponentPublicInstance, PropType } from 'vue';
+import type { ComponentPublicInstance, PropType } from 'vue';
 import type { ComponentSize } from 'element-plus/es/constants';
 import type { Action, MessageBoxState, MessageBoxType } from './message-box.type';
 declare const _default: import("vue").DefineComponent<{
@@ -84,7 +84,6 @@ declare const _default: import("vue").DefineComponent<{
     btnSize: import("vue").ComputedRef<"small" | "" | "default" | "large">;
     iconComponent: import("vue").ComputedRef<any>;
     confirmButtonClasses: import("vue").ComputedRef<string>;
-    boxStyle: import("vue").ComputedRef<CSSProperties>;
     rootRef: import("vue").Ref<HTMLElement | undefined>;
     focusStartRef: import("vue").Ref<HTMLElement | undefined>;
     headerRef: import("vue").Ref<HTMLElement | undefined>;
@@ -99,7 +98,6 @@ declare const _default: import("vue").DefineComponent<{
     handleAction: (action: Action) => void;
     t: import("element-plus/es/hooks").Translator;
     autofocus: import("vue").Ref<boolean>;
-    width: import("vue").Ref<string | number>;
     title: import("vue").Ref<string | undefined>;
     message: import("vue").Ref<string>;
     type: import("vue").Ref<"" | "error" | "primary" | "success" | "warning" | "info">;

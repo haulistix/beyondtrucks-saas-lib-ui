@@ -1,4 +1,4 @@
-import { defineComponent, shallowRef, ref, computed, onBeforeUnmount, watch, provide, unref, createVNode, isVNode, Fragment, mergeProps, nextTick } from 'vue';
+import { defineComponent, shallowRef, ref, computed, watch, provide, unref, createVNode, isVNode, Fragment, mergeProps, nextTick } from 'vue';
 import { useTable } from './use-table.mjs';
 import { ghostRowKey, ghostRowFieldKey, ghostRowSign, ghostRowTouchedSign, rowDeleteColumnWidth, rowAddKey, rowAddSign } from './private.mjs';
 import { ElButton } from '../../button/index.mjs';
@@ -25,7 +25,6 @@ function _isSlot(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 const COMPONENT_NAME = "ElTableV2";
-const GHOST_ROW_SCROLL_SHADOW_DURATION = 100;
 const TableV2 = defineComponent({
   name: COMPONENT_NAME,
   props: tableV2Props,
@@ -57,7 +56,6 @@ const TableV2 = defineComponent({
       isDynamic,
       isResetting,
       isScrolling,
-      hoveredRowIndex,
       bodyWidth,
       addRowHeight,
       effectiveHScrollbarSize,
@@ -100,23 +98,6 @@ const TableV2 = defineComponent({
     const isLegacyEditMode = computed(() => props.canEditTable && props.editable);
     const isGhostEditMode = computed(() => props.ghostTable && props.editTable);
     const isGhostRowVisible = computed(() => isGhostEditMode.value && props.showGhostRow);
-    const isBottomEditRowVisible = computed(() => isLegacyEditMode.value && !isGhostEditMode.value || isGhostRowVisible.value);
-    const isGhostRowScrolling = shallowRef(false);
-    let ghostRowScrollTimer;
-    const updateGhostRowScrolling = (scrollTop) => {
-      if (!isBottomEditRowVisible.value || scrollTop === unref(scrollPos).scrollTop) {
-        return;
-      }
-      isGhostRowScrolling.value = true;
-      clearTimeout(ghostRowScrollTimer);
-      ghostRowScrollTimer = setTimeout(() => {
-        isGhostRowScrolling.value = false;
-        ghostRowScrollTimer = void 0;
-      }, GHOST_ROW_SCROLL_SHADOW_DURATION);
-    };
-    onBeforeUnmount(() => {
-      clearTimeout(ghostRowScrollTimer);
-    });
     let stopPendingGhostRowScrollWatch;
     const clearAddColumnTrigger = () => {
       addColumnTrigger.value = null;
@@ -186,13 +167,11 @@ const TableV2 = defineComponent({
       return props.data.every((row) => requiredColumns.every((column) => !isEmptyRequiredValue(row == null ? void 0 : row[column.dataKey])));
     };
     const handleTableScroll = (params) => {
-      updateGhostRowScrolling(params.scrollTop);
       clearAddColumnTrigger();
       clearAddRowTrigger();
       onScroll(params);
     };
     const handleVerticalTableScroll = (params) => {
-      updateGhostRowScrolling(params.scrollTop);
       clearAddColumnTrigger();
       clearAddRowTrigger();
       onVerticalScroll(params);
@@ -357,7 +336,6 @@ const TableV2 = defineComponent({
         expandedRowKeys: unref(expandedRowKeys),
         estimatedRowHeight,
         hasFixedColumns: unref(hasFixedColumns),
-        hoveredRowIndex: unref(hoveredRowIndex),
         rowProps,
         rowClass,
         rowKey,
@@ -376,7 +354,6 @@ const TableV2 = defineComponent({
       const tableCellProps = {
         canEditTable: props.canEditTable,
         cellProps,
-        disableEmptyGhostRowSave: props.disableEmptyGhostRowSave,
         editable: props.editable,
         editTable: props.editTable,
         expandColumnKey,
@@ -444,7 +421,7 @@ const TableV2 = defineComponent({
           }
         })
       };
-      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll"), unref(isGhostRowScrolling) && ns.is("ghost-row-scrolling")];
+      const rootKls = [props.class, ns.b(), ns.e("root"), ns.is("dynamic", unref(isDynamic)), effectiveShowAddColumnTrigger.value && ns.m("with-add-column-trigger"), effectiveShowAddRowTrigger.value && ns.m("with-add-row-trigger"), (isLegacyEditMode.value || isGhostRowVisible.value) && ns.m("with-ghost-row"), !unref(hasHorizontalScrollbar) && ns.m("without-horizontal-scroll")];
       const footerProps = {
         class: ns.e("footer"),
         style: unref(footerHeight),
@@ -492,11 +469,11 @@ const TableV2 = defineComponent({
       }), createVNode(RightTable, rightTableProps, _isSlot(tableSlots) ? tableSlots : {
         default: () => [tableSlots]
       }), showAddRow && createVNode(Fragment, null, [createVNode("div", {
-        "class": [ns.e("add-row-main"), ns.is("ghost-row")],
+        "class": ns.e("add-row-main"),
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(mainColumns),
-        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": mainContentWidth,
         "width": unref(effectiveWidth)
       }), {
@@ -506,7 +483,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnLeft),
-        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": leftColumnsWidth,
         "width": leftColumnsWidth
       }), {
@@ -516,17 +493,17 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(addRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnRight),
-        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": rightColumnsWidth,
         "width": rightColumnsWidth
       }), {
         fixed: tableSlots.row
       })])]), showGhostRow && createVNode(Fragment, null, [createVNode("div", {
-        "class": [ns.e("add-row-main"), ns.is("ghost-row")],
+        "class": ns.e("add-row-main"),
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(mainColumns),
-        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-main-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": mainContentWidth,
         "width": unref(effectiveWidth)
       }), {
@@ -536,7 +513,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnLeft),
-        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-left-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": leftColumnsWidth,
         "width": leftColumnsWidth
       }), {
@@ -546,7 +523,7 @@ const TableV2 = defineComponent({
         "style": addRowWrapperStyle
       }, [createVNode(Header, mergeProps(ghostRowHeaderProps, tableHeaderProps, {
         "columns": unref(fixedColumnsOnRight),
-        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")} ${ns.is("ghost-row")}`,
+        "class": `${ns.e("add-row-right-inner")} ${ns.e("header-wrapper")}`,
         "rowWidth": rightColumnsWidth,
         "width": rightColumnsWidth
       }), {

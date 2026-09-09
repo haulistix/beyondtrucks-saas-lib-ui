@@ -28,7 +28,7 @@ declare class TableLayout<T extends DefaultRow> {
     getFlattenColumns(): TableColumnCtx<T>[];
     updateElsHeight(): void;
     headerDisplayNone(elm: HTMLElement): boolean;
-    updateColumnsWidth(distributeRemainingWidth?: boolean): void;
+    updateColumnsWidth(): void;
     addObserver(observer: TableHeader): void;
     removeObserver(observer: TableHeader): void;
     notifyObservers(event: string): void;

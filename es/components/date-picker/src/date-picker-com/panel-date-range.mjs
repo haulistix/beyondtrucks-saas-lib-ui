@@ -189,20 +189,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       rightDate.value = rightDate.value.subtract(1, "month");
       handlePanelChange("month");
     };
-    const handleLeftAdjacentDate = (date) => {
-      leftDate.value = date;
-      if (!props.unlinkPanels || !leftDate.value.isBefore(rightDate.value, unit)) {
-        rightDate.value = leftDate.value.add(1, unit);
-      }
-      handlePanelChange("month");
-    };
-    const handleRightAdjacentDate = (date) => {
-      rightDate.value = date;
-      if (!props.unlinkPanels || !rightDate.value.isAfter(leftDate.value, unit)) {
-        leftDate.value = rightDate.value.subtract(1, unit);
-      }
-      handlePanelChange("month");
-    };
     const enableMonthArrow = computed(() => {
       const nextMonth = (leftMonth.value + 1) % 12;
       const yearOffset = leftMonth.value + 1 >= 12 ? 1 : 0;
@@ -361,7 +347,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       emit("pick", valueOnClear);
     };
     const formatToString = (value) => {
-      return isArray(value) ? value.map((_) => _ ? _.format(format.value) : "") : value.format(format.value);
+      return isArray(value) ? value.map((_) => _.format(format.value)) : value.format(format.value);
     };
     const parseUserInput = (value) => {
       return correctlyParseUserInput(value, format.value, lang.value, isDefaultFormat);
@@ -666,7 +652,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 "cell-class-name": unref(cellClassName),
                 "show-week-number": _ctx.showWeekNumber,
                 onChangerange: unref(handleChangeRange),
-                onNavigate: handleLeftAdjacentDate,
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
               }, null, 8, ["date", "min-date", "max-date", "range-state", "range-pick-type", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
@@ -813,7 +798,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 "cell-class-name": unref(cellClassName),
                 "show-week-number": _ctx.showWeekNumber,
                 onChangerange: unref(handleChangeRange),
-                onNavigate: handleRightAdjacentDate,
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
               }, null, 8, ["date", "min-date", "max-date", "range-state", "range-pick-type", "cycle", "sett-default-date", "cycle-type", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),

@@ -4,7 +4,7 @@ import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { useProps } from '../../select-v2/src/useProps.mjs';
-import Option from './option2.mjs';
+import Option from './option.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
 import { useSelect } from './useSelect.mjs';
 import { selectKey } from './token.mjs';
@@ -13,9 +13,9 @@ import { selectProps } from './select.mjs';
 import OptionGroup from './option-group.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import ClickOutside from '../../../directives/click-outside/index.mjs';
-import { useCalcInputWidth } from '../../../hooks/use-calc-input-width/index.mjs';
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../constants/event.mjs';
 import { isArray, isObject } from '@vue/shared';
+import { useCalcInputWidth } from '../../../hooks/use-calc-input-width/index.mjs';
 import { isEmpty } from '../../../utils/types.mjs';
 import { flattedChildren } from '../../../utils/vue/vnode.mjs';
 
@@ -71,10 +71,7 @@ const _sfc_main = defineComponent({
     const { calculatorRef, inputStyle } = useCalcInputWidth();
     const { getLabel, getValue, getOptions, getDisabled, getTip } = useProps(props);
     const validateError = computed(() => (API == null ? void 0 : API.validateState.value) === "error");
-    const validateMsg = computed(() => {
-      var _a;
-      return String((_a = API == null ? void 0 : API.validateMessage.value) != null ? _a : "");
-    });
+    const validateMsg = computed(() => (API == null ? void 0 : API.validateMessage.value) || "");
     const showEmptyErrorTooltip = computed(() => props.inputType === "error" && !API.hasModelValue.value);
     const errorTooltipContent = computed(() => {
       if (validateError.value && validateMsg.value)
@@ -251,8 +248,7 @@ function _sfc_render(_ctx, _cache) {
         createElementVNode("div", {
           class: normalizeClass([
             _ctx.nsSelect.e("container"),
-            _ctx.nsSelect.is("append", !!_ctx.$slots.append),
-            _ctx.nsSelect.is("multiple", _ctx.multiple)
+            _ctx.nsSelect.is("append", !!_ctx.$slots.append)
           ])
         }, [
           createVNode(_component_el_tooltip, {
@@ -289,8 +285,7 @@ function _sfc_render(_ctx, _cache) {
                     _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
                     _ctx.nsSelect.is("filterable", _ctx.filterable),
                     _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-                    _ctx.nsSelect.is("value", _ctx.hasModelValue),
-                    _ctx.nsSelect.is("multiple", _ctx.multiple)
+                    _ctx.nsSelect.is("value", _ctx.hasModelValue)
                   ]),
                   onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
                 }, [
@@ -532,12 +527,12 @@ function _sfc_render(_ctx, _cache) {
                     }, {
                       default: withCtx(() => [
                         (openBlock(), createElementBlock("svg", {
-                          width: "24",
-                          height: "24",
-                          viewBox: "0 0 24 24",
-                          xmlns: "http://www.w3.org/2000/svg"
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "12",
+                          height: "12",
+                          viewBox: "0 0 12 12"
                         }, [
-                          createElementVNode("path", { d: "M5.00012 9H19.0001L12.7071 15.293C12.5196 15.4805 12.2653 15.5858 12.0001 15.5858C11.735 15.5858 11.4806 15.4805 11.2931 15.293L5.00012 9Z" })
+                          createElementVNode("path", { d: "M5.99992 7.75002C5.86862 7.75024 5.73856 7.72452 5.61723 7.67432C5.4959 7.62413 5.38569 7.55045 5.29292 7.45752L2.64642 4.81052L3.35342 4.10352L5.99992 6.75002L8.64642 4.10352L9.35342 4.81052L6.70692 7.45702C6.6142 7.55004 6.50401 7.62381 6.38267 7.67409C6.26134 7.72438 6.13126 7.75018 5.99992 7.75002Z" })
                         ]))
                       ]),
                       _: 1
@@ -556,13 +551,9 @@ function _sfc_render(_ctx, _cache) {
                           xmlns: "http://www.w3.org/2000/svg",
                           width: "12",
                           height: "12",
-                          viewBox: "0 0 12 12",
-                          fill: "none"
+                          viewBox: "0 0 12 12"
                         }, [
-                          createElementVNode("path", {
-                            d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
-                            fill: "#2A3F4D"
-                          })
+                          createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
                         ]))
                       ]),
                       _: 1

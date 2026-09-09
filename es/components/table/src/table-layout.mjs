@@ -37,23 +37,14 @@ class TableLayout {
     }
   }
   updateScrollY() {
-    var _a;
     const height = this.height.value;
     if (isNull(height))
       return false;
-    const prevScrollY = this.scrollY.value;
-    const hasHeightConstraint = this.table.props.height != null || this.table.props.maxHeight != null;
-    if (!hasHeightConstraint) {
-      this.scrollY.value = false;
-      return prevScrollY;
-    }
     const scrollBarRef = this.table.refs.scrollBarRef;
     if (this.table.vnode.el && (scrollBarRef == null ? void 0 : scrollBarRef.wrapRef)) {
-      const wrap = scrollBarRef.wrapRef;
-      const view = wrap.firstElementChild;
-      const contentHeight = (_a = view == null ? void 0 : view.getBoundingClientRect().height) != null ? _a : 0;
-      const viewportHeight = wrap.getBoundingClientRect().height;
-      const scrollY = view ? contentHeight > viewportHeight : wrap.scrollHeight > wrap.clientHeight;
+      let scrollY = true;
+      const prevScrollY = this.scrollY.value;
+      scrollY = scrollBarRef.wrapRef.scrollHeight > scrollBarRef.wrapRef.clientHeight;
       this.scrollY.value = scrollY;
       return prevScrollY !== scrollY;
     }
@@ -108,7 +99,7 @@ class TableLayout {
     }
     return false;
   }
-  updateColumnsWidth(distributeRemainingWidth = false) {
+  updateColumnsWidth() {
     var _a;
     if (!isClient)
       return;
@@ -117,28 +108,11 @@ class TableLayout {
     let bodyMinWidth = 0;
     const flattenColumns = this.getFlattenColumns();
     const flexColumns = flattenColumns.filter((column) => !isNumber(column.width));
-    const lastNonFixedColumn = distributeRemainingWidth ? [...flattenColumns].reverse().find((column) => !column.fixed) : void 0;
-    if (fit && lastNonFixedColumn) {
-      flattenColumns.forEach((column) => {
-        var _a2, _b, _c;
-        column.realWidth = Number((_c = (_b = (_a2 = column.realWidth) != null ? _a2 : column.width) != null ? _b : column.minWidth) != null ? _c : 80);
-        bodyMinWidth += column.realWidth;
-      });
-      const remainingWidth = bodyWidth - bodyMinWidth;
-      if (remainingWidth > 0) {
-        const width = Number(lastNonFixedColumn.realWidth) + remainingWidth;
-        lastNonFixedColumn.width = width;
-        lastNonFixedColumn.realWidth = width;
-        bodyMinWidth = bodyWidth;
-      }
-      this.scrollX.value = bodyMinWidth > bodyWidth;
-      this.bodyWidth.value = bodyMinWidth;
-      this.table.state.resizeState.value.width = this.bodyWidth.value;
-    } else if (flexColumns.length > 0 && fit) {
-      flattenColumns.forEach((column) => {
-        if (isNumber(column.width) && column.realWidth)
-          column.realWidth = null;
-      });
+    flattenColumns.forEach((column) => {
+      if (isNumber(column.width) && column.realWidth)
+        column.realWidth = null;
+    });
+    if (flexColumns.length > 0 && fit) {
       flattenColumns.forEach((column) => {
         bodyMinWidth += Number(column.width || column.minWidth || 80);
       });

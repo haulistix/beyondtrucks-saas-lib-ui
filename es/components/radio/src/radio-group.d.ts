@@ -11,7 +11,6 @@ export declare const radioGroupProps: {
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
-    readonly error: BooleanConstructor;
     readonly modelValue: import("element-plus/es/utils").EpPropFinalized<readonly [StringConstructor, NumberConstructor, BooleanConstructor], unknown, unknown, undefined, boolean>;
     readonly fill: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly textColor: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;

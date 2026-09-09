@@ -10,7 +10,6 @@ declare function useTable(props: TableV2Props): {
     isResetting: import("vue").ShallowRef<boolean>;
     isScrolling: import("vue").ShallowRef<boolean>;
     hasFixedColumns: import("vue").ComputedRef<number>;
-    hoveredRowIndex: import("vue").ShallowRef<number | undefined>;
     columnsStyles: import("vue").ComputedRef<Record<import("./types").KeyType, import("vue").CSSProperties>>;
     columnsTotalWidth: import("vue").ComputedRef<number>;
     data: import("vue").ComputedRef<any[]>;
@@ -37,7 +36,7 @@ declare function useTable(props: TableV2Props): {
     getRowHeight: (rowIndex: number) => number;
     updateColumnWidth: (column: import("element-plus").Column<any>, width: number) => void;
     onColumnSorted: (e: MouseEvent) => void;
-    onRowHovered: ({ hovered, rowIndex }: import("element-plus").RowHoverParams) => void;
+    onRowHovered: ({ hovered, rowKey }: import("element-plus").RowHoverParams) => void;
     onRowExpanded: ({ expanded, rowData, rowIndex, rowKey, }: import("element-plus").RowExpandParams) => void;
     onRowsRendered: (params: import("./grid").onRowRenderedParams) => void;
     onRowHeightChange: ({ rowKey, height, rowIndex }: import("element-plus").RowHeightChangedParams, fixedDir: import("./types").FixedDirection) => void;

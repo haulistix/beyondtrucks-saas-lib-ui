@@ -28,7 +28,7 @@ const FooterDefault = (props) => {
       "height": "12",
       "fill": "white"
     }, null)])])])]
-  }), createTextVNode("Last Updated "), props.updateTime])]);
+  }), props.updateTime])]);
 };
 FooterDefault.displayName = "ElTableV2FooterDefault";
 var FooterDefault$1 = FooterDefault;

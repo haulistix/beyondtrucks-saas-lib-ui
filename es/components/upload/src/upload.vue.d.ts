@@ -111,6 +111,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly multiple: BooleanConstructor;
     readonly name: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
     readonly drag: BooleanConstructor;
+    readonly dragClickable: BooleanConstructor;
     readonly withCredentials: BooleanConstructor;
     readonly showFileList: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly accept: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -236,6 +237,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly multiple: BooleanConstructor;
     readonly name: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
     readonly drag: BooleanConstructor;
+    readonly dragClickable: BooleanConstructor;
     readonly withCredentials: BooleanConstructor;
     readonly showFileList: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly accept: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -271,6 +273,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly autoUpload: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly listType: import("element-plus/es/utils").EpPropMergeType<StringConstructor, "picture" | "text" | "picture-card", unknown>;
     readonly httpRequest: import("./upload").UploadRequestHandler;
+    readonly dragClickable: boolean;
     readonly beforeUpload: (rawFile: import("./upload").UploadRawFile) => import("element-plus/es/utils").Awaitable<void | undefined | null | boolean | File | Blob>;
     readonly onRemove: (uploadFile: import("./upload").UploadFile, uploadFiles: import("./upload").UploadFiles) => void;
     readonly onPreview: (uploadFile: import("./upload").UploadFile) => void;

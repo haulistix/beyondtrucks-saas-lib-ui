@@ -2,7 +2,7 @@ import { defineComponent, computed, provide, toRefs, watch, openBlock, createBlo
 import { pick, isEqual, omit } from 'lodash-unified';
 import { checkboxGroupProps, checkboxGroupEmits, checkboxDefaultProps } from './checkbox-group.mjs';
 import { checkboxGroupContextKey } from './constants.mjs';
-import Checkbox from './checkbox2.mjs';
+import Checkbox from './checkbox.mjs';
 import CheckboxButton from './checkbox-button.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';

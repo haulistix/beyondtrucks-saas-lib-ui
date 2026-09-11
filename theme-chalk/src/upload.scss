@@ -101,6 +101,14 @@
 
   @include when(drag) {
     display: block;
+
+    &:not(.is-disabled):not(.is-drag-clickable) {
+      cursor: default;
+
+      .#{$namespace}-upload-dragger {
+        cursor: default;
+      }
+    }
   }
 
   &:focus {

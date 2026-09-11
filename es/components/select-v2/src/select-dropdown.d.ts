@@ -1,10 +1,10 @@
 import type { DynamicSizeListInstance, FixedSizeListInstance } from 'element-plus/es/components/virtual-list';
 import type { Option } from './select.types';
-import type { ComponentPublicInstance, ComputedRef, ExtractPropTypes, Ref } from 'vue';
+import type { ComponentPublicInstance, ComputedRef, ExtractPropTypes, PropType, Ref } from 'vue';
 declare const props: {
     loading: BooleanConstructor;
     data: {
-        type: ArrayConstructor;
+        type: PropType<Option[]>;
         required: true;
     };
     hoveringIndex: NumberConstructor;
@@ -25,7 +25,7 @@ export type SelectDropdownInstance = ComponentPublicInstance<ExtractPropTypes<ty
 declare const _default: import("vue").DefineComponent<{
     loading: BooleanConstructor;
     data: {
-        type: ArrayConstructor;
+        type: PropType<Option[]>;
         required: true;
     };
     hoveringIndex: NumberConstructor;
@@ -35,7 +35,7 @@ declare const _default: import("vue").DefineComponent<{
 }, () => JSX.Element, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<ExtractPropTypes<{
     loading: BooleanConstructor;
     data: {
-        type: ArrayConstructor;
+        type: PropType<Option[]>;
         required: true;
     };
     hoveringIndex: NumberConstructor;

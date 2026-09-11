@@ -1,9 +1,9 @@
 import { defineComponent, getCurrentInstance, computed, ref, watch, provide, h } from 'vue';
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
 import { elPaginationKey } from './constants.mjs';
-import Prev from './components/prev.mjs';
-import Next from './components/next2.mjs';
-import Sizes from './components/sizes2.mjs';
+import Prev from './components/prev2.mjs';
+import Next from './components/next.mjs';
+import Sizes from './components/sizes.mjs';
 import Jumper from './components/jumper.mjs';
 import Total from './components/total2.mjs';
 import Pager from './components/pager.mjs';
@@ -27,7 +27,7 @@ const paginationProps = buildProps({
   pagerCount: {
     type: Number,
     validator: (value) => {
-      return isNumber(value) && Math.trunc(value) === value && value > 4 && value < 22 && value % 2 === 1;
+      return isNumber(value) && Math.trunc(value) === value && value > 1 && value < 22 && value % 2 === 1;
     },
     default: 7
   },

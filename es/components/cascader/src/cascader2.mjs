@@ -1,4 +1,4 @@
-import { defineComponent, useAttrs, ref, computed, watch, nextTick, onMounted, openBlock, createBlock, unref, withCtx, withDirectives, createElementBlock, normalizeClass, normalizeStyle, createVNode, createSlots, withModifiers, resolveDynamicComponent, renderSlot, Fragment, renderList, createElementVNode, toDisplayString, createCommentVNode, withKeys, vModelText, isRef, vShow } from 'vue';
+import { defineComponent, useAttrs, ref, computed, watch, nextTick, onMounted, openBlock, createBlock, unref, withCtx, withDirectives, createElementBlock, normalizeClass, normalizeStyle, createVNode, createSlots, withModifiers, resolveDynamicComponent, createElementVNode, renderSlot, Fragment, renderList, toDisplayString, createCommentVNode, withKeys, vModelText, isRef, vShow } from 'vue';
 import { cloneDeep } from 'lodash-unified';
 import { useDebounceFn, useCssVar, useResizeObserver, isClient } from '@vueuse/core';
 import { ElCascaderPanel } from '../../cascader-panel/index.mjs';
@@ -7,7 +7,7 @@ import { ElTooltip } from '../../tooltip/index.mjs';
 import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
-import { ArrowDown, Check } from '@element-plus/icons-vue';
+import { Check } from '@element-plus/icons-vue';
 import { cascaderProps, cascaderEmits } from './cascader.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import ClickOutside from '../../../directives/click-outside/index.mjs';
@@ -495,7 +495,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                   onClick: withModifiers(($event) => togglePopperVisible(), ["stop"])
                 }, {
                   default: withCtx(() => [
-                    createVNode(unref(ArrowDown))
+                    (openBlock(), createElementBlock("svg", {
+                      width: "24",
+                      height: "24",
+                      viewBox: "0 0 24 24",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }, [
+                      createElementVNode("path", { d: "M5.00012 9H19.0001L12.7071 15.293C12.5196 15.4805 12.2653 15.5858 12.0001 15.5858C11.735 15.5858 11.4806 15.4805 11.2931 15.293L5.00012 9Z" })
+                    ]))
                   ]),
                   _: 1
                 }, 8, ["class", "onClick"]))

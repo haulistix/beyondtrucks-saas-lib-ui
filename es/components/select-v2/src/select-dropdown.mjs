@@ -2,10 +2,11 @@ import { defineComponent, inject, ref, computed, watch, unref, createVNode, merg
 import { get } from 'lodash-unified';
 import GroupItem from './group-item.mjs';
 import OptionItem from './option-item.mjs';
+import { SELECT_V2_GROUP_TITLE_HEIGHT, SELECT_V2_GROUP_DIVIDER_SIZE } from './defaults.mjs';
 import { useProps } from './useProps.mjs';
 import { selectV2InjectionKey } from './token.mjs';
-import FixedSizeList from '../../virtual-list/src/components/fixed-size-list.mjs';
 import DynamicSizeList from '../../virtual-list/src/components/dynamic-size-list.mjs';
+import FixedSizeList from '../../virtual-list/src/components/fixed-size-list.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { isUndefined } from '../../../utils/types.mjs';
 import { isIOS } from '@vueuse/core';
@@ -45,16 +46,32 @@ var ElSelectMenu = defineComponent({
       (_b = (_a = select.tooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
     });
     const isSized = computed(() => isUndefined(select.props.estimatedOptionHeight));
+    const hasGroups = computed(() => props2.data.some((item) => item.type === "Group"));
+    const usesDynamicSizeList = computed(() => !isSized.value || hasGroups.value);
     const listProps = computed(() => {
-      if (isSized.value) {
+      var _a;
+      if (!usesDynamicSizeList.value) {
         return {
           itemSize: select.props.itemHeight
         };
       }
+      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
       return {
-        estimatedSize: select.props.estimatedOptionHeight,
-        itemSize: (idx) => cachedHeights.value[idx]
+        estimatedSize,
+        itemSize: (idx) => {
+          var _a2, _b;
+          if (((_a2 = props2.data[idx]) == null ? void 0 : _a2.type) === "Group") {
+            return SELECT_V2_GROUP_TITLE_HEIGHT + (idx > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
+          }
+          return (_b = cachedHeights.value[idx]) != null ? _b : estimatedSize;
+        }
       };
+    });
+    const listLayoutKey = computed(() => {
+      var _a;
+      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
+      const groupIndexes = props2.data.reduce((key, item, index) => item.type === "Group" ? `${key}-${index}` : key, "");
+      return `select-v2-${estimatedSize}${groupIndexes}`;
     });
     const contains = (arr = [], target) => {
       const {
@@ -122,11 +139,6 @@ var ElSelectMenu = defineComponent({
         data,
         style
       } = itemProps;
-      const sized = unref(isSized);
-      const {
-        itemSize,
-        estimatedSize
-      } = unref(listProps);
       const {
         modelValue
       } = select.props;
@@ -139,7 +151,7 @@ var ElSelectMenu = defineComponent({
         return createVNode(GroupItem, {
           "item": item,
           "style": style,
-          "height": sized ? itemSize : estimatedSize
+          "showDivider": index > 0
         }, null);
       }
       const isSelected = isItemSelected(modelValue, item);
@@ -214,13 +226,14 @@ var ElSelectMenu = defineComponent({
       const isScrollbarAlwaysOn = computed(() => {
         return isIOS ? true : scrollbarAlwaysOn;
       });
-      const List = unref(isSized) ? FixedSizeList : DynamicSizeList;
+      const List = unref(usesDynamicSizeList) ? DynamicSizeList : FixedSizeList;
       return createVNode("div", {
         "class": [ns.b("dropdown"), ns.is("multiple", multiple)],
         "style": {
           width: `${width}px`
         }
       }, [(_a = slots.header) == null ? void 0 : _a.call(slots), ((_b = slots.loading) == null ? void 0 : _b.call(slots)) || ((_c = slots.empty) == null ? void 0 : _c.call(slots)) || createVNode(List, mergeProps({
+        "key": unref(listLayoutKey),
         "ref": listRef
       }, unref(listProps), {
         "className": ns.be("dropdown", "list"),

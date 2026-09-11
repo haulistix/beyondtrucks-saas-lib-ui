@@ -30,6 +30,21 @@
     height: 100%;
   }
 
+  &.#{$namespace}-table--fluid-height.has-footer-text {
+    display: flex;
+    flex-direction: column;
+
+    > .#{$namespace}-table__inner-wrapper {
+      flex: 1 1 auto;
+      min-height: 0;
+      height: auto;
+    }
+
+    > .footer-text {
+      flex-shrink: 0;
+    }
+  }
+
   @include m(with-add-column-trigger) {
     overflow: visible;
   }
@@ -57,7 +72,7 @@
   @include e(empty-block) {
     position: sticky;
     left: 0;
-    min-height: 60px;
+    min-height: 44px;
     text-align: center;
     width: 100%;
     display: flex;
@@ -68,7 +83,7 @@
   @include e(empty-text) {
     // min-height doesn't work in IE10 and IE11 https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
     // set empty text line height up to contrainer min-height as workaround.
-    line-height: 60px;
+    line-height: 1;
     width: 50%;
     color: getCssVar('text-color', 'secondary');
   }
@@ -173,10 +188,15 @@
 
     @include when(center) {
       text-align: center;
+      .cell, .cell-height {
+        text-align: center;
+        justify-content: center;
+      }
     }
 
     @include when(right) {
       .cell-height {
+        text-align: right;
         justify-content: flex-end;
       }
     }
@@ -307,15 +327,32 @@
     background-color: getCssVar('table-tr-bg-color');
 
     &.is-ghost-row {
-      box-shadow: var(--shadow-ghost-row);
+      position: sticky;
+      bottom: 0;
+      z-index: calc(getCssVar('table-index') + 1);
+      box-shadow: none;
+
+      > td.#{$namespace}-table__cell {
+        border-top: 1px solid #E7ECEF;
+      }
 
       .icon-column {
-        box-shadow: var(--shadow-ghost-row);
+        box-shadow: none;
       }
     }
 
     input[type='checkbox'] {
       margin: 0;
+    }
+  }
+
+  @include when('ghost-row-scrolling') {
+    tr.is-ghost-row {
+      box-shadow: var(--shadow-ghost-row);
+
+      .icon-column {
+        box-shadow: var(--shadow-ghost-row);
+      }
     }
   }
 
@@ -644,6 +681,15 @@
 
     .#{$namespace}-scrollbar__bar {
       z-index: calc(getCssVar('table-index') + 2);
+    }
+  }
+
+  &:not(.#{$namespace}-table--scrollable-y) {
+    @include e(body-wrapper) {
+      > .#{$namespace}-scrollbar
+      > .#{$namespace}-scrollbar__bar.is-vertical {
+        display: none;
+      }
     }
   }
 

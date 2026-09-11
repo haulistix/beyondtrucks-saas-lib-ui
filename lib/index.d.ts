@@ -4255,6 +4255,533 @@ declare const __VLS_component_47: DefineComponent<{
     readonly showProgress: boolean;
 }>;
 declare const __VLS_component_48: DefineComponent<{
+    readonly modelValue: EpPropFinalized<(new (...args: any[]) => string | number) | (() => InputDownValue) | ((new (...args: any[]) => string | number) | (() => InputDownValue))[], unknown, unknown, "", boolean>;
+    readonly options: EpPropFinalized<(new (...args: any[]) => InputDownOption[]) | (() => InputDownOption[]) | ((new (...args: any[]) => InputDownOption[]) | (() => InputDownOption[]))[], unknown, unknown, () => never[], boolean>;
+    readonly valueKey: EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
+    readonly labelKey: EpPropFinalized<StringConstructor, unknown, unknown, "label", boolean>;
+    readonly placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], "top" | "bottom" | "top-start" | "top-end" | "bottom-start" | "bottom-end", unknown, "bottom-start", boolean>;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly appendTo: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly popperClass: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly popperStyle: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly inputmode: EpPropFinalized<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown, undefined, boolean>;
+    readonly name: StringConstructor;
+    readonly ariaLabel: StringConstructor;
+    readonly isHoverSuffix: BooleanConstructor;
+    readonly alwaysShowSuffix: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
+    readonly size: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "" | "small" | "default" | "large", never>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly disabled: BooleanConstructor;
+    readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
+    readonly maxlength: {
+        readonly type: PropType<EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly minlength: {
+        readonly type: PropType<EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly resize: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly autosize: EpPropFinalized<(new (...args: any[]) => boolean | {
+        minRows?: number;
+        maxRows?: number;
+    }) | (() => InputAutoSize) | ((new (...args: any[]) => boolean | {
+        minRows?: number;
+        maxRows?: number;
+    }) | (() => InputAutoSize))[], unknown, unknown, false, boolean>;
+    readonly autocomplete: EpPropFinalized<(new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill) | ((new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill))[], unknown, unknown, "off", boolean>;
+    readonly formatter: {
+        readonly type: PropType<Function>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly parser: {
+        readonly type: PropType<Function>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly placeholder: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly form: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly readonly: BooleanConstructor;
+    readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly clearIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly showPassword: BooleanConstructor;
+    readonly showWordLimit: BooleanConstructor;
+    readonly wordLimitPosition: EpPropFinalized<StringConstructor, "inside" | "outside", unknown, "inside", boolean>;
+    readonly suffixIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly prefixIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly containerRole: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
+    readonly tabindex: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor
+    ], unknown, unknown, 0, boolean>;
+    readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly inputStyle: EpPropFinalized<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown, () => Mutable<{}>, boolean>;
+    readonly autofocus: BooleanConstructor;
+    readonly rows: EpPropFinalized<NumberConstructor, unknown, unknown, 2, boolean>;
+}, {
+    autocompleteRef: Ref<AutocompleteInstance | undefined>;
+    focus: () => void | undefined;
+    blur: () => void | undefined;
+    close: () => void;
+}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    select: (option: InputDownOption) => void;
+    focus: (event: FocusEvent) => void;
+    "update:modelValue": (value: InputDownValue) => void;
+    change: (value: InputDownValue) => void;
+    input: (value: InputDownValue) => void;
+    clear: () => void;
+    blur: (event: FocusEvent) => void;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly modelValue: EpPropFinalized<(new (...args: any[]) => string | number) | (() => InputDownValue) | ((new (...args: any[]) => string | number) | (() => InputDownValue))[], unknown, unknown, "", boolean>;
+    readonly options: EpPropFinalized<(new (...args: any[]) => InputDownOption[]) | (() => InputDownOption[]) | ((new (...args: any[]) => InputDownOption[]) | (() => InputDownOption[]))[], unknown, unknown, () => never[], boolean>;
+    readonly valueKey: EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
+    readonly labelKey: EpPropFinalized<StringConstructor, unknown, unknown, "label", boolean>;
+    readonly placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], "top" | "bottom" | "top-start" | "top-end" | "bottom-start" | "bottom-end", unknown, "bottom-start", boolean>;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly appendTo: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly popperClass: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly popperStyle: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly inputmode: EpPropFinalized<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown, undefined, boolean>;
+    readonly name: StringConstructor;
+    readonly ariaLabel: StringConstructor;
+    readonly isHoverSuffix: BooleanConstructor;
+    readonly alwaysShowSuffix: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
+    readonly size: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "" | "small" | "default" | "large", never>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly disabled: BooleanConstructor;
+    readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
+    readonly maxlength: {
+        readonly type: PropType<EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly minlength: {
+        readonly type: PropType<EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly resize: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly autosize: EpPropFinalized<(new (...args: any[]) => boolean | {
+        minRows?: number;
+        maxRows?: number;
+    }) | (() => InputAutoSize) | ((new (...args: any[]) => boolean | {
+        minRows?: number;
+        maxRows?: number;
+    }) | (() => InputAutoSize))[], unknown, unknown, false, boolean>;
+    readonly autocomplete: EpPropFinalized<(new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill) | ((new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill))[], unknown, unknown, "off", boolean>;
+    readonly formatter: {
+        readonly type: PropType<Function>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly parser: {
+        readonly type: PropType<Function>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly placeholder: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly form: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly readonly: BooleanConstructor;
+    readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly clearIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly showPassword: BooleanConstructor;
+    readonly showWordLimit: BooleanConstructor;
+    readonly wordLimitPosition: EpPropFinalized<StringConstructor, "inside" | "outside", unknown, "inside", boolean>;
+    readonly suffixIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly prefixIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly containerRole: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
+    readonly tabindex: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor
+    ], unknown, unknown, 0, boolean>;
+    readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly inputStyle: EpPropFinalized<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown, () => Mutable<{}>, boolean>;
+    readonly autofocus: BooleanConstructor;
+    readonly rows: EpPropFinalized<NumberConstructor, unknown, unknown, 2, boolean>;
+}>> & {
+    "onUpdate:modelValue"?: ((value: InputDownValue) => any) | undefined;
+    onChange?: ((value: InputDownValue) => any) | undefined;
+    onFocus?: ((event: FocusEvent) => any) | undefined;
+    onBlur?: ((event: FocusEvent) => any) | undefined;
+    onInput?: ((value: InputDownValue) => any) | undefined;
+    onSelect?: ((option: InputDownOption) => any) | undefined;
+    onClear?: (() => any) | undefined;
+}, {
+    readonly disabled: boolean;
+    readonly tabindex: EpPropMergeType<readonly [
+        StringConstructor,
+        NumberConstructor
+    ], unknown, unknown>;
+    readonly id: string;
+    readonly type: string;
+    readonly modelValue: EpPropMergeType<(new (...args: any[]) => string | number) | (() => InputDownValue) | ((new (...args: any[]) => string | number) | (() => InputDownValue))[], unknown, unknown>;
+    readonly placement: EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], "top" | "bottom" | "top-start" | "top-end" | "bottom-start" | "bottom-end", unknown>;
+    readonly options: InputDownOption[];
+    readonly readonly: boolean;
+    readonly teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly alwaysShowSuffix: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly modelModifiers: InputModelModifiers;
+    readonly autosize: InputAutoSize;
+    readonly autocomplete: AutoFill;
+    readonly floatLabel: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly clearable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly wordLimitPosition: EpPropMergeType<StringConstructor, "inside" | "outside", unknown>;
+    readonly containerRole: string;
+    readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly inputStyle: StyleValue;
+    readonly rows: number;
+    readonly inputmode: EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
+    readonly isHoverSuffix: boolean;
+    readonly showPassword: boolean;
+    readonly showWordLimit: boolean;
+    readonly autofocus: boolean;
+    readonly valueKey: string;
+    readonly labelKey: string;
+}>;
+declare const __VLS_component_49: DefineComponent<{
     readonly inputmode: EpPropFinalized<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown, undefined, boolean>;
     readonly align: EpPropFinalized<(new (...args: any[]) => "center" | "left" | "right") | (() => "center" | "left" | "right") | ((new (...args: any[]) => "center" | "left" | "right") | (() => "center" | "left" | "right"))[], unknown, unknown, "center", boolean>;
     readonly disabledScientific: BooleanConstructor;
@@ -4367,192 +4894,6 @@ declare const __VLS_component_48: DefineComponent<{
     readonly disabledScientific: boolean;
     readonly stepStrictly: boolean;
 }>;
-declare const __VLS_component_49: DefineComponent<{
-    readonly modelValue: {
-        readonly type: PropType<string[]>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly max: NumberConstructor;
-    readonly tagType: {
-        readonly default: "gray";
-        readonly type: PropType<EpPropMergeType<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        readonly __epPropKey: true;
-    };
-    readonly tagEffect: EpPropFinalized<StringConstructor, "dark" | "light" | "plain", unknown, "light", boolean>;
-    readonly trigger: EpPropFinalized<(new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space") | ((new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space"))[], unknown, unknown, string, boolean>;
-    readonly draggable: BooleanConstructor;
-    readonly delimiter: EpPropFinalized<readonly [
-        StringConstructor,
-        RegExpConstructor
-    ], unknown, unknown, "", boolean>;
-    readonly size: {
-        readonly type: PropType<EpPropMergeType<StringConstructor, "" | "small" | "default" | "large", never>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly clearable: BooleanConstructor;
-    readonly clearIcon: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly disabled: EpPropFinalized<BooleanConstructor, unknown, unknown, undefined, boolean>;
-    readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly readonly: BooleanConstructor;
-    readonly autofocus: BooleanConstructor;
-    readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
-    readonly tabindex: EpPropFinalized<readonly [
-        StringConstructor,
-        NumberConstructor
-    ], unknown, unknown, 0, boolean>;
-    readonly maxlength: {
-        readonly type: PropType<EpPropMergeType<readonly [
-            StringConstructor,
-            NumberConstructor
-        ], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly minlength: {
-        readonly type: PropType<EpPropMergeType<readonly [
-            StringConstructor,
-            NumberConstructor
-        ], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly placeholder: StringConstructor;
-    readonly autocomplete: EpPropFinalized<(new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill) | ((new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill))[], unknown, unknown, "off", boolean>;
-    readonly saveOnBlur: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly collapseTags: BooleanConstructor;
-    readonly collapseTagsTooltip: BooleanConstructor;
-    readonly maxCollapseTags: EpPropFinalized<NumberConstructor, unknown, unknown, 1, boolean>;
-    readonly ariaLabel: StringConstructor;
-}, {
-    focus: () => void;
-    blur: () => void;
-}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    focus: (evt: FocusEvent) => void;
-    "update:modelValue": (value?: string[] | undefined) => void;
-    change: (value?: string[] | undefined) => void;
-    input: (value: string) => void;
-    clear: () => void;
-    blur: (evt: FocusEvent) => void;
-    "add-tag": (value: string | string[]) => void;
-    "remove-tag": (value: string, index: number) => void;
-    "drag-tag": (oldIndex: number, newIndex: number, value: string) => void;
-}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
-    readonly modelValue: {
-        readonly type: PropType<string[]>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly max: NumberConstructor;
-    readonly tagType: {
-        readonly default: "gray";
-        readonly type: PropType<EpPropMergeType<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        readonly __epPropKey: true;
-    };
-    readonly tagEffect: EpPropFinalized<StringConstructor, "dark" | "light" | "plain", unknown, "light", boolean>;
-    readonly trigger: EpPropFinalized<(new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space") | ((new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space"))[], unknown, unknown, string, boolean>;
-    readonly draggable: BooleanConstructor;
-    readonly delimiter: EpPropFinalized<readonly [
-        StringConstructor,
-        RegExpConstructor
-    ], unknown, unknown, "", boolean>;
-    readonly size: {
-        readonly type: PropType<EpPropMergeType<StringConstructor, "" | "small" | "default" | "large", never>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly clearable: BooleanConstructor;
-    readonly clearIcon: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly disabled: EpPropFinalized<BooleanConstructor, unknown, unknown, undefined, boolean>;
-    readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly readonly: BooleanConstructor;
-    readonly autofocus: BooleanConstructor;
-    readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
-    readonly tabindex: EpPropFinalized<readonly [
-        StringConstructor,
-        NumberConstructor
-    ], unknown, unknown, 0, boolean>;
-    readonly maxlength: {
-        readonly type: PropType<EpPropMergeType<readonly [
-            StringConstructor,
-            NumberConstructor
-        ], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly minlength: {
-        readonly type: PropType<EpPropMergeType<readonly [
-            StringConstructor,
-            NumberConstructor
-        ], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly placeholder: StringConstructor;
-    readonly autocomplete: EpPropFinalized<(new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill) | ((new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill))[], unknown, unknown, "off", boolean>;
-    readonly saveOnBlur: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly collapseTags: BooleanConstructor;
-    readonly collapseTagsTooltip: BooleanConstructor;
-    readonly maxCollapseTags: EpPropFinalized<NumberConstructor, unknown, unknown, 1, boolean>;
-    readonly ariaLabel: StringConstructor;
-}>> & {
-    "onUpdate:modelValue"?: ((value?: string[] | undefined) => any) | undefined;
-    onChange?: ((value?: string[] | undefined) => any) | undefined;
-    onFocus?: ((evt: FocusEvent) => any) | undefined;
-    onBlur?: ((evt: FocusEvent) => any) | undefined;
-    onInput?: ((value: string) => any) | undefined;
-    onClear?: (() => any) | undefined;
-    "onAdd-tag"?: ((value: string | string[]) => any) | undefined;
-    "onRemove-tag"?: ((value: string, index: number) => any) | undefined;
-    "onDrag-tag"?: ((oldIndex: number, newIndex: number, value: string) => any) | undefined;
-}, {
-    readonly disabled: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly tabindex: EpPropMergeType<readonly [
-        StringConstructor,
-        NumberConstructor
-    ], unknown, unknown>;
-    readonly id: string;
-    readonly readonly: boolean;
-    readonly trigger: EpPropMergeType<(new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space") | ((new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space"))[], unknown, unknown>;
-    readonly autocomplete: AutoFill;
-    readonly clearable: boolean;
-    readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly autofocus: boolean;
-    readonly draggable: boolean;
-    readonly collapseTags: boolean;
-    readonly maxCollapseTags: number;
-    readonly collapseTagsTooltip: boolean;
-    readonly tagType: EpPropMergeType<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown>;
-    readonly tagEffect: EpPropMergeType<StringConstructor, "dark" | "light" | "plain", unknown>;
-    readonly delimiter: EpPropMergeType<readonly [
-        StringConstructor,
-        RegExpConstructor
-    ], unknown, unknown>;
-    readonly saveOnBlur: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-}>;
 declare const __VLS_component_5: DefineComponent<{
     showArrow: BooleanConstructor;
     arrowOffset: EpPropFinalized<NumberConstructor, unknown, unknown, 5, boolean>;
@@ -4618,7 +4959,11 @@ declare const __VLS_component_5: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    content: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown, "", boolean>;
     rawContent: BooleanConstructor;
     persistent: BooleanConstructor;
     visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
@@ -4976,7 +5321,11 @@ declare const __VLS_component_5: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    content: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown, "", boolean>;
     rawContent: BooleanConstructor;
     persistent: BooleanConstructor;
     visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
@@ -5240,7 +5589,11 @@ declare const __VLS_component_5: DefineComponent<{
     role: EpPropFinalized<StringConstructor, "dialog" | "menu" | "grid" | "listbox" | "tooltip" | "tree" | "group" | "navigation", unknown, "tooltip", boolean>;
 }>>, {
     disabled: boolean;
-    content: string;
+    content: EpPropMergeType<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown>;
     offset: number;
     visible: EpPropMergeType<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown>;
     open: boolean;
@@ -5274,6 +5627,192 @@ declare const __VLS_component_5: DefineComponent<{
     showArrow: boolean;
 }>;
 declare const __VLS_component_50: DefineComponent<{
+    readonly modelValue: {
+        readonly type: PropType<string[]>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly max: NumberConstructor;
+    readonly tagType: {
+        readonly default: "gray";
+        readonly type: PropType<EpPropMergeType<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        readonly __epPropKey: true;
+    };
+    readonly tagEffect: EpPropFinalized<StringConstructor, "dark" | "light" | "plain", unknown, "light", boolean>;
+    readonly trigger: EpPropFinalized<(new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space") | ((new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space"))[], unknown, unknown, string, boolean>;
+    readonly draggable: BooleanConstructor;
+    readonly delimiter: EpPropFinalized<readonly [
+        StringConstructor,
+        RegExpConstructor
+    ], unknown, unknown, "", boolean>;
+    readonly size: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "" | "small" | "default" | "large", never>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly clearable: BooleanConstructor;
+    readonly clearIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly disabled: EpPropFinalized<BooleanConstructor, unknown, unknown, undefined, boolean>;
+    readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly readonly: BooleanConstructor;
+    readonly autofocus: BooleanConstructor;
+    readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
+    readonly tabindex: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor
+    ], unknown, unknown, 0, boolean>;
+    readonly maxlength: {
+        readonly type: PropType<EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly minlength: {
+        readonly type: PropType<EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly placeholder: StringConstructor;
+    readonly autocomplete: EpPropFinalized<(new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill) | ((new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill))[], unknown, unknown, "off", boolean>;
+    readonly saveOnBlur: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly collapseTags: BooleanConstructor;
+    readonly collapseTagsTooltip: BooleanConstructor;
+    readonly maxCollapseTags: EpPropFinalized<NumberConstructor, unknown, unknown, 1, boolean>;
+    readonly ariaLabel: StringConstructor;
+}, {
+    focus: () => void;
+    blur: () => void;
+}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    focus: (evt: FocusEvent) => void;
+    "update:modelValue": (value?: string[] | undefined) => void;
+    change: (value?: string[] | undefined) => void;
+    input: (value: string) => void;
+    clear: () => void;
+    blur: (evt: FocusEvent) => void;
+    "remove-tag": (value: string, index: number) => void;
+    "add-tag": (value: string | string[]) => void;
+    "drag-tag": (oldIndex: number, newIndex: number, value: string) => void;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly modelValue: {
+        readonly type: PropType<string[]>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly max: NumberConstructor;
+    readonly tagType: {
+        readonly default: "gray";
+        readonly type: PropType<EpPropMergeType<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        readonly __epPropKey: true;
+    };
+    readonly tagEffect: EpPropFinalized<StringConstructor, "dark" | "light" | "plain", unknown, "light", boolean>;
+    readonly trigger: EpPropFinalized<(new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space") | ((new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space"))[], unknown, unknown, string, boolean>;
+    readonly draggable: BooleanConstructor;
+    readonly delimiter: EpPropFinalized<readonly [
+        StringConstructor,
+        RegExpConstructor
+    ], unknown, unknown, "", boolean>;
+    readonly size: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "" | "small" | "default" | "large", never>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly clearable: BooleanConstructor;
+    readonly clearIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly disabled: EpPropFinalized<BooleanConstructor, unknown, unknown, undefined, boolean>;
+    readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly readonly: BooleanConstructor;
+    readonly autofocus: BooleanConstructor;
+    readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
+    readonly tabindex: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor
+    ], unknown, unknown, 0, boolean>;
+    readonly maxlength: {
+        readonly type: PropType<EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly minlength: {
+        readonly type: PropType<EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly placeholder: StringConstructor;
+    readonly autocomplete: EpPropFinalized<(new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill) | ((new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill))[], unknown, unknown, "off", boolean>;
+    readonly saveOnBlur: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly collapseTags: BooleanConstructor;
+    readonly collapseTagsTooltip: BooleanConstructor;
+    readonly maxCollapseTags: EpPropFinalized<NumberConstructor, unknown, unknown, 1, boolean>;
+    readonly ariaLabel: StringConstructor;
+}>> & {
+    "onUpdate:modelValue"?: ((value?: string[] | undefined) => any) | undefined;
+    onChange?: ((value?: string[] | undefined) => any) | undefined;
+    onFocus?: ((evt: FocusEvent) => any) | undefined;
+    onBlur?: ((evt: FocusEvent) => any) | undefined;
+    onInput?: ((value: string) => any) | undefined;
+    onClear?: (() => any) | undefined;
+    "onRemove-tag"?: ((value: string, index: number) => any) | undefined;
+    "onAdd-tag"?: ((value: string | string[]) => any) | undefined;
+    "onDrag-tag"?: ((oldIndex: number, newIndex: number, value: string) => any) | undefined;
+}, {
+    readonly disabled: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly tabindex: EpPropMergeType<readonly [
+        StringConstructor,
+        NumberConstructor
+    ], unknown, unknown>;
+    readonly id: string;
+    readonly readonly: boolean;
+    readonly trigger: EpPropMergeType<(new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space") | ((new (...args: any[]) => "Enter" | "Space") | (() => "Enter" | "Space"))[], unknown, unknown>;
+    readonly autocomplete: AutoFill;
+    readonly clearable: boolean;
+    readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly autofocus: boolean;
+    readonly draggable: boolean;
+    readonly collapseTags: boolean;
+    readonly maxCollapseTags: number;
+    readonly collapseTagsTooltip: boolean;
+    readonly tagType: EpPropMergeType<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown>;
+    readonly tagEffect: EpPropMergeType<StringConstructor, "dark" | "light" | "plain", unknown>;
+    readonly delimiter: EpPropMergeType<readonly [
+        StringConstructor,
+        RegExpConstructor
+    ], unknown, unknown>;
+    readonly saveOnBlur: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+}>;
+declare const __VLS_component_51: DefineComponent<{
     readonly type: EpPropFinalized<StringConstructor, "default" | "primary" | "success" | "warning" | "info" | "danger", unknown, undefined, boolean>;
     readonly underline: EpPropFinalized<readonly [
         BooleanConstructor,
@@ -5317,7 +5856,7 @@ declare const __VLS_component_50: DefineComponent<{
     readonly target: string;
     readonly href: string;
 }>;
-declare const __VLS_component_51: DefineComponent<{
+declare const __VLS_component_52: DefineComponent<{
     readonly index: EpPropFinalized<(new (...args: any[]) => string) | (() => string | null) | ((new (...args: any[]) => string) | (() => string | null))[], unknown, unknown, null, boolean>;
     readonly route: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => RouteLocationRaw & {}) | (() => RouteLocationRaw) | ((new (...args: any[]) => RouteLocationRaw & {}) | (() => RouteLocationRaw))[], unknown, unknown>>;
@@ -5384,12 +5923,12 @@ declare const __VLS_component_51: DefineComponent<{
     readonly disabled: boolean;
     readonly index: EpPropMergeType<(new (...args: any[]) => string) | (() => string | null) | ((new (...args: any[]) => string) | (() => string | null))[], unknown, unknown>;
 }>;
-declare const __VLS_component_52: DefineComponent<{
+declare const __VLS_component_53: DefineComponent<{
     readonly title: StringConstructor;
 }, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     readonly title: StringConstructor;
 }>>, {}>;
-declare const __VLS_component_53: DefineComponent<{
+declare const __VLS_component_54: DefineComponent<{
     readonly icon: EpPropFinalized<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown, () => any, boolean>;
     readonly title: StringConstructor;
     readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -5405,7 +5944,7 @@ declare const __VLS_component_53: DefineComponent<{
     readonly content: string;
     readonly icon: EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>;
 }>;
-declare const __VLS_component_54: DefineComponent<{
+declare const __VLS_component_55: DefineComponent<{
     readonly title: StringConstructor;
     readonly confirmButtonText: StringConstructor;
     readonly cancelButtonText: StringConstructor;
@@ -5490,7 +6029,7 @@ declare const __VLS_component_54: DefineComponent<{
     readonly cancelButtonType: EpPropMergeType<StringConstructor, "" | "text" | "default" | "filled" | "error" | "primary" | "success" | "warning" | "info" | "danger", unknown>;
     readonly hideIcon: boolean;
 }>;
-declare const __VLS_component_55: DefineComponent<{
+declare const __VLS_component_56: DefineComponent<{
     readonly virtualRef: {
         readonly type: PropType<Measurable>;
         readonly required: false;
@@ -5603,7 +6142,7 @@ declare const __VLS_component_55: DefineComponent<{
     readonly open: boolean;
     readonly virtualTriggering: boolean;
 }>;
-declare const __VLS_component_56: DefineComponent<{
+declare const __VLS_component_57: DefineComponent<{
     readonly type: EpPropFinalized<StringConstructor, "circle" | "line" | "dashboard", unknown, "line", boolean>;
     readonly percentage: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly status: EpPropFinalized<StringConstructor, "" | "success" | "warning" | "exception", unknown, "", boolean>;
@@ -5665,7 +6204,8 @@ declare const __VLS_component_56: DefineComponent<{
     readonly striped: boolean;
     readonly stripedFlow: boolean;
 }>;
-declare const __VLS_component_57: DefineComponent<{
+declare const __VLS_component_58: DefineComponent<{
+    readonly error: BooleanConstructor;
     readonly border: BooleanConstructor;
     readonly modelValue: EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     readonly size: {
@@ -5682,6 +6222,7 @@ declare const __VLS_component_57: DefineComponent<{
     "update:modelValue": (val: string | number | boolean | undefined) => void;
     change: (val: string | number | boolean | undefined) => void;
 }, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly error: BooleanConstructor;
     readonly border: BooleanConstructor;
     readonly modelValue: EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     readonly size: {
@@ -5702,10 +6243,11 @@ declare const __VLS_component_57: DefineComponent<{
     readonly disabled: boolean;
     readonly border: boolean;
     readonly value: EpPropMergeType<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
+    readonly error: boolean;
     readonly name: string;
     readonly modelValue: EpPropMergeType<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
 }>;
-declare const __VLS_component_58: DefineComponent<{
+declare const __VLS_component_59: DefineComponent<{
     readonly modelValue: EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     readonly size: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "" | "small" | "default" | "large", never>>;
@@ -5736,7 +6278,20 @@ declare const __VLS_component_58: DefineComponent<{
     readonly name: string;
     readonly modelValue: EpPropMergeType<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>;
 }>;
-declare const __VLS_component_59: DefineComponent<{
+declare const __VLS_component_6: DefineComponent<{
+    readonly role: EpPropFinalized<StringConstructor, "dialog" | "menu" | "grid" | "listbox" | "tooltip" | "tree" | "group" | "navigation", unknown, "tooltip", boolean>;
+}, {
+    triggerRef: Ref<Measurable | undefined>;
+    contentRef: Ref<HTMLElement | undefined>;
+    popperInstanceRef: Ref<Instance_2 | undefined>;
+    referenceRef: Ref<Measurable | undefined>;
+    role: ComputedRef<string>;
+}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly role: EpPropFinalized<StringConstructor, "dialog" | "menu" | "grid" | "listbox" | "tooltip" | "tree" | "group" | "navigation", unknown, "tooltip", boolean>;
+}>>, {
+    readonly role: EpPropMergeType<StringConstructor, "dialog" | "menu" | "grid" | "listbox" | "tooltip" | "tree" | "group" | "navigation", unknown>;
+}>;
+declare const __VLS_component_60: DefineComponent<{
     readonly ariaLabel: StringConstructor;
     readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
     readonly size: {
@@ -5746,6 +6301,7 @@ declare const __VLS_component_59: DefineComponent<{
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly error: BooleanConstructor;
     readonly modelValue: EpPropFinalized<readonly [
         StringConstructor,
         NumberConstructor,
@@ -5776,6 +6332,7 @@ declare const __VLS_component_59: DefineComponent<{
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly error: BooleanConstructor;
     readonly modelValue: EpPropFinalized<readonly [
         StringConstructor,
         NumberConstructor,
@@ -5802,6 +6359,7 @@ declare const __VLS_component_59: DefineComponent<{
     readonly id: string;
     readonly type: EpPropMergeType<StringConstructor, "button" | "radio", unknown>;
     readonly props: radioOptionProp;
+    readonly error: boolean;
     readonly name: string;
     readonly modelValue: EpPropMergeType<readonly [
         StringConstructor,
@@ -5811,20 +6369,7 @@ declare const __VLS_component_59: DefineComponent<{
     readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly textColor: string;
 }>;
-declare const __VLS_component_6: DefineComponent<{
-    readonly role: EpPropFinalized<StringConstructor, "dialog" | "menu" | "grid" | "listbox" | "tooltip" | "tree" | "group" | "navigation", unknown, "tooltip", boolean>;
-}, {
-    triggerRef: Ref<Measurable | undefined>;
-    contentRef: Ref<HTMLElement | undefined>;
-    popperInstanceRef: Ref<Instance_2 | undefined>;
-    referenceRef: Ref<Measurable | undefined>;
-    role: ComputedRef<string>;
-}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
-    readonly role: EpPropFinalized<StringConstructor, "dialog" | "menu" | "grid" | "listbox" | "tooltip" | "tree" | "group" | "navigation", unknown, "tooltip", boolean>;
-}>>, {
-    readonly role: EpPropMergeType<StringConstructor, "dialog" | "menu" | "grid" | "listbox" | "tooltip" | "tree" | "group" | "navigation", unknown>;
-}>;
-declare const __VLS_component_60: DefineComponent<{
+declare const __VLS_component_61: DefineComponent<{
     readonly title: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly subTitle: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly icon: EpPropFinalized<StringConstructor, "error" | "primary" | "success" | "warning" | "info", unknown, "info", boolean>;
@@ -5837,7 +6382,7 @@ declare const __VLS_component_60: DefineComponent<{
     readonly icon: EpPropMergeType<StringConstructor, "error" | "primary" | "success" | "warning" | "info", unknown>;
     readonly subTitle: string;
 }>;
-declare const __VLS_component_61: DefineComponent<{
+declare const __VLS_component_62: DefineComponent<{
     readonly tag: EpPropFinalized<StringConstructor, unknown, unknown, "div", boolean>;
     readonly gutter: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly justify: EpPropFinalized<StringConstructor, "center" | "end" | "space-around" | "space-between" | "space-evenly" | "start", unknown, "start", boolean>;
@@ -5862,7 +6407,7 @@ declare const __VLS_component_61: DefineComponent<{
     readonly tag: string;
     readonly gutter: number;
 }>;
-declare const __VLS_component_62: DefineComponent<{
+declare const __VLS_component_63: DefineComponent<{
     readonly ariaLabel: StringConstructor;
     readonly ariaOrientation: {
         readonly type: PropType<string>;
@@ -6005,7 +6550,7 @@ declare const __VLS_component_62: DefineComponent<{
     readonly native: boolean;
     readonly noresize: boolean;
 }>;
-declare const __VLS_component_63: DefineComponent<{
+declare const __VLS_component_64: DefineComponent<{
     readonly animated: BooleanConstructor;
     readonly count: EpPropFinalized<NumberConstructor, unknown, unknown, 1, boolean>;
     readonly rows: EpPropFinalized<NumberConstructor, unknown, unknown, 3, boolean>;
@@ -6052,7 +6597,7 @@ declare const __VLS_component_63: DefineComponent<{
     readonly count: number;
     readonly animated: boolean;
 }>;
-declare const __VLS_component_64: DefineComponent<{
+declare const __VLS_component_65: DefineComponent<{
     readonly decimalSeparator: EpPropFinalized<StringConstructor, unknown, unknown, ".", boolean>;
     readonly groupSeparator: EpPropFinalized<StringConstructor, unknown, unknown, ",", boolean>;
     readonly precision: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
@@ -6093,7 +6638,7 @@ declare const __VLS_component_64: DefineComponent<{
     readonly groupSeparator: string;
     readonly precision: number;
 }>;
-declare const __VLS_component_65: DefineComponent<{
+declare const __VLS_component_66: DefineComponent<{
     readonly space: EpPropFinalized<readonly [
         NumberConstructor,
         StringConstructor
@@ -6149,7 +6694,7 @@ declare const __VLS_component_65: DefineComponent<{
     readonly finishStatus: EpPropMergeType<StringConstructor, "wait" | "error" | "finish" | "success" | "process", unknown>;
     readonly processStatus: EpPropMergeType<StringConstructor, "wait" | "error" | "finish" | "success" | "process", unknown>;
 }>;
-declare const __VLS_component_66: DefineComponent<{
+declare const __VLS_component_67: DefineComponent<{
     readonly title: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly icon: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
@@ -6174,7 +6719,7 @@ declare const __VLS_component_66: DefineComponent<{
     readonly description: string;
     readonly status: EpPropMergeType<StringConstructor, "" | "wait" | "error" | "finish" | "success" | "process", unknown>;
 }>;
-declare const __VLS_component_67: DefineComponent<{
+declare const __VLS_component_68: DefineComponent<{
     readonly ariaLabel: StringConstructor;
     readonly modelValue: EpPropFinalized<readonly [
         BooleanConstructor,
@@ -6367,7 +6912,7 @@ declare const __VLS_component_67: DefineComponent<{
     ], unknown, unknown>;
     readonly inlinePrompt: boolean;
 }>;
-declare const __VLS_component_68: DefineComponent<{
+declare const __VLS_component_69: DefineComponent<{
     cellData: {
         type: PropType<{
             row: DefaultRow;
@@ -6470,41 +7015,6 @@ declare const __VLS_component_68: DefineComponent<{
     selectProps: Record<string, any>;
     selectKey: string[];
 }>;
-declare const __VLS_component_69: DefineComponent<{
-    row: {
-        type: PropType<DefaultRow>;
-        required: true;
-    };
-    beforeSave: {
-        type: PropType<(payload: DefaultRow) => Promise<void> | void>;
-        default: undefined;
-    };
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    save: (payload: DefaultRow) => void;
-    cancel: (payload: {
-        row: DefaultRow;
-        draft: DefaultRow;
-    }) => void;
-    "save-error": (error: unknown) => void;
-}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
-    row: {
-        type: PropType<DefaultRow>;
-        required: true;
-    };
-    beforeSave: {
-        type: PropType<(payload: DefaultRow) => Promise<void> | void>;
-        default: undefined;
-    };
-}>> & {
-    onCancel?: ((payload: {
-        row: DefaultRow;
-        draft: DefaultRow;
-    }) => any) | undefined;
-    onSave?: ((payload: DefaultRow) => any) | undefined;
-    "onSave-error"?: ((error: unknown) => any) | undefined;
-}, {
-    beforeSave: (payload: DefaultRow) => Promise<void> | void;
-}>;
 declare const __VLS_component_7: DefineComponent<{
     readonly ariaLabel: StringConstructor;
     readonly appendTo: {
@@ -6513,7 +7023,11 @@ declare const __VLS_component_7: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly content: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown, "", boolean>;
     readonly rawContent: BooleanConstructor;
     readonly persistent: BooleanConstructor;
     readonly visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
@@ -6789,7 +7303,11 @@ declare const __VLS_component_7: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly content: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown, "", boolean>;
     readonly rawContent: BooleanConstructor;
     readonly persistent: BooleanConstructor;
     readonly visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
@@ -7050,7 +7568,11 @@ declare const __VLS_component_7: DefineComponent<{
     readonly autoClose: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
 }>>, {
     readonly disabled: boolean;
-    readonly content: string;
+    readonly content: EpPropMergeType<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown>;
     readonly offset: number;
     readonly visible: EpPropMergeType<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown>;
     readonly placement: EpPropMergeType<StringConstructor, Placement, unknown>;
@@ -7078,6 +7600,41 @@ declare const __VLS_component_7: DefineComponent<{
     readonly modal: boolean;
 }>;
 declare const __VLS_component_70: DefineComponent<{
+    row: {
+        type: PropType<DefaultRow>;
+        required: true;
+    };
+    beforeSave: {
+        type: PropType<(payload: DefaultRow) => Promise<void> | void>;
+        default: undefined;
+    };
+}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    save: (payload: DefaultRow) => void;
+    cancel: (payload: {
+        row: DefaultRow;
+        draft: DefaultRow;
+    }) => void;
+    "save-error": (error: unknown) => void;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    row: {
+        type: PropType<DefaultRow>;
+        required: true;
+    };
+    beforeSave: {
+        type: PropType<(payload: DefaultRow) => Promise<void> | void>;
+        default: undefined;
+    };
+}>> & {
+    onCancel?: ((payload: {
+        row: DefaultRow;
+        draft: DefaultRow;
+    }) => any) | undefined;
+    onSave?: ((payload: DefaultRow) => any) | undefined;
+    "onSave-error"?: ((error: unknown) => any) | undefined;
+}, {
+    beforeSave: (payload: DefaultRow) => Promise<void> | void;
+}>;
+declare const __VLS_component_71: DefineComponent<{
     readonly tabPaneClass: {
         readonly type: PropType<string>;
         readonly required: false;
@@ -7123,7 +7680,7 @@ declare const __VLS_component_70: DefineComponent<{
     readonly closable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly lazy: boolean;
 }>;
-declare const __VLS_component_71: DefineComponent<{
+declare const __VLS_component_72: DefineComponent<{
     readonly type: EpPropFinalized<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown, "primary", boolean>;
     readonly closable: BooleanConstructor;
     readonly disableTransitions: BooleanConstructor;
@@ -7165,7 +7722,7 @@ declare const __VLS_component_71: DefineComponent<{
     readonly disableTransitions: boolean;
     readonly hit: boolean;
 }>;
-declare const __VLS_component_72: DefineComponent<{
+declare const __VLS_component_73: DefineComponent<{
     readonly type: EpPropFinalized<StringConstructor, "" | "primary" | "success" | "warning" | "info" | "danger", unknown, "", boolean>;
     readonly size: EpPropFinalized<StringConstructor, "" | "small" | "default" | "large", unknown, "", boolean>;
     readonly truncated: BooleanConstructor;
@@ -7199,7 +7756,8 @@ declare const __VLS_component_72: DefineComponent<{
     readonly tag: string;
     readonly truncated: boolean;
 }>;
-declare const __VLS_component_73: DefineComponent<{
+declare const __VLS_component_74: DefineComponent<{
+    readonly allowPartialRange: BooleanConstructor;
     readonly showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
@@ -7365,6 +7923,7 @@ declare const __VLS_component_73: DefineComponent<{
     "panel-change": (...args: any[]) => void;
     "visible-change": (...args: any[]) => void;
 }, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly allowPartialRange: BooleanConstructor;
     readonly showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly showWeekNumber: BooleanConstructor;
@@ -7536,8 +8095,9 @@ declare const __VLS_component_73: DefineComponent<{
     readonly arrowControl: boolean;
     readonly unlinkPanels: boolean;
     readonly isRange: boolean;
+    readonly allowPartialRange: boolean;
 }>;
-declare const __VLS_component_74: DefineComponent<{
+declare const __VLS_component_75: DefineComponent<{
     readonly timestamp: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly hideTimestamp: BooleanConstructor;
     readonly center: BooleanConstructor;
@@ -7577,7 +8137,7 @@ declare const __VLS_component_74: DefineComponent<{
     readonly hideTimestamp: boolean;
     readonly hollow: boolean;
 }>;
-declare const __VLS_component_75: DefineComponent<{
+declare const __VLS_component_76: DefineComponent<{
     readonly data: EpPropFinalized<(new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]) | ((new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]))[], unknown, unknown, () => never[], boolean>;
     readonly titles: EpPropFinalized<(new (...args: any[]) => [
         string,
@@ -7719,7 +8279,7 @@ declare const __VLS_component_75: DefineComponent<{
     readonly rightDefaultChecked: TransferKey[];
     readonly targetOrder: EpPropMergeType<StringConstructor, "push" | "unshift" | "original", unknown>;
 }>;
-declare const __VLS_component_76: DefineComponent<{
+declare const __VLS_component_77: DefineComponent<{
     readonly data: EpPropFinalized<(new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]) | ((new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]))[], unknown, unknown, () => never[], boolean>;
     readonly optionRender: {
         readonly type: PropType<(option: TransferDataItem) => VNode | VNode[]>;
@@ -7781,7 +8341,7 @@ declare const __VLS_component_76: DefineComponent<{
     readonly filterable: boolean;
     readonly defaultChecked: TransferKey[];
 }>;
-declare const __VLS_component_77: DefineComponent<{
+declare const __VLS_component_78: DefineComponent<{
     readonly data: EpPropFinalized<(new (...args: any[]) => TreeData_3) | (() => TreeData_3) | ((new (...args: any[]) => TreeData_3) | (() => TreeData_3))[], unknown, unknown, () => [
     ], boolean>;
     readonly emptyText: {
@@ -7936,7 +8496,7 @@ declare const __VLS_component_77: DefineComponent<{
     readonly expandOnClickNode: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly highlightCurrent: boolean;
 }>;
-declare const __VLS_component_78: DefineComponent<{
+declare const __VLS_component_79: DefineComponent<{
     readonly beforeUpload: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
         (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
         new (): any;
@@ -8033,6 +8593,7 @@ declare const __VLS_component_78: DefineComponent<{
     readonly multiple: BooleanConstructor;
     readonly name: EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
     readonly drag: BooleanConstructor;
+    readonly dragClickable: BooleanConstructor;
     readonly withCredentials: BooleanConstructor;
     readonly showFileList: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly accept: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -8159,6 +8720,7 @@ declare const __VLS_component_78: DefineComponent<{
     readonly multiple: BooleanConstructor;
     readonly name: EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
     readonly drag: BooleanConstructor;
+    readonly dragClickable: BooleanConstructor;
     readonly withCredentials: BooleanConstructor;
     readonly showFileList: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly accept: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -8195,225 +8757,12 @@ declare const __VLS_component_78: DefineComponent<{
     readonly autoUpload: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly listType: EpPropMergeType<StringConstructor, "picture" | "text" | "picture-card", unknown>;
     readonly httpRequest: UploadRequestHandler;
+    readonly dragClickable: boolean;
     readonly beforeUpload: (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
     readonly onRemove: (uploadFile: UploadFile, uploadFiles: UploadFiles) => void;
     readonly onPreview: (uploadFile: UploadFile) => void;
     readonly onSuccess: (response: any, uploadFile: UploadFile, uploadFiles: UploadFiles) => void;
     readonly onExceed: (files: File[], uploadFiles: UploadUserFile[]) => void;
-}>;
-declare const __VLS_component_79: DefineComponent<{
-    readonly beforeUpload: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
-        (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
-        (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onRemove: EpPropFinalized<(new (...args: any[]) => (file: UploadFile | UploadRawFile) => void) | (() => (file: UploadFile | UploadRawFile) => void) | {
-        (): (file: UploadFile | UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (file: UploadFile | UploadRawFile) => void) | (() => (file: UploadFile | UploadRawFile) => void) | {
-        (): (file: UploadFile | UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onStart: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile, isEnd: boolean) => void) | (() => (rawFile: UploadRawFile, isEnd: boolean) => void) | {
-        (): (rawFile: UploadRawFile, isEnd: boolean) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (rawFile: UploadRawFile, isEnd: boolean) => void) | (() => (rawFile: UploadRawFile, isEnd: boolean) => void) | {
-        (): (rawFile: UploadRawFile, isEnd: boolean) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onSuccess: EpPropFinalized<(new (...args: any[]) => (response: any, rawFile: UploadRawFile) => unknown) | (() => (response: any, rawFile: UploadRawFile) => unknown) | {
-        (): (response: any, rawFile: UploadRawFile) => unknown;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (response: any, rawFile: UploadRawFile) => unknown) | (() => (response: any, rawFile: UploadRawFile) => unknown) | {
-        (): (response: any, rawFile: UploadRawFile) => unknown;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onProgress: EpPropFinalized<(new (...args: any[]) => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | (() => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | {
-        (): (evt: UploadProgressEvent, rawFile: UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | (() => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | {
-        (): (evt: UploadProgressEvent, rawFile: UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onError: EpPropFinalized<(new (...args: any[]) => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | (() => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | {
-        (): (err: UploadAjaxError, rawFile: UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | (() => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | {
-        (): (err: UploadAjaxError, rawFile: UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onExceed: EpPropFinalized<(new (...args: any[]) => (files: File[], uploadFiles: UploadUserFile[]) => void) | (() => (files: File[], uploadFiles: UploadUserFile[]) => void) | {
-        (): (files: File[], uploadFiles: UploadUserFile[]) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (files: File[], uploadFiles: UploadUserFile[]) => void) | (() => (files: File[], uploadFiles: UploadUserFile[]) => void) | {
-        (): (files: File[], uploadFiles: UploadUserFile[]) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly action: EpPropFinalized<StringConstructor, unknown, unknown, "#", boolean>;
-    readonly headers: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => Record<string, any> | Headers) | (() => Record<string, any> | Headers) | ((new (...args: any[]) => Record<string, any> | Headers) | (() => Record<string, any> | Headers))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly method: EpPropFinalized<StringConstructor, unknown, unknown, "post", boolean>;
-    readonly data: EpPropFinalized<(new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | ((new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)))[], unknown, unknown, () => Mutable<{}>, boolean>;
-    readonly multiple: BooleanConstructor;
-    readonly name: EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
-    readonly drag: BooleanConstructor;
-    readonly withCredentials: BooleanConstructor;
-    readonly showFileList: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly accept: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly fileList: EpPropFinalized<(new (...args: any[]) => UploadUserFile[]) | (() => UploadUserFile[]) | ((new (...args: any[]) => UploadUserFile[]) | (() => UploadUserFile[]))[], unknown, unknown, () => [
-    ], boolean>;
-    readonly autoUpload: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly listType: EpPropFinalized<StringConstructor, "picture" | "text" | "picture-card", unknown, "text", boolean>;
-    readonly httpRequest: EpPropFinalized<(new (...args: any[]) => UploadRequestHandler) | (() => UploadRequestHandler) | {
-        (): UploadRequestHandler;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => UploadRequestHandler) | (() => UploadRequestHandler) | {
-        (): UploadRequestHandler;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, UploadRequestHandler, boolean>;
-    readonly disabled: BooleanConstructor;
-    readonly limit: NumberConstructor;
-}, {
-    abort: (file?: UploadFile) => void;
-    upload: (rawFile: UploadRawFile) => Promise<void>;
-}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
-    readonly beforeUpload: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
-        (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
-        (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onRemove: EpPropFinalized<(new (...args: any[]) => (file: UploadFile | UploadRawFile) => void) | (() => (file: UploadFile | UploadRawFile) => void) | {
-        (): (file: UploadFile | UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (file: UploadFile | UploadRawFile) => void) | (() => (file: UploadFile | UploadRawFile) => void) | {
-        (): (file: UploadFile | UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onStart: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile, isEnd: boolean) => void) | (() => (rawFile: UploadRawFile, isEnd: boolean) => void) | {
-        (): (rawFile: UploadRawFile, isEnd: boolean) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (rawFile: UploadRawFile, isEnd: boolean) => void) | (() => (rawFile: UploadRawFile, isEnd: boolean) => void) | {
-        (): (rawFile: UploadRawFile, isEnd: boolean) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onSuccess: EpPropFinalized<(new (...args: any[]) => (response: any, rawFile: UploadRawFile) => unknown) | (() => (response: any, rawFile: UploadRawFile) => unknown) | {
-        (): (response: any, rawFile: UploadRawFile) => unknown;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (response: any, rawFile: UploadRawFile) => unknown) | (() => (response: any, rawFile: UploadRawFile) => unknown) | {
-        (): (response: any, rawFile: UploadRawFile) => unknown;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onProgress: EpPropFinalized<(new (...args: any[]) => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | (() => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | {
-        (): (evt: UploadProgressEvent, rawFile: UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | (() => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | {
-        (): (evt: UploadProgressEvent, rawFile: UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onError: EpPropFinalized<(new (...args: any[]) => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | (() => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | {
-        (): (err: UploadAjaxError, rawFile: UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | (() => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | {
-        (): (err: UploadAjaxError, rawFile: UploadRawFile) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly onExceed: EpPropFinalized<(new (...args: any[]) => (files: File[], uploadFiles: UploadUserFile[]) => void) | (() => (files: File[], uploadFiles: UploadUserFile[]) => void) | {
-        (): (files: File[], uploadFiles: UploadUserFile[]) => void;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => (files: File[], uploadFiles: UploadUserFile[]) => void) | (() => (files: File[], uploadFiles: UploadUserFile[]) => void) | {
-        (): (files: File[], uploadFiles: UploadUserFile[]) => void;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, () => void, boolean>;
-    readonly action: EpPropFinalized<StringConstructor, unknown, unknown, "#", boolean>;
-    readonly headers: {
-        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => Record<string, any> | Headers) | (() => Record<string, any> | Headers) | ((new (...args: any[]) => Record<string, any> | Headers) | (() => Record<string, any> | Headers))[], unknown, unknown>>;
-        readonly required: false;
-        readonly validator: ((val: unknown) => boolean) | undefined;
-        __epPropKey: true;
-    };
-    readonly method: EpPropFinalized<StringConstructor, unknown, unknown, "post", boolean>;
-    readonly data: EpPropFinalized<(new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | ((new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)))[], unknown, unknown, () => Mutable<{}>, boolean>;
-    readonly multiple: BooleanConstructor;
-    readonly name: EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
-    readonly drag: BooleanConstructor;
-    readonly withCredentials: BooleanConstructor;
-    readonly showFileList: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly accept: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly fileList: EpPropFinalized<(new (...args: any[]) => UploadUserFile[]) | (() => UploadUserFile[]) | ((new (...args: any[]) => UploadUserFile[]) | (() => UploadUserFile[]))[], unknown, unknown, () => [
-    ], boolean>;
-    readonly autoUpload: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
-    readonly listType: EpPropFinalized<StringConstructor, "picture" | "text" | "picture-card", unknown, "text", boolean>;
-    readonly httpRequest: EpPropFinalized<(new (...args: any[]) => UploadRequestHandler) | (() => UploadRequestHandler) | {
-        (): UploadRequestHandler;
-        new (): any;
-        readonly prototype: any;
-    } | ((new (...args: any[]) => UploadRequestHandler) | (() => UploadRequestHandler) | {
-        (): UploadRequestHandler;
-        new (): any;
-        readonly prototype: any;
-    })[], unknown, unknown, UploadRequestHandler, boolean>;
-    readonly disabled: BooleanConstructor;
-    readonly limit: NumberConstructor;
-}>>, {
-    readonly data: EpPropMergeType<(new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | ((new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)))[], unknown, unknown>;
-    readonly disabled: boolean;
-    readonly drag: boolean;
-    readonly multiple: boolean;
-    readonly name: string;
-    readonly onError: (err: UploadAjaxError, rawFile: UploadRawFile) => void;
-    readonly onProgress: (evt: UploadProgressEvent, rawFile: UploadRawFile) => void;
-    readonly method: string;
-    readonly action: string;
-    readonly accept: string;
-    readonly withCredentials: boolean;
-    readonly showFileList: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly fileList: UploadUserFile[];
-    readonly autoUpload: EpPropMergeType<BooleanConstructor, unknown, unknown>;
-    readonly listType: EpPropMergeType<StringConstructor, "picture" | "text" | "picture-card", unknown>;
-    readonly httpRequest: UploadRequestHandler;
-    readonly beforeUpload: (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
-    readonly onRemove: (file: UploadFile | UploadRawFile) => void;
-    readonly onSuccess: (response: any, rawFile: UploadRawFile) => unknown;
-    readonly onExceed: (files: File[], uploadFiles: UploadUserFile[]) => void;
-    readonly onStart: (rawFile: UploadRawFile, isEnd: boolean) => void;
 }>;
 declare const __VLS_component_8: DefineComponent<{
     readonly loop: BooleanConstructor;
@@ -8962,6 +9311,223 @@ declare const __VLS_component_8: DefineComponent<{
     readonly trapping: boolean;
 }>;
 declare const __VLS_component_80: DefineComponent<{
+    readonly beforeUpload: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
+        (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
+        (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onRemove: EpPropFinalized<(new (...args: any[]) => (file: UploadFile | UploadRawFile) => void) | (() => (file: UploadFile | UploadRawFile) => void) | {
+        (): (file: UploadFile | UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (file: UploadFile | UploadRawFile) => void) | (() => (file: UploadFile | UploadRawFile) => void) | {
+        (): (file: UploadFile | UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onStart: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile, isEnd: boolean) => void) | (() => (rawFile: UploadRawFile, isEnd: boolean) => void) | {
+        (): (rawFile: UploadRawFile, isEnd: boolean) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (rawFile: UploadRawFile, isEnd: boolean) => void) | (() => (rawFile: UploadRawFile, isEnd: boolean) => void) | {
+        (): (rawFile: UploadRawFile, isEnd: boolean) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onSuccess: EpPropFinalized<(new (...args: any[]) => (response: any, rawFile: UploadRawFile) => unknown) | (() => (response: any, rawFile: UploadRawFile) => unknown) | {
+        (): (response: any, rawFile: UploadRawFile) => unknown;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (response: any, rawFile: UploadRawFile) => unknown) | (() => (response: any, rawFile: UploadRawFile) => unknown) | {
+        (): (response: any, rawFile: UploadRawFile) => unknown;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onProgress: EpPropFinalized<(new (...args: any[]) => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | (() => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | {
+        (): (evt: UploadProgressEvent, rawFile: UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | (() => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | {
+        (): (evt: UploadProgressEvent, rawFile: UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onError: EpPropFinalized<(new (...args: any[]) => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | (() => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | {
+        (): (err: UploadAjaxError, rawFile: UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | (() => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | {
+        (): (err: UploadAjaxError, rawFile: UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onExceed: EpPropFinalized<(new (...args: any[]) => (files: File[], uploadFiles: UploadUserFile[]) => void) | (() => (files: File[], uploadFiles: UploadUserFile[]) => void) | {
+        (): (files: File[], uploadFiles: UploadUserFile[]) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (files: File[], uploadFiles: UploadUserFile[]) => void) | (() => (files: File[], uploadFiles: UploadUserFile[]) => void) | {
+        (): (files: File[], uploadFiles: UploadUserFile[]) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly action: EpPropFinalized<StringConstructor, unknown, unknown, "#", boolean>;
+    readonly headers: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => Record<string, any> | Headers) | (() => Record<string, any> | Headers) | ((new (...args: any[]) => Record<string, any> | Headers) | (() => Record<string, any> | Headers))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly method: EpPropFinalized<StringConstructor, unknown, unknown, "post", boolean>;
+    readonly data: EpPropFinalized<(new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | ((new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)))[], unknown, unknown, () => Mutable<{}>, boolean>;
+    readonly multiple: BooleanConstructor;
+    readonly name: EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
+    readonly drag: BooleanConstructor;
+    readonly dragClickable: BooleanConstructor;
+    readonly withCredentials: BooleanConstructor;
+    readonly showFileList: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly accept: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly fileList: EpPropFinalized<(new (...args: any[]) => UploadUserFile[]) | (() => UploadUserFile[]) | ((new (...args: any[]) => UploadUserFile[]) | (() => UploadUserFile[]))[], unknown, unknown, () => [
+    ], boolean>;
+    readonly autoUpload: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly listType: EpPropFinalized<StringConstructor, "picture" | "text" | "picture-card", unknown, "text", boolean>;
+    readonly httpRequest: EpPropFinalized<(new (...args: any[]) => UploadRequestHandler) | (() => UploadRequestHandler) | {
+        (): UploadRequestHandler;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => UploadRequestHandler) | (() => UploadRequestHandler) | {
+        (): UploadRequestHandler;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, UploadRequestHandler, boolean>;
+    readonly disabled: BooleanConstructor;
+    readonly limit: NumberConstructor;
+}, {
+    abort: (file?: UploadFile) => void;
+    upload: (rawFile: UploadRawFile) => Promise<void>;
+}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly beforeUpload: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
+        (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
+        (): (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onRemove: EpPropFinalized<(new (...args: any[]) => (file: UploadFile | UploadRawFile) => void) | (() => (file: UploadFile | UploadRawFile) => void) | {
+        (): (file: UploadFile | UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (file: UploadFile | UploadRawFile) => void) | (() => (file: UploadFile | UploadRawFile) => void) | {
+        (): (file: UploadFile | UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onStart: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile, isEnd: boolean) => void) | (() => (rawFile: UploadRawFile, isEnd: boolean) => void) | {
+        (): (rawFile: UploadRawFile, isEnd: boolean) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (rawFile: UploadRawFile, isEnd: boolean) => void) | (() => (rawFile: UploadRawFile, isEnd: boolean) => void) | {
+        (): (rawFile: UploadRawFile, isEnd: boolean) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onSuccess: EpPropFinalized<(new (...args: any[]) => (response: any, rawFile: UploadRawFile) => unknown) | (() => (response: any, rawFile: UploadRawFile) => unknown) | {
+        (): (response: any, rawFile: UploadRawFile) => unknown;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (response: any, rawFile: UploadRawFile) => unknown) | (() => (response: any, rawFile: UploadRawFile) => unknown) | {
+        (): (response: any, rawFile: UploadRawFile) => unknown;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onProgress: EpPropFinalized<(new (...args: any[]) => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | (() => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | {
+        (): (evt: UploadProgressEvent, rawFile: UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | (() => (evt: UploadProgressEvent, rawFile: UploadRawFile) => void) | {
+        (): (evt: UploadProgressEvent, rawFile: UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onError: EpPropFinalized<(new (...args: any[]) => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | (() => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | {
+        (): (err: UploadAjaxError, rawFile: UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | (() => (err: UploadAjaxError, rawFile: UploadRawFile) => void) | {
+        (): (err: UploadAjaxError, rawFile: UploadRawFile) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly onExceed: EpPropFinalized<(new (...args: any[]) => (files: File[], uploadFiles: UploadUserFile[]) => void) | (() => (files: File[], uploadFiles: UploadUserFile[]) => void) | {
+        (): (files: File[], uploadFiles: UploadUserFile[]) => void;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => (files: File[], uploadFiles: UploadUserFile[]) => void) | (() => (files: File[], uploadFiles: UploadUserFile[]) => void) | {
+        (): (files: File[], uploadFiles: UploadUserFile[]) => void;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, () => void, boolean>;
+    readonly action: EpPropFinalized<StringConstructor, unknown, unknown, "#", boolean>;
+    readonly headers: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => Record<string, any> | Headers) | (() => Record<string, any> | Headers) | ((new (...args: any[]) => Record<string, any> | Headers) | (() => Record<string, any> | Headers))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly method: EpPropFinalized<StringConstructor, unknown, unknown, "post", boolean>;
+    readonly data: EpPropFinalized<(new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | ((new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)))[], unknown, unknown, () => Mutable<{}>, boolean>;
+    readonly multiple: BooleanConstructor;
+    readonly name: EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
+    readonly drag: BooleanConstructor;
+    readonly dragClickable: BooleanConstructor;
+    readonly withCredentials: BooleanConstructor;
+    readonly showFileList: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly accept: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly fileList: EpPropFinalized<(new (...args: any[]) => UploadUserFile[]) | (() => UploadUserFile[]) | ((new (...args: any[]) => UploadUserFile[]) | (() => UploadUserFile[]))[], unknown, unknown, () => [
+    ], boolean>;
+    readonly autoUpload: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly listType: EpPropFinalized<StringConstructor, "picture" | "text" | "picture-card", unknown, "text", boolean>;
+    readonly httpRequest: EpPropFinalized<(new (...args: any[]) => UploadRequestHandler) | (() => UploadRequestHandler) | {
+        (): UploadRequestHandler;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => UploadRequestHandler) | (() => UploadRequestHandler) | {
+        (): UploadRequestHandler;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, UploadRequestHandler, boolean>;
+    readonly disabled: BooleanConstructor;
+    readonly limit: NumberConstructor;
+}>>, {
+    readonly data: EpPropMergeType<(new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | ((new (...args: any[]) => Mutable<Record<string, any>> | Promise<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)) | (() => Awaitable<Mutable<Record<string, any>>> | ((rawFile: UploadRawFile) => Awaitable<UploadData>)))[], unknown, unknown>;
+    readonly disabled: boolean;
+    readonly drag: boolean;
+    readonly multiple: boolean;
+    readonly name: string;
+    readonly onError: (err: UploadAjaxError, rawFile: UploadRawFile) => void;
+    readonly onProgress: (evt: UploadProgressEvent, rawFile: UploadRawFile) => void;
+    readonly method: string;
+    readonly action: string;
+    readonly accept: string;
+    readonly withCredentials: boolean;
+    readonly showFileList: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly fileList: UploadUserFile[];
+    readonly autoUpload: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly listType: EpPropMergeType<StringConstructor, "picture" | "text" | "picture-card", unknown>;
+    readonly httpRequest: UploadRequestHandler;
+    readonly dragClickable: boolean;
+    readonly beforeUpload: (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>;
+    readonly onRemove: (file: UploadFile | UploadRawFile) => void;
+    readonly onSuccess: (response: any, rawFile: UploadRawFile) => unknown;
+    readonly onExceed: (files: File[], uploadFiles: UploadUserFile[]) => void;
+    readonly onStart: (rawFile: UploadRawFile, isEnd: boolean) => void;
+}>;
+declare const __VLS_component_81: DefineComponent<{
     readonly files: EpPropFinalized<(new (...args: any[]) => UploadFiles) | (() => UploadFiles) | ((new (...args: any[]) => UploadFiles) | (() => UploadFiles))[], unknown, unknown, () => never[], boolean>;
     readonly disabled: BooleanConstructor;
     readonly handlePreview: EpPropFinalized<(new (...args: any[]) => (uploadFile: UploadFile) => void) | (() => (uploadFile: UploadFile) => void) | {
@@ -9009,7 +9575,7 @@ declare const __VLS_component_80: DefineComponent<{
     readonly files: UploadFiles;
     readonly handlePreview: (uploadFile: UploadFile) => void;
 }>;
-declare const __VLS_component_81: DefineComponent<{
+declare const __VLS_component_82: DefineComponent<{
     readonly disabled: BooleanConstructor;
 }, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
     file: (file: File[]) => void;
@@ -9020,7 +9586,7 @@ declare const __VLS_component_81: DefineComponent<{
 }, {
     readonly disabled: boolean;
 }>;
-declare const __VLS_component_82: DefineComponent<{
+declare const __VLS_component_83: DefineComponent<{
     readonly zIndex: EpPropFinalized<NumberConstructor, unknown, unknown, 9, boolean>;
     readonly rotate: EpPropFinalized<NumberConstructor, unknown, unknown, -22, boolean>;
     readonly width: NumberConstructor;
@@ -9099,7 +9665,7 @@ declare const __VLS_component_82: DefineComponent<{
         number
     ];
 }>;
-declare const __VLS_component_83: DefineComponent<{
+declare const __VLS_component_84: DefineComponent<{
     modelValue: BooleanConstructor;
     current: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     showArrow: BooleanConstructor;
@@ -9218,7 +9784,7 @@ declare const __VLS_component_83: DefineComponent<{
     current: number;
     targetAreaClickable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-declare const __VLS_component_84: DefineComponent<{
+declare const __VLS_component_85: DefineComponent<{
     target: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement | (() => HTMLElement | null)) | (() => string | HTMLElement | (() => HTMLElement | null) | null) | ((new (...args: any[]) => string | HTMLElement | (() => HTMLElement | null)) | (() => string | HTMLElement | (() => HTMLElement | null) | null))[], unknown, unknown>>;
         readonly required: false;
@@ -9329,7 +9895,7 @@ declare const __VLS_component_84: DefineComponent<{
     showArrow: boolean;
     showClose: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-declare const __VLS_component_85: DefineComponent<{
+declare const __VLS_component_86: DefineComponent<{
     container: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement | Window) | (() => string | HTMLElement | Window | null) | ((new (...args: any[]) => string | HTMLElement | Window) | (() => string | HTMLElement | Window | null))[], unknown, unknown>>;
         readonly required: false;
@@ -9374,14 +9940,14 @@ declare const __VLS_component_85: DefineComponent<{
     bound: number;
     selectScrollTop: boolean;
 }>;
-declare const __VLS_component_86: DefineComponent<{
+declare const __VLS_component_87: DefineComponent<{
     title: StringConstructor;
     href: StringConstructor;
 }, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     title: StringConstructor;
     href: StringConstructor;
 }>>, {}>;
-declare const __VLS_component_87: DefineComponent<{
+declare const __VLS_component_88: DefineComponent<{
     ariaLabel: StringConstructor;
     direction: EpPropFinalized<(new (...args: any[]) => "horizontal" | "vertical") | (() => "horizontal" | "vertical") | ((new (...args: any[]) => "horizontal" | "vertical") | (() => "horizontal" | "vertical"))[], unknown, unknown, string, boolean>;
     options: EpPropFinalized<(new (...args: any[]) => Option_3[]) | (() => Option_3[]) | ((new (...args: any[]) => Option_3[]) | (() => Option_3[]))[], unknown, unknown, () => never[], boolean>;
@@ -9430,7 +9996,7 @@ declare const __VLS_component_87: DefineComponent<{
     options: Option_3[];
     validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-declare const __VLS_component_88: DefineComponent<{
+declare const __VLS_component_89: DefineComponent<{
     options: EpPropFinalized<(new (...args: any[]) => MentionOption[]) | (() => MentionOption[]) | ((new (...args: any[]) => MentionOption[]) | (() => MentionOption[]))[], unknown, unknown, () => never[], boolean>;
     prefix: EpPropFinalized<(new (...args: any[]) => string | string[]) | (() => string | string[]) | ((new (...args: any[]) => string | string[]) | (() => string | string[]))[], unknown, unknown, string, boolean>;
     split: EpPropFinalized<StringConstructor, unknown, unknown, string, boolean>;
@@ -9973,26 +10539,6 @@ declare const __VLS_component_88: DefineComponent<{
     filterOption: EpPropMergeType<(new (...args: any[]) => false | ((pattern: string, option: MentionOption) => boolean)) | (() => false | ((pattern: string, option: MentionOption) => boolean)) | ((new (...args: any[]) => false | ((pattern: string, option: MentionOption) => boolean)) | (() => false | ((pattern: string, option: MentionOption) => boolean)))[], unknown, unknown>;
     whole: boolean;
 }>;
-declare const __VLS_component_89: DefineComponent<{
-    readonly layout: EpPropFinalized<StringConstructor, "horizontal" | "vertical", unknown, "horizontal", boolean>;
-    readonly lazy: BooleanConstructor;
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-    resizeStart: (index: number, sizes: number[]) => void;
-    resize: (index: number, sizes: number[]) => void;
-    resizeEnd: (index: number, sizes: number[]) => void;
-    collapse: (index: number, type: "end" | "start", sizes: number[]) => void;
-}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
-    readonly layout: EpPropFinalized<StringConstructor, "horizontal" | "vertical", unknown, "horizontal", boolean>;
-    readonly lazy: BooleanConstructor;
-}>> & {
-    onResize?: ((index: number, sizes: number[]) => any) | undefined;
-    onCollapse?: ((index: number, type: "end" | "start", sizes: number[]) => any) | undefined;
-    onResizeStart?: ((index: number, sizes: number[]) => any) | undefined;
-    onResizeEnd?: ((index: number, sizes: number[]) => any) | undefined;
-}, {
-    readonly layout: EpPropMergeType<StringConstructor, "horizontal" | "vertical", unknown>;
-    readonly lazy: boolean;
-}>;
 declare const __VLS_component_9: DefineComponent<{
     readonly size: EpPropFinalized<readonly [
         NumberConstructor,
@@ -10039,6 +10585,26 @@ declare const __VLS_component_9: DefineComponent<{
     readonly fit: EpPropMergeType<(new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty) | ((new (...args: any[]) => "fill" | "contain" | "-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "none" | "cover" | "scale-down") | (() => ObjectFitProperty))[], unknown, unknown>;
 }>;
 declare const __VLS_component_90: DefineComponent<{
+    readonly layout: EpPropFinalized<StringConstructor, "horizontal" | "vertical", unknown, "horizontal", boolean>;
+    readonly lazy: BooleanConstructor;
+}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    resizeStart: (index: number, sizes: number[]) => void;
+    resize: (index: number, sizes: number[]) => void;
+    resizeEnd: (index: number, sizes: number[]) => void;
+    collapse: (index: number, type: "end" | "start", sizes: number[]) => void;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly layout: EpPropFinalized<StringConstructor, "horizontal" | "vertical", unknown, "horizontal", boolean>;
+    readonly lazy: BooleanConstructor;
+}>> & {
+    onResize?: ((index: number, sizes: number[]) => any) | undefined;
+    onCollapse?: ((index: number, type: "end" | "start", sizes: number[]) => any) | undefined;
+    onResizeStart?: ((index: number, sizes: number[]) => any) | undefined;
+    onResizeEnd?: ((index: number, sizes: number[]) => any) | undefined;
+}, {
+    readonly layout: EpPropMergeType<StringConstructor, "horizontal" | "vertical", unknown>;
+    readonly lazy: boolean;
+}>;
+declare const __VLS_component_91: DefineComponent<{
     readonly min: {
         readonly type: PropType<EpPropMergeType<readonly [
             StringConstructor,
@@ -10106,7 +10672,7 @@ declare const __VLS_component_90: DefineComponent<{
     readonly resizable: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly collapsible: boolean;
 }>;
-declare const __VLS_component_91: DefineComponent<{
+declare const __VLS_component_92: DefineComponent<{
     readonly customClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly center: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
     readonly alert: EpPropFinalized<BooleanConstructor, unknown, unknown, false, boolean>;
@@ -10221,7 +10787,7 @@ declare const __VLS_component_91: DefineComponent<{
     readonly repeatNum: number;
     readonly onLabelClick: Function;
 }>;
-declare const __VLS_component_92: DefineComponent<{
+declare const __VLS_component_93: DefineComponent<{
     readonly customClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly dangerouslyUseHTMLString: BooleanConstructor;
     readonly duration: EpPropFinalized<NumberConstructor, unknown, unknown, 4500, boolean>;
@@ -10350,7 +10916,7 @@ declare const __VLS_component_92: DefineComponent<{
     readonly dangerouslyUseHTMLString: boolean;
     readonly onLabelClick: Function;
 }>;
-declare const __VLS_component_93: DefineComponent<{
+declare const __VLS_component_94: DefineComponent<{
     readonly trigger: EpPropFinalized<(new (...args: any[]) => "click" | "focus" | "contextmenu" | "hover" | TooltipTriggerType[]) | (() => Arrayable<TooltipTriggerType>) | ((new (...args: any[]) => "click" | "focus" | "contextmenu" | "hover" | TooltipTriggerType[]) | (() => Arrayable<TooltipTriggerType>))[], unknown, unknown, "hover", boolean>;
     readonly triggerKeys: EpPropFinalized<(new (...args: any[]) => string[]) | (() => string[]) | ((new (...args: any[]) => string[]) | (() => string[]))[], unknown, unknown, () => string[], boolean>;
     readonly placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], unknown, unknown, "bottom", boolean>;
@@ -10359,7 +10925,11 @@ declare const __VLS_component_93: DefineComponent<{
     readonly transition: StringConstructor;
     readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     readonly tabindex: EpPropFinalized<(new (...args: any[]) => string | number) | (() => string | number) | ((new (...args: any[]) => string | number) | (() => string | number))[], unknown, unknown, 0, boolean>;
-    readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly content: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown, "", boolean>;
     readonly popperStyle: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
         readonly required: false;
@@ -10530,7 +11100,11 @@ declare const __VLS_component_93: DefineComponent<{
     readonly transition: StringConstructor;
     readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     readonly tabindex: EpPropFinalized<(new (...args: any[]) => string | number) | (() => string | number) | ((new (...args: any[]) => string | number) | (() => string | number))[], unknown, unknown, 0, boolean>;
-    readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly content: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown, "", boolean>;
     readonly popperStyle: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
         readonly required: false;
@@ -10694,7 +11268,11 @@ declare const __VLS_component_93: DefineComponent<{
         StringConstructor,
         NumberConstructor
     ], unknown, unknown>;
-    readonly content: string;
+    readonly content: EpPropMergeType<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown>;
     readonly offset: number;
     readonly visible: EpPropMergeType<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown>;
     readonly placement: EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], unknown, unknown>;
@@ -11075,41 +11653,51 @@ declare function __VLS_template_47(): {
     default?(_: {}): any;
 };
 declare function __VLS_template_48(): {
-    "decrease-icon"?(_: {}): any;
-    "increase-icon"?(_: {}): any;
+    option?(_: {
+        item: Record<string, any>;
+        selected: boolean;
+    }): any;
+    prepend?(_: {}): any;
+    append?(_: {}): any;
     prefix?(_: {}): any;
     suffix?(_: {}): any;
 };
 declare function __VLS_template_49(): {
+    "decrease-icon"?(_: {}): any;
+    "increase-icon"?(_: {}): any;
     prefix?(_: {}): any;
-    tag?(_: {
-        value: string;
-        index: number;
-    }): any;
-    tag?(_: {
-        value: string;
-        index: number;
-    }): any;
     suffix?(_: {}): any;
 };
 declare function __VLS_template_5(): {
     default?(_: {}): any;
 };
 declare function __VLS_template_50(): {
+    prefix?(_: {}): any;
+    tag?(_: {
+        value: string;
+        index: number;
+    }): any;
+    tag?(_: {
+        value: string;
+        index: number;
+    }): any;
+    suffix?(_: {}): any;
+};
+declare function __VLS_template_51(): {
     default?(_: {}): any;
     icon?(_: {}): any;
 };
-declare function __VLS_template_51(): {
-    title?(_: {}): any;
-    title?(_: {}): any;
-    default?(_: {}): any;
-    default?(_: {}): any;
-};
 declare function __VLS_template_52(): {
     title?(_: {}): any;
+    title?(_: {}): any;
+    default?(_: {}): any;
     default?(_: {}): any;
 };
 declare function __VLS_template_53(): {
+    title?(_: {}): any;
+    default?(_: {}): any;
+};
+declare function __VLS_template_54(): {
     breadcrumb?(_: {}): any;
     icon?(_: {}): any;
     title?(_: {}): any;
@@ -11117,26 +11705,23 @@ declare function __VLS_template_53(): {
     extra?(_: {}): any;
     default?(_: {}): any;
 };
-declare function __VLS_template_54(): {
+declare function __VLS_template_55(): {
     actions?(_: {
         confirm: (e: MouseEvent) => void;
         cancel: (e: MouseEvent) => void;
     }): any;
     reference?(_: {}): any;
 };
-declare function __VLS_template_55(): {
-    default?(_: {}): any;
-};
 declare function __VLS_template_56(): {
-    default?(_: {
-        percentage: number;
-    }): any;
-    default?(_: {
-        percentage: number;
-    }): any;
+    default?(_: {}): any;
 };
 declare function __VLS_template_57(): {
-    default?(_: {}): any;
+    default?(_: {
+        percentage: number;
+    }): any;
+    default?(_: {
+        percentage: number;
+    }): any;
 };
 declare function __VLS_template_58(): {
     default?(_: {}): any;
@@ -11148,18 +11733,21 @@ declare function __VLS_template_6(): {
     default?(_: {}): any;
 };
 declare function __VLS_template_60(): {
+    default?(_: {}): any;
+};
+declare function __VLS_template_61(): {
     icon?(_: {}): any;
     title?(_: {}): any;
     "sub-title"?(_: {}): any;
     extra?(_: {}): any;
 };
-declare function __VLS_template_61(): {
-    default?(_: {}): any;
-};
 declare function __VLS_template_62(): {
     default?(_: {}): any;
 };
 declare function __VLS_template_63(): {
+    default?(_: {}): any;
+};
+declare function __VLS_template_64(): {
     template?(_: {
         key: number;
     }): any;
@@ -11167,24 +11755,24 @@ declare function __VLS_template_63(): {
         [x: string]: unknown;
     }): any;
 };
-declare function __VLS_template_64(): {
+declare function __VLS_template_65(): {
     title?(_: {}): any;
     prefix?(_: {}): any;
     suffix?(_: {}): any;
 };
-declare function __VLS_template_65(): {
+declare function __VLS_template_66(): {
     default?(_: {}): any;
 };
-declare function __VLS_template_66(): {
+declare function __VLS_template_67(): {
     icon?(_: {}): any;
     title?(_: {}): any;
     description?(_: {}): any;
 };
-declare function __VLS_template_67(): {
+declare function __VLS_template_68(): {
     "active-action"?(_: {}): any;
     "inactive-action"?(_: {}): any;
 };
-declare function __VLS_template_68(): {
+declare function __VLS_template_69(): {
     editor?(_: {
         modelValue: any;
         value: any;
@@ -11204,9 +11792,6 @@ declare function __VLS_template_68(): {
         submitEditing: (value?: any) => void;
     }): any;
 };
-declare function __VLS_template_69(): {
-    default?(_: {}): any;
-};
 declare function __VLS_template_7(): {
     default?(_: {}): any;
     content?(_: {}): any;
@@ -11216,12 +11801,15 @@ declare function __VLS_template_70(): {
 };
 declare function __VLS_template_71(): {
     default?(_: {}): any;
-    default?(_: {}): any;
 };
 declare function __VLS_template_72(): {
     default?(_: {}): any;
+    default?(_: {}): any;
 };
 declare function __VLS_template_73(): {
+    default?(_: {}): any;
+};
+declare function __VLS_template_74(): {
     open?(_: {}): any;
     "range-separator"?(_: {}): any;
     default?(_: {
@@ -11253,24 +11841,24 @@ declare function __VLS_template_73(): {
         onPick: any;
     }): any;
 };
-declare function __VLS_template_74(): {
+declare function __VLS_template_75(): {
     dot?(_: {}): any;
     default?(_: {}): any;
 };
-declare function __VLS_template_75(): {
+declare function __VLS_template_76(): {
     empty?(_: {}): any;
     default?(_: {}): any;
 };
-declare function __VLS_template_76(): {
+declare function __VLS_template_77(): {
     "left-empty"?(_: {}): any;
     "left-footer"?(_: {}): any;
     "right-empty"?(_: {}): any;
     "right-footer"?(_: {}): any;
 };
-declare function __VLS_template_77(): {
+declare function __VLS_template_78(): {
     empty?(_: {}): any;
 };
-declare function __VLS_template_78(): {
+declare function __VLS_template_79(): {
     file?(_: {
         file: UploadFile;
         index: number;
@@ -11286,10 +11874,6 @@ declare function __VLS_template_78(): {
     default?(_: {}): any;
     tip?(_: {}): any;
 };
-declare function __VLS_template_79(): {
-    default?(_: {}): any;
-    default?(_: {}): any;
-};
 declare function __VLS_template_8(): {
     prepend?(_: {}): any;
     append?(_: {}): any;
@@ -11303,60 +11887,64 @@ declare function __VLS_template_8(): {
     footer?(_: {}): any;
 };
 declare function __VLS_template_80(): {
+    default?(_: {}): any;
+    default?(_: {}): any;
+};
+declare function __VLS_template_81(): {
     default?(_: {
         file: UploadFile;
         index: number;
     }): any;
     append?(_: {}): any;
 };
-declare function __VLS_template_81(): {
-    default?(_: {}): any;
-};
 declare function __VLS_template_82(): {
     default?(_: {}): any;
 };
 declare function __VLS_template_83(): {
+    default?(_: {}): any;
+};
+declare function __VLS_template_84(): {
     default?(_: {}): any;
     indicators?(_: {
         current: number;
         total: number;
     }): any;
 };
-declare function __VLS_template_84(): {
-    header?(_: {}): any;
-    default?(_: {}): any;
-};
 declare function __VLS_template_85(): {
+    header?(_: {}): any;
     default?(_: {}): any;
 };
 declare function __VLS_template_86(): {
     default?(_: {}): any;
-    "sub-link"?(_: {}): any;
 };
 declare function __VLS_template_87(): {
+    default?(_: {}): any;
+    "sub-link"?(_: {}): any;
+};
+declare function __VLS_template_88(): {
     default?(_: {
         item: any;
     }): any;
 };
-declare function __VLS_template_88(): Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>;
-declare function __VLS_template_89(): {
-    default?(_: {}): any;
-};
+declare function __VLS_template_89(): Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>;
 declare function __VLS_template_9(): {
     default?(_: {}): any;
 };
 declare function __VLS_template_90(): {
     default?(_: {}): any;
-    "start-collapsible"?(_: {}): any;
-    "end-collapsible"?(_: {}): any;
 };
 declare function __VLS_template_91(): {
     default?(_: {}): any;
+    "start-collapsible"?(_: {}): any;
+    "end-collapsible"?(_: {}): any;
 };
 declare function __VLS_template_92(): {
     default?(_: {}): any;
 };
 declare function __VLS_template_93(): {
+    default?(_: {}): any;
+};
+declare function __VLS_template_94(): {
     reference?(_: {}): any;
     default?(_: {}): any;
 };
@@ -11825,6 +12413,11 @@ declare type __VLS_WithTemplateSlots_93<T, S> = T & {
         $slots: S;
     };
 };
+declare type __VLS_WithTemplateSlots_94<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};
 export declare type Action = "confirm" | "close" | "cancel";
 declare type ActiveEditableCell<T extends DefaultRow> = Nullable<{
     row: T;
@@ -11885,7 +12478,7 @@ export declare const anchorEmits: {
     change: (href: string) => boolean;
     click: (e: MouseEvent, href?: string) => boolean;
 };
-export declare type AnchorInstance = InstanceType<typeof _default_107> & unknown;
+export declare type AnchorInstance = InstanceType<typeof _default_109> & unknown;
 export declare type AnchorProps = ExtractPropTypes<typeof anchorProps>;
 export declare const anchorProps: {
     container: {
@@ -13438,13 +14031,149 @@ declare type ColumnTriggerState = Omit<ColumnInsertParams<any>, "event"> & {
     left: number;
 };
 declare type ColumnWidth = number | string;
-export declare const CommonPicker: __VLS_WithTemplateSlots_73<typeof __VLS_component_73, ReturnType<typeof __VLS_template_73>>;
+export declare const CommonPicker: __VLS_WithTemplateSlots_74<typeof __VLS_component_74, ReturnType<typeof __VLS_template_74>>;
 declare type CommonPickerContext = ReturnType<typeof useCommonPicker>;
 declare type CommonPickerEmits = (event: "update:modelValue" | "calendar-change" | "panel-change", ...args: any[]) => void;
 declare interface CommonPickerProps {
     modelValue: ModelValueType | null;
     valueFormat?: string;
 }
+export declare const commonPickerProps: {
+    readonly allowPartialRange: BooleanConstructor;
+    readonly showNow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showFooter: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly showWeekNumber: BooleanConstructor;
+    readonly ariaLabel: StringConstructor;
+    readonly emptyValues: ArrayConstructor;
+    readonly valueOnClear: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown, undefined, boolean>;
+    readonly disabledDate: {
+        readonly type: PropType<Function>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly cellClassName: {
+        readonly type: PropType<Function>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly shortcuts: EpPropFinalized<ArrayConstructor, unknown, unknown, () => never[], boolean>;
+    readonly arrowControl: BooleanConstructor;
+    readonly tabindex: EpPropFinalized<(new (...args: any[]) => string | number) | (() => string | number) | ((new (...args: any[]) => string | number) | (() => string | number))[], unknown, unknown, 0, boolean>;
+    readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly unlinkPanels: BooleanConstructor;
+    readonly placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown, "bottom", boolean>;
+    readonly fallbackPlacements: EpPropFinalized<(new (...args: any[]) => Placement[]) | (() => Placement[]) | ((new (...args: any[]) => Placement[]) | (() => Placement[]))[], unknown, unknown, readonly [
+        "bottom",
+        "top",
+        "right",
+        "left"
+    ], boolean>;
+    readonly disabledHours: {
+        readonly type: PropType<GetDisabledHours>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly disabledMinutes: {
+        readonly type: PropType<GetDisabledMinutes>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly disabledSeconds: {
+        readonly type: PropType<GetDisabledSeconds>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly automaticDropdown: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly id: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | [
+            string,
+            string
+        ]) | (() => SingleOrRange<string>) | ((new (...args: any[]) => string | [
+            string,
+            string
+        ]) | (() => SingleOrRange<string>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly name: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | [
+            string,
+            string
+        ]) | (() => SingleOrRange<string>) | ((new (...args: any[]) => string | [
+            string,
+            string
+        ]) | (() => SingleOrRange<string>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly cycle: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly settDefaultDate: StringConstructor;
+    readonly floatLabel: StringConstructor;
+    readonly cycleType: StringConstructor;
+    readonly isOk: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly popperClass: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly format: StringConstructor;
+    readonly valueFormat: StringConstructor;
+    readonly dateFormat: StringConstructor;
+    readonly timeFormat: StringConstructor;
+    readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly clearIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly editable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly prefixIcon: EpPropFinalized<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown, "", boolean>;
+    readonly size: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "" | "small" | "default" | "large", never>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly readonly: BooleanConstructor;
+    readonly disabled: BooleanConstructor;
+    readonly placeholder: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
+    readonly modelValue: EpPropFinalized<(new (...args: any[]) => string | number | Date | string[] | number[] | Date[]) | (() => ModelValueType) | ((new (...args: any[]) => string | number | Date | string[] | number[] | Date[]) | (() => ModelValueType))[], unknown, unknown, "", boolean>;
+    readonly rangeSeparator: EpPropFinalized<StringConstructor, unknown, unknown, "-", boolean>;
+    readonly startPlaceholder: StringConstructor;
+    readonly endPlaceholder: StringConstructor;
+    readonly defaultValue: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => Date | [
+            Date,
+            Date
+        ]) | (() => SingleOrRange<Date>) | ((new (...args: any[]) => Date | [
+            Date,
+            Date
+        ]) | (() => SingleOrRange<Date>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly defaultTime: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => Date | [
+            Date,
+            Date
+        ]) | (() => SingleOrRange<Date>) | ((new (...args: any[]) => Date | [
+            Date,
+            Date
+        ]) | (() => SingleOrRange<Date>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly isRange: BooleanConstructor;
+};
 export declare const CommonProps: {
     readonly modelValue: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | number | Record<string, any> | CascaderNodePathValue | (CascaderNodeValue | CascaderNodePathValue)[]) | (() => CascaderValue | null) | ((new (...args: any[]) => string | number | Record<string, any> | CascaderNodePathValue | (CascaderNodeValue | CascaderNodePathValue)[]) | (() => CascaderValue | null))[], unknown, unknown>>;
@@ -14134,24 +14863,30 @@ declare const _default: {
 };
 export default _default;
 declare const _default_10: __VLS_WithTemplateSlots_10<typeof __VLS_component_10, ReturnType<typeof __VLS_template_10>>;
-declare const _default_100: __VLS_WithTemplateSlots_78<typeof __VLS_component_78, ReturnType<typeof __VLS_template_78>>;
-declare const _default_101: __VLS_WithTemplateSlots_79<typeof __VLS_component_79, ReturnType<typeof __VLS_template_79>>;
-declare const _default_102: __VLS_WithTemplateSlots_80<typeof __VLS_component_80, ReturnType<typeof __VLS_template_80>>;
-declare const _default_103: __VLS_WithTemplateSlots_81<typeof __VLS_component_81, ReturnType<typeof __VLS_template_81>>;
-declare const _default_104: __VLS_WithTemplateSlots_82<typeof __VLS_component_82, ReturnType<typeof __VLS_template_82>>;
-declare const _default_105: __VLS_WithTemplateSlots_83<typeof __VLS_component_83, ReturnType<typeof __VLS_template_83>>;
-declare const _default_106: __VLS_WithTemplateSlots_84<typeof __VLS_component_84, ReturnType<typeof __VLS_template_84>>;
-declare const _default_107: __VLS_WithTemplateSlots_85<typeof __VLS_component_85, ReturnType<typeof __VLS_template_85>>;
-declare const _default_108: __VLS_WithTemplateSlots_86<typeof __VLS_component_86, ReturnType<typeof __VLS_template_86>>;
-declare const _default_109: __VLS_WithTemplateSlots_87<typeof __VLS_component_87, ReturnType<typeof __VLS_template_87>>;
+declare const _default_100: DefineComponent<any, () => VNode<RendererNode, RendererElement, {
+    [key: string]: any;
+}>, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<any>, {} | {
+    [x: string]: any;
+}>;
+declare const _default_101: __VLS_WithTemplateSlots_78<typeof __VLS_component_78, ReturnType<typeof __VLS_template_78>>;
+declare const _default_102: __VLS_WithTemplateSlots_79<typeof __VLS_component_79, ReturnType<typeof __VLS_template_79>>;
+declare const _default_103: __VLS_WithTemplateSlots_80<typeof __VLS_component_80, ReturnType<typeof __VLS_template_80>>;
+declare const _default_104: __VLS_WithTemplateSlots_81<typeof __VLS_component_81, ReturnType<typeof __VLS_template_81>>;
+declare const _default_105: __VLS_WithTemplateSlots_82<typeof __VLS_component_82, ReturnType<typeof __VLS_template_82>>;
+declare const _default_106: __VLS_WithTemplateSlots_83<typeof __VLS_component_83, ReturnType<typeof __VLS_template_83>>;
+declare const _default_107: __VLS_WithTemplateSlots_84<typeof __VLS_component_84, ReturnType<typeof __VLS_template_84>>;
+declare const _default_108: __VLS_WithTemplateSlots_85<typeof __VLS_component_85, ReturnType<typeof __VLS_template_85>>;
+declare const _default_109: __VLS_WithTemplateSlots_86<typeof __VLS_component_86, ReturnType<typeof __VLS_template_86>>;
 declare const _default_11: __VLS_WithTemplateSlots_11<typeof __VLS_component_11, ReturnType<typeof __VLS_template_11>>;
-declare const _default_110: __VLS_WithTemplateSlots_88<typeof __VLS_component_88, ReturnType<typeof __VLS_template_88>>;
-declare const _default_111: __VLS_WithTemplateSlots_89<typeof __VLS_component_89, ReturnType<typeof __VLS_template_89>>;
-declare const _default_112: __VLS_WithTemplateSlots_90<typeof __VLS_component_90, ReturnType<typeof __VLS_template_90>>;
-declare const _default_113: __VLS_WithTemplateSlots_91<typeof __VLS_component_91, ReturnType<typeof __VLS_template_91>>;
-declare const _default_114: __VLS_WithTemplateSlots_92<typeof __VLS_component_92, ReturnType<typeof __VLS_template_92>>;
-declare const _default_115: ObjectDirective;
+declare const _default_110: __VLS_WithTemplateSlots_87<typeof __VLS_component_87, ReturnType<typeof __VLS_template_87>>;
+declare const _default_111: __VLS_WithTemplateSlots_88<typeof __VLS_component_88, ReturnType<typeof __VLS_template_88>>;
+declare const _default_112: __VLS_WithTemplateSlots_89<typeof __VLS_component_89, ReturnType<typeof __VLS_template_89>>;
+declare const _default_113: __VLS_WithTemplateSlots_90<typeof __VLS_component_90, ReturnType<typeof __VLS_template_90>>;
+declare const _default_114: __VLS_WithTemplateSlots_91<typeof __VLS_component_91, ReturnType<typeof __VLS_template_91>>;
+declare const _default_115: __VLS_WithTemplateSlots_92<typeof __VLS_component_92, ReturnType<typeof __VLS_template_92>>;
 declare const _default_116: __VLS_WithTemplateSlots_93<typeof __VLS_component_93, ReturnType<typeof __VLS_template_93>>;
+declare const _default_117: ObjectDirective;
+declare const _default_118: __VLS_WithTemplateSlots_94<typeof __VLS_component_94, ReturnType<typeof __VLS_template_94>>;
 declare const _default_12: __VLS_WithTemplateSlots_12<typeof __VLS_component_12, ReturnType<typeof __VLS_template_12>>;
 declare const _default_13: __VLS_WithTemplateSlots_13<typeof __VLS_component_13, ReturnType<typeof __VLS_template_13>>;
 declare const _default_14: __VLS_WithTemplateSlots_14<typeof __VLS_component_14, ReturnType<typeof __VLS_template_14>>;
@@ -15524,9 +16259,129 @@ declare const _default_51: __VLS_WithTemplateSlots_45<typeof __VLS_component_45,
 declare const _default_52: __VLS_WithTemplateSlots_46<typeof __VLS_component_46, ReturnType<typeof __VLS_template_46>>;
 declare const _default_53: __VLS_WithTemplateSlots_47<typeof __VLS_component_47, ReturnType<typeof __VLS_template_47>>;
 declare const _default_54: __VLS_WithTemplateSlots_48<typeof __VLS_component_48, ReturnType<typeof __VLS_template_48>>;
-declare const _default_55: __VLS_WithTemplateSlots_49<typeof __VLS_component_49, ReturnType<typeof __VLS_template_49>>;
-declare const _default_56: __VLS_WithTemplateSlots_50<typeof __VLS_component_50, ReturnType<typeof __VLS_template_50>>;
-declare const _default_57: DefineComponent<{
+declare const _default_55: DefineComponent<{
+    readonly layout: EpPropFinalized<(new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout) | ((new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout))[], unknown, InputSelectLayout, () => InputSelectLayout, boolean>;
+    readonly leftValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly rightValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+}, () => VNode<RendererNode, RendererElement, {
+    [key: string]: any;
+}>, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    "update:leftValue": (_value: InputSelectValue) => boolean;
+    "update:rightValue": (_value: InputSelectValue) => boolean;
+    "left-change": (_value: InputSelectValue) => boolean;
+    "right-change": (_value: InputSelectValue) => boolean;
+    "left-focus": (event: FocusEvent) => boolean;
+    "right-focus": (event: FocusEvent) => boolean;
+    "left-blur": (event: FocusEvent) => boolean;
+    "right-blur": (event: FocusEvent) => boolean;
+    "left-clear": () => boolean;
+    "right-clear": () => boolean;
+    "left-visible-change": (visible: boolean) => boolean;
+    "right-visible-change": (visible: boolean) => boolean;
+}, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+    readonly layout: EpPropFinalized<(new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout) | ((new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout))[], unknown, InputSelectLayout, () => InputSelectLayout, boolean>;
+    readonly leftValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly rightValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+}>> & {
+    "onUpdate:leftValue"?: ((_value: InputSelectValue) => any) | undefined;
+    "onUpdate:rightValue"?: ((_value: InputSelectValue) => any) | undefined;
+    "onLeft-change"?: ((_value: InputSelectValue) => any) | undefined;
+    "onRight-change"?: ((_value: InputSelectValue) => any) | undefined;
+    "onLeft-focus"?: ((event: FocusEvent) => any) | undefined;
+    "onRight-focus"?: ((event: FocusEvent) => any) | undefined;
+    "onLeft-blur"?: ((event: FocusEvent) => any) | undefined;
+    "onRight-blur"?: ((event: FocusEvent) => any) | undefined;
+    "onLeft-clear"?: (() => any) | undefined;
+    "onRight-clear"?: (() => any) | undefined;
+    "onLeft-visible-change"?: ((visible: boolean) => any) | undefined;
+    "onRight-visible-change"?: ((visible: boolean) => any) | undefined;
+}, {
+    readonly layout: EpPropMergeType<(new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout) | ((new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout))[], unknown, InputSelectLayout>;
+    readonly leftValue: EpPropMergeType<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown>;
+    readonly rightValue: EpPropMergeType<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown>;
+    readonly leftProps: EpPropMergeType<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown>;
+    readonly rightProps: EpPropMergeType<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown>;
+}>;
+declare const _default_56: __VLS_WithTemplateSlots_49<typeof __VLS_component_49, ReturnType<typeof __VLS_template_49>>;
+declare const _default_57: __VLS_WithTemplateSlots_50<typeof __VLS_component_50, ReturnType<typeof __VLS_template_50>>;
+declare const _default_58: __VLS_WithTemplateSlots_51<typeof __VLS_component_51, ReturnType<typeof __VLS_template_51>>;
+declare const _default_59: DefineComponent<{
     readonly mode: EpPropFinalized<StringConstructor, "horizontal" | "vertical", unknown, "vertical", boolean>;
     readonly defaultActive: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly defaultOpeneds: EpPropFinalized<(new (...args: any[]) => string[]) | (() => string[]) | ((new (...args: any[]) => string[]) | (() => string[]))[], unknown, unknown, () => [
@@ -15610,10 +16465,10 @@ declare const _default_57: DefineComponent<{
     readonly router: boolean;
     readonly closeOnClickOutside: boolean;
 }>;
-declare const _default_58: __VLS_WithTemplateSlots_51<typeof __VLS_component_51, ReturnType<typeof __VLS_template_51>>;
-declare const _default_59: __VLS_WithTemplateSlots_52<typeof __VLS_component_52, ReturnType<typeof __VLS_template_52>>;
 declare const _default_6: __VLS_WithTemplateSlots_5<typeof __VLS_component_5, ReturnType<typeof __VLS_template_7>>;
-declare const _default_60: DefineComponent<{
+declare const _default_60: __VLS_WithTemplateSlots_52<typeof __VLS_component_52, ReturnType<typeof __VLS_template_52>>;
+declare const _default_61: __VLS_WithTemplateSlots_53<typeof __VLS_component_53, ReturnType<typeof __VLS_template_53>>;
+declare const _default_62: DefineComponent<{
     readonly index: {
         readonly type: PropType<string>;
         readonly required: true;
@@ -15705,8 +16560,8 @@ declare const _default_60: DefineComponent<{
     readonly disabled: boolean;
     readonly teleported: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-declare const _default_61: __VLS_WithTemplateSlots_53<typeof __VLS_component_53, ReturnType<typeof __VLS_template_53>>;
-declare const _default_62: DefineComponent<{
+declare const _default_63: __VLS_WithTemplateSlots_54<typeof __VLS_component_54, ReturnType<typeof __VLS_template_54>>;
+declare const _default_64: DefineComponent<{
     readonly pageSize: NumberConstructor;
     readonly defaultPageSize: NumberConstructor;
     readonly total: NumberConstructor;
@@ -15819,12 +16674,13 @@ declare const _default_62: DefineComponent<{
     readonly pagerCount: number;
     readonly hideOnSinglePage: boolean;
 }>;
-declare const _default_63: __VLS_WithTemplateSlots_54<typeof __VLS_component_54, ReturnType<typeof __VLS_template_54>>;
-declare const _default_64: __VLS_WithTemplateSlots_56<typeof __VLS_component_56, ReturnType<typeof __VLS_template_56>>;
-declare const _default_65: __VLS_WithTemplateSlots_57<typeof __VLS_component_57, ReturnType<typeof __VLS_template_57>>;
-declare const _default_66: __VLS_WithTemplateSlots_58<typeof __VLS_component_58, ReturnType<typeof __VLS_template_58>>;
-declare const _default_67: __VLS_WithTemplateSlots_59<typeof __VLS_component_59, ReturnType<typeof __VLS_template_59>>;
-declare const _default_68: DefineComponent<{
+declare const _default_65: __VLS_WithTemplateSlots_55<typeof __VLS_component_55, ReturnType<typeof __VLS_template_55>>;
+declare const _default_66: __VLS_WithTemplateSlots_57<typeof __VLS_component_57, ReturnType<typeof __VLS_template_57>>;
+declare const _default_67: __VLS_WithTemplateSlots_58<typeof __VLS_component_58, ReturnType<typeof __VLS_template_58>>;
+declare const _default_68: __VLS_WithTemplateSlots_59<typeof __VLS_component_59, ReturnType<typeof __VLS_template_59>>;
+declare const _default_69: __VLS_WithTemplateSlots_60<typeof __VLS_component_60, ReturnType<typeof __VLS_template_60>>;
+declare const _default_7: __VLS_WithTemplateSlots_6<typeof __VLS_component_6, ReturnType<typeof __VLS_template_4>>;
+declare const _default_70: DefineComponent<{
     readonly ariaLabel: StringConstructor;
     readonly modelValue: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
@@ -15938,11 +16794,10 @@ declare const _default_68: DefineComponent<{
     readonly allowHalf: boolean;
     readonly showScore: boolean;
 }>;
-declare const _default_69: __VLS_WithTemplateSlots_60<typeof __VLS_component_60, ReturnType<typeof __VLS_template_60>>;
-declare const _default_7: __VLS_WithTemplateSlots_6<typeof __VLS_component_6, ReturnType<typeof __VLS_template_4>>;
-declare const _default_70: __VLS_WithTemplateSlots_61<typeof __VLS_component_61, ReturnType<typeof __VLS_template_61>>;
-declare const _default_71: __VLS_WithTemplateSlots_62<typeof __VLS_component_62, ReturnType<typeof __VLS_template_62>>;
-declare const _default_72: DefineComponent<{
+declare const _default_71: __VLS_WithTemplateSlots_61<typeof __VLS_component_61, ReturnType<typeof __VLS_template_61>>;
+declare const _default_72: __VLS_WithTemplateSlots_62<typeof __VLS_component_62, ReturnType<typeof __VLS_template_62>>;
+declare const _default_73: __VLS_WithTemplateSlots_63<typeof __VLS_component_63, ReturnType<typeof __VLS_template_63>>;
+declare const _default_74: DefineComponent<{
     readonly vertical: BooleanConstructor;
     readonly size: StringConstructor;
     readonly move: NumberConstructor;
@@ -15968,7 +16823,7 @@ declare const _default_72: DefineComponent<{
     readonly always: boolean;
     readonly vertical: boolean;
 }>;
-declare const _default_73: DefineComponent<{
+declare const _default_75: DefineComponent<{
     ariaLabel: StringConstructor;
     emptyValues: ArrayConstructor;
     valueOnClear: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown, undefined, boolean>;
@@ -16476,7 +17331,7 @@ declare const _default_73: DefineComponent<{
     optionWidth: EpPropMergeType<(NumberConstructor | StringConstructor)[], unknown, unknown>;
     remoteShowSuffix: boolean;
 }>;
-declare const _default_74: DefineComponent<{
+declare const _default_76: DefineComponent<{
     value: {
         readonly type: PropType<EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>>;
         readonly required: true;
@@ -16583,7 +17438,7 @@ declare const _default_74: DefineComponent<{
     placement: EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown>;
     showTip: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-declare const _default_75: DefineComponent<{
+declare const _default_77: DefineComponent<{
     /**
     * @description name of the group
     */
@@ -16595,6 +17450,7 @@ declare const _default_75: DefineComponent<{
 }, {
     groupRef: Ref<HTMLElement | undefined>;
     visible: ComputedRef<boolean>;
+    isFirstVisibleGroup: ComputedRef<boolean>;
     ns: {
         namespace: ComputedRef<string>;
         b: (blockSuffix?: string) => string;
@@ -16625,7 +17481,7 @@ declare const _default_75: DefineComponent<{
 }>>, {
     disabled: boolean;
 }>;
-declare const _default_76: DefineComponent<{
+declare const _default_78: DefineComponent<{
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
     readonly valueOnClear: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown, undefined, boolean>;
@@ -16674,7 +17530,7 @@ declare const _default_76: DefineComponent<{
         __epPropKey: true;
     };
     readonly height: EpPropFinalized<NumberConstructor, unknown, unknown, 274, boolean>;
-    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 34, boolean>;
+    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 40, boolean>;
     readonly id: StringConstructor;
     readonly loading: BooleanConstructor;
     readonly loadingText: StringConstructor;
@@ -17072,7 +17928,7 @@ declare const _default_76: DefineComponent<{
         __epPropKey: true;
     };
     readonly height: EpPropFinalized<NumberConstructor, unknown, unknown, 274, boolean>;
-    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 34, boolean>;
+    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 40, boolean>;
     readonly id: StringConstructor;
     readonly loading: BooleanConstructor;
     readonly loadingText: StringConstructor;
@@ -17330,15 +18186,16 @@ declare const _default_76: DefineComponent<{
     readonly defaultFirstOption: boolean;
     readonly remote: boolean;
 }>;
-declare const _default_77: __VLS_WithTemplateSlots_63<typeof __VLS_component_63, ReturnType<typeof __VLS_template_63>>;
-declare const _default_78: DefineComponent<{
+declare const _default_79: __VLS_WithTemplateSlots_64<typeof __VLS_component_64, ReturnType<typeof __VLS_template_64>>;
+declare const _default_8: __VLS_WithTemplateSlots_7<typeof __VLS_component_7, ReturnType<typeof __VLS_template_6>>;
+declare const _default_80: DefineComponent<{
     readonly variant: EpPropFinalized<StringConstructor, "button" | "caption" | "h1" | "h3" | "p" | "circle" | "image" | "rect" | "text", unknown, "text", boolean>;
 }, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     readonly variant: EpPropFinalized<StringConstructor, "button" | "caption" | "h1" | "h3" | "p" | "circle" | "image" | "rect" | "text", unknown, "text", boolean>;
 }>>, {
     readonly variant: EpPropMergeType<StringConstructor, "button" | "caption" | "h1" | "h3" | "p" | "circle" | "image" | "rect" | "text", unknown>;
 }>;
-declare const _default_79: DefineComponent<{
+declare const _default_81: DefineComponent<{
     readonly ariaLabel: StringConstructor;
     readonly modelValue: EpPropFinalized<(new (...args: any[]) => number | number[]) | (() => Arrayable<number>) | ((new (...args: any[]) => number | number[]) | (() => Arrayable<number>))[], unknown, unknown, 0, boolean>;
     readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
@@ -17512,12 +18369,11 @@ declare const _default_79: DefineComponent<{
     readonly showInput: boolean;
     readonly showStops: boolean;
 }>;
-declare const _default_8: __VLS_WithTemplateSlots_7<typeof __VLS_component_7, ReturnType<typeof __VLS_template_6>>;
-declare const _default_80: __VLS_WithTemplateSlots_64<typeof __VLS_component_64, ReturnType<typeof __VLS_template_64>>;
-declare const _default_81: __VLS_WithTemplateSlots_65<typeof __VLS_component_65, ReturnType<typeof __VLS_template_65>>;
-declare const _default_82: __VLS_WithTemplateSlots_66<typeof __VLS_component_66, ReturnType<typeof __VLS_template_66>>;
-declare const _default_83: __VLS_WithTemplateSlots_67<typeof __VLS_component_67, ReturnType<typeof __VLS_template_67>>;
-declare const _default_84: DefineComponent<{
+declare const _default_82: __VLS_WithTemplateSlots_65<typeof __VLS_component_65, ReturnType<typeof __VLS_template_65>>;
+declare const _default_83: __VLS_WithTemplateSlots_66<typeof __VLS_component_66, ReturnType<typeof __VLS_template_66>>;
+declare const _default_84: __VLS_WithTemplateSlots_67<typeof __VLS_component_67, ReturnType<typeof __VLS_template_67>>;
+declare const _default_85: __VLS_WithTemplateSlots_68<typeof __VLS_component_68, ReturnType<typeof __VLS_template_68>>;
+declare const _default_86: DefineComponent<{
     data: {
         type: PropType<any[]>;
         default: () => never[];
@@ -17609,16 +18465,15 @@ declare const _default_84: DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    disableEmptyGhostRowSave: BooleanConstructor;
     editTable: BooleanConstructor;
-    total: {
-        type: NumberConstructor;
-        default: number;
-    };
+    total: NumberConstructor;
     updateTime: {
         type: StringConstructor;
         default: string;
     };
     haveTableText: BooleanConstructor;
+    showFooterText: BooleanConstructor;
     showOverflowTooltip: PropType<TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: PropType<any>;
@@ -18253,7 +19108,7 @@ declare const _default_84: DefineComponent<{
         width: string;
         height: string;
     } | undefined>;
-    debouncedUpdateLayout: DebouncedFunc<() => void>;
+    debouncedUpdateLayout: DebouncedFunc<(distributeRemainingWidth?: boolean) => void>;
     /**
     * @description used in single selection Table, set a certain row selected. If called without any parameter, it will clear selection
     */
@@ -18293,7 +19148,7 @@ declare const _default_84: DefineComponent<{
     /**
     * @description refresh the layout of Table. When the visibility of Table changes, you may need to call this method to get a correct layout
     */
-    doLayout: () => void;
+    doLayout: (distributeRemainingWidth?: boolean) => void;
     /**
     * @description sort Table manually. Property `prop` is used to set sort column, property `order` is used to set sort order
     */
@@ -18303,10 +19158,12 @@ declare const _default_84: DefineComponent<{
     */
     updateKeyChildren: (key: string, data: any[]) => void;
     t: Translator;
+    footerTotal: ComputedRef<number>;
     setDragVisible: (visible: boolean) => void;
     context: Table<any>;
     editingRow: any;
     activeEditableCell: any;
+    isGhostRowScrolling: Ref<boolean>;
     startRowEdit: (row: DefaultRow, prop: string, rowIndex?: number, cellIndex?: number) => void;
     clearEditingRow: () => void;
     applyEditingRow: () => any;
@@ -18490,16 +19347,15 @@ declare const _default_84: DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    disableEmptyGhostRowSave: BooleanConstructor;
     editTable: BooleanConstructor;
-    total: {
-        type: NumberConstructor;
-        default: number;
-    };
+    total: NumberConstructor;
     updateTime: {
         type: StringConstructor;
         default: string;
     };
     haveTableText: BooleanConstructor;
+    showFooterText: BooleanConstructor;
     showOverflowTooltip: PropType<TableProps<any>["showOverflowTooltip"]>;
     rowDraggable: {
         type: PropType<any>;
@@ -18560,7 +19416,6 @@ declare const _default_84: DefineComponent<{
     style: CSSProperties;
     tableLayout: "fixed" | "auto";
     border: boolean;
-    total: number;
     className: string;
     onDragend: any;
     onDragstart: any;
@@ -18587,13 +19442,15 @@ declare const _default_84: DefineComponent<{
     flexible: boolean;
     ghostTable: boolean;
     showGhostRow: boolean;
+    disableEmptyGhostRowSave: boolean;
     haveTableText: boolean;
+    showFooterText: boolean;
     scrollbarTabindex: string | number;
     nativeScrollbar: boolean;
     showAddRowTrigger: boolean;
     preserveExpandedContent: boolean;
 }>;
-declare const _default_85: DefineComponent<{
+declare const _default_87: DefineComponent<{
     type: {
         type: StringConstructor;
         default: string;
@@ -18732,10 +19589,11 @@ declare const _default_85: DefineComponent<{
     filterMultiple: boolean;
     allowInsertBeforeFirstColumn: boolean;
 }>;
-declare const _default_86: __VLS_WithTemplateSlots_68<typeof __VLS_component_68, ReturnType<typeof __VLS_template_68>>;
-declare const _default_87: __VLS_WithTemplateSlots_69<typeof __VLS_component_69, ReturnType<typeof __VLS_template_69>>;
-declare const _default_88: __VLS_WithTemplateSlots_70<typeof __VLS_component_70, ReturnType<typeof __VLS_template_70>>;
-declare const _default_89: DefineComponent<{
+declare const _default_88: __VLS_WithTemplateSlots_69<typeof __VLS_component_69, ReturnType<typeof __VLS_template_69>>;
+declare const _default_89: __VLS_WithTemplateSlots_70<typeof __VLS_component_70, ReturnType<typeof __VLS_template_70>>;
+declare const _default_9: __VLS_WithTemplateSlots_9<typeof __VLS_component_9, ReturnType<typeof __VLS_template_9>>;
+declare const _default_90: __VLS_WithTemplateSlots_71<typeof __VLS_component_71, ReturnType<typeof __VLS_template_71>>;
+declare const _default_91: DefineComponent<{
     readonly tabs: EpPropFinalized<(new (...args: any[]) => {
         uid: number;
         getVnode: () => VNode;
@@ -18959,10 +19817,9 @@ declare const _default_89: DefineComponent<{
         [key: number]: HTMLDivElement;
     };
 }>;
-declare const _default_9: __VLS_WithTemplateSlots_9<typeof __VLS_component_9, ReturnType<typeof __VLS_template_9>>;
-declare const _default_90: __VLS_WithTemplateSlots_71<typeof __VLS_component_71, ReturnType<typeof __VLS_template_71>>;
-declare const _default_91: __VLS_WithTemplateSlots_72<typeof __VLS_component_72, ReturnType<typeof __VLS_template_72>>;
-declare const _default_92: DefineComponent<{
+declare const _default_92: __VLS_WithTemplateSlots_72<typeof __VLS_component_72, ReturnType<typeof __VLS_template_72>>;
+declare const _default_93: __VLS_WithTemplateSlots_73<typeof __VLS_component_73, ReturnType<typeof __VLS_template_73>>;
+declare const _default_94: DefineComponent<{
     /**
     * @description whether to pick a time range
     */
@@ -19267,7 +20124,7 @@ declare const _default_92: DefineComponent<{
     unlinkPanels: boolean;
     isRange: boolean;
 }>;
-declare const _default_93: DefineComponent<{
+declare const _default_95: DefineComponent<{
     readonly emptyValues: ArrayConstructor;
     readonly valueOnClear: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown, undefined, boolean>;
     readonly format: EpPropFinalized<StringConstructor, unknown, unknown, "HH:mm", boolean>;
@@ -19397,10 +20254,10 @@ declare const _default_93: DefineComponent<{
     readonly step: string;
     readonly includeEndTime: boolean;
 }>;
-declare const _default_94: __VLS_WithTemplateSlots_74<typeof __VLS_component_74, ReturnType<typeof __VLS_template_74>>;
-declare const _default_95: __VLS_WithTemplateSlots_75<typeof __VLS_component_75, ReturnType<typeof __VLS_template_76>>;
-declare const _default_96: __VLS_WithTemplateSlots_76<typeof __VLS_component_76, ReturnType<typeof __VLS_template_75>>;
-declare const _default_97: DefineComponent<{
+declare const _default_96: __VLS_WithTemplateSlots_75<typeof __VLS_component_75, ReturnType<typeof __VLS_template_75>>;
+declare const _default_97: __VLS_WithTemplateSlots_76<typeof __VLS_component_76, ReturnType<typeof __VLS_template_77>>;
+declare const _default_98: __VLS_WithTemplateSlots_77<typeof __VLS_component_77, ReturnType<typeof __VLS_template_76>>;
+declare const _default_99: DefineComponent<{
     data: {
         type: PropType<TreeData>;
         default: () => never[];
@@ -19945,12 +20802,6 @@ declare const _default_97: DefineComponent<{
     expandOnClickNode: boolean;
     highlightCurrent: boolean;
 }>;
-declare const _default_98: DefineComponent<any, () => VNode<RendererNode, RendererElement, {
-    [key: string]: any;
-}>, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, Record<string, any>, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<any>, {} | {
-    [x: string]: any;
-}>;
-declare const _default_99: __VLS_WithTemplateSlots_77<typeof __VLS_component_77, ReturnType<typeof __VLS_template_77>>;
 export declare const DEFAULT_DIALOG_TRANSITION = "dialog-fade";
 export declare const DEFAULT_EMPTY_VALUES: (string | null | undefined)[];
 export declare const DEFAULT_FORMATS_DATE = "YYYY-MM-DD";
@@ -20902,10 +21753,10 @@ declare const effects: readonly [
 ];
 export declare const ElAffix: SFCWithInstall<typeof _default_2>;
 export declare const ElAlert: SFCWithInstall<typeof _default_3>;
-export declare const ElAnchor: SFCWithInstall<typeof _default_107> & {
-    AnchorLink: typeof _default_108;
+export declare const ElAnchor: SFCWithInstall<typeof _default_109> & {
+    AnchorLink: typeof _default_110;
 };
-export declare const ElAnchorLink: SFCWithInstall<typeof _default_108>;
+export declare const ElAnchorLink: SFCWithInstall<typeof _default_110>;
 export declare const ElAside: SFCWithInstall<typeof _default_35>;
 export declare const ElAutocomplete: SFCWithInstall<typeof _default_4>;
 export declare const ElAutoResizer: SFCWithInstall<typeof AutoResizer>;
@@ -21018,9 +21869,11 @@ export declare const ElInfiniteScroll: SFCWithInstall<ObjectDirective<HTMLElemen
     };
 }, () => void>>;
 export declare const ElInput: SFCWithInstall<typeof _default_5>;
-export declare const ElInputNumber: SFCWithInstall<typeof _default_54>;
-export declare const ElInputTag: SFCWithInstall<typeof _default_55>;
-export declare const ElLink: SFCWithInstall<typeof _default_56>;
+export declare const ElInputDown: SFCWithInstall<typeof _default_54>;
+export declare const ElInputNumber: SFCWithInstall<typeof _default_56>;
+export declare const ElInputSelect: SFCWithInstall<typeof _default_55>;
+export declare const ElInputTag: SFCWithInstall<typeof _default_57>;
+export declare const ElLink: SFCWithInstall<typeof _default_58>;
 export declare const ElLoading: {
     install(app: App): void;
     directive: Directive<ElementLoading, LoadingBinding>;
@@ -21034,14 +21887,14 @@ export declare const ElLoadingService: {
     _context: AppContext | null;
 };
 export declare const ElMain: SFCWithInstall<typeof _default_38>;
-export declare const ElMention: SFCWithInstall<typeof _default_110>;
-export declare const ElMenu: SFCWithInstall<typeof _default_57> & {
-    MenuItem: typeof _default_58;
-    MenuItemGroup: typeof _default_59;
-    SubMenu: typeof _default_60;
+export declare const ElMention: SFCWithInstall<typeof _default_112>;
+export declare const ElMenu: SFCWithInstall<typeof _default_59> & {
+    MenuItem: typeof _default_60;
+    MenuItemGroup: typeof _default_61;
+    SubMenu: typeof _default_62;
 };
-export declare const ElMenuItem: SFCWithInstall<typeof _default_58>;
-export declare const ElMenuItemGroup: SFCWithInstall<typeof _default_59>;
+export declare const ElMenuItem: SFCWithInstall<typeof _default_60>;
+export declare const ElMenuItemGroup: SFCWithInstall<typeof _default_61>;
 export declare const ElMessage: SFCInstallWithContext<Message>;
 export declare const ElMessageBox: SFCWithInstall<IElMessageBox>;
 /** Options used in MessageBox */
@@ -21058,6 +21911,8 @@ export declare interface ElMessageBoxOptions {
     beforeClose?: (action: Action, instance: MessageBoxState, done: () => void) => void;
     /** Custom class name for MessageBox */
     customClass?: string;
+    /** Width of MessageBox */
+    width?: string | number;
     /** Custom inline style for MessageBox */
     customStyle?: CSSProperties;
     /** Whether a mask is displayed */
@@ -21137,8 +21992,8 @@ export declare interface ElMessageBoxOptions {
 }
 export declare type ElMessageBoxShortcutMethod = ((message: ElMessageBoxOptions["message"], options?: ElMessageBoxOptions, appContext?: AppContext | null) => Promise<MessageBoxData>) & ((message: ElMessageBoxOptions["message"], title: ElMessageBoxOptions["title"], options?: ElMessageBoxOptions, appContext?: AppContext | null) => Promise<MessageBoxData>);
 export declare const ElNotification: SFCInstallWithContext<Notify>;
-export declare const ElOption: SFCWithInstall<typeof _default_74>;
-export declare const ElOptionGroup: SFCWithInstall<typeof _default_75>;
+export declare const ElOption: SFCWithInstall<typeof _default_76>;
+export declare const ElOptionGroup: SFCWithInstall<typeof _default_77>;
 export declare const ElOverlay: DefineComponent<{
     readonly mask: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly customMaskEvent: BooleanConstructor;
@@ -21179,8 +22034,8 @@ export declare const ElOverlay: DefineComponent<{
     readonly mask: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly customMaskEvent: boolean;
 }>;
-export declare const ElPageHeader: SFCWithInstall<typeof _default_61>;
-export declare const ElPagination: SFCWithInstall<typeof _default_62>;
+export declare const ElPageHeader: SFCWithInstall<typeof _default_63>;
+export declare const ElPagination: SFCWithInstall<typeof _default_64>;
 export declare interface ElPaginationContext {
     currentPage?: WritableComputedRef<number>;
     pageCount?: ComputedRef<number>;
@@ -21189,11 +22044,11 @@ export declare interface ElPaginationContext {
     handleSizeChange?: (val: number) => void;
 }
 export declare const elPaginationKey: InjectionKey<ElPaginationContext>;
-export declare const ElPopconfirm: SFCWithInstall<typeof _default_63>;
-export declare const ElPopover: SFCWithInstall<typeof _default_116> & {
+export declare const ElPopconfirm: SFCWithInstall<typeof _default_65>;
+export declare const ElPopover: SFCWithInstall<typeof _default_118> & {
     directive: typeof ElPopoverDirective;
 };
-export declare const ElPopoverDirective: SFCWithInstall<typeof _default_115>;
+export declare const ElPopoverDirective: SFCWithInstall<typeof _default_117>;
 export declare const ElPopper: SFCWithInstall<typeof _default_7>;
 export declare const ElPopperArrow: DefineComponent<{}, {
     /**
@@ -21224,18 +22079,18 @@ export declare type ElPopperInjectionContext = {
     referenceRef: Ref<Measurable | undefined>;
     role: ComputedRef<string>;
 };
-export declare const ElPopperTrigger: __VLS_WithTemplateSlots_55<typeof __VLS_component_55, ReturnType<typeof __VLS_template_55>>;
-export declare const ElProgress: SFCWithInstall<typeof _default_64>;
-export declare const ElRadio: SFCWithInstall<typeof _default_65> & {
-    RadioButton: typeof _default_66;
-    RadioGroup: typeof _default_67;
+export declare const ElPopperTrigger: __VLS_WithTemplateSlots_56<typeof __VLS_component_56, ReturnType<typeof __VLS_template_56>>;
+export declare const ElProgress: SFCWithInstall<typeof _default_66>;
+export declare const ElRadio: SFCWithInstall<typeof _default_67> & {
+    RadioButton: typeof _default_68;
+    RadioGroup: typeof _default_69;
 };
-export declare const ElRadioButton: SFCWithInstall<typeof _default_66>;
-export declare const ElRadioGroup: SFCWithInstall<typeof _default_67>;
-export declare const ElRate: SFCWithInstall<typeof _default_68>;
-export declare const ElResult: SFCWithInstall<typeof _default_69>;
-export declare const ElRow: SFCWithInstall<typeof _default_70>;
-export declare const ElScrollbar: SFCWithInstall<typeof _default_71>;
+export declare const ElRadioButton: SFCWithInstall<typeof _default_68>;
+export declare const ElRadioGroup: SFCWithInstall<typeof _default_69>;
+export declare const ElRate: SFCWithInstall<typeof _default_70>;
+export declare const ElResult: SFCWithInstall<typeof _default_71>;
+export declare const ElRow: SFCWithInstall<typeof _default_72>;
+export declare const ElScrollbar: SFCWithInstall<typeof _default_73>;
 export declare const ElSegmented: SFCWithInstall<{
     new (...args: any[]): {
         $: ComponentInternalInstance;
@@ -21393,49 +22248,49 @@ export declare const ElSegmented: SFCWithInstall<{
         }): any;
     };
 })> & Record<string, any>;
-export declare const ElSelect: SFCWithInstall<typeof _default_73> & {
-    Option: typeof _default_74;
-    OptionGroup: typeof _default_75;
+export declare const ElSelect: SFCWithInstall<typeof _default_75> & {
+    Option: typeof _default_76;
+    OptionGroup: typeof _default_77;
 };
-export declare const ElSelectV2: SFCWithInstall<typeof _default_76>;
-export declare const ElSkeleton: SFCWithInstall<typeof _default_77> & {
-    SkeletonItem: typeof _default_78;
+export declare const ElSelectV2: SFCWithInstall<typeof _default_78>;
+export declare const ElSkeleton: SFCWithInstall<typeof _default_79> & {
+    SkeletonItem: typeof _default_80;
 };
-export declare const ElSkeletonItem: SFCWithInstall<typeof _default_78>;
-export declare const ElSlider: SFCWithInstall<typeof _default_79>;
+export declare const ElSkeletonItem: SFCWithInstall<typeof _default_80>;
+export declare const ElSlider: SFCWithInstall<typeof _default_81>;
 export declare const ElSpace: SFCWithInstall<typeof Space>;
-export declare const ElSplitter: SFCWithInstall<typeof _default_111> & {
-    SplitPanel: typeof _default_112;
+export declare const ElSplitter: SFCWithInstall<typeof _default_113> & {
+    SplitPanel: typeof _default_114;
 };
-export declare const ElSplitterPanel: SFCWithInstall<typeof _default_112>;
-export declare const ElStatistic: SFCWithInstall<typeof _default_80>;
-export declare const ElStep: SFCWithInstall<typeof _default_82>;
-export declare const ElSteps: SFCWithInstall<typeof _default_81> & {
-    Step: typeof _default_82;
+export declare const ElSplitterPanel: SFCWithInstall<typeof _default_114>;
+export declare const ElStatistic: SFCWithInstall<typeof _default_82>;
+export declare const ElStep: SFCWithInstall<typeof _default_84>;
+export declare const ElSteps: SFCWithInstall<typeof _default_83> & {
+    Step: typeof _default_84;
 };
-export declare const ElSubMenu: SFCWithInstall<typeof _default_60>;
-export declare const ElSwitch: SFCWithInstall<typeof _default_83>;
-export declare const ElTable: SFCWithInstall<typeof _default_84> & {
-    TableColumn: typeof _default_85;
-    TableEditableCell: typeof _default_86;
-    TableEditableRowActions: typeof _default_87;
+export declare const ElSubMenu: SFCWithInstall<typeof _default_62>;
+export declare const ElSwitch: SFCWithInstall<typeof _default_85>;
+export declare const ElTable: SFCWithInstall<typeof _default_86> & {
+    TableColumn: typeof _default_87;
+    TableEditableCell: typeof _default_88;
+    TableEditableRowActions: typeof _default_89;
 };
-export declare const ElTableColumn: SFCWithInstall<typeof _default_85>;
-export declare const ElTableEditableCell: SFCWithInstall<typeof _default_86>;
-export declare const ElTableEditableRowActions: SFCWithInstall<typeof _default_87>;
+export declare const ElTableColumn: SFCWithInstall<typeof _default_87>;
+export declare const ElTableEditableCell: SFCWithInstall<typeof _default_88>;
+export declare const ElTableEditableRowActions: SFCWithInstall<typeof _default_89>;
 export declare const ElTableV2: SFCWithInstall<typeof TableV2>;
-export declare const ElTabPane: SFCWithInstall<typeof _default_88>;
+export declare const ElTabPane: SFCWithInstall<typeof _default_90>;
 export declare const ElTabs: SFCWithInstall<typeof Tabs> & {
-    TabPane: typeof _default_88;
+    TabPane: typeof _default_90;
 };
-export declare const ElTag: SFCWithInstall<typeof _default_90>;
-export declare const ElText: SFCWithInstall<typeof _default_91>;
+export declare const ElTag: SFCWithInstall<typeof _default_92>;
+export declare const ElText: SFCWithInstall<typeof _default_93>;
 export declare const ElTimeline: SFCWithInstall<typeof Timeline> & {
-    TimelineItem: typeof _default_94;
+    TimelineItem: typeof _default_96;
 };
-export declare const ElTimelineItem: SFCWithInstall<typeof _default_94>;
-export declare const ElTimePicker: SFCWithInstall<typeof _default_92>;
-export declare const ElTimeSelect: SFCWithInstall<typeof _default_93>;
+export declare const ElTimelineItem: SFCWithInstall<typeof _default_96>;
+export declare const ElTimePicker: SFCWithInstall<typeof _default_94>;
+export declare const ElTimeSelect: SFCWithInstall<typeof _default_95>;
 export declare const ElTooltip: SFCWithInstall<typeof _default_6>;
 export declare type ElTooltipContentProps = ExtractPropTypes<typeof useTooltipContentProps>;
 export declare type ElTooltipContentPropsPublic = __ExtractPublicPropTypes<typeof useTooltipContentProps>;
@@ -21457,16 +22312,16 @@ export declare type ElTooltipProps = ExtractPropTypes<typeof useTooltipProps>;
 export declare type ElTooltipPropsPublic = __ExtractPublicPropTypes<typeof useTooltipProps>;
 export declare type ElTooltipTriggerProps = ExtractPropTypes<typeof useTooltipTriggerProps>;
 export declare type ElTooltipTriggerPropsPublic = __ExtractPublicPropTypes<typeof useTooltipTriggerProps>;
-export declare const ElTour: SFCWithInstall<typeof _default_105> & {
-    TourStep: typeof _default_106;
+export declare const ElTour: SFCWithInstall<typeof _default_107> & {
+    TourStep: typeof _default_108;
 };
-export declare const ElTourStep: SFCWithInstall<typeof _default_106>;
-export declare const ElTransfer: SFCWithInstall<typeof _default_95>;
-export declare const ElTree: SFCWithInstall<typeof _default_97>;
-export declare const ElTreeSelect: SFCWithInstall<typeof _default_98>;
-export declare const ElTreeV2: SFCWithInstall<typeof _default_99>;
-export declare const ElUpload: SFCWithInstall<typeof _default_100>;
-export declare const ElWatermark: SFCWithInstall<typeof _default_104>;
+export declare const ElTourStep: SFCWithInstall<typeof _default_108>;
+export declare const ElTransfer: SFCWithInstall<typeof _default_97>;
+export declare const ElTree: SFCWithInstall<typeof _default_99>;
+export declare const ElTreeSelect: SFCWithInstall<typeof _default_100>;
+export declare const ElTreeV2: SFCWithInstall<typeof _default_101>;
+export declare const ElUpload: SFCWithInstall<typeof _default_102>;
+export declare const ElWatermark: SFCWithInstall<typeof _default_106>;
 export declare interface ElZIndexInjectionContext {
     current: number;
 }
@@ -23040,6 +23895,259 @@ export declare type InputAutoSize = {
     minRows?: number;
     maxRows?: number;
 } | boolean;
+export declare type InputDownEmits = typeof inputDownEmits;
+export declare const inputDownEmits: {
+    "update:modelValue": (value: InputDownValue) => value is string | number;
+    input: (value: InputDownValue) => value is string | number;
+    change: (value: InputDownValue) => value is string | number;
+    select: (option: InputDownOption) => boolean;
+    focus: (event: FocusEvent) => boolean;
+    blur: (event: FocusEvent) => boolean;
+    clear: () => boolean;
+};
+export declare type InputDownInstance = InstanceType<typeof _default_54> & unknown;
+export declare type InputDownOption = Record<string, unknown>;
+export declare type InputDownProps = ExtractPropTypes<typeof inputDownProps>;
+export declare const inputDownProps: {
+    readonly modelValue: EpPropFinalized<(new (...args: any[]) => string | number) | (() => InputDownValue) | ((new (...args: any[]) => string | number) | (() => InputDownValue))[], unknown, unknown, "", boolean>;
+    readonly options: EpPropFinalized<(new (...args: any[]) => InputDownOption[]) | (() => InputDownOption[]) | ((new (...args: any[]) => InputDownOption[]) | (() => InputDownOption[]))[], unknown, unknown, () => never[], boolean>;
+    readonly valueKey: EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
+    readonly labelKey: EpPropFinalized<StringConstructor, unknown, unknown, "label", boolean>;
+    readonly placement: EpPropFinalized<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], "top" | "bottom" | "top-start" | "top-end" | "bottom-start" | "bottom-end", unknown, "bottom-start", boolean>;
+    readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly appendTo: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>) | ((new (...args: any[]) => string | HTMLElement) | (() => EpPropMergeType<(new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement) | ((new (...args: any[]) => string | HTMLElement) | (() => string | HTMLElement))[], unknown, unknown>))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly popperClass: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | ((new (...args: any[]) => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]) | (() => string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | (string | {
+            [x: string]: boolean;
+        } | any)[])[])[])[])[])[])[])[])[])[])[]))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly popperStyle: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly inputmode: EpPropFinalized<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown, undefined, boolean>;
+    readonly name: StringConstructor;
+    readonly ariaLabel: StringConstructor;
+    readonly isHoverSuffix: BooleanConstructor;
+    readonly alwaysShowSuffix: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly id: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
+    readonly size: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "" | "small" | "default" | "large", never>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly disabled: BooleanConstructor;
+    readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
+    readonly maxlength: {
+        readonly type: PropType<EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly minlength: {
+        readonly type: PropType<EpPropMergeType<readonly [
+            StringConstructor,
+            NumberConstructor
+        ], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly inputType: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly infoTip: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly resize: {
+        readonly type: PropType<EpPropMergeType<StringConstructor, "none" | "both" | "horizontal" | "vertical", unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly autosize: EpPropFinalized<(new (...args: any[]) => boolean | {
+        minRows?: number;
+        maxRows?: number;
+    }) | (() => InputAutoSize) | ((new (...args: any[]) => boolean | {
+        minRows?: number;
+        maxRows?: number;
+    }) | (() => InputAutoSize))[], unknown, unknown, false, boolean>;
+    readonly autocomplete: EpPropFinalized<(new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill) | ((new (...args: any[]) => "" | "name" | "email" | "off" | "on" | "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday-day" | "bday-month" | "bday-year" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "new-password" | "one-time-code" | "organization" | "postal-code" | "street-address" | "transaction-amount" | "transaction-currency" | "username" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national" | "home email" | "home tel" | "home tel-area-code" | "home tel-country-code" | "home tel-extension" | "home tel-local" | "home tel-local-prefix" | "home tel-local-suffix" | "home tel-national" | "mobile email" | "mobile tel" | "mobile tel-area-code" | "mobile tel-country-code" | "mobile tel-extension" | "mobile tel-local" | "mobile tel-local-prefix" | "mobile tel-local-suffix" | "mobile tel-national" | "work email" | "work tel" | "work tel-area-code" | "work tel-country-code" | "work tel-extension" | "work tel-local" | "work tel-local-prefix" | "work tel-local-suffix" | "work tel-national" | "name webauthn" | "additional-name webauthn" | "address-level1 webauthn" | "address-level2 webauthn" | "address-level3 webauthn" | "address-level4 webauthn" | "address-line1 webauthn" | "address-line2 webauthn" | "address-line3 webauthn" | "bday-day webauthn" | "bday-month webauthn" | "bday-year webauthn" | "cc-csc webauthn" | "cc-exp webauthn" | "cc-exp-month webauthn" | "cc-exp-year webauthn" | "cc-family-name webauthn" | "cc-given-name webauthn" | "cc-name webauthn" | "cc-number webauthn" | "cc-type webauthn" | "country webauthn" | "country-name webauthn" | "current-password webauthn" | "family-name webauthn" | "given-name webauthn" | "honorific-prefix webauthn" | "honorific-suffix webauthn" | "new-password webauthn" | "one-time-code webauthn" | "organization webauthn" | "postal-code webauthn" | "street-address webauthn" | "transaction-amount webauthn" | "transaction-currency webauthn" | "username webauthn" | "email webauthn" | "tel webauthn" | "tel-area-code webauthn" | "tel-country-code webauthn" | "tel-extension webauthn" | "tel-local webauthn" | "tel-local-prefix webauthn" | "tel-local-suffix webauthn" | "tel-national webauthn" | "home email webauthn" | "home tel webauthn" | "home tel-area-code webauthn" | "home tel-country-code webauthn" | "home tel-extension webauthn" | "home tel-local webauthn" | "home tel-local-prefix webauthn" | "home tel-local-suffix webauthn" | "home tel-national webauthn" | "mobile email webauthn" | "mobile tel webauthn" | "mobile tel-area-code webauthn" | "mobile tel-country-code webauthn" | "mobile tel-extension webauthn" | "mobile tel-local webauthn" | "mobile tel-local-prefix webauthn" | "mobile tel-local-suffix webauthn" | "mobile tel-national webauthn" | "work email webauthn" | "work tel webauthn" | "work tel-area-code webauthn" | "work tel-country-code webauthn" | "work tel-extension webauthn" | "work tel-local webauthn" | "work tel-local-prefix webauthn" | "work tel-local-suffix webauthn" | "work tel-national webauthn" | "billing name" | "billing name webauthn" | "billing additional-name" | "billing additional-name webauthn" | "billing address-level1" | "billing address-level1 webauthn" | "billing address-level2" | "billing address-level2 webauthn" | "billing address-level3" | "billing address-level3 webauthn" | "billing address-level4" | "billing address-level4 webauthn" | "billing address-line1" | "billing address-line1 webauthn" | "billing address-line2" | "billing address-line2 webauthn" | "billing address-line3" | "billing address-line3 webauthn" | "billing bday-day" | "billing bday-day webauthn" | "billing bday-month" | "billing bday-month webauthn" | "billing bday-year" | "billing bday-year webauthn" | "billing cc-csc" | "billing cc-csc webauthn" | "billing cc-exp" | "billing cc-exp webauthn" | "billing cc-exp-month" | "billing cc-exp-month webauthn" | "billing cc-exp-year" | "billing cc-exp-year webauthn" | "billing cc-family-name" | "billing cc-family-name webauthn" | "billing cc-given-name" | "billing cc-given-name webauthn" | "billing cc-name" | "billing cc-name webauthn" | "billing cc-number" | "billing cc-number webauthn" | "billing cc-type" | "billing cc-type webauthn" | "billing country" | "billing country webauthn" | "billing country-name" | "billing country-name webauthn" | "billing current-password" | "billing current-password webauthn" | "billing family-name" | "billing family-name webauthn" | "billing given-name" | "billing given-name webauthn" | "billing honorific-prefix" | "billing honorific-prefix webauthn" | "billing honorific-suffix" | "billing honorific-suffix webauthn" | "billing new-password" | "billing new-password webauthn" | "billing one-time-code" | "billing one-time-code webauthn" | "billing organization" | "billing organization webauthn" | "billing postal-code" | "billing postal-code webauthn" | "billing street-address" | "billing street-address webauthn" | "billing transaction-amount" | "billing transaction-amount webauthn" | "billing transaction-currency" | "billing transaction-currency webauthn" | "billing username" | "billing username webauthn" | "billing email" | "billing email webauthn" | "billing tel" | "billing tel webauthn" | "billing tel-area-code" | "billing tel-area-code webauthn" | "billing tel-country-code" | "billing tel-country-code webauthn" | "billing tel-extension" | "billing tel-extension webauthn" | "billing tel-local" | "billing tel-local webauthn" | "billing tel-local-prefix" | "billing tel-local-prefix webauthn" | "billing tel-local-suffix" | "billing tel-local-suffix webauthn" | "billing tel-national" | "billing tel-national webauthn" | "billing home email" | "billing home email webauthn" | "billing home tel" | "billing home tel webauthn" | "billing home tel-area-code" | "billing home tel-area-code webauthn" | "billing home tel-country-code" | "billing home tel-country-code webauthn" | "billing home tel-extension" | "billing home tel-extension webauthn" | "billing home tel-local" | "billing home tel-local webauthn" | "billing home tel-local-prefix" | "billing home tel-local-prefix webauthn" | "billing home tel-local-suffix" | "billing home tel-local-suffix webauthn" | "billing home tel-national" | "billing home tel-national webauthn" | "billing mobile email" | "billing mobile email webauthn" | "billing mobile tel" | "billing mobile tel webauthn" | "billing mobile tel-area-code" | "billing mobile tel-area-code webauthn" | "billing mobile tel-country-code" | "billing mobile tel-country-code webauthn" | "billing mobile tel-extension" | "billing mobile tel-extension webauthn" | "billing mobile tel-local" | "billing mobile tel-local webauthn" | "billing mobile tel-local-prefix" | "billing mobile tel-local-prefix webauthn" | "billing mobile tel-local-suffix" | "billing mobile tel-local-suffix webauthn" | "billing mobile tel-national" | "billing mobile tel-national webauthn" | "billing work email" | "billing work email webauthn" | "billing work tel" | "billing work tel webauthn" | "billing work tel-area-code" | "billing work tel-area-code webauthn" | "billing work tel-country-code" | "billing work tel-country-code webauthn" | "billing work tel-extension" | "billing work tel-extension webauthn" | "billing work tel-local" | "billing work tel-local webauthn" | "billing work tel-local-prefix" | "billing work tel-local-prefix webauthn" | "billing work tel-local-suffix" | "billing work tel-local-suffix webauthn" | "billing work tel-national" | "billing work tel-national webauthn" | "shipping name" | "shipping name webauthn" | "shipping additional-name" | "shipping additional-name webauthn" | "shipping address-level1" | "shipping address-level1 webauthn" | "shipping address-level2" | "shipping address-level2 webauthn" | "shipping address-level3" | "shipping address-level3 webauthn" | "shipping address-level4" | "shipping address-level4 webauthn" | "shipping address-line1" | "shipping address-line1 webauthn" | "shipping address-line2" | "shipping address-line2 webauthn" | "shipping address-line3" | "shipping address-line3 webauthn" | "shipping bday-day" | "shipping bday-day webauthn" | "shipping bday-month" | "shipping bday-month webauthn" | "shipping bday-year" | "shipping bday-year webauthn" | "shipping cc-csc" | "shipping cc-csc webauthn" | "shipping cc-exp" | "shipping cc-exp webauthn" | "shipping cc-exp-month" | "shipping cc-exp-month webauthn" | "shipping cc-exp-year" | "shipping cc-exp-year webauthn" | "shipping cc-family-name" | "shipping cc-family-name webauthn" | "shipping cc-given-name" | "shipping cc-given-name webauthn" | "shipping cc-name" | "shipping cc-name webauthn" | "shipping cc-number" | "shipping cc-number webauthn" | "shipping cc-type" | "shipping cc-type webauthn" | "shipping country" | "shipping country webauthn" | "shipping country-name" | "shipping country-name webauthn" | "shipping current-password" | "shipping current-password webauthn" | "shipping family-name" | "shipping family-name webauthn" | "shipping given-name" | "shipping given-name webauthn" | "shipping honorific-prefix" | "shipping honorific-prefix webauthn" | "shipping honorific-suffix" | "shipping honorific-suffix webauthn" | "shipping new-password" | "shipping new-password webauthn" | "shipping one-time-code" | "shipping one-time-code webauthn" | "shipping organization" | "shipping organization webauthn" | "shipping postal-code" | "shipping postal-code webauthn" | "shipping street-address" | "shipping street-address webauthn" | "shipping transaction-amount" | "shipping transaction-amount webauthn" | "shipping transaction-currency" | "shipping transaction-currency webauthn" | "shipping username" | "shipping username webauthn" | "shipping email" | "shipping email webauthn" | "shipping tel" | "shipping tel webauthn" | "shipping tel-area-code" | "shipping tel-area-code webauthn" | "shipping tel-country-code" | "shipping tel-country-code webauthn" | "shipping tel-extension" | "shipping tel-extension webauthn" | "shipping tel-local" | "shipping tel-local webauthn" | "shipping tel-local-prefix" | "shipping tel-local-prefix webauthn" | "shipping tel-local-suffix" | "shipping tel-local-suffix webauthn" | "shipping tel-national" | "shipping tel-national webauthn" | "shipping home email" | "shipping home email webauthn" | "shipping home tel" | "shipping home tel webauthn" | "shipping home tel-area-code" | "shipping home tel-area-code webauthn" | "shipping home tel-country-code" | "shipping home tel-country-code webauthn" | "shipping home tel-extension" | "shipping home tel-extension webauthn" | "shipping home tel-local" | "shipping home tel-local webauthn" | "shipping home tel-local-prefix" | "shipping home tel-local-prefix webauthn" | "shipping home tel-local-suffix" | "shipping home tel-local-suffix webauthn" | "shipping home tel-national" | "shipping home tel-national webauthn" | "shipping mobile email" | "shipping mobile email webauthn" | "shipping mobile tel" | "shipping mobile tel webauthn" | "shipping mobile tel-area-code" | "shipping mobile tel-area-code webauthn" | "shipping mobile tel-country-code" | "shipping mobile tel-country-code webauthn" | "shipping mobile tel-extension" | "shipping mobile tel-extension webauthn" | "shipping mobile tel-local" | "shipping mobile tel-local webauthn" | "shipping mobile tel-local-prefix" | "shipping mobile tel-local-prefix webauthn" | "shipping mobile tel-local-suffix" | "shipping mobile tel-local-suffix webauthn" | "shipping mobile tel-national" | "shipping mobile tel-national webauthn" | "shipping work email" | "shipping work email webauthn" | "shipping work tel" | "shipping work tel webauthn" | "shipping work tel-area-code" | "shipping work tel-area-code webauthn" | "shipping work tel-country-code" | "shipping work tel-country-code webauthn" | "shipping work tel-extension" | "shipping work tel-extension webauthn" | "shipping work tel-local" | "shipping work tel-local webauthn" | "shipping work tel-local-prefix" | "shipping work tel-local-prefix webauthn" | "shipping work tel-local-suffix" | "shipping work tel-local-suffix webauthn" | "shipping work tel-national" | "shipping work tel-national webauthn" | `section-${string} name` | `section-${string} name webauthn` | `section-${string} additional-name` | `section-${string} additional-name webauthn` | `section-${string} address-level1` | `section-${string} address-level1 webauthn` | `section-${string} address-level2` | `section-${string} address-level2 webauthn` | `section-${string} address-level3` | `section-${string} address-level3 webauthn` | `section-${string} address-level4` | `section-${string} address-level4 webauthn` | `section-${string} address-line1` | `section-${string} address-line1 webauthn` | `section-${string} address-line2` | `section-${string} address-line2 webauthn` | `section-${string} address-line3` | `section-${string} address-line3 webauthn` | `section-${string} bday-day` | `section-${string} bday-day webauthn` | `section-${string} bday-month` | `section-${string} bday-month webauthn` | `section-${string} bday-year` | `section-${string} bday-year webauthn` | `section-${string} cc-csc` | `section-${string} cc-csc webauthn` | `section-${string} cc-exp` | `section-${string} cc-exp webauthn` | `section-${string} cc-exp-month` | `section-${string} cc-exp-month webauthn` | `section-${string} cc-exp-year` | `section-${string} cc-exp-year webauthn` | `section-${string} cc-family-name` | `section-${string} cc-family-name webauthn` | `section-${string} cc-given-name` | `section-${string} cc-given-name webauthn` | `section-${string} cc-name` | `section-${string} cc-name webauthn` | `section-${string} cc-number` | `section-${string} cc-number webauthn` | `section-${string} cc-type` | `section-${string} cc-type webauthn` | `section-${string} country` | `section-${string} country webauthn` | `section-${string} country-name` | `section-${string} country-name webauthn` | `section-${string} current-password` | `section-${string} current-password webauthn` | `section-${string} family-name` | `section-${string} family-name webauthn` | `section-${string} given-name` | `section-${string} given-name webauthn` | `section-${string} honorific-prefix` | `section-${string} honorific-prefix webauthn` | `section-${string} honorific-suffix` | `section-${string} honorific-suffix webauthn` | `section-${string} new-password` | `section-${string} new-password webauthn` | `section-${string} one-time-code` | `section-${string} one-time-code webauthn` | `section-${string} organization` | `section-${string} organization webauthn` | `section-${string} postal-code` | `section-${string} postal-code webauthn` | `section-${string} street-address` | `section-${string} street-address webauthn` | `section-${string} transaction-amount` | `section-${string} transaction-amount webauthn` | `section-${string} transaction-currency` | `section-${string} transaction-currency webauthn` | `section-${string} username` | `section-${string} username webauthn` | `section-${string} email` | `section-${string} email webauthn` | `section-${string} tel` | `section-${string} tel webauthn` | `section-${string} tel-area-code` | `section-${string} tel-area-code webauthn` | `section-${string} tel-country-code` | `section-${string} tel-country-code webauthn` | `section-${string} tel-extension` | `section-${string} tel-extension webauthn` | `section-${string} tel-local` | `section-${string} tel-local webauthn` | `section-${string} tel-local-prefix` | `section-${string} tel-local-prefix webauthn` | `section-${string} tel-local-suffix` | `section-${string} tel-local-suffix webauthn` | `section-${string} tel-national` | `section-${string} tel-national webauthn` | `section-${string} home email` | `section-${string} home email webauthn` | `section-${string} home tel` | `section-${string} home tel webauthn` | `section-${string} home tel-area-code` | `section-${string} home tel-area-code webauthn` | `section-${string} home tel-country-code` | `section-${string} home tel-country-code webauthn` | `section-${string} home tel-extension` | `section-${string} home tel-extension webauthn` | `section-${string} home tel-local` | `section-${string} home tel-local webauthn` | `section-${string} home tel-local-prefix` | `section-${string} home tel-local-prefix webauthn` | `section-${string} home tel-local-suffix` | `section-${string} home tel-local-suffix webauthn` | `section-${string} home tel-national` | `section-${string} home tel-national webauthn` | `section-${string} mobile email` | `section-${string} mobile email webauthn` | `section-${string} mobile tel` | `section-${string} mobile tel webauthn` | `section-${string} mobile tel-area-code` | `section-${string} mobile tel-area-code webauthn` | `section-${string} mobile tel-country-code` | `section-${string} mobile tel-country-code webauthn` | `section-${string} mobile tel-extension` | `section-${string} mobile tel-extension webauthn` | `section-${string} mobile tel-local` | `section-${string} mobile tel-local webauthn` | `section-${string} mobile tel-local-prefix` | `section-${string} mobile tel-local-prefix webauthn` | `section-${string} mobile tel-local-suffix` | `section-${string} mobile tel-local-suffix webauthn` | `section-${string} mobile tel-national` | `section-${string} mobile tel-national webauthn` | `section-${string} work email` | `section-${string} work email webauthn` | `section-${string} work tel` | `section-${string} work tel webauthn` | `section-${string} work tel-area-code` | `section-${string} work tel-area-code webauthn` | `section-${string} work tel-country-code` | `section-${string} work tel-country-code webauthn` | `section-${string} work tel-extension` | `section-${string} work tel-extension webauthn` | `section-${string} work tel-local` | `section-${string} work tel-local webauthn` | `section-${string} work tel-local-prefix` | `section-${string} work tel-local-prefix webauthn` | `section-${string} work tel-local-suffix` | `section-${string} work tel-local-suffix webauthn` | `section-${string} work tel-national` | `section-${string} work tel-national webauthn` | `section-${string} billing name` | `section-${string} billing name webauthn` | `section-${string} billing additional-name` | `section-${string} billing additional-name webauthn` | `section-${string} billing address-level1` | `section-${string} billing address-level1 webauthn` | `section-${string} billing address-level2` | `section-${string} billing address-level2 webauthn` | `section-${string} billing address-level3` | `section-${string} billing address-level3 webauthn` | `section-${string} billing address-level4` | `section-${string} billing address-level4 webauthn` | `section-${string} billing address-line1` | `section-${string} billing address-line1 webauthn` | `section-${string} billing address-line2` | `section-${string} billing address-line2 webauthn` | `section-${string} billing address-line3` | `section-${string} billing address-line3 webauthn` | `section-${string} billing bday-day` | `section-${string} billing bday-day webauthn` | `section-${string} billing bday-month` | `section-${string} billing bday-month webauthn` | `section-${string} billing bday-year` | `section-${string} billing bday-year webauthn` | `section-${string} billing cc-csc` | `section-${string} billing cc-csc webauthn` | `section-${string} billing cc-exp` | `section-${string} billing cc-exp webauthn` | `section-${string} billing cc-exp-month` | `section-${string} billing cc-exp-month webauthn` | `section-${string} billing cc-exp-year` | `section-${string} billing cc-exp-year webauthn` | `section-${string} billing cc-family-name` | `section-${string} billing cc-family-name webauthn` | `section-${string} billing cc-given-name` | `section-${string} billing cc-given-name webauthn` | `section-${string} billing cc-name` | `section-${string} billing cc-name webauthn` | `section-${string} billing cc-number` | `section-${string} billing cc-number webauthn` | `section-${string} billing cc-type` | `section-${string} billing cc-type webauthn` | `section-${string} billing country` | `section-${string} billing country webauthn` | `section-${string} billing country-name` | `section-${string} billing country-name webauthn` | `section-${string} billing current-password` | `section-${string} billing current-password webauthn` | `section-${string} billing family-name` | `section-${string} billing family-name webauthn` | `section-${string} billing given-name` | `section-${string} billing given-name webauthn` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-prefix webauthn` | `section-${string} billing honorific-suffix` | `section-${string} billing honorific-suffix webauthn` | `section-${string} billing new-password` | `section-${string} billing new-password webauthn` | `section-${string} billing one-time-code` | `section-${string} billing one-time-code webauthn` | `section-${string} billing organization` | `section-${string} billing organization webauthn` | `section-${string} billing postal-code` | `section-${string} billing postal-code webauthn` | `section-${string} billing street-address` | `section-${string} billing street-address webauthn` | `section-${string} billing transaction-amount` | `section-${string} billing transaction-amount webauthn` | `section-${string} billing transaction-currency` | `section-${string} billing transaction-currency webauthn` | `section-${string} billing username` | `section-${string} billing username webauthn` | `section-${string} billing email` | `section-${string} billing email webauthn` | `section-${string} billing tel` | `section-${string} billing tel webauthn` | `section-${string} billing tel-area-code` | `section-${string} billing tel-area-code webauthn` | `section-${string} billing tel-country-code` | `section-${string} billing tel-country-code webauthn` | `section-${string} billing tel-extension` | `section-${string} billing tel-extension webauthn` | `section-${string} billing tel-local` | `section-${string} billing tel-local webauthn` | `section-${string} billing tel-local-prefix` | `section-${string} billing tel-local-prefix webauthn` | `section-${string} billing tel-local-suffix` | `section-${string} billing tel-local-suffix webauthn` | `section-${string} billing tel-national` | `section-${string} billing tel-national webauthn` | `section-${string} billing home email` | `section-${string} billing home email webauthn` | `section-${string} billing home tel` | `section-${string} billing home tel webauthn` | `section-${string} billing home tel-area-code` | `section-${string} billing home tel-area-code webauthn` | `section-${string} billing home tel-country-code` | `section-${string} billing home tel-country-code webauthn` | `section-${string} billing home tel-extension` | `section-${string} billing home tel-extension webauthn` | `section-${string} billing home tel-local` | `section-${string} billing home tel-local webauthn` | `section-${string} billing home tel-local-prefix` | `section-${string} billing home tel-local-prefix webauthn` | `section-${string} billing home tel-local-suffix` | `section-${string} billing home tel-local-suffix webauthn` | `section-${string} billing home tel-national` | `section-${string} billing home tel-national webauthn` | `section-${string} billing mobile email` | `section-${string} billing mobile email webauthn` | `section-${string} billing mobile tel` | `section-${string} billing mobile tel webauthn` | `section-${string} billing mobile tel-area-code` | `section-${string} billing mobile tel-area-code webauthn` | `section-${string} billing mobile tel-country-code` | `section-${string} billing mobile tel-country-code webauthn` | `section-${string} billing mobile tel-extension` | `section-${string} billing mobile tel-extension webauthn` | `section-${string} billing mobile tel-local` | `section-${string} billing mobile tel-local webauthn` | `section-${string} billing mobile tel-local-prefix` | `section-${string} billing mobile tel-local-prefix webauthn` | `section-${string} billing mobile tel-local-suffix` | `section-${string} billing mobile tel-local-suffix webauthn` | `section-${string} billing mobile tel-national` | `section-${string} billing mobile tel-national webauthn` | `section-${string} billing work email` | `section-${string} billing work email webauthn` | `section-${string} billing work tel` | `section-${string} billing work tel webauthn` | `section-${string} billing work tel-area-code` | `section-${string} billing work tel-area-code webauthn` | `section-${string} billing work tel-country-code` | `section-${string} billing work tel-country-code webauthn` | `section-${string} billing work tel-extension` | `section-${string} billing work tel-extension webauthn` | `section-${string} billing work tel-local` | `section-${string} billing work tel-local webauthn` | `section-${string} billing work tel-local-prefix` | `section-${string} billing work tel-local-prefix webauthn` | `section-${string} billing work tel-local-suffix` | `section-${string} billing work tel-local-suffix webauthn` | `section-${string} billing work tel-national` | `section-${string} billing work tel-national webauthn` | `section-${string} shipping name` | `section-${string} shipping name webauthn` | `section-${string} shipping additional-name` | `section-${string} shipping additional-name webauthn` | `section-${string} shipping address-level1` | `section-${string} shipping address-level1 webauthn` | `section-${string} shipping address-level2` | `section-${string} shipping address-level2 webauthn` | `section-${string} shipping address-level3` | `section-${string} shipping address-level3 webauthn` | `section-${string} shipping address-level4` | `section-${string} shipping address-level4 webauthn` | `section-${string} shipping address-line1` | `section-${string} shipping address-line1 webauthn` | `section-${string} shipping address-line2` | `section-${string} shipping address-line2 webauthn` | `section-${string} shipping address-line3` | `section-${string} shipping address-line3 webauthn` | `section-${string} shipping bday-day` | `section-${string} shipping bday-day webauthn` | `section-${string} shipping bday-month` | `section-${string} shipping bday-month webauthn` | `section-${string} shipping bday-year` | `section-${string} shipping bday-year webauthn` | `section-${string} shipping cc-csc` | `section-${string} shipping cc-csc webauthn` | `section-${string} shipping cc-exp` | `section-${string} shipping cc-exp webauthn` | `section-${string} shipping cc-exp-month` | `section-${string} shipping cc-exp-month webauthn` | `section-${string} shipping cc-exp-year` | `section-${string} shipping cc-exp-year webauthn` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-family-name webauthn` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-given-name webauthn` | `section-${string} shipping cc-name` | `section-${string} shipping cc-name webauthn` | `section-${string} shipping cc-number` | `section-${string} shipping cc-number webauthn` | `section-${string} shipping cc-type` | `section-${string} shipping cc-type webauthn` | `section-${string} shipping country` | `section-${string} shipping country webauthn` | `section-${string} shipping country-name` | `section-${string} shipping country-name webauthn` | `section-${string} shipping current-password` | `section-${string} shipping current-password webauthn` | `section-${string} shipping family-name` | `section-${string} shipping family-name webauthn` | `section-${string} shipping given-name` | `section-${string} shipping given-name webauthn` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-prefix webauthn` | `section-${string} shipping honorific-suffix` | `section-${string} shipping honorific-suffix webauthn` | `section-${string} shipping new-password` | `section-${string} shipping new-password webauthn` | `section-${string} shipping one-time-code` | `section-${string} shipping one-time-code webauthn` | `section-${string} shipping organization` | `section-${string} shipping organization webauthn` | `section-${string} shipping postal-code` | `section-${string} shipping postal-code webauthn` | `section-${string} shipping street-address` | `section-${string} shipping street-address webauthn` | `section-${string} shipping transaction-amount` | `section-${string} shipping transaction-amount webauthn` | `section-${string} shipping transaction-currency` | `section-${string} shipping transaction-currency webauthn` | `section-${string} shipping username` | `section-${string} shipping username webauthn` | `section-${string} shipping email` | `section-${string} shipping email webauthn` | `section-${string} shipping tel` | `section-${string} shipping tel webauthn` | `section-${string} shipping tel-area-code` | `section-${string} shipping tel-area-code webauthn` | `section-${string} shipping tel-country-code` | `section-${string} shipping tel-country-code webauthn` | `section-${string} shipping tel-extension` | `section-${string} shipping tel-extension webauthn` | `section-${string} shipping tel-local` | `section-${string} shipping tel-local webauthn` | `section-${string} shipping tel-local-prefix` | `section-${string} shipping tel-local-prefix webauthn` | `section-${string} shipping tel-local-suffix` | `section-${string} shipping tel-local-suffix webauthn` | `section-${string} shipping tel-national` | `section-${string} shipping tel-national webauthn` | `section-${string} shipping home email` | `section-${string} shipping home email webauthn` | `section-${string} shipping home tel` | `section-${string} shipping home tel webauthn` | `section-${string} shipping home tel-area-code` | `section-${string} shipping home tel-area-code webauthn` | `section-${string} shipping home tel-country-code` | `section-${string} shipping home tel-country-code webauthn` | `section-${string} shipping home tel-extension` | `section-${string} shipping home tel-extension webauthn` | `section-${string} shipping home tel-local` | `section-${string} shipping home tel-local webauthn` | `section-${string} shipping home tel-local-prefix` | `section-${string} shipping home tel-local-prefix webauthn` | `section-${string} shipping home tel-local-suffix` | `section-${string} shipping home tel-local-suffix webauthn` | `section-${string} shipping home tel-national` | `section-${string} shipping home tel-national webauthn` | `section-${string} shipping mobile email` | `section-${string} shipping mobile email webauthn` | `section-${string} shipping mobile tel` | `section-${string} shipping mobile tel webauthn` | `section-${string} shipping mobile tel-area-code` | `section-${string} shipping mobile tel-area-code webauthn` | `section-${string} shipping mobile tel-country-code` | `section-${string} shipping mobile tel-country-code webauthn` | `section-${string} shipping mobile tel-extension` | `section-${string} shipping mobile tel-extension webauthn` | `section-${string} shipping mobile tel-local` | `section-${string} shipping mobile tel-local webauthn` | `section-${string} shipping mobile tel-local-prefix` | `section-${string} shipping mobile tel-local-prefix webauthn` | `section-${string} shipping mobile tel-local-suffix` | `section-${string} shipping mobile tel-local-suffix webauthn` | `section-${string} shipping mobile tel-national` | `section-${string} shipping mobile tel-national webauthn` | `section-${string} shipping work email` | `section-${string} shipping work email webauthn` | `section-${string} shipping work tel` | `section-${string} shipping work tel webauthn` | `section-${string} shipping work tel-area-code` | `section-${string} shipping work tel-area-code webauthn` | `section-${string} shipping work tel-country-code` | `section-${string} shipping work tel-country-code webauthn` | `section-${string} shipping work tel-extension` | `section-${string} shipping work tel-extension webauthn` | `section-${string} shipping work tel-local` | `section-${string} shipping work tel-local webauthn` | `section-${string} shipping work tel-local-prefix` | `section-${string} shipping work tel-local-prefix webauthn` | `section-${string} shipping work tel-local-suffix` | `section-${string} shipping work tel-local-suffix webauthn` | `section-${string} shipping work tel-national` | `section-${string} shipping work tel-national webauthn`) | (() => AutoFill))[], unknown, unknown, "off", boolean>;
+    readonly formatter: {
+        readonly type: PropType<Function>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly parser: {
+        readonly type: PropType<Function>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly placeholder: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly form: {
+        readonly type: PropType<string>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly readonly: BooleanConstructor;
+    readonly floatLabel: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly clearable: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly clearIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly showPassword: BooleanConstructor;
+    readonly showWordLimit: BooleanConstructor;
+    readonly wordLimitPosition: EpPropFinalized<StringConstructor, "inside" | "outside", unknown, "inside", boolean>;
+    readonly suffixIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly prefixIcon: {
+        readonly type: PropType<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly containerRole: EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
+    readonly tabindex: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor
+    ], unknown, unknown, 0, boolean>;
+    readonly validateEvent: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly inputStyle: EpPropFinalized<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown, () => Mutable<{}>, boolean>;
+    readonly autofocus: BooleanConstructor;
+    readonly rows: EpPropFinalized<NumberConstructor, unknown, unknown, 2, boolean>;
+};
+export declare type InputDownPropsPublic = __ExtractPublicPropTypes<typeof inputDownProps>;
+export declare type InputDownValue = string | number;
 export declare type InputEmits = typeof inputEmits;
 export declare const inputEmits: {
     "update:modelValue": (value: string) => boolean;
@@ -23069,7 +24177,7 @@ export declare const inputNumberEmits: {
     input: (val: number | null | undefined) => boolean;
     "update:modelValue": (val: number | undefined) => boolean;
 };
-export declare type InputNumberInstance = InstanceType<typeof _default_54> & unknown;
+export declare type InputNumberInstance = InstanceType<typeof _default_56> & unknown;
 export declare type InputNumberProps = ExtractPropTypes<typeof inputNumberProps>;
 export declare const inputNumberProps: {
     readonly inputmode: EpPropFinalized<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown, undefined, boolean>;
@@ -23234,6 +24342,75 @@ export declare const inputProps: {
     readonly rows: EpPropFinalized<NumberConstructor, unknown, unknown, 2, boolean>;
 };
 export declare type InputPropsPublic = __ExtractPublicPropTypes<typeof inputProps>;
+export declare type InputSelectControl = (typeof inputSelectControlTypes)[number];
+export declare type InputSelectControlProps = Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>;
+export declare const inputSelectControlTypes: readonly [
+    "input",
+    "select"
+];
+export declare type InputSelectEmits = typeof inputSelectEmits;
+export declare const inputSelectEmits: {
+    "update:leftValue": (_value: InputSelectValue) => boolean;
+    "update:rightValue": (_value: InputSelectValue) => boolean;
+    "left-change": (_value: InputSelectValue) => boolean;
+    "right-change": (_value: InputSelectValue) => boolean;
+    "left-focus": (event: FocusEvent) => boolean;
+    "right-focus": (event: FocusEvent) => boolean;
+    "left-blur": (event: FocusEvent) => boolean;
+    "right-blur": (event: FocusEvent) => boolean;
+    "left-clear": () => boolean;
+    "right-clear": () => boolean;
+    "left-visible-change": (visible: boolean) => boolean;
+    "right-visible-change": (visible: boolean) => boolean;
+};
+export declare type InputSelectInstance = InstanceType<typeof _default_55> & unknown;
+export declare type InputSelectLayout = [
+    "input",
+    "select"
+] | [
+    "select",
+    "select"
+] | [
+    "select",
+    "input"
+] | [
+    "input",
+    "input"
+];
+export declare type InputSelectProps = ExtractPropTypes<typeof inputSelectProps>;
+export declare const inputSelectProps: {
+    readonly layout: EpPropFinalized<(new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout) | ((new (...args: any[]) => [
+        "input",
+        "select"
+    ] | [
+        "select",
+        "select"
+    ] | [
+        "select",
+        "input"
+    ] | [
+        "input",
+        "input"
+    ]) | (() => InputSelectLayout))[], unknown, InputSelectLayout, () => InputSelectLayout, boolean>;
+    readonly leftValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly rightValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
+    readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+};
+export declare type InputSelectPropsPublic = __ExtractPublicPropTypes<typeof inputSelectProps>;
+export declare type InputSelectValue = InputPropsPublic["modelValue"] | SelectPropsPublic["modelValue"];
 export declare type InputTagEmits = typeof inputTagEmits;
 export declare const inputTagEmits: {
     "update:modelValue": (value?: string[]) => boolean;
@@ -23246,7 +24423,7 @@ export declare const inputTagEmits: {
     blur: (evt: FocusEvent) => boolean;
     clear: () => boolean;
 };
-export declare type InputTagInstance = InstanceType<typeof _default_55> & unknown;
+export declare type InputTagInstance = InstanceType<typeof _default_57> & unknown;
 export declare type InputTagProps = ExtractPropTypes<typeof inputTagProps>;
 export declare const inputTagProps: {
     readonly modelValue: {
@@ -23365,7 +24542,7 @@ export declare type LinkEmits = typeof linkEmits;
 export declare const linkEmits: {
     click: (evt: MouseEvent) => boolean;
 };
-export declare type LinkInstance = InstanceType<typeof _default_56> & unknown;
+export declare type LinkInstance = InstanceType<typeof _default_58> & unknown;
 export declare type LinkProps = ExtractPropTypes<typeof linkProps>;
 export declare const linkProps: {
     readonly type: EpPropFinalized<StringConstructor, "default" | "primary" | "success" | "warning" | "info" | "danger", unknown, undefined, boolean>;
@@ -23492,7 +24669,7 @@ export declare const mentionEmits: {
     focus: (evt: FocusEvent) => boolean;
     blur: (evt: FocusEvent) => boolean;
 };
-export declare type MentionInstance = InstanceType<typeof _default_110> & unknown;
+export declare type MentionInstance = InstanceType<typeof _default_112> & unknown;
 export declare type MentionOption = {
     value?: string;
     label?: string;
@@ -23758,7 +24935,7 @@ export declare const menuEmits: {
     open: (index: string, indexPath: string[]) => boolean;
     select: (index: string, indexPath: string[], item: MenuItemClicked, routerResult?: Promise<void | NavigationFailure>) => boolean;
 };
-export declare type MenuInstance = InstanceType<typeof _default_57> & {
+export declare type MenuInstance = InstanceType<typeof _default_59> & {
     open: (index: string) => void;
     close: (index: string) => void;
     handleResize: () => void;
@@ -23773,7 +24950,7 @@ export declare type MenuItemEmits = typeof menuItemEmits;
 export declare const menuItemEmits: {
     click: (item: MenuItemRegistered) => boolean;
 };
-export declare type MenuItemGroupInstance = InstanceType<typeof _default_59> & unknown;
+export declare type MenuItemGroupInstance = InstanceType<typeof _default_61> & unknown;
 export declare type MenuItemGroupProps = ExtractPropTypes<typeof menuItemGroupProps>;
 export declare const menuItemGroupProps: {
     /**
@@ -23782,7 +24959,7 @@ export declare const menuItemGroupProps: {
     readonly title: StringConstructor;
 };
 export declare type MenuItemGroupPropsPublic = __ExtractPublicPropTypes<typeof menuItemGroupProps>;
-export declare type MenuItemInstance = InstanceType<typeof _default_58> & unknown;
+export declare type MenuItemInstance = InstanceType<typeof _default_60> & unknown;
 export declare type MenuItemProps = ExtractPropTypes<typeof menuItemProps>;
 export declare const menuItemProps: {
     readonly index: EpPropFinalized<(new (...args: any[]) => string) | (() => string | null) | ((new (...args: any[]) => string) | (() => string | null))[], unknown, unknown, null, boolean>;
@@ -23863,6 +25040,7 @@ export declare interface MessageBoxInputData {
 export declare type MessageBoxInputValidator = ((value: string) => boolean | string) | undefined;
 export declare interface MessageBoxState {
     autofocus: boolean;
+    width: string | number;
     title: string | undefined;
     message: string;
     type: MessageType_2;
@@ -23946,7 +25124,7 @@ export declare interface MessageHandler {
      */
     close: () => void;
 }
-export declare type MessageInstance = InstanceType<typeof _default_113> & unknown;
+export declare type MessageInstance = InstanceType<typeof _default_115> & unknown;
 export declare type MessageOptions = Partial<Mutable<Omit<MessageProps, "id"> & {
     appendTo?: HTMLElement | string;
 }>>;
@@ -24094,7 +25272,7 @@ export declare const notificationEmits: {
 export declare interface NotificationHandle {
     close: () => void;
 }
-export declare type NotificationInstance = InstanceType<typeof _default_114> & unknown;
+export declare type NotificationInstance = InstanceType<typeof _default_116> & unknown;
 declare type NotificationOptions_2 = Omit<NotificationProps, "id" | "onClose"> & {
     /**
      * @description set the root element for the notification, default to `document.body`
@@ -24305,7 +25483,7 @@ export declare type PageHeaderEmits = typeof pageHeaderEmits;
 export declare const pageHeaderEmits: {
     back: () => boolean;
 };
-export declare type PageHeaderInstance = InstanceType<typeof _default_61> & unknown;
+export declare type PageHeaderInstance = InstanceType<typeof _default_63> & unknown;
 export declare type PageHeaderProps = ExtractPropTypes<typeof pageHeaderProps>;
 export declare const pageHeaderProps: {
     readonly icon: EpPropFinalized<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown, () => any, boolean>;
@@ -24415,7 +25593,7 @@ export declare const popconfirmEmits: {
      */
     cancel: (e: MouseEvent) => boolean;
 };
-export declare type PopconfirmInstance = InstanceType<typeof _default_63> & unknown;
+export declare type PopconfirmInstance = InstanceType<typeof _default_65> & unknown;
 export declare type PopconfirmProps = ExtractPropTypes<typeof popconfirmProps>;
 export declare const popconfirmProps: {
     readonly title: StringConstructor;
@@ -24457,7 +25635,7 @@ export declare const popoverEmits: {
     "after-enter": () => boolean;
     "after-leave": () => boolean;
 };
-export declare type PopoverInstance = InstanceType<typeof _default_116> & unknown;
+export declare type PopoverInstance = InstanceType<typeof _default_118> & unknown;
 export declare type PopoverProps = ExtractPropTypes<typeof popoverProps>;
 export declare const popoverProps: {
     readonly trigger: EpPropFinalized<(new (...args: any[]) => "click" | "focus" | "contextmenu" | "hover" | TooltipTriggerType[]) | (() => Arrayable<TooltipTriggerType>) | ((new (...args: any[]) => "click" | "focus" | "contextmenu" | "hover" | TooltipTriggerType[]) | (() => Arrayable<TooltipTriggerType>))[], unknown, unknown, "hover", boolean>;
@@ -24468,7 +25646,11 @@ export declare const popoverProps: {
     readonly transition: StringConstructor;
     readonly popperOptions: EpPropFinalized<(new (...args: any[]) => Partial<Options>) | (() => Partial<Options>) | ((new (...args: any[]) => Partial<Options>) | (() => Partial<Options>))[], unknown, unknown, () => {}, boolean>;
     readonly tabindex: EpPropFinalized<(new (...args: any[]) => string | number) | (() => string | number) | ((new (...args: any[]) => string | number) | (() => string | number))[], unknown, unknown, 0, boolean>;
-    readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly content: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown, "", boolean>;
     readonly popperStyle: {
         readonly type: PropType<EpPropMergeType<(new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue) | ((new (...args: any[]) => string | CSSProperties | StyleValue[]) | (() => StyleValue))[], unknown, unknown>>;
         readonly required: false;
@@ -24779,7 +25961,7 @@ export declare type ProgressColor = {
     percentage: number;
 };
 export declare type ProgressFn = (percentage: number) => string;
-export declare type ProgressInstance = InstanceType<typeof _default_64> & unknown;
+export declare type ProgressInstance = InstanceType<typeof _default_66> & unknown;
 export declare type ProgressProps = ExtractPropTypes<typeof progressProps>;
 export declare const progressProps: {
     readonly type: EpPropFinalized<StringConstructor, "circle" | "line" | "dashboard", unknown, "line", boolean>;
@@ -24815,7 +25997,7 @@ export declare interface Props {
 declare const props: {
     loading: BooleanConstructor;
     data: {
-        type: ArrayConstructor;
+        type: PropType<Option_2[]>;
         required: true;
     };
     hoveringIndex: NumberConstructor;
@@ -24832,7 +26014,7 @@ declare interface Props_2 {
 }
 export declare type PropValidator<T> = (props: T) => void;
 export declare const provideGlobalConfig: (config: MaybeRef<ConfigProviderContext>, app?: App, global?: boolean) => ComputedRef<Partial<ConfigProviderProps>> | undefined;
-export declare type RadioButtonInstance = InstanceType<typeof _default_66> & unknown;
+export declare type RadioButtonInstance = InstanceType<typeof _default_68> & unknown;
 export declare type RadioButtonProps = ExtractPropTypes<typeof radioButtonProps>;
 export declare const radioButtonProps: {
     readonly modelValue: EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
@@ -24862,7 +26044,7 @@ export declare const radioGroupEmits: {
     "update:modelValue": (val: string | number | boolean | undefined) => val is string | number | boolean;
     change: (val: string | number | boolean | undefined) => val is string | number | boolean;
 };
-export declare type RadioGroupInstance = InstanceType<typeof _default_67> & unknown;
+export declare type RadioGroupInstance = InstanceType<typeof _default_69> & unknown;
 export declare const radioGroupKey: InjectionKey<RadioGroupContext>;
 export declare type RadioGroupProps = ExtractPropTypes<typeof radioGroupProps>;
 export declare const radioGroupProps: {
@@ -24875,6 +26057,7 @@ export declare const radioGroupProps: {
         __epPropKey: true;
     };
     readonly disabled: BooleanConstructor;
+    readonly error: BooleanConstructor;
     readonly modelValue: EpPropFinalized<readonly [
         StringConstructor,
         NumberConstructor,
@@ -24894,7 +26077,7 @@ export declare const radioGroupProps: {
     readonly type: EpPropFinalized<StringConstructor, "button" | "radio", unknown, "radio", boolean>;
 };
 export declare type RadioGroupPropsPublic = __ExtractPublicPropTypes<typeof radioGroupProps>;
-export declare type RadioInstance = InstanceType<typeof _default_65> & unknown;
+export declare type RadioInstance = InstanceType<typeof _default_67> & unknown;
 export declare type radioOption = RadioPropsPublic & Record<string, any>;
 export declare type radioOptionProp = {
     value?: string;
@@ -24903,6 +26086,7 @@ export declare type radioOptionProp = {
 };
 export declare type RadioProps = ExtractPropTypes<typeof radioProps>;
 export declare const radioProps: {
+    readonly error: BooleanConstructor;
     readonly border: BooleanConstructor;
     readonly modelValue: EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     readonly size: {
@@ -24936,7 +26120,7 @@ export declare const rateEmits: {
     change: (value: number) => boolean;
     "update:modelValue": (value: number) => boolean;
 };
-export declare type RateInstance = InstanceType<typeof _default_68> & unknown;
+export declare type RateInstance = InstanceType<typeof _default_70> & unknown;
 export declare type RateProps = ExtractPropTypes<typeof rateProps>;
 export declare const rateProps: {
     readonly ariaLabel: StringConstructor;
@@ -25037,7 +26221,7 @@ declare type ResolvePropType<T> = IfNever<T, never, ExtractPropType<{
     type: WritableArray<T>;
     required: true;
 }>>;
-export declare type ResultInstance = InstanceType<typeof _default_69> & unknown;
+export declare type ResultInstance = InstanceType<typeof _default_71> & unknown;
 export declare type ResultProps = ExtractPropTypes<typeof resultProps>;
 export declare const resultProps: {
     readonly title: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -25135,7 +26319,7 @@ export declare type RowInsertParams<T> = {
     insertIndex: number;
     event: MouseEvent;
 };
-export declare type RowInstance = InstanceType<typeof _default_70> & unknown;
+export declare type RowInstance = InstanceType<typeof _default_72> & unknown;
 export declare const RowJustify: readonly [
     "start",
     "center",
@@ -25177,7 +26361,7 @@ export declare const scrollbarEmits: {
 export declare type ScrollbarExpose = {
     onMouseUp: () => void;
 };
-export declare type ScrollbarInstance = InstanceType<typeof _default_71> & unknown;
+export declare type ScrollbarInstance = InstanceType<typeof _default_73> & unknown;
 export declare type ScrollbarProps = ExtractPropTypes<typeof scrollbarProps>;
 export declare const scrollbarProps: {
     readonly ariaLabel: StringConstructor;
@@ -25235,7 +26419,7 @@ export declare const segmentedEmits: {
     "update:modelValue": (val: any) => val is string | number | boolean;
     change: (val: any) => val is string | number | boolean;
 };
-export declare type SegmentedInstance = InstanceType<typeof _default_109> & unknown;
+export declare type SegmentedInstance = InstanceType<typeof _default_111> & unknown;
 export declare type SegmentedProps = ExtractPropTypes<typeof segmentedProps>;
 export declare const segmentedProps: {
     ariaLabel: StringConstructor;
@@ -25294,7 +26478,7 @@ declare interface SelectGroupContext {
     disabled: boolean;
 }
 export declare const selectGroupKey: InjectionKey<SelectGroupContext>;
-export declare type SelectInstance = InstanceType<typeof _default_73> & unknown;
+export declare type SelectInstance = InstanceType<typeof _default_75> & unknown;
 export declare const selectKey: InjectionKey<SelectContext>;
 export declare type SelectOptionProps = Props_2;
 export declare type SelectOptionProxy = ComponentPublicInstance<OptionProps, OptionExposed>;
@@ -25480,7 +26664,7 @@ export declare interface SelectV2Context {
     onKeyboardSelect: () => void;
 }
 export declare const selectV2InjectionKey: InjectionKey<SelectV2Context>;
-export declare type SelectV2Instance = InstanceType<typeof _default_76> & unknown;
+export declare type SelectV2Instance = InstanceType<typeof _default_78> & unknown;
 declare type SelectV2ModelValue = any[] | string | number | boolean | Record<string, any> | any;
 export declare type SelectV2Props = ExtractPropTypes<typeof selectV2Props>;
 declare const selectV2Props: {
@@ -25532,7 +26716,7 @@ declare const selectV2Props: {
         __epPropKey: true;
     };
     readonly height: EpPropFinalized<NumberConstructor, unknown, unknown, 274, boolean>;
-    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 34, boolean>;
+    readonly itemHeight: EpPropFinalized<NumberConstructor, unknown, unknown, 40, boolean>;
     readonly id: StringConstructor;
     readonly loading: BooleanConstructor;
     readonly loadingText: StringConstructor;
@@ -25756,8 +26940,8 @@ export declare const SIZE_INJECTION_KEY: InjectionKey<SizeContext>;
 export declare interface SizeContext {
     size: Ref<ComponentSize>;
 }
-export declare type SkeletonInstance = InstanceType<typeof _default_77> & unknown;
-export declare type SkeletonItemInstance = InstanceType<typeof _default_78> & unknown;
+export declare type SkeletonInstance = InstanceType<typeof _default_79> & unknown;
+export declare type SkeletonItemInstance = InstanceType<typeof _default_80> & unknown;
 export declare type SkeletonItemProps = ExtractPropTypes<typeof skeletonItemProps>;
 export declare const skeletonItemProps: {
     readonly variant: EpPropFinalized<StringConstructor, "button" | "caption" | "h1" | "h3" | "p" | "circle" | "image" | "rect" | "text", unknown, "text", boolean>;
@@ -25806,7 +26990,7 @@ export declare interface SliderInitData {
     dragging: boolean;
     sliderSize: number;
 }
-export declare type SliderInstance = InstanceType<typeof _default_79> & unknown;
+export declare type SliderInstance = InstanceType<typeof _default_81> & unknown;
 declare type SliderMarkerProps = ExtractPropTypes<typeof sliderMarkerProps>;
 declare const sliderMarkerProps: {
     readonly mark: EpPropFinalized<(new (...args: any[]) => string | {
@@ -26036,8 +27220,8 @@ export declare const spaceProps: {
     };
 };
 export declare type SpacePropsPublic = __ExtractPublicPropTypes<typeof spaceProps>;
-export declare type SplitterInstance = InstanceType<typeof _default_111> & unknown;
-export declare type SplitterPanelInstance = InstanceType<typeof _default_112> & unknown;
+export declare type SplitterInstance = InstanceType<typeof _default_113> & unknown;
+export declare type SplitterPanelInstance = InstanceType<typeof _default_114> & unknown;
 export declare type SplitterPanelProps = ExtractPropTypes<typeof splitterPanelProps>;
 export declare const splitterPanelProps: {
     readonly min: {
@@ -26077,7 +27261,7 @@ export declare const splitterProps: {
     readonly lazy: BooleanConstructor;
 };
 export declare type SplitterPropsPublic = __ExtractPublicPropTypes<typeof splitterProps>;
-export declare type StatisticInstance = InstanceType<typeof _default_80> & unknown;
+export declare type StatisticInstance = InstanceType<typeof _default_82> & unknown;
 export declare type StatisticProps = ExtractPropTypes<typeof statisticProps>;
 export declare const statisticProps: {
     readonly decimalSeparator: EpPropFinalized<StringConstructor, unknown, unknown, ".", boolean>;
@@ -26096,7 +27280,7 @@ export declare const statisticProps: {
     };
 };
 export declare type StatisticPropsPublic = __ExtractPublicPropTypes<typeof statisticProps>;
-export declare type StepInstance = InstanceType<typeof _default_82> & unknown;
+export declare type StepInstance = InstanceType<typeof _default_84> & unknown;
 export declare type StepProps = ExtractPropTypes<typeof stepProps>;
 export declare const stepProps: {
     readonly title: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -26115,7 +27299,7 @@ export declare type StepsEmits = typeof stepsEmits;
 export declare const stepsEmits: {
     change: (newVal: number, oldVal: number) => boolean;
 };
-export declare type StepsInstance = InstanceType<typeof _default_81> & unknown;
+export declare type StepsInstance = InstanceType<typeof _default_83> & unknown;
 export declare type StepsProps = ExtractPropTypes<typeof stepsProps>;
 export declare const stepsProps: {
     readonly space: EpPropFinalized<readonly [
@@ -26143,7 +27327,7 @@ export declare type StepsPropsPublic = __ExtractPublicPropTypes<typeof stepsProp
 declare type Store<T extends DefaultRow> = HelperStore<T>["Return"];
 declare type StoreFilter = Record<string, string[]>;
 export declare const SUB_MENU_INJECTION_KEY = "subMenu:";
-export declare type SubMenuInstance = InstanceType<typeof _default_60> & unknown;
+export declare type SubMenuInstance = InstanceType<typeof _default_62> & unknown;
 export declare type SubMenuProps = ExtractPropTypes<typeof subMenuProps>;
 export declare const subMenuProps: {
     readonly index: {
@@ -26207,7 +27391,7 @@ export declare const switchEmits: {
     change: (val: boolean | string | number) => boolean;
     input: (val: boolean | string | number) => boolean;
 };
-export declare type SwitchInstance = InstanceType<typeof _default_83> & unknown;
+export declare type SwitchInstance = InstanceType<typeof _default_85> & unknown;
 export declare type SwitchProps = ExtractPropTypes<typeof switchProps>;
 export declare const switchProps: {
     readonly ariaLabel: StringConstructor;
@@ -26285,7 +27469,7 @@ export declare const switchProps: {
     };
 };
 export declare type SwitchPropsPublic = __ExtractPublicPropTypes<typeof switchProps>;
-export declare type TabBarInstance = InstanceType<typeof _default_89> & unknown;
+export declare type TabBarInstance = InstanceType<typeof _default_91> & unknown;
 export declare type TabBarProps = ExtractPropTypes<typeof tabBarProps>;
 export declare const tabBarProps: {
     readonly tabs: EpPropFinalized<(new (...args: any[]) => {
@@ -26457,7 +27641,7 @@ export declare type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     allowInsertBeforeFirstColumn: boolean;
     renderEditCell?: (data: any) => VNode | VNode[];
 };
-export declare type TableColumnInstance = InstanceType<typeof _default_85> & unknown;
+export declare type TableColumnInstance = InstanceType<typeof _default_87> & unknown;
 declare const TableGrid: DefineComponent<{
     readonly columns: {
         readonly type: PropType<AnyColumn[]>;
@@ -26692,7 +27876,7 @@ declare interface TableHeader extends ComponentInternalInstance {
     };
     filterPanels: Ref<DefaultRow>;
 }
-export declare type TableInstance = InstanceType<typeof _default_84> & unknown;
+export declare type TableInstance = InstanceType<typeof _default_86> & unknown;
 declare class TableLayout<T extends DefaultRow> {
     observers: TableHeader[];
     table: Table<T>;
@@ -26718,7 +27902,7 @@ declare class TableLayout<T extends DefaultRow> {
     getFlattenColumns(): TableColumnCtx<T>[];
     updateElsHeight(): void;
     headerDisplayNone(elm: HTMLElement): boolean;
-    updateColumnsWidth(): void;
+    updateColumnsWidth(distributeRemainingWidth?: boolean): void;
     addObserver(observer: TableHeader): void;
     removeObserver(observer: TableHeader): void;
     notifyObservers(event: string): void;
@@ -26785,10 +27969,12 @@ export declare interface TableProps<T extends DefaultRow> {
     editable?: boolean;
     ghostTable?: boolean;
     showGhostRow?: boolean;
+    disableEmptyGhostRowSave?: boolean;
     editTable?: boolean;
     total?: number;
     updateTime?: string;
     haveTableText?: boolean;
+    showFooterText?: boolean;
     showOverflowTooltip?: boolean | TableOverflowTooltipOptions;
     tooltipFormatter?: TableOverflowTooltipFormatter<T>;
     appendFilterPanelTo?: string;
@@ -26815,7 +28001,7 @@ declare interface TableState {
         width: any;
         height: any;
     }>;
-    doLayout: () => void;
+    doLayout: (distributeRemainingWidth?: boolean) => void;
     debouncedUpdateLayout: () => void;
 }
 export declare type TableTooltipData<T extends DefaultRow> = Parameters<TableOverflowTooltipFormatter<T>>[0];
@@ -26854,6 +28040,7 @@ export declare const TableV2: DefineComponent<{
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
     readonly showGhostRow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly disableEmptyGhostRowSave: BooleanConstructor;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;
@@ -27024,6 +28211,7 @@ export declare const TableV2: DefineComponent<{
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
     readonly showGhostRow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly disableEmptyGhostRowSave: BooleanConstructor;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;
@@ -27178,6 +28366,7 @@ export declare const TableV2: DefineComponent<{
     readonly updateTime: string;
     readonly ghostTable: boolean;
     readonly showGhostRow: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly disableEmptyGhostRowSave: boolean;
     readonly showAddRowTrigger: boolean;
     readonly headerHeight: EpPropMergeType<(new (...args: any[]) => number | number[]) | (() => number | number[]) | ((new (...args: any[]) => number | number[]) | (() => number | number[]))[], unknown, unknown>;
     readonly footerHeight: number;
@@ -27311,6 +28500,7 @@ export declare const tableV2Props: {
     readonly canEditTable: BooleanConstructor;
     readonly ghostTable: BooleanConstructor;
     readonly showGhostRow: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
+    readonly disableEmptyGhostRowSave: BooleanConstructor;
     readonly editTable: BooleanConstructor;
     readonly ghostRowTemplate: EpPropFinalized<(new (...args: any[]) => Record<string, any>) | (() => Record<string, any>) | ((new (...args: any[]) => Record<string, any>) | (() => Record<string, any>))[], unknown, unknown, () => {}, boolean>;
     readonly showAddColumnTrigger: BooleanConstructor;
@@ -27877,7 +29067,7 @@ export declare const tabNavProps: {
     readonly stretch: BooleanConstructor;
 };
 export declare type TabNavPropsPublic = __ExtractPublicPropTypes<typeof tabNavProps>;
-export declare type TabPaneInstance = InstanceType<typeof _default_88> & unknown;
+export declare type TabPaneInstance = InstanceType<typeof _default_90> & unknown;
 export declare type TabPaneName = string | number;
 export declare type TabPaneProps = ExtractPropTypes<typeof tabPaneProps>;
 export declare const tabPaneProps: {
@@ -28068,7 +29258,7 @@ export declare const tagEmits: {
     close: (evt: MouseEvent) => boolean;
     click: (evt: MouseEvent) => boolean;
 };
-export declare type TagInstance = InstanceType<typeof _default_90> & unknown;
+export declare type TagInstance = InstanceType<typeof _default_92> & unknown;
 export declare type TagProps = ExtractPropTypes<typeof tagProps>;
 export declare const tagProps: {
     readonly type: EpPropFinalized<StringConstructor, "blue" | "cyan" | "gray" | "green" | "orange" | "red" | "primary" | "success" | "warning" | "info" | "danger", unknown, "primary", boolean>;
@@ -28108,7 +29298,7 @@ export declare type ThrottleType = {
     trailing?: number;
     initVal?: boolean;
 } | number;
-export declare type ThumbInstance = InstanceType<typeof _default_72> & unknown;
+export declare type ThumbInstance = InstanceType<typeof _default_74> & unknown;
 export declare type ThumbProps = ExtractPropTypes<typeof thumbProps>;
 export declare const thumbProps: {
     readonly vertical: BooleanConstructor;
@@ -28128,7 +29318,7 @@ declare const Timeline: DefineComponent<{}, () => VNode<RendererNode, RendererEl
 }>, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, EmitsOptions, string, VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{}>>, {}>;
 export declare const TIMELINE_INJECTION_KEY = "timeline";
 export declare type TimelineInstance = InstanceType<typeof Timeline> & unknown;
-export declare type TimelineItemInstance = InstanceType<typeof _default_94> & unknown;
+export declare type TimelineItemInstance = InstanceType<typeof _default_96> & unknown;
 export declare type TimelineItemProps = ExtractPropTypes<typeof timelineItemProps>;
 export declare const timelineItemProps: {
     readonly timestamp: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -28389,7 +29579,7 @@ export declare const TimePickPanel: DefineComponent<{
     readonly format: string;
     readonly actualVisible: EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }>;
-export declare type TimeSelectInstance = InstanceType<typeof _default_93> & unknown;
+export declare type TimeSelectInstance = InstanceType<typeof _default_95> & unknown;
 export declare type TimeSelectProps = ExtractPropTypes<typeof timeSelectProps>;
 export declare const timeSelectProps: {
     readonly emptyValues: ArrayConstructor;
@@ -28485,7 +29675,7 @@ export declare interface TourGap {
     ];
     radius?: number;
 }
-export declare type TourInstance = InstanceType<typeof _default_105> & unknown;
+export declare type TourInstance = InstanceType<typeof _default_107> & unknown;
 export declare type TourMask = boolean | {
     style?: CSSProperties;
     color?: string;
@@ -28633,9 +29823,9 @@ export declare interface TransferFormat {
     noChecked?: string;
     hasChecked?: string;
 }
-export declare type TransferInstance = InstanceType<typeof _default_95> & unknown;
+export declare type TransferInstance = InstanceType<typeof _default_97> & unknown;
 export declare type TransferKey = string | number;
-declare type TransferPanelInstance = InstanceType<typeof _default_96> & unknown;
+declare type TransferPanelInstance = InstanceType<typeof _default_98> & unknown;
 export declare type TransferProps = ExtractPropTypes<typeof transferProps>;
 export declare const transferProps: {
     readonly data: EpPropFinalized<(new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]) | ((new (...args: any[]) => TransferDataItem[]) | (() => TransferDataItem[]))[], unknown, unknown, () => never[], boolean>;
@@ -28757,7 +29947,7 @@ export declare const treeEmits: {
     "node-drag-enter": (draggingNode: Node_2, dropNode: Node_2, evt: DragEvent) => DragEvent;
     "node-drag-over": (draggingNode: Node_2, dropNode: Node_2, evt: DragEvent) => DragEvent;
 };
-export declare type TreeInstance = InstanceType<typeof _default_97> & unknown;
+export declare type TreeInstance = InstanceType<typeof _default_99> & unknown;
 export declare type TreeKey = string | number;
 declare type TreeKey_2 = string | number;
 export declare interface TreeNode {
@@ -28889,7 +30079,7 @@ export declare interface TreeStoreOptions {
     defaultExpandAll: boolean;
     filterNodeMethod?: FilterNodeMethodFunction;
 }
-export declare type TreeV2Instance = InstanceType<typeof _default_99> & unknown;
+export declare type TreeV2Instance = InstanceType<typeof _default_101> & unknown;
 declare const triggers: readonly [
     "click",
     "contextmenu",
@@ -28927,6 +30117,7 @@ export declare const uploadBaseProps: {
     readonly multiple: BooleanConstructor;
     readonly name: EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
     readonly drag: BooleanConstructor;
+    readonly dragClickable: BooleanConstructor;
     readonly withCredentials: BooleanConstructor;
     readonly showFileList: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly accept: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -28946,7 +30137,7 @@ export declare const uploadBaseProps: {
     readonly disabled: BooleanConstructor;
     readonly limit: NumberConstructor;
 };
-export declare type UploadContentInstance = InstanceType<typeof _default_101> & unknown;
+export declare type UploadContentInstance = InstanceType<typeof _default_103> & unknown;
 export declare type UploadContentProps = ExtractPropTypes<typeof uploadContentProps>;
 export declare const uploadContentProps: {
     readonly beforeUpload: EpPropFinalized<(new (...args: any[]) => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | (() => (rawFile: UploadRawFile) => Awaitable<void | undefined | null | boolean | File | Blob>) | {
@@ -29024,6 +30215,7 @@ export declare const uploadContentProps: {
     readonly multiple: BooleanConstructor;
     readonly name: EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
     readonly drag: BooleanConstructor;
+    readonly dragClickable: BooleanConstructor;
     readonly withCredentials: BooleanConstructor;
     readonly showFileList: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly accept: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -29053,7 +30245,7 @@ export declare type UploadDraggerEmits = typeof uploadDraggerEmits;
 export declare const uploadDraggerEmits: {
     file: (file: File[]) => boolean;
 };
-export declare type UploadDraggerInstance = InstanceType<typeof _default_103> & unknown;
+export declare type UploadDraggerInstance = InstanceType<typeof _default_105> & unknown;
 export declare type UploadDraggerProps = ExtractPropTypes<typeof uploadDraggerProps>;
 export declare const uploadDraggerProps: {
     readonly disabled: BooleanConstructor;
@@ -29081,12 +30273,12 @@ export declare interface UploadHooks {
     onError: (error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => void;
     onExceed: (files: File[], uploadFiles: UploadUserFile[]) => void;
 }
-export declare type UploadInstance = InstanceType<typeof _default_100> & unknown;
+export declare type UploadInstance = InstanceType<typeof _default_102> & unknown;
 export declare type UploadListEmits = typeof uploadListEmits;
 export declare const uploadListEmits: {
     remove: (file: UploadFile) => boolean;
 };
-export declare type UploadListInstance = InstanceType<typeof _default_102> & unknown;
+export declare type UploadListInstance = InstanceType<typeof _default_104> & unknown;
 export declare type UploadListProps = ExtractPropTypes<typeof uploadListProps>;
 export declare const uploadListProps: {
     readonly files: EpPropFinalized<(new (...args: any[]) => UploadFiles) | (() => UploadFiles) | ((new (...args: any[]) => UploadFiles) | (() => UploadFiles))[], unknown, unknown, () => never[], boolean>;
@@ -29215,6 +30407,7 @@ export declare const uploadProps: {
     readonly multiple: BooleanConstructor;
     readonly name: EpPropFinalized<StringConstructor, unknown, unknown, "file", boolean>;
     readonly drag: BooleanConstructor;
+    readonly dragClickable: BooleanConstructor;
     readonly withCredentials: BooleanConstructor;
     readonly showFileList: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly accept: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -29879,6 +31072,7 @@ declare function useTable(props: TableV2Props): {
     isResetting: ShallowRef<boolean>;
     isScrolling: ShallowRef<boolean>;
     hasFixedColumns: ComputedRef<number>;
+    hoveredRowIndex: ShallowRef<number | undefined>;
     columnsStyles: ComputedRef<Record<KeyType_2, CSSProperties>>;
     columnsTotalWidth: ComputedRef<number>;
     data: ComputedRef<any[]>;
@@ -29905,7 +31099,7 @@ declare function useTable(props: TableV2Props): {
     getRowHeight: (rowIndex: number) => number;
     updateColumnWidth: (column: Column<any>, width: number) => void;
     onColumnSorted: (e: MouseEvent) => void;
-    onRowHovered: ({ hovered, rowKey }: RowHoverParams) => void;
+    onRowHovered: ({ hovered, rowIndex }: RowHoverParams) => void;
     onRowExpanded: ({ expanded, rowData, rowIndex, rowKey, }: RowExpandParams) => void;
     onRowsRendered: (params: onRowRenderedParams) => void;
     onRowHeightChange: ({ rowKey, height, rowIndex }: RowHeightChangedParams, fixedDir: FixedDirection) => void;
@@ -29940,7 +31134,11 @@ export declare const useTooltipContentProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    readonly content: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown, "", boolean>;
     readonly rawContent: BooleanConstructor;
     readonly persistent: BooleanConstructor;
     readonly visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
@@ -30273,7 +31471,11 @@ export declare const useTooltipProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    content: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
+    content: EpPropFinalized<readonly [
+        StringConstructor,
+        NumberConstructor,
+        BooleanConstructor
+    ], unknown, unknown, "", boolean>;
     rawContent: BooleanConstructor;
     persistent: BooleanConstructor;
     visible: EpPropFinalized<(new (...args: any[]) => boolean) | (() => boolean | null) | ((new (...args: any[]) => boolean) | (() => boolean | null))[], unknown, unknown, null, boolean>;
@@ -30896,7 +32098,7 @@ export declare interface WatermarkFontType {
     textAlign?: "start" | "end" | "left" | "right" | "center";
     textBaseline?: "top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom";
 }
-export declare type WatermarkInstance = InstanceType<typeof _default_104> & unknown;
+export declare type WatermarkInstance = InstanceType<typeof _default_106> & unknown;
 export declare type WatermarkProps = ExtractPropTypes<typeof watermarkProps>;
 export declare const watermarkProps: {
     readonly zIndex: EpPropFinalized<NumberConstructor, unknown, unknown, 9, boolean>;

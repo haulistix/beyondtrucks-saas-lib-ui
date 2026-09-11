@@ -6,6 +6,9 @@ import type { EmitFn } from 'element-plus/es/utils/vue/typescript';
 import type { ExtractPropTypes, __ExtractPublicPropTypes } from 'vue';
 import type { Options, Placement, PopperEffect } from 'element-plus/es/components/popper';
 export type SelectV2ModelValue = any[] | string | number | boolean | Record<string, any> | any;
+export declare const SELECT_V2_GROUP_DIVIDER_SIZE = 17;
+export declare const SELECT_V2_GROUP_TITLE_HEIGHT = 24;
+export declare const SELECT_V2_DEFAULT_ITEM_HEIGHT = 40;
 export declare const selectV2Props: {
     readonly ariaLabel: StringConstructor;
     readonly emptyValues: ArrayConstructor;
@@ -55,7 +58,7 @@ export declare const selectV2Props: {
         __epPropKey: true;
     };
     readonly height: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 274, boolean>;
-    readonly itemHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 34, boolean>;
+    readonly itemHeight: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 40, boolean>;
     readonly id: StringConstructor;
     readonly loading: BooleanConstructor;
     readonly loadingText: StringConstructor;

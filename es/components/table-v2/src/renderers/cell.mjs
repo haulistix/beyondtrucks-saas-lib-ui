@@ -4,7 +4,7 @@ import { ElButton } from '../../../button/index.mjs';
 import { get, set } from 'lodash-unified';
 import { Alignment } from '../constants.mjs';
 import { placeholderSign, rowAddSign, rowDeleteColumnKey, ghostRowKey, rowDeletePlaceholderMergedSign, ghostRowFieldKey, ghostRowSign, ghostRowTouchedSign } from '../private.mjs';
-import { isGhostTableRow, isEmptyRequiredValue, applyRequiredInputState } from '../ghost-table.mjs';
+import { isGhostTableRow, hasGhostRowValue, isEmptyRequiredValue, applyRequiredInputState } from '../ghost-table.mjs';
 import { enforceUnit, tryCall, componentToSlot } from '../utils.mjs';
 import TableCell from '../components/cell.mjs';
 import ExpandIcon from '../components/expand-icon.mjs';
@@ -25,6 +25,7 @@ const CellRenderer = ({
   ns,
   canEditTable,
   cellProps: _cellProps,
+  disableEmptyGhostRowSave,
   editable,
   editTable,
   expandColumnKey,
@@ -118,7 +119,7 @@ const CellRenderer = ({
   const shouldRenderGhostAddButton = ghostTable && editTable && isGhostRow && isRowDeleteColumn;
   const shouldRenderGhostEditCell = ghostTable && editTable && Boolean(editColumnCellRenderer) && !isRowDeleteColumn && !shouldRenderGhostAddButton;
   const requiredColumns = actualColumns.filter((item) => item.required && item.dataKey != null && item.key !== rowDeleteColumnKey);
-  const isGhostRowAddDisabled = requiredColumns.some((item) => {
+  const isGhostRowAddDisabled = disableEmptyGhostRowSave && !hasGhostRowValue(rowData) || requiredColumns.some((item) => {
     var _a;
     return isEmptyRequiredValue(get(rowData, (_a = item.dataKey) != null ? _a : ""));
   });

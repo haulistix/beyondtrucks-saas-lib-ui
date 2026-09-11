@@ -1,7 +1,17 @@
 @use 'mixins/mixins' as *;
 
 @include b(tooltip) {
+  white-space: normal;
+
   @include e(overlay) {
     background-color: transparent;
   }
+}
+
+.#{$namespace}-popper.#{$namespace}-tooltip:not(.is-pure):not(
+    .#{$namespace}-popover
+  ) {
+  max-width: 416px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }

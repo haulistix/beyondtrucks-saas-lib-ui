@@ -1,8 +1,7 @@
-import { defineComponent, inject, ref, computed, unref, onMounted, nextTick, watch, openBlock, createElementBlock, normalizeClass, Fragment, renderList, createBlock, withCtx, createTextVNode, toDisplayString, createCommentVNode, withDirectives, createVNode, createElementVNode } from 'vue';
+import { defineComponent, inject, ref, computed, unref, onMounted, nextTick, watch, openBlock, createElementBlock, normalizeClass, Fragment, renderList, createBlock, withCtx, createTextVNode, toDisplayString, createCommentVNode, withDirectives, createElementVNode } from 'vue';
 import { debounce } from 'lodash-unified';
 import { ElScrollbar } from '../../../scrollbar/index.mjs';
 import { ElIcon } from '../../../icon/index.mjs';
-import { ArrowUp, ArrowDown } from '@element-plus/icons-vue';
 import { PICKER_BASE_INJECTION_KEY, timeUnits, DEFAULT_FORMATS_TIME } from '../constants.mjs';
 import { buildTimeList } from '../utils.mjs';
 import { basicTimeSpinnerProps } from '../props/basic-time-spinner.mjs';
@@ -265,7 +264,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               class: normalizeClass(["arrow-up", unref(ns).be("spinner", "arrow")])
             }, {
               default: withCtx(() => [
-                createVNode(unref(ArrowUp))
+                (openBlock(), createElementBlock("svg", {
+                  width: "24",
+                  height: "24",
+                  viewBox: "0 0 24 24",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }, [
+                  createElementVNode("path", { d: "M19.0001 15.2929H5.00012L11.2931 8.99994C11.4806 8.81247 11.735 8.70715 12.0001 8.70715C12.2653 8.70715 12.5196 8.81247 12.7071 8.99994L19.0001 15.2929Z" })
+                ]))
               ]),
               _: 1
             }, 8, ["class"])), [
@@ -275,7 +281,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               class: normalizeClass(["arrow-down", unref(ns).be("spinner", "arrow")])
             }, {
               default: withCtx(() => [
-                createVNode(unref(ArrowDown))
+                (openBlock(), createElementBlock("svg", {
+                  width: "24",
+                  height: "24",
+                  viewBox: "0 0 24 24",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }, [
+                  createElementVNode("path", { d: "M5.00012 9H19.0001L12.7071 15.293C12.5196 15.4805 12.2653 15.5858 12.0001 15.5858C11.735 15.5858 11.4806 15.4805 11.2931 15.293L5.00012 9Z" })
+                ]))
               ]),
               _: 1
             }, 8, ["class"])), [

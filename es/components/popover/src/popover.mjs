@@ -38,6 +38,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const gpuAcceleration = computed(() => {
       return props.transition === `${ns.namespace.value}-fade-in-linear`;
     });
+    const show = () => {
+      var _a;
+      (_a = tooltipRef.value) == null ? void 0 : _a.onOpen();
+    };
     const hide = () => {
       var _a;
       (_a = tooltipRef.value) == null ? void 0 : _a.hide();
@@ -57,6 +61,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
     expose({
       popperRef,
+      show,
       hide
     });
     return (_ctx, _cache) => {

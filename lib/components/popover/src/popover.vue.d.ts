@@ -162,6 +162,8 @@ declare const __VLS_component: import("vue").DefineComponent<{
 }, {
     /** @description popper ref */
     popperRef: import("vue").ComputedRef<import("element-plus").PopperInstance | undefined>;
+    /** @description show popover */
+    show: () => void;
     /** @description hide popover */
     hide: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {

@@ -1,5 +1,6 @@
 import 'element-plus/es/components/base/style';
 import 'element-plus/es/components/tag/style';
+import 'element-plus/es/components/radio/style';
 import 'element-plus/es/components/option/style';
 import 'element-plus/es/components/option-group/style';
 import 'element-plus/es/components/scrollbar/style';

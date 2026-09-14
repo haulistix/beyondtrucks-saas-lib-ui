@@ -2,7 +2,7 @@ import { defineComponent, inject, ref, computed, Comment, Text, Fragment, resolv
 import { isObject, get } from 'lodash-unified';
 import { getPadding, isGreaterThan } from '../../table/src/util.mjs';
 import { ElCheckbox } from '../../checkbox/index.mjs';
-import { ElIcon } from '../../icon/index.mjs';
+import { ElRadio } from '../../radio/index.mjs';
 import { ElTooltip } from '../../tooltip/index.mjs';
 import { useOption } from './useOption.mjs';
 import { useProps } from './useProps.mjs';
@@ -33,7 +33,7 @@ const hasMeaningfulSlotContent = (content) => {
   return true;
 };
 const _sfc_main = defineComponent({
-  components: { ElCheckbox, ElIcon, ElTooltip },
+  components: { ElCheckbox, ElRadio, ElTooltip },
   props: optionV2Props,
   emits: optionV2Emits,
   setup(props, { emit, slots }) {
@@ -116,9 +116,9 @@ const _sfc_main = defineComponent({
   }
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_el_radio = resolveComponent("el-radio");
   const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_tooltip = resolveComponent("el-tooltip");
-  const _component_el_icon = resolveComponent("el-icon");
   return openBlock(), createElementBlock("li", {
     id: `${_ctx.contentId}-${_ctx.index}`,
     role: "option",
@@ -130,15 +130,25 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       _ctx.ns.is("selected", _ctx.selected),
       _ctx.ns.is("disabled", _ctx.disabled),
       _ctx.ns.is("created", _ctx.created),
-      _ctx.ns.is("hovering", _ctx.hovering)
+      _ctx.ns.is("hovering", _ctx.hovering),
+      _ctx.ns.is("multiple", _ctx.multiple)
     ]),
     onMousemove: _ctx.hoverItem,
     onClick: withModifiers(_ctx.selectOptionClick, ["stop"]),
     onMouseenter: _ctx.handleCellMouseEnter
   }, [
     createElementVNode("div", { class: "option-wrap" }, [
-      _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
+      !_ctx.multiple ? (openBlock(), createBlock(_component_el_radio, {
         key: 0,
+        "model-value": _ctx.selected,
+        value: true,
+        disabled: _ctx.disabled,
+        onClick: withModifiers(() => {
+        }, ["stop"]),
+        onChange: _ctx.selectOptionClick
+      }, null, 8, ["model-value", "disabled", "onClick", "onChange"])) : createCommentVNode("v-if", true),
+      _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
+        key: 1,
         "model-value": _ctx.selected,
         disabled: _ctx.disabled
       }, null, 8, ["model-value", "disabled"])) : createCommentVNode("v-if", true),
@@ -174,29 +184,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           ];
         }),
         _: 3
-      }, 8, ["disabled"]),
-      !_ctx.multiple ? (openBlock(), createElementBlock("div", {
-        key: 1,
-        class: "option-wrap-icon"
-      }, [
-        _ctx.selected ? (openBlock(), createBlock(_component_el_icon, {
-          key: 0,
-          size: "16px",
-          color: "#2A3F4D"
-        }, {
-          default: withCtx(() => [
-            (openBlock(), createElementBlock("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "16",
-              height: "16",
-              viewBox: "0 0 16 16"
-            }, [
-              createElementVNode("path", { d: "M5.20006 14.2833C4.97716 14.2834 4.75643 14.2395 4.55052 14.1542C4.3446 14.0688 4.15754 13.9437 4.00006 13.786L0.292725 10.0807L1.70739 8.66665L5.20006 12.1593L14.2927 3.06665L15.7074 4.48065L6.40006 13.786C6.24257 13.9437 6.05552 14.0688 5.8496 14.1542C5.64369 14.2395 5.42296 14.2834 5.20006 14.2833Z" })
-            ]))
-          ]),
-          _: 1
-        })) : createCommentVNode("v-if", true)
-      ])) : createCommentVNode("v-if", true)
+      }, 8, ["disabled"])
     ])
   ], 46, ["id", "aria-selected", "aria-disabled", "onMousemove", "onClick", "onMouseenter"]);
 }

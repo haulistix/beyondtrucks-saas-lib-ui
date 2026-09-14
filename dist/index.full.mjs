@@ -37606,7 +37606,7 @@ const _sfc_main$1d = defineComponent({
   componentName: COMPONENT_NAME$d,
   components: {
     ElCheckbox,
-    ElIcon,
+    ElRadio,
     ElTooltip
   },
   props: optionProps,
@@ -37775,12 +37775,12 @@ const _sfc_main$1d = defineComponent({
   }
 });
 function _sfc_render$e(_ctx, _cache) {
+  const _component_el_radio = resolveComponent("el-radio");
   const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_tooltip = resolveComponent("el-tooltip");
-  const _component_el_icon = resolveComponent("el-icon");
   return withDirectives((openBlock(), createElementBlock("li", {
     id: _ctx.id,
-    class: normalizeClass(_ctx.containerKls),
+    class: normalizeClass([_ctx.containerKls, _ctx.ns.is("multiple", _ctx.multiple)]),
     style: normalizeStyle(_ctx.optionStyle),
     role: "option",
     "aria-disabled": _ctx.isDisabled || void 0,
@@ -37790,8 +37790,17 @@ function _sfc_render$e(_ctx, _cache) {
     onMouseenter: _ctx.handleCellMouseEnter
   }, [
     createElementVNode("div", { class: "option-wrap" }, [
-      _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
+      !_ctx.multiple ? (openBlock(), createBlock(_component_el_radio, {
         key: 0,
+        "model-value": _ctx.itemSelected,
+        value: true,
+        disabled: _ctx.isDisabled,
+        onClick: withModifiers(() => {
+        }, ["stop"]),
+        onChange: _ctx.selectOptionClick
+      }, null, 8, ["model-value", "disabled", "onClick", "onChange"])) : createCommentVNode("v-if", true),
+      _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
+        key: 1,
         modelValue: _ctx.itemSelected,
         "onUpdate:modelValue": ($event) => _ctx.itemSelected = $event,
         disabled: _ctx.isDisabled,
@@ -37799,12 +37808,12 @@ function _sfc_render$e(_ctx, _cache) {
         onClick: _ctx.handleGroupCheckboxClick
       }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled", "onChange", "onClick"])) : createCommentVNode("v-if", true),
       _ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", {
-        key: 1,
+        key: 2,
         class: "option-wrap-custom-content"
       }, [
         renderSlot(_ctx.$slots, "default")
       ])) : (openBlock(), createBlock(_component_el_tooltip, {
-        key: 2,
+        key: 3,
         ref: "tooltipRef",
         effect: "light",
         disabled: !_ctx.select.props.showOptionTooltip || !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
@@ -37830,29 +37839,7 @@ function _sfc_render$e(_ctx, _cache) {
           ];
         }),
         _: 3
-      }, 8, ["disabled", "placement"])),
-      !_ctx.multiple ? (openBlock(), createElementBlock("div", {
-        key: 3,
-        class: "option-wrap-icon"
-      }, [
-        _ctx.itemSelected ? (openBlock(), createBlock(_component_el_icon, {
-          key: 0,
-          size: "16px",
-          color: "#2A3F4D"
-        }, {
-          default: withCtx(() => [
-            (openBlock(), createElementBlock("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "16",
-              height: "16",
-              viewBox: "0 0 16 16"
-            }, [
-              createElementVNode("path", { d: "M5.20006 14.2833C4.97716 14.2834 4.75643 14.2395 4.55052 14.1542C4.3446 14.0688 4.15754 13.9437 4.00006 13.786L0.292725 10.0807L1.70739 8.66665L5.20006 12.1593L14.2927 3.06665L15.7074 4.48065L6.40006 13.786C6.24257 13.9437 6.05552 14.0688 5.8496 14.1542C5.64369 14.2395 5.42296 14.2834 5.20006 14.2833Z" })
-            ]))
-          ]),
-          _: 1
-        })) : createCommentVNode("v-if", true)
-      ])) : createCommentVNode("v-if", true)
+      }, 8, ["disabled", "placement"]))
     ])
   ], 46, ["id", "aria-disabled", "aria-selected", "onMousemove", "onClick", "onMouseenter"])), [
     [vShow, _ctx.visible]
@@ -43199,6 +43186,10 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
     const gpuAcceleration = computed(() => {
       return props.transition === `${ns.namespace.value}-fade-in-linear`;
     });
+    const show = () => {
+      var _a;
+      (_a = tooltipRef.value) == null ? void 0 : _a.onOpen();
+    };
     const hide = () => {
       var _a;
       (_a = tooltipRef.value) == null ? void 0 : _a.hide();
@@ -43218,6 +43209,7 @@ const _sfc_main$W = /* @__PURE__ */ defineComponent({
     };
     expose({
       popperRef,
+      show,
       hide
     });
     return (_ctx, _cache) => {
@@ -46516,7 +46508,7 @@ const hasMeaningfulSlotContent = (content) => {
   return true;
 };
 const _sfc_main$R = defineComponent({
-  components: { ElCheckbox, ElIcon, ElTooltip },
+  components: { ElCheckbox, ElRadio, ElTooltip },
   props: optionV2Props,
   emits: optionV2Emits,
   setup(props, { emit, slots }) {
@@ -46599,9 +46591,9 @@ const _sfc_main$R = defineComponent({
   }
 });
 function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_el_radio = resolveComponent("el-radio");
   const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_tooltip = resolveComponent("el-tooltip");
-  const _component_el_icon = resolveComponent("el-icon");
   return openBlock(), createElementBlock("li", {
     id: `${_ctx.contentId}-${_ctx.index}`,
     role: "option",
@@ -46613,15 +46605,25 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
       _ctx.ns.is("selected", _ctx.selected),
       _ctx.ns.is("disabled", _ctx.disabled),
       _ctx.ns.is("created", _ctx.created),
-      _ctx.ns.is("hovering", _ctx.hovering)
+      _ctx.ns.is("hovering", _ctx.hovering),
+      _ctx.ns.is("multiple", _ctx.multiple)
     ]),
     onMousemove: _ctx.hoverItem,
     onClick: withModifiers(_ctx.selectOptionClick, ["stop"]),
     onMouseenter: _ctx.handleCellMouseEnter
   }, [
     createElementVNode("div", { class: "option-wrap" }, [
-      _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
+      !_ctx.multiple ? (openBlock(), createBlock(_component_el_radio, {
         key: 0,
+        "model-value": _ctx.selected,
+        value: true,
+        disabled: _ctx.disabled,
+        onClick: withModifiers(() => {
+        }, ["stop"]),
+        onChange: _ctx.selectOptionClick
+      }, null, 8, ["model-value", "disabled", "onClick", "onChange"])) : createCommentVNode("v-if", true),
+      _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
+        key: 1,
         "model-value": _ctx.selected,
         disabled: _ctx.disabled
       }, null, 8, ["model-value", "disabled"])) : createCommentVNode("v-if", true),
@@ -46657,29 +46659,7 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
           ];
         }),
         _: 3
-      }, 8, ["disabled"]),
-      !_ctx.multiple ? (openBlock(), createElementBlock("div", {
-        key: 1,
-        class: "option-wrap-icon"
-      }, [
-        _ctx.selected ? (openBlock(), createBlock(_component_el_icon, {
-          key: 0,
-          size: "16px",
-          color: "#2A3F4D"
-        }, {
-          default: withCtx(() => [
-            (openBlock(), createElementBlock("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "16",
-              height: "16",
-              viewBox: "0 0 16 16"
-            }, [
-              createElementVNode("path", { d: "M5.20006 14.2833C4.97716 14.2834 4.75643 14.2395 4.55052 14.1542C4.3446 14.0688 4.15754 13.9437 4.00006 13.786L0.292725 10.0807L1.70739 8.66665L5.20006 12.1593L14.2927 3.06665L15.7074 4.48065L6.40006 13.786C6.24257 13.9437 6.05552 14.0688 5.8496 14.1542C5.64369 14.2395 5.42296 14.2834 5.20006 14.2833Z" })
-            ]))
-          ]),
-          _: 1
-        })) : createCommentVNode("v-if", true)
-      ])) : createCommentVNode("v-if", true)
+      }, 8, ["disabled"])
     ])
   ], 46, ["id", "aria-selected", "aria-disabled", "onMousemove", "onClick", "onMouseenter"]);
 }

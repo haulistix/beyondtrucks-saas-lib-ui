@@ -11083,6 +11083,8 @@ declare const __VLS_component_94: DefineComponent<{
 }, {
     /** @description popper ref */
     popperRef: ComputedRef<PopperInstance | undefined>;
+    /** @description show popover */
+    show: () => void;
     /** @description hide popover */
     hide: () => void;
 }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {

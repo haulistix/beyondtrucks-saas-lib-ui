@@ -45,6 +45,7 @@ type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     formatter: (row: T, column: TableColumnCtx<T>, cellValue: any, index: number) => VNode | string;
     selectable: (row: T, index: number) => boolean;
     reserveSelection: boolean;
+    showSelectionTooltip: boolean;
     filterMethod: FilterMethods<T>;
     filteredValue: string[];
     filters: Filters;
@@ -208,6 +209,10 @@ declare const _default: {
      * @description whether to reserve selection after data refreshing, works when `type` is 'selection'. Note that `row-key` is required for this to work
      */
     reserveSelection: BooleanConstructor;
+    /**
+     * @description whether to show the select-all action tooltip in the header, works when `type` is 'selection'
+     */
+    showSelectionTooltip: BooleanConstructor;
     /**
      * @description data filtering method. If `filter-multiple` is on, this method will be called multiple times for each row, and a row will display if one of the calls returns `true`
      */

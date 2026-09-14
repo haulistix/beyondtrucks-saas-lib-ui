@@ -19498,6 +19498,7 @@ declare const _default_87: DefineComponent<{
     formatter: PropType<TableColumnCtx<any>["formatter"]>;
     selectable: PropType<TableColumnCtx<any>["selectable"]>;
     reserveSelection: BooleanConstructor;
+    showSelectionTooltip: BooleanConstructor;
     filterMethod: PropType<TableColumnCtx<any>["filterMethod"]>;
     filteredValue: PropType<TableColumnCtx<any>["filteredValue"]>;
     filters: PropType<TableColumnCtx<any>["filters"]>;
@@ -19561,6 +19562,7 @@ declare const _default_87: DefineComponent<{
     formatter: PropType<TableColumnCtx<any>["formatter"]>;
     selectable: PropType<TableColumnCtx<any>["selectable"]>;
     reserveSelection: BooleanConstructor;
+    showSelectionTooltip: BooleanConstructor;
     filterMethod: PropType<TableColumnCtx<any>["filterMethod"]>;
     filteredValue: PropType<TableColumnCtx<any>["filteredValue"]>;
     filters: PropType<TableColumnCtx<any>["filters"]>;
@@ -19586,6 +19588,7 @@ declare const _default_87: DefineComponent<{
     sortOrders: (TableSortOrder | null)[];
     sortable: string | boolean;
     reserveSelection: boolean;
+    showSelectionTooltip: boolean;
     filterMultiple: boolean;
     allowInsertBeforeFirstColumn: boolean;
 }>;
@@ -27613,6 +27616,7 @@ export declare type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     formatter: (row: T, column: TableColumnCtx<T>, cellValue: any, index: number) => VNode | string;
     selectable: (row: T, index: number) => boolean;
     reserveSelection: boolean;
+    showSelectionTooltip: boolean;
     filterMethod: FilterMethods<T>;
     filteredValue: string[];
     filters: Filters;

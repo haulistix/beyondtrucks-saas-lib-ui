@@ -591,7 +591,10 @@
       > .cell {
         display: inline-flex;
         align-items: center;
-        height: 23px;
+
+        .el-table__header-summary {
+          text-align: center;
+        }
       }
 
       .#{$namespace}-checkbox {

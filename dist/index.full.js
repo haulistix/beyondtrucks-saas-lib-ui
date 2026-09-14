@@ -52094,8 +52094,21 @@
   function useEvent(props, emit) {
     const instance = vue.getCurrentInstance();
     const parent = vue.inject(TABLE_INJECTION_KEY);
+    const selectionTooltipContext = vue.ref();
+    const showSelectionTooltip = () => {
+      var _a;
+      const context = selectionTooltipContext.value;
+      if (!context || ((_a = removePopper) == null ? void 0 : _a.trigger) !== context.cell)
+        return;
+      createTablePopper({
+        effect: "light",
+        placement: "top-start",
+        popperClass: "table-header-tooltip"
+      }, props.store.states.isAllSelected.value ? "Unselect all on current page" : "Select all on current page", context.row, context.column, context.cell, context.table);
+    };
+    vue.watch(() => props.store.states.isAllSelected.value, showSelectionTooltip);
     const handleCellMouseEnter = (event, row) => {
-      var _a, _b, _c, _d, _e, _f, _g;
+      var _a, _b, _c, _d, _e, _f, _g, _h, _i;
       if (!parent)
         return;
       const table = parent;
@@ -52114,6 +52127,24 @@
       }
       const summaryHeaderTitle = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-title`) : null;
       const summaryHeaderText = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-summary`) : null;
+      if ((column == null ? void 0 : column.type) === "selection") {
+        if (column.showSelectionTooltip) {
+          selectionTooltipContext.value = {
+            row,
+            column,
+            cell,
+            table
+          };
+          createTablePopper({
+            effect: "light",
+            placement: "top-start",
+            popperClass: "table-header-tooltip"
+          }, props.store.states.isAllSelected.value ? "Unselect all on current page" : "Select all on current page", row, column, cell, table);
+        } else if (((_d = removePopper) == null ? void 0 : _d.trigger) === cell) {
+          (_e = removePopper) == null ? void 0 : _e();
+        }
+        return;
+      }
       if (summaryHeaderTitle) {
         const tooltipLines = [
           summaryHeaderTitle.innerText || summaryHeaderTitle.textContent,
@@ -52125,8 +52156,8 @@
             placement: "top-start",
             popperClass: "table-header-tooltip"
           }, tooltipLines.join("\n"), row, column, cell, table);
-        } else if (((_d = removePopper) == null ? void 0 : _d.trigger) === cell) {
-          (_e = removePopper) == null ? void 0 : _e();
+        } else if (((_f = removePopper) == null ? void 0 : _f.trigger) === cell) {
+          (_g = removePopper) == null ? void 0 : _g();
         }
         return;
       }
@@ -52138,8 +52169,8 @@
           placement: "top-start",
           popperClass: "table-header-tooltip"
         }, tooltipContent, row, column, cell, table);
-      } else if (((_f = removePopper) == null ? void 0 : _f.trigger) === cell) {
-        (_g = removePopper) == null ? void 0 : _g();
+      } else if (((_h = removePopper) == null ? void 0 : _h.trigger) === cell) {
+        (_i = removePopper) == null ? void 0 : _i();
       }
     };
     const handleFilterClick = (event) => {
@@ -52332,6 +52363,7 @@
       if (isElement$2(relatedTarget) && relatedTarget.closest(triggerSelector)) {
         return;
       }
+      selectionTooltipContext.value = void 0;
       document.body.style.cursor = "";
       clearAddColumnTrigger();
     };
@@ -55178,7 +55210,8 @@
         "allowInsertBeforeFirstColumn",
         "filterClassName",
         "showOverflowTooltip",
-        "tooltipFormatter"
+        "tooltipFormatter",
+        "showSelectionTooltip"
       ];
       const parentProps = ["showOverflowTooltip"];
       const aliases = {
@@ -55557,6 +55590,7 @@
     formatter: Function,
     selectable: Function,
     reserveSelection: Boolean,
+    showSelectionTooltip: Boolean,
     filterMethod: Function,
     filteredValue: Array,
     filters: Array,
@@ -55653,7 +55687,11 @@
           "resizable"
         ];
         const sortProps = ["sortMethod", "sortBy", "sortOrders"];
-        const selectProps = ["selectable", "reserveSelection"];
+        const selectProps = [
+          "selectable",
+          "reserveSelection",
+          "showSelectionTooltip"
+        ];
         const filterProps = [
           "filterMethod",
           "filters",

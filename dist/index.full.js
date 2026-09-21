@@ -16732,7 +16732,8 @@
       const textareaStyle = vue.computed(() => [
         props.inputStyle,
         textareaCalcStyle.value,
-        { resize: props.resize }
+        { resize: props.resize },
+        props.expand ? { overflowY: "hidden" } : {}
       ]);
       const nativeInputValue = vue.computed(() => isNil(props.modelValue) ? "" : String(props.modelValue));
       const showEmptyErrorTooltip = vue.computed(() => props.inputType === "error" && isEmpty(nativeInputValue.value));

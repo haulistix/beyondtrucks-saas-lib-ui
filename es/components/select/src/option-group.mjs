@@ -1,6 +1,6 @@
 import { defineComponent, inject, ref, getCurrentInstance, provide, reactive, toRefs, computed, onMounted, resolveComponent, withDirectives, openBlock, createElementBlock, normalizeClass, createBlock, createCommentVNode, createElementVNode, toDisplayString, renderSlot, vShow, isVNode } from 'vue';
 import { useMutationObserver } from '@vueuse/core';
-import ElDivider from '../../divider/src/divider2.mjs';
+import ElDivider from '../../divider/src/divider.mjs';
 import { selectKey, selectGroupKey } from './token.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';

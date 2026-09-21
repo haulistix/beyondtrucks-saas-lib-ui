@@ -16728,7 +16728,8 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     const textareaStyle = computed(() => [
       props.inputStyle,
       textareaCalcStyle.value,
-      { resize: props.resize }
+      { resize: props.resize },
+      props.expand ? { overflowY: "hidden" } : {}
     ]);
     const nativeInputValue = computed(() => isNil(props.modelValue) ? "" : String(props.modelValue));
     const showEmptyErrorTooltip = computed(() => props.inputType === "error" && isEmpty(nativeInputValue.value));

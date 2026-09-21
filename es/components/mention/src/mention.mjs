@@ -2,7 +2,7 @@ import { filterOption } from './helper.mjs';
 import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs';
 import { inputProps } from '../../input/src/input.mjs';
 import { isString, isFunction, isObject } from '@vue/shared';
-import { useTooltipContentProps } from '../../tooltip/src/content.mjs';
+import { useTooltipContentProps } from '../../tooltip/src/content2.mjs';
 import { UPDATE_MODEL_EVENT } from '../../../constants/event.mjs';
 
 const mentionProps = buildProps({

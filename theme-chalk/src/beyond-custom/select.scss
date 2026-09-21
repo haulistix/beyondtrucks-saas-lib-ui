@@ -21,20 +21,19 @@
   font-weight: normal;
 
   &.is-expanded {
-    height: 100%;
-
-    .el-select__container {
-      min-height: 100%;
-    }
+    align-self: start;
 
     .el-select__container:not(.is-multiple) {
       height: auto;
+
+      .el-select__input-wrapper {
+        position: absolute;
+      }
     }
 
     .el-select__wrapper {
       align-items: flex-start;
       height: auto;
-      min-height: 100%;
       padding-top: 6px;
       padding-bottom: 6px;
       //max-height: 84px;
@@ -53,14 +52,23 @@
 
     .el-select__placeholder,
     .el-select__selected-item {
-      //line-height: 20px;
       white-space: normal;
+      overflow-wrap: anywhere;
     }
 
     .el-select__placeholder {
-      position: absolute;
-      top: 0;
+      position: static;
+      z-index: auto;
+      overflow: visible;
+      text-overflow: clip;
       transform: none;
+
+      .itemPlaceholder {
+        overflow: visible;
+        text-overflow: clip;
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
     }
   }
 

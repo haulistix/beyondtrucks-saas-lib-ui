@@ -134,6 +134,7 @@ export declare const inputDownProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelModifiers: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("element-plus/es/components/input").InputModelModifiers) | (() => import("element-plus/es/components/input").InputModelModifiers) | ((new (...args: any[]) => import("element-plus/es/components/input").InputModelModifiers) | (() => import("element-plus/es/components/input").InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     readonly maxlength: {

@@ -14,6 +14,7 @@ declare const _default: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    expand: BooleanConstructor;
     effect: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string) | (() => import("element-plus").PopperEffect) | ((new (...args: any[]) => string) | (() => import("element-plus").PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;
@@ -335,6 +336,7 @@ declare const _default: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    expand: BooleanConstructor;
     effect: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string) | (() => import("element-plus").PopperEffect) | ((new (...args: any[]) => string) | (() => import("element-plus").PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;
@@ -486,6 +488,7 @@ declare const _default: import("vue").DefineComponent<{
     floatLabel: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     clearable: boolean;
     validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    expand: boolean;
     valueKey: string;
     debounce: number;
     fitInputWidth: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;

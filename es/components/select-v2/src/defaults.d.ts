@@ -214,6 +214,7 @@ export declare const selectV2Props: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly props: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Props) | (() => Props) | ((new (...args: any[]) => Props) | (() => Props))[], unknown, unknown, () => Required<Props>, boolean>;
     readonly valueKey: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
     readonly scrollbarAlwaysOn: BooleanConstructor;

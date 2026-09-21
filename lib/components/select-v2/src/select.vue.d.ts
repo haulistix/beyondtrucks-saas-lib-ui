@@ -204,6 +204,7 @@ declare const _default: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly props: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("./useProps").Props) | (() => import("./useProps").Props) | ((new (...args: any[]) => import("./useProps").Props) | (() => import("./useProps").Props))[], unknown, unknown, () => Required<import("./useProps").Props>, boolean>;
     readonly valueKey: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
     readonly scrollbarAlwaysOn: BooleanConstructor;
@@ -591,6 +592,7 @@ declare const _default: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly props: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("./useProps").Props) | (() => import("./useProps").Props) | ((new (...args: any[]) => import("./useProps").Props) | (() => import("./useProps").Props))[], unknown, unknown, () => Required<import("./useProps").Props>, boolean>;
     readonly valueKey: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
     readonly scrollbarAlwaysOn: BooleanConstructor;
@@ -656,6 +658,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly floatLabel: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: boolean;
     readonly validateEvent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly expand: boolean;
     readonly valueKey: string;
     readonly debounce: number;
     readonly fitInputWidth: import("element-plus/es/utils").EpPropMergeType<readonly [BooleanConstructor, NumberConstructor], unknown, number | boolean>;

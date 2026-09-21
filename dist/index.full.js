@@ -16450,6 +16450,7 @@
       default: void 0
     },
     size: useSizeProp,
+    expand: Boolean,
     disabled: Boolean,
     modelValue: {
       type: definePropType([
@@ -16670,11 +16671,13 @@
       const rawAttrs = vue.useAttrs();
       const attrs = useAttrs();
       const slots = vue.useSlots();
+      const isTextarea = vue.computed(() => props.type === "textarea" || props.expand && (props.type === "text" || props.type === "input"));
       const containerKls = vue.computed(() => [
-        props.type === "textarea" ? nsTextarea.b() : nsInput.b(),
+        isTextarea.value ? nsTextarea.b() : nsInput.b(),
         nsInput.m(inputSize.value),
         nsInput.is("disabled", inputDisabled.value),
         nsInput.is("exceed", inputExceed.value),
+        nsInput.is("expanded", props.expand),
         {
           [nsInput.b("group")]: slots.prepend || slots.append,
           [nsInput.m("prefix")]: slots.prefix || props.prefixIcon,
@@ -16766,7 +16769,7 @@
       const showPwdVisible = vue.computed(() => props.showPassword && !inputDisabled.value && !!nativeInputValue.value);
       const showInfoTipIcon = vue.computed(() => props.inputType === "info" && !!props.infoTip);
       const infoTipTooltipDisabled = vue.computed(() => inputTooltipSource.value !== "none");
-      const isWordLimitVisible = vue.computed(() => props.showWordLimit && !!props.maxlength && (props.type === "text" || props.type === "textarea") && !inputDisabled.value && !props.readonly && !props.showPassword);
+      const isWordLimitVisible = vue.computed(() => props.showWordLimit && !!props.maxlength && (props.type === "text" || isTextarea.value) && !inputDisabled.value && !props.readonly && !props.showPassword);
       const textLength = vue.computed(() => nativeInputValue.value.length);
       const inputExceed = vue.computed(() => !!isWordLimitVisible.value && textLength.value > Number(props.maxlength));
       const suffixVisible = vue.computed(() => !!slots.suffix || !!props.suffixIcon || showInfoTipIcon.value || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
@@ -16791,7 +16794,7 @@
           isTextOverflowing.value = false;
           return;
         }
-        if (props.type === "textarea") {
+        if (isTextarea.value) {
           isTextOverflowing.value = target.scrollHeight > target.clientHeight || target.scrollWidth > target.clientWidth;
           return;
         }
@@ -16806,8 +16809,8 @@
         (_a = textarea.value) == null ? void 0 : _a.focus();
       };
       const resizeTextarea = () => {
-        const { type, autosize } = props;
-        if (!isClient || type !== "textarea" || !textarea.value)
+        const autosize = props.autosize || props.expand;
+        if (!isClient || !isTextarea.value || !textarea.value)
           return;
         if (autosize) {
           const minRows = isObject$1(autosize) ? autosize.minRows : void 0;
@@ -16962,7 +16965,7 @@
         }
         setNativeInputValue();
       });
-      vue.watch(() => props.type, async () => {
+      vue.watch([() => props.type, () => props.expand], async () => {
         await vue.nextTick();
         setNativeInputValue();
         resizeTextarea();
@@ -17001,7 +17004,7 @@
           onMouseleave: handleMouseLeave
         }, [
           vue.createCommentVNode(" input "),
-          _ctx.type !== "textarea" ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
+          !vue.unref(isTextarea) ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
             vue.createCommentVNode(" prepend slot "),
             _ctx.$slots.prepend ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 0,
@@ -38683,6 +38686,7 @@
     },
     automaticDropdown: Boolean,
     size: useSizeProp,
+    expand: Boolean,
     effect: {
       type: definePropType(String),
       default: "light"
@@ -39134,6 +39138,7 @@
         _ctx.nsSelect.b(),
         _ctx.nsSelect.m(_ctx.selectSize),
         _ctx.nsSelect.m(_ctx.inputType),
+        _ctx.nsSelect.is("expanded", _ctx.$props.expand),
         {
           [_ctx.nsSelect.m("inputType")]: !!_ctx.inputType,
           [_ctx.nsSelect.m("filled")]: !!_ctx.inputType && _ctx.hasModelValue
@@ -46413,6 +46418,7 @@
       default: 300
     },
     size: useSizeProp,
+    expand: Boolean,
     props: {
       type: definePropType(Object),
       default: () => defaultProps$5
@@ -47943,6 +47949,7 @@
         _ctx.nsSelect.b(),
         _ctx.nsSelect.m(_ctx.selectSize),
         _ctx.nsSelect.m(_ctx.inputType),
+        _ctx.nsSelect.is("expanded", _ctx.$props.expand),
         {
           [_ctx.nsSelect.m("inputType")]: !!_ctx.inputType,
           [_ctx.nsSelect.m("filled")]: !!_ctx.inputType && _ctx.hasModelValue

@@ -141,6 +141,7 @@ export declare const mentionProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    expand: BooleanConstructor;
     disabled: BooleanConstructor;
     modelModifiers: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("element-plus/es/components/input").InputModelModifiers) | (() => import("element-plus/es/components/input").InputModelModifiers) | ((new (...args: any[]) => import("element-plus/es/components/input").InputModelModifiers) | (() => import("element-plus/es/components/input").InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     maxlength: {

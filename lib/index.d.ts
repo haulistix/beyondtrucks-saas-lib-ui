@@ -1906,6 +1906,7 @@ declare const __VLS_component_3: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     readonly maxlength: {
@@ -2192,6 +2193,7 @@ declare const __VLS_component_3: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     readonly maxlength: {
@@ -2332,6 +2334,7 @@ declare const __VLS_component_3: DefineComponent<{
     readonly rows: number;
     readonly inputmode: EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     readonly isHoverSuffix: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly expand: boolean;
     readonly showPassword: boolean;
     readonly showWordLimit: boolean;
     readonly autofocus: boolean;
@@ -2720,6 +2723,7 @@ declare const __VLS_component_4: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelValue: EpPropFinalized<(new (...args: any[]) => string | number) | (() => string | number | null | undefined) | ((new (...args: any[]) => string | number) | (() => string | number | null | undefined))[], unknown, unknown, "", boolean>;
     readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
@@ -2874,6 +2878,7 @@ declare const __VLS_component_4: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelValue: EpPropFinalized<(new (...args: any[]) => string | number) | (() => string | number | null | undefined) | ((new (...args: any[]) => string | number) | (() => string | number | null | undefined))[], unknown, unknown, "", boolean>;
     readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
@@ -3015,6 +3020,7 @@ declare const __VLS_component_4: DefineComponent<{
     readonly rows: number;
     readonly inputmode: EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     readonly isHoverSuffix: boolean;
+    readonly expand: boolean;
     readonly showPassword: boolean;
     readonly showWordLimit: boolean;
     readonly autofocus: boolean;
@@ -4387,6 +4393,7 @@ declare const __VLS_component_48: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     readonly maxlength: {
@@ -4637,6 +4644,7 @@ declare const __VLS_component_48: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     readonly maxlength: {
@@ -4775,6 +4783,7 @@ declare const __VLS_component_48: DefineComponent<{
     readonly rows: number;
     readonly inputmode: EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     readonly isHoverSuffix: boolean;
+    readonly expand: boolean;
     readonly showPassword: boolean;
     readonly showWordLimit: boolean;
     readonly autofocus: boolean;
@@ -10135,6 +10144,7 @@ declare const __VLS_component_89: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    expand: BooleanConstructor;
     disabled: BooleanConstructor;
     modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     maxlength: {
@@ -10390,6 +10400,7 @@ declare const __VLS_component_89: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    expand: BooleanConstructor;
     disabled: BooleanConstructor;
     modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     maxlength: {
@@ -10533,6 +10544,7 @@ declare const __VLS_component_89: DefineComponent<{
     rows: number;
     inputmode: EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     isHoverSuffix: boolean;
+    expand: boolean;
     showPassword: boolean;
     showWordLimit: boolean;
     autofocus: boolean;
@@ -12689,6 +12701,7 @@ export declare const autocompleteProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     readonly maxlength: {
@@ -16840,6 +16853,7 @@ declare const _default_75: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    expand: BooleanConstructor;
     effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;
@@ -17161,6 +17175,7 @@ declare const _default_75: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    expand: BooleanConstructor;
     effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;
@@ -17312,6 +17327,7 @@ declare const _default_75: DefineComponent<{
     floatLabel: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     clearable: boolean;
     validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    expand: boolean;
     valueKey: string;
     debounce: number;
     fitInputWidth: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -17688,6 +17704,7 @@ declare const _default_78: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly props: EpPropFinalized<(new (...args: any[]) => Props_2) | (() => Props_2) | ((new (...args: any[]) => Props_2) | (() => Props_2))[], unknown, unknown, () => Required<Props_2>, boolean>;
     readonly valueKey: EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
     readonly scrollbarAlwaysOn: BooleanConstructor;
@@ -18086,6 +18103,7 @@ declare const _default_78: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly props: EpPropFinalized<(new (...args: any[]) => Props_2) | (() => Props_2) | ((new (...args: any[]) => Props_2) | (() => Props_2))[], unknown, unknown, () => Required<Props_2>, boolean>;
     readonly valueKey: EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
     readonly scrollbarAlwaysOn: BooleanConstructor;
@@ -18165,6 +18183,7 @@ declare const _default_78: DefineComponent<{
     readonly floatLabel: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly clearable: boolean;
     readonly validateEvent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly expand: boolean;
     readonly valueKey: string;
     readonly debounce: number;
     readonly fitInputWidth: EpPropMergeType<readonly [
@@ -24046,6 +24065,7 @@ export declare const inputDownProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     readonly maxlength: {
@@ -24240,6 +24260,7 @@ export declare const inputProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelValue: EpPropFinalized<(new (...args: any[]) => string | number) | (() => string | number | null | undefined) | ((new (...args: any[]) => string | number) | (() => string | number | null | undefined))[], unknown, unknown, "", boolean>;
     readonly modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
@@ -24827,6 +24848,7 @@ export declare const mentionProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    expand: BooleanConstructor;
     disabled: BooleanConstructor;
     modelModifiers: EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     maxlength: {
@@ -26503,6 +26525,7 @@ export declare const selectProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    expand: BooleanConstructor;
     effect: EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;
@@ -26877,6 +26900,7 @@ declare const selectV2Props: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
+    readonly expand: BooleanConstructor;
     readonly props: EpPropFinalized<(new (...args: any[]) => Props_2) | (() => Props_2) | ((new (...args: any[]) => Props_2) | (() => Props_2))[], unknown, unknown, () => Required<Props_2>, boolean>;
     readonly valueKey: EpPropFinalized<StringConstructor, unknown, unknown, "value", boolean>;
     readonly scrollbarAlwaysOn: BooleanConstructor;

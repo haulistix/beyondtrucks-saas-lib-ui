@@ -121,6 +121,7 @@ const selectV2Props = buildProps({
     default: 300
   },
   size: useSizeProp,
+  expand: Boolean,
   props: {
     type: definePropType(Object),
     default: () => defaultProps

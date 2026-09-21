@@ -134,6 +134,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       _ctx.nsSelect.b(),
       _ctx.nsSelect.m(_ctx.selectSize),
       _ctx.nsSelect.m(_ctx.inputType),
+      _ctx.nsSelect.is("expanded", _ctx.$props.expand),
       {
         [_ctx.nsSelect.m("inputType")]: !!_ctx.inputType,
         [_ctx.nsSelect.m("filled")]: !!_ctx.inputType && _ctx.hasModelValue

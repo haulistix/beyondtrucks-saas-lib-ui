@@ -16446,6 +16446,7 @@ const inputProps = buildProps({
     default: void 0
   },
   size: useSizeProp,
+  expand: Boolean,
   disabled: Boolean,
   modelValue: {
     type: definePropType([
@@ -16666,11 +16667,13 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     const rawAttrs = useAttrs$1();
     const attrs = useAttrs();
     const slots = useSlots();
+    const isTextarea = computed(() => props.type === "textarea" || props.expand && (props.type === "text" || props.type === "input"));
     const containerKls = computed(() => [
-      props.type === "textarea" ? nsTextarea.b() : nsInput.b(),
+      isTextarea.value ? nsTextarea.b() : nsInput.b(),
       nsInput.m(inputSize.value),
       nsInput.is("disabled", inputDisabled.value),
       nsInput.is("exceed", inputExceed.value),
+      nsInput.is("expanded", props.expand),
       {
         [nsInput.b("group")]: slots.prepend || slots.append,
         [nsInput.m("prefix")]: slots.prefix || props.prefixIcon,
@@ -16762,7 +16765,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     const showPwdVisible = computed(() => props.showPassword && !inputDisabled.value && !!nativeInputValue.value);
     const showInfoTipIcon = computed(() => props.inputType === "info" && !!props.infoTip);
     const infoTipTooltipDisabled = computed(() => inputTooltipSource.value !== "none");
-    const isWordLimitVisible = computed(() => props.showWordLimit && !!props.maxlength && (props.type === "text" || props.type === "textarea") && !inputDisabled.value && !props.readonly && !props.showPassword);
+    const isWordLimitVisible = computed(() => props.showWordLimit && !!props.maxlength && (props.type === "text" || isTextarea.value) && !inputDisabled.value && !props.readonly && !props.showPassword);
     const textLength = computed(() => nativeInputValue.value.length);
     const inputExceed = computed(() => !!isWordLimitVisible.value && textLength.value > Number(props.maxlength));
     const suffixVisible = computed(() => !!slots.suffix || !!props.suffixIcon || showInfoTipIcon.value || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
@@ -16787,7 +16790,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
         isTextOverflowing.value = false;
         return;
       }
-      if (props.type === "textarea") {
+      if (isTextarea.value) {
         isTextOverflowing.value = target.scrollHeight > target.clientHeight || target.scrollWidth > target.clientWidth;
         return;
       }
@@ -16802,8 +16805,8 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
       (_a = textarea.value) == null ? void 0 : _a.focus();
     };
     const resizeTextarea = () => {
-      const { type, autosize } = props;
-      if (!isClient || type !== "textarea" || !textarea.value)
+      const autosize = props.autosize || props.expand;
+      if (!isClient || !isTextarea.value || !textarea.value)
         return;
       if (autosize) {
         const minRows = isObject$1(autosize) ? autosize.minRows : void 0;
@@ -16958,7 +16961,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
       }
       setNativeInputValue();
     });
-    watch(() => props.type, async () => {
+    watch([() => props.type, () => props.expand], async () => {
       await nextTick();
       setNativeInputValue();
       resizeTextarea();
@@ -16997,7 +17000,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
         onMouseleave: handleMouseLeave
       }, [
         createCommentVNode(" input "),
-        _ctx.type !== "textarea" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+        !unref(isTextarea) ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
           createCommentVNode(" prepend slot "),
           _ctx.$slots.prepend ? (openBlock(), createElementBlock("div", {
             key: 0,
@@ -38679,6 +38682,7 @@ const selectProps = buildProps({
   },
   automaticDropdown: Boolean,
   size: useSizeProp,
+  expand: Boolean,
   effect: {
     type: definePropType(String),
     default: "light"
@@ -39130,6 +39134,7 @@ function _sfc_render$b(_ctx, _cache) {
       _ctx.nsSelect.b(),
       _ctx.nsSelect.m(_ctx.selectSize),
       _ctx.nsSelect.m(_ctx.inputType),
+      _ctx.nsSelect.is("expanded", _ctx.$props.expand),
       {
         [_ctx.nsSelect.m("inputType")]: !!_ctx.inputType,
         [_ctx.nsSelect.m("filled")]: !!_ctx.inputType && _ctx.hasModelValue
@@ -46409,6 +46414,7 @@ const selectV2Props = buildProps({
     default: 300
   },
   size: useSizeProp,
+  expand: Boolean,
   props: {
     type: definePropType(Object),
     default: () => defaultProps$5
@@ -47939,6 +47945,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
       _ctx.nsSelect.b(),
       _ctx.nsSelect.m(_ctx.selectSize),
       _ctx.nsSelect.m(_ctx.inputType),
+      _ctx.nsSelect.is("expanded", _ctx.$props.expand),
       {
         [_ctx.nsSelect.m("inputType")]: !!_ctx.inputType,
         [_ctx.nsSelect.m("filled")]: !!_ctx.inputType && _ctx.hasModelValue

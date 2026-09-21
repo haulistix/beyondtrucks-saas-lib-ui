@@ -3,12 +3,11 @@
 .el-input {
   --el-border-color-custom: var(--color-gray-300);
 
-  &:not(.el-input--large,.el-input--small) {
+  &:not(.el-input--large, .el-input--small) {
     .el-input__suffix {
       padding-right: 8px;
     }
   }
-
 
   .el-input__inner {
     color: var(--color-gray-990);
@@ -58,12 +57,19 @@
 }
 
 .el-textarea {
-  &.el-input--error {
-    .el-textarea__inner, .el-input__count:not(.is-outside), .float-label {
-      background-color: var(--color-red-200);
+  &.is-expanded {
+    .el-textarea__inner {
+      resize: none;
     }
   }
 
+  &.el-input--error {
+    .el-textarea__inner,
+    .el-input__count:not(.is-outside),
+    .float-label {
+      background-color: var(--color-red-200);
+    }
+  }
 
   &.el-input--inputType {
     &.el-input--filled {
@@ -87,11 +93,10 @@
   }
 
   .float-label.has-value {
-    @include float-label-value
+    @include float-label-value;
   }
 
   .el-textarea__inner {
-
     &.is-focus {
       ~ .float-label {
         transform: translateY(-15px);

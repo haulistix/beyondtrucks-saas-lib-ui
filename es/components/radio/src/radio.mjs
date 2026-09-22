@@ -26,6 +26,7 @@ const radioPropsBase = buildProps({
 });
 const radioProps = buildProps({
   ...radioPropsBase,
+  error: Boolean,
   border: Boolean
 });
 const radioEmits = {

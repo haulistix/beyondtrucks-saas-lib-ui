@@ -30,7 +30,7 @@ $radio-font-size: map.merge(
   font-size: getCssVar('font-size', 'base');
   user-select: none;
   margin-right: 30px;
-  height: map.get($radio-height, 'default');
+  min-height: 20px;
 
   @each $size in (large, small) {
     &.#{$namespace}-radio--#{$size} {
@@ -39,6 +39,7 @@ $radio-font-size: map.merge(
   }
 
   @include when(bordered) {
+    height: map.get($radio-height, 'default');
     padding: 0
       map.get($checkbox-bordered-padding-right, 'default')-$border-width 0
       map.get($checkbox-bordered-padding-left, 'default')-$border-width;
@@ -90,80 +91,84 @@ $radio-font-size: map.merge(
 
     @include when(disabled) {
       .#{$namespace}-radio__inner {
-        background-color: var(--color-gray-100);
-        border-color: var(--color-gray-200);
+        color: var(--color-gray-900);
+        background-color: var(--color-gray-50);
+        border-color: var(--color-gray-50);
         cursor: not-allowed;
-
-        &::after {
-          cursor: not-allowed;
-          background-color: var(--color-gray-400);
-        }
-
-        & + .#{$namespace}-radio__label {
-          cursor: not-allowed;
-        }
       }
       &.is-checked {
         .#{$namespace}-radio__inner {
-          background-color: var(--color-gray-100);
-          border-color: var(--color-gray-200);
-
-          &::after {
-            background-color: var(--color-gray-400);
-          }
+          color: var(--color-gray-900);
+          background-color: var(--color-gray-50);
+          border-color: var(--color-gray-50);
         }
       }
       & + span.#{$namespace}-radio__label {
-        color: var(--color-gray-300);
+        color: var(--color-gray-400);
         cursor: not-allowed;
       }
     }
 
     @include when(checked) {
       .#{$namespace}-radio__inner {
+        color: getCssVar('color-white');
         border-color: var(--color-gray-800);
-        background: getCssVar('color-white');
-
-        &::after {
-          background-color: var(--color-gray-800);
-          transform: translate(-50%, -50%) scale(1);
-        }
+        background-color: var(--color-gray-800);
       }
     }
 
     @include when(focus) {
       .#{$namespace}-radio__inner {
-        border-color: getCssVar('radio-input-border-color-hover');
+        outline: 2px solid rgb(36 48 55 / 80%);
+        outline-offset: 2px;
       }
     }
   }
   @include e(inner) {
-    border: getCssVar('radio-input-border');
+    color: transparent;
+    border: 1px solid var(--color-gray-300);
     border-radius: getCssVar('radio-input-border-radius');
     width: getCssVar('radio-input-width');
     height: getCssVar('radio-input-height');
     background-color: getCssVar('radio-input-bg-color');
     position: relative;
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
 
-    &:hover {
-      border-color: getCssVar('radio-input-border-color-hover');
+  &:not(.is-disabled):not(.is-error):not(.is-checked):hover {
+    .#{$namespace}-radio__inner {
+      border-color: var(--color-cloudy-gray-800);
     }
+  }
 
-    &::after {
-      width: 8px;
-      height: 8px;
-      border-radius: getCssVar('radio-input-border-radius');
-      background-color: getCssVar('border-color', 'checked');
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      transition: transform 0.15s ease-in;
+  @include when(error) {
+    &:not(.is-disabled) {
+      .#{$namespace}-radio__inner {
+        background-color: var(--color-red-300);
+        border-color: var(--color-red-800);
+      }
+
+      &.is-checked .#{$namespace}-radio__inner {
+        color: getCssVar('color-white');
+        background-color: var(--color-red-900);
+        border-color: var(--color-red-900);
+      }
     }
+  }
+
+  @include e(check) {
+    width: 10.5px;
+    height: 10.5px;
+    fill: currentColor;
+    flex: none;
   }
 
   @include e(original) {
@@ -179,22 +184,16 @@ $radio-font-size: map.merge(
 
     &:focus-visible {
       & + .#{$namespace}-radio__inner {
-        outline: 2px solid getCssVar('radio-input-border-color-hover');
-        outline-offset: 1px;
-        border-radius: getCssVar('radio-input-border-radius');
+        outline: 2px solid rgb(36 48 55 / 80%);
+        outline-offset: 2px;
       }
     }
   }
 
-  &:focus:not(:focus-visible):not(.is-focus):not(:active):not(.is-disabled) {
-    /*获得焦点时 样式提醒*/
-    .#{$namespace}-radio__inner {
-      box-shadow: 0 0 2px 2px getCssVar('radio-input-border-color-hover');
-    }
-  }
-
   @include e(label) {
+    color: var(--color-gray-990);
     font-size: getCssVar('radio-font-size');
+    line-height: 20px;
     padding-left: 8px;
   }
 

@@ -1,6 +1,6 @@
 import { defineComponent, ref, inject, toRef, computed, useSlots, watch, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, renderSlot, Fragment, renderList, toDisplayString, createCommentVNode, createVNode, withCtx, createBlock } from 'vue';
 import dayjs from 'dayjs';
-import ElButton from '../../../button/src/button2.mjs';
+import ElButton from '../../../button/src/button.mjs';
 import { ElIcon } from '../../../icon/index.mjs';
 import { panelYearRangeProps, panelYearRangeEmits } from '../props/panel-year-range.mjs';
 import { useYearRangeHeader } from '../composables/use-year-range-header.mjs';

@@ -52,7 +52,7 @@ const useDialog = (props, targetRef) => {
   });
   const _alignCenter = computed(() => {
     var _a2, _b, _c;
-    return (_c = (_b = props.alignCenter) != null ? _b : (_a2 = globalConfig.value) == null ? void 0 : _a2.alignCenter) != null ? _c : false;
+    return (_c = (_b = props.alignCenter) != null ? _b : (_a2 = globalConfig.value) == null ? void 0 : _a2.alignCenter) != null ? _c : true;
   });
   const _overflow = computed(() => {
     var _a2, _b, _c;

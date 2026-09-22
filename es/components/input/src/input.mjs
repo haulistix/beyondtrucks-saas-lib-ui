@@ -18,6 +18,7 @@ const inputProps = buildProps({
     default: void 0
   },
   size: useSizeProp,
+  expand: Boolean,
   disabled: Boolean,
   modelValue: {
     type: definePropType([

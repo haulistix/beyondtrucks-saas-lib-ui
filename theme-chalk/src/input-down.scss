@@ -1,0 +1,29 @@
+@use 'mixins/mixins' as *;
+
+@include b(input-down) {
+  width: 100%;
+
+  @include e(option) {
+    width: 100%;
+
+    .#{$namespace}-radio {
+      width: 100%;
+      margin-right: 0;
+      pointer-events: none;
+    }
+
+    .#{$namespace}-radio__original {
+      display: none;
+    }
+  }
+
+  @include e(popper) {
+    .#{$namespace}-autocomplete-suggestion li {
+      display: flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 12px;
+      line-height: 20px;
+    }
+  }
+}

@@ -10,6 +10,7 @@ declare const _default: import("vue").DefineComponent<{
 }, {
     groupRef: import("vue").Ref<HTMLElement | undefined>;
     visible: import("vue").ComputedRef<boolean>;
+    isFirstVisibleGroup: import("vue").ComputedRef<boolean>;
     ns: {
         namespace: import("vue").ComputedRef<string>;
         b: (blockSuffix?: string) => string;

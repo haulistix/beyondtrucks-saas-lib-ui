@@ -1,5 +1,5 @@
 import { defineComponent, inject, computed, openBlock, createElementBlock, unref, normalizeClass, normalizeStyle, createElementVNode, renderSlot, createBlock, withCtx, createVNode, createCommentVNode, createTextVNode, toDisplayString } from 'vue';
-import ElButton from '../../button/src/button2.mjs';
+import ElButton from '../../button/src/button.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { WarnTriangleFilled, WarningFilled } from '@element-plus/icons-vue';
 import { dialogInjectionKey } from './constants.mjs';

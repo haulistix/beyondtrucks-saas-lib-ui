@@ -46,13 +46,21 @@ $checked-icon: "data:image/svg+xml;utf8,%3Csvg class='icon' width='200' height='
     }
 
     @include when(selected) {
-      //background-color: var(--color-orange-10);
+      &:not(.is-multiple) {
+        background-color: map.get($select-option, 'hover-background');
+      }
     }
 
     @include when(disabled) {
       color: var(--color-gray-300);
       cursor: not-allowed;
       background-color: unset;
+    }
+
+    .option-wrap > .#{$namespace}-radio {
+      height: 24px;
+      min-height: 24px;
+      margin-right: 4px;
     }
   }
 

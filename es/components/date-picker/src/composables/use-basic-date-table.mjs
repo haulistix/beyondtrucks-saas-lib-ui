@@ -202,7 +202,9 @@ const useBasicDateTable = (props, emit) => {
   };
   const handleRangePick = (newDate) => {
     const rangePickType = props.rangePickType;
-    const anchorDate = rangePickType === "end" ? props.maxDate : props.minDate;
+    const currentMinDate = props.minDate;
+    const currentMaxDate = props.maxDate;
+    const anchorDate = rangePickType === "end" ? currentMaxDate : currentMinDate;
     if (!props.rangeState.selecting || !anchorDate) {
       if (props.cycleType === "week") {
         const offsetWeek = newDate.day();
@@ -221,6 +223,12 @@ const useBasicDateTable = (props, emit) => {
         const v3 = v1 !== 0 ? date.subtract(props.cycle * 7, "days") : newDate;
         const maxDate = v3.add(props.cycle * 7 - 1, "days");
         emit("pick", { minDate: v3, maxDate }, false);
+        emit("select", false);
+      } else if (rangePickType === "start" && currentMaxDate && newDate.isBefore(currentMaxDate)) {
+        emit("pick", { minDate: newDate, maxDate: currentMaxDate });
+        emit("select", false);
+      } else if (rangePickType === "end" && currentMinDate && newDate.isAfter(currentMinDate)) {
+        emit("pick", { minDate: currentMinDate, maxDate: newDate });
         emit("select", false);
       } else {
         emit("pick", rangePickType === "end" ? { minDate: null, maxDate: newDate } : { minDate: newDate, maxDate: null });
@@ -269,6 +277,9 @@ const useBasicDateTable = (props, emit) => {
     if (cell.disabled || cell.type === "week")
       return;
     const newDate = getDateOfCell(row, column);
+    if (cell.type === "prev-month" || cell.type === "next-month") {
+      emit("navigate", newDate);
+    }
     switch (props.selectionMode) {
       case "range": {
         handleRangePick(newDate);
@@ -347,8 +358,11 @@ const useBasicDateTableDOM = (props, {
     if (isCurrent(cell)) {
       classes.push("current");
     }
-    if (cell.inRange && (isNormalDay(cell.type) || props.selectionMode === "week")) {
+    const isRangeCell = isNormalDay(cell.type) || props.selectionMode === "week";
+    if (cell.inRange && isRangeCell) {
       classes.push("in-range");
+    }
+    if (isRangeCell) {
       if (cell.start) {
         classes.push("start-date");
       }

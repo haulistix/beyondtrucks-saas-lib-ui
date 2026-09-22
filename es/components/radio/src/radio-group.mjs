@@ -10,6 +10,7 @@ const radioGroupProps = buildProps({
   },
   size: useSizeProp,
   disabled: Boolean,
+  error: Boolean,
   modelValue: {
     type: [String, Number, Boolean],
     default: void 0

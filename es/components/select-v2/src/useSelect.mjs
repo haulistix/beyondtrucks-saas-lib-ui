@@ -2,6 +2,7 @@ import { reactive, ref, computed, nextTick, watch, watchEffect, onMounted } from
 import { get, isEqual, findLastIndex } from 'lodash-unified';
 import { useDebounceFn, useResizeObserver } from '@vueuse/core';
 import { useAllowCreate } from './useAllowCreate.mjs';
+import { SELECT_V2_GROUP_TITLE_HEIGHT, SELECT_V2_GROUP_DIVIDER_SIZE } from './defaults.mjs';
 import { useProps } from './useProps.mjs';
 import { useLocale } from '../../../hooks/use-locale/index.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
@@ -99,7 +100,12 @@ const useSelect = (props, emit) => {
     return (_a = elForm == null ? void 0 : elForm.statusIcon) != null ? _a : false;
   });
   const popupHeight = computed(() => {
-    const totalHeight = filteredOptions.value.length * props.itemHeight;
+    const totalHeight = filteredOptions.value.reduce((height, option, index) => {
+      if (option.type === "Group") {
+        return height + SELECT_V2_GROUP_TITLE_HEIGHT + (index > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
+      }
+      return height + props.itemHeight;
+    }, 0);
     return totalHeight > props.height ? props.height : totalHeight;
   });
   const hasModelValue = computed(() => {

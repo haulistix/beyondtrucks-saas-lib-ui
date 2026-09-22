@@ -83,7 +83,11 @@ var ElTableColumn = defineComponent({
         "resizable"
       ];
       const sortProps = ["sortMethod", "sortBy", "sortOrders"];
-      const selectProps = ["selectable", "reserveSelection"];
+      const selectProps = [
+        "selectable",
+        "reserveSelection",
+        "showSelectionTooltip"
+      ];
       const filterProps = [
         "filterMethod",
         "filters",

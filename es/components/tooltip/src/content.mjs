@@ -11,7 +11,7 @@ const useTooltipContentProps = buildProps({
     type: teleportProps.to.type
   },
   content: {
-    type: String,
+    type: [String, Number, Boolean],
     default: ""
   },
   rawContent: Boolean,

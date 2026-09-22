@@ -95,6 +95,7 @@ var DatePicker = defineComponent({
       return createVNode(CommonPicker, mergeProps(props, {
         "format": format,
         "type": componentType.value,
+        "allowPartialRange": !!props.rangePickType,
         "ref": commonPicker,
         "onUpdate:modelValue": onModelValueUpdated
       }), {

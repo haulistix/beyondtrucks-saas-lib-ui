@@ -53,8 +53,7 @@ function useWatcher(owner, props_) {
       "allowInsertBeforeFirstColumn",
       "filterClassName",
       "showOverflowTooltip",
-      "tooltipFormatter",
-      "showSelectionTooltip"
+      "tooltipFormatter"
     ];
     const parentProps = ["showOverflowTooltip"];
     const aliases = {

@@ -21,7 +21,6 @@ export declare const inputProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number) | (() => string | number | null | undefined) | ((new (...args: any[]) => string | number) | (() => string | number | null | undefined))[], unknown, unknown, "", boolean>;
     readonly modelModifiers: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers) | ((new (...args: any[]) => InputModelModifiers) | (() => InputModelModifiers))[], unknown, unknown, () => {}, boolean>;

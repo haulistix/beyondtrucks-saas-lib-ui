@@ -119,10 +119,10 @@ $text-color: map.merge(
 $border-color: () !default;
 $border-color: map.merge(
     (
-      '': var(--color-cloudy-gray-500),
-      'custom': var(--color-gray-100),
-      'light': var(--color-gray-300),
-      'lighter': var(--color-gray-100),
+      '': #828e91,
+      'custom': #e7ecef,
+      'light': #c1ccd6,
+      'lighter': #ebeef5,
       'extra-light': #f2f6fc,
       'dark': #d4d7de,
       'darker': #cdd0d6,

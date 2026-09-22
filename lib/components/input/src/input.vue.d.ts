@@ -20,7 +20,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number) | (() => string | number | null | undefined) | ((new (...args: any[]) => string | number) | (() => string | number | null | undefined))[], unknown, unknown, "", boolean>;
     readonly modelModifiers: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("./input").InputModelModifiers) | (() => import("./input").InputModelModifiers) | ((new (...args: any[]) => import("./input").InputModelModifiers) | (() => import("./input").InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
@@ -166,7 +165,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly expand: BooleanConstructor;
     readonly disabled: BooleanConstructor;
     readonly modelValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number) | (() => string | number | null | undefined) | ((new (...args: any[]) => string | number) | (() => string | number | null | undefined))[], unknown, unknown, "", boolean>;
     readonly modelModifiers: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("./input").InputModelModifiers) | (() => import("./input").InputModelModifiers) | ((new (...args: any[]) => import("./input").InputModelModifiers) | (() => import("./input").InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
@@ -296,7 +294,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly rows: number;
     readonly inputmode: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     readonly isHoverSuffix: boolean;
-    readonly expand: boolean;
     readonly showPassword: boolean;
     readonly showWordLimit: boolean;
     readonly autofocus: boolean;

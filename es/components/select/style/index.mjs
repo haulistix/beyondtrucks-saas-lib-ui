@@ -1,6 +1,5 @@
 import '../../base/style/index.mjs';
 import '../../tag/style/index.mjs';
-import '../../radio/style/index.mjs';
 import '../../option/style/index.mjs';
 import '../../option-group/style/index.mjs';
 import '../../scrollbar/style/index.mjs';

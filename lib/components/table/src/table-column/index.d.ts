@@ -47,7 +47,6 @@ declare const _default: import("vue").DefineComponent<{
     formatter: import("vue").PropType<TableColumnCtx<any>["formatter"]>;
     selectable: import("vue").PropType<TableColumnCtx<any>["selectable"]>;
     reserveSelection: BooleanConstructor;
-    showSelectionTooltip: BooleanConstructor;
     filterMethod: import("vue").PropType<TableColumnCtx<any>["filterMethod"]>;
     filteredValue: import("vue").PropType<TableColumnCtx<any>["filteredValue"]>;
     filters: import("vue").PropType<TableColumnCtx<any>["filters"]>;
@@ -111,7 +110,6 @@ declare const _default: import("vue").DefineComponent<{
     formatter: import("vue").PropType<TableColumnCtx<any>["formatter"]>;
     selectable: import("vue").PropType<TableColumnCtx<any>["selectable"]>;
     reserveSelection: BooleanConstructor;
-    showSelectionTooltip: BooleanConstructor;
     filterMethod: import("vue").PropType<TableColumnCtx<any>["filterMethod"]>;
     filteredValue: import("vue").PropType<TableColumnCtx<any>["filteredValue"]>;
     filters: import("vue").PropType<TableColumnCtx<any>["filters"]>;
@@ -137,7 +135,6 @@ declare const _default: import("vue").DefineComponent<{
     sortOrders: (import("../table/defaults").TableSortOrder | null)[];
     sortable: string | boolean;
     reserveSelection: boolean;
-    showSelectionTooltip: boolean;
     filterMultiple: boolean;
     allowInsertBeforeFirstColumn: boolean;
 }>;

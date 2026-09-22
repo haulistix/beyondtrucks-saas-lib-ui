@@ -19,7 +19,6 @@ export declare const selectProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    expand: BooleanConstructor;
     effect: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string) | (() => PopperEffect) | ((new (...args: any[]) => string) | (() => PopperEffect))[], unknown, unknown, string, boolean>;
     disabled: BooleanConstructor;
     addItem: BooleanConstructor;

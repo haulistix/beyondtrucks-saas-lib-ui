@@ -1,6 +1,6 @@
 import { defineComponent, useAttrs, useSlots, computed, shallowRef, ref, nextTick, watch, onMounted, toRef, openBlock, createElementBlock, normalizeClass, unref, normalizeStyle, createCommentVNode, Fragment, renderSlot, createVNode, withCtx, createElementVNode, createBlock, resolveDynamicComponent, mergeProps, toDisplayString, withModifiers } from 'vue';
 import { ElIcon } from '../../icon/index.mjs';
-import ElTooltip from '../../tooltip/src/tooltip2.mjs';
+import ElTooltip from '../../tooltip/src/tooltip.mjs';
 import { useResizeObserver, isClient } from '@vueuse/core';
 import { isNil } from 'lodash-unified';
 import { inputProps, inputEmits } from './input.mjs';
@@ -33,13 +33,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const rawAttrs = useAttrs();
     const attrs = useAttrs$1();
     const slots = useSlots();
-    const isTextarea = computed(() => props.type === "textarea" || props.expand && (props.type === "text" || props.type === "input"));
     const containerKls = computed(() => [
-      isTextarea.value ? nsTextarea.b() : nsInput.b(),
+      props.type === "textarea" ? nsTextarea.b() : nsInput.b(),
       nsInput.m(inputSize.value),
       nsInput.is("disabled", inputDisabled.value),
       nsInput.is("exceed", inputExceed.value),
-      nsInput.is("expanded", props.expand),
       {
         [nsInput.b("group")]: slots.prepend || slots.append,
         [nsInput.m("prefix")]: slots.prefix || props.prefixIcon,
@@ -94,8 +92,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const textareaStyle = computed(() => [
       props.inputStyle,
       textareaCalcStyle.value,
-      { resize: props.resize },
-      props.expand ? { overflowY: "hidden" } : {}
+      { resize: props.resize }
     ]);
     const nativeInputValue = computed(() => isNil(props.modelValue) ? "" : String(props.modelValue));
     const showEmptyErrorTooltip = computed(() => props.inputType === "error" && isEmpty(nativeInputValue.value));
@@ -123,16 +120,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       return "";
     });
     const inputTooltipDisabled = computed(() => inputTooltipSource.value === "none");
-    const inputTooltipPopperClass = computed(() => [
-      nsInput.e("tooltip"),
-      inputTooltipSource.value === "overflow" ? "text-overflow-tooltip" : ""
-    ].filter(Boolean).join(" "));
     const inputTooltipTrigger = computed(() => inputTooltipSource.value === "error" ? "click" : "hover");
     const showClear = computed(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (isFocused.value || hovering.value));
     const showPwdVisible = computed(() => props.showPassword && !inputDisabled.value && !!nativeInputValue.value);
     const showInfoTipIcon = computed(() => props.inputType === "info" && !!props.infoTip);
     const infoTipTooltipDisabled = computed(() => inputTooltipSource.value !== "none");
-    const isWordLimitVisible = computed(() => props.showWordLimit && !!props.maxlength && (props.type === "text" || isTextarea.value) && !inputDisabled.value && !props.readonly && !props.showPassword);
+    const isWordLimitVisible = computed(() => props.showWordLimit && !!props.maxlength && (props.type === "text" || props.type === "textarea") && !inputDisabled.value && !props.readonly && !props.showPassword);
     const textLength = computed(() => nativeInputValue.value.length);
     const inputExceed = computed(() => !!isWordLimitVisible.value && textLength.value > Number(props.maxlength));
     const suffixVisible = computed(() => !!slots.suffix || !!props.suffixIcon || showInfoTipIcon.value || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
@@ -157,7 +150,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         isTextOverflowing.value = false;
         return;
       }
-      if (isTextarea.value) {
+      if (props.type === "textarea") {
         isTextOverflowing.value = target.scrollHeight > target.clientHeight || target.scrollWidth > target.clientWidth;
         return;
       }
@@ -172,8 +165,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       (_a = textarea.value) == null ? void 0 : _a.focus();
     };
     const resizeTextarea = () => {
-      const autosize = props.autosize || props.expand;
-      if (!isClient || !isTextarea.value || !textarea.value)
+      const { type, autosize } = props;
+      if (!isClient || type !== "textarea" || !textarea.value)
         return;
       if (autosize) {
         const minRows = isObject(autosize) ? autosize.minRows : void 0;
@@ -328,7 +321,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       }
       setNativeInputValue();
     });
-    watch([() => props.type, () => props.expand], async () => {
+    watch(() => props.type, async () => {
       await nextTick();
       setNativeInputValue();
       resizeTextarea();
@@ -367,7 +360,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         onMouseleave: handleMouseLeave
       }, [
         createCommentVNode(" input "),
-        !unref(isTextarea) ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+        _ctx.type !== "textarea" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
           createCommentVNode(" prepend slot "),
           _ctx.$slots.prepend ? (openBlock(), createElementBlock("div", {
             key: 0,
@@ -377,7 +370,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           ], 2)) : createCommentVNode("v-if", true),
           createVNode(ElTooltip, {
             content: unref(inputTooltipContent),
-            "popper-class": unref(inputTooltipPopperClass),
             placement: "top-start",
             disabled: unref(inputTooltipDisabled),
             offset: 12,
@@ -461,7 +453,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                         key: 0,
                         placement: "top",
                         content: _ctx.infoTip,
-                        "popper-class": unref(nsInput).e("tooltip"),
                         offset: 12,
                         disabled: unref(infoTipTooltipDisabled)
                       }, {
@@ -498,7 +489,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                           }, 8, ["class"])
                         ]),
                         _: 1
-                      }, 8, ["content", "popper-class", "disabled"])) : createCommentVNode("v-if", true),
+                      }, 8, ["content", "disabled"])) : createCommentVNode("v-if", true),
                       unref(showClear) ? (openBlock(), createBlock(unref(ElIcon), {
                         key: 1,
                         class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("clear")]),
@@ -510,13 +501,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                             xmlns: "http://www.w3.org/2000/svg",
                             width: "12",
                             height: "12",
-                            viewBox: "0 0 12 12",
-                            fill: "none"
+                            viewBox: "0 0 12 12"
                           }, [
-                            createElementVNode("path", {
-                              d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
-                              fill: "#2A3F4D"
-                            })
+                            createElementVNode("path", { d: "M9.35349 3.35342L8.64648 2.64642L5.99998 5.29292L3.35348 2.64642L2.64648 3.35342L5.29298 5.99992L2.64648 8.64642L3.35348 9.35342L5.99998 6.70692L8.64648 9.35342L9.35349 8.64642L6.70698 5.99992L9.35349 3.35342Z" })
                           ]))
                         ]),
                         _: 1
@@ -597,7 +584,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               ];
             }),
             _: 3
-          }, 8, ["content", "popper-class", "disabled", "trigger"]),
+          }, 8, ["content", "disabled", "trigger"]),
           createCommentVNode(" append slot "),
           _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
             key: 1,
@@ -609,7 +596,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           createCommentVNode(" textarea "),
           createVNode(ElTooltip, {
             content: unref(inputTooltipContent),
-            "popper-class": unref(inputTooltipPopperClass),
             placement: "top-start",
             disabled: unref(inputTooltipDisabled),
             offset: 12,
@@ -647,7 +633,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"])
             ]),
             _: 1
-          }, 8, ["content", "popper-class", "disabled", "trigger"]),
+          }, 8, ["content", "disabled", "trigger"]),
           _ctx.$slots.textareaPrefix ? (openBlock(), createElementBlock("span", {
             key: 0,
             class: "textarea-prefix"

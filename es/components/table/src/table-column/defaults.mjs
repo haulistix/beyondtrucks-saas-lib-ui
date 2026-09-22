@@ -46,7 +46,6 @@ var defaultProps = {
   formatter: Function,
   selectable: Function,
   reserveSelection: Boolean,
-  showSelectionTooltip: Boolean,
   filterMethod: Function,
   filteredValue: Array,
   filters: Array,

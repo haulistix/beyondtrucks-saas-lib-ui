@@ -14,7 +14,6 @@ export declare const radioPropsBase: {
     name: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, undefined, boolean>;
 };
 export declare const radioProps: {
-    readonly error: BooleanConstructor;
     readonly border: BooleanConstructor;
     readonly modelValue: import("element-plus/es/utils").EpPropFinalized<(BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown, undefined, boolean>;
     readonly size: {

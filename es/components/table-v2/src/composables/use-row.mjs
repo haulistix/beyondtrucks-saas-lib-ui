@@ -1,14 +1,20 @@
-import { getCurrentInstance, shallowRef, ref, computed, unref } from 'vue';
+import { getCurrentInstance, shallowRef, ref, computed, unref, nextTick } from 'vue';
 import { debounce } from 'lodash-unified';
 import { FixedDir } from '../constants.mjs';
 import { isNumber } from '../../../../utils/types.mjs';
 
-const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling }) => {
+const useRow = (props, {
+  mainTableRef,
+  leftTableRef,
+  rightTableRef,
+  tableInstance,
+  ns,
+  isScrolling
+}) => {
   const vm = getCurrentInstance();
   const { emit } = vm;
   const isResetting = shallowRef(false);
   const expandedRowKeys = ref(props.defaultExpandedRowKeys || []);
-  const hoveredRowIndex = shallowRef();
   const lastRenderedRowIndex = ref(-1);
   const resetIndex = shallowRef(null);
   const rowHeights = ref({});
@@ -24,16 +30,19 @@ const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling 
       lastRenderedRowIndex.value = params.rowCacheEnd;
     }
   }
-  function onRowHovered({ hovered, rowIndex }) {
+  function onRowHovered({ hovered, rowKey }) {
     if (isScrolling.value) {
-      hoveredRowIndex.value = void 0;
       return;
     }
-    if (hovered) {
-      hoveredRowIndex.value = rowIndex;
-    } else if (hoveredRowIndex.value === rowIndex) {
-      hoveredRowIndex.value = void 0;
-    }
+    const tableRoot = tableInstance.vnode.el;
+    const rows = tableRoot.querySelectorAll(`[rowkey="${String(rowKey)}"]`);
+    rows.forEach((row) => {
+      if (hovered) {
+        row.classList.add(ns.is("hovered"));
+      } else {
+        row.classList.remove(ns.is("hovered"));
+      }
+    });
   }
   function onRowExpanded({
     expanded,
@@ -60,6 +69,11 @@ const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling 
       rowKey
     });
     (_b = props.onExpandedRowsChange) == null ? void 0 : _b.call(props, _expandedRowKeys);
+    const tableRoot = tableInstance.vnode.el;
+    const hoverRow = tableRoot.querySelector(`.${ns.is("hovered")}[rowkey="${String(rowKey)}"]`);
+    if (hoverRow) {
+      nextTick(() => onRowHovered({ hovered: true, rowKey }));
+    }
   }
   const flushingRowHeights = debounce(() => {
     var _a, _b, _c, _d;
@@ -112,7 +126,6 @@ const useRow = (props, { mainTableRef, leftTableRef, rightTableRef, isScrolling 
   }
   return {
     expandedRowKeys,
-    hoveredRowIndex,
     lastRenderedRowIndex,
     isDynamic,
     isResetting,

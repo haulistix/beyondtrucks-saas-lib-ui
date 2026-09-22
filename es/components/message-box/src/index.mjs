@@ -10,7 +10,6 @@ import TrapFocus from '../../../directives/trap-focus/index.mjs';
 import { TypeComponents, TypeComponentsMap } from '../../../utils/vue/icon.mjs';
 import { isValidComponentSize } from '../../../utils/vue/validator.mjs';
 import { useGlobalComponentSettings } from '../../config-provider/src/hooks/use-global-config.mjs';
-import { addUnit } from '../../../utils/dom/style.mjs';
 import { useId } from '../../../hooks/use-id/index.mjs';
 import { useDraggable } from '../../../hooks/use-draggable/index.mjs';
 import { isFunction, isString } from '@vue/shared';
@@ -94,7 +93,6 @@ const _sfc_main = defineComponent({
     const visible = ref(false);
     const state = reactive({
       autofocus: true,
-      width: "630px",
       beforeClose: null,
       callback: null,
       cancelButtonText: "",
@@ -135,10 +133,6 @@ const _sfc_main = defineComponent({
       const type = state.type;
       return { [ns.bm("icon", type)]: type && TypeComponentsMap[type] };
     });
-    const boxStyle = computed(() => ({
-      [`--${ns.namespace.value}-messagebox-width`]: addUnit(state.width),
-      ...state.customStyle
-    }));
     const contentId = useId();
     const inputId = useId();
     const iconComponent = computed(() => {
@@ -290,7 +284,6 @@ const _sfc_main = defineComponent({
       btnSize,
       iconComponent,
       confirmButtonClasses,
-      boxStyle,
       rootRef,
       focusStartRef,
       headerRef,
@@ -352,7 +345,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.ns.is("dragging", _ctx.isDragging),
                     { [_ctx.ns.m("center")]: _ctx.center }
                   ]),
-                  style: normalizeStyle(_ctx.boxStyle),
+                  style: normalizeStyle(_ctx.customStyle),
                   tabindex: "-1",
                   onClick: withModifiers(() => {
                   }, ["stop"])

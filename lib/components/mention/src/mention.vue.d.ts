@@ -142,7 +142,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    expand: BooleanConstructor;
     disabled: BooleanConstructor;
     modelModifiers: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("element-plus/es/components/input").InputModelModifiers) | (() => import("element-plus/es/components/input").InputModelModifiers) | ((new (...args: any[]) => import("element-plus/es/components/input").InputModelModifiers) | (() => import("element-plus/es/components/input").InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     maxlength: {
@@ -389,7 +388,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    expand: BooleanConstructor;
     disabled: BooleanConstructor;
     modelModifiers: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("element-plus/es/components/input").InputModelModifiers) | (() => import("element-plus/es/components/input").InputModelModifiers) | ((new (...args: any[]) => import("element-plus/es/components/input").InputModelModifiers) | (() => import("element-plus/es/components/input").InputModelModifiers))[], unknown, unknown, () => {}, boolean>;
     maxlength: {
@@ -521,7 +519,6 @@ declare const __VLS_component: import("vue").DefineComponent<{
     rows: number;
     inputmode: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown>;
     isHoverSuffix: boolean;
-    expand: boolean;
     showPassword: boolean;
     showWordLimit: boolean;
     autofocus: boolean;

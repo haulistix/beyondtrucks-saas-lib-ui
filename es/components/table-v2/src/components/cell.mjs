@@ -43,12 +43,10 @@ const TableV2Cell = defineComponent({
       if (!showOverflowTooltip)
         return content;
       const tooltipOptions = typeof showOverflowTooltip === "object" ? showOverflowTooltip : {};
-      const popperClass = [tooltipOptions.popperClass, "text-overflow-tooltip"].filter(Boolean).join(" ");
       return createVNode(ElTooltip, mergeProps({
         "effect": "light",
         "placement": "top"
       }, tooltipOptions, {
-        "popperClass": popperClass,
         "content": displayText,
         "disabled": !isOverflowing.value
       }), _isSlot(content) ? content : {

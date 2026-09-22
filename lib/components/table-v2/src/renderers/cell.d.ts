@@ -5,7 +5,7 @@ import type { RowAddHandler, RowDeleteHandler } from '../row';
 import type { UseTableReturn } from '../use-table';
 import type { GhostRowAddParams, TableV2Props } from '../table';
 import type { TableV2RowActionSlotParams } from '../types';
-type CellRendererProps = TableV2RowCellRenderParam & Pick<TableV2Props, 'canEditTable' | 'cellProps' | 'disableEmptyGhostRowSave' | 'editable' | 'editTable' | 'expandColumnKey' | 'ghostTable' | 'indentSize' | 'iconSize' | 'rowKey'> & UnwrapNestedRefs<Pick<UseTableReturn, 'expandedRowKeys' | 'visibleColumns'>> & {
+type CellRendererProps = TableV2RowCellRenderParam & Pick<TableV2Props, 'canEditTable' | 'cellProps' | 'editable' | 'editTable' | 'expandColumnKey' | 'ghostTable' | 'indentSize' | 'iconSize' | 'rowKey'> & UnwrapNestedRefs<Pick<UseTableReturn, 'expandedRowKeys' | 'visibleColumns'>> & {
     onRowAdd?: RowAddHandler;
     onAddGhostRow?: (params: GhostRowAddParams<any>) => void;
     onRowDelete?: RowDeleteHandler;

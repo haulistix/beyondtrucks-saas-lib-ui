@@ -46,13 +46,21 @@
       align-self: stretch;
       align-content: flex-start;
       align-items: flex-start;
+      box-sizing: border-box;
       flex-wrap: wrap;
+      margin-right: -12px;
       min-height: 0;
       overflow-y: auto;
+      padding-right: 40px;
     }
 
     .el-select__suffix {
       align-self: center;
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      z-index: 1;
+      transform: translateY(-50%);
     }
 
     .el-select__placeholder,

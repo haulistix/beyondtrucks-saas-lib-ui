@@ -18,7 +18,9 @@ const _sfc_main = defineComponent({
     showDivider: {
       type: Boolean,
       default: true
-    }
+    },
+    selectionSection: Boolean,
+    businessGroup: Boolean
   },
   setup(props) {
     const ns = useNamespace("select");
@@ -37,7 +39,11 @@ const _sfc_main = defineComponent({
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_divider = resolveComponent("el-divider");
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.ns.be("group", "wrap")),
+    class: normalizeClass([
+      _ctx.ns.be("group", "wrap"),
+      _ctx.ns.is("selection-section", _ctx.selectionSection),
+      _ctx.ns.is("business-group", _ctx.businessGroup)
+    ]),
     style: normalizeStyle(_ctx.groupStyle)
   }, [
     _ctx.showDivider ? (openBlock(), createBlock(_component_el_divider, {

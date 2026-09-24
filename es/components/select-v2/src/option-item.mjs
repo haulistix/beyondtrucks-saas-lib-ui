@@ -1,5 +1,4 @@
-import { defineComponent, inject, ref, computed, Comment, Text, Fragment, resolveComponent, openBlock, createElementBlock, normalizeStyle, normalizeClass, withModifiers, createElementVNode, createBlock, createCommentVNode, createVNode, withCtx, toDisplayString, renderSlot } from 'vue';
-import { isObject, get } from 'lodash-unified';
+import { defineComponent, inject, ref, computed, Comment, Text, Fragment, resolveComponent, openBlock, createElementBlock, normalizeStyle, normalizeClass, withModifiers, createCommentVNode, createElementVNode, createBlock, createVNode, withCtx, toDisplayString, renderSlot } from 'vue';
 import { getPadding, isGreaterThan } from '../../table/src/util.mjs';
 import { ElCheckbox } from '../../checkbox/index.mjs';
 import { ElRadio } from '../../radio/index.mjs';
@@ -42,7 +41,7 @@ const _sfc_main = defineComponent({
     const ns = useNamespace("select");
     const multiple = computed(() => select.props.multiple);
     const { hoverItem, selectOptionClick } = useOption(props, { emit });
-    const { getLabel, getValue, getTip } = useProps(select.props);
+    const { getLabel, getTip } = useProps(select.props);
     const currentTip = computed(() => getTip(props.item));
     const hasDefaultSlot = computed(() => {
       var _a, _b;
@@ -53,33 +52,12 @@ const _sfc_main = defineComponent({
       })) != null ? _b : []);
     });
     const contentId = select.contentId;
-    const isItemSelected = (item) => {
-      if (!item || item.type === "Group" || !multiple.value)
-        return false;
-      const values = Array.isArray(select.props.modelValue) ? select.props.modelValue : [];
-      const itemValue = getValue(item);
-      if (!isObject(itemValue)) {
-        return values.includes(itemValue);
-      }
-      return values.some((value) => get(value, select.props.valueKey) === get(itemValue, select.props.valueKey));
-    };
-    const selectedCount = computed(() => {
-      if (!multiple.value || !Array.isArray(props.data))
-        return 0;
-      return props.data.filter((item) => isItemSelected(item)).length;
-    });
-    const showSelectedDivider = computed(() => {
-      return !props.selected && multiple.value && selectedCount.value > 0 && props.index === selectedCount.value;
-    });
     const optionStyle = computed(() => {
       const virtualStyle = { ...props.style };
       if (virtualStyle.height === `${SELECT_V2_DEFAULT_ITEM_HEIGHT}px`) {
         delete virtualStyle.height;
       }
-      return {
-        ...virtualStyle,
-        borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : "none"
-      };
+      return virtualStyle;
     });
     const handleCellMouseEnter = (event) => {
       const cellChild = event.target.querySelector(".option-wrap-content");
@@ -107,6 +85,7 @@ const _sfc_main = defineComponent({
       hasDefaultSlot,
       isTextOverflowing,
       currentTip,
+      showSelectionSection: computed(() => props.showSelectionSection),
       optionStyle,
       hoverItem,
       selectOptionClick,
@@ -131,12 +110,21 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       _ctx.ns.is("disabled", _ctx.disabled),
       _ctx.ns.is("created", _ctx.created),
       _ctx.ns.is("hovering", _ctx.hovering),
-      _ctx.ns.is("multiple", _ctx.multiple)
+      _ctx.ns.is("multiple", _ctx.multiple),
+      _ctx.ns.is("section-start", _ctx.showSelectionSection)
     ]),
     onMousemove: _ctx.hoverItem,
     onClick: withModifiers(_ctx.selectOptionClick, ["stop"]),
     onMouseenter: _ctx.handleCellMouseEnter
   }, [
+    _ctx.showSelectionSection ? (openBlock(), createElementBlock("div", {
+      key: 0,
+      class: normalizeClass([_ctx.ns.be("dropdown", "section-title"), _ctx.ns.is("unselected-section")]),
+      onClick: withModifiers(() => {
+      }, ["stop"]),
+      onMousemove: withModifiers(() => {
+      }, ["stop"])
+    }, " Unselected ", 42, ["onClick", "onMousemove"])) : createCommentVNode("v-if", true),
     createElementVNode("div", { class: "option-wrap" }, [
       !_ctx.multiple ? (openBlock(), createBlock(_component_el_radio, {
         key: 0,

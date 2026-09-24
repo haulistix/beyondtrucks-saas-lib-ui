@@ -1,10 +1,9 @@
-import type { Option } from './select.types';
 declare const _default: import("vue").DefineComponent<{
     readonly data: ArrayConstructor;
     readonly disabled: BooleanConstructor;
     readonly hovering: BooleanConstructor;
     readonly item: {
-        readonly type: import("vue").PropType<Option>;
+        readonly type: import("vue").PropType<import("./select.types").Option>;
         readonly required: true;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
@@ -13,6 +12,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly style: ObjectConstructor;
     readonly selected: BooleanConstructor;
     readonly created: BooleanConstructor;
+    readonly showSelectionSection: BooleanConstructor;
 }, {
     ns: {
         namespace: import("vue").ComputedRef<string>;
@@ -38,22 +38,23 @@ declare const _default: import("vue").DefineComponent<{
     hasDefaultSlot: import("vue").ComputedRef<boolean>;
     isTextOverflowing: import("vue").Ref<boolean>;
     currentTip: import("vue").ComputedRef<any>;
+    showSelectionSection: import("vue").ComputedRef<boolean>;
     optionStyle: import("vue").ComputedRef<{
-        borderTop: string;
+        [x: string]: any;
     }>;
     hoverItem: () => void;
     selectOptionClick: () => void;
-    getLabel: (option: Option) => any;
+    getLabel: (option: import("./select.types").Option) => any;
     handleCellMouseEnter: (event: MouseEvent) => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     hover: (index?: number) => index is number;
-    select: (val: Option, index?: number) => boolean;
+    select: (val: import("./select.types").Option, index?: number) => boolean;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     readonly data: ArrayConstructor;
     readonly disabled: BooleanConstructor;
     readonly hovering: BooleanConstructor;
     readonly item: {
-        readonly type: import("vue").PropType<Option>;
+        readonly type: import("vue").PropType<import("./select.types").Option>;
         readonly required: true;
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
@@ -62,13 +63,15 @@ declare const _default: import("vue").DefineComponent<{
     readonly style: ObjectConstructor;
     readonly selected: BooleanConstructor;
     readonly created: BooleanConstructor;
+    readonly showSelectionSection: BooleanConstructor;
 }>> & {
-    onSelect?: ((val: Option, index?: number | undefined) => any) | undefined;
+    onSelect?: ((val: import("./select.types").Option, index?: number | undefined) => any) | undefined;
     onHover?: ((index?: number | undefined) => any) | undefined;
 }, {
     readonly disabled: boolean;
     readonly created: boolean;
     readonly hovering: boolean;
     readonly selected: boolean;
+    readonly showSelectionSection: boolean;
 }>;
 export default _default;

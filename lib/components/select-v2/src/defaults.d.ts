@@ -266,6 +266,7 @@ export declare const optionV2Props: {
     readonly style: ObjectConstructor;
     readonly selected: BooleanConstructor;
     readonly created: BooleanConstructor;
+    readonly showSelectionSection: BooleanConstructor;
 };
 export declare const selectV2Emits: {
     "update:modelValue": (val: SelectV2ModelValue) => boolean;

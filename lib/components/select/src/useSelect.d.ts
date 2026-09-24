@@ -68,6 +68,14 @@ export declare const useSelect: (props: SelectProps, emit: SelectEmits) => {
     hoverOption: import("vue").Ref<any>;
     selectSize: import("vue").ComputedRef<"" | "small" | "default" | "large">;
     filteredOptionsCount: import("vue").ComputedRef<number>;
+    visibleMultipleOptions: import("vue").ComputedRef<OptionPublicInstance[]>;
+    hasVisibleSelectedOptions: import("vue").ComputedRef<boolean>;
+    hasVisibleUnselectedOptions: import("vue").ComputedRef<boolean>;
+    multipleSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
+    isAllVisibleOptionsSelected: import("vue").ComputedRef<boolean>;
+    isSelectAllIndeterminate: import("vue").ComputedRef<boolean>;
+    selectAllLabel: import("vue").ComputedRef<"Deselect All" | "Select All">;
+    isSelectAllDisabled: import("vue").ComputedRef<boolean>;
     updateTooltip: () => void;
     updateTagTooltip: () => void;
     debouncedOnInputChange: import("@vueuse/shared").PromisifyFn<() => void>;
@@ -76,6 +84,7 @@ export declare const useSelect: (props: SelectProps, emit: SelectEmits) => {
     deleteTag: (event: MouseEvent, tag: OptionBasic) => void;
     deleteSelected: (event: Event) => void;
     handleOptionSelect: (option: OptionPublicInstance) => Promise<void>;
+    toggleSelectAll: () => Promise<void>;
     scrollToOption: (option: OptionPublicInstance | OptionPublicInstance[] | SelectStates["selected"]) => void;
     hasModelValue: import("vue").ComputedRef<boolean>;
     shouldShowPlaceholder: import("vue").ComputedRef<boolean>;

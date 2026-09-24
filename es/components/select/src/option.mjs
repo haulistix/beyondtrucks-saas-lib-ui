@@ -1,4 +1,4 @@
-import { defineComponent, ref, computed, Comment, Text, unref, reactive, toRefs, getCurrentInstance, onMounted, onBeforeUnmount, nextTick, resolveComponent, withDirectives, openBlock, createElementBlock, normalizeClass, normalizeStyle, withModifiers, createElementVNode, createBlock, createCommentVNode, renderSlot, withCtx, toDisplayString, vShow } from 'vue';
+import { defineComponent, ref, computed, Comment, Text, unref, reactive, toRefs, getCurrentInstance, onBeforeUnmount, nextTick, resolveComponent, withDirectives, openBlock, createElementBlock, normalizeClass, normalizeStyle, withModifiers, createElementVNode, createBlock, createCommentVNode, renderSlot, withCtx, toDisplayString, vShow } from 'vue';
 import { useOption } from './useOption.mjs';
 import { COMPONENT_NAME, optionProps } from './option2.mjs';
 import { ElTooltip } from '../../tooltip/index.mjs';
@@ -58,38 +58,17 @@ const _sfc_main = defineComponent({
     select.onOptionCreate(vm);
     const multiple = computed(() => select.props.multiple);
     const isSelectedTop = computed(() => multiple.value && itemSelected.value);
-    const isMounted = ref(false);
     const getGroupElement = (option = vm) => {
       var _a, _b;
       return (_b = (_a = option.$el) == null ? void 0 : _a.closest) == null ? void 0 : _b.call(_a, `.${ns.b("group")}`);
     };
     const isGroupOption = () => Boolean(getGroupElement());
-    const getDividerOptions = () => {
-      const visibleOptions = select.optionsArray.filter((option) => option.visible);
-      const currentGroupEl = isMounted.value ? getGroupElement() : null;
-      if (!currentGroupEl) {
-        return visibleOptions;
-      }
-      return visibleOptions.filter((option) => getGroupElement(option) === currentGroupEl);
-    };
-    const showSelectedDivider = computed(() => {
-      if (!multiple.value || itemSelected.value || !visible.value)
-        return false;
-      const visibleOptions = getDividerOptions();
-      const firstUnselectedOption = visibleOptions.find((option) => !option.itemSelected);
-      const hasSelectedOption = visibleOptions.some((option) => option.itemSelected);
-      return hasSelectedOption && firstUnselectedOption === vm;
-    });
     const optionStyle = computed(() => {
       if (!multiple.value)
         return {};
       return {
-        order: isSelectedTop.value ? 1 : 2,
-        borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : void 0
+        order: isSelectedTop.value ? 1 : 3
       };
-    });
-    onMounted(() => {
-      isMounted.value = true;
     });
     onBeforeUnmount(() => {
       const key = vm.value;

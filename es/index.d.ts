@@ -17071,6 +17071,14 @@ declare const _default_75: DefineComponent<{
     hoverOption: Ref<any>;
     selectSize: ComputedRef<"" | "small" | "default" | "large">;
     filteredOptionsCount: ComputedRef<number>;
+    visibleMultipleOptions: ComputedRef<SelectOptionProxy[]>;
+    hasVisibleSelectedOptions: ComputedRef<boolean>;
+    hasVisibleUnselectedOptions: ComputedRef<boolean>;
+    multipleSectionLabel: ComputedRef<"Selected" | "Unselected">;
+    isAllVisibleOptionsSelected: ComputedRef<boolean>;
+    isSelectAllIndeterminate: ComputedRef<boolean>;
+    selectAllLabel: ComputedRef<"Deselect All" | "Select All">;
+    isSelectAllDisabled: ComputedRef<boolean>;
     updateTooltip: () => void;
     updateTagTooltip: () => void;
     debouncedOnInputChange: PromisifyFn<() => void>;
@@ -17079,6 +17087,7 @@ declare const _default_75: DefineComponent<{
     deleteTag: (event: MouseEvent, tag: OptionBasic) => void;
     deleteSelected: (event: Event) => void;
     handleOptionSelect: (option: SelectOptionProxy) => Promise<void>;
+    toggleSelectAll: () => Promise<void>;
     scrollToOption: (option: SelectOptionProxy | SelectOptionProxy[] | SelectStates["selected"]) => void;
     hasModelValue: ComputedRef<boolean>;
     shouldShowPlaceholder: ComputedRef<boolean>;
@@ -17415,10 +17424,8 @@ declare const _default_76: DefineComponent<{
     placement: EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown>;
     optionStyle: ComputedRef<{
         order?: undefined;
-        borderTop?: undefined;
     } | {
         order: number;
-        borderTop: string | undefined;
     }>;
     handleCellMouseEnter: (event: MouseEvent) => void;
     hoverItem: () => void;
@@ -17467,7 +17474,10 @@ declare const _default_77: DefineComponent<{
     disabled: BooleanConstructor;
 }, {
     groupRef: Ref<HTMLElement | undefined>;
+    select: SelectContext;
     visible: ComputedRef<boolean>;
+    hasVisibleSelectedOptions: ComputedRef<boolean>;
+    hasVisibleUnselectedOptions: ComputedRef<boolean>;
     isFirstVisibleGroup: ComputedRef<boolean>;
     ns: {
         namespace: ComputedRef<string>;
@@ -17790,6 +17800,15 @@ declare const _default_78: DefineComponent<{
         [x: string]: any;
         created?: boolean | undefined;
     })[]>;
+    currentMultipleOptions: ComputedRef<Option_2[]>;
+    hasMultipleOptionGroups: ComputedRef<boolean>;
+    hasVisibleSelectedOptions: ComputedRef<boolean>;
+    hasVisibleUnselectedOptions: ComputedRef<boolean>;
+    multipleSectionLabel: ComputedRef<"Selected" | "Unselected">;
+    isAllVisibleOptionsSelected: ComputedRef<boolean>;
+    isSelectAllIndeterminate: ComputedRef<boolean>;
+    selectAllLabel: ComputedRef<"Deselect All" | "Select All">;
+    isSelectAllDisabled: ComputedRef<boolean>;
     iconComponent: ComputedRef<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown> | undefined>;
     iconReverse: ComputedRef<string | undefined>;
     tagStyle: ComputedRef<{
@@ -17886,6 +17905,7 @@ declare const _default_78: DefineComponent<{
     onKeyboardNavigate: (direction: "forward" | "backward", hoveringIndex?: number | undefined) => void;
     onKeyboardSelect: () => void;
     onSelect: (option: Option_2) => Promise<void>;
+    toggleSelectAll: () => Promise<void>;
     onHover: (idx?: number) => void;
     handleCompositionStart: (event: CompositionEvent) => void;
     handleCompositionEnd: (event: CompositionEvent) => void;
@@ -25482,6 +25502,7 @@ declare const optionV2Props: {
     readonly style: ObjectConstructor;
     readonly selected: BooleanConstructor;
     readonly created: BooleanConstructor;
+    readonly showSelectionSection: BooleanConstructor;
 };
 declare type OptionValue = OptionProps["value"];
 export declare type OverlayEmits = typeof overlayEmits;

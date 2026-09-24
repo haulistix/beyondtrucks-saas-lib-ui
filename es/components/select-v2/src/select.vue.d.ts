@@ -279,6 +279,15 @@ declare const _default: import("vue").DefineComponent<{
         [x: string]: any;
         created?: boolean | undefined;
     })[]>;
+    currentMultipleOptions: import("vue").ComputedRef<import("./select.types").Option[]>;
+    hasMultipleOptionGroups: import("vue").ComputedRef<boolean>;
+    hasVisibleSelectedOptions: import("vue").ComputedRef<boolean>;
+    hasVisibleUnselectedOptions: import("vue").ComputedRef<boolean>;
+    multipleSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
+    isAllVisibleOptionsSelected: import("vue").ComputedRef<boolean>;
+    isSelectAllIndeterminate: import("vue").ComputedRef<boolean>;
+    selectAllLabel: import("vue").ComputedRef<"Deselect All" | "Select All">;
+    isSelectAllDisabled: import("vue").ComputedRef<boolean>;
     iconComponent: import("vue").ComputedRef<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown> | undefined>;
     iconReverse: import("vue").ComputedRef<string | undefined>;
     tagStyle: import("vue").ComputedRef<{
@@ -375,6 +384,7 @@ declare const _default: import("vue").DefineComponent<{
     onKeyboardNavigate: (direction: "forward" | "backward", hoveringIndex?: number | undefined) => void;
     onKeyboardSelect: () => void;
     onSelect: (option: import("./select.types").Option) => Promise<void>;
+    toggleSelectAll: () => Promise<void>;
     onHover: (idx?: number) => void;
     handleCompositionStart: (event: CompositionEvent) => void;
     handleCompositionEnd: (event: CompositionEvent) => void;

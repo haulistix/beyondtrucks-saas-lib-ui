@@ -9,7 +9,10 @@ declare const _default: import("vue").DefineComponent<{
     disabled: BooleanConstructor;
 }, {
     groupRef: import("vue").Ref<HTMLElement | undefined>;
+    select: import("./type").SelectContext;
     visible: import("vue").ComputedRef<boolean>;
+    hasVisibleSelectedOptions: import("vue").ComputedRef<boolean>;
+    hasVisibleUnselectedOptions: import("vue").ComputedRef<boolean>;
     isFirstVisibleGroup: import("vue").ComputedRef<boolean>;
     ns: {
         namespace: import("vue").ComputedRef<string>;

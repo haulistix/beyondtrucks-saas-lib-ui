@@ -16731,8 +16731,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
       { resize: props.resize },
       props.expand ? {
         height: "94px",
-        overflowY: "auto",
-        transition: "height var(--el-transition-duration) ease"
+        overflowY: "auto"
       } : {}
     ]);
     const nativeInputValue = computed(() => isNil(props.modelValue) ? "" : String(props.modelValue));
@@ -16822,6 +16821,8 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
           ...textareaStyle2
         };
         nextTick(() => {
+          if (!textarea.value)
+            return;
           textarea.value.offsetHeight;
           textareaCalcStyle.value = textareaStyle2;
         });
@@ -37660,38 +37661,17 @@ const _sfc_main$1d = defineComponent({
     select.onOptionCreate(vm);
     const multiple = computed(() => select.props.multiple);
     const isSelectedTop = computed(() => multiple.value && itemSelected.value);
-    const isMounted = ref(false);
     const getGroupElement = (option = vm) => {
       var _a, _b;
       return (_b = (_a = option.$el) == null ? void 0 : _a.closest) == null ? void 0 : _b.call(_a, `.${ns.b("group")}`);
     };
     const isGroupOption = () => Boolean(getGroupElement());
-    const getDividerOptions = () => {
-      const visibleOptions = select.optionsArray.filter((option) => option.visible);
-      const currentGroupEl = isMounted.value ? getGroupElement() : null;
-      if (!currentGroupEl) {
-        return visibleOptions;
-      }
-      return visibleOptions.filter((option) => getGroupElement(option) === currentGroupEl);
-    };
-    const showSelectedDivider = computed(() => {
-      if (!multiple.value || itemSelected.value || !visible.value)
-        return false;
-      const visibleOptions = getDividerOptions();
-      const firstUnselectedOption = visibleOptions.find((option) => !option.itemSelected);
-      const hasSelectedOption = visibleOptions.some((option) => option.itemSelected);
-      return hasSelectedOption && firstUnselectedOption === vm;
-    });
     const optionStyle = computed(() => {
       if (!multiple.value)
         return {};
       return {
-        order: isSelectedTop.value ? 1 : 2,
-        borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : void 0
+        order: isSelectedTop.value ? 1 : 3
       };
-    });
-    onMounted(() => {
-      isMounted.value = true;
     });
     onBeforeUnmount(() => {
       const key = vm.value;
@@ -37999,7 +37979,7 @@ const useSelect$3 = (props, emit) => {
     return (_a = form == null ? void 0 : form.statusIcon) != null ? _a : false;
   });
   const showClearBtn = computed(() => {
-    return props.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
+    return props.clearable && !props.multiple && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
   });
   const iconComponent = computed(() => props.remote && props.filterable && !props.remoteShowSuffix ? "" : props.suffixIcon);
   const iconReverse = computed(() => nsSelect.is("reverse", !!(iconComponent.value && expanded.value)));
@@ -38385,6 +38365,42 @@ const useSelect$3 = (props, emit) => {
       return isEqual$1(get(item, props.valueKey), getValueKey(option));
     });
   };
+  const visibleMultipleOptions = computed(() => props.multiple ? optionsArray.value.filter((option) => option.visible) : []);
+  const selectableMultipleOptions = computed(() => visibleMultipleOptions.value.filter((option) => !option.isDisabled));
+  const isMultipleOptionSelected = (option) => getValueIndex(castArray$1(props.modelValue), option) > -1;
+  const hasVisibleSelectedOptions = computed(() => visibleMultipleOptions.value.some(isMultipleOptionSelected));
+  const hasVisibleUnselectedOptions = computed(() => visibleMultipleOptions.value.some((option) => !isMultipleOptionSelected(option)));
+  const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+  const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isMultipleOptionSelected));
+  const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isMultipleOptionSelected) && !isAllVisibleOptionsSelected.value);
+  const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
+  const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
+  const toggleSelectAll = async () => {
+    if (!props.multiple || selectDisabled.value || selectableMultipleOptions.value.length === 0) {
+      return;
+    }
+    let value = castArray$1(props.modelValue).slice();
+    if (isAllVisibleOptionsSelected.value) {
+      value = value.filter((selectedValue) => {
+        const option = optionsArray.value.find((item) => getValueIndex([selectedValue], item) > -1);
+        return Boolean(option == null ? void 0 : option.isDisabled);
+      });
+    } else {
+      for (const option of selectableMultipleOptions.value) {
+        if (getValueIndex(value, option) > -1)
+          continue;
+        if (props.multipleLimit > 0 && value.length >= props.multipleLimit) {
+          break;
+        }
+        value.push(option.value);
+      }
+    }
+    if (!await checkBeforeChange(value, props.modelValue))
+      return;
+    emit(UPDATE_MODEL_EVENT, value);
+    emitChange(value);
+    focus();
+  };
   const scrollToOption = (option) => {
     var _a, _b, _c, _d, _e;
     const targetOption = isArray$1(option) ? option[0] : option;
@@ -38566,6 +38582,14 @@ const useSelect$3 = (props, emit) => {
     hoverOption,
     selectSize,
     filteredOptionsCount,
+    visibleMultipleOptions,
+    hasVisibleSelectedOptions,
+    hasVisibleUnselectedOptions,
+    multipleSectionLabel,
+    isAllVisibleOptionsSelected,
+    isSelectAllIndeterminate,
+    selectAllLabel,
+    isSelectAllDisabled,
     updateTooltip,
     updateTagTooltip,
     debouncedOnInputChange,
@@ -38574,6 +38598,7 @@ const useSelect$3 = (props, emit) => {
     deleteTag,
     deleteSelected,
     handleOptionSelect,
+    toggleSelectAll,
     scrollToOption,
     hasModelValue,
     shouldShowPlaceholder,
@@ -38863,6 +38888,8 @@ const _sfc_main$1b = defineComponent({
       ...toRefs(props)
     }));
     const visible = computed(() => children.value.some((option) => option.visible === true));
+    const hasVisibleSelectedOptions = computed(() => children.value.some((option) => option.visible === true && unref(option.itemSelected)));
+    const hasVisibleUnselectedOptions = computed(() => children.value.some((option) => option.visible === true && !unref(option.itemSelected)));
     const isFirstVisibleGroup = computed(() => {
       const firstVisibleOption = select.optionsArray.find((option) => option.visible);
       return !!firstVisibleOption && children.value.includes(firstVisibleOption);
@@ -38901,7 +38928,10 @@ const _sfc_main$1b = defineComponent({
     });
     return {
       groupRef,
+      select,
       visible,
+      hasVisibleSelectedOptions,
+      hasVisibleUnselectedOptions,
       isFirstVisibleGroup,
       ns
     };
@@ -38911,19 +38941,31 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_divider = resolveComponent("el-divider");
   return withDirectives((openBlock(), createElementBlock("ul", {
     ref: "groupRef",
-    class: normalizeClass(_ctx.ns.be("group", "wrap"))
+    class: normalizeClass([_ctx.ns.be("group", "wrap"), _ctx.ns.is("multiple", _ctx.select.props.multiple)])
   }, [
-    !_ctx.isFirstVisibleGroup ? (openBlock(), createBlock(_component_el_divider, { key: 0 })) : createCommentVNode("v-if", true),
-    createElementVNode("li", {
-      class: normalizeClass(_ctx.ns.be("group", "title"))
-    }, toDisplayString(_ctx.label), 3),
-    createElementVNode("li", null, [
-      createElementVNode("ul", {
-        class: normalizeClass(_ctx.ns.b("group"))
-      }, [
-        renderSlot(_ctx.$slots, "default")
-      ], 2)
-    ])
+    _ctx.select.props.multiple ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+      _ctx.hasVisibleSelectedOptions ? (openBlock(), createElementBlock("li", {
+        key: 0,
+        class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("selected-group")])
+      }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
+      _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("li", {
+        key: 1,
+        class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("unselected-group")])
+      }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
+      renderSlot(_ctx.$slots, "default")
+    ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+      !_ctx.isFirstVisibleGroup ? (openBlock(), createBlock(_component_el_divider, { key: 0 })) : createCommentVNode("v-if", true),
+      createElementVNode("li", {
+        class: normalizeClass(_ctx.ns.be("group", "title"))
+      }, toDisplayString(_ctx.label), 3),
+      createElementVNode("li", null, [
+        createElementVNode("ul", {
+          class: normalizeClass(_ctx.ns.b("group"))
+        }, [
+          renderSlot(_ctx.$slots, "default")
+        ], 2)
+      ])
+    ], 64))
   ], 2)), [
     [vShow, _ctx.visible]
   ]);
@@ -38942,7 +38984,8 @@ const _sfc_main$1a = defineComponent({
     ElTag,
     ElScrollbar,
     ElTooltip,
-    ElIcon
+    ElIcon,
+    ElCheckbox
   },
   directives: { ClickOutside },
   props: selectProps,
@@ -39132,6 +39175,7 @@ function _sfc_render$b(_ctx, _cache) {
   const _component_el_option_group = resolveComponent("el-option-group");
   const _component_el_options = resolveComponent("el-options");
   const _component_el_scrollbar = resolveComponent("el-scrollbar");
+  const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_select_menu = resolveComponent("el-select-menu");
   const _directive_click_outside = resolveDirective("click-outside");
   return withDirectives((openBlock(), createElementBlock("div", {
@@ -39243,14 +39287,13 @@ function _sfc_render$b(_ctx, _cache) {
                           class: normalizeClass(_ctx.nsSelect.e("selected-item"))
                         }, [
                           createVNode(_component_el_tag, {
-                            closable: !_ctx.selectDisabled && !item.isDisabled,
+                            closable: false,
                             size: _ctx.collapseTagSize,
                             type: _ctx.tagType,
                             effect: _ctx.tagEffect,
                             "disable-transitions": "",
                             style: normalizeStyle(_ctx.tagStyle),
-                            round: "",
-                            onClose: ($event) => _ctx.deleteTag($event, item)
+                            round: ""
                           }, {
                             default: withCtx(() => [
                               createElementVNode("span", {
@@ -39267,7 +39310,7 @@ function _sfc_render$b(_ctx, _cache) {
                               ], 2)
                             ]),
                             _: 2
-                          }, 1032, ["closable", "size", "type", "effect", "style", "onClose"])
+                          }, 1032, ["size", "type", "effect", "style"])
                         ], 2);
                       }), 128)),
                       _ctx.collapseTags && _ctx.states.selected.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
@@ -39316,13 +39359,12 @@ function _sfc_render$b(_ctx, _cache) {
                               }, [
                                 createVNode(_component_el_tag, {
                                   class: "in-tooltip",
-                                  closable: !_ctx.selectDisabled && !item.isDisabled,
+                                  closable: false,
                                   size: _ctx.collapseTagSize,
                                   type: _ctx.tagType,
                                   effect: _ctx.tagEffect,
                                   "disable-transitions": "",
-                                  round: "",
-                                  onClose: ($event) => _ctx.deleteTag($event, item)
+                                  round: ""
                                 }, {
                                   default: withCtx(() => [
                                     createElementVNode("span", {
@@ -39339,7 +39381,7 @@ function _sfc_render$b(_ctx, _cache) {
                                     ], 2)
                                   ]),
                                   _: 2
-                                }, 1032, ["closable", "size", "type", "effect", "onClose"])
+                                }, 1032, ["size", "type", "effect"])
                               ], 2);
                             }), 128))
                           ], 2)
@@ -39508,16 +39550,30 @@ function _sfc_render$b(_ctx, _cache) {
                     onScroll: _ctx.popupScroll
                   }, {
                     default: withCtx(() => [
-                      _ctx.states.selected.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
+                      _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
                         key: 0,
+                        class: normalizeClass([
+                          _ctx.nsSelect.be("dropdown", "section-title"),
+                          _ctx.nsSelect.is("selected-section", _ctx.hasVisibleSelectedOptions)
+                        ])
+                      }, toDisplayString(_ctx.multipleSectionLabel), 3)) : createCommentVNode("v-if", true),
+                      _ctx.multiple && _ctx.hasVisibleSelectedOptions && _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("div", {
+                        key: 1,
+                        class: normalizeClass([
+                          _ctx.nsSelect.be("dropdown", "section-title"),
+                          _ctx.nsSelect.is("unselected-section")
+                        ])
+                      }, " Unselected ", 2)) : createCommentVNode("v-if", true),
+                      _ctx.states.selected.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
+                        key: 2,
                         class: "select-all-item"
                       }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
                       _ctx.addShowTip && _ctx.filterable ? (openBlock(), createElementBlock("div", {
-                        key: 1,
+                        key: 3,
                         class: "select-add-tip"
                       }, toDisplayString(_ctx.addShowTip), 1)) : createCommentVNode("v-if", true),
                       _ctx.showNewOption ? (openBlock(), createBlock(_component_el_option, {
-                        key: 2,
+                        key: 4,
                         value: _ctx.states.inputValue,
                         created: true
                       }, null, 8, ["value"])) : createCommentVNode("v-if", true),
@@ -39595,8 +39651,23 @@ function _sfc_render$b(_ctx, _cache) {
                       ], 8, ["onClick"]))
                     ])
                   ], 2)) : createCommentVNode("v-if", true),
-                  _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+                  _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
                     key: 3,
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
+                    onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])
+                  }, [
+                    createVNode(_component_el_checkbox, {
+                      "model-value": _ctx.isAllVisibleOptionsSelected,
+                      indeterminate: _ctx.isSelectAllIndeterminate,
+                      disabled: _ctx.isSelectAllDisabled,
+                      onClick: withModifiers(() => {
+                      }, ["stop"]),
+                      onChange: _ctx.toggleSelectAll
+                    }, null, 8, ["model-value", "indeterminate", "disabled", "onClick", "onChange"]),
+                    createElementVNode("span", null, toDisplayString(_ctx.selectAllLabel), 1)
+                  ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+                  _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+                    key: 4,
                     class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
                     onClick: withModifiers(() => {
                     }, ["stop"])
@@ -45803,7 +45874,9 @@ const _sfc_main$S = defineComponent({
     showDivider: {
       type: Boolean,
       default: true
-    }
+    },
+    selectionSection: Boolean,
+    businessGroup: Boolean
   },
   setup(props) {
     const ns = useNamespace("select");
@@ -45822,7 +45895,11 @@ const _sfc_main$S = defineComponent({
 function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_divider = resolveComponent("el-divider");
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass(_ctx.ns.be("group", "wrap")),
+    class: normalizeClass([
+      _ctx.ns.be("group", "wrap"),
+      _ctx.ns.is("selection-section", _ctx.selectionSection),
+      _ctx.ns.is("business-group", _ctx.businessGroup)
+    ]),
     style: normalizeStyle(_ctx.groupStyle)
   }, [
     _ctx.showDivider ? (openBlock(), createBlock(_component_el_divider, {
@@ -46480,7 +46557,8 @@ const optionV2Props = buildProps({
   index: Number,
   style: Object,
   selected: Boolean,
-  created: Boolean
+  created: Boolean,
+  showSelectionSection: Boolean
 });
 const selectV2Emits = {
   [UPDATE_MODEL_EVENT]: (val) => true,
@@ -46529,7 +46607,7 @@ const _sfc_main$R = defineComponent({
     const ns = useNamespace("select");
     const multiple = computed(() => select.props.multiple);
     const { hoverItem, selectOptionClick } = useOption(props, { emit });
-    const { getLabel, getValue, getTip } = useProps(select.props);
+    const { getLabel, getTip } = useProps(select.props);
     const currentTip = computed(() => getTip(props.item));
     const hasDefaultSlot = computed(() => {
       var _a, _b;
@@ -46540,33 +46618,12 @@ const _sfc_main$R = defineComponent({
       })) != null ? _b : []);
     });
     const contentId = select.contentId;
-    const isItemSelected = (item) => {
-      if (!item || item.type === "Group" || !multiple.value)
-        return false;
-      const values = Array.isArray(select.props.modelValue) ? select.props.modelValue : [];
-      const itemValue = getValue(item);
-      if (!isObject(itemValue)) {
-        return values.includes(itemValue);
-      }
-      return values.some((value) => get(value, select.props.valueKey) === get(itemValue, select.props.valueKey));
-    };
-    const selectedCount = computed(() => {
-      if (!multiple.value || !Array.isArray(props.data))
-        return 0;
-      return props.data.filter((item) => isItemSelected(item)).length;
-    });
-    const showSelectedDivider = computed(() => {
-      return !props.selected && multiple.value && selectedCount.value > 0 && props.index === selectedCount.value;
-    });
     const optionStyle = computed(() => {
       const virtualStyle = { ...props.style };
       if (virtualStyle.height === `${SELECT_V2_DEFAULT_ITEM_HEIGHT}px`) {
         delete virtualStyle.height;
       }
-      return {
-        ...virtualStyle,
-        borderTop: showSelectedDivider.value ? "1px solid #E7ECEF" : "none"
-      };
+      return virtualStyle;
     });
     const handleCellMouseEnter = (event) => {
       const cellChild = event.target.querySelector(".option-wrap-content");
@@ -46594,6 +46651,7 @@ const _sfc_main$R = defineComponent({
       hasDefaultSlot,
       isTextOverflowing,
       currentTip,
+      showSelectionSection: computed(() => props.showSelectionSection),
       optionStyle,
       hoverItem,
       selectOptionClick,
@@ -46618,12 +46676,21 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
       _ctx.ns.is("disabled", _ctx.disabled),
       _ctx.ns.is("created", _ctx.created),
       _ctx.ns.is("hovering", _ctx.hovering),
-      _ctx.ns.is("multiple", _ctx.multiple)
+      _ctx.ns.is("multiple", _ctx.multiple),
+      _ctx.ns.is("section-start", _ctx.showSelectionSection)
     ]),
     onMousemove: _ctx.hoverItem,
     onClick: withModifiers(_ctx.selectOptionClick, ["stop"]),
     onMouseenter: _ctx.handleCellMouseEnter
   }, [
+    _ctx.showSelectionSection ? (openBlock(), createElementBlock("div", {
+      key: 0,
+      class: normalizeClass([_ctx.ns.be("dropdown", "section-title"), _ctx.ns.is("unselected-section")]),
+      onClick: withModifiers(() => {
+      }, ["stop"]),
+      onMousemove: withModifiers(() => {
+      }, ["stop"])
+    }, " Unselected ", 42, ["onClick", "onMousemove"])) : createCommentVNode("v-if", true),
     createElementVNode("div", { class: "option-wrap" }, [
       !_ctx.multiple ? (openBlock(), createBlock(_component_el_radio, {
         key: 0,
@@ -46710,32 +46777,6 @@ var ElSelectMenu = defineComponent({
     });
     const isSized = computed(() => isUndefined(select.props.estimatedOptionHeight));
     const hasGroups = computed(() => props2.data.some((item) => item.type === "Group"));
-    const usesDynamicSizeList = computed(() => !isSized.value || hasGroups.value);
-    const listProps = computed(() => {
-      var _a;
-      if (!usesDynamicSizeList.value) {
-        return {
-          itemSize: select.props.itemHeight
-        };
-      }
-      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
-      return {
-        estimatedSize,
-        itemSize: (idx) => {
-          var _a2, _b;
-          if (((_a2 = props2.data[idx]) == null ? void 0 : _a2.type) === "Group") {
-            return SELECT_V2_GROUP_TITLE_HEIGHT + (idx > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
-          }
-          return (_b = cachedHeights.value[idx]) != null ? _b : estimatedSize;
-        }
-      };
-    });
-    const listLayoutKey = computed(() => {
-      var _a;
-      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
-      const groupIndexes = props2.data.reduce((key, item, index) => item.type === "Group" ? `${key}-${index}` : key, "");
-      return `select-v2-${estimatedSize}${groupIndexes}`;
-    });
     const contains = (arr = [], target) => {
       const {
         props: {
@@ -46765,6 +46806,43 @@ var ElSelectMenu = defineComponent({
       }
       return isEqual(modelValue, getValue(target));
     };
+    const selectionDividerIndex = computed(() => {
+      if (!select.props.multiple || hasGroups.value)
+        return -1;
+      const selectedCount = props2.data.filter((item) => isItemSelected(select.props.modelValue, item)).length;
+      return selectedCount > 0 && selectedCount < props2.data.length ? selectedCount : -1;
+    });
+    const usesDynamicSizeList = computed(() => !isSized.value || hasGroups.value || selectionDividerIndex.value > -1);
+    const listProps = computed(() => {
+      var _a;
+      if (!usesDynamicSizeList.value) {
+        return {
+          itemSize: select.props.itemHeight
+        };
+      }
+      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
+      return {
+        estimatedSize,
+        itemSize: (idx) => {
+          var _a2, _b, _c;
+          if (((_a2 = props2.data[idx]) == null ? void 0 : _a2.type) === "Group") {
+            const item = props2.data[idx];
+            const hasDivider = item.selectionSection ? idx > 0 : !item.businessGroup && idx > 0;
+            return SELECT_V2_GROUP_TITLE_HEIGHT + (hasDivider ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
+          }
+          if (idx === selectionDividerIndex.value) {
+            return SELECT_V2_GROUP_DIVIDER_SIZE + SELECT_V2_GROUP_TITLE_HEIGHT + ((_b = cachedHeights.value[idx]) != null ? _b : estimatedSize);
+          }
+          return (_c = cachedHeights.value[idx]) != null ? _c : estimatedSize;
+        }
+      };
+    });
+    const listLayoutKey = computed(() => {
+      var _a;
+      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
+      const groupIndexes = props2.data.reduce((key, item, index) => item.type === "Group" ? `${key}-${index}-${item.selectionSection ? "s" : "g"}` : key, "");
+      return `select-v2-${estimatedSize}${groupIndexes}-${selectionDividerIndex.value}`;
+    });
     const isItemDisabled = (modelValue, selected) => {
       const {
         disabled,
@@ -46811,10 +46889,13 @@ var ElSelectMenu = defineComponent({
       } = select;
       const item = data[index];
       if (item.type === "Group") {
+        const showDivider = item.selectionSection ? index > 0 : !item.businessGroup && index > 0;
         return createVNode(GroupItem, {
           "item": item,
           "style": style,
-          "showDivider": index > 0
+          "showDivider": showDivider,
+          "selectionSection": !!item.selectionSection,
+          "businessGroup": !!item.businessGroup
         }, null);
       }
       const isSelected = isItemSelected(modelValue, item);
@@ -46825,6 +46906,7 @@ var ElSelectMenu = defineComponent({
         "disabled": getDisabled(item) || isDisabled,
         "created": !!item.created,
         "hovering": isHovering,
+        "showSelectionSection": index === selectionDividerIndex.value,
         "item": item,
         "onSelect": onSelect,
         "onHover": onHover
@@ -47078,22 +47160,13 @@ const useSelect$1 = (props, emit) => {
     var _a;
     return (_a = elForm == null ? void 0 : elForm.statusIcon) != null ? _a : false;
   });
-  const popupHeight = computed(() => {
-    const totalHeight = filteredOptions.value.reduce((height, option, index) => {
-      if (option.type === "Group") {
-        return height + SELECT_V2_GROUP_TITLE_HEIGHT + (index > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
-      }
-      return height + props.itemHeight;
-    }, 0);
-    return totalHeight > props.height ? props.height : totalHeight;
-  });
   const hasModelValue = computed(() => {
     return props.multiple ? isArray$1(props.modelValue) && props.modelValue.length > 0 : !isEmptyValue(props.modelValue);
   });
   const noPendingAutoSelection = Symbol("noPendingAutoSelection");
   let pendingAutoSelectValue = noPendingAutoSelection;
   const showClearBtn = computed(() => {
-    return props.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
+    return props.clearable && !props.multiple && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
   });
   const iconComponent = computed(() => props.remote && props.filterable ? "" : props.suffixIcon);
   const iconReverse = computed(() => iconComponent.value && nsSelect.is("reverse", expanded.value));
@@ -47131,8 +47204,39 @@ const useSelect$1 = (props, emit) => {
     return props.modelValue.some((value) => getValueKey(value) === getValueKey(optionValue));
   };
   const reorderFilteredOptions = (options) => {
-    if (!props.multiple || options.some((option) => option.type === "Group")) {
+    if (!props.multiple)
       return options;
+    if (options.some((option) => option.type === "Group")) {
+      const groups = [];
+      options.forEach((option) => {
+        if (option.type === "Group") {
+          groups.push({ group: option, options: [] });
+          return;
+        }
+        if (!groups.length) {
+          groups.push({ options: [] });
+        }
+        groups[groups.length - 1].options.push(option);
+      });
+      const result = [];
+      const appendSection = (selected, label) => {
+        const sectionGroups = groups.map((group) => ({
+          ...group,
+          options: group.options.filter((option) => isOptionSelected(option) === selected)
+        })).filter((group) => group.options.length);
+        if (!sectionGroups.length)
+          return;
+        result.push({ type: "Group", label, selectionSection: true });
+        sectionGroups.forEach((group) => {
+          if (group.group) {
+            result.push({ ...group.group, businessGroup: true });
+          }
+          result.push(...group.options);
+        });
+      };
+      appendSection(true, "Selected");
+      appendSection(false, "Unselected");
+      return result;
     }
     const selectedOptions = [];
     const unselectedOptions = [];
@@ -47187,6 +47291,28 @@ const useSelect$1 = (props, emit) => {
       valueMap.set(getValueKey(getValue(option)), { option, index });
     });
     return valueMap;
+  });
+  const currentMultipleOptions = computed(() => props.multiple ? filteredOptions.value.filter((option) => option.type !== "Group") : []);
+  const hasMultipleOptionGroups = computed(() => filteredOptions.value.some((option) => option.businessGroup));
+  const selectableMultipleOptions = computed(() => currentMultipleOptions.value.filter((option) => !getDisabled(option)));
+  const hasVisibleSelectedOptions = computed(() => currentMultipleOptions.value.some(isOptionSelected));
+  const hasVisibleUnselectedOptions = computed(() => currentMultipleOptions.value.some((option) => !isOptionSelected(option)));
+  const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+  const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
+  const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
+  const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
+  const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
+  const popupHeight = computed(() => {
+    const totalHeight = filteredOptions.value.reduce((height, option, index) => {
+      if (option.type === "Group") {
+        const hasDivider = option.selectionSection ? index > 0 : !option.businessGroup && index > 0;
+        return height + SELECT_V2_GROUP_TITLE_HEIGHT + (hasDivider ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
+      }
+      return height + props.itemHeight;
+    }, 0);
+    const selectionSectionHeight = props.multiple && !filteredOptions.value.some((option) => option.type === "Group") && hasVisibleSelectedOptions.value && hasVisibleUnselectedOptions.value ? SELECT_V2_GROUP_DIVIDER_SIZE + SELECT_V2_GROUP_TITLE_HEIGHT : 0;
+    const contentHeight = totalHeight + selectionSectionHeight;
+    return contentHeight > props.height ? props.height : contentHeight;
   });
   const optionsAllDisabled = computed(() => filteredOptions.value.every((option) => getDisabled(option)));
   const selectSize = useFormSize();
@@ -47430,6 +47556,30 @@ const useSelect$1 = (props, emit) => {
       });
     }
     return shouldChange;
+  };
+  const toggleSelectAll = async () => {
+    if (!props.multiple || selectDisabled.value || selectableMultipleOptions.value.length === 0) {
+      return;
+    }
+    let selectedOptions = props.modelValue.slice();
+    if (isAllVisibleOptionsSelected.value) {
+      const disabledValues = new Set(allOptions.value.filter((option) => option.type !== "Group" && getDisabled(option)).map((option) => getValueKey(getValue(option))));
+      selectedOptions = selectedOptions.filter((value) => disabledValues.has(getValueKey(value)));
+    } else {
+      for (const option of selectableMultipleOptions.value) {
+        const optionValue = getValue(option);
+        if (getValueIndex(selectedOptions, optionValue) > -1)
+          continue;
+        if (props.multipleLimit > 0 && selectedOptions.length >= props.multipleLimit) {
+          break;
+        }
+        selectedOptions.push(optionValue);
+      }
+    }
+    if (!await checkBeforeChange(selectedOptions, props.modelValue))
+      return;
+    update(selectedOptions);
+    focus();
   };
   const onSelect = async (option) => {
     const optionValue = getValue(option);
@@ -47764,6 +47914,15 @@ const useSelect$1 = (props, emit) => {
     allOptions,
     allOptionsValueMap,
     filteredOptions,
+    currentMultipleOptions,
+    hasMultipleOptionGroups,
+    hasVisibleSelectedOptions,
+    hasVisibleUnselectedOptions,
+    multipleSectionLabel,
+    isAllVisibleOptionsSelected,
+    isSelectAllIndeterminate,
+    selectAllLabel,
+    isSelectAllDisabled,
     iconComponent,
     iconReverse,
     tagStyle,
@@ -47822,6 +47981,7 @@ const useSelect$1 = (props, emit) => {
     onKeyboardNavigate,
     onKeyboardSelect,
     onSelect,
+    toggleSelectAll,
     onHover: onHoverOption,
     handleCompositionStart,
     handleCompositionEnd,
@@ -47836,7 +47996,8 @@ const _sfc_main$Q = defineComponent({
     ElSelectMenu,
     ElTag,
     ElTooltip,
-    ElIcon
+    ElIcon,
+    ElCheckbox
   },
   directives: { ClickOutside },
   props: selectV2Props,
@@ -47943,6 +48104,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
+  const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_select_menu = resolveComponent("el-select-menu");
   const _directive_click_outside = resolveDirective("click-outside");
   return withDirectives((openBlock(), createElementBlock("div", {
@@ -47974,7 +48136,8 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
         createElementVNode("div", {
           class: normalizeClass([
             _ctx.nsSelect.e("container"),
-            _ctx.nsSelect.is("append", !!_ctx.$slots.append)
+            _ctx.nsSelect.is("append", !!_ctx.$slots.append),
+            _ctx.nsSelect.is("multiple", _ctx.multiple)
           ])
         }, [
           createVNode(_component_el_tooltip, {
@@ -48011,7 +48174,8 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
                     _ctx.nsSelect.is("filterable", _ctx.filterable),
                     _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-                    _ctx.nsSelect.is("value", _ctx.hasModelValue)
+                    _ctx.nsSelect.is("value", _ctx.hasModelValue),
+                    _ctx.nsSelect.is("multiple", _ctx.multiple)
                   ]),
                   onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
                 }, [
@@ -48052,13 +48216,12 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                           class: normalizeClass(_ctx.nsSelect.e("selected-item"))
                         }, [
                           createVNode(_component_el_tag, {
-                            closable: !_ctx.selectDisabled && !_ctx.getDisabled(item),
+                            closable: false,
                             size: _ctx.collapseTagSize,
                             type: _ctx.tagType,
                             effect: _ctx.tagEffect,
                             "disable-transitions": "",
-                            style: normalizeStyle(_ctx.tagStyle),
-                            onClose: ($event) => _ctx.deleteTag($event, item)
+                            style: normalizeStyle(_ctx.tagStyle)
                           }, {
                             default: withCtx(() => [
                               createElementVNode("span", {
@@ -48074,7 +48237,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                               ], 2)
                             ]),
                             _: 2
-                          }, 1032, ["closable", "size", "type", "effect", "style", "onClose"])
+                          }, 1032, ["size", "type", "effect", "style"])
                         ], 2);
                       }), 128)),
                       _ctx.collapseTags && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
@@ -48122,12 +48285,11 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                               }, [
                                 createVNode(_component_el_tag, {
                                   class: "in-tooltip",
-                                  closable: !_ctx.selectDisabled && !_ctx.getDisabled(selected),
+                                  closable: false,
                                   size: _ctx.collapseTagSize,
                                   type: _ctx.tagType,
                                   effect: _ctx.tagEffect,
-                                  "disable-transitions": "",
-                                  onClose: ($event) => _ctx.deleteTag($event, selected)
+                                  "disable-transitions": ""
                                 }, {
                                   default: withCtx(() => [
                                     createElementVNode("span", {
@@ -48143,7 +48305,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                                     ], 2)
                                   ]),
                                   _: 2
-                                }, 1032, ["closable", "size", "type", "effect", "onClose"])
+                                }, 1032, ["size", "type", "effect"])
                               ], 2);
                             }), 128))
                           ], 2)
@@ -48298,7 +48460,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                 ]),
                 _: 2
               }, [
-                _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? {
+                _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll || _ctx.multiple && _ctx.currentMultipleOptions.length && !_ctx.hasMultipleOptionGroups ? {
                   name: "header",
                   fn: withCtx(() => [
                     _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
@@ -48312,7 +48474,11 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
                       key: 1,
                       class: "select-all-item"
-                    }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true)
+                    }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
+                    _ctx.multiple && _ctx.currentMultipleOptions.length && !_ctx.hasMultipleOptionGroups ? (openBlock(), createElementBlock("div", {
+                      key: 2,
+                      class: normalizeClass(_ctx.nsSelect.be("dropdown", "section-title"))
+                    }, toDisplayString(_ctx.multipleSectionLabel), 3)) : createCommentVNode("v-if", true)
                   ])
                 } : void 0,
                 _ctx.$slots.loading && _ctx.loading ? {
@@ -48336,16 +48502,32 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                     ], 2)
                   ])
                 } : void 0,
-                _ctx.$slots.footer ? {
+                _ctx.$slots.footer || _ctx.multiple && _ctx.currentMultipleOptions.length ? {
                   name: "footer",
                   fn: withCtx(() => [
-                    createElementVNode("div", {
+                    _ctx.multiple && _ctx.currentMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                      key: 0,
+                      class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
+                      onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])
+                    }, [
+                      createVNode(_component_el_checkbox, {
+                        "model-value": _ctx.isAllVisibleOptionsSelected,
+                        indeterminate: _ctx.isSelectAllIndeterminate,
+                        disabled: _ctx.isSelectAllDisabled,
+                        onClick: withModifiers(() => {
+                        }, ["stop"]),
+                        onChange: _ctx.toggleSelectAll
+                      }, null, 8, ["model-value", "indeterminate", "disabled", "onClick", "onChange"]),
+                      createElementVNode("span", null, toDisplayString(_ctx.selectAllLabel), 1)
+                    ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+                    _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+                      key: 1,
                       class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
                       onClick: withModifiers(() => {
                       }, ["stop"])
                     }, [
                       renderSlot(_ctx.$slots, "footer")
-                    ], 10, ["onClick"])
+                    ], 10, ["onClick"])) : createCommentVNode("v-if", true)
                   ])
                 } : void 0
               ]), 1032, ["id", "data", "width", "hovering-index", "scrollbar-always-on", "aria-label"])
@@ -58745,7 +58927,7 @@ const HeaderCellRenderer = (props, {
     "class": [ns.e("sort-icon"), sorting && ns.is("sorting")],
     "sortOrder": sortOrder,
     "sorting": sorting
-  }, null), column.resizable !== false && createVNode("div", {
+  }, null), column.resizable !== false && !(ghostTable && column[rowDeletePlaceholderMergedSign]) && createVNode("div", {
     "class": ns.e("column-resizer"),
     "onClick": (event) => event.stopPropagation(),
     "onMousedown": handleResizeMouseDown

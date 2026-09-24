@@ -11,6 +11,8 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    selectionSection: BooleanConstructor;
+    businessGroup: BooleanConstructor;
 }, {
     ns: {
         namespace: import("vue").ComputedRef<string>;
@@ -1572,7 +1574,11 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    selectionSection: BooleanConstructor;
+    businessGroup: BooleanConstructor;
 }>>, {
     showDivider: boolean;
+    selectionSection: boolean;
+    businessGroup: boolean;
 }>;
 export default _default;

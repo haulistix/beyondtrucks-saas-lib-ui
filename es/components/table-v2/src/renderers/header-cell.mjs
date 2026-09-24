@@ -169,7 +169,7 @@ const HeaderCellRenderer = (props, {
     "class": [ns.e("sort-icon"), sorting && ns.is("sorting")],
     "sortOrder": sortOrder,
     "sorting": sorting
-  }, null), column.resizable !== false && createVNode("div", {
+  }, null), column.resizable !== false && !(ghostTable && column[rowDeletePlaceholderMergedSign]) && createVNode("div", {
     "class": ns.e("column-resizer"),
     "onClick": (event) => event.stopPropagation(),
     "onMousedown": handleResizeMouseDown

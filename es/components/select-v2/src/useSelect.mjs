@@ -99,22 +99,13 @@ const useSelect = (props, emit) => {
     var _a;
     return (_a = elForm == null ? void 0 : elForm.statusIcon) != null ? _a : false;
   });
-  const popupHeight = computed(() => {
-    const totalHeight = filteredOptions.value.reduce((height, option, index) => {
-      if (option.type === "Group") {
-        return height + SELECT_V2_GROUP_TITLE_HEIGHT + (index > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
-      }
-      return height + props.itemHeight;
-    }, 0);
-    return totalHeight > props.height ? props.height : totalHeight;
-  });
   const hasModelValue = computed(() => {
     return props.multiple ? isArray(props.modelValue) && props.modelValue.length > 0 : !isEmptyValue(props.modelValue);
   });
   const noPendingAutoSelection = Symbol("noPendingAutoSelection");
   let pendingAutoSelectValue = noPendingAutoSelection;
   const showClearBtn = computed(() => {
-    return props.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
+    return props.clearable && !props.multiple && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
   });
   const iconComponent = computed(() => props.remote && props.filterable ? "" : props.suffixIcon);
   const iconReverse = computed(() => iconComponent.value && nsSelect.is("reverse", expanded.value));
@@ -152,8 +143,39 @@ const useSelect = (props, emit) => {
     return props.modelValue.some((value) => getValueKey(value) === getValueKey(optionValue));
   };
   const reorderFilteredOptions = (options) => {
-    if (!props.multiple || options.some((option) => option.type === "Group")) {
+    if (!props.multiple)
       return options;
+    if (options.some((option) => option.type === "Group")) {
+      const groups = [];
+      options.forEach((option) => {
+        if (option.type === "Group") {
+          groups.push({ group: option, options: [] });
+          return;
+        }
+        if (!groups.length) {
+          groups.push({ options: [] });
+        }
+        groups[groups.length - 1].options.push(option);
+      });
+      const result = [];
+      const appendSection = (selected, label) => {
+        const sectionGroups = groups.map((group) => ({
+          ...group,
+          options: group.options.filter((option) => isOptionSelected(option) === selected)
+        })).filter((group) => group.options.length);
+        if (!sectionGroups.length)
+          return;
+        result.push({ type: "Group", label, selectionSection: true });
+        sectionGroups.forEach((group) => {
+          if (group.group) {
+            result.push({ ...group.group, businessGroup: true });
+          }
+          result.push(...group.options);
+        });
+      };
+      appendSection(true, "Selected");
+      appendSection(false, "Unselected");
+      return result;
     }
     const selectedOptions = [];
     const unselectedOptions = [];
@@ -208,6 +230,28 @@ const useSelect = (props, emit) => {
       valueMap.set(getValueKey(getValue(option)), { option, index });
     });
     return valueMap;
+  });
+  const currentMultipleOptions = computed(() => props.multiple ? filteredOptions.value.filter((option) => option.type !== "Group") : []);
+  const hasMultipleOptionGroups = computed(() => filteredOptions.value.some((option) => option.businessGroup));
+  const selectableMultipleOptions = computed(() => currentMultipleOptions.value.filter((option) => !getDisabled(option)));
+  const hasVisibleSelectedOptions = computed(() => currentMultipleOptions.value.some(isOptionSelected));
+  const hasVisibleUnselectedOptions = computed(() => currentMultipleOptions.value.some((option) => !isOptionSelected(option)));
+  const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+  const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
+  const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
+  const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
+  const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
+  const popupHeight = computed(() => {
+    const totalHeight = filteredOptions.value.reduce((height, option, index) => {
+      if (option.type === "Group") {
+        const hasDivider = option.selectionSection ? index > 0 : !option.businessGroup && index > 0;
+        return height + SELECT_V2_GROUP_TITLE_HEIGHT + (hasDivider ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
+      }
+      return height + props.itemHeight;
+    }, 0);
+    const selectionSectionHeight = props.multiple && !filteredOptions.value.some((option) => option.type === "Group") && hasVisibleSelectedOptions.value && hasVisibleUnselectedOptions.value ? SELECT_V2_GROUP_DIVIDER_SIZE + SELECT_V2_GROUP_TITLE_HEIGHT : 0;
+    const contentHeight = totalHeight + selectionSectionHeight;
+    return contentHeight > props.height ? props.height : contentHeight;
   });
   const optionsAllDisabled = computed(() => filteredOptions.value.every((option) => getDisabled(option)));
   const selectSize = useFormSize();
@@ -451,6 +495,30 @@ const useSelect = (props, emit) => {
       });
     }
     return shouldChange;
+  };
+  const toggleSelectAll = async () => {
+    if (!props.multiple || selectDisabled.value || selectableMultipleOptions.value.length === 0) {
+      return;
+    }
+    let selectedOptions = props.modelValue.slice();
+    if (isAllVisibleOptionsSelected.value) {
+      const disabledValues = new Set(allOptions.value.filter((option) => option.type !== "Group" && getDisabled(option)).map((option) => getValueKey(getValue(option))));
+      selectedOptions = selectedOptions.filter((value) => disabledValues.has(getValueKey(value)));
+    } else {
+      for (const option of selectableMultipleOptions.value) {
+        const optionValue = getValue(option);
+        if (getValueIndex(selectedOptions, optionValue) > -1)
+          continue;
+        if (props.multipleLimit > 0 && selectedOptions.length >= props.multipleLimit) {
+          break;
+        }
+        selectedOptions.push(optionValue);
+      }
+    }
+    if (!await checkBeforeChange(selectedOptions, props.modelValue))
+      return;
+    update(selectedOptions);
+    focus();
   };
   const onSelect = async (option) => {
     const optionValue = getValue(option);
@@ -785,6 +853,15 @@ const useSelect = (props, emit) => {
     allOptions,
     allOptionsValueMap,
     filteredOptions,
+    currentMultipleOptions,
+    hasMultipleOptionGroups,
+    hasVisibleSelectedOptions,
+    hasVisibleUnselectedOptions,
+    multipleSectionLabel,
+    isAllVisibleOptionsSelected,
+    isSelectAllIndeterminate,
+    selectAllLabel,
+    isSelectAllDisabled,
     iconComponent,
     iconReverse,
     tagStyle,
@@ -843,6 +920,7 @@ const useSelect = (props, emit) => {
     onKeyboardNavigate,
     onKeyboardSelect,
     onSelect,
+    toggleSelectAll,
     onHover: onHoverOption,
     handleCompositionStart,
     handleCompositionEnd,

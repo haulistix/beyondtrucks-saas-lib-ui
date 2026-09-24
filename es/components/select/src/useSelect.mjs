@@ -96,7 +96,7 @@ const useSelect = (props, emit) => {
     return (_a = form == null ? void 0 : form.statusIcon) != null ? _a : false;
   });
   const showClearBtn = computed(() => {
-    return props.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
+    return props.clearable && !props.multiple && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
   });
   const iconComponent = computed(() => props.remote && props.filterable && !props.remoteShowSuffix ? "" : props.suffixIcon);
   const iconReverse = computed(() => nsSelect.is("reverse", !!(iconComponent.value && expanded.value)));
@@ -482,6 +482,42 @@ const useSelect = (props, emit) => {
       return isEqual(get(item, props.valueKey), getValueKey(option));
     });
   };
+  const visibleMultipleOptions = computed(() => props.multiple ? optionsArray.value.filter((option) => option.visible) : []);
+  const selectableMultipleOptions = computed(() => visibleMultipleOptions.value.filter((option) => !option.isDisabled));
+  const isMultipleOptionSelected = (option) => getValueIndex(castArray(props.modelValue), option) > -1;
+  const hasVisibleSelectedOptions = computed(() => visibleMultipleOptions.value.some(isMultipleOptionSelected));
+  const hasVisibleUnselectedOptions = computed(() => visibleMultipleOptions.value.some((option) => !isMultipleOptionSelected(option)));
+  const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+  const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isMultipleOptionSelected));
+  const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isMultipleOptionSelected) && !isAllVisibleOptionsSelected.value);
+  const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
+  const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
+  const toggleSelectAll = async () => {
+    if (!props.multiple || selectDisabled.value || selectableMultipleOptions.value.length === 0) {
+      return;
+    }
+    let value = castArray(props.modelValue).slice();
+    if (isAllVisibleOptionsSelected.value) {
+      value = value.filter((selectedValue) => {
+        const option = optionsArray.value.find((item) => getValueIndex([selectedValue], item) > -1);
+        return Boolean(option == null ? void 0 : option.isDisabled);
+      });
+    } else {
+      for (const option of selectableMultipleOptions.value) {
+        if (getValueIndex(value, option) > -1)
+          continue;
+        if (props.multipleLimit > 0 && value.length >= props.multipleLimit) {
+          break;
+        }
+        value.push(option.value);
+      }
+    }
+    if (!await checkBeforeChange(value, props.modelValue))
+      return;
+    emit(UPDATE_MODEL_EVENT, value);
+    emitChange(value);
+    focus();
+  };
   const scrollToOption = (option) => {
     var _a, _b, _c, _d, _e;
     const targetOption = isArray(option) ? option[0] : option;
@@ -663,6 +699,14 @@ const useSelect = (props, emit) => {
     hoverOption,
     selectSize,
     filteredOptionsCount,
+    visibleMultipleOptions,
+    hasVisibleSelectedOptions,
+    hasVisibleUnselectedOptions,
+    multipleSectionLabel,
+    isAllVisibleOptionsSelected,
+    isSelectAllIndeterminate,
+    selectAllLabel,
+    isSelectAllDisabled,
     updateTooltip,
     updateTagTooltip,
     debouncedOnInputChange,
@@ -671,6 +715,7 @@ const useSelect = (props, emit) => {
     deleteTag,
     deleteSelected,
     handleOptionSelect,
+    toggleSelectAll,
     scrollToOption,
     hasModelValue,
     shouldShowPlaceholder,

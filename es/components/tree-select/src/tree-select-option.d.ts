@@ -112,10 +112,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
             optionStyle: import("vue").ComputedRef<{
                 order?: undefined;
-                borderTop?: undefined;
             } | {
                 order: number;
-                borderTop: string | undefined;
             }>;
             handleCellMouseEnter: (event: MouseEvent) => void;
             hoverItem: () => void;
@@ -214,10 +212,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
         optionStyle: import("vue").ComputedRef<{
             order?: undefined;
-            borderTop?: undefined;
         } | {
             order: number;
-            borderTop: string | undefined;
         }>;
         handleCellMouseEnter: (event: MouseEvent) => void;
         hoverItem: () => void;
@@ -295,10 +291,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
     placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
     optionStyle: import("vue").ComputedRef<{
         order?: undefined;
-        borderTop?: undefined;
     } | {
         order: number;
-        borderTop: string | undefined;
     }>;
     handleCellMouseEnter: (event: MouseEvent) => void;
     hoverItem: () => void;
@@ -424,10 +418,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
             placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
             optionStyle: import("vue").ComputedRef<{
                 order?: undefined;
-                borderTop?: undefined;
             } | {
                 order: number;
-                borderTop: string | undefined;
             }>;
             handleCellMouseEnter: (event: MouseEvent) => void;
             hoverItem: () => void;
@@ -526,10 +518,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
         placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
         optionStyle: import("vue").ComputedRef<{
             order?: undefined;
-            borderTop?: undefined;
         } | {
             order: number;
-            borderTop: string | undefined;
         }>;
         handleCellMouseEnter: (event: MouseEvent) => void;
         hoverItem: () => void;
@@ -607,10 +597,8 @@ declare const component: import("vue").DefineComponent<{}, any, {}, {}, {
     placement: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => import("element-plus").Placement))[], import("element-plus").Placement, unknown>;
     optionStyle: import("vue").ComputedRef<{
         order?: undefined;
-        borderTop?: undefined;
     } | {
         order: number;
-        borderTop: string | undefined;
     }>;
     handleCellMouseEnter: (event: MouseEvent) => void;
     hoverItem: () => void;

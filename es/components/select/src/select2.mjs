@@ -3,6 +3,7 @@ import { ElTooltip } from '../../tooltip/index.mjs';
 import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
+import { ElCheckbox } from '../../checkbox/index.mjs';
 import { useProps } from '../../select-v2/src/useProps.mjs';
 import Option from './option.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
@@ -31,7 +32,8 @@ const _sfc_main = defineComponent({
     ElTag,
     ElScrollbar,
     ElTooltip,
-    ElIcon
+    ElIcon,
+    ElCheckbox
   },
   directives: { ClickOutside },
   props: selectProps,
@@ -221,6 +223,7 @@ function _sfc_render(_ctx, _cache) {
   const _component_el_option_group = resolveComponent("el-option-group");
   const _component_el_options = resolveComponent("el-options");
   const _component_el_scrollbar = resolveComponent("el-scrollbar");
+  const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_select_menu = resolveComponent("el-select-menu");
   const _directive_click_outside = resolveDirective("click-outside");
   return withDirectives((openBlock(), createElementBlock("div", {
@@ -332,14 +335,13 @@ function _sfc_render(_ctx, _cache) {
                           class: normalizeClass(_ctx.nsSelect.e("selected-item"))
                         }, [
                           createVNode(_component_el_tag, {
-                            closable: !_ctx.selectDisabled && !item.isDisabled,
+                            closable: false,
                             size: _ctx.collapseTagSize,
                             type: _ctx.tagType,
                             effect: _ctx.tagEffect,
                             "disable-transitions": "",
                             style: normalizeStyle(_ctx.tagStyle),
-                            round: "",
-                            onClose: ($event) => _ctx.deleteTag($event, item)
+                            round: ""
                           }, {
                             default: withCtx(() => [
                               createElementVNode("span", {
@@ -356,7 +358,7 @@ function _sfc_render(_ctx, _cache) {
                               ], 2)
                             ]),
                             _: 2
-                          }, 1032, ["closable", "size", "type", "effect", "style", "onClose"])
+                          }, 1032, ["size", "type", "effect", "style"])
                         ], 2);
                       }), 128)),
                       _ctx.collapseTags && _ctx.states.selected.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
@@ -405,13 +407,12 @@ function _sfc_render(_ctx, _cache) {
                               }, [
                                 createVNode(_component_el_tag, {
                                   class: "in-tooltip",
-                                  closable: !_ctx.selectDisabled && !item.isDisabled,
+                                  closable: false,
                                   size: _ctx.collapseTagSize,
                                   type: _ctx.tagType,
                                   effect: _ctx.tagEffect,
                                   "disable-transitions": "",
-                                  round: "",
-                                  onClose: ($event) => _ctx.deleteTag($event, item)
+                                  round: ""
                                 }, {
                                   default: withCtx(() => [
                                     createElementVNode("span", {
@@ -428,7 +429,7 @@ function _sfc_render(_ctx, _cache) {
                                     ], 2)
                                   ]),
                                   _: 2
-                                }, 1032, ["closable", "size", "type", "effect", "onClose"])
+                                }, 1032, ["size", "type", "effect"])
                               ], 2);
                             }), 128))
                           ], 2)
@@ -597,16 +598,30 @@ function _sfc_render(_ctx, _cache) {
                     onScroll: _ctx.popupScroll
                   }, {
                     default: withCtx(() => [
-                      _ctx.states.selected.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
+                      _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
                         key: 0,
+                        class: normalizeClass([
+                          _ctx.nsSelect.be("dropdown", "section-title"),
+                          _ctx.nsSelect.is("selected-section", _ctx.hasVisibleSelectedOptions)
+                        ])
+                      }, toDisplayString(_ctx.multipleSectionLabel), 3)) : createCommentVNode("v-if", true),
+                      _ctx.multiple && _ctx.hasVisibleSelectedOptions && _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("div", {
+                        key: 1,
+                        class: normalizeClass([
+                          _ctx.nsSelect.be("dropdown", "section-title"),
+                          _ctx.nsSelect.is("unselected-section")
+                        ])
+                      }, " Unselected ", 2)) : createCommentVNode("v-if", true),
+                      _ctx.states.selected.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
+                        key: 2,
                         class: "select-all-item"
                       }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
                       _ctx.addShowTip && _ctx.filterable ? (openBlock(), createElementBlock("div", {
-                        key: 1,
+                        key: 3,
                         class: "select-add-tip"
                       }, toDisplayString(_ctx.addShowTip), 1)) : createCommentVNode("v-if", true),
                       _ctx.showNewOption ? (openBlock(), createBlock(_component_el_option, {
-                        key: 2,
+                        key: 4,
                         value: _ctx.states.inputValue,
                         created: true
                       }, null, 8, ["value"])) : createCommentVNode("v-if", true),
@@ -684,8 +699,23 @@ function _sfc_render(_ctx, _cache) {
                       ], 8, ["onClick"]))
                     ])
                   ], 2)) : createCommentVNode("v-if", true),
-                  _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+                  _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
                     key: 3,
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
+                    onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])
+                  }, [
+                    createVNode(_component_el_checkbox, {
+                      "model-value": _ctx.isAllVisibleOptionsSelected,
+                      indeterminate: _ctx.isSelectAllIndeterminate,
+                      disabled: _ctx.isSelectAllDisabled,
+                      onClick: withModifiers(() => {
+                      }, ["stop"]),
+                      onChange: _ctx.toggleSelectAll
+                    }, null, 8, ["model-value", "indeterminate", "disabled", "onClick", "onChange"]),
+                    createElementVNode("span", null, toDisplayString(_ctx.selectAllLabel), 1)
+                  ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+                  _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+                    key: 4,
                     class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
                     onClick: withModifiers(() => {
                     }, ["stop"])

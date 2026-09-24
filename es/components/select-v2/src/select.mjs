@@ -2,6 +2,7 @@ import { defineComponent, computed, reactive, toRefs, ref, watch, provide, resol
 import { ElTooltip } from '../../tooltip/index.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
+import { ElCheckbox } from '../../checkbox/index.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
 import useSelect from './useSelect.mjs';
 import { selectV2Props, selectV2Emits } from './defaults.mjs';
@@ -19,7 +20,8 @@ const _sfc_main = defineComponent({
     ElSelectMenu,
     ElTag,
     ElTooltip,
-    ElIcon
+    ElIcon,
+    ElCheckbox
   },
   directives: { ClickOutside },
   props: selectV2Props,
@@ -126,6 +128,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
+  const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_select_menu = resolveComponent("el-select-menu");
   const _directive_click_outside = resolveDirective("click-outside");
   return withDirectives((openBlock(), createElementBlock("div", {
@@ -157,7 +160,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         createElementVNode("div", {
           class: normalizeClass([
             _ctx.nsSelect.e("container"),
-            _ctx.nsSelect.is("append", !!_ctx.$slots.append)
+            _ctx.nsSelect.is("append", !!_ctx.$slots.append),
+            _ctx.nsSelect.is("multiple", _ctx.multiple)
           ])
         }, [
           createVNode(_component_el_tooltip, {
@@ -194,7 +198,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
                     _ctx.nsSelect.is("filterable", _ctx.filterable),
                     _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-                    _ctx.nsSelect.is("value", _ctx.hasModelValue)
+                    _ctx.nsSelect.is("value", _ctx.hasModelValue),
+                    _ctx.nsSelect.is("multiple", _ctx.multiple)
                   ]),
                   onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
                 }, [
@@ -235,13 +240,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                           class: normalizeClass(_ctx.nsSelect.e("selected-item"))
                         }, [
                           createVNode(_component_el_tag, {
-                            closable: !_ctx.selectDisabled && !_ctx.getDisabled(item),
+                            closable: false,
                             size: _ctx.collapseTagSize,
                             type: _ctx.tagType,
                             effect: _ctx.tagEffect,
                             "disable-transitions": "",
-                            style: normalizeStyle(_ctx.tagStyle),
-                            onClose: ($event) => _ctx.deleteTag($event, item)
+                            style: normalizeStyle(_ctx.tagStyle)
                           }, {
                             default: withCtx(() => [
                               createElementVNode("span", {
@@ -257,7 +261,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                               ], 2)
                             ]),
                             _: 2
-                          }, 1032, ["closable", "size", "type", "effect", "style", "onClose"])
+                          }, 1032, ["size", "type", "effect", "style"])
                         ], 2);
                       }), 128)),
                       _ctx.collapseTags && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
@@ -305,12 +309,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                               }, [
                                 createVNode(_component_el_tag, {
                                   class: "in-tooltip",
-                                  closable: !_ctx.selectDisabled && !_ctx.getDisabled(selected),
+                                  closable: false,
                                   size: _ctx.collapseTagSize,
                                   type: _ctx.tagType,
                                   effect: _ctx.tagEffect,
-                                  "disable-transitions": "",
-                                  onClose: ($event) => _ctx.deleteTag($event, selected)
+                                  "disable-transitions": ""
                                 }, {
                                   default: withCtx(() => [
                                     createElementVNode("span", {
@@ -326,7 +329,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                                     ], 2)
                                   ]),
                                   _: 2
-                                }, 1032, ["closable", "size", "type", "effect", "onClose"])
+                                }, 1032, ["size", "type", "effect"])
                               ], 2);
                             }), 128))
                           ], 2)
@@ -481,7 +484,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 ]),
                 _: 2
               }, [
-                _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? {
+                _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll || _ctx.multiple && _ctx.currentMultipleOptions.length && !_ctx.hasMultipleOptionGroups ? {
                   name: "header",
                   fn: withCtx(() => [
                     _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
@@ -495,7 +498,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
                       key: 1,
                       class: "select-all-item"
-                    }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true)
+                    }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
+                    _ctx.multiple && _ctx.currentMultipleOptions.length && !_ctx.hasMultipleOptionGroups ? (openBlock(), createElementBlock("div", {
+                      key: 2,
+                      class: normalizeClass(_ctx.nsSelect.be("dropdown", "section-title"))
+                    }, toDisplayString(_ctx.multipleSectionLabel), 3)) : createCommentVNode("v-if", true)
                   ])
                 } : void 0,
                 _ctx.$slots.loading && _ctx.loading ? {
@@ -519,16 +526,32 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     ], 2)
                   ])
                 } : void 0,
-                _ctx.$slots.footer ? {
+                _ctx.$slots.footer || _ctx.multiple && _ctx.currentMultipleOptions.length ? {
                   name: "footer",
                   fn: withCtx(() => [
-                    createElementVNode("div", {
+                    _ctx.multiple && _ctx.currentMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                      key: 0,
+                      class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
+                      onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])
+                    }, [
+                      createVNode(_component_el_checkbox, {
+                        "model-value": _ctx.isAllVisibleOptionsSelected,
+                        indeterminate: _ctx.isSelectAllIndeterminate,
+                        disabled: _ctx.isSelectAllDisabled,
+                        onClick: withModifiers(() => {
+                        }, ["stop"]),
+                        onChange: _ctx.toggleSelectAll
+                      }, null, 8, ["model-value", "indeterminate", "disabled", "onClick", "onChange"]),
+                      createElementVNode("span", null, toDisplayString(_ctx.selectAllLabel), 1)
+                    ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+                    _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+                      key: 1,
                       class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
                       onClick: withModifiers(() => {
                       }, ["stop"])
                     }, [
                       renderSlot(_ctx.$slots, "footer")
-                    ], 10, ["onClick"])
+                    ], 10, ["onClick"])) : createCommentVNode("v-if", true)
                   ])
                 } : void 0
               ]), 1032, ["id", "data", "width", "hovering-index", "scrollbar-always-on", "aria-label"])

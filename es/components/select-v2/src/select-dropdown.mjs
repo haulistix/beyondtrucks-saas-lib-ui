@@ -11,8 +11,8 @@ import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { isUndefined } from '../../../utils/types.mjs';
 import { isIOS } from '@vueuse/core';
 import { getEventCode } from '../../../utils/dom/event.mjs';
-import { EVENT_CODE } from '../../../constants/aria.mjs';
 import { isObject } from '@vue/shared';
+import { EVENT_CODE } from '../../../constants/aria.mjs';
 
 const props = {
   loading: Boolean,
@@ -47,32 +47,6 @@ var ElSelectMenu = defineComponent({
     });
     const isSized = computed(() => isUndefined(select.props.estimatedOptionHeight));
     const hasGroups = computed(() => props2.data.some((item) => item.type === "Group"));
-    const usesDynamicSizeList = computed(() => !isSized.value || hasGroups.value);
-    const listProps = computed(() => {
-      var _a;
-      if (!usesDynamicSizeList.value) {
-        return {
-          itemSize: select.props.itemHeight
-        };
-      }
-      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
-      return {
-        estimatedSize,
-        itemSize: (idx) => {
-          var _a2, _b;
-          if (((_a2 = props2.data[idx]) == null ? void 0 : _a2.type) === "Group") {
-            return SELECT_V2_GROUP_TITLE_HEIGHT + (idx > 0 ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
-          }
-          return (_b = cachedHeights.value[idx]) != null ? _b : estimatedSize;
-        }
-      };
-    });
-    const listLayoutKey = computed(() => {
-      var _a;
-      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
-      const groupIndexes = props2.data.reduce((key, item, index) => item.type === "Group" ? `${key}-${index}` : key, "");
-      return `select-v2-${estimatedSize}${groupIndexes}`;
-    });
     const contains = (arr = [], target) => {
       const {
         props: {
@@ -102,6 +76,43 @@ var ElSelectMenu = defineComponent({
       }
       return isEqual(modelValue, getValue(target));
     };
+    const selectionDividerIndex = computed(() => {
+      if (!select.props.multiple || hasGroups.value)
+        return -1;
+      const selectedCount = props2.data.filter((item) => isItemSelected(select.props.modelValue, item)).length;
+      return selectedCount > 0 && selectedCount < props2.data.length ? selectedCount : -1;
+    });
+    const usesDynamicSizeList = computed(() => !isSized.value || hasGroups.value || selectionDividerIndex.value > -1);
+    const listProps = computed(() => {
+      var _a;
+      if (!usesDynamicSizeList.value) {
+        return {
+          itemSize: select.props.itemHeight
+        };
+      }
+      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
+      return {
+        estimatedSize,
+        itemSize: (idx) => {
+          var _a2, _b, _c;
+          if (((_a2 = props2.data[idx]) == null ? void 0 : _a2.type) === "Group") {
+            const item = props2.data[idx];
+            const hasDivider = item.selectionSection ? idx > 0 : !item.businessGroup && idx > 0;
+            return SELECT_V2_GROUP_TITLE_HEIGHT + (hasDivider ? SELECT_V2_GROUP_DIVIDER_SIZE : 0);
+          }
+          if (idx === selectionDividerIndex.value) {
+            return SELECT_V2_GROUP_DIVIDER_SIZE + SELECT_V2_GROUP_TITLE_HEIGHT + ((_b = cachedHeights.value[idx]) != null ? _b : estimatedSize);
+          }
+          return (_c = cachedHeights.value[idx]) != null ? _c : estimatedSize;
+        }
+      };
+    });
+    const listLayoutKey = computed(() => {
+      var _a;
+      const estimatedSize = (_a = select.props.estimatedOptionHeight) != null ? _a : select.props.itemHeight;
+      const groupIndexes = props2.data.reduce((key, item, index) => item.type === "Group" ? `${key}-${index}-${item.selectionSection ? "s" : "g"}` : key, "");
+      return `select-v2-${estimatedSize}${groupIndexes}-${selectionDividerIndex.value}`;
+    });
     const isItemDisabled = (modelValue, selected) => {
       const {
         disabled,
@@ -148,10 +159,13 @@ var ElSelectMenu = defineComponent({
       } = select;
       const item = data[index];
       if (item.type === "Group") {
+        const showDivider = item.selectionSection ? index > 0 : !item.businessGroup && index > 0;
         return createVNode(GroupItem, {
           "item": item,
           "style": style,
-          "showDivider": index > 0
+          "showDivider": showDivider,
+          "selectionSection": !!item.selectionSection,
+          "businessGroup": !!item.businessGroup
         }, null);
       }
       const isSelected = isItemSelected(modelValue, item);
@@ -162,6 +176,7 @@ var ElSelectMenu = defineComponent({
         "disabled": getDisabled(item) || isDisabled,
         "created": !!item.created,
         "hovering": isHovering,
+        "showSelectionSection": index === selectionDividerIndex.value,
         "item": item,
         "onSelect": onSelect,
         "onHover": onHover

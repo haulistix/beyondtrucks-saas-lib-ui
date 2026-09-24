@@ -232,6 +232,14 @@ declare const _default: import("vue").DefineComponent<{
     hoverOption: import("vue").Ref<any>;
     selectSize: import("vue").ComputedRef<"" | "small" | "default" | "large">;
     filteredOptionsCount: import("vue").ComputedRef<number>;
+    visibleMultipleOptions: import("vue").ComputedRef<import("./type").OptionPublicInstance[]>;
+    hasVisibleSelectedOptions: import("vue").ComputedRef<boolean>;
+    hasVisibleUnselectedOptions: import("vue").ComputedRef<boolean>;
+    multipleSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
+    isAllVisibleOptionsSelected: import("vue").ComputedRef<boolean>;
+    isSelectAllIndeterminate: import("vue").ComputedRef<boolean>;
+    selectAllLabel: import("vue").ComputedRef<"Deselect All" | "Select All">;
+    isSelectAllDisabled: import("vue").ComputedRef<boolean>;
     updateTooltip: () => void;
     updateTagTooltip: () => void;
     debouncedOnInputChange: import("@vueuse/shared").PromisifyFn<() => void>;
@@ -240,6 +248,7 @@ declare const _default: import("vue").DefineComponent<{
     deleteTag: (event: MouseEvent, tag: import("./type").OptionBasic) => void;
     deleteSelected: (event: Event) => void;
     handleOptionSelect: (option: import("./type").OptionPublicInstance) => Promise<void>;
+    toggleSelectAll: () => Promise<void>;
     scrollToOption: (option: import("./type").OptionPublicInstance | import("./type").OptionPublicInstance[] | import("./type").SelectStates["selected"]) => void;
     hasModelValue: import("vue").ComputedRef<boolean>;
     shouldShowPlaceholder: import("vue").ComputedRef<boolean>;

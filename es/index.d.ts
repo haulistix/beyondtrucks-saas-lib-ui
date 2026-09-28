@@ -17913,6 +17913,8 @@ declare const _default_78: DefineComponent<{
 }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
     "update:modelValue": (val: SelectV2ModelValue) => boolean;
     change: (val: SelectV2ModelValue) => boolean;
+    "option-select": (option: Option_2, val: SelectV2ModelValue) => boolean;
+    "select-all": (val: SelectV2ModelValue) => boolean;
     "remove-tag": (val: unknown) => boolean;
     "visible-change": (visible: boolean) => boolean;
     focus: (evt: FocusEvent) => boolean;
@@ -18178,6 +18180,8 @@ declare const _default_78: DefineComponent<{
     onBlur?: ((evt: FocusEvent) => any) | undefined;
     onClear?: (() => any) | undefined;
     "onVisible-change"?: ((visible: boolean) => any) | undefined;
+    "onSelect-all"?: ((val: any) => any) | undefined;
+    "onOption-select"?: ((option: Option_2, val: any) => any) | undefined;
     "onRemove-tag"?: ((val: unknown) => any) | undefined;
 }, {
     readonly disabled: boolean;
@@ -19432,8 +19436,8 @@ declare const _default_86: DefineComponent<{
     onScroll?: ((...args: any[]) => any) | undefined;
     onSelect?: ((...args: any[]) => any) | undefined;
     "onExpand-change"?: ((...args: any[]) => any) | undefined;
-    "onCurrent-change"?: ((...args: any[]) => any) | undefined;
     "onSelect-all"?: ((...args: any[]) => any) | undefined;
+    "onCurrent-change"?: ((...args: any[]) => any) | undefined;
     "onSelection-change"?: ((...args: any[]) => any) | undefined;
     "onSort-change"?: ((...args: any[]) => any) | undefined;
     "onFilter-change"?: ((...args: any[]) => any) | undefined;

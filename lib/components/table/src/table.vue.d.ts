@@ -1020,8 +1020,8 @@ declare const _default: import("vue").DefineComponent<{
     onScroll?: ((...args: any[]) => any) | undefined;
     onSelect?: ((...args: any[]) => any) | undefined;
     "onExpand-change"?: ((...args: any[]) => any) | undefined;
-    "onCurrent-change"?: ((...args: any[]) => any) | undefined;
     "onSelect-all"?: ((...args: any[]) => any) | undefined;
+    "onCurrent-change"?: ((...args: any[]) => any) | undefined;
     "onSelection-change"?: ((...args: any[]) => any) | undefined;
     "onSort-change"?: ((...args: any[]) => any) | undefined;
     "onFilter-change"?: ((...args: any[]) => any) | undefined;

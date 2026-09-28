@@ -392,6 +392,8 @@ declare const _default: import("vue").DefineComponent<{
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (val: import("./defaults").SelectV2ModelValue) => boolean;
     change: (val: import("./defaults").SelectV2ModelValue) => boolean;
+    'option-select': (option: import("./select.types").Option, val: import("./defaults").SelectV2ModelValue) => boolean;
+    'select-all': (val: import("./defaults").SelectV2ModelValue) => boolean;
     'remove-tag': (val: unknown) => boolean;
     'visible-change': (visible: boolean) => boolean;
     focus: (evt: FocusEvent) => boolean;
@@ -646,6 +648,8 @@ declare const _default: import("vue").DefineComponent<{
     onBlur?: ((evt: FocusEvent) => any) | undefined;
     onClear?: (() => any) | undefined;
     "onVisible-change"?: ((visible: boolean) => any) | undefined;
+    "onSelect-all"?: ((val: any) => any) | undefined;
+    "onOption-select"?: ((option: import("./select.types").Option, val: any) => any) | undefined;
     "onRemove-tag"?: ((val: unknown) => any) | undefined;
 }, {
     readonly disabled: boolean;

@@ -271,6 +271,8 @@ export declare const optionV2Props: {
 export declare const selectV2Emits: {
     "update:modelValue": (val: SelectV2ModelValue) => boolean;
     change: (val: SelectV2ModelValue) => boolean;
+    'option-select': (option: Option, val: SelectV2ModelValue) => boolean;
+    'select-all': (val: SelectV2ModelValue) => boolean;
     'remove-tag': (val: unknown) => boolean;
     'visible-change': (visible: boolean) => boolean;
     focus: (evt: FocusEvent) => boolean;

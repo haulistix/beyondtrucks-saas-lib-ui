@@ -518,6 +518,7 @@ const useSelect = (props, emit) => {
     if (!await checkBeforeChange(selectedOptions, props.modelValue))
       return;
     update(selectedOptions);
+    emit("select-all", selectedOptions);
     focus();
   };
   const onSelect = async (option) => {
@@ -545,6 +546,9 @@ const useSelect = (props, emit) => {
         selectNewOption(option);
       }
       update(selectedOptions);
+      if (isSelected || canSelect) {
+        emit("option-select", option, selectedOptions);
+      }
       if (option.created) {
         handleQueryChange("");
       }
@@ -556,6 +560,7 @@ const useSelect = (props, emit) => {
         return;
       states.selectedLabel = getLabel(option);
       !isEqual(props.modelValue, optionValue) && update(optionValue);
+      emit("option-select", option, optionValue);
       expanded.value = false;
       selectNewOption(option);
       if (!option.created) {

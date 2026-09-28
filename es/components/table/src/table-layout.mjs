@@ -117,17 +117,19 @@ class TableLayout {
     let bodyMinWidth = 0;
     const flattenColumns = this.getFlattenColumns();
     const flexColumns = flattenColumns.filter((column) => !isNumber(column.width));
-    const lastNonFixedColumn = distributeRemainingWidth ? [...flattenColumns].reverse().find((column) => !column.fixed) : void 0;
+    const allColumnsHaveWidth = flexColumns.length === 0;
+    const lastNonFixedColumn = distributeRemainingWidth || allColumnsHaveWidth ? [...flattenColumns].reverse().find((column) => !column.fixed) : void 0;
     if (fit && lastNonFixedColumn) {
       flattenColumns.forEach((column) => {
-        var _a2, _b, _c;
-        column.realWidth = Number((_c = (_b = (_a2 = column.realWidth) != null ? _a2 : column.width) != null ? _b : column.minWidth) != null ? _c : 80);
+        var _a2, _b, _c, _d, _e;
+        column.realWidth = Number(allColumnsHaveWidth ? (_b = (_a2 = column.width) != null ? _a2 : column.minWidth) != null ? _b : 80 : (_e = (_d = (_c = column.realWidth) != null ? _c : column.width) != null ? _d : column.minWidth) != null ? _e : 80);
         bodyMinWidth += column.realWidth;
       });
       const remainingWidth = bodyWidth - bodyMinWidth;
       if (remainingWidth > 0) {
         const width = Number(lastNonFixedColumn.realWidth) + remainingWidth;
-        lastNonFixedColumn.width = width;
+        if (distributeRemainingWidth)
+          lastNonFixedColumn.width = width;
         lastNonFixedColumn.realWidth = width;
         bodyMinWidth = bodyWidth;
       }

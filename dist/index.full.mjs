@@ -46563,6 +46563,8 @@ const optionV2Props = buildProps({
 const selectV2Emits = {
   [UPDATE_MODEL_EVENT]: (val) => true,
   [CHANGE_EVENT]: (val) => true,
+  "option-select": (option, val) => true,
+  "select-all": (val) => true,
   "remove-tag": (val) => true,
   "visible-change": (visible) => true,
   focus: (evt) => evt instanceof FocusEvent,
@@ -47579,6 +47581,7 @@ const useSelect$1 = (props, emit) => {
     if (!await checkBeforeChange(selectedOptions, props.modelValue))
       return;
     update(selectedOptions);
+    emit("select-all", selectedOptions);
     focus();
   };
   const onSelect = async (option) => {
@@ -47606,6 +47609,9 @@ const useSelect$1 = (props, emit) => {
         selectNewOption(option);
       }
       update(selectedOptions);
+      if (isSelected || canSelect) {
+        emit("option-select", option, selectedOptions);
+      }
       if (option.created) {
         handleQueryChange("");
       }
@@ -47617,6 +47623,7 @@ const useSelect$1 = (props, emit) => {
         return;
       states.selectedLabel = getLabel(option);
       !isEqual$1(props.modelValue, optionValue) && update(optionValue);
+      emit("option-select", option, optionValue);
       expanded.value = false;
       selectNewOption(option);
       if (!option.created) {
@@ -51814,17 +51821,19 @@ class TableLayout {
     let bodyMinWidth = 0;
     const flattenColumns = this.getFlattenColumns();
     const flexColumns = flattenColumns.filter((column) => !isNumber(column.width));
-    const lastNonFixedColumn = distributeRemainingWidth ? [...flattenColumns].reverse().find((column) => !column.fixed) : void 0;
+    const allColumnsHaveWidth = flexColumns.length === 0;
+    const lastNonFixedColumn = distributeRemainingWidth || allColumnsHaveWidth ? [...flattenColumns].reverse().find((column) => !column.fixed) : void 0;
     if (fit && lastNonFixedColumn) {
       flattenColumns.forEach((column) => {
-        var _a2, _b, _c;
-        column.realWidth = Number((_c = (_b = (_a2 = column.realWidth) != null ? _a2 : column.width) != null ? _b : column.minWidth) != null ? _c : 80);
+        var _a2, _b, _c, _d, _e;
+        column.realWidth = Number(allColumnsHaveWidth ? (_b = (_a2 = column.width) != null ? _a2 : column.minWidth) != null ? _b : 80 : (_e = (_d = (_c = column.realWidth) != null ? _c : column.width) != null ? _d : column.minWidth) != null ? _e : 80);
         bodyMinWidth += column.realWidth;
       });
       const remainingWidth = bodyWidth - bodyMinWidth;
       if (remainingWidth > 0) {
         const width = Number(lastNonFixedColumn.realWidth) + remainingWidth;
-        lastNonFixedColumn.width = width;
+        if (distributeRemainingWidth)
+          lastNonFixedColumn.width = width;
         lastNonFixedColumn.realWidth = width;
         bodyMinWidth = bodyWidth;
       }
@@ -56517,8 +56526,16 @@ function useColumns(props, columns, fixed, effectiveWidth, reservedVScrollbarWid
     const columnsWithEditAction = shouldAppendActionColumn ? [...normalizedColumns, rowDeleteColumn] : normalizedColumns;
     const visibleColumns2 = columnsWithEditAction.filter((column) => !column.hidden);
     const autoWidthCandidates = visibleColumns2.filter((column) => column.width == null);
-    if (!autoWidthCandidates.length)
-      return columnsWithEditAction;
+    if (!autoWidthCandidates.length) {
+      const stretchColumn2 = [...visibleColumns2].reverse().find((column) => !column.fixed);
+      const remainingWidth = availableWidth - visibleColumns2.reduce((width, column) => width + Number(column.width), 0);
+      if (!stretchColumn2 || remainingWidth <= 0)
+        return columnsWithEditAction;
+      return columnsWithEditAction.map((column) => column.key === stretchColumn2.key ? {
+        ...column,
+        width: Number(column.width) + remainingWidth
+      } : column);
+    }
     const stretchColumn = autoWidthCandidates[autoWidthCandidates.length - 1];
     const resolvedColumns = columnsWithEditAction.map((column) => {
       if (column.width != null)

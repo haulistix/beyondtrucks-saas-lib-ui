@@ -1,4 +1,4 @@
-import { autocompleteProps } from '../../autocomplete/src/autocomplete2.mjs';
+import { autocompleteProps } from '../../autocomplete/src/autocomplete.mjs';
 import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs';
 import { inputProps } from '../../input/src/input.mjs';
 import { UPDATE_MODEL_EVENT, INPUT_EVENT, CHANGE_EVENT } from '../../../constants/event.mjs';

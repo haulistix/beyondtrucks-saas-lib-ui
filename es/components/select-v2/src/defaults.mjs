@@ -3,7 +3,7 @@ import { CircleClose, ArrowDown } from '@element-plus/icons-vue';
 import { defaultProps } from './useProps.mjs';
 import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs';
 import { iconPropType } from '../../../utils/vue/icon.mjs';
-import { useTooltipContentProps } from '../../tooltip/src/content2.mjs';
+import { useTooltipContentProps } from '../../tooltip/src/content.mjs';
 import { useSizeProp } from '../../../hooks/use-size/index.mjs';
 import { tagProps } from '../../tag/src/tag.mjs';
 import { isBoolean, isNumber } from '../../../utils/types.mjs';
@@ -86,6 +86,10 @@ const selectV2Props = buildProps({
   multipleLimit: {
     type: Number,
     default: 0
+  },
+  selectAllExcludedValues: {
+    type: definePropType(Array),
+    default: () => []
   },
   name: String,
   noDataText: String,

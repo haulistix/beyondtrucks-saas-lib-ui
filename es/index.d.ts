@@ -16900,6 +16900,7 @@ declare const _default_75: DefineComponent<{
     };
     multiple: BooleanConstructor;
     multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | ((new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]))[], unknown, unknown, () => never[], boolean>;
     filterMaxLength: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: PropType<string>;
@@ -17169,7 +17170,7 @@ declare const _default_75: DefineComponent<{
     menuRef: Ref<HTMLElement | undefined>;
     tagMenuRef: Ref<HTMLElement | undefined>;
     collapseItemRef: Ref<HTMLElement | undefined>;
-}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("focus" | "update:modelValue" | "change" | "clear" | "blur" | "visible-change" | "remove-tag" | "popup-scroll" | "add-item")[], "focus" | "update:modelValue" | "change" | "clear" | "blur" | "visible-change" | "remove-tag" | "popup-scroll" | "add-item", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
+}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("focus" | "update:modelValue" | "change" | "clear" | "select-all" | "blur" | "visible-change" | "option-select" | "remove-tag" | "popup-scroll" | "add-item")[], "focus" | "update:modelValue" | "change" | "clear" | "select-all" | "blur" | "visible-change" | "option-select" | "remove-tag" | "popup-scroll" | "add-item", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     ariaLabel: StringConstructor;
     emptyValues: ArrayConstructor;
     valueOnClear: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown, undefined, boolean>;
@@ -17231,6 +17232,7 @@ declare const _default_75: DefineComponent<{
     };
     multiple: BooleanConstructor;
     multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | ((new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]))[], unknown, unknown, () => never[], boolean>;
     filterMaxLength: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: PropType<string>;
@@ -17311,6 +17313,8 @@ declare const _default_75: DefineComponent<{
     onBlur?: ((...args: any[]) => any) | undefined;
     onClear?: ((...args: any[]) => any) | undefined;
     "onVisible-change"?: ((...args: any[]) => any) | undefined;
+    "onSelect-all"?: ((...args: any[]) => any) | undefined;
+    "onOption-select"?: ((...args: any[]) => any) | undefined;
     "onRemove-tag"?: ((...args: any[]) => any) | undefined;
     "onPopup-scroll"?: ((...args: any[]) => any) | undefined;
     "onAdd-item"?: ((...args: any[]) => any) | undefined;
@@ -17349,6 +17353,7 @@ declare const _default_75: DefineComponent<{
     tagEffect: EpPropMergeType<StringConstructor, "dark" | "light" | "plain", unknown>;
     showOptionTooltip: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     multipleLimit: number;
+    selectAllExcludedValues: EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[];
     reserveKeyword: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     allowCreate: boolean;
     defaultFirstOption: boolean;
@@ -17573,6 +17578,7 @@ declare const _default_78: DefineComponent<{
     })[], unknown, unknown, undefined, boolean>;
     readonly multiple: BooleanConstructor;
     readonly multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => any[]) | (() => any[]) | ((new (...args: any[]) => any[]) | (() => any[]))[], unknown, unknown, () => never[], boolean>;
     readonly name: StringConstructor;
     readonly noDataText: StringConstructor;
     readonly noMatchText: StringConstructor;
@@ -17984,6 +17990,7 @@ declare const _default_78: DefineComponent<{
     })[], unknown, unknown, undefined, boolean>;
     readonly multiple: BooleanConstructor;
     readonly multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => any[]) | (() => any[]) | ((new (...args: any[]) => any[]) | (() => any[]))[], unknown, unknown, () => never[], boolean>;
     readonly name: StringConstructor;
     readonly noDataText: StringConstructor;
     readonly noMatchText: StringConstructor;
@@ -18226,6 +18233,7 @@ declare const _default_78: DefineComponent<{
     readonly showOptionTooltip: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly itemHeight: number;
     readonly multipleLimit: number;
+    readonly selectAllExcludedValues: any[];
     readonly reserveKeyword: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly allowCreate: boolean;
     readonly defaultFirstOption: boolean;
@@ -26516,6 +26524,8 @@ export declare type SelectEmits = EmitFn<typeof selectEmits>;
 export declare const selectEmits: {
     "update:modelValue": (val: SelectProps["modelValue"]) => boolean;
     change: (val: SelectProps["modelValue"]) => boolean;
+    "option-select": (option: SelectOptionProxy, val: SelectProps["modelValue"]) => boolean;
+    "select-all": (val: SelectProps["modelValue"]) => boolean;
     "popup-scroll": ({ scrollTop, scrollLeft, }: {
         scrollTop: number;
         scrollLeft: number;
@@ -26597,6 +26607,7 @@ export declare const selectProps: {
     };
     multiple: BooleanConstructor;
     multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | ((new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]))[], unknown, unknown, () => never[], boolean>;
     filterMaxLength: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: PropType<string>;
@@ -26784,6 +26795,7 @@ declare const selectV2Props: {
     })[], unknown, unknown, undefined, boolean>;
     readonly multiple: BooleanConstructor;
     readonly multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
+    readonly selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => any[]) | (() => any[]) | ((new (...args: any[]) => any[]) | (() => any[]))[], unknown, unknown, () => never[], boolean>;
     readonly name: StringConstructor;
     readonly noDataText: StringConstructor;
     readonly noMatchText: StringConstructor;

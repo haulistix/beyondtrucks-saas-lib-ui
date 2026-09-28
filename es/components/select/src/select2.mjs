@@ -40,6 +40,8 @@ const _sfc_main = defineComponent({
   emits: [
     UPDATE_MODEL_EVENT,
     CHANGE_EVENT,
+    "option-select",
+    "select-all",
     "remove-tag",
     "add-item",
     "clear",

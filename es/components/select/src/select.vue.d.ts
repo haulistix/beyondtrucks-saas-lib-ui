@@ -61,6 +61,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     multiple: BooleanConstructor;
     multipleLimit: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    selectAllExcludedValues: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | ((new (...args: any[]) => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]))[], unknown, unknown, () => never[], boolean>;
     filterMaxLength: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: import("vue").PropType<string>;
@@ -330,7 +331,7 @@ declare const _default: import("vue").DefineComponent<{
     menuRef: import("vue").Ref<HTMLElement | undefined>;
     tagMenuRef: import("vue").Ref<HTMLElement | undefined>;
     collapseItemRef: import("vue").Ref<HTMLElement | undefined>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("focus" | "update:modelValue" | "change" | "clear" | "blur" | "visible-change" | "remove-tag" | "popup-scroll" | "add-item")[], "focus" | "update:modelValue" | "change" | "clear" | "blur" | "visible-change" | "remove-tag" | "popup-scroll" | "add-item", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("focus" | "update:modelValue" | "change" | "clear" | "select-all" | "blur" | "visible-change" | "option-select" | "remove-tag" | "popup-scroll" | "add-item")[], "focus" | "update:modelValue" | "change" | "clear" | "select-all" | "blur" | "visible-change" | "option-select" | "remove-tag" | "popup-scroll" | "add-item", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     ariaLabel: StringConstructor;
     emptyValues: ArrayConstructor;
     valueOnClear: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null) | ((new (...args: any[]) => string | number | boolean | Function) | (() => string | number | boolean | Function | null))[], unknown, unknown, undefined, boolean>;
@@ -392,6 +393,7 @@ declare const _default: import("vue").DefineComponent<{
     };
     multiple: BooleanConstructor;
     multipleLimit: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    selectAllExcludedValues: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | ((new (...args: any[]) => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]))[], unknown, unknown, () => never[], boolean>;
     filterMaxLength: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: import("vue").PropType<string>;
@@ -472,6 +474,8 @@ declare const _default: import("vue").DefineComponent<{
     onBlur?: ((...args: any[]) => any) | undefined;
     onClear?: ((...args: any[]) => any) | undefined;
     "onVisible-change"?: ((...args: any[]) => any) | undefined;
+    "onSelect-all"?: ((...args: any[]) => any) | undefined;
+    "onOption-select"?: ((...args: any[]) => any) | undefined;
     "onRemove-tag"?: ((...args: any[]) => any) | undefined;
     "onPopup-scroll"?: ((...args: any[]) => any) | undefined;
     "onAdd-item"?: ((...args: any[]) => any) | undefined;
@@ -510,6 +514,7 @@ declare const _default: import("vue").DefineComponent<{
     tagEffect: import("element-plus/es/utils").EpPropMergeType<StringConstructor, "dark" | "light" | "plain", unknown>;
     showOptionTooltip: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     multipleLimit: number;
+    selectAllExcludedValues: import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[];
     reserveKeyword: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     allowCreate: boolean;
     defaultFirstOption: boolean;

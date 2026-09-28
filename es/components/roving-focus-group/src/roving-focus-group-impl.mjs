@@ -1,6 +1,6 @@
 import { defineComponent, ref, inject, computed, provide, readonly, toRef, unref, watch, nextTick, renderSlot } from 'vue';
 import { useEventListener } from '@vueuse/core';
-import { rovingFocusGroupProps, ROVING_FOCUS_COLLECTION_INJECTION_KEY as COLLECTION_INJECTION_KEY } from './roving-focus-group2.mjs';
+import { rovingFocusGroupProps, ROVING_FOCUS_COLLECTION_INJECTION_KEY as COLLECTION_INJECTION_KEY } from './roving-focus-group.mjs';
 import { ROVING_FOCUS_GROUP_INJECTION_KEY } from './tokens.mjs';
 import { getFocusIntent, reorderArray, focusFirst } from './utils.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';

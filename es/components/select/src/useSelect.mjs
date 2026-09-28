@@ -444,15 +444,20 @@ const useSelect = (props, emit) => {
     if (props.multiple) {
       const value = castArray((_a = props.modelValue) != null ? _a : []).slice();
       const optionIndex = getValueIndex(value, option);
+      const isSelected = optionIndex > -1;
+      const canSelect = props.multipleLimit <= 0 || value.length < props.multipleLimit;
       if (optionIndex > -1) {
         value.splice(optionIndex, 1);
-      } else if (props.multipleLimit <= 0 || value.length < props.multipleLimit) {
+      } else if (canSelect) {
         value.push(option.value);
       }
       if (!await checkBeforeChange(value, props.modelValue))
         return;
       emit(UPDATE_MODEL_EVENT, value);
       emitChange(value);
+      if (isSelected || canSelect) {
+        emit("option-select", option, value);
+      }
       if (option.created) {
         handleQueryChange("");
       }
@@ -464,6 +469,7 @@ const useSelect = (props, emit) => {
         return;
       !isEqual(props.modelValue, option.value) && emit(UPDATE_MODEL_EVENT, option.value);
       emitChange(option.value);
+      emit("option-select", option, option.value);
       expanded.value = false;
     }
     focus();
@@ -482,8 +488,10 @@ const useSelect = (props, emit) => {
       return isEqual(get(item, props.valueKey), getValueKey(option));
     });
   };
+  const getOptionValueKey = (value) => isObject(value) ? get(value, props.valueKey) : value;
+  const selectAllExcludedValueKeys = computed(() => new Set(props.selectAllExcludedValues.map(getOptionValueKey)));
   const visibleMultipleOptions = computed(() => props.multiple ? optionsArray.value.filter((option) => option.visible) : []);
-  const selectableMultipleOptions = computed(() => visibleMultipleOptions.value.filter((option) => !option.isDisabled));
+  const selectableMultipleOptions = computed(() => visibleMultipleOptions.value.filter((option) => !option.isDisabled && !selectAllExcludedValueKeys.value.has(getOptionValueKey(option.value))));
   const isMultipleOptionSelected = (option) => getValueIndex(castArray(props.modelValue), option) > -1;
   const hasVisibleSelectedOptions = computed(() => visibleMultipleOptions.value.some(isMultipleOptionSelected));
   const hasVisibleUnselectedOptions = computed(() => visibleMultipleOptions.value.some((option) => !isMultipleOptionSelected(option)));
@@ -500,7 +508,7 @@ const useSelect = (props, emit) => {
     if (isAllVisibleOptionsSelected.value) {
       value = value.filter((selectedValue) => {
         const option = optionsArray.value.find((item) => getValueIndex([selectedValue], item) > -1);
-        return Boolean(option == null ? void 0 : option.isDisabled);
+        return selectAllExcludedValueKeys.value.has(getOptionValueKey(selectedValue)) || Boolean(option == null ? void 0 : option.isDisabled);
       });
     } else {
       for (const option of selectableMultipleOptions.value) {
@@ -516,6 +524,7 @@ const useSelect = (props, emit) => {
       return;
     emit(UPDATE_MODEL_EVENT, value);
     emitChange(value);
+    emit("select-all", value);
     focus();
   };
   const scrollToOption = (option) => {
@@ -611,9 +620,7 @@ const useSelect = (props, emit) => {
       }
     }
   };
-  const getValueKey = (item) => {
-    return isObject(item.value) ? get(item.value, props.valueKey) : item.value;
-  };
+  const getValueKey = (item) => getOptionValueKey(item.value);
   const optionsAllDisabled = computed(() => optionsArray.value.filter((option) => option.visible).every((option) => option.isDisabled));
   const showTagList = computed(() => {
     if (!props.multiple) {

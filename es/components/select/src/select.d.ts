@@ -2,7 +2,7 @@ import type { Awaitable, EmitFn } from 'element-plus/es/utils';
 import type { CSSProperties, ExtractPropTypes, __ExtractPublicPropTypes } from 'vue';
 import type Select from './select.vue';
 import type { Options, Placement, PopperEffect } from 'element-plus/es/components/popper';
-import type { OptionValue } from './type';
+import type { OptionPublicInstance, OptionValue } from './type';
 import type { Props } from 'element-plus/es/components/select-v2/src/useProps';
 export declare const selectProps: {
     ariaLabel: StringConstructor;
@@ -66,6 +66,7 @@ export declare const selectProps: {
     };
     multiple: BooleanConstructor;
     multipleLimit: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
+    selectAllExcludedValues: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | ((new (...args: any[]) => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]))[], unknown, unknown, () => never[], boolean>;
     filterMaxLength: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: import("vue").PropType<string>;
@@ -143,6 +144,8 @@ export declare const selectProps: {
 export declare const selectEmits: {
     "update:modelValue": (val: SelectProps["modelValue"]) => boolean;
     change: (val: SelectProps["modelValue"]) => boolean;
+    'option-select': (option: OptionPublicInstance, val: SelectProps["modelValue"]) => boolean;
+    'select-all': (val: SelectProps["modelValue"]) => boolean;
     'popup-scroll': ({ scrollTop, scrollLeft, }: {
         scrollTop: number;
         scrollLeft: number;

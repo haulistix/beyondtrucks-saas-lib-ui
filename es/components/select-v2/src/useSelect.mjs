@@ -233,7 +233,8 @@ const useSelect = (props, emit) => {
   });
   const currentMultipleOptions = computed(() => props.multiple ? filteredOptions.value.filter((option) => option.type !== "Group") : []);
   const hasMultipleOptionGroups = computed(() => filteredOptions.value.some((option) => option.businessGroup));
-  const selectableMultipleOptions = computed(() => currentMultipleOptions.value.filter((option) => !getDisabled(option)));
+  const selectAllExcludedValueKeys = computed(() => new Set(props.selectAllExcludedValues.map(getValueKey)));
+  const selectableMultipleOptions = computed(() => currentMultipleOptions.value.filter((option) => !getDisabled(option) && !selectAllExcludedValueKeys.value.has(getValueKey(getValue(option)))));
   const hasVisibleSelectedOptions = computed(() => currentMultipleOptions.value.some(isOptionSelected));
   const hasVisibleUnselectedOptions = computed(() => currentMultipleOptions.value.some((option) => !isOptionSelected(option)));
   const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
@@ -502,8 +503,11 @@ const useSelect = (props, emit) => {
     }
     let selectedOptions = props.modelValue.slice();
     if (isAllVisibleOptionsSelected.value) {
-      const disabledValues = new Set(allOptions.value.filter((option) => option.type !== "Group" && getDisabled(option)).map((option) => getValueKey(getValue(option))));
-      selectedOptions = selectedOptions.filter((value) => disabledValues.has(getValueKey(value)));
+      const retainedValues = /* @__PURE__ */ new Set([
+        ...allOptions.value.filter((option) => option.type !== "Group" && getDisabled(option)).map((option) => getValueKey(getValue(option))),
+        ...selectAllExcludedValueKeys.value
+      ]);
+      selectedOptions = selectedOptions.filter((value) => retainedValues.has(getValueKey(value)));
     } else {
       for (const option of selectableMultipleOptions.value) {
         const optionValue = getValue(option);

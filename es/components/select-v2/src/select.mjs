@@ -526,10 +526,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     ], 2)
                   ])
                 } : void 0,
-                _ctx.$slots.footer || _ctx.multiple && _ctx.currentMultipleOptions.length ? {
+                _ctx.$slots.footer || _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? {
                   name: "footer",
                   fn: withCtx(() => [
-                    _ctx.multiple && _ctx.currentMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                    _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? (openBlock(), createElementBlock("div", {
                       key: 0,
                       class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                       onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])

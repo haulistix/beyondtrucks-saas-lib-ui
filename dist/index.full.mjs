@@ -38775,6 +38775,10 @@ const selectProps = buildProps({
     type: definePropType(Array),
     default: () => []
   },
+  showSelectAll: {
+    type: Boolean,
+    default: true
+  },
   filterMaxLength: {
     type: Number,
     default: 99
@@ -39666,7 +39670,7 @@ function _sfc_render$b(_ctx, _cache) {
                       ], 8, ["onClick"]))
                     ])
                   ], 2)) : createCommentVNode("v-if", true),
-                  _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                  _ctx.showSelectAll && _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
                     key: 3,
                     class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                     onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])
@@ -46482,6 +46486,10 @@ const selectV2Props = buildProps({
     type: definePropType(Array),
     default: () => []
   },
+  showSelectAll: {
+    type: Boolean,
+    default: true
+  },
   name: String,
   noDataText: String,
   noMatchText: String,
@@ -48532,10 +48540,10 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
                     ], 2)
                   ])
                 } : void 0,
-                _ctx.$slots.footer || _ctx.multiple && _ctx.currentMultipleOptions.length ? {
+                _ctx.$slots.footer || _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? {
                   name: "footer",
                   fn: withCtx(() => [
-                    _ctx.multiple && _ctx.currentMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                    _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? (openBlock(), createElementBlock("div", {
                       key: 0,
                       class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                       onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])
@@ -69931,16 +69939,8 @@ function createLoadingComponent(options, appContext) {
         const spinner = h$1("svg", {
           class: "circular",
           viewBox: data.svgViewBox ? data.svgViewBox : "0 0 24 24",
-          ...svg ? { innerHTML: svg } : {}
-        }, [
-          h$1("circle", {
-            class: "path",
-            cx: "25",
-            cy: "25",
-            r: "20",
-            fill: "none"
-          })
-        ]);
+          innerHTML: svg
+        });
         const spinnerText = data.text ? h$1("p", { class: ns.b("text") }, [data.text]) : void 0;
         return h$1(Transition, {
           name: ns.b("fade"),

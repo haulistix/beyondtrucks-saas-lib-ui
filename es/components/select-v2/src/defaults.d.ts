@@ -74,6 +74,7 @@ export declare const selectV2Props: {
     readonly multiple: BooleanConstructor;
     readonly multipleLimit: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly selectAllExcludedValues: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => any[]) | (() => any[]) | ((new (...args: any[]) => any[]) | (() => any[]))[], unknown, unknown, () => never[], boolean>;
+    readonly showSelectAll: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly name: StringConstructor;
     readonly noDataText: StringConstructor;
     readonly noMatchText: StringConstructor;

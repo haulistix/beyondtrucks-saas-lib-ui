@@ -66,16 +66,8 @@ function createLoadingComponent(options, appContext) {
         const spinner = h("svg", {
           class: "circular",
           viewBox: data.svgViewBox ? data.svgViewBox : "0 0 24 24",
-          ...svg ? { innerHTML: svg } : {}
-        }, [
-          h("circle", {
-            class: "path",
-            cx: "25",
-            cy: "25",
-            r: "20",
-            fill: "none"
-          })
-        ]);
+          innerHTML: svg
+        });
         const spinnerText = data.text ? h("p", { class: ns.b("text") }, [data.text]) : void 0;
         return h(Transition, {
           name: ns.b("fade"),

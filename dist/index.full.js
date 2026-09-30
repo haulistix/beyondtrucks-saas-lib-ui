@@ -38779,6 +38779,10 @@
       type: definePropType(Array),
       default: () => []
     },
+    showSelectAll: {
+      type: Boolean,
+      default: true
+    },
     filterMaxLength: {
       type: Number,
       default: 99
@@ -39670,7 +39674,7 @@
                         ], 8, ["onClick"]))
                       ])
                     ], 2)) : vue.createCommentVNode("v-if", true),
-                    _ctx.multiple && _ctx.visibleMultipleOptions.length ? (vue.openBlock(), vue.createElementBlock("div", {
+                    _ctx.showSelectAll && _ctx.multiple && _ctx.visibleMultipleOptions.length ? (vue.openBlock(), vue.createElementBlock("div", {
                       key: 3,
                       class: vue.normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                       onClick: vue.withModifiers(_ctx.toggleSelectAll, ["stop"])
@@ -46486,6 +46490,10 @@
       type: definePropType(Array),
       default: () => []
     },
+    showSelectAll: {
+      type: Boolean,
+      default: true
+    },
     name: String,
     noDataText: String,
     noMatchText: String,
@@ -48536,10 +48544,10 @@
                       ], 2)
                     ])
                   } : void 0,
-                  _ctx.$slots.footer || _ctx.multiple && _ctx.currentMultipleOptions.length ? {
+                  _ctx.$slots.footer || _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? {
                     name: "footer",
                     fn: vue.withCtx(() => [
-                      _ctx.multiple && _ctx.currentMultipleOptions.length ? (vue.openBlock(), vue.createElementBlock("div", {
+                      _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? (vue.openBlock(), vue.createElementBlock("div", {
                         key: 0,
                         class: vue.normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                         onClick: vue.withModifiers(_ctx.toggleSelectAll, ["stop"])
@@ -69935,16 +69943,8 @@
           const spinner = vue.h("svg", {
             class: "circular",
             viewBox: data.svgViewBox ? data.svgViewBox : "0 0 24 24",
-            ...svg ? { innerHTML: svg } : {}
-          }, [
-            vue.h("circle", {
-              class: "path",
-              cx: "25",
-              cy: "25",
-              r: "20",
-              fill: "none"
-            })
-          ]);
+            innerHTML: svg
+          });
           const spinnerText = data.text ? vue.h("p", { class: ns.b("text") }, [data.text]) : void 0;
           return vue.h(vue.Transition, {
             name: ns.b("fade"),

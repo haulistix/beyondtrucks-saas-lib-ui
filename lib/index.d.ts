@@ -16901,6 +16901,7 @@ declare const _default_75: DefineComponent<{
     multiple: BooleanConstructor;
     multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | ((new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]))[], unknown, unknown, () => never[], boolean>;
+    showSelectAll: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     filterMaxLength: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: PropType<string>;
@@ -17233,6 +17234,7 @@ declare const _default_75: DefineComponent<{
     multiple: BooleanConstructor;
     multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | ((new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]))[], unknown, unknown, () => never[], boolean>;
+    showSelectAll: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     filterMaxLength: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: PropType<string>;
@@ -17354,6 +17356,7 @@ declare const _default_75: DefineComponent<{
     showOptionTooltip: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     multipleLimit: number;
     selectAllExcludedValues: EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[];
+    showSelectAll: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     reserveKeyword: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     allowCreate: boolean;
     defaultFirstOption: boolean;
@@ -17579,6 +17582,7 @@ declare const _default_78: DefineComponent<{
     readonly multiple: BooleanConstructor;
     readonly multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => any[]) | (() => any[]) | ((new (...args: any[]) => any[]) | (() => any[]))[], unknown, unknown, () => never[], boolean>;
+    readonly showSelectAll: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly name: StringConstructor;
     readonly noDataText: StringConstructor;
     readonly noMatchText: StringConstructor;
@@ -17991,6 +17995,7 @@ declare const _default_78: DefineComponent<{
     readonly multiple: BooleanConstructor;
     readonly multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => any[]) | (() => any[]) | ((new (...args: any[]) => any[]) | (() => any[]))[], unknown, unknown, () => never[], boolean>;
+    readonly showSelectAll: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly name: StringConstructor;
     readonly noDataText: StringConstructor;
     readonly noMatchText: StringConstructor;
@@ -18234,6 +18239,7 @@ declare const _default_78: DefineComponent<{
     readonly itemHeight: number;
     readonly multipleLimit: number;
     readonly selectAllExcludedValues: any[];
+    readonly showSelectAll: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly reserveKeyword: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly allowCreate: boolean;
     readonly defaultFirstOption: boolean;
@@ -26608,6 +26614,7 @@ export declare const selectProps: {
     multiple: BooleanConstructor;
     multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | ((new (...args: any[]) => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]))[], unknown, unknown, () => never[], boolean>;
+    showSelectAll: EpPropFinalized<BooleanConstructor, unknown, unknown, boolean, boolean>;
     filterMaxLength: EpPropFinalized<NumberConstructor, unknown, unknown, number, boolean>;
     placeholder: {
         readonly type: PropType<string>;
@@ -26796,6 +26803,7 @@ declare const selectV2Props: {
     readonly multiple: BooleanConstructor;
     readonly multipleLimit: EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly selectAllExcludedValues: EpPropFinalized<(new (...args: any[]) => any[]) | (() => any[]) | ((new (...args: any[]) => any[]) | (() => any[]))[], unknown, unknown, () => never[], boolean>;
+    readonly showSelectAll: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly name: StringConstructor;
     readonly noDataText: StringConstructor;
     readonly noMatchText: StringConstructor;

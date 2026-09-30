@@ -64,6 +64,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly multiple: BooleanConstructor;
     readonly multipleLimit: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly selectAllExcludedValues: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => any[]) | (() => any[]) | ((new (...args: any[]) => any[]) | (() => any[]))[], unknown, unknown, () => never[], boolean>;
+    readonly showSelectAll: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly name: StringConstructor;
     readonly noDataText: StringConstructor;
     readonly noMatchText: StringConstructor;
@@ -465,6 +466,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly multiple: BooleanConstructor;
     readonly multipleLimit: import("element-plus/es/utils").EpPropFinalized<NumberConstructor, unknown, unknown, 0, boolean>;
     readonly selectAllExcludedValues: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => any[]) | (() => any[]) | ((new (...args: any[]) => any[]) | (() => any[]))[], unknown, unknown, () => never[], boolean>;
+    readonly showSelectAll: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly name: StringConstructor;
     readonly noDataText: StringConstructor;
     readonly noMatchText: StringConstructor;
@@ -691,6 +693,7 @@ declare const _default: import("vue").DefineComponent<{
     readonly itemHeight: number;
     readonly multipleLimit: number;
     readonly selectAllExcludedValues: any[];
+    readonly showSelectAll: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly reserveKeyword: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly allowCreate: boolean;
     readonly defaultFirstOption: boolean;

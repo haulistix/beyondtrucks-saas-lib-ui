@@ -9,10 +9,10 @@ import { selectV2Props, selectV2Emits } from './defaults.mjs';
 import { selectV2InjectionKey } from './token.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import ClickOutside from '../../../directives/click-outside/index.mjs';
-import { isArray } from '@vue/shared';
 import { useCalcInputWidth } from '../../../hooks/use-calc-input-width/index.mjs';
-import { useId } from '../../../hooks/use-id/index.mjs';
 import { BORDER_HORIZONTAL_WIDTH } from '../../../constants/form.mjs';
+import { isArray } from '@vue/shared';
+import { useId } from '../../../hooks/use-id/index.mjs';
 
 const _sfc_main = defineComponent({
   name: "ElSelectV2",

@@ -2,9 +2,9 @@ import { defineComponent, inject, computed, ref, onMounted, openBlock, createEle
 import { useResizeObserver } from '@vueuse/core';
 import { selectKey } from './token.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
-import { BORDER_HORIZONTAL_WIDTH } from '../../../constants/form.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { addUnit } from '../../../utils/dom/style.mjs';
+import { BORDER_HORIZONTAL_WIDTH } from '../../../constants/form.mjs';
 
 const _sfc_main = defineComponent({
   name: "ElSelectDropdown",

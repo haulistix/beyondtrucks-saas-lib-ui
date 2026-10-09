@@ -4,6 +4,7 @@ import { useDebounceFn, useResizeObserver } from '@vueuse/core';
 import { useAllowCreate } from './useAllowCreate.mjs';
 import { SELECT_V2_GROUP_TITLE_HEIGHT, SELECT_V2_GROUP_DIVIDER_SIZE } from './defaults.mjs';
 import { useProps } from './useProps.mjs';
+import { escapeStringRegexp } from '../../../utils/strings.mjs';
 import { useLocale } from '../../../hooks/use-locale/index.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { useFormItem, useFormItemInputId } from '../../form/src/hooks/use-form-item.mjs';
@@ -13,7 +14,6 @@ import { useFocusController } from '../../../hooks/use-focus-controller/index.mj
 import { debugWarn, throwError } from '../../../utils/error.mjs';
 import { isArray, isFunction, isObject, isPromise } from '@vue/shared';
 import { ValidateComponentsMap } from '../../../utils/vue/icon.mjs';
-import { escapeStringRegexp } from '../../../utils/strings.mjs';
 import { useFormSize } from '../../form/src/hooks/use-form-common-props.mjs';
 import { MINIMUM_INPUT_WIDTH } from '../../../constants/form.mjs';
 import { isEmpty, isUndefined, isNumber, isBoolean } from '../../../utils/types.mjs';

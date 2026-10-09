@@ -8,6 +8,25 @@
   height: 32px;
   vertical-align: middle;
 
+  @include when(expanded) {
+    height: 94px;
+
+    @include e(control) {
+      height: 94px;
+      --el-input-height: 94px;
+
+      .#{$namespace}-input__wrapper,
+      .#{$namespace}-select__wrapper {
+        height: 94px;
+        min-height: 94px;
+      }
+
+      .#{$namespace}-select__container {
+        height: 94px;
+      }
+    }
+  }
+
   @include e(control) {
     position: relative;
     flex: 1 1 0;
@@ -17,6 +36,10 @@
     --el-input-width: 100%;
     --el-select-width: 100%;
     --el-input-height: 32px;
+
+    > .#{$namespace}-select {
+      width: 100%;
+    }
 
     .#{$namespace}-input__wrapper,
     .#{$namespace}-select__wrapper {
@@ -36,6 +59,7 @@
       margin-right: -1px;
 
       .#{$namespace}-input__wrapper,
+      .#{$namespace}-textarea__inner,
       .#{$namespace}-select__wrapper {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -44,10 +68,18 @@
 
     @include when(right) {
       .#{$namespace}-input__wrapper,
+      .#{$namespace}-textarea__inner,
       .#{$namespace}-select__wrapper {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
+    }
+  }
+
+  &:not(.is-expanded) .#{$namespace}-select.multi-select {
+    .#{$namespace}-select__container,
+    .#{$namespace}-select__wrapper {
+      height: auto;
     }
   }
 }

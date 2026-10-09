@@ -1,10 +1,26 @@
 import type { InputSelectValue } from './input-select';
 declare const _default: import("vue").DefineComponent<{
     readonly layout: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => import("./input-select").InputSelectLayout) | ((new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => import("./input-select").InputSelectLayout))[], unknown, import("./input-select").InputSelectLayout, () => import("./input-select").InputSelectLayout, boolean>;
-    readonly leftValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
-    readonly rightValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
-    readonly leftProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
-    readonly rightProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => any) | (() => any) | {
+        (): any;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => any) | (() => any) | {
+        (): any;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, undefined, boolean>;
+    readonly rightValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => any) | (() => any) | {
+        (): any;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => any) | (() => any) | {
+        (): any;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, undefined, boolean>;
+    readonly leftProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly leftDirectives: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("vue").DirectiveArguments) | (() => import("vue").DirectiveArguments) | ((new (...args: any[]) => import("vue").DirectiveArguments) | (() => import("vue").DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
     readonly rightDirectives: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("vue").DirectiveArguments) | (() => import("vue").DirectiveArguments) | ((new (...args: any[]) => import("vue").DirectiveArguments) | (() => import("vue").DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
 }, () => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
@@ -24,17 +40,33 @@ declare const _default: import("vue").DefineComponent<{
     'right-visible-change': (visible: boolean) => boolean;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     readonly layout: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => import("./input-select").InputSelectLayout) | ((new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => import("./input-select").InputSelectLayout))[], unknown, import("./input-select").InputSelectLayout, () => import("./input-select").InputSelectLayout, boolean>;
-    readonly leftValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
-    readonly rightValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
-    readonly leftProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
-    readonly rightProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => any) | (() => any) | {
+        (): any;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => any) | (() => any) | {
+        (): any;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, undefined, boolean>;
+    readonly rightValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => any) | (() => any) | {
+        (): any;
+        new (): any;
+        readonly prototype: any;
+    } | ((new (...args: any[]) => any) | (() => any) | {
+        (): any;
+        new (): any;
+        readonly prototype: any;
+    })[], unknown, unknown, undefined, boolean>;
+    readonly leftProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly leftDirectives: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("vue").DirectiveArguments) | (() => import("vue").DirectiveArguments) | ((new (...args: any[]) => import("vue").DirectiveArguments) | (() => import("vue").DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
     readonly rightDirectives: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("vue").DirectiveArguments) | (() => import("vue").DirectiveArguments) | ((new (...args: any[]) => import("vue").DirectiveArguments) | (() => import("vue").DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
 }>> & {
-    "onUpdate:leftValue"?: ((_value: InputSelectValue) => any) | undefined;
-    "onUpdate:rightValue"?: ((_value: InputSelectValue) => any) | undefined;
-    "onLeft-change"?: ((_value: InputSelectValue) => any) | undefined;
-    "onRight-change"?: ((_value: InputSelectValue) => any) | undefined;
+    "onUpdate:leftValue"?: ((_value: any) => any) | undefined;
+    "onUpdate:rightValue"?: ((_value: any) => any) | undefined;
+    "onLeft-change"?: ((_value: any) => any) | undefined;
+    "onRight-change"?: ((_value: any) => any) | undefined;
     "onLeft-focus"?: ((event: FocusEvent) => any) | undefined;
     "onRight-focus"?: ((event: FocusEvent) => any) | undefined;
     "onLeft-blur"?: ((event: FocusEvent) => any) | undefined;
@@ -45,10 +77,10 @@ declare const _default: import("vue").DefineComponent<{
     "onRight-visible-change"?: ((visible: boolean) => any) | undefined;
 }, {
     readonly layout: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => import("./input-select").InputSelectLayout) | ((new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => import("./input-select").InputSelectLayout))[], unknown, import("./input-select").InputSelectLayout>;
-    readonly leftValue: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown>;
-    readonly rightValue: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown>;
-    readonly leftProps: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown>;
-    readonly rightProps: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("element-plus/es/components/select").SelectPropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown>;
+    readonly leftValue: any;
+    readonly rightValue: any;
+    readonly leftProps: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown>;
+    readonly rightProps: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<import("element-plus/es/components/input").InputPropsPublic, "modelValue">> | Partial<Omit<import("../../select-v2/src/defaults").SelectV2PropsPublic, "modelValue">>) | (() => import("./input-select").InputSelectControlProps))[], unknown, unknown>;
     readonly leftDirectives: import("vue").DirectiveArguments;
     readonly rightDirectives: import("vue").DirectiveArguments;
 }>;

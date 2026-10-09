@@ -1,10 +1,10 @@
 import { inject, computed, getCurrentInstance, toRaw, watch } from 'vue';
 import { castArray, get, isEqual } from 'lodash-unified';
 import { selectKey, selectGroupKey } from './token.mjs';
-import { COMPONENT_NAME } from './option2.mjs';
-import { escapeStringRegexp } from '../../../utils/strings.mjs';
+import { COMPONENT_NAME } from './option.mjs';
 import { throwError } from '../../../utils/error.mjs';
 import { isObject } from '@vue/shared';
+import { escapeStringRegexp } from '../../../utils/strings.mjs';
 
 function useOption(props, states) {
   const select = inject(selectKey);

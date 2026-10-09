@@ -1,6 +1,6 @@
 /*! Element Plus v0.0.0-dev.1 */
 
-import { unref, readonly, shallowRef, watchEffect, getCurrentScope, onScopeDispose, computed, isRef, reactive, getCurrentInstance, onMounted, nextTick, ref, watch, defineComponent, openBlock, createElementBlock, createElementVNode, warn, isVNode, Fragment, Comment, onBeforeUnmount, inject, onUnmounted, h as h$1, Teleport as Teleport$1, onBeforeMount, provide, triggerRef, renderSlot, normalizeClass, normalizeStyle, mergeProps, useSlots, toRef, createBlock, Transition, withCtx, withDirectives, createCommentVNode, createTextVNode, toDisplayString, createVNode, vShow, toRefs, onUpdated, resolveDynamicComponent, TransitionGroup, cloneVNode, Text as Text$1, onDeactivated, useAttrs as useAttrs$1, withModifiers, onActivated, renderList, createSlots, normalizeProps, guardReactiveProps, toRaw, vModelCheckbox, vModelRadio, onBeforeUpdate, withKeys, vModelText, toHandlers, resolveDirective, resolveComponent, markRaw, effectScope, toHandlerKey, render, createApp, shallowReactive } from 'vue';
+import { unref, readonly, shallowRef, watchEffect, getCurrentScope, onScopeDispose, computed, isRef, reactive, getCurrentInstance, onMounted, nextTick, ref, watch, defineComponent, openBlock, createElementBlock, createElementVNode, warn, isVNode, Fragment, Comment, onBeforeUnmount, inject, onUnmounted, h as h$1, Teleport as Teleport$1, onBeforeMount, provide, triggerRef, renderSlot, normalizeClass, normalizeStyle, mergeProps, useSlots, toRef, createBlock, Transition, withCtx, withDirectives, createCommentVNode, createTextVNode, toDisplayString, createVNode, vShow, toRefs, onUpdated, resolveDynamicComponent, TransitionGroup, cloneVNode, Text as Text$1, onDeactivated, useAttrs as useAttrs$1, withModifiers, onActivated, renderList, createSlots, normalizeProps, guardReactiveProps, toRaw, vModelCheckbox, vModelRadio, onBeforeUpdate, withKeys, vModelText, toHandlers, resolveDirective, resolveComponent, markRaw, effectScope, render, toHandlerKey, createApp, shallowReactive } from 'vue';
 
 const FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex="-1"]),input:not([disabled]),input:not([type="hidden"]),select:not([disabled]),textarea:not([disabled])`;
 const isHTMLElement$2 = (e) => {
@@ -37476,6603 +37476,6 @@ var InputDown = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["__file", "input-dow
 
 const ElInputDown = withInstall(InputDown);
 
-const defaultProps$5 = {
-  label: "label",
-  value: "value",
-  disabled: "disabled",
-  options: "options",
-  tip: "tip"
-};
-function useProps(props) {
-  const aliasProps = computed(() => ({ ...defaultProps$5, ...props.props }));
-  const getLabel = (option) => get(option, aliasProps.value.label);
-  const getValue = (option) => get(option, aliasProps.value.value);
-  const getDisabled = (option) => get(option, aliasProps.value.disabled);
-  const getOptions = (option) => get(option, aliasProps.value.options);
-  const getTip = (option) => get(option, aliasProps.value.tip);
-  return {
-    aliasProps,
-    getLabel,
-    getValue,
-    getDisabled,
-    getOptions,
-    getTip
-  };
-}
-
-const selectGroupKey = Symbol("ElSelectGroup");
-const selectKey = Symbol("ElSelect");
-
-const COMPONENT_NAME$d = "ElOption";
-const optionProps = buildProps({
-  value: {
-    type: [String, Number, Boolean, Object],
-    required: true
-  },
-  label: {
-    type: [String, Number]
-  },
-  created: Boolean,
-  showTip: {
-    type: Boolean,
-    default: true
-  },
-  tip: String,
-  placement: {
-    type: definePropType(String),
-    values: Ee,
-    default: "left"
-  },
-  disabled: Boolean,
-  rawOption: {
-    type: definePropType(Object)
-  }
-});
-
-function useOption$1(props, states) {
-  const select = inject(selectKey);
-  if (!select) {
-    throwError(COMPONENT_NAME$d, "usage: <el-select><el-option /></el-select/>");
-  }
-  const selectGroup = inject(selectGroupKey, { disabled: false });
-  const itemSelected = computed(() => {
-    return contains(castArray$1(select.props.modelValue), props.value);
-  });
-  const limitReached = computed(() => {
-    var _a;
-    if (select.props.multiple) {
-      const modelValue = castArray$1((_a = select.props.modelValue) != null ? _a : []);
-      return !itemSelected.value && modelValue.length >= select.props.multipleLimit && select.props.multipleLimit > 0;
-    } else {
-      return false;
-    }
-  });
-  const currentLabel = computed(() => {
-    var _a;
-    return (_a = props.label) != null ? _a : isObject$1(props.value) ? "" : props.value;
-  });
-  const currentValue = computed(() => {
-    return props.value || props.label || "";
-  });
-  const isDisabled = computed(() => {
-    return props.disabled || states.groupDisabled || limitReached.value;
-  });
-  const instance = getCurrentInstance();
-  const contains = (arr = [], target) => {
-    if (!isObject$1(props.value)) {
-      return arr && arr.includes(target);
-    } else {
-      const valueKey = select.props.valueKey;
-      return arr && arr.some((item) => {
-        return toRaw(get(item, valueKey)) === get(target, valueKey);
-      });
-    }
-  };
-  const hoverItem = () => {
-    if (isDisabled.value) {
-      select.states.hoveringIndex = -1;
-      return;
-    }
-    select.states.hoveringIndex = select.optionsArray.indexOf(instance.proxy);
-  };
-  const updateOption = (query) => {
-    const regexp = new RegExp(escapeStringRegexp(query), "i");
-    states.visible = regexp.test(String(currentLabel.value)) || props.created;
-  };
-  watch(() => currentLabel.value, () => {
-    if (!props.created && !select.props.remote)
-      select.setSelected();
-  });
-  watch(() => props.value, (val, oldVal) => {
-    const { remote, valueKey } = select.props;
-    const shouldUpdate = remote ? val !== oldVal : !isEqual$1(val, oldVal);
-    if (shouldUpdate) {
-      select.onOptionDestroy(oldVal, instance.proxy);
-      select.onOptionCreate(instance.proxy);
-    }
-    if (!props.created && !remote) {
-      if (valueKey && isObject$1(val) && isObject$1(oldVal) && val[valueKey] === oldVal[valueKey]) {
-        return;
-      }
-      select.setSelected();
-    }
-  });
-  watch(() => selectGroup.disabled, () => {
-    states.groupDisabled = selectGroup.disabled;
-  }, { immediate: true });
-  return {
-    select,
-    currentLabel,
-    currentValue,
-    itemSelected,
-    isDisabled,
-    hoverItem,
-    updateOption
-  };
-}
-
-const _sfc_main$1d = defineComponent({
-  name: COMPONENT_NAME$d,
-  componentName: COMPONENT_NAME$d,
-  components: {
-    ElCheckbox,
-    ElRadio,
-    ElTooltip
-  },
-  props: optionProps,
-  setup(props, { slots }) {
-    const ns = useNamespace("select");
-    const id = useId();
-    const isTextOverflowing = ref(false);
-    const hasDefaultSlot = computed(() => {
-      var _a, _b;
-      return ((_b = (_a = slots.default) == null ? void 0 : _a.call(slots)) != null ? _b : []).some((node) => {
-        var _a2;
-        if (node.type === Comment)
-          return false;
-        if (node.type === Text$1) {
-          return Boolean(String((_a2 = node.children) != null ? _a2 : "").trim());
-        }
-        return true;
-      });
-    });
-    const containerKls = computed(() => [
-      ns.be("dropdown", "item"),
-      ns.is("disabled", unref(isDisabled)),
-      ns.is("selected", unref(itemSelected)),
-      ns.is("hovering", unref(hover))
-    ]);
-    const states = reactive({
-      index: -1,
-      groupDisabled: false,
-      visible: true,
-      hover: false
-    });
-    const {
-      currentLabel,
-      itemSelected,
-      isDisabled,
-      select,
-      hoverItem,
-      updateOption
-    } = useOption$1(props, states);
-    const { visible, hover } = toRefs(states);
-    const vm = getCurrentInstance().proxy;
-    select.onOptionCreate(vm);
-    const multiple = computed(() => select.props.multiple);
-    const isSelectedTop = computed(() => multiple.value && itemSelected.value);
-    const getGroupElement = (option = vm) => {
-      var _a, _b;
-      return (_b = (_a = option.$el) == null ? void 0 : _a.closest) == null ? void 0 : _b.call(_a, `.${ns.b("group")}`);
-    };
-    const isGroupOption = () => Boolean(getGroupElement());
-    const optionStyle = computed(() => {
-      if (!multiple.value)
-        return {};
-      return {
-        order: isSelectedTop.value ? 1 : 3
-      };
-    });
-    onBeforeUnmount(() => {
-      const key = vm.value;
-      nextTick(() => {
-        const { selected: selectedOptions } = select.states;
-        const doesSelected = selectedOptions.some((item) => {
-          return item.value === vm.value;
-        });
-        if (select.states.cachedOptions.get(key) === vm && !doesSelected) {
-          select.states.cachedOptions.delete(key);
-        }
-      });
-      select.onOptionDestroy(key, vm);
-    });
-    function selectOptionClick() {
-      if (!isDisabled.value) {
-        select.handleOptionSelect(vm);
-      }
-    }
-    function handleGroupCheckboxClick(event) {
-      if (isGroupOption()) {
-        event.stopPropagation();
-      }
-    }
-    function handleGroupCheckboxChange() {
-      if (isGroupOption()) {
-        selectOptionClick();
-      }
-    }
-    function isGreaterThan(a, b, epsilon = 0.03) {
-      return a - b > epsilon;
-    }
-    const getPadding = (el) => {
-      const style = window.getComputedStyle(el, null);
-      const paddingLeft = Number.parseInt(style.paddingLeft, 10) || 0;
-      const paddingRight = Number.parseInt(style.paddingRight, 10) || 0;
-      const paddingTop = Number.parseInt(style.paddingTop, 10) || 0;
-      const paddingBottom = Number.parseInt(style.paddingBottom, 10) || 0;
-      return {
-        left: paddingLeft,
-        right: paddingRight,
-        top: paddingTop,
-        bottom: paddingBottom
-      };
-    };
-    const handleCellMouseEnter = (event) => {
-      const cellChild = event.target.querySelector(".option-wrap-content");
-      if (!cellChild)
-        return;
-      if (cellChild && !(cellChild == null ? void 0 : cellChild.childNodes.length)) {
-        isTextOverflowing.value = false;
-        return;
-      }
-      const range = document.createRange();
-      range.setStart(cellChild, 0);
-      range.setEnd(cellChild, cellChild.childNodes.length);
-      const { width: rangeWidth, height: rangeHeight } = range.getBoundingClientRect();
-      const { width: cellChildWidth, height: cellChildHeight } = cellChild.getBoundingClientRect();
-      const { top, left, right, bottom } = getPadding(cellChild);
-      const horizontalPadding = left + right;
-      const verticalPadding = top + bottom;
-      isTextOverflowing.value = isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth);
-    };
-    return {
-      multiple,
-      ns,
-      id,
-      hasDefaultSlot,
-      containerKls,
-      rawOption: props.rawOption,
-      currentLabel,
-      itemSelected,
-      isDisabled,
-      select,
-      visible,
-      hover,
-      states,
-      isTextOverflowing,
-      showTip: props.showTip,
-      tip: computed(() => props.tip),
-      placement: props.placement,
-      optionStyle,
-      handleCellMouseEnter,
-      hoverItem,
-      updateOption,
-      selectOptionClick,
-      handleGroupCheckboxClick,
-      handleGroupCheckboxChange
-    };
-  }
-});
-function _sfc_render$e(_ctx, _cache) {
-  const _component_el_radio = resolveComponent("el-radio");
-  const _component_el_checkbox = resolveComponent("el-checkbox");
-  const _component_el_tooltip = resolveComponent("el-tooltip");
-  return withDirectives((openBlock(), createElementBlock("li", {
-    id: _ctx.id,
-    class: normalizeClass([_ctx.containerKls, _ctx.ns.is("multiple", _ctx.multiple)]),
-    style: normalizeStyle(_ctx.optionStyle),
-    role: "option",
-    "aria-disabled": _ctx.isDisabled || void 0,
-    "aria-selected": _ctx.itemSelected,
-    onMousemove: _ctx.hoverItem,
-    onClick: withModifiers(_ctx.selectOptionClick, ["stop"]),
-    onMouseenter: _ctx.handleCellMouseEnter
-  }, [
-    createElementVNode("div", { class: "option-wrap" }, [
-      !_ctx.multiple ? (openBlock(), createBlock(_component_el_radio, {
-        key: 0,
-        "model-value": _ctx.itemSelected,
-        value: true,
-        disabled: _ctx.isDisabled,
-        onClick: withModifiers(() => {
-        }, ["stop"]),
-        onChange: _ctx.selectOptionClick
-      }, null, 8, ["model-value", "disabled", "onClick", "onChange"])) : createCommentVNode("v-if", true),
-      _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
-        key: 1,
-        modelValue: _ctx.itemSelected,
-        "onUpdate:modelValue": ($event) => _ctx.itemSelected = $event,
-        disabled: _ctx.isDisabled,
-        onChange: _ctx.handleGroupCheckboxChange,
-        onClick: _ctx.handleGroupCheckboxClick
-      }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled", "onChange", "onClick"])) : createCommentVNode("v-if", true),
-      _ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", {
-        key: 2,
-        class: "option-wrap-custom-content"
-      }, [
-        renderSlot(_ctx.$slots, "default")
-      ])) : (openBlock(), createBlock(_component_el_tooltip, {
-        key: 3,
-        ref: "tooltipRef",
-        effect: "light",
-        disabled: !_ctx.select.props.showOptionTooltip || !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
-        placement: _ctx.placement,
-        "popper-class": "optionPopperClass"
-      }, {
-        content: withCtx(() => [
-          _ctx.isTextOverflowing ? (openBlock(), createElementBlock("div", { key: 0 }, toDisplayString(_ctx.currentLabel), 1)) : createCommentVNode("v-if", true),
-          _ctx.tip ? (openBlock(), createElementBlock("div", { key: 1 }, toDisplayString(_ctx.tip), 1)) : createCommentVNode("v-if", true)
-        ]),
-        default: withCtx(() => {
-          var _a;
-          return [
-            createElementVNode("div", { class: "option-wrap-content" }, [
-              renderSlot(_ctx.$slots, "optionIcon", {
-                item: _ctx.rawOption,
-                value: _ctx.select.props.modelValue
-              }),
-              createElementVNode("span", {
-                class: normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
-              }, toDisplayString(_ctx.currentLabel), 3)
-            ])
-          ];
-        }),
-        _: 3
-      }, 8, ["disabled", "placement"]))
-    ])
-  ], 46, ["id", "aria-disabled", "aria-selected", "onMousemove", "onClick", "onMouseenter"])), [
-    [vShow, _ctx.visible]
-  ]);
-}
-var Option = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$e], ["__file", "option.vue"]]);
-
-const _sfc_main$1c = defineComponent({
-  name: "ElSelectDropdown",
-  componentName: "ElSelectDropdown",
-  setup() {
-    const select = inject(selectKey);
-    const ns = useNamespace("select");
-    const popperClass = computed(() => select.props.popperClass);
-    const isMultiple = computed(() => select.props.multiple);
-    const isFitInputWidth = computed(() => select.props.fitInputWidth);
-    const optionWidth = computed(() => addUnit(select.props.optionWidth));
-    const minWidth = ref("");
-    const dropdownStyle = computed(() => {
-      if (!isFitInputWidth.value && optionWidth.value) {
-        return {
-          width: optionWidth.value
-        };
-      }
-      return {
-        [isFitInputWidth.value ? "width" : "minWidth"]: minWidth.value
-      };
-    });
-    function updateMinWidth() {
-      var _a;
-      const offsetWidth = (_a = select.selectRef) == null ? void 0 : _a.offsetWidth;
-      if (offsetWidth) {
-        minWidth.value = `${offsetWidth - BORDER_HORIZONTAL_WIDTH}px`;
-      } else {
-        minWidth.value = "";
-      }
-    }
-    onMounted(() => {
-      updateMinWidth();
-      useResizeObserver(select.selectRef, updateMinWidth);
-    });
-    return {
-      ns,
-      minWidth,
-      dropdownStyle,
-      popperClass,
-      isMultiple,
-      isFitInputWidth
-    };
-  }
-});
-function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", {
-    class: normalizeClass([_ctx.ns.b("dropdown"), _ctx.ns.is("multiple", _ctx.isMultiple), _ctx.popperClass]),
-    style: normalizeStyle(_ctx.dropdownStyle)
-  }, [
-    _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
-      key: 0,
-      class: normalizeClass(_ctx.ns.be("dropdown", "header"))
-    }, [
-      renderSlot(_ctx.$slots, "header")
-    ], 2)) : createCommentVNode("v-if", true),
-    renderSlot(_ctx.$slots, "default"),
-    _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
-      key: 1,
-      class: normalizeClass(_ctx.ns.be("dropdown", "footer"))
-    }, [
-      renderSlot(_ctx.$slots, "footer")
-    ], 2)) : createCommentVNode("v-if", true)
-  ], 6);
-}
-var ElSelectMenu$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$d], ["__file", "select-dropdown.vue"]]);
-
-const useSelect$3 = (props, emit) => {
-  const { t } = useLocale();
-  const contentId = useId();
-  const nsSelect = useNamespace("select");
-  const nsInput = useNamespace("input");
-  const states = reactive({
-    inputValue: "",
-    options: /* @__PURE__ */ new Map(),
-    cachedOptions: /* @__PURE__ */ new Map(),
-    optionValues: [],
-    selected: [],
-    selectionWidth: 0,
-    collapseItemWidth: 0,
-    selectedLabel: "",
-    hoveringIndex: -1,
-    previousQuery: null,
-    inputHovering: false,
-    menuVisibleOnFocus: false,
-    isBeforeHide: false
-  });
-  const selectRef = ref();
-  const selectionRef = ref();
-  const tooltipRef = ref();
-  const tagTooltipRef = ref();
-  const inputRef = ref();
-  const prefixRef = ref();
-  const suffixRef = ref();
-  const menuRef = ref();
-  const tagMenuRef = ref();
-  const collapseItemRef = ref();
-  const scrollbarRef = ref();
-  const expanded = ref(false);
-  const hoverOption = ref();
-  const debouncing = ref(false);
-  const { form, formItem } = useFormItem();
-  const { inputId } = useFormItemInputId(props, {
-    formItemContext: formItem
-  });
-  const { valueOnClear, isEmptyValue } = useEmptyValues(props);
-  const {
-    isComposing,
-    handleCompositionStart,
-    handleCompositionUpdate,
-    handleCompositionEnd
-  } = useComposition({
-    afterComposition: (e) => onInput(e)
-  });
-  const selectDisabled = computed(() => props.disabled || !!(form == null ? void 0 : form.disabled));
-  const { wrapperRef, isFocused, handleBlur } = useFocusController(inputRef, {
-    disabled: selectDisabled,
-    afterFocus() {
-      if (props.automaticDropdown && !expanded.value) {
-        expanded.value = true;
-        states.menuVisibleOnFocus = true;
-      }
-    },
-    beforeBlur(event) {
-      var _a, _b;
-      return ((_a = tooltipRef.value) == null ? void 0 : _a.isFocusInsideContent(event)) || ((_b = tagTooltipRef.value) == null ? void 0 : _b.isFocusInsideContent(event));
-    },
-    afterBlur() {
-      var _a;
-      expanded.value = false;
-      states.menuVisibleOnFocus = false;
-      if (props.validateEvent) {
-        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, "blur").catch((err) => debugWarn());
-      }
-    }
-  });
-  const hasModelValue = computed(() => {
-    return isArray$1(props.modelValue) ? props.modelValue.length > 0 : !isEmptyValue(props.modelValue);
-  });
-  const needStatusIcon = computed(() => {
-    var _a;
-    return (_a = form == null ? void 0 : form.statusIcon) != null ? _a : false;
-  });
-  const showClearBtn = computed(() => {
-    return props.clearable && !props.multiple && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
-  });
-  const iconComponent = computed(() => props.remote && props.filterable && !props.remoteShowSuffix ? "" : props.suffixIcon);
-  const iconReverse = computed(() => nsSelect.is("reverse", !!(iconComponent.value && expanded.value)));
-  const validateState = computed(() => (formItem == null ? void 0 : formItem.validateState) || "");
-  const validateMessage = computed(() => (formItem == null ? void 0 : formItem.validateMessage) || "");
-  const validateIcon = computed(() => validateState.value && ValidateComponentsMap[validateState.value]);
-  const debounce = computed(() => props.remote ? props.debounce : 0);
-  const isRemoteSearchEmpty = computed(() => props.remote && !states.inputValue && states.options.size === 0);
-  const emptyText = computed(() => {
-    if (props.loading) {
-      return props.loadingText || t("el.select.loading");
-    } else {
-      if (props.filterable && states.inputValue && states.options.size > 0 && filteredOptionsCount.value === 0) {
-        return props.noMatchText || t("el.select.noMatch");
-      }
-      if (states.options.size === 0) {
-        return props.noDataText || t("el.select.noData");
-      }
-    }
-    return null;
-  });
-  const filteredOptionsCount = computed(() => optionsArray.value.filter((option) => option.visible).length);
-  const optionsArray = computed(() => {
-    const list = Array.from(states.options.values());
-    const newList = [];
-    states.optionValues.forEach((item) => {
-      const index = list.findIndex((i) => i.value === item);
-      if (index > -1) {
-        newList.push(list[index]);
-      }
-    });
-    return newList.length >= list.length ? newList : list;
-  });
-  const cachedOptionsArray = computed(() => Array.from(states.cachedOptions.values()));
-  const showNewOption = computed(() => {
-    const hasExistingOption = optionsArray.value.filter((option) => {
-      return !option.created;
-    }).some((option) => {
-      return option.currentLabel === states.inputValue;
-    });
-    return props.filterable && props.allowCreate && states.inputValue !== "" && !hasExistingOption;
-  });
-  const updateOptions = () => {
-    if (props.filterable && isFunction$1(props.filterMethod))
-      return;
-    if (props.filterable && props.remote && isFunction$1(props.remoteMethod))
-      return;
-    optionsArray.value.forEach((option) => {
-      var _a;
-      (_a = option.updateOption) == null ? void 0 : _a.call(option, states.inputValue);
-    });
-  };
-  const noPendingAutoSelection = Symbol("noPendingAutoSelection");
-  let pendingAutoSelectValue = noPendingAutoSelection;
-  const selectSize = useFormSize();
-  const collapseTagSize = computed(() => ["small"].includes(selectSize.value) ? "small" : "default");
-  const dropdownMenuVisible = computed({
-    get() {
-      return expanded.value && (props.loading || !isRemoteSearchEmpty.value) && (!debouncing.value || !isEmpty(states.previousQuery));
-    },
-    set(val) {
-      expanded.value = val;
-    }
-  });
-  const shouldShowPlaceholder = computed(() => {
-    if (props.multiple && !isUndefined(props.modelValue)) {
-      return castArray$1(props.modelValue).length === 0 && !states.inputValue;
-    }
-    const value = isArray$1(props.modelValue) ? props.modelValue[0] : props.modelValue;
-    return props.filterable || isUndefined(value) ? !states.inputValue : true;
-  });
-  const currentPlaceholder = computed(() => {
-    var _a;
-    const _placeholder = (_a = props.placeholder) != null ? _a : t("el.select.placeholder");
-    return props.multiple || !hasModelValue.value ? _placeholder : states.selectedLabel;
-  });
-  const mouseEnterEventName = computed(() => isIOS ? null : "mouseenter");
-  watch(() => props.modelValue, (val, oldVal) => {
-    if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual$1(val, pendingAutoSelectValue)) {
-      pendingAutoSelectValue = noPendingAutoSelection;
-    }
-    if (props.multiple) {
-      if (props.filterable && !props.reserveKeyword) {
-        states.inputValue = "";
-        handleQueryChange("");
-      }
-    }
-    setSelected();
-    if (!isEqual$1(val, oldVal) && props.validateEvent) {
-      formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn());
-    }
-  }, {
-    flush: "post",
-    deep: true
-  });
-  watch(() => expanded.value, (val) => {
-    if (val) {
-      handleQueryChange(states.inputValue);
-    } else {
-      states.inputValue = "";
-      states.previousQuery = null;
-      states.isBeforeHide = true;
-    }
-    emit("visible-change", val);
-  });
-  watch(() => states.options.entries(), () => {
-    if (!isClient)
-      return;
-    setSelected();
-    if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptionsCount.value) {
-      checkDefaultFirstOption();
-    }
-  }, {
-    flush: "post"
-  });
-  watch([() => states.hoveringIndex, optionsArray], ([val]) => {
-    if (isNumber(val) && val > -1) {
-      hoverOption.value = optionsArray.value[val] || {};
-    } else {
-      hoverOption.value = {};
-    }
-    optionsArray.value.forEach((option) => {
-      option.hover = hoverOption.value === option;
-    });
-  });
-  watchEffect(() => {
-    if (states.isBeforeHide)
-      return;
-    updateOptions();
-  });
-  const handleQueryChange = (val) => {
-    if (states.previousQuery === val || isComposing.value) {
-      return;
-    }
-    states.previousQuery = val;
-    if (props.filterable && isFunction$1(props.filterMethod)) {
-      props.filterMethod(val);
-    } else if (props.filterable && props.remote && isFunction$1(props.remoteMethod)) {
-      props.remoteMethod(val);
-    }
-    if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptionsCount.value) {
-      nextTick(checkDefaultFirstOption);
-    } else {
-      nextTick(updateHoveringIndex);
-    }
-  };
-  const checkDefaultFirstOption = () => {
-    const optionsInDropdown = optionsArray.value.filter((n) => n.visible && !n.disabled && !n.states.groupDisabled);
-    const userCreatedOption = optionsInDropdown.find((n) => n.created);
-    const firstOriginOption = optionsInDropdown[0];
-    const valueList = optionsArray.value.map((item) => item.value);
-    states.hoveringIndex = getValueIndex(valueList, userCreatedOption || firstOriginOption);
-  };
-  const setSelected = () => {
-    if (!props.multiple) {
-      const value = isArray$1(props.modelValue) ? props.modelValue[0] : props.modelValue;
-      const option = getOption(value);
-      states.selectedLabel = option.currentLabel;
-      states.selected = [option];
-      return;
-    } else {
-      states.selectedLabel = "";
-    }
-    const selectedValues = isUndefined(props.modelValue) ? [] : castArray$1(props.modelValue);
-    const result = [];
-    optionsArray.value.forEach((option) => {
-      if (getValueIndex(selectedValues, option) > -1) {
-        result.push(getOption(option.value));
-      }
-    });
-    selectedValues.forEach((value) => {
-      const selectedOption = getOption(value);
-      if (result.some((option) => getValueKey(option) === getValueKey(selectedOption))) {
-        return;
-      }
-      result.push(selectedOption);
-    });
-    states.selected = result;
-  };
-  const findCachedOption = (value) => {
-    const isObjectValue = isPlainObject$1(value);
-    for (let i = states.cachedOptions.size - 1; i >= 0; i--) {
-      const cachedOption = cachedOptionsArray.value[i];
-      const isEqualValue = isObjectValue ? get(cachedOption.value, props.valueKey) === get(value, props.valueKey) : cachedOption.value === value;
-      if (isEqualValue) {
-        return cachedOption;
-      }
-    }
-  };
-  const getOption = (value) => {
-    const isObjectValue = isPlainObject$1(value);
-    const cachedOption = findCachedOption(value);
-    if (cachedOption) {
-      return {
-        index: optionsArray.value.filter((opt) => !opt.created).indexOf(cachedOption),
-        value,
-        currentLabel: cachedOption.currentLabel,
-        get isDisabled() {
-          return cachedOption.isDisabled;
-        }
-      };
-    }
-    const label = isObjectValue ? value.label : value != null ? value : "";
-    return {
-      index: -1,
-      value,
-      currentLabel: label
-    };
-  };
-  const getLabelSlotItem = (item) => {
-    var _a, _b;
-    const cachedOption = findCachedOption(item.value);
-    if (cachedOption) {
-      const optionSource = cachedOption;
-      if (isPlainObject$1(optionSource.rawOption)) {
-        return optionSource.rawOption;
-      }
-      if (isPlainObject$1(optionSource.value)) {
-        return optionSource.value;
-      }
-      const slotItem = {
-        ...(_a = optionSource.$attrs) != null ? _a : {},
-        ...(_b = optionSource.$props) != null ? _b : cachedOption
-      };
-      return Object.keys(slotItem).length ? slotItem : item;
-    }
-    return isPlainObject$1(item.value) ? item.value : item;
-  };
-  const updateHoveringIndex = () => {
-    states.hoveringIndex = optionsArray.value.findIndex((item) => states.selected.some((selected) => getValueKey(selected) === getValueKey(item)));
-  };
-  const resetSelectionWidth = () => {
-    states.selectionWidth = Number.parseFloat(window.getComputedStyle(selectionRef.value).width);
-  };
-  const resetCollapseItemWidth = () => {
-    states.collapseItemWidth = collapseItemRef.value.getBoundingClientRect().width;
-  };
-  const updateTooltip = () => {
-    var _a, _b;
-    (_b = (_a = tooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
-  };
-  const updateTagTooltip = () => {
-    var _a, _b;
-    (_b = (_a = tagTooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
-  };
-  const onInputChange = () => {
-    if (states.inputValue.length > 0 && !expanded.value) {
-      expanded.value = true;
-    }
-    handleQueryChange(states.inputValue);
-  };
-  const onInput = (event) => {
-    states.inputValue = event.target.value;
-    if (props.remote) {
-      debouncing.value = true;
-      debouncedOnInputChange();
-    } else {
-      return onInputChange();
-    }
-  };
-  const debouncedOnInputChange = useDebounceFn(() => {
-    onInputChange();
-    debouncing.value = false;
-  }, debounce);
-  const emitChange = (val) => {
-    if (!isEqual$1(props.modelValue, val)) {
-      emit(CHANGE_EVENT, val);
-    }
-  };
-  const checkBeforeChange = async (value, oldValue) => {
-    if (isEqual$1(value, oldValue) || !props.beforeChange)
-      return true;
-    const shouldChange = props.beforeChange(value, oldValue);
-    const isPromiseOrBool = [
-      isPromise(shouldChange),
-      isBoolean(shouldChange)
-    ].includes(true);
-    if (!isPromiseOrBool) {
-      throwError("ElSelect", "beforeChange must return type `Promise<boolean>` or `boolean`");
-    }
-    if (isPromise(shouldChange)) {
-      try {
-        return !!await shouldChange;
-      } catch (error) {
-        return false;
-      }
-    }
-    return shouldChange;
-  };
-  const getLastNotDisabledIndex = (value) => findLastIndex(value, (it) => {
-    const option = states.cachedOptions.get(it);
-    return option && !option.disabled && !option.states.groupDisabled;
-  });
-  const deletePrevTag = (e) => {
-    const code = getEventCode(e);
-    if (!props.multiple)
-      return;
-    if (code === EVENT_CODE.delete)
-      return;
-    if (e.target.value.length <= 0) {
-      const value = castArray$1(props.modelValue).slice();
-      const lastNotDisabledIndex = getLastNotDisabledIndex(value);
-      if (lastNotDisabledIndex < 0)
-        return;
-      const removeTagValue = value[lastNotDisabledIndex];
-      value.splice(lastNotDisabledIndex, 1);
-      emit(UPDATE_MODEL_EVENT, value);
-      emitChange(value);
-      emit("remove-tag", removeTagValue);
-    }
-  };
-  const deleteTag = (event, tag) => {
-    const index = states.selected.indexOf(tag);
-    if (index > -1 && !selectDisabled.value) {
-      const value = castArray$1(props.modelValue).slice();
-      const targetIndex = value.indexOf(tag.value);
-      if (targetIndex >= 0) {
-        value.splice(targetIndex, 1);
-        emit(UPDATE_MODEL_EVENT, value);
-        emitChange(value);
-        emit("remove-tag", tag.value);
-      }
-    }
-    event.stopPropagation();
-    focus();
-  };
-  const deleteSelected = (event) => {
-    event.stopPropagation();
-    const value = props.multiple ? [] : valueOnClear.value;
-    if (props.multiple) {
-      for (const item of states.selected) {
-        if (item.isDisabled)
-          value.push(item.value);
-      }
-    }
-    emit(UPDATE_MODEL_EVENT, value);
-    emitChange(value);
-    states.hoveringIndex = -1;
-    expanded.value = false;
-    emit("clear");
-    focus();
-  };
-  const handleOptionSelect = async (option) => {
-    var _a;
-    if (props.multiple) {
-      const value = castArray$1((_a = props.modelValue) != null ? _a : []).slice();
-      const optionIndex = getValueIndex(value, option);
-      const isSelected = optionIndex > -1;
-      const canSelect = props.multipleLimit <= 0 || value.length < props.multipleLimit;
-      if (optionIndex > -1) {
-        value.splice(optionIndex, 1);
-      } else if (canSelect) {
-        value.push(option.value);
-      }
-      if (!await checkBeforeChange(value, props.modelValue))
-        return;
-      emit(UPDATE_MODEL_EVENT, value);
-      emitChange(value);
-      if (isSelected || canSelect) {
-        emit("option-select", option, value);
-      }
-      if (option.created) {
-        handleQueryChange("");
-      }
-      if (props.filterable && !props.reserveKeyword) {
-        states.inputValue = "";
-      }
-    } else {
-      if (!await checkBeforeChange(option.value, props.modelValue))
-        return;
-      !isEqual$1(props.modelValue, option.value) && emit(UPDATE_MODEL_EVENT, option.value);
-      emitChange(option.value);
-      emit("option-select", option, option.value);
-      expanded.value = false;
-    }
-    focus();
-    if (expanded.value)
-      return;
-    nextTick(() => {
-      scrollToOption(option);
-    });
-  };
-  const getValueIndex = (arr, option) => {
-    if (isUndefined(option))
-      return -1;
-    if (!isObject$1(option.value))
-      return arr.indexOf(option.value);
-    return arr.findIndex((item) => {
-      return isEqual$1(get(item, props.valueKey), getValueKey(option));
-    });
-  };
-  const getOptionValueKey = (value) => isObject$1(value) ? get(value, props.valueKey) : value;
-  const selectAllExcludedValueKeys = computed(() => new Set(props.selectAllExcludedValues.map(getOptionValueKey)));
-  const visibleMultipleOptions = computed(() => props.multiple ? optionsArray.value.filter((option) => option.visible) : []);
-  const selectableMultipleOptions = computed(() => visibleMultipleOptions.value.filter((option) => !option.isDisabled && !selectAllExcludedValueKeys.value.has(getOptionValueKey(option.value))));
-  const isMultipleOptionSelected = (option) => getValueIndex(castArray$1(props.modelValue), option) > -1;
-  const hasVisibleSelectedOptions = computed(() => visibleMultipleOptions.value.some(isMultipleOptionSelected));
-  const hasVisibleUnselectedOptions = computed(() => visibleMultipleOptions.value.some((option) => !isMultipleOptionSelected(option)));
-  const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
-  const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isMultipleOptionSelected));
-  const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isMultipleOptionSelected) && !isAllVisibleOptionsSelected.value);
-  const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
-  const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
-  const toggleSelectAll = async () => {
-    if (!props.multiple || selectDisabled.value || selectableMultipleOptions.value.length === 0) {
-      return;
-    }
-    let value = castArray$1(props.modelValue).slice();
-    if (isAllVisibleOptionsSelected.value) {
-      value = value.filter((selectedValue) => {
-        const option = optionsArray.value.find((item) => getValueIndex([selectedValue], item) > -1);
-        return selectAllExcludedValueKeys.value.has(getOptionValueKey(selectedValue)) || Boolean(option == null ? void 0 : option.isDisabled);
-      });
-    } else {
-      for (const option of selectableMultipleOptions.value) {
-        if (getValueIndex(value, option) > -1)
-          continue;
-        if (props.multipleLimit > 0 && value.length >= props.multipleLimit) {
-          break;
-        }
-        value.push(option.value);
-      }
-    }
-    if (!await checkBeforeChange(value, props.modelValue))
-      return;
-    emit(UPDATE_MODEL_EVENT, value);
-    emitChange(value);
-    emit("select-all", value);
-    focus();
-  };
-  const scrollToOption = (option) => {
-    var _a, _b, _c, _d, _e;
-    const targetOption = isArray$1(option) ? option[0] : option;
-    let target = null;
-    if (!isNil(targetOption == null ? void 0 : targetOption.value)) {
-      const options = optionsArray.value.filter((item) => item.value === targetOption.value);
-      if (options.length > 0) {
-        target = options[0].$el;
-      }
-    }
-    if (tooltipRef.value && target) {
-      const menu = (_d = (_c = (_b = (_a = tooltipRef.value) == null ? void 0 : _a.popperRef) == null ? void 0 : _b.contentRef) == null ? void 0 : _c.querySelector) == null ? void 0 : _d.call(_c, `.${nsSelect.be("dropdown", "wrap")}`);
-      if (menu) {
-        scrollIntoView(menu, target);
-      }
-    }
-    (_e = scrollbarRef.value) == null ? void 0 : _e.handleScroll();
-  };
-  const onOptionCreate = (vm) => {
-    states.options.set(vm.value, vm);
-    states.cachedOptions.set(vm.value, vm);
-  };
-  const onOptionDestroy = (key, vm) => {
-    if (states.options.get(key) === vm) {
-      states.options.delete(key);
-    }
-  };
-  const popperRef = computed(() => {
-    var _a, _b;
-    return (_b = (_a = tooltipRef.value) == null ? void 0 : _a.popperRef) == null ? void 0 : _b.contentRef;
-  });
-  const handleMenuEnter = () => {
-    states.isBeforeHide = false;
-    nextTick(() => {
-      var _a;
-      (_a = scrollbarRef.value) == null ? void 0 : _a.update();
-      scrollToOption(states.selected);
-    });
-  };
-  const focus = () => {
-    var _a;
-    (_a = inputRef.value) == null ? void 0 : _a.focus();
-  };
-  const blur = () => {
-    var _a;
-    if (expanded.value) {
-      expanded.value = false;
-      nextTick(() => {
-        var _a2;
-        return (_a2 = inputRef.value) == null ? void 0 : _a2.blur();
-      });
-      return;
-    }
-    (_a = inputRef.value) == null ? void 0 : _a.blur();
-  };
-  const handleClearClick = (event) => {
-    deleteSelected(event);
-  };
-  const handleClickOutside = (event) => {
-    expanded.value = false;
-    if (isFocused.value) {
-      const _event = new FocusEvent("blur", event);
-      nextTick(() => handleBlur(_event));
-    }
-  };
-  const handleEsc = () => {
-    if (states.inputValue.length > 0) {
-      states.inputValue = "";
-    } else {
-      expanded.value = false;
-    }
-  };
-  const toggleMenu = () => {
-    if (selectDisabled.value)
-      return;
-    if (isIOS)
-      states.inputHovering = true;
-    if (states.menuVisibleOnFocus) {
-      states.menuVisibleOnFocus = false;
-    } else {
-      expanded.value = !expanded.value;
-    }
-  };
-  const selectOption = () => {
-    if (!expanded.value) {
-      toggleMenu();
-    } else {
-      const option = optionsArray.value[states.hoveringIndex];
-      if (option && !option.isDisabled) {
-        handleOptionSelect(option);
-      }
-    }
-  };
-  const getValueKey = (item) => getOptionValueKey(item.value);
-  const optionsAllDisabled = computed(() => optionsArray.value.filter((option) => option.visible).every((option) => option.isDisabled));
-  const showTagList = computed(() => {
-    if (!props.multiple) {
-      return [];
-    }
-    return props.collapseTags ? states.selected.slice(0, props.maxCollapseTags) : states.selected;
-  });
-  const collapseTagList = computed(() => {
-    if (!props.multiple) {
-      return [];
-    }
-    return props.collapseTags ? states.selected.slice(props.maxCollapseTags) : [];
-  });
-  const navigateOptions = (direction) => {
-    if (!expanded.value) {
-      expanded.value = true;
-      return;
-    }
-    if (states.options.size === 0 || filteredOptionsCount.value === 0 || isComposing.value)
-      return;
-    if (!optionsAllDisabled.value) {
-      if (direction === "next") {
-        states.hoveringIndex++;
-        if (states.hoveringIndex === states.options.size) {
-          states.hoveringIndex = 0;
-        }
-      } else if (direction === "prev") {
-        states.hoveringIndex--;
-        if (states.hoveringIndex < 0) {
-          states.hoveringIndex = states.options.size - 1;
-        }
-      }
-      const option = optionsArray.value[states.hoveringIndex];
-      if (option.isDisabled || !option.visible) {
-        navigateOptions(direction);
-      }
-      nextTick(() => scrollToOption(hoverOption.value));
-    }
-  };
-  const getGapWidth = () => {
-    if (!selectionRef.value)
-      return 0;
-    const style = window.getComputedStyle(selectionRef.value);
-    return Number.parseFloat(style.gap || "6px");
-  };
-  const tagStyle = computed(() => {
-    const gapWidth = getGapWidth();
-    const inputSlotWidth = props.filterable ? gapWidth + MINIMUM_INPUT_WIDTH : 0;
-    const maxWidth = collapseItemRef.value && props.maxCollapseTags === 1 ? states.selectionWidth - states.collapseItemWidth - gapWidth - inputSlotWidth : states.selectionWidth - inputSlotWidth;
-    return { maxWidth: `${maxWidth}px` };
-  });
-  const collapseTagStyle = computed(() => {
-    return { maxWidth: `${states.selectionWidth}px` };
-  });
-  const popupScroll = (data) => {
-    emit("popup-scroll", data);
-  };
-  useResizeObserver(selectionRef, resetSelectionWidth);
-  useResizeObserver(wrapperRef, updateTooltip);
-  useResizeObserver(tagMenuRef, updateTagTooltip);
-  useResizeObserver(collapseItemRef, resetCollapseItemWidth);
-  let stop;
-  watch(() => dropdownMenuVisible.value, (newVal) => {
-    if (newVal) {
-      stop = useResizeObserver(menuRef, updateTooltip).stop;
-    } else {
-      stop == null ? void 0 : stop();
-      stop = void 0;
-    }
-  });
-  onMounted(() => {
-    setSelected();
-  });
-  return {
-    inputId,
-    contentId,
-    nsSelect,
-    nsInput,
-    states,
-    isFocused,
-    expanded,
-    optionsArray,
-    hoverOption,
-    selectSize,
-    filteredOptionsCount,
-    visibleMultipleOptions,
-    hasVisibleSelectedOptions,
-    hasVisibleUnselectedOptions,
-    multipleSectionLabel,
-    isAllVisibleOptionsSelected,
-    isSelectAllIndeterminate,
-    selectAllLabel,
-    isSelectAllDisabled,
-    updateTooltip,
-    updateTagTooltip,
-    debouncedOnInputChange,
-    onInput,
-    deletePrevTag,
-    deleteTag,
-    deleteSelected,
-    handleOptionSelect,
-    toggleSelectAll,
-    scrollToOption,
-    hasModelValue,
-    shouldShowPlaceholder,
-    currentPlaceholder,
-    mouseEnterEventName,
-    needStatusIcon,
-    showClearBtn,
-    iconComponent,
-    iconReverse,
-    validateState,
-    validateMessage,
-    validateIcon,
-    showNewOption,
-    updateOptions,
-    collapseTagSize,
-    setSelected,
-    selectDisabled,
-    emptyText,
-    handleCompositionStart,
-    handleCompositionUpdate,
-    handleCompositionEnd,
-    onOptionCreate,
-    onOptionDestroy,
-    handleMenuEnter,
-    focus,
-    blur,
-    handleClearClick,
-    handleClickOutside,
-    handleEsc,
-    toggleMenu,
-    selectOption,
-    getValueKey,
-    getLabelSlotItem,
-    navigateOptions,
-    dropdownMenuVisible,
-    showTagList,
-    collapseTagList,
-    popupScroll,
-    getOption,
-    tagStyle,
-    collapseTagStyle,
-    popperRef,
-    inputRef,
-    tooltipRef,
-    tagTooltipRef,
-    prefixRef,
-    suffixRef,
-    selectRef,
-    wrapperRef,
-    selectionRef,
-    scrollbarRef,
-    menuRef,
-    tagMenuRef,
-    collapseItemRef
-  };
-};
-
-var ElOptions = defineComponent({
-  name: "ElOptions",
-  setup(_, { slots }) {
-    const select = inject(selectKey);
-    let cachedValueList = [];
-    return () => {
-      var _a, _b;
-      const children = (_a = slots.default) == null ? void 0 : _a.call(slots);
-      const valueList = [];
-      function filterOptions(children2) {
-        if (!isArray$1(children2))
-          return;
-        children2.forEach((item) => {
-          var _a2, _b2, _c, _d;
-          const name = (_a2 = (item == null ? void 0 : item.type) || {}) == null ? void 0 : _a2.name;
-          if (name === "ElOptionGroup") {
-            filterOptions(!isString$1(item.children) && !isArray$1(item.children) && isFunction$1((_b2 = item.children) == null ? void 0 : _b2.default) ? (_c = item.children) == null ? void 0 : _c.default() : item.children);
-          } else if (name === "ElOption") {
-            valueList.push((_d = item.props) == null ? void 0 : _d.value);
-          } else if (isArray$1(item.children)) {
-            filterOptions(item.children);
-          }
-        });
-      }
-      if (children.length) {
-        filterOptions((_b = children[0]) == null ? void 0 : _b.children);
-      }
-      if (!isEqual$1(valueList, cachedValueList)) {
-        cachedValueList = valueList;
-        if (select) {
-          select.states.optionValues = valueList;
-        }
-      }
-      return children;
-    };
-  }
-});
-
-const selectProps = buildProps({
-  name: String,
-  id: String,
-  modelValue: {
-    type: definePropType([
-      Array,
-      String,
-      Number,
-      Boolean,
-      Object
-    ]),
-    default: void 0
-  },
-  autocomplete: {
-    type: String,
-    default: "off"
-  },
-  automaticDropdown: Boolean,
-  size: useSizeProp,
-  expand: Boolean,
-  effect: {
-    type: definePropType(String),
-    default: "light"
-  },
-  disabled: Boolean,
-  addItem: Boolean,
-  inputType: {
-    type: String,
-    values: ["error", "info", "warning"]
-  },
-  clearable: Boolean,
-  filterable: {
-    type: Boolean,
-    default: true
-  },
-  beforeChange: {
-    type: definePropType(Function)
-  },
-  allowCreate: Boolean,
-  loading: Boolean,
-  popperClass: {
-    type: String,
-    default: ""
-  },
-  popperStyle: {
-    type: definePropType([String, Object])
-  },
-  popperOptions: {
-    type: definePropType(Object),
-    default: () => ({})
-  },
-  remote: Boolean,
-  debounce: {
-    type: Number,
-    default: 300
-  },
-  loadingText: String,
-  noMatchText: String,
-  noDataText: String,
-  remoteMethod: {
-    type: definePropType(Function)
-  },
-  filterMethod: {
-    type: definePropType(Function)
-  },
-  multiple: Boolean,
-  multipleLimit: {
-    type: Number,
-    default: 0
-  },
-  selectAllExcludedValues: {
-    type: definePropType(Array),
-    default: () => []
-  },
-  showSelectAll: {
-    type: Boolean,
-    default: true
-  },
-  filterMaxLength: {
-    type: Number,
-    default: 99
-  },
-  placeholder: {
-    type: String
-  },
-  defaultFirstOption: Boolean,
-  reserveKeyword: {
-    type: Boolean,
-    default: true
-  },
-  floatLabel: {
-    type: Boolean,
-    default: true
-  },
-  addShowTip: String,
-  haveAll: {
-    type: String
-  },
-  valueKey: {
-    type: String,
-    default: "value"
-  },
-  collapseTags: Boolean,
-  collapseTagsTooltip: Boolean,
-  maxCollapseTags: {
-    type: Number,
-    default: 1
-  },
-  teleported: useTooltipContentProps.teleported,
-  persistent: {
-    type: Boolean,
-    default: true
-  },
-  clearIcon: {
-    type: iconPropType,
-    default: circle_close_default
-  },
-  fitInputWidth: {
-    type: Boolean,
-    default: true
-  },
-  optionWidth: {
-    type: [String, Number],
-    default: void 0
-  },
-  showOptionTooltip: {
-    type: Boolean,
-    default: true
-  },
-  suffixIcon: {
-    type: iconPropType,
-    default: arrow_down_default
-  },
-  labelSuffix: {
-    type: String,
-    default: ""
-  },
-  tagType: { ...tagProps.type, default: "info" },
-  tagEffect: { ...tagProps.effect, default: "light" },
-  validateEvent: {
-    type: Boolean,
-    default: true
-  },
-  remoteShowSuffix: Boolean,
-  showArrow: Boolean,
-  offset: {
-    type: Number,
-    default: 4
-  },
-  placement: {
-    type: definePropType(String),
-    values: Ee,
-    default: "bottom-start"
-  },
-  fallbackPlacements: {
-    type: definePropType(Array),
-    default: ["bottom-start", "top-start", "right", "left"]
-  },
-  tabindex: {
-    type: [String, Number],
-    default: 0
-  },
-  appendTo: useTooltipContentProps.appendTo,
-  options: {
-    type: definePropType(Array)
-  },
-  props: {
-    type: definePropType(Object),
-    default: () => defaultProps$5
-  },
-  ...useEmptyValuesProps,
-  ...useAriaProps(["ariaLabel"])
-});
-const selectEmits = {
-  [UPDATE_MODEL_EVENT]: (val) => true,
-  [CHANGE_EVENT]: (val) => true,
-  "option-select": (option, val) => true,
-  "select-all": (val) => true,
-  "popup-scroll": scrollbarEmits.scroll,
-  "remove-tag": (val) => true,
-  "visible-change": (visible) => true,
-  focus: (evt) => evt instanceof FocusEvent,
-  blur: (evt) => evt instanceof FocusEvent,
-  clear: () => true
-};
-
-const _sfc_main$1b = defineComponent({
-  name: "ElOptionGroup",
-  components: { ElDivider: ElDivider$1 },
-  componentName: "ElOptionGroup",
-  props: {
-    label: String,
-    disabled: Boolean
-  },
-  setup(props) {
-    const select = inject(selectKey);
-    const ns = useNamespace("select");
-    const groupRef = ref();
-    const instance = getCurrentInstance();
-    const children = ref([]);
-    provide(selectGroupKey, reactive({
-      ...toRefs(props)
-    }));
-    const visible = computed(() => children.value.some((option) => option.visible === true));
-    const hasVisibleSelectedOptions = computed(() => children.value.some((option) => option.visible === true && unref(option.itemSelected)));
-    const hasVisibleUnselectedOptions = computed(() => children.value.some((option) => option.visible === true && !unref(option.itemSelected)));
-    const isFirstVisibleGroup = computed(() => {
-      const firstVisibleOption = select.optionsArray.find((option) => option.visible);
-      return !!firstVisibleOption && children.value.includes(firstVisibleOption);
-    });
-    const isOption = (node) => {
-      var _a;
-      return node.type.name === "ElOption" && !!((_a = node.component) == null ? void 0 : _a.proxy);
-    };
-    const flattedChildren = (node) => {
-      const nodes = castArray$1(node);
-      const children2 = [];
-      nodes.forEach((child) => {
-        var _a;
-        if (!isVNode(child))
-          return;
-        if (isOption(child)) {
-          children2.push(child.component.proxy);
-        } else if (isArray$1(child.children) && child.children.length) {
-          children2.push(...flattedChildren(child.children));
-        } else if ((_a = child.component) == null ? void 0 : _a.subTree) {
-          children2.push(...flattedChildren(child.component.subTree));
-        }
-      });
-      return children2;
-    };
-    const updateChildren = () => {
-      children.value = flattedChildren(instance.subTree);
-    };
-    onMounted(() => {
-      updateChildren();
-    });
-    useMutationObserver(groupRef, updateChildren, {
-      attributes: true,
-      subtree: true,
-      childList: true
-    });
-    return {
-      groupRef,
-      select,
-      visible,
-      hasVisibleSelectedOptions,
-      hasVisibleUnselectedOptions,
-      isFirstVisibleGroup,
-      ns
-    };
-  }
-});
-function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_el_divider = resolveComponent("el-divider");
-  return withDirectives((openBlock(), createElementBlock("ul", {
-    ref: "groupRef",
-    class: normalizeClass([_ctx.ns.be("group", "wrap"), _ctx.ns.is("multiple", _ctx.select.props.multiple)])
-  }, [
-    _ctx.select.props.multiple ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-      _ctx.hasVisibleSelectedOptions ? (openBlock(), createElementBlock("li", {
-        key: 0,
-        class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("selected-group")])
-      }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
-      _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("li", {
-        key: 1,
-        class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("unselected-group")])
-      }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
-      renderSlot(_ctx.$slots, "default")
-    ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-      !_ctx.isFirstVisibleGroup ? (openBlock(), createBlock(_component_el_divider, { key: 0 })) : createCommentVNode("v-if", true),
-      createElementVNode("li", {
-        class: normalizeClass(_ctx.ns.be("group", "title"))
-      }, toDisplayString(_ctx.label), 3),
-      createElementVNode("li", null, [
-        createElementVNode("ul", {
-          class: normalizeClass(_ctx.ns.b("group"))
-        }, [
-          renderSlot(_ctx.$slots, "default")
-        ], 2)
-      ])
-    ], 64))
-  ], 2)), [
-    [vShow, _ctx.visible]
-  ]);
-}
-var OptionGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$c], ["__file", "option-group.vue"]]);
-
-const COMPONENT_NAME$c = "ElSelect";
-const _sfc_main$1a = defineComponent({
-  name: COMPONENT_NAME$c,
-  componentName: COMPONENT_NAME$c,
-  components: {
-    ElSelectMenu: ElSelectMenu$1,
-    ElOption: Option,
-    ElOptions,
-    ElOptionGroup: OptionGroup,
-    ElTag,
-    ElScrollbar,
-    ElTooltip,
-    ElIcon,
-    ElCheckbox
-  },
-  directives: { ClickOutside },
-  props: selectProps,
-  emits: [
-    UPDATE_MODEL_EVENT,
-    CHANGE_EVENT,
-    "option-select",
-    "select-all",
-    "remove-tag",
-    "add-item",
-    "clear",
-    "visible-change",
-    "focus",
-    "blur",
-    "popup-scroll"
-  ],
-  setup(props, { emit, slots }) {
-    const instance = getCurrentInstance();
-    const originalWarnHandler = instance.appContext.config.warnHandler;
-    instance.appContext.config.warnHandler = (...args) => {
-      if (!args[0] || args[0].includes('Slot "default" invoked outside of the render function')) {
-        return;
-      }
-      console.warn(...args);
-    };
-    const modelValue = computed(() => {
-      const { modelValue: rawModelValue, multiple } = props;
-      const fallback = multiple ? [] : void 0;
-      if (isArray$1(rawModelValue)) {
-        return multiple ? rawModelValue : fallback;
-      }
-      return multiple ? fallback : rawModelValue;
-    });
-    const _props = reactive({
-      ...toRefs(props),
-      modelValue
-    });
-    const API = useSelect$3(_props, emit);
-    const { calculatorRef, inputStyle } = useCalcInputWidth();
-    const { getLabel, getValue, getOptions, getDisabled, getTip } = useProps(props);
-    const validateError = computed(() => (API == null ? void 0 : API.validateState.value) === "error");
-    const validateMsg = computed(() => {
-      var _a;
-      return String((_a = API == null ? void 0 : API.validateMessage.value) != null ? _a : "");
-    });
-    const showEmptyErrorTooltip = computed(() => props.inputType === "error" && !API.hasModelValue.value);
-    const errorTooltipContent = computed(() => {
-      if (validateError.value && validateMsg.value)
-        return validateMsg.value;
-      if (showEmptyErrorTooltip.value)
-        return "Required";
-      return "";
-    });
-    const errorTooltipDisabled = computed(() => !errorTooltipContent.value);
-    const errorTooltipVisible = ref(false);
-    const dropdownPlacement = ref(props.placement);
-    const dropdownPlacementModifier = {
-      name: "syncErrorTooltipPlacement",
-      enabled: true,
-      phase: "afterWrite",
-      fn: ({ state }) => {
-        dropdownPlacement.value = state.placement;
-      }
-    };
-    const dropdownPopperOptions = computed(() => {
-      var _a;
-      return {
-        ...props.popperOptions,
-        modifiers: [
-          ...(_a = props.popperOptions.modifiers) != null ? _a : [],
-          dropdownPlacementModifier
-        ]
-      };
-    });
-    const errorTooltipPlacement = computed(() => API.dropdownMenuVisible.value && dropdownPlacement.value.startsWith("top") ? "left-start" : "top-start");
-    const handleSelectClick = () => {
-      API.toggleMenu();
-      errorTooltipVisible.value = !errorTooltipDisabled.value;
-    };
-    const handleSelectClickOutside = (event) => {
-      errorTooltipVisible.value = false;
-      API.handleClickOutside(event);
-    };
-    watch([API.isFocused, errorTooltipDisabled], ([focused, disabled]) => {
-      errorTooltipVisible.value = focused && !disabled;
-    });
-    const getOptionProps = (option) => ({
-      label: getLabel(option),
-      value: getValue(option),
-      disabled: getDisabled(option),
-      tip: getTip(option),
-      rawOption: option
-    });
-    const flatTreeSelectData = (data) => {
-      return data.reduce((acc, item) => {
-        acc.push(item);
-        if (item.children && item.children.length > 0) {
-          acc.push(...flatTreeSelectData(item.children));
-        }
-        return acc;
-      }, []);
-    };
-    const handleAddSelect = () => {
-      emit("add-item", API.states.inputValue);
-    };
-    const manuallyRenderSlots = (vnodes) => {
-      const children = flattedChildren(vnodes || []);
-      children.forEach((item) => {
-        var _a;
-        if (isObject$1(item) && (item.type.name === "ElOption" || item.type.name === "ElTree")) {
-          const _name = item.type.name;
-          if (_name === "ElTree") {
-            const treeData = ((_a = item.props) == null ? void 0 : _a.data) || [];
-            const flatData = flatTreeSelectData(treeData);
-            flatData.forEach((treeItem) => {
-              treeItem.rawOption = treeItem;
-              treeItem.currentLabel = treeItem.label || (isObject$1(treeItem.value) ? "" : treeItem.value);
-              API.onOptionCreate(treeItem);
-            });
-          } else if (_name === "ElOption") {
-            const obj = { ...item.props };
-            obj.currentLabel = obj.label || (isObject$1(obj.value) ? "" : obj.value);
-            API.onOptionCreate(obj);
-          }
-        }
-      });
-    };
-    watch(() => {
-      var _a;
-      return [(_a = slots.default) == null ? void 0 : _a.call(slots), modelValue.value];
-    }, () => {
-      var _a;
-      if (props.persistent || API.states.options.size > 0) {
-        return;
-      }
-      manuallyRenderSlots((_a = slots.default) == null ? void 0 : _a.call(slots));
-    }, {
-      immediate: true
-    });
-    provide(selectKey, reactive({
-      props: _props,
-      states: API.states,
-      selectRef: API.selectRef,
-      optionsArray: API.optionsArray,
-      setSelected: API.setSelected,
-      handleOptionSelect: API.handleOptionSelect,
-      onOptionCreate: API.onOptionCreate,
-      onOptionDestroy: API.onOptionDestroy
-    }));
-    const selectedLabel = computed(() => {
-      if (!props.multiple) {
-        return API.states.selectedLabel;
-      }
-      return API.states.selected.map((i) => i.currentLabel);
-    });
-    onBeforeUnmount(() => {
-      instance.appContext.config.warnHandler = originalWarnHandler;
-    });
-    return {
-      ...API,
-      modelValue,
-      selectedLabel,
-      calculatorRef,
-      inputStyle,
-      validateError,
-      validateMsg,
-      errorTooltipContent,
-      errorTooltipDisabled,
-      errorTooltipVisible,
-      errorTooltipPlacement,
-      dropdownPopperOptions,
-      handleSelectClick,
-      handleSelectClickOutside,
-      handleAddSelect,
-      getLabel,
-      isEmpty,
-      getValue,
-      getOptions,
-      getDisabled,
-      getOptionProps
-    };
-  }
-});
-function _sfc_render$b(_ctx, _cache) {
-  const _component_el_tag = resolveComponent("el-tag");
-  const _component_el_tooltip = resolveComponent("el-tooltip");
-  const _component_el_icon = resolveComponent("el-icon");
-  const _component_el_option = resolveComponent("el-option");
-  const _component_el_option_group = resolveComponent("el-option-group");
-  const _component_el_options = resolveComponent("el-options");
-  const _component_el_scrollbar = resolveComponent("el-scrollbar");
-  const _component_el_checkbox = resolveComponent("el-checkbox");
-  const _component_el_select_menu = resolveComponent("el-select-menu");
-  const _directive_click_outside = resolveDirective("click-outside");
-  return withDirectives((openBlock(), createElementBlock("div", {
-    ref: "selectRef",
-    class: normalizeClass([
-      _ctx.nsSelect.b(),
-      _ctx.nsSelect.m(_ctx.selectSize),
-      _ctx.nsSelect.m(_ctx.inputType),
-      _ctx.nsSelect.is("expanded", _ctx.$props.expand),
-      {
-        [_ctx.nsSelect.m("inputType")]: !!_ctx.inputType,
-        [_ctx.nsSelect.m("filled")]: !!_ctx.inputType && _ctx.hasModelValue
-      },
-      _ctx.multiple && _ctx.isFocused ? "multi-select" : ""
-    ]),
-    [toHandlerKey(_ctx.mouseEnterEventName)]: ($event) => _ctx.states.inputHovering = true,
-    onMouseleave: ($event) => _ctx.states.inputHovering = false
-  }, [
-    createVNode(_component_el_tooltip, {
-      trigger: "click",
-      effect: "light",
-      placement: _ctx.errorTooltipPlacement,
-      offset: 4,
-      content: _ctx.errorTooltipContent,
-      disabled: _ctx.errorTooltipDisabled,
-      visible: _ctx.errorTooltipVisible
-    }, {
-      default: withCtx(() => [
-        createElementVNode("div", {
-          class: normalizeClass([
-            _ctx.nsSelect.e("container"),
-            _ctx.nsSelect.is("append", !!_ctx.$slots.append),
-            _ctx.nsSelect.is("multiple", _ctx.multiple)
-          ])
-        }, [
-          createVNode(_component_el_tooltip, {
-            ref: "tooltipRef",
-            visible: _ctx.dropdownMenuVisible,
-            placement: _ctx.placement,
-            teleported: _ctx.teleported,
-            "popper-class": [_ctx.nsSelect.e("popper"), _ctx.popperClass],
-            "popper-style": _ctx.popperStyle,
-            "popper-options": _ctx.dropdownPopperOptions,
-            "fallback-placements": _ctx.fallbackPlacements,
-            effect: _ctx.effect,
-            pure: "",
-            trigger: "click",
-            transition: `${_ctx.nsSelect.namespace.value}-zoom-in-top`,
-            "stop-popper-mouse-event": false,
-            "gpu-acceleration": false,
-            persistent: _ctx.persistent,
-            "append-to": _ctx.appendTo,
-            "show-arrow": false,
-            offset: _ctx.offset,
-            onBeforeShow: _ctx.handleMenuEnter,
-            onHide: ($event) => _ctx.states.isBeforeHide = false
-          }, {
-            default: withCtx(() => {
-              var _a;
-              return [
-                createElementVNode("div", {
-                  ref: "wrapperRef",
-                  class: normalizeClass([
-                    _ctx.nsSelect.e("wrapper"),
-                    _ctx.nsSelect.is("focused", _ctx.isFocused),
-                    _ctx.nsSelect.is("all", !!_ctx.haveAll),
-                    _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
-                    _ctx.nsSelect.is("filterable", _ctx.filterable),
-                    _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
-                    _ctx.nsSelect.is("value", _ctx.hasModelValue),
-                    _ctx.nsSelect.is("multiple", _ctx.multiple)
-                  ]),
-                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
-                }, [
-                  _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
-                    key: 0,
-                    class: normalizeClass(["float-label", {
-                      "prefix-label": _ctx.$slots.prefix,
-                      "select-visible": _ctx.dropdownMenuVisible || !_ctx.isEmpty(_ctx.states.inputValue)
-                    }])
-                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
-                  _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
-                    key: 1,
-                    ref: "prefixRef",
-                    class: normalizeClass(_ctx.nsSelect.e("prefix"))
-                  }, [
-                    renderSlot(_ctx.$slots, "prefix")
-                  ], 2)) : createCommentVNode("v-if", true),
-                  createElementVNode("div", {
-                    ref: "selectionRef",
-                    class: normalizeClass([
-                      _ctx.nsSelect.e("selection"),
-                      _ctx.nsSelect.is("near", _ctx.multiple && !_ctx.$slots.prefix && !!_ctx.states.selected.length)
-                    ])
-                  }, [
-                    _ctx.multiple ? renderSlot(_ctx.$slots, "tag", {
-                      key: 0,
-                      data: _ctx.states.selected,
-                      deleteTag: _ctx.deleteTag,
-                      selectDisabled: _ctx.selectDisabled
-                    }, () => [
-                      _ctx.haveAll && !_ctx.states.selected.length ? (openBlock(), createElementBlock("span", {
-                        key: 0,
-                        class: "select-all-tag"
-                      }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
-                      (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.showTagList, (item) => {
-                        return openBlock(), createElementBlock("div", {
-                          key: _ctx.getValueKey(item),
-                          class: normalizeClass(_ctx.nsSelect.e("selected-item"))
-                        }, [
-                          createVNode(_component_el_tag, {
-                            closable: false,
-                            size: _ctx.collapseTagSize,
-                            type: _ctx.tagType,
-                            effect: _ctx.tagEffect,
-                            "disable-transitions": "",
-                            style: normalizeStyle(_ctx.tagStyle),
-                            round: ""
-                          }, {
-                            default: withCtx(() => [
-                              createElementVNode("span", {
-                                class: normalizeClass(_ctx.nsSelect.e("tags-text"))
-                              }, [
-                                renderSlot(_ctx.$slots, "label", {
-                                  item: _ctx.getLabelSlotItem(item),
-                                  index: item.index,
-                                  label: item.currentLabel,
-                                  value: item.value
-                                }, () => [
-                                  createTextVNode(toDisplayString(item.currentLabel), 1)
-                                ])
-                              ], 2)
-                            ]),
-                            _: 2
-                          }, 1032, ["size", "type", "effect", "style"])
-                        ], 2);
-                      }), 128)),
-                      _ctx.collapseTags && _ctx.states.selected.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
-                        key: 1,
-                        ref: "tagTooltipRef",
-                        disabled: _ctx.dropdownMenuVisible || !_ctx.collapseTagsTooltip,
-                        "fallback-placements": ["bottom", "top", "right", "left"],
-                        effect: _ctx.effect,
-                        placement: "bottom",
-                        "popper-class": _ctx.popperClass,
-                        "popper-style": _ctx.popperStyle,
-                        teleported: _ctx.teleported
-                      }, {
-                        default: withCtx(() => [
-                          createElementVNode("div", {
-                            ref: "collapseItemRef",
-                            class: normalizeClass(_ctx.nsSelect.e("selected-item"))
-                          }, [
-                            createVNode(_component_el_tag, {
-                              closable: false,
-                              size: _ctx.collapseTagSize,
-                              type: _ctx.tagType,
-                              effect: _ctx.tagEffect,
-                              "disable-transitions": "",
-                              style: normalizeStyle(_ctx.collapseTagStyle),
-                              round: ""
-                            }, {
-                              default: withCtx(() => [
-                                createElementVNode("span", {
-                                  class: normalizeClass(_ctx.nsSelect.e("tags-text"))
-                                }, " + " + toDisplayString(_ctx.states.selected.length - _ctx.maxCollapseTags), 3)
-                              ]),
-                              _: 1
-                            }, 8, ["size", "type", "effect", "style"])
-                          ], 2)
-                        ]),
-                        content: withCtx(() => [
-                          createElementVNode("div", {
-                            ref: "tagMenuRef",
-                            class: normalizeClass(_ctx.nsSelect.e("selection"))
-                          }, [
-                            (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.collapseTagList, (item) => {
-                              return openBlock(), createElementBlock("div", {
-                                key: _ctx.getValueKey(item),
-                                class: normalizeClass(_ctx.nsSelect.e("selected-item"))
-                              }, [
-                                createVNode(_component_el_tag, {
-                                  class: "in-tooltip",
-                                  closable: false,
-                                  size: _ctx.collapseTagSize,
-                                  type: _ctx.tagType,
-                                  effect: _ctx.tagEffect,
-                                  "disable-transitions": "",
-                                  round: ""
-                                }, {
-                                  default: withCtx(() => [
-                                    createElementVNode("span", {
-                                      class: normalizeClass(_ctx.nsSelect.e("tags-text"))
-                                    }, [
-                                      renderSlot(_ctx.$slots, "label", {
-                                        item: _ctx.getLabelSlotItem(item),
-                                        index: item.index,
-                                        label: item.currentLabel,
-                                        value: item.value
-                                      }, () => [
-                                        createTextVNode(toDisplayString(item.currentLabel), 1)
-                                      ])
-                                    ], 2)
-                                  ]),
-                                  _: 2
-                                }, 1032, ["size", "type", "effect"])
-                              ], 2);
-                            }), 128))
-                          ], 2)
-                        ]),
-                        _: 3
-                      }, 8, ["disabled", "effect", "popper-class", "popper-style", "teleported"])) : createCommentVNode("v-if", true)
-                    ]) : createCommentVNode("v-if", true),
-                    createElementVNode("div", {
-                      class: normalizeClass([
-                        _ctx.nsSelect.e("selected-item"),
-                        _ctx.nsSelect.e("input-wrapper"),
-                        _ctx.nsSelect.is("hidden", !_ctx.filterable)
-                      ])
-                    }, [
-                      withDirectives(createElementVNode("input", {
-                        id: _ctx.inputId,
-                        ref: "inputRef",
-                        "onUpdate:modelValue": ($event) => _ctx.states.inputValue = $event,
-                        type: "text",
-                        name: _ctx.name,
-                        class: normalizeClass([_ctx.nsSelect.e("input"), _ctx.nsSelect.is(_ctx.selectSize)]),
-                        disabled: _ctx.selectDisabled,
-                        autocomplete: _ctx.autocomplete,
-                        maxlength: _ctx.filterMaxLength,
-                        style: normalizeStyle(_ctx.inputStyle),
-                        tabindex: _ctx.tabindex,
-                        role: "combobox",
-                        readonly: !_ctx.filterable,
-                        spellcheck: "false",
-                        "aria-activedescendant": ((_a = _ctx.hoverOption) == null ? void 0 : _a.id) || "",
-                        "aria-controls": _ctx.contentId,
-                        "aria-expanded": _ctx.dropdownMenuVisible,
-                        "aria-label": _ctx.ariaLabel,
-                        "aria-autocomplete": "none",
-                        "aria-haspopup": "listbox",
-                        onKeydown: [
-                          withKeys(withModifiers(($event) => _ctx.navigateOptions("next"), ["stop", "prevent"]), ["down"]),
-                          withKeys(withModifiers(($event) => _ctx.navigateOptions("prev"), ["stop", "prevent"]), ["up"]),
-                          withKeys(withModifiers(_ctx.handleEsc, ["stop", "prevent"]), ["esc"]),
-                          withKeys(withModifiers(_ctx.selectOption, ["stop", "prevent"]), ["enter"]),
-                          withKeys(withModifiers(_ctx.deletePrevTag, ["stop"]), ["delete"])
-                        ],
-                        onCompositionstart: _ctx.handleCompositionStart,
-                        onCompositionupdate: _ctx.handleCompositionUpdate,
-                        onCompositionend: _ctx.handleCompositionEnd,
-                        onInput: _ctx.onInput,
-                        onClick: withModifiers(_ctx.toggleMenu, ["stop"])
-                      }, null, 46, ["id", "onUpdate:modelValue", "name", "disabled", "autocomplete", "maxlength", "tabindex", "readonly", "aria-activedescendant", "aria-controls", "aria-expanded", "aria-label", "onKeydown", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onInput", "onClick"]), [
-                        [vModelText, _ctx.states.inputValue]
-                      ]),
-                      _ctx.filterable ? (openBlock(), createElementBlock("span", {
-                        key: 0,
-                        ref: "calculatorRef",
-                        "aria-hidden": "true",
-                        class: normalizeClass(_ctx.nsSelect.e("input-calculator")),
-                        textContent: toDisplayString(_ctx.states.inputValue)
-                      }, null, 10, ["textContent"])) : createCommentVNode("v-if", true)
-                    ], 2),
-                    !_ctx.floatLabel && !_ctx.states.inputValue || _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (openBlock(), createElementBlock("div", {
-                      key: 1,
-                      class: normalizeClass([
-                        _ctx.nsSelect.e("selected-item"),
-                        _ctx.nsSelect.e("placeholder"),
-                        _ctx.nsSelect.is("transparent", !_ctx.hasModelValue || _ctx.expanded && !_ctx.states.inputValue)
-                      ])
-                    }, [
-                      renderSlot(_ctx.$slots, "label", {
-                        item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
-                        index: _ctx.getOption(_ctx.modelValue).index,
-                        label: _ctx.currentPlaceholder,
-                        value: _ctx.modelValue
-                      }, () => [
-                        _ctx.$slots.itemIcon ? (openBlock(), createElementBlock("div", {
-                          key: 0,
-                          class: "iconItemWrap"
-                        }, [
-                          renderSlot(_ctx.$slots, "itemIcon", {
-                            item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
-                            index: _ctx.getOption(_ctx.modelValue).index,
-                            label: _ctx.currentPlaceholder,
-                            value: _ctx.modelValue
-                          }),
-                          createElementVNode("span", { class: "itemPlaceholder" }, toDisplayString(_ctx.currentPlaceholder), 1)
-                        ])) : (openBlock(), createElementBlock("span", { key: 1 }, toDisplayString(_ctx.currentPlaceholder), 1))
-                      ])
-                    ], 2)) : createCommentVNode("v-if", true)
-                  ], 2),
-                  createElementVNode("div", {
-                    ref: "suffixRef",
-                    class: normalizeClass(_ctx.nsSelect.e("suffix"))
-                  }, [
-                    createTextVNode(toDisplayString(_ctx.labelSuffix) + " ", 1),
-                    _ctx.$slots.info ? renderSlot(_ctx.$slots, "info", { key: 0 }) : createCommentVNode("v-if", true),
-                    _ctx.$slots.suffixBeforeIcon ? renderSlot(_ctx.$slots, "suffixBeforeIcon", { key: 1 }) : createCommentVNode("v-if", true),
-                    _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.$slots.info ? (openBlock(), createBlock(_component_el_icon, {
-                      key: 2,
-                      class: normalizeClass([
-                        _ctx.nsSelect.e("caret"),
-                        _ctx.nsSelect.e("icon"),
-                        _ctx.iconReverse
-                      ])
-                    }, {
-                      default: withCtx(() => [
-                        (openBlock(), createElementBlock("svg", {
-                          width: "24",
-                          height: "24",
-                          viewBox: "0 0 24 24",
-                          xmlns: "http://www.w3.org/2000/svg"
-                        }, [
-                          createElementVNode("path", { d: "M5.00012 9H19.0001L12.7071 15.293C12.5196 15.4805 12.2653 15.5858 12.0001 15.5858C11.735 15.5858 11.4806 15.4805 11.2931 15.293L5.00012 9Z" })
-                        ]))
-                      ]),
-                      _: 1
-                    }, 8, ["class"])) : createCommentVNode("v-if", true),
-                    _ctx.showClearBtn && _ctx.clearIcon ? (openBlock(), createBlock(_component_el_icon, {
-                      key: 3,
-                      class: normalizeClass([
-                        _ctx.nsSelect.e("caret"),
-                        _ctx.nsSelect.e("icon"),
-                        _ctx.nsSelect.e("clear")
-                      ]),
-                      onClick: _ctx.handleClearClick
-                    }, {
-                      default: withCtx(() => [
-                        (openBlock(), createElementBlock("svg", {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          width: "12",
-                          height: "12",
-                          viewBox: "0 0 12 12",
-                          fill: "none"
-                        }, [
-                          createElementVNode("path", {
-                            d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
-                            fill: "#2A3F4D"
-                          })
-                        ]))
-                      ]),
-                      _: 1
-                    }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true),
-                    _ctx.$slots.suffixAfterIcon ? renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : createCommentVNode("v-if", true)
-                  ], 2)
-                ], 10, ["onClick"])
-              ];
-            }),
-            content: withCtx(() => [
-              createVNode(_component_el_select_menu, { ref: "menuRef" }, {
-                default: withCtx(() => [
-                  _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
-                    key: 0,
-                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "header")),
-                    onClick: withModifiers(() => {
-                    }, ["stop"])
-                  }, [
-                    renderSlot(_ctx.$slots, "header")
-                  ], 10, ["onClick"])) : createCommentVNode("v-if", true),
-                  withDirectives(createVNode(_component_el_scrollbar, {
-                    id: _ctx.contentId,
-                    ref: "scrollbarRef",
-                    tag: "ul",
-                    "wrap-class": _ctx.nsSelect.be("dropdown", "wrap"),
-                    "view-class": _ctx.nsSelect.be("dropdown", "list"),
-                    class: normalizeClass([_ctx.nsSelect.is("empty", _ctx.filteredOptionsCount === 0)]),
-                    role: "listbox",
-                    "aria-label": _ctx.ariaLabel,
-                    "aria-orientation": "vertical",
-                    onScroll: _ctx.popupScroll
-                  }, {
-                    default: withCtx(() => [
-                      _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
-                        key: 0,
-                        class: normalizeClass([
-                          _ctx.nsSelect.be("dropdown", "section-title"),
-                          _ctx.nsSelect.is("selected-section", _ctx.hasVisibleSelectedOptions)
-                        ])
-                      }, toDisplayString(_ctx.multipleSectionLabel), 3)) : createCommentVNode("v-if", true),
-                      _ctx.multiple && _ctx.hasVisibleSelectedOptions && _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("div", {
-                        key: 1,
-                        class: normalizeClass([
-                          _ctx.nsSelect.be("dropdown", "section-title"),
-                          _ctx.nsSelect.is("unselected-section")
-                        ])
-                      }, " Unselected ", 2)) : createCommentVNode("v-if", true),
-                      _ctx.states.selected.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
-                        key: 2,
-                        class: "select-all-item"
-                      }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
-                      _ctx.addShowTip && _ctx.filterable ? (openBlock(), createElementBlock("div", {
-                        key: 3,
-                        class: "select-add-tip"
-                      }, toDisplayString(_ctx.addShowTip), 1)) : createCommentVNode("v-if", true),
-                      _ctx.showNewOption ? (openBlock(), createBlock(_component_el_option, {
-                        key: 4,
-                        value: _ctx.states.inputValue,
-                        created: true
-                      }, null, 8, ["value"])) : createCommentVNode("v-if", true),
-                      createVNode(_component_el_options, null, {
-                        default: withCtx(() => [
-                          renderSlot(_ctx.$slots, "default", {}, () => [
-                            (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option, index) => {
-                              var _a;
-                              return openBlock(), createElementBlock(Fragment, { key: index }, [
-                                ((_a = _ctx.getOptions(option)) == null ? void 0 : _a.length) ? (openBlock(), createBlock(_component_el_option_group, {
-                                  key: 0,
-                                  label: _ctx.getLabel(option),
-                                  disabled: _ctx.getDisabled(option)
-                                }, {
-                                  default: withCtx(() => [
-                                    (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.getOptions(option), (item) => {
-                                      return openBlock(), createBlock(_component_el_option, mergeProps({
-                                        key: _ctx.getValue(item)
-                                      }, _ctx.getOptionProps(item)), null, 16);
-                                    }), 128))
-                                  ]),
-                                  _: 2
-                                }, 1032, ["label", "disabled"])) : (openBlock(), createBlock(_component_el_option, normalizeProps(mergeProps({ key: 1 }, _ctx.getOptionProps(option))), null, 16))
-                              ], 64);
-                            }), 128))
-                          ])
-                        ]),
-                        _: 3
-                      })
-                    ]),
-                    _: 3
-                  }, 8, ["id", "wrap-class", "view-class", "class", "aria-label", "onScroll"]), [
-                    [vShow, (_ctx.states.options.size > 0 || _ctx.addItem) && !_ctx.loading]
-                  ]),
-                  _ctx.$slots.loading && _ctx.loading ? (openBlock(), createElementBlock("div", {
-                    key: 1,
-                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "loading"))
-                  }, [
-                    renderSlot(_ctx.$slots, "loading")
-                  ], 2)) : _ctx.loading || _ctx.filteredOptionsCount === 0 ? (openBlock(), createElementBlock("div", {
-                    key: 2,
-                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
-                  }, [
-                    renderSlot(_ctx.$slots, "empty", {}, () => [
-                      !_ctx.addItem ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(_ctx.emptyText), 1)) : (openBlock(), createElementBlock("div", {
-                        key: 1,
-                        class: "el-select-dropdown__item add-item",
-                        onClick: _ctx.handleAddSelect
-                      }, [
-                        createVNode(_component_el_icon, { color: "#4f566" }, {
-                          default: withCtx(() => [
-                            (openBlock(), createElementBlock("svg", {
-                              width: "12",
-                              height: "12",
-                              viewBox: "0 0 12 12",
-                              xmlns: "http://www.w3.org/2000/svg"
-                            }, [
-                              createElementVNode("g", { "clip-path": "url(#clip0_743_39597)" }, [
-                                createElementVNode("path", { d: "M12 5.25H6.75V0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25Z" })
-                              ]),
-                              createElementVNode("defs", null, [
-                                createElementVNode("clipPath", { id: "clip0_743_39597" }, [
-                                  createElementVNode("rect", {
-                                    width: "12",
-                                    height: "12",
-                                    fill: "white"
-                                  })
-                                ])
-                              ])
-                            ]))
-                          ]),
-                          _: 1
-                        }),
-                        createElementVNode("span", { class: "tip" }, toDisplayString(_ctx.states.inputValue), 1)
-                      ], 8, ["onClick"]))
-                    ])
-                  ], 2)) : createCommentVNode("v-if", true),
-                  _ctx.showSelectAll && _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
-                    key: 3,
-                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
-                    onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])
-                  }, [
-                    createVNode(_component_el_checkbox, {
-                      "model-value": _ctx.isAllVisibleOptionsSelected,
-                      indeterminate: _ctx.isSelectAllIndeterminate,
-                      disabled: _ctx.isSelectAllDisabled,
-                      onClick: withModifiers(() => {
-                      }, ["stop"]),
-                      onChange: _ctx.toggleSelectAll
-                    }, null, 8, ["model-value", "indeterminate", "disabled", "onClick", "onChange"]),
-                    createElementVNode("span", null, toDisplayString(_ctx.selectAllLabel), 1)
-                  ], 10, ["onClick"])) : createCommentVNode("v-if", true),
-                  _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
-                    key: 4,
-                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
-                    onClick: withModifiers(() => {
-                    }, ["stop"])
-                  }, [
-                    renderSlot(_ctx.$slots, "footer")
-                  ], 10, ["onClick"])) : createCommentVNode("v-if", true)
-                ]),
-                _: 3
-              }, 512)
-            ]),
-            _: 3
-          }, 8, ["visible", "placement", "teleported", "popper-class", "popper-style", "popper-options", "fallback-placements", "effect", "transition", "persistent", "append-to", "offset", "onBeforeShow", "onHide"]),
-          _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
-            key: 0,
-            class: normalizeClass(_ctx.nsSelect.e("append")),
-            onMousedown: withModifiers(() => {
-            }, ["stop"]),
-            onClick: withModifiers(() => {
-            }, ["stop"])
-          }, [
-            renderSlot(_ctx.$slots, "append")
-          ], 42, ["onMousedown", "onClick"])) : createCommentVNode("v-if", true)
-        ], 2)
-      ]),
-      _: 3
-    }, 8, ["placement", "content", "disabled", "visible"])
-  ], 16, ["onMouseleave"])), [
-    [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
-  ]);
-}
-var Select$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$b], ["__file", "select.vue"]]);
-
-const ElSelect = withInstall(Select$1, {
-  Option,
-  OptionGroup
-});
-const ElOption = withNoopInstall(Option);
-const ElOptionGroup = withNoopInstall(OptionGroup);
-
-const inputSelectControlTypes = ["input", "select"];
-const isInputSelectLayout = (value) => isArray$1(value) && value.length === 2 && value.every((item) => inputSelectControlTypes.includes(item));
-const inputSelectProps = buildProps({
-  layout: {
-    type: definePropType(Array),
-    default: () => ["select", "input"],
-    validator: isInputSelectLayout
-  },
-  leftValue: {
-    type: definePropType([
-      Array,
-      String,
-      Number,
-      Boolean,
-      Object
-    ]),
-    default: void 0
-  },
-  rightValue: {
-    type: definePropType([
-      Array,
-      String,
-      Number,
-      Boolean,
-      Object
-    ]),
-    default: void 0
-  },
-  leftProps: {
-    type: definePropType(Object),
-    default: () => ({})
-  },
-  rightProps: {
-    type: definePropType(Object),
-    default: () => ({})
-  },
-  leftDirectives: {
-    type: definePropType(Array),
-    default: () => []
-  },
-  rightDirectives: {
-    type: definePropType(Array),
-    default: () => []
-  }
-});
-const inputSelectEmits = {
-  "update:leftValue": (_value) => true,
-  "update:rightValue": (_value) => true,
-  "left-change": (_value) => true,
-  "right-change": (_value) => true,
-  "left-focus": (event) => event instanceof FocusEvent,
-  "right-focus": (event) => event instanceof FocusEvent,
-  "left-blur": (event) => event instanceof FocusEvent,
-  "right-blur": (event) => event instanceof FocusEvent,
-  "left-clear": () => true,
-  "right-clear": () => true,
-  "left-visible-change": (visible) => typeof visible === "boolean",
-  "right-visible-change": (visible) => typeof visible === "boolean"
-};
-
-const _sfc_main$19 = defineComponent({
-  name: "ElInputSelect",
-  inheritAttrs: false,
-  props: inputSelectProps,
-  emits: inputSelectEmits,
-  setup(props, { attrs, slots, emit, expose }) {
-    const ns = useNamespace("input-select");
-    const leftRef = ref();
-    const rightRef = ref();
-    const getControlSlots = (side) => {
-      const prefix = `${side}-`;
-      return Object.entries(slots).reduce((controlSlots, [name, slot]) => {
-        if (name.startsWith(prefix) && slot) {
-          controlSlots[name.slice(prefix.length)] = slot;
-        }
-        return controlSlots;
-      }, {});
-    };
-    const updateValue = (side, value) => {
-      if (side === "left")
-        emit("update:leftValue", value);
-      else
-        emit("update:rightValue", value);
-    };
-    const handleChange = (side, value) => {
-      if (side === "left")
-        emit("left-change", value);
-      else
-        emit("right-change", value);
-    };
-    const handleFocus = (side, event) => {
-      if (side === "left")
-        emit("left-focus", event);
-      else
-        emit("right-focus", event);
-    };
-    const handleBlur = (side, event) => {
-      if (side === "left")
-        emit("left-blur", event);
-      else
-        emit("right-blur", event);
-    };
-    const handleClear = (side) => {
-      if (side === "left")
-        emit("left-clear");
-      else
-        emit("right-clear");
-    };
-    const handleVisibleChange = (side, visible) => {
-      if (side === "left")
-        emit("left-visible-change", visible);
-      else
-        emit("right-visible-change", visible);
-    };
-    const renderControl = (side, control) => {
-      const isLeft = side === "left";
-      const controlProps = isLeft ? props.leftProps : props.rightProps;
-      const modelValue = isLeft ? props.leftValue : props.rightValue;
-      const component = control === "input" ? ElInput : ElSelect;
-      const controlRef = isLeft ? leftRef : rightRef;
-      const listeners = control === "select" ? {
-        onVisibleChange: (visible) => handleVisibleChange(side, visible)
-      } : {};
-      return withDirectives(createVNode(component, {
-        ...controlProps,
-        ...listeners,
-        key: `${side}-${control}`,
-        ref: controlRef,
-        class: [
-          ns.e("control"),
-          ns.is(side),
-          controlProps == null ? void 0 : controlProps.class
-        ],
-        modelValue,
-        "onUpdate:modelValue": (value) => updateValue(side, value),
-        onChange: (value) => handleChange(side, value),
-        onFocus: (event) => handleFocus(side, event),
-        onBlur: (event) => handleBlur(side, event),
-        onClear: () => handleClear(side)
-      }, getControlSlots(side)), isLeft ? props.leftDirectives : props.rightDirectives);
-    };
-    const focus = (side = "left") => {
-      var _a, _b;
-      const controlRef = side === "left" ? leftRef : rightRef;
-      (_b = (_a = controlRef.value) == null ? void 0 : _a.focus) == null ? void 0 : _b.call(_a);
-    };
-    const blur = (side = "left") => {
-      var _a, _b;
-      const controlRef = side === "left" ? leftRef : rightRef;
-      (_b = (_a = controlRef.value) == null ? void 0 : _a.blur) == null ? void 0 : _b.call(_a);
-    };
-    expose({
-      leftRef,
-      rightRef,
-      focus,
-      blur
-    });
-    return () => h$1("div", {
-      ...attrs,
-      class: [ns.b(), attrs.class],
-      "data-layout": props.layout.join("-")
-    }, [
-      renderControl("left", props.layout[0]),
-      renderControl("right", props.layout[1])
-    ]);
-  }
-});
-var InputSelect = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["__file", "input-select.vue"]]);
-
-const ElInputSelect = withInstall(InputSelect);
-
-const inputNumberProps = buildProps({
-  id: {
-    type: String,
-    default: void 0
-  },
-  step: {
-    type: Number,
-    default: 1
-  },
-  stepStrictly: Boolean,
-  max: {
-    type: Number,
-    default: Number.MAX_SAFE_INTEGER
-  },
-  min: {
-    type: Number,
-    default: Number.MIN_SAFE_INTEGER
-  },
-  modelValue: {
-    type: [Number, null]
-  },
-  readonly: Boolean,
-  disabled: Boolean,
-  size: useSizeProp,
-  controls: {
-    type: Boolean,
-    default: true
-  },
-  controlsPosition: {
-    type: String,
-    default: "",
-    values: ["", "right"]
-  },
-  valueOnClear: {
-    type: [String, Number, null],
-    validator: (val) => val === null || isNumber(val) || ["min", "max"].includes(val),
-    default: null
-  },
-  name: String,
-  placeholder: String,
-  precision: {
-    type: Number,
-    validator: (val) => val >= 0 && val === Number.parseInt(`${val}`, 10)
-  },
-  validateEvent: {
-    type: Boolean,
-    default: true
-  },
-  ...useAriaProps(["ariaLabel"]),
-  inputmode: {
-    type: definePropType(String),
-    default: void 0
-  },
-  align: {
-    type: definePropType(String),
-    default: "center"
-  },
-  disabledScientific: Boolean
-});
-const inputNumberEmits = {
-  [CHANGE_EVENT]: (cur, prev) => prev !== cur,
-  blur: (e) => e instanceof FocusEvent,
-  focus: (e) => e instanceof FocusEvent,
-  [INPUT_EVENT]: (val) => isNumber(val) || isNil(val),
-  [UPDATE_MODEL_EVENT]: (val) => isNumber(val) || isNil(val)
-};
-
-const __default__$T = defineComponent({
-  name: "ElInputNumber"
-});
-const _sfc_main$18 = /* @__PURE__ */ defineComponent({
-  ...__default__$T,
-  props: inputNumberProps,
-  emits: inputNumberEmits,
-  setup(__props, { expose, emit }) {
-    const props = __props;
-    const { t } = useLocale();
-    const ns = useNamespace("input-number");
-    const input = ref();
-    const data = reactive({
-      currentValue: props.modelValue,
-      userInput: null
-    });
-    const { formItem } = useFormItem();
-    const minDisabled = computed(() => isNumber(props.modelValue) && props.modelValue <= props.min);
-    const maxDisabled = computed(() => isNumber(props.modelValue) && props.modelValue >= props.max);
-    const numPrecision = computed(() => {
-      const stepPrecision = getPrecision(props.step);
-      if (!isUndefined(props.precision)) {
-        if (stepPrecision > props.precision) ;
-        return props.precision;
-      } else {
-        return Math.max(getPrecision(props.modelValue), stepPrecision);
-      }
-    });
-    const controlsAtRight = computed(() => {
-      return props.controls && props.controlsPosition === "right";
-    });
-    const inputNumberSize = useFormSize();
-    const inputNumberDisabled = useFormDisabled();
-    const displayValue = computed(() => {
-      if (data.userInput !== null) {
-        return data.userInput;
-      }
-      let currentValue = data.currentValue;
-      if (isNil(currentValue))
-        return "";
-      if (isNumber(currentValue)) {
-        if (Number.isNaN(currentValue))
-          return "";
-        if (!isUndefined(props.precision)) {
-          currentValue = currentValue.toFixed(props.precision);
-        }
-      }
-      return currentValue;
-    });
-    const toPrecision = (num, pre) => {
-      if (isUndefined(pre))
-        pre = numPrecision.value;
-      if (pre === 0)
-        return Math.round(num);
-      let snum = String(num);
-      const pointPos = snum.indexOf(".");
-      if (pointPos === -1)
-        return num;
-      const nums = snum.replace(".", "").split("");
-      const datum = nums[pointPos + pre];
-      if (!datum)
-        return num;
-      const length = snum.length;
-      if (snum.charAt(length - 1) === "5") {
-        snum = `${snum.slice(0, Math.max(0, length - 1))}6`;
-      }
-      return Number.parseFloat(Number(snum).toFixed(pre));
-    };
-    const getPrecision = (value) => {
-      if (isNil(value))
-        return 0;
-      const valueString = value.toString();
-      const dotPosition = valueString.indexOf(".");
-      let precision = 0;
-      if (dotPosition !== -1) {
-        precision = valueString.length - dotPosition - 1;
-      }
-      return precision;
-    };
-    const ensurePrecision = (val, coefficient = 1) => {
-      if (!isNumber(val))
-        return data.currentValue;
-      if (val >= Number.MAX_SAFE_INTEGER && coefficient === 1) {
-        return val;
-      } else if (val <= Number.MIN_SAFE_INTEGER && coefficient === -1) {
-        return val;
-      }
-      return toPrecision(val + props.step * coefficient);
-    };
-    const handleKeydown = (event) => {
-      const code = getEventCode(event);
-      const key = getEventKey(event);
-      if (props.disabledScientific && ["e", "E"].includes(key)) {
-        event.preventDefault();
-        return;
-      }
-      switch (code) {
-        case EVENT_CODE.up: {
-          event.preventDefault();
-          increase();
-          break;
-        }
-        case EVENT_CODE.down: {
-          event.preventDefault();
-          decrease();
-          break;
-        }
-      }
-    };
-    const increase = () => {
-      if (props.readonly || inputNumberDisabled.value || maxDisabled.value)
-        return;
-      const value = Number(displayValue.value) || 0;
-      const newVal = ensurePrecision(value);
-      setCurrentValue(newVal);
-      emit(INPUT_EVENT, data.currentValue);
-      setCurrentValueToModelValue();
-    };
-    const decrease = () => {
-      if (props.readonly || inputNumberDisabled.value || minDisabled.value)
-        return;
-      const value = Number(displayValue.value) || 0;
-      const newVal = ensurePrecision(value, -1);
-      setCurrentValue(newVal);
-      emit(INPUT_EVENT, data.currentValue);
-      setCurrentValueToModelValue();
-    };
-    const verifyValue = (value, update) => {
-      const { max, min, step, precision, stepStrictly, valueOnClear } = props;
-      if (max < min) {
-        throwError("InputNumber", "min should not be greater than max.");
-      }
-      let newVal = Number(value);
-      if (isNil(value) || Number.isNaN(newVal)) {
-        return null;
-      }
-      if (value === "") {
-        if (valueOnClear === null) {
-          return null;
-        }
-        newVal = isString$1(valueOnClear) ? { min, max }[valueOnClear] : valueOnClear;
-      }
-      if (stepStrictly) {
-        newVal = toPrecision(Math.round(toPrecision(newVal / step)) * step, precision);
-        if (newVal !== value) {
-          update && emit(UPDATE_MODEL_EVENT, newVal);
-        }
-      }
-      if (!isUndefined(precision)) {
-        newVal = toPrecision(newVal, precision);
-      }
-      if (newVal > max || newVal < min) {
-        newVal = newVal > max ? max : min;
-        update && emit(UPDATE_MODEL_EVENT, newVal);
-      }
-      return newVal;
-    };
-    const setCurrentValue = (value, emitChange = true) => {
-      var _a;
-      const oldVal = data.currentValue;
-      const newVal = verifyValue(value);
-      if (!emitChange) {
-        emit(UPDATE_MODEL_EVENT, newVal);
-        return;
-      }
-      if (oldVal === newVal && value)
-        return;
-      data.userInput = null;
-      emit(UPDATE_MODEL_EVENT, newVal);
-      if (oldVal !== newVal) {
-        emit(CHANGE_EVENT, newVal, oldVal);
-      }
-      if (props.validateEvent) {
-        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, "change").catch((err) => debugWarn());
-      }
-      data.currentValue = newVal;
-    };
-    const handleInput = (value) => {
-      data.userInput = value;
-      const newVal = value === "" ? null : Number(value);
-      emit(INPUT_EVENT, newVal);
-      setCurrentValue(newVal, false);
-    };
-    const handleInputChange = (value) => {
-      const newVal = value !== "" ? Number(value) : "";
-      if (isNumber(newVal) && !Number.isNaN(newVal) || value === "") {
-        setCurrentValue(newVal);
-      }
-      setCurrentValueToModelValue();
-      data.userInput = null;
-    };
-    const focus = () => {
-      var _a, _b;
-      (_b = (_a = input.value) == null ? void 0 : _a.focus) == null ? void 0 : _b.call(_a);
-    };
-    const blur = () => {
-      var _a, _b;
-      (_b = (_a = input.value) == null ? void 0 : _a.blur) == null ? void 0 : _b.call(_a);
-    };
-    const handleFocus = (event) => {
-      emit("focus", event);
-    };
-    const handleBlur = (event) => {
-      var _a, _b;
-      data.userInput = null;
-      if (data.currentValue === null && ((_a = input.value) == null ? void 0 : _a.input)) {
-        input.value.input.value = "";
-      }
-      emit("blur", event);
-      if (props.validateEvent) {
-        (_b = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _b.call(formItem, "blur").catch((err) => debugWarn());
-      }
-    };
-    const setCurrentValueToModelValue = () => {
-      if (data.currentValue !== props.modelValue) {
-        data.currentValue = props.modelValue;
-      }
-    };
-    const handleWheel = (e) => {
-      if (document.activeElement === e.target)
-        e.preventDefault();
-    };
-    watch(() => props.modelValue, (value, oldValue) => {
-      const newValue = verifyValue(value, true);
-      if (data.userInput === null && newValue !== oldValue) {
-        data.currentValue = newValue;
-      }
-    }, { immediate: true });
-    watch(() => props.precision, () => {
-      data.currentValue = verifyValue(props.modelValue);
-    });
-    onMounted(() => {
-      var _a;
-      const { min, max, modelValue } = props;
-      const innerInput = (_a = input.value) == null ? void 0 : _a.input;
-      innerInput.setAttribute("role", "spinbutton");
-      if (Number.isFinite(max)) {
-        innerInput.setAttribute("aria-valuemax", String(max));
-      } else {
-        innerInput.removeAttribute("aria-valuemax");
-      }
-      if (Number.isFinite(min)) {
-        innerInput.setAttribute("aria-valuemin", String(min));
-      } else {
-        innerInput.removeAttribute("aria-valuemin");
-      }
-      innerInput.setAttribute("aria-valuenow", data.currentValue || data.currentValue === 0 ? String(data.currentValue) : "");
-      innerInput.setAttribute("aria-disabled", String(inputNumberDisabled.value));
-      if (!isNumber(modelValue) && modelValue != null) {
-        let val = Number(modelValue);
-        if (Number.isNaN(val)) {
-          val = null;
-        }
-        emit(UPDATE_MODEL_EVENT, val);
-      }
-      innerInput.addEventListener("wheel", handleWheel, { passive: false });
-    });
-    onUpdated(() => {
-      var _a, _b;
-      const innerInput = (_a = input.value) == null ? void 0 : _a.input;
-      innerInput == null ? void 0 : innerInput.setAttribute("aria-valuenow", `${(_b = data.currentValue) != null ? _b : ""}`);
-    });
-    expose({
-      focus,
-      blur
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        class: normalizeClass([
-          unref(ns).b(),
-          unref(ns).m(unref(inputNumberSize)),
-          unref(ns).is("disabled", unref(inputNumberDisabled)),
-          unref(ns).is("without-controls", !_ctx.controls),
-          unref(ns).is("controls-right", unref(controlsAtRight)),
-          unref(ns).is(_ctx.align, !!_ctx.align)
-        ]),
-        onDragstart: withModifiers(() => {
-        }, ["prevent"])
-      }, [
-        _ctx.controls ? withDirectives((openBlock(), createElementBlock("span", {
-          key: 0,
-          role: "button",
-          "aria-label": unref(t)("el.inputNumber.decrease"),
-          class: normalizeClass([unref(ns).e("decrease"), unref(ns).is("disabled", unref(minDisabled))]),
-          onKeydown: withKeys(decrease, ["enter"])
-        }, [
-          renderSlot(_ctx.$slots, "decrease-icon", {}, () => [
-            createVNode(unref(ElIcon), null, {
-              default: withCtx(() => [
-                unref(controlsAtRight) ? (openBlock(), createBlock(unref(arrow_down_default), { key: 0 })) : (openBlock(), createBlock(unref(minus_default), { key: 1 }))
-              ]),
-              _: 1
-            })
-          ])
-        ], 42, ["aria-label", "onKeydown"])), [
-          [unref(vRepeatClick), decrease]
-        ]) : createCommentVNode("v-if", true),
-        _ctx.controls ? withDirectives((openBlock(), createElementBlock("span", {
-          key: 1,
-          role: "button",
-          "aria-label": unref(t)("el.inputNumber.increase"),
-          class: normalizeClass([unref(ns).e("increase"), unref(ns).is("disabled", unref(maxDisabled))]),
-          onKeydown: withKeys(increase, ["enter"])
-        }, [
-          renderSlot(_ctx.$slots, "increase-icon", {}, () => [
-            createVNode(unref(ElIcon), null, {
-              default: withCtx(() => [
-                unref(controlsAtRight) ? (openBlock(), createBlock(unref(arrow_up_default), { key: 0 })) : (openBlock(), createBlock(unref(plus_default), { key: 1 }))
-              ]),
-              _: 1
-            })
-          ])
-        ], 42, ["aria-label", "onKeydown"])), [
-          [unref(vRepeatClick), increase]
-        ]) : createCommentVNode("v-if", true),
-        createVNode(unref(ElInput), {
-          id: _ctx.id,
-          ref_key: "input",
-          ref: input,
-          type: "number",
-          step: _ctx.step,
-          "model-value": unref(displayValue),
-          placeholder: _ctx.placeholder,
-          readonly: _ctx.readonly,
-          disabled: unref(inputNumberDisabled),
-          size: unref(inputNumberSize),
-          max: _ctx.max,
-          min: _ctx.min,
-          name: _ctx.name,
-          "aria-label": _ctx.ariaLabel,
-          "validate-event": false,
-          inputmode: _ctx.inputmode,
-          onKeydown: handleKeydown,
-          onBlur: handleBlur,
-          onFocus: handleFocus,
-          onInput: handleInput,
-          onChange: handleInputChange
-        }, createSlots({
-          _: 2
-        }, [
-          _ctx.$slots.prefix ? {
-            name: "prefix",
-            fn: withCtx(() => [
-              renderSlot(_ctx.$slots, "prefix")
-            ])
-          } : void 0,
-          _ctx.$slots.suffix ? {
-            name: "suffix",
-            fn: withCtx(() => [
-              renderSlot(_ctx.$slots, "suffix")
-            ])
-          } : void 0
-        ]), 1032, ["id", "step", "model-value", "placeholder", "readonly", "disabled", "size", "max", "min", "name", "aria-label", "inputmode"])
-      ], 42, ["onDragstart"]);
-    };
-  }
-});
-var InputNumber = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["__file", "input-number.vue"]]);
-
-const ElInputNumber = withInstall(InputNumber);
-
-const inputTagProps = buildProps({
-  modelValue: {
-    type: definePropType(Array)
-  },
-  max: Number,
-  tagType: { ...tagProps.type, default: "gray" },
-  tagEffect: tagProps.effect,
-  trigger: {
-    type: definePropType(String),
-    default: EVENT_CODE.enter
-  },
-  draggable: Boolean,
-  delimiter: {
-    type: [String, RegExp],
-    default: ""
-  },
-  size: useSizeProp,
-  clearable: Boolean,
-  clearIcon: {
-    type: iconPropType,
-    default: circle_close_default
-  },
-  disabled: {
-    type: Boolean,
-    default: void 0
-  },
-  validateEvent: {
-    type: Boolean,
-    default: true
-  },
-  readonly: Boolean,
-  autofocus: Boolean,
-  id: {
-    type: String,
-    default: void 0
-  },
-  tabindex: {
-    type: [String, Number],
-    default: 0
-  },
-  maxlength: {
-    type: [String, Number]
-  },
-  minlength: {
-    type: [String, Number]
-  },
-  placeholder: String,
-  autocomplete: {
-    type: definePropType(String),
-    default: "off"
-  },
-  saveOnBlur: {
-    type: Boolean,
-    default: true
-  },
-  collapseTags: Boolean,
-  collapseTagsTooltip: Boolean,
-  maxCollapseTags: {
-    type: Number,
-    default: 1
-  },
-  ariaLabel: String
-});
-const inputTagEmits = {
-  [UPDATE_MODEL_EVENT]: (value) => isArray$1(value) || isUndefined(value),
-  [CHANGE_EVENT]: (value) => isArray$1(value) || isUndefined(value),
-  [INPUT_EVENT]: (value) => isString$1(value),
-  "add-tag": (value) => isString$1(value) || isArray$1(value),
-  "remove-tag": (value, index) => isString$1(value) && isNumber(index),
-  "drag-tag": (oldIndex, newIndex, value) => isNumber(oldIndex) && isNumber(newIndex) && isString$1(value),
-  focus: (evt) => evt instanceof FocusEvent,
-  blur: (evt) => evt instanceof FocusEvent,
-  clear: () => true
-};
-
-function useDragTag({
-  wrapperRef,
-  handleDragged,
-  afterDragged
-}) {
-  const ns = useNamespace("input-tag");
-  const dropIndicatorRef = shallowRef();
-  const showDropIndicator = ref(false);
-  let draggingIndex;
-  let draggingTag;
-  let dropIndex;
-  let dropType;
-  function getTagClassName(index) {
-    return `.${ns.e("inner")} .${ns.namespace.value}-tag:nth-child(${index + 1})`;
-  }
-  function handleDragStart(event, index) {
-    draggingIndex = index;
-    draggingTag = wrapperRef.value.querySelector(getTagClassName(index));
-    if (draggingTag) {
-      draggingTag.style.opacity = "0.5";
-    }
-    event.dataTransfer.effectAllowed = "move";
-  }
-  function handleDragOver(event, index) {
-    dropIndex = index;
-    event.preventDefault();
-    event.dataTransfer.dropEffect = "move";
-    if (isUndefined(draggingIndex) || draggingIndex === index) {
-      showDropIndicator.value = false;
-      return;
-    }
-    const dropPosition = wrapperRef.value.querySelector(getTagClassName(index)).getBoundingClientRect();
-    const dropPrev = !(draggingIndex + 1 === index);
-    const dropNext = !(draggingIndex - 1 === index);
-    const distance = event.clientX - dropPosition.left;
-    const prevPercent = dropPrev ? dropNext ? 0.5 : 1 : -1;
-    const nextPercent = dropNext ? dropPrev ? 0.5 : 0 : 1;
-    if (distance <= dropPosition.width * prevPercent) {
-      dropType = "before";
-    } else if (distance > dropPosition.width * nextPercent) {
-      dropType = "after";
-    } else {
-      dropType = void 0;
-    }
-    const innerEl = wrapperRef.value.querySelector(`.${ns.e("inner")}`);
-    const innerPosition = innerEl.getBoundingClientRect();
-    const gap = Number.parseFloat(getStyle(innerEl, "gap")) / 2;
-    const indicatorTop = dropPosition.top - innerPosition.top;
-    let indicatorLeft = -9999;
-    if (dropType === "before") {
-      indicatorLeft = Math.max(dropPosition.left - innerPosition.left - gap, Math.floor(-gap / 2));
-    } else if (dropType === "after") {
-      const left = dropPosition.right - innerPosition.left;
-      indicatorLeft = left + (innerPosition.width === left ? Math.floor(gap / 2) : gap);
-    }
-    setStyle(dropIndicatorRef.value, {
-      top: `${indicatorTop}px`,
-      left: `${indicatorLeft}px`
-    });
-    showDropIndicator.value = !!dropType;
-  }
-  function handleDragEnd(event) {
-    event.preventDefault();
-    if (draggingTag) {
-      draggingTag.style.opacity = "";
-    }
-    if (dropType && !isUndefined(draggingIndex) && !isUndefined(dropIndex) && draggingIndex !== dropIndex) {
-      handleDragged(draggingIndex, dropIndex, dropType);
-    }
-    showDropIndicator.value = false;
-    draggingIndex = void 0;
-    draggingTag = null;
-    dropIndex = void 0;
-    dropType = void 0;
-    afterDragged == null ? void 0 : afterDragged();
-  }
-  return {
-    dropIndicatorRef,
-    showDropIndicator,
-    handleDragStart,
-    handleDragOver,
-    handleDragEnd
-  };
-}
-
-function useHovering() {
-  const hovering = ref(false);
-  const handleMouseEnter = () => {
-    hovering.value = true;
-  };
-  const handleMouseLeave = () => {
-    hovering.value = false;
-  };
-  return {
-    hovering,
-    handleMouseEnter,
-    handleMouseLeave
-  };
-}
-
-function useInputTag({ props, emit, formItem }) {
-  const disabled = useFormDisabled();
-  const size = useFormSize();
-  const inputRef = shallowRef();
-  const inputValue = ref();
-  const tagTooltipRef = ref();
-  const tagSize = computed(() => {
-    return ["small"].includes(size.value) ? "small" : "default";
-  });
-  const placeholder = computed(() => {
-    var _a;
-    return ((_a = props.modelValue) == null ? void 0 : _a.length) ? void 0 : props.placeholder;
-  });
-  const closable = computed(() => !(props.readonly || disabled.value));
-  const inputLimit = computed(() => {
-    var _a, _b;
-    return isUndefined(props.max) ? false : ((_b = (_a = props.modelValue) == null ? void 0 : _a.length) != null ? _b : 0) >= props.max;
-  });
-  const showTagList = computed(() => {
-    var _a;
-    return props.collapseTags ? (_a = props.modelValue) == null ? void 0 : _a.slice(0, props.maxCollapseTags) : props.modelValue;
-  });
-  const collapseTagList = computed(() => {
-    var _a;
-    return props.collapseTags ? (_a = props.modelValue) == null ? void 0 : _a.slice(props.maxCollapseTags) : [];
-  });
-  const addTagsEmit = (value) => {
-    var _a;
-    const list = [...(_a = props.modelValue) != null ? _a : [], ...castArray$1(value)];
-    emit(UPDATE_MODEL_EVENT, list);
-    emit(CHANGE_EVENT, list);
-    emit("add-tag", value);
-    inputValue.value = void 0;
-  };
-  const getDelimitedTags = (input) => {
-    var _a, _b;
-    const tags = input.split(props.delimiter).filter((val) => val && val !== input);
-    if (props.max) {
-      const maxInsert = props.max - ((_b = (_a = props.modelValue) == null ? void 0 : _a.length) != null ? _b : 0);
-      tags.splice(maxInsert);
-    }
-    return tags.length === 1 ? tags[0] : tags;
-  };
-  const handleInput = (event) => {
-    if (inputLimit.value) {
-      inputValue.value = void 0;
-      return;
-    }
-    if (isComposing.value)
-      return;
-    if (props.delimiter && inputValue.value) {
-      const tags = getDelimitedTags(inputValue.value);
-      if (tags.length) {
-        addTagsEmit(tags);
-      }
-    }
-    emit(INPUT_EVENT, event.target.value);
-  };
-  const handleKeydown = (event) => {
-    var _a;
-    if (isComposing.value)
-      return;
-    const code = getEventCode(event);
-    switch (code) {
-      case props.trigger:
-        event.preventDefault();
-        event.stopPropagation();
-        handleAddTag();
-        break;
-      case EVENT_CODE.numpadEnter:
-        if (props.trigger === EVENT_CODE.enter) {
-          event.preventDefault();
-          event.stopPropagation();
-          handleAddTag();
-        }
-        break;
-      case EVENT_CODE.backspace:
-        if (!inputValue.value && ((_a = props.modelValue) == null ? void 0 : _a.length)) {
-          event.preventDefault();
-          event.stopPropagation();
-          handleRemoveTag(props.modelValue.length - 1);
-        }
-        break;
-    }
-  };
-  const handleKeyup = (event) => {
-    if (isComposing.value || !isAndroid())
-      return;
-    const code = getEventCode(event);
-    switch (code) {
-      case EVENT_CODE.space:
-        if (props.trigger === EVENT_CODE.space) {
-          event.preventDefault();
-          event.stopPropagation();
-          handleAddTag();
-        }
-        break;
-    }
-  };
-  const handleAddTag = () => {
-    var _a;
-    const value = (_a = inputValue.value) == null ? void 0 : _a.trim();
-    if (!value || inputLimit.value)
-      return;
-    addTagsEmit(value);
-  };
-  const handleRemoveTag = (index) => {
-    var _a;
-    const value = ((_a = props.modelValue) != null ? _a : []).slice();
-    const [item] = value.splice(index, 1);
-    emit(UPDATE_MODEL_EVENT, value);
-    emit(CHANGE_EVENT, value);
-    emit("remove-tag", item, index);
-  };
-  const handleClear = () => {
-    inputValue.value = void 0;
-    emit(UPDATE_MODEL_EVENT, void 0);
-    emit(CHANGE_EVENT, void 0);
-    emit("clear");
-  };
-  const handleDragged = (draggingIndex, dropIndex, type) => {
-    var _a;
-    const value = ((_a = props.modelValue) != null ? _a : []).slice();
-    const [draggedItem] = value.splice(draggingIndex, 1);
-    const step = dropIndex > draggingIndex && type === "before" ? -1 : dropIndex < draggingIndex && type === "after" ? 1 : 0;
-    value.splice(dropIndex + step, 0, draggedItem);
-    emit(UPDATE_MODEL_EVENT, value);
-    emit(CHANGE_EVENT, value);
-    emit("drag-tag", draggingIndex, dropIndex + step, draggedItem);
-  };
-  const focus = () => {
-    var _a;
-    (_a = inputRef.value) == null ? void 0 : _a.focus();
-  };
-  const blur = () => {
-    var _a;
-    (_a = inputRef.value) == null ? void 0 : _a.blur();
-  };
-  const { wrapperRef, isFocused } = useFocusController(inputRef, {
-    disabled,
-    beforeBlur(event) {
-      var _a;
-      return (_a = tagTooltipRef.value) == null ? void 0 : _a.isFocusInsideContent(event);
-    },
-    afterBlur() {
-      var _a;
-      if (props.saveOnBlur) {
-        handleAddTag();
-      } else {
-        inputValue.value = void 0;
-      }
-      if (props.validateEvent) {
-        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, "blur").catch((err) => debugWarn());
-      }
-    }
-  });
-  const {
-    isComposing,
-    handleCompositionStart,
-    handleCompositionUpdate,
-    handleCompositionEnd
-  } = useComposition({ afterComposition: handleInput });
-  watch(() => props.modelValue, () => {
-    var _a;
-    if (props.validateEvent) {
-      (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, CHANGE_EVENT).catch((err) => debugWarn());
-    }
-  });
-  return {
-    inputRef,
-    wrapperRef,
-    tagTooltipRef,
-    isFocused,
-    isComposing,
-    inputValue,
-    size,
-    tagSize,
-    placeholder,
-    closable,
-    disabled,
-    inputLimit,
-    showTagList,
-    collapseTagList,
-    handleDragged,
-    handleInput,
-    handleKeydown,
-    handleKeyup,
-    handleAddTag,
-    handleRemoveTag,
-    handleClear,
-    handleCompositionStart,
-    handleCompositionUpdate,
-    handleCompositionEnd,
-    focus,
-    blur
-  };
-}
-
-function useInputTagDom({
-  props,
-  isFocused,
-  hovering,
-  disabled,
-  inputValue,
-  size,
-  validateState,
-  validateIcon,
-  needStatusIcon
-}) {
-  const attrs = useAttrs$1();
-  const slots = useSlots();
-  const ns = useNamespace("input-tag");
-  const nsInput = useNamespace("input");
-  const containerKls = computed(() => [
-    ns.b(),
-    ns.is("focused", isFocused.value),
-    ns.is("hovering", hovering.value),
-    ns.is("disabled", disabled.value),
-    ns.m(size.value),
-    ns.e("wrapper"),
-    attrs.class
-  ]);
-  const containerStyle = computed(() => [attrs.style]);
-  const innerKls = computed(() => {
-    var _a, _b;
-    return [
-      ns.e("inner"),
-      ns.is("draggable", props.draggable),
-      ns.is("left-space", !((_a = props.modelValue) == null ? void 0 : _a.length) && !slots.prefix),
-      ns.is("right-space", !((_b = props.modelValue) == null ? void 0 : _b.length) && !showSuffix.value)
-    ];
-  });
-  const showClear = computed(() => {
-    var _a;
-    return props.clearable && !disabled.value && !props.readonly && (((_a = props.modelValue) == null ? void 0 : _a.length) || inputValue.value) && (isFocused.value || hovering.value);
-  });
-  const showSuffix = computed(() => {
-    return slots.suffix || showClear.value || validateState.value && validateIcon.value && needStatusIcon.value;
-  });
-  return {
-    ns,
-    nsInput,
-    containerKls,
-    containerStyle,
-    innerKls,
-    showClear,
-    showSuffix
-  };
-}
-
-const __default__$S = defineComponent({
-  name: "ElInputTag",
-  inheritAttrs: false
-});
-const _sfc_main$17 = /* @__PURE__ */ defineComponent({
-  ...__default__$S,
-  props: inputTagProps,
-  emits: inputTagEmits,
-  setup(__props, { expose, emit }) {
-    const props = __props;
-    const attrs = useAttrs();
-    const slots = useSlots();
-    const { form, formItem } = useFormItem();
-    const { inputId } = useFormItemInputId(props, { formItemContext: formItem });
-    const needStatusIcon = computed(() => {
-      var _a;
-      return (_a = form == null ? void 0 : form.statusIcon) != null ? _a : false;
-    });
-    const validateState = computed(() => (formItem == null ? void 0 : formItem.validateState) || "");
-    const validateIcon = computed(() => {
-      return validateState.value && ValidateComponentsMap[validateState.value];
-    });
-    const {
-      inputRef,
-      wrapperRef,
-      tagTooltipRef,
-      isFocused,
-      inputValue,
-      size,
-      tagSize,
-      placeholder,
-      closable,
-      disabled,
-      showTagList,
-      collapseTagList,
-      handleDragged,
-      handleInput,
-      handleKeydown,
-      handleKeyup,
-      handleRemoveTag,
-      handleClear,
-      handleCompositionStart,
-      handleCompositionUpdate,
-      handleCompositionEnd,
-      focus,
-      blur
-    } = useInputTag({ props, emit, formItem });
-    const { hovering, handleMouseEnter, handleMouseLeave } = useHovering();
-    const { calculatorRef, inputStyle } = useCalcInputWidth();
-    const {
-      dropIndicatorRef,
-      showDropIndicator,
-      handleDragStart,
-      handleDragOver,
-      handleDragEnd
-    } = useDragTag({ wrapperRef, handleDragged, afterDragged: focus });
-    const {
-      ns,
-      nsInput,
-      containerKls,
-      containerStyle,
-      innerKls,
-      showClear,
-      showSuffix
-    } = useInputTagDom({
-      props,
-      hovering,
-      isFocused,
-      inputValue,
-      disabled,
-      size,
-      validateState,
-      validateIcon,
-      needStatusIcon
-    });
-    expose({
-      focus,
-      blur
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        ref_key: "wrapperRef",
-        ref: wrapperRef,
-        class: normalizeClass(unref(containerKls)),
-        style: normalizeStyle(unref(containerStyle)),
-        onMouseenter: unref(handleMouseEnter),
-        onMouseleave: unref(handleMouseLeave)
-      }, [
-        unref(slots).prefix ? (openBlock(), createElementBlock("div", {
-          key: 0,
-          class: normalizeClass(unref(ns).e("prefix"))
-        }, [
-          renderSlot(_ctx.$slots, "prefix")
-        ], 2)) : createCommentVNode("v-if", true),
-        createElementVNode("div", {
-          class: normalizeClass(unref(innerKls))
-        }, [
-          (openBlock(true), createElementBlock(Fragment, null, renderList(unref(showTagList), (item, index) => {
-            return openBlock(), createBlock(unref(ElTag), {
-              key: index,
-              size: unref(tagSize),
-              closable: unref(closable),
-              type: _ctx.tagType,
-              effect: _ctx.tagEffect,
-              round: "",
-              draggable: unref(closable) && _ctx.draggable,
-              "disable-transitions": "",
-              onClose: ($event) => unref(handleRemoveTag)(index),
-              onDragstart: (event) => unref(handleDragStart)(event, index),
-              onDragover: (event) => unref(handleDragOver)(event, index),
-              onDragend: unref(handleDragEnd),
-              onDrop: withModifiers(() => {
-              }, ["stop"])
-            }, {
-              default: withCtx(() => [
-                renderSlot(_ctx.$slots, "tag", {
-                  value: item,
-                  index
-                }, () => [
-                  createTextVNode(toDisplayString(item), 1)
-                ])
-              ]),
-              _: 2
-            }, 1032, ["size", "closable", "type", "effect", "draggable", "onClose", "onDragstart", "onDragover", "onDragend", "onDrop"]);
-          }), 128)),
-          _ctx.collapseTags && _ctx.modelValue && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(unref(ElTooltip), {
-            key: 0,
-            ref_key: "tagTooltipRef",
-            ref: tagTooltipRef,
-            disabled: !_ctx.collapseTagsTooltip,
-            "fallback-placements": ["bottom", "top", "right", "left"],
-            effect: _ctx.tagEffect,
-            placement: "bottom"
-          }, {
-            default: withCtx(() => [
-              createVNode(unref(ElTag), {
-                closable: false,
-                size: unref(tagSize),
-                type: _ctx.tagType,
-                effect: _ctx.tagEffect,
-                "disable-transitions": ""
-              }, {
-                default: withCtx(() => [
-                  createTextVNode(" + " + toDisplayString(_ctx.modelValue.length - _ctx.maxCollapseTags), 1)
-                ]),
-                _: 1
-              }, 8, ["size", "type", "effect"])
-            ]),
-            content: withCtx(() => [
-              createElementVNode("div", {
-                class: normalizeClass(unref(ns).e("input-tag-list"))
-              }, [
-                (openBlock(true), createElementBlock(Fragment, null, renderList(unref(collapseTagList), (item, index) => {
-                  return openBlock(), createBlock(unref(ElTag), {
-                    key: index,
-                    size: unref(tagSize),
-                    closable: unref(closable),
-                    type: _ctx.tagType,
-                    effect: _ctx.tagEffect,
-                    "disable-transitions": "",
-                    onClose: ($event) => unref(handleRemoveTag)(index + _ctx.maxCollapseTags)
-                  }, {
-                    default: withCtx(() => [
-                      renderSlot(_ctx.$slots, "tag", {
-                        value: item,
-                        index: index + _ctx.maxCollapseTags
-                      }, () => [
-                        createTextVNode(toDisplayString(item), 1)
-                      ])
-                    ]),
-                    _: 2
-                  }, 1032, ["size", "closable", "type", "effect", "onClose"]);
-                }), 128))
-              ], 2)
-            ]),
-            _: 3
-          }, 8, ["disabled", "effect"])) : createCommentVNode("v-if", true),
-          createElementVNode("div", {
-            class: normalizeClass(unref(ns).e("input-wrapper"))
-          }, [
-            withDirectives(createElementVNode("input", mergeProps({
-              id: unref(inputId),
-              ref_key: "inputRef",
-              ref: inputRef,
-              "onUpdate:modelValue": ($event) => isRef(inputValue) ? inputValue.value = $event : null
-            }, unref(attrs), {
-              type: "text",
-              minlength: _ctx.minlength,
-              maxlength: _ctx.maxlength,
-              disabled: unref(disabled),
-              readonly: _ctx.readonly,
-              autocomplete: _ctx.autocomplete,
-              tabindex: _ctx.tabindex,
-              placeholder: unref(placeholder),
-              autofocus: _ctx.autofocus,
-              ariaLabel: _ctx.ariaLabel,
-              class: unref(ns).e("input"),
-              style: unref(inputStyle),
-              onCompositionstart: unref(handleCompositionStart),
-              onCompositionupdate: unref(handleCompositionUpdate),
-              onCompositionend: unref(handleCompositionEnd),
-              onInput: unref(handleInput),
-              onKeydown: unref(handleKeydown),
-              onKeyup: unref(handleKeyup)
-            }), null, 16, ["id", "onUpdate:modelValue", "minlength", "maxlength", "disabled", "readonly", "autocomplete", "tabindex", "placeholder", "autofocus", "ariaLabel", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onInput", "onKeydown", "onKeyup"]), [
-              [vModelText, unref(inputValue)]
-            ]),
-            createElementVNode("span", {
-              ref_key: "calculatorRef",
-              ref: calculatorRef,
-              "aria-hidden": "true",
-              class: normalizeClass(unref(ns).e("input-calculator")),
-              textContent: toDisplayString(unref(inputValue))
-            }, null, 10, ["textContent"])
-          ], 2),
-          withDirectives(createElementVNode("div", {
-            ref_key: "dropIndicatorRef",
-            ref: dropIndicatorRef,
-            class: normalizeClass(unref(ns).e("drop-indicator"))
-          }, null, 2), [
-            [vShow, unref(showDropIndicator)]
-          ])
-        ], 2),
-        unref(showSuffix) ? (openBlock(), createElementBlock("div", {
-          key: 1,
-          class: normalizeClass(unref(ns).e("suffix"))
-        }, [
-          renderSlot(_ctx.$slots, "suffix"),
-          unref(showClear) ? (openBlock(), createBlock(unref(ElIcon), {
-            key: 0,
-            class: normalizeClass([unref(ns).e("icon"), unref(ns).e("clear")]),
-            onMousedown: withModifiers(unref(NOOP), ["prevent"]),
-            onClick: unref(handleClear)
-          }, {
-            default: withCtx(() => [
-              (openBlock(), createBlock(resolveDynamicComponent(_ctx.clearIcon)))
-            ]),
-            _: 1
-          }, 8, ["class", "onMousedown", "onClick"])) : createCommentVNode("v-if", true),
-          unref(validateState) && unref(validateIcon) && unref(needStatusIcon) ? (openBlock(), createBlock(unref(ElIcon), {
-            key: 1,
-            class: normalizeClass([
-              unref(nsInput).e("icon"),
-              unref(nsInput).e("validateIcon"),
-              unref(nsInput).is("loading", unref(validateState) === "validating")
-            ])
-          }, {
-            default: withCtx(() => [
-              (openBlock(), createBlock(resolveDynamicComponent(unref(validateIcon))))
-            ]),
-            _: 1
-          }, 8, ["class"])) : createCommentVNode("v-if", true)
-        ], 2)) : createCommentVNode("v-if", true)
-      ], 46, ["onMouseenter", "onMouseleave"]);
-    };
-  }
-});
-var InputTag = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["__file", "input-tag.vue"]]);
-
-const ElInputTag = withInstall(InputTag);
-
-const linkProps = buildProps({
-  type: {
-    type: String,
-    values: ["primary", "success", "warning", "info", "danger", "default"],
-    default: void 0
-  },
-  underline: {
-    type: [Boolean, String],
-    values: [true, false, "always", "never", "hover"],
-    default: "always"
-  },
-  disabled: Boolean,
-  href: { type: String, default: "" },
-  target: {
-    type: String,
-    default: "_self"
-  },
-  icon: {
-    type: iconPropType
-  }
-});
-const linkEmits = {
-  click: (evt) => evt instanceof MouseEvent
-};
-
-const __default__$R = defineComponent({
-  name: "ElLink"
-});
-const _sfc_main$16 = /* @__PURE__ */ defineComponent({
-  ...__default__$R,
-  props: linkProps,
-  emits: linkEmits,
-  setup(__props, { emit }) {
-    const props = __props;
-    const globalConfig = useGlobalConfig("link");
-    useDeprecated({
-      scope: "el-link",
-      from: "The underline option (boolean)",
-      replacement: "'always' | 'hover' | 'never'",
-      version: "3.0.0",
-      ref: "https://element-plus.org/en-US/component/link.html#underline"
-    }, computed(() => isBoolean(props.underline)));
-    const ns = useNamespace("link");
-    const linkKls = computed(() => {
-      var _a, _b, _c;
-      return [
-        ns.b(),
-        ns.m((_c = (_b = props.type) != null ? _b : (_a = globalConfig.value) == null ? void 0 : _a.type) != null ? _c : "default"),
-        ns.is("disabled", props.disabled),
-        ns.is("underline", underline.value === "always"),
-        ns.is("hover-underline", underline.value === "hover" && !props.disabled)
-      ];
-    });
-    const underline = computed(() => {
-      var _a, _b, _c;
-      if (isBoolean(props.underline)) {
-        return props.underline ? "hover" : "never";
-      } else
-        return (_c = (_b = props.underline) != null ? _b : (_a = globalConfig.value) == null ? void 0 : _a.underline) != null ? _c : "hover";
-    });
-    function handleClick(event) {
-      if (!props.disabled)
-        emit("click", event);
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("a", {
-        class: normalizeClass(unref(linkKls)),
-        href: _ctx.disabled || !_ctx.href ? void 0 : _ctx.href,
-        target: _ctx.disabled || !_ctx.href ? void 0 : _ctx.target,
-        onClick: handleClick
-      }, [
-        _ctx.icon ? (openBlock(), createBlock(unref(ElIcon), { key: 0 }, {
-          default: withCtx(() => [
-            (openBlock(), createBlock(resolveDynamicComponent(_ctx.icon)))
-          ]),
-          _: 1
-        })) : createCommentVNode("v-if", true),
-        _ctx.$slots.default ? (openBlock(), createElementBlock("span", {
-          key: 1,
-          class: normalizeClass(unref(ns).e("inner"))
-        }, [
-          renderSlot(_ctx.$slots, "default")
-        ], 2)) : createCommentVNode("v-if", true),
-        _ctx.$slots.icon ? renderSlot(_ctx.$slots, "icon", { key: 2 }) : createCommentVNode("v-if", true)
-      ], 10, ["href", "target"]);
-    };
-  }
-});
-var Link = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["__file", "link.vue"]]);
-
-const ElLink = withInstall(Link);
-
-class SubMenu$1 {
-  constructor(parent, domNode) {
-    this.parent = parent;
-    this.domNode = domNode;
-    this.subIndex = 0;
-    this.subIndex = 0;
-    this.init();
-  }
-  init() {
-    this.subMenuItems = this.domNode.querySelectorAll("li");
-    this.addListeners();
-  }
-  gotoSubIndex(idx) {
-    if (idx === this.subMenuItems.length) {
-      idx = 0;
-    } else if (idx < 0) {
-      idx = this.subMenuItems.length - 1;
-    }
-    this.subMenuItems[idx].focus();
-    this.subIndex = idx;
-  }
-  addListeners() {
-    const parentNode = this.parent.domNode;
-    Array.prototype.forEach.call(this.subMenuItems, (el) => {
-      el.addEventListener("keydown", (event) => {
-        const code = getEventCode(event);
-        let prevDef = false;
-        switch (code) {
-          case EVENT_CODE.down: {
-            this.gotoSubIndex(this.subIndex + 1);
-            prevDef = true;
-            break;
-          }
-          case EVENT_CODE.up: {
-            this.gotoSubIndex(this.subIndex - 1);
-            prevDef = true;
-            break;
-          }
-          case EVENT_CODE.tab: {
-            triggerEvent(parentNode, "mouseleave");
-            break;
-          }
-          case EVENT_CODE.enter:
-          case EVENT_CODE.numpadEnter:
-          case EVENT_CODE.space: {
-            prevDef = true;
-            event.currentTarget.click();
-            break;
-          }
-        }
-        if (prevDef) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        return false;
-      });
-    });
-  }
-}
-var SubMenu$2 = SubMenu$1;
-
-class MenuItem$1 {
-  constructor(domNode, namespace) {
-    this.domNode = domNode;
-    this.submenu = null;
-    this.submenu = null;
-    this.init(namespace);
-  }
-  init(namespace) {
-    this.domNode.setAttribute("tabindex", "0");
-    const menuChild = this.domNode.querySelector(`.${namespace}-menu`);
-    if (menuChild) {
-      this.submenu = new SubMenu$2(this, menuChild);
-    }
-    this.addListeners();
-  }
-  addListeners() {
-    this.domNode.addEventListener("keydown", (event) => {
-      const code = getEventCode(event);
-      let prevDef = false;
-      switch (code) {
-        case EVENT_CODE.down: {
-          triggerEvent(event.currentTarget, "mouseenter");
-          this.submenu && this.submenu.gotoSubIndex(0);
-          prevDef = true;
-          break;
-        }
-        case EVENT_CODE.up: {
-          triggerEvent(event.currentTarget, "mouseenter");
-          this.submenu && this.submenu.gotoSubIndex(this.submenu.subMenuItems.length - 1);
-          prevDef = true;
-          break;
-        }
-        case EVENT_CODE.tab: {
-          triggerEvent(event.currentTarget, "mouseleave");
-          break;
-        }
-        case EVENT_CODE.enter:
-        case EVENT_CODE.numpadEnter:
-        case EVENT_CODE.space: {
-          prevDef = true;
-          event.currentTarget.click();
-          break;
-        }
-      }
-      if (prevDef) {
-        event.preventDefault();
-      }
-    });
-  }
-}
-var MenuItem$2 = MenuItem$1;
-
-class Menu$1 {
-  constructor(domNode, namespace) {
-    this.domNode = domNode;
-    this.init(namespace);
-  }
-  init(namespace) {
-    const menuChildren = this.domNode.childNodes;
-    Array.from(menuChildren).forEach((child) => {
-      if (child.nodeType === 1) {
-        new MenuItem$2(child, namespace);
-      }
-    });
-  }
-}
-var Menubar = Menu$1;
-
-const __default__$Q = defineComponent({
-  name: "ElMenuCollapseTransition"
-});
-const _sfc_main$15 = /* @__PURE__ */ defineComponent({
-  ...__default__$Q,
-  setup(__props) {
-    const ns = useNamespace("menu");
-    const listeners = {
-      onBeforeEnter: (el) => el.style.opacity = "0.2",
-      onEnter(el, done) {
-        addClass(el, `${ns.namespace.value}-opacity-transition`);
-        el.style.opacity = "1";
-        done();
-      },
-      onAfterEnter(el) {
-        removeClass(el, `${ns.namespace.value}-opacity-transition`);
-        el.style.opacity = "";
-      },
-      onBeforeLeave(el) {
-        if (!el.dataset)
-          el.dataset = {};
-        if (hasClass(el, ns.m("collapse"))) {
-          removeClass(el, ns.m("collapse"));
-          el.dataset.oldOverflow = el.style.overflow;
-          el.dataset.scrollWidth = el.clientWidth.toString();
-          addClass(el, ns.m("collapse"));
-        } else {
-          addClass(el, ns.m("collapse"));
-          el.dataset.oldOverflow = el.style.overflow;
-          el.dataset.scrollWidth = el.clientWidth.toString();
-          removeClass(el, ns.m("collapse"));
-        }
-        el.style.width = `${el.scrollWidth}px`;
-        el.style.overflow = "hidden";
-      },
-      onLeave(el) {
-        addClass(el, "horizontal-collapse-transition");
-        el.style.width = `${el.dataset.scrollWidth}px`;
-      }
-    };
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(Transition, mergeProps({ mode: "out-in" }, unref(listeners)), {
-        default: withCtx(() => [
-          renderSlot(_ctx.$slots, "default")
-        ]),
-        _: 3
-      }, 16);
-    };
-  }
-});
-var ElMenuCollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["__file", "menu-collapse-transition.vue"]]);
-
-function useMenu(instance, currentIndex) {
-  const indexPath = computed(() => {
-    let parent = instance.parent;
-    const path = [currentIndex.value];
-    while (parent.type.name !== "ElMenu") {
-      if (parent.props.index) {
-        path.unshift(parent.props.index);
-      }
-      parent = parent.parent;
-    }
-    return path;
-  });
-  const parentMenu = computed(() => {
-    let parent = instance.parent;
-    while (parent && !["ElMenu", "ElSubMenu"].includes(parent.type.name)) {
-      parent = parent.parent;
-    }
-    return parent;
-  });
-  return {
-    parentMenu,
-    indexPath
-  };
-}
-
-function useMenuColor(props) {
-  const menuBarColor = computed(() => {
-    const color = props.backgroundColor;
-    return color ? new TinyColor(color).shade(20).toString() : "";
-  });
-  return menuBarColor;
-}
-
-const useMenuCssVar = (props, level) => {
-  const ns = useNamespace("menu");
-  return computed(() => ns.cssVarBlock({
-    "text-color": props.textColor || "",
-    "hover-text-color": props.textColor || "",
-    "bg-color": props.backgroundColor || "",
-    "hover-bg-color": useMenuColor(props).value || "",
-    "active-color": props.activeTextColor || "",
-    level: `${level}`
-  }));
-};
-
-const MENU_INJECTION_KEY = "rootMenu";
-const SUB_MENU_INJECTION_KEY = "subMenu:";
-
-const subMenuProps = buildProps({
-  index: {
-    type: String,
-    required: true
-  },
-  showTimeout: Number,
-  hideTimeout: Number,
-  popperClass: String,
-  popperStyle: {
-    type: definePropType([String, Object])
-  },
-  disabled: Boolean,
-  teleported: {
-    type: Boolean,
-    default: void 0
-  },
-  popperOffset: Number,
-  expandCloseIcon: {
-    type: iconPropType
-  },
-  expandOpenIcon: {
-    type: iconPropType
-  },
-  collapseCloseIcon: {
-    type: iconPropType
-  },
-  collapseOpenIcon: {
-    type: iconPropType
-  }
-});
-const COMPONENT_NAME$b = "ElSubMenu";
-var SubMenu = defineComponent({
-  name: COMPONENT_NAME$b,
-  props: subMenuProps,
-  setup(props, { slots, expose }) {
-    const instance = getCurrentInstance();
-    const { indexPath, parentMenu } = useMenu(instance, computed(() => props.index));
-    const nsMenu = useNamespace("menu");
-    const nsSubMenu = useNamespace("sub-menu");
-    const rootMenu = inject(MENU_INJECTION_KEY);
-    if (!rootMenu)
-      throwError(COMPONENT_NAME$b, "can not inject root menu");
-    const subMenu = inject(`${SUB_MENU_INJECTION_KEY}${parentMenu.value.uid}`);
-    if (!subMenu)
-      throwError(COMPONENT_NAME$b, "can not inject sub menu");
-    const items = ref({});
-    const subMenus = ref({});
-    let timeout;
-    const mouseInChild = ref(false);
-    const verticalTitleRef = ref();
-    const vPopper = ref();
-    const isFirstLevel = computed(() => subMenu.level === 0);
-    const currentPlacement = computed(() => mode.value === "horizontal" && isFirstLevel.value ? "bottom-start" : "right-start");
-    const subMenuTitleIcon = computed(() => {
-      const isExpandedMode = mode.value === "horizontal" && isFirstLevel.value || mode.value === "vertical" && !rootMenu.props.collapse;
-      if (isExpandedMode) {
-        if (props.expandCloseIcon && props.expandOpenIcon) {
-          return opened.value ? props.expandOpenIcon : props.expandCloseIcon;
-        }
-        return arrow_down_default;
-      } else {
-        if (props.collapseCloseIcon && props.collapseOpenIcon) {
-          return opened.value ? props.collapseOpenIcon : props.collapseCloseIcon;
-        }
-        return arrow_right_default;
-      }
-    });
-    const appendToBody = computed(() => {
-      const value = props.teleported;
-      return isUndefined(value) ? isFirstLevel.value : value;
-    });
-    const menuTransitionName = computed(() => rootMenu.props.collapse ? `${nsMenu.namespace.value}-zoom-in-left` : `${nsMenu.namespace.value}-zoom-in-top`);
-    const fallbackPlacements = computed(() => mode.value === "horizontal" && isFirstLevel.value ? [
-      "bottom-start",
-      "bottom-end",
-      "top-start",
-      "top-end",
-      "right-start",
-      "left-start"
-    ] : [
-      "right-start",
-      "right",
-      "right-end",
-      "left-start",
-      "bottom-start",
-      "bottom-end",
-      "top-start",
-      "top-end"
-    ]);
-    const opened = computed(() => rootMenu.openedMenus.includes(props.index));
-    const active = computed(() => [...Object.values(items.value), ...Object.values(subMenus.value)].some(({ active: active2 }) => active2));
-    const mode = computed(() => rootMenu.props.mode);
-    const persistent = computed(() => rootMenu.props.persistent);
-    const item = reactive({
-      index: props.index,
-      indexPath,
-      active
-    });
-    const ulStyle = useMenuCssVar(rootMenu.props, subMenu.level + 1);
-    const subMenuPopperOffset = computed(() => {
-      var _a;
-      return (_a = props.popperOffset) != null ? _a : rootMenu.props.popperOffset;
-    });
-    const subMenuPopperClass = computed(() => {
-      var _a;
-      return (_a = props.popperClass) != null ? _a : rootMenu.props.popperClass;
-    });
-    const subMenuPopperStyle = computed(() => {
-      var _a;
-      return (_a = props.popperStyle) != null ? _a : rootMenu.props.popperStyle;
-    });
-    const subMenuShowTimeout = computed(() => {
-      var _a;
-      return (_a = props.showTimeout) != null ? _a : rootMenu.props.showTimeout;
-    });
-    const subMenuHideTimeout = computed(() => {
-      var _a;
-      return (_a = props.hideTimeout) != null ? _a : rootMenu.props.hideTimeout;
-    });
-    const doDestroy = () => {
-      var _a, _b, _c;
-      return (_c = (_b = (_a = vPopper.value) == null ? void 0 : _a.popperRef) == null ? void 0 : _b.popperInstanceRef) == null ? void 0 : _c.destroy();
-    };
-    const handleCollapseToggle = (value) => {
-      if (!value) {
-        doDestroy();
-      }
-    };
-    const handleClick = () => {
-      if (rootMenu.props.menuTrigger === "hover" && rootMenu.props.mode === "horizontal" || rootMenu.props.collapse && rootMenu.props.mode === "vertical" || props.disabled)
-        return;
-      rootMenu.handleSubMenuClick({
-        index: props.index,
-        indexPath: indexPath.value,
-        active: active.value
-      });
-    };
-    const handleMouseenter = (event, showTimeout = subMenuShowTimeout.value) => {
-      var _a;
-      if (event.type === "focus")
-        return;
-      if (rootMenu.props.menuTrigger === "click" && rootMenu.props.mode === "horizontal" || !rootMenu.props.collapse && rootMenu.props.mode === "vertical" || props.disabled) {
-        subMenu.mouseInChild.value = true;
-        return;
-      }
-      subMenu.mouseInChild.value = true;
-      timeout == null ? void 0 : timeout();
-      ({ stop: timeout } = useTimeoutFn(() => {
-        rootMenu.openMenu(props.index, indexPath.value);
-      }, showTimeout));
-      if (appendToBody.value) {
-        (_a = parentMenu.value.vnode.el) == null ? void 0 : _a.dispatchEvent(new MouseEvent("mouseenter"));
-      }
-      if (event.type === "mouseenter" && event.target) {
-        nextTick(() => {
-          focusElement(event.target, { preventScroll: true });
-        });
-      }
-    };
-    const handleMouseleave = (deepDispatch = false) => {
-      var _a;
-      if (rootMenu.props.menuTrigger === "click" && rootMenu.props.mode === "horizontal" || !rootMenu.props.collapse && rootMenu.props.mode === "vertical") {
-        subMenu.mouseInChild.value = false;
-        return;
-      }
-      timeout == null ? void 0 : timeout();
-      subMenu.mouseInChild.value = false;
-      ({ stop: timeout } = useTimeoutFn(() => !mouseInChild.value && rootMenu.closeMenu(props.index, indexPath.value), subMenuHideTimeout.value));
-      if (appendToBody.value && deepDispatch) {
-        (_a = subMenu.handleMouseleave) == null ? void 0 : _a.call(subMenu, true);
-      }
-    };
-    watch(() => rootMenu.props.collapse, (value) => handleCollapseToggle(Boolean(value)));
-    {
-      const addSubMenu = (item2) => {
-        subMenus.value[item2.index] = item2;
-      };
-      const removeSubMenu = (item2) => {
-        delete subMenus.value[item2.index];
-      };
-      provide(`${SUB_MENU_INJECTION_KEY}${instance.uid}`, {
-        addSubMenu,
-        removeSubMenu,
-        handleMouseleave,
-        mouseInChild,
-        level: subMenu.level + 1
-      });
-    }
-    expose({
-      opened
-    });
-    onMounted(() => {
-      rootMenu.addSubMenu(item);
-      subMenu.addSubMenu(item);
-    });
-    onBeforeUnmount(() => {
-      subMenu.removeSubMenu(item);
-      rootMenu.removeSubMenu(item);
-    });
-    return () => {
-      var _a;
-      const titleTag = [
-        (_a = slots.title) == null ? void 0 : _a.call(slots),
-        h$1(ElIcon, {
-          class: nsSubMenu.e("icon-arrow"),
-          style: {
-            transform: opened.value ? props.expandCloseIcon && props.expandOpenIcon || props.collapseCloseIcon && props.collapseOpenIcon && rootMenu.props.collapse ? "none" : "rotateZ(180deg)" : "none"
-          }
-        }, {
-          default: () => isString$1(subMenuTitleIcon.value) ? h$1(instance.appContext.components[subMenuTitleIcon.value]) : h$1(subMenuTitleIcon.value)
-        })
-      ];
-      const child = rootMenu.isMenuPopup ? h$1(ElTooltip, {
-        ref: vPopper,
-        visible: opened.value,
-        effect: "light",
-        pure: true,
-        offset: subMenuPopperOffset.value,
-        showArrow: false,
-        persistent: persistent.value,
-        popperClass: subMenuPopperClass.value,
-        popperStyle: subMenuPopperStyle.value,
-        placement: currentPlacement.value,
-        teleported: appendToBody.value,
-        fallbackPlacements: fallbackPlacements.value,
-        transition: menuTransitionName.value,
-        gpuAcceleration: false
-      }, {
-        content: () => {
-          var _a2;
-          return h$1("div", {
-            class: [
-              nsMenu.m(mode.value),
-              nsMenu.m("popup-container"),
-              subMenuPopperClass.value
-            ],
-            onMouseenter: (evt) => handleMouseenter(evt, 100),
-            onMouseleave: () => handleMouseleave(true),
-            onFocus: (evt) => handleMouseenter(evt, 100)
-          }, [
-            h$1("ul", {
-              class: [
-                nsMenu.b(),
-                nsMenu.m("popup"),
-                nsMenu.m(`popup-${currentPlacement.value}`)
-              ],
-              style: ulStyle.value
-            }, [(_a2 = slots.default) == null ? void 0 : _a2.call(slots)])
-          ]);
-        },
-        default: () => h$1("div", {
-          class: nsSubMenu.e("title"),
-          onClick: handleClick
-        }, titleTag)
-      }) : h$1(Fragment, {}, [
-        h$1("div", {
-          class: nsSubMenu.e("title"),
-          ref: verticalTitleRef,
-          onClick: handleClick
-        }, titleTag),
-        h$1(ElCollapseTransition, {}, {
-          default: () => {
-            var _a2;
-            return withDirectives(h$1("ul", {
-              role: "menu",
-              class: [nsMenu.b(), nsMenu.m("inline")],
-              style: ulStyle.value
-            }, [(_a2 = slots.default) == null ? void 0 : _a2.call(slots)]), [[vShow, opened.value]]);
-          }
-        })
-      ]);
-      return h$1("li", {
-        class: [
-          nsSubMenu.b(),
-          nsSubMenu.is("active", active.value),
-          nsSubMenu.is("opened", opened.value),
-          nsSubMenu.is("disabled", props.disabled)
-        ],
-        role: "menuitem",
-        ariaHaspopup: true,
-        ariaExpanded: opened.value,
-        onMouseenter: handleMouseenter,
-        onMouseleave: () => handleMouseleave(),
-        onFocus: handleMouseenter
-      }, [child]);
-    };
-  }
-});
-
-const menuProps = buildProps({
-  mode: {
-    type: String,
-    values: ["horizontal", "vertical"],
-    default: "vertical"
-  },
-  defaultActive: {
-    type: String,
-    default: ""
-  },
-  defaultOpeneds: {
-    type: definePropType(Array),
-    default: () => mutable([])
-  },
-  uniqueOpened: Boolean,
-  router: Boolean,
-  menuTrigger: {
-    type: String,
-    values: ["hover", "click"],
-    default: "hover"
-  },
-  collapse: Boolean,
-  backgroundColor: String,
-  textColor: String,
-  activeTextColor: String,
-  closeOnClickOutside: Boolean,
-  collapseTransition: {
-    type: Boolean,
-    default: true
-  },
-  ellipsis: {
-    type: Boolean,
-    default: true
-  },
-  popperOffset: {
-    type: Number,
-    default: 6
-  },
-  ellipsisIcon: {
-    type: iconPropType,
-    default: () => more_default
-  },
-  popperEffect: {
-    type: definePropType(String),
-    default: "dark"
-  },
-  popperClass: String,
-  popperStyle: {
-    type: definePropType([String, Object])
-  },
-  showTimeout: {
-    type: Number,
-    default: 300
-  },
-  hideTimeout: {
-    type: Number,
-    default: 300
-  },
-  persistent: {
-    type: Boolean,
-    default: true
-  }
-});
-const checkIndexPath = (indexPath) => isArray$1(indexPath) && indexPath.every((path) => isString$1(path));
-const menuEmits = {
-  close: (index, indexPath) => isString$1(index) && checkIndexPath(indexPath),
-  open: (index, indexPath) => isString$1(index) && checkIndexPath(indexPath),
-  select: (index, indexPath, item, routerResult) => isString$1(index) && checkIndexPath(indexPath) && isObject$1(item) && (isUndefined(routerResult) || routerResult instanceof Promise)
-};
-var Menu = defineComponent({
-  name: "ElMenu",
-  props: menuProps,
-  emits: menuEmits,
-  setup(props, { emit, slots, expose }) {
-    const instance = getCurrentInstance();
-    const router = instance.appContext.config.globalProperties.$router;
-    const menu = ref();
-    const subMenu = ref();
-    const nsMenu = useNamespace("menu");
-    const nsSubMenu = useNamespace("sub-menu");
-    let moreItemWidth = 64;
-    const sliceIndex = ref(-1);
-    const openedMenus = ref(props.defaultOpeneds && !props.collapse ? props.defaultOpeneds.slice(0) : []);
-    const activeIndex = ref(props.defaultActive);
-    const items = ref({});
-    const subMenus = ref({});
-    const isMenuPopup = computed(() => props.mode === "horizontal" || props.mode === "vertical" && props.collapse);
-    const initMenu = () => {
-      const activeItem = activeIndex.value && items.value[activeIndex.value];
-      if (!activeItem || props.mode === "horizontal" || props.collapse)
-        return;
-      const indexPath = activeItem.indexPath;
-      indexPath.forEach((index) => {
-        const subMenu2 = subMenus.value[index];
-        subMenu2 && openMenu(index, subMenu2.indexPath);
-      });
-    };
-    const openMenu = (index, indexPath) => {
-      if (openedMenus.value.includes(index))
-        return;
-      if (props.uniqueOpened) {
-        openedMenus.value = openedMenus.value.filter((index2) => indexPath.includes(index2));
-      }
-      openedMenus.value.push(index);
-      emit("open", index, indexPath);
-    };
-    const close = (index) => {
-      const i = openedMenus.value.indexOf(index);
-      if (i !== -1) {
-        openedMenus.value.splice(i, 1);
-      }
-    };
-    const closeMenu = (index, indexPath) => {
-      close(index);
-      emit("close", index, indexPath);
-    };
-    const handleSubMenuClick = ({
-      index,
-      indexPath
-    }) => {
-      const isOpened = openedMenus.value.includes(index);
-      isOpened ? closeMenu(index, indexPath) : openMenu(index, indexPath);
-    };
-    const handleMenuItemClick = (menuItem) => {
-      if (props.mode === "horizontal" || props.collapse) {
-        openedMenus.value = [];
-      }
-      if (props.collapse)
-        return;
-      const { index, indexPath } = menuItem;
-      if (isNil(index) || isNil(indexPath))
-        return;
-      if (props.router && router) {
-        const route = menuItem.route || index;
-        const routerResult = router.push(route).then((res) => {
-          if (!res)
-            activeIndex.value = index;
-          return res;
-        });
-        emit("select", index, indexPath, { index, indexPath, route }, routerResult);
-      } else {
-        activeIndex.value = index;
-        emit("select", index, indexPath, { index, indexPath });
-      }
-    };
-    const updateActiveIndex = (val) => {
-      var _a;
-      const itemsInData = items.value;
-      const item = itemsInData[val] || activeIndex.value && itemsInData[activeIndex.value] || itemsInData[props.defaultActive];
-      activeIndex.value = (_a = item == null ? void 0 : item.index) != null ? _a : val;
-    };
-    const calcMenuItemWidth = (menuItem) => {
-      const computedStyle = getComputedStyle(menuItem);
-      const marginLeft = Number.parseInt(computedStyle.marginLeft, 10);
-      const marginRight = Number.parseInt(computedStyle.marginRight, 10);
-      return menuItem.offsetWidth + marginLeft + marginRight || 0;
-    };
-    const calcSliceIndex = () => {
-      var _a, _b;
-      if (!menu.value)
-        return -1;
-      const items2 = Array.from((_b = (_a = menu.value) == null ? void 0 : _a.childNodes) != null ? _b : []).filter((item) => item.nodeName !== "#comment" && (item.nodeName !== "#text" || item.nodeValue));
-      const computedMenuStyle = getComputedStyle(menu.value);
-      const paddingLeft = Number.parseInt(computedMenuStyle.paddingLeft, 10);
-      const paddingRight = Number.parseInt(computedMenuStyle.paddingRight, 10);
-      const menuWidth = menu.value.clientWidth - paddingLeft - paddingRight;
-      let calcWidth = 0;
-      let sliceIndex2 = 0;
-      items2.forEach((item, index) => {
-        calcWidth += calcMenuItemWidth(item);
-        if (calcWidth <= menuWidth - moreItemWidth) {
-          sliceIndex2 = index + 1;
-        }
-      });
-      return sliceIndex2 === items2.length ? -1 : sliceIndex2;
-    };
-    const getIndexPath = (index) => subMenus.value[index].indexPath;
-    const debounce = (fn, wait = 33.34) => {
-      let timer;
-      return () => {
-        timer && clearTimeout(timer);
-        timer = setTimeout(() => {
-          fn();
-        }, wait);
-      };
-    };
-    let isFirstTimeRender = true;
-    const handleResize = () => {
-      const el = unrefElement(subMenu);
-      if (el)
-        moreItemWidth = calcMenuItemWidth(el) || 64;
-      if (sliceIndex.value === calcSliceIndex())
-        return;
-      const callback = () => {
-        sliceIndex.value = -1;
-        nextTick(() => {
-          sliceIndex.value = calcSliceIndex();
-        });
-      };
-      isFirstTimeRender ? callback() : debounce(callback)();
-      isFirstTimeRender = false;
-    };
-    watch(() => props.defaultActive, (currentActive) => {
-      if (!items.value[currentActive]) {
-        activeIndex.value = "";
-      }
-      updateActiveIndex(currentActive);
-    });
-    watch(() => props.collapse, (value) => {
-      if (value)
-        openedMenus.value = [];
-    });
-    watch(items.value, initMenu);
-    let resizeStopper;
-    watchEffect(() => {
-      if (props.mode === "horizontal" && props.ellipsis)
-        resizeStopper = useResizeObserver(menu, handleResize).stop;
-      else
-        resizeStopper == null ? void 0 : resizeStopper();
-    });
-    const mouseInChild = ref(false);
-    {
-      const addSubMenu = (item) => {
-        subMenus.value[item.index] = item;
-      };
-      const removeSubMenu = (item) => {
-        delete subMenus.value[item.index];
-      };
-      const addMenuItem = (item) => {
-        items.value[item.index] = item;
-      };
-      const removeMenuItem = (item) => {
-        delete items.value[item.index];
-      };
-      provide(MENU_INJECTION_KEY, reactive({
-        props,
-        openedMenus,
-        items,
-        subMenus,
-        activeIndex,
-        isMenuPopup,
-        addMenuItem,
-        removeMenuItem,
-        addSubMenu,
-        removeSubMenu,
-        openMenu,
-        closeMenu,
-        handleMenuItemClick,
-        handleSubMenuClick
-      }));
-      provide(`${SUB_MENU_INJECTION_KEY}${instance.uid}`, {
-        addSubMenu,
-        removeSubMenu,
-        mouseInChild,
-        level: 0
-      });
-    }
-    onMounted(() => {
-      if (props.mode === "horizontal") {
-        new Menubar(instance.vnode.el, nsMenu.namespace.value);
-      }
-    });
-    {
-      const open = (index) => {
-        const { indexPath } = subMenus.value[index];
-        indexPath.forEach((i) => openMenu(i, indexPath));
-      };
-      expose({
-        open,
-        close,
-        updateActiveIndex,
-        handleResize
-      });
-    }
-    const ulStyle = useMenuCssVar(props, 0);
-    return () => {
-      var _a, _b;
-      let slot = (_b = (_a = slots.default) == null ? void 0 : _a.call(slots)) != null ? _b : [];
-      const vShowMore = [];
-      if (props.mode === "horizontal" && menu.value) {
-        const originalSlot = flattedChildren(slot).filter((vnode) => {
-          return (vnode == null ? void 0 : vnode.shapeFlag) !== 8;
-        });
-        const slotDefault = sliceIndex.value === -1 ? originalSlot : originalSlot.slice(0, sliceIndex.value);
-        const slotMore = sliceIndex.value === -1 ? [] : originalSlot.slice(sliceIndex.value);
-        if ((slotMore == null ? void 0 : slotMore.length) && props.ellipsis) {
-          slot = slotDefault;
-          vShowMore.push(h$1(SubMenu, {
-            ref: subMenu,
-            index: "sub-menu-more",
-            class: nsSubMenu.e("hide-arrow"),
-            popperOffset: props.popperOffset
-          }, {
-            title: () => h$1(ElIcon, {
-              class: nsSubMenu.e("icon-more")
-            }, {
-              default: () => h$1(props.ellipsisIcon)
-            }),
-            default: () => slotMore
-          }));
-        }
-      }
-      const directives = props.closeOnClickOutside ? [
-        [
-          ClickOutside,
-          () => {
-            if (!openedMenus.value.length)
-              return;
-            if (!mouseInChild.value) {
-              openedMenus.value.forEach((openedMenu) => emit("close", openedMenu, getIndexPath(openedMenu)));
-              openedMenus.value = [];
-            }
-          }
-        ]
-      ] : [];
-      const vMenu = withDirectives(h$1("ul", {
-        key: String(props.collapse),
-        role: "menubar",
-        ref: menu,
-        style: ulStyle.value,
-        class: {
-          [nsMenu.b()]: true,
-          [nsMenu.m(props.mode)]: true,
-          [nsMenu.m("collapse")]: props.collapse
-        }
-      }, [...slot, ...vShowMore]), directives);
-      if (props.collapseTransition && props.mode === "vertical") {
-        return h$1(ElMenuCollapseTransition, () => vMenu);
-      }
-      return vMenu;
-    };
-  }
-});
-
-const menuItemProps = buildProps({
-  index: {
-    type: definePropType([String, null]),
-    default: null
-  },
-  route: {
-    type: definePropType([String, Object])
-  },
-  disabled: Boolean
-});
-const menuItemEmits = {
-  click: (item) => isString$1(item.index) && isArray$1(item.indexPath)
-};
-
-const COMPONENT_NAME$a = "ElMenuItem";
-const __default__$P = defineComponent({
-  name: COMPONENT_NAME$a
-});
-const _sfc_main$14 = /* @__PURE__ */ defineComponent({
-  ...__default__$P,
-  props: menuItemProps,
-  emits: menuItemEmits,
-  setup(__props, { expose, emit }) {
-    const props = __props;
-    isPropAbsent(props.index) && debugWarn();
-    const instance = getCurrentInstance();
-    const rootMenu = inject(MENU_INJECTION_KEY);
-    const nsMenu = useNamespace("menu");
-    const nsMenuItem = useNamespace("menu-item");
-    if (!rootMenu)
-      throwError(COMPONENT_NAME$a, "can not inject root menu");
-    const { parentMenu, indexPath } = useMenu(instance, toRef(props, "index"));
-    const subMenu = inject(`${SUB_MENU_INJECTION_KEY}${parentMenu.value.uid}`);
-    if (!subMenu)
-      throwError(COMPONENT_NAME$a, "can not inject sub menu");
-    const active = computed(() => props.index === rootMenu.activeIndex);
-    const item = reactive({
-      index: props.index,
-      indexPath,
-      active
-    });
-    const handleClick = () => {
-      if (!props.disabled) {
-        rootMenu.handleMenuItemClick({
-          index: props.index,
-          indexPath: indexPath.value,
-          route: props.route
-        });
-        emit("click", item);
-      }
-    };
-    onMounted(() => {
-      subMenu.addSubMenu(item);
-      rootMenu.addMenuItem(item);
-    });
-    onBeforeUnmount(() => {
-      subMenu.removeSubMenu(item);
-      rootMenu.removeMenuItem(item);
-    });
-    expose({
-      parentMenu,
-      rootMenu,
-      active,
-      nsMenu,
-      nsMenuItem,
-      handleClick
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("li", {
-        class: normalizeClass([
-          unref(nsMenuItem).b(),
-          unref(nsMenuItem).is("active", unref(active)),
-          unref(nsMenuItem).is("disabled", _ctx.disabled)
-        ]),
-        role: "menuitem",
-        tabindex: "-1",
-        onClick: handleClick
-      }, [
-        unref(parentMenu).type.name === "ElMenu" && unref(rootMenu).props.collapse && _ctx.$slots.title ? (openBlock(), createBlock(unref(ElTooltip), {
-          key: 0,
-          effect: unref(rootMenu).props.popperEffect,
-          placement: "right",
-          "fallback-placements": ["left"],
-          persistent: unref(rootMenu).props.persistent,
-          "focus-on-target": "",
-          disabled: true
-        }, {
-          content: withCtx(() => [
-            renderSlot(_ctx.$slots, "title")
-          ]),
-          default: withCtx(() => [
-            createElementVNode("div", {
-              class: normalizeClass(unref(nsMenu).be("tooltip", "trigger"))
-            }, [
-              renderSlot(_ctx.$slots, "default")
-            ], 2)
-          ]),
-          _: 3
-        }, 8, ["effect", "persistent"])) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-          renderSlot(_ctx.$slots, "default"),
-          renderSlot(_ctx.$slots, "title")
-        ], 64))
-      ], 2);
-    };
-  }
-});
-var MenuItem = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__file", "menu-item.vue"]]);
-
-const menuItemGroupProps = {
-  title: String
-};
-
-const __default__$O = defineComponent({
-  name: "ElMenuItemGroup"
-});
-const _sfc_main$13 = /* @__PURE__ */ defineComponent({
-  ...__default__$O,
-  props: menuItemGroupProps,
-  setup(__props) {
-    const ns = useNamespace("menu-item-group");
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("li", {
-        class: normalizeClass(unref(ns).b())
-      }, [
-        createElementVNode("div", {
-          class: normalizeClass(unref(ns).e("title"))
-        }, [
-          !_ctx.$slots.title ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-            createTextVNode(toDisplayString(_ctx.title), 1)
-          ], 64)) : renderSlot(_ctx.$slots, "title", { key: 1 })
-        ], 2),
-        createElementVNode("ul", null, [
-          renderSlot(_ctx.$slots, "default")
-        ])
-      ], 2);
-    };
-  }
-});
-var MenuItemGroup = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__file", "menu-item-group.vue"]]);
-
-const ElMenu = withInstall(Menu, {
-  MenuItem,
-  MenuItemGroup,
-  SubMenu
-});
-const ElMenuItem = withNoopInstall(MenuItem);
-const ElMenuItemGroup = withNoopInstall(MenuItemGroup);
-const ElSubMenu = withNoopInstall(SubMenu);
-
-const pageHeaderProps = buildProps({
-  icon: {
-    type: iconPropType,
-    default: () => back_default
-  },
-  title: String,
-  content: {
-    type: String,
-    default: ""
-  }
-});
-const pageHeaderEmits = {
-  back: () => true
-};
-
-const __default__$N = defineComponent({
-  name: "ElPageHeader"
-});
-const _sfc_main$12 = /* @__PURE__ */ defineComponent({
-  ...__default__$N,
-  props: pageHeaderProps,
-  emits: pageHeaderEmits,
-  setup(__props, { emit }) {
-    const { t } = useLocale();
-    const ns = useNamespace("page-header");
-    function handleClick() {
-      emit("back");
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        class: normalizeClass([
-          unref(ns).b(),
-          unref(ns).is("contentful", !!_ctx.$slots.default),
-          {
-            [unref(ns).m("has-breadcrumb")]: !!_ctx.$slots.breadcrumb,
-            [unref(ns).m("has-extra")]: !!_ctx.$slots.extra
-          }
-        ])
-      }, [
-        _ctx.$slots.breadcrumb ? (openBlock(), createElementBlock("div", {
-          key: 0,
-          class: normalizeClass(unref(ns).e("breadcrumb"))
-        }, [
-          renderSlot(_ctx.$slots, "breadcrumb")
-        ], 2)) : createCommentVNode("v-if", true),
-        createElementVNode("div", {
-          class: normalizeClass(unref(ns).e("header"))
-        }, [
-          createElementVNode("div", {
-            class: normalizeClass(unref(ns).e("left"))
-          }, [
-            createElementVNode("div", {
-              class: normalizeClass(unref(ns).e("back")),
-              role: "button",
-              tabindex: "0",
-              onClick: handleClick
-            }, [
-              _ctx.icon || _ctx.$slots.icon ? (openBlock(), createElementBlock("div", {
-                key: 0,
-                "aria-label": _ctx.title || unref(t)("el.pageHeader.title"),
-                class: normalizeClass(unref(ns).e("icon"))
-              }, [
-                renderSlot(_ctx.$slots, "icon", {}, () => [
-                  _ctx.icon ? (openBlock(), createBlock(unref(ElIcon), { key: 0 }, {
-                    default: withCtx(() => [
-                      (openBlock(), createBlock(resolveDynamicComponent(_ctx.icon)))
-                    ]),
-                    _: 1
-                  })) : createCommentVNode("v-if", true)
-                ])
-              ], 10, ["aria-label"])) : createCommentVNode("v-if", true),
-              createElementVNode("div", {
-                class: normalizeClass(unref(ns).e("title"))
-              }, [
-                renderSlot(_ctx.$slots, "title", {}, () => [
-                  createTextVNode(toDisplayString(_ctx.title || unref(t)("el.pageHeader.title")), 1)
-                ])
-              ], 2)
-            ], 2),
-            createVNode(unref(ElDivider), { direction: "vertical" }),
-            createElementVNode("div", {
-              class: normalizeClass(unref(ns).e("content"))
-            }, [
-              renderSlot(_ctx.$slots, "content", {}, () => [
-                createTextVNode(toDisplayString(_ctx.content), 1)
-              ])
-            ], 2)
-          ], 2),
-          _ctx.$slots.extra ? (openBlock(), createElementBlock("div", {
-            key: 0,
-            class: normalizeClass(unref(ns).e("extra"))
-          }, [
-            renderSlot(_ctx.$slots, "extra")
-          ], 2)) : createCommentVNode("v-if", true)
-        ], 2),
-        _ctx.$slots.default ? (openBlock(), createElementBlock("div", {
-          key: 1,
-          class: normalizeClass(unref(ns).e("main"))
-        }, [
-          renderSlot(_ctx.$slots, "default")
-        ], 2)) : createCommentVNode("v-if", true)
-      ], 2);
-    };
-  }
-});
-var PageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__file", "page-header.vue"]]);
-
-const ElPageHeader = withInstall(PageHeader);
-
-const elPaginationKey = Symbol("elPaginationKey");
-
-const paginationPrevProps = buildProps({
-  disabled: Boolean,
-  currentPage: {
-    type: Number,
-    default: 1
-  },
-  prevText: {
-    type: String
-  },
-  prevIcon: {
-    type: iconPropType
-  }
-});
-const paginationPrevEmits = {
-  click: (evt) => evt instanceof MouseEvent
-};
-
-const __default__$M = defineComponent({
-  name: "ElPaginationPrev"
-});
-const _sfc_main$11 = /* @__PURE__ */ defineComponent({
-  ...__default__$M,
-  props: paginationPrevProps,
-  emits: paginationPrevEmits,
-  setup(__props) {
-    const props = __props;
-    const { t } = useLocale();
-    const internalDisabled = computed(() => props.disabled || props.currentPage <= 1);
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("button", {
-        type: "button",
-        class: "btn-prev",
-        disabled: unref(internalDisabled),
-        "aria-label": _ctx.prevText || unref(t)("el.pagination.prev"),
-        "aria-disabled": unref(internalDisabled),
-        onClick: ($event) => _ctx.$emit("click", $event)
-      }, [
-        _ctx.prevText ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(_ctx.prevText), 1)) : (openBlock(), createBlock(unref(ElIcon), { key: 1 }, {
-          default: withCtx(() => [
-            (openBlock(), createElementBlock("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "16",
-              height: "16",
-              viewBox: "0 0 16 16"
-            }, [
-              createElementVNode("g", { "clip-path": "url(#clip0_11356_6847)" }, [
-                createElementVNode("path", { d: "M10.694 16L4.35603 9.65333C3.91994 9.21519 3.67512 8.62218 3.67512 8.004C3.67512 7.38582 3.91994 6.79281 4.35603 6.35467L10.7014 0L12.1134 1.414L5.76803 7.768C5.70554 7.83051 5.67044 7.91528 5.67044 8.00367C5.67044 8.09206 5.70554 8.17682 5.76803 8.23933L12.1054 14.586L10.694 16Z" })
-              ]),
-              createElementVNode("defs", null, [
-                createElementVNode("clipPath", { id: "clip0_11356_6847" }, [
-                  createElementVNode("rect", {
-                    width: "16",
-                    height: "16",
-                    fill: "white"
-                  })
-                ])
-              ])
-            ]))
-          ]),
-          _: 1
-        }))
-      ], 8, ["disabled", "aria-label", "aria-disabled", "onClick"]);
-    };
-  }
-});
-var Prev = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__file", "prev.vue"]]);
-
-const paginationNextProps = buildProps({
-  disabled: Boolean,
-  currentPage: {
-    type: Number,
-    default: 1
-  },
-  pageCount: {
-    type: Number,
-    default: 50
-  },
-  nextText: {
-    type: String
-  },
-  nextIcon: {
-    type: iconPropType
-  }
-});
-
-const __default__$L = defineComponent({
-  name: "ElPaginationNext"
-});
-const _sfc_main$10 = /* @__PURE__ */ defineComponent({
-  ...__default__$L,
-  props: paginationNextProps,
-  emits: ["click"],
-  setup(__props) {
-    const props = __props;
-    const { t } = useLocale();
-    const internalDisabled = computed(() => props.disabled || props.currentPage === props.pageCount || props.pageCount === 0);
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("button", {
-        type: "button",
-        class: "btn-next",
-        disabled: unref(internalDisabled),
-        "aria-label": _ctx.nextText || unref(t)("el.pagination.next"),
-        "aria-disabled": unref(internalDisabled),
-        onClick: ($event) => _ctx.$emit("click", $event)
-      }, [
-        _ctx.nextText ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(_ctx.nextText), 1)) : (openBlock(), createBlock(unref(ElIcon), { key: 1 }, {
-          default: withCtx(() => [
-            (openBlock(), createElementBlock("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "16",
-              height: "16",
-              viewBox: "0 0 16 16"
-            }, [
-              createElementVNode("g", { "clip-path": "url(#clip0_11356_6918)" }, [
-                createElementVNode("path", { d: "M5.418 16L11.756 9.65333C12.1921 9.21519 12.4369 8.62218 12.4369 8.004C12.4369 7.38582 12.1921 6.79281 11.756 6.35467L5.41067 0L4 1.414L10.3453 7.768C10.4078 7.83051 10.4429 7.91528 10.4429 8.00367C10.4429 8.09206 10.4078 8.17682 10.3453 8.23933L4.00667 14.586L5.418 16Z" })
-              ]),
-              createElementVNode("defs", null, [
-                createElementVNode("clipPath", { id: "clip0_11356_6918" }, [
-                  createElementVNode("rect", {
-                    width: "16",
-                    height: "16",
-                    fill: "white"
-                  })
-                ])
-              ])
-            ]))
-          ]),
-          _: 1
-        }))
-      ], 8, ["disabled", "aria-label", "aria-disabled", "onClick"]);
-    };
-  }
-});
-var Next = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__file", "next.vue"]]);
-
-const usePagination = () => inject(elPaginationKey, {});
-
-const paginationSizesProps = buildProps({
-  pageSize: {
-    type: Number,
-    required: true
-  },
-  pageSizes: {
-    type: definePropType(Array),
-    default: () => mutable([10, 20, 30, 40, 50, 100])
-  },
-  popperClass: {
-    type: String
-  },
-  popperStyle: {
-    type: definePropType([String, Object])
-  },
-  disabled: Boolean,
-  teleported: Boolean,
-  size: {
-    type: String,
-    values: componentSizes
-  },
-  appendSizeTo: String
-});
-
-const __default__$K = defineComponent({
-  name: "ElPaginationSizes"
-});
-const _sfc_main$$ = /* @__PURE__ */ defineComponent({
-  ...__default__$K,
-  props: paginationSizesProps,
-  emits: ["page-size-change"],
-  setup(__props, { emit }) {
-    const props = __props;
-    const { t } = useLocale();
-    const ns = useNamespace("pagination");
-    const pagination = usePagination();
-    const innerPageSize = ref(props.pageSize);
-    const popperClassComputed = computed(() => `${props.popperClass} pagination-select-wrap`);
-    watch(() => props.pageSizes, (newVal, oldVal) => {
-      if (isEqual$1(newVal, oldVal))
-        return;
-      if (isArray$1(newVal)) {
-        const pageSize = newVal.includes(props.pageSize) ? props.pageSize : props.pageSizes[0];
-        emit("page-size-change", pageSize);
-      }
-    });
-    watch(() => props.pageSize, (newVal) => {
-      innerPageSize.value = newVal;
-    });
-    const innerPageSizes = computed(() => props.pageSizes);
-    function handleChange(val) {
-      var _a;
-      if (val !== innerPageSize.value) {
-        innerPageSize.value = val;
-        (_a = pagination.handleSizeChange) == null ? void 0 : _a.call(pagination, Number(val));
-      }
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("span", {
-        class: normalizeClass(unref(ns).e("sizes"))
-      }, [
-        createVNode(unref(ElSelect), {
-          class: "pagination-select",
-          "model-value": innerPageSize.value,
-          disabled: _ctx.disabled,
-          "popper-style": _ctx.popperStyle,
-          "popper-class": unref(popperClassComputed),
-          size: _ctx.size,
-          teleported: _ctx.teleported,
-          "validate-event": false,
-          "append-to": _ctx.appendSizeTo,
-          "show-arrow": false,
-          offset: 4,
-          onChange: handleChange
-        }, {
-          default: withCtx(() => [
-            (openBlock(true), createElementBlock(Fragment, null, renderList(unref(innerPageSizes), (item) => {
-              return openBlock(), createBlock(unref(ElOption), {
-                key: item,
-                value: item,
-                label: item + unref(t)("el.pagination.pagesize")
-              }, null, 8, ["value", "label"]);
-            }), 128))
-          ]),
-          _: 1
-        }, 8, ["model-value", "disabled", "popper-style", "popper-class", "size", "teleported", "append-to"])
-      ], 2);
-    };
-  }
-});
-var Sizes = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["__file", "sizes.vue"]]);
-
-const paginationJumperProps = buildProps({
-  size: {
-    type: String,
-    values: componentSizes
-  }
-});
-
-const __default__$J = defineComponent({
-  name: "ElPaginationJumper"
-});
-const _sfc_main$_ = /* @__PURE__ */ defineComponent({
-  ...__default__$J,
-  props: paginationJumperProps,
-  setup(__props) {
-    const { t } = useLocale();
-    const ns = useNamespace("pagination");
-    const { pageCount, disabled, currentPage, changeEvent } = usePagination();
-    const userInput = ref();
-    const innerValue = computed(() => {
-      var _a;
-      return (_a = userInput.value) != null ? _a : currentPage == null ? void 0 : currentPage.value;
-    });
-    function handleInput(val) {
-      userInput.value = val ? +val : "";
-    }
-    function handleChange(val) {
-      val = Math.trunc(+val);
-      changeEvent == null ? void 0 : changeEvent(val);
-      userInput.value = void 0;
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("span", {
-        class: normalizeClass(unref(ns).e("jump")),
-        disabled: unref(disabled)
-      }, [
-        createVNode(unref(ElInput), {
-          size: _ctx.size,
-          class: normalizeClass([unref(ns).e("editor"), unref(ns).is("in-pagination")]),
-          min: 1,
-          max: unref(pageCount),
-          disabled: unref(disabled),
-          "model-value": unref(innerValue),
-          "validate-event": false,
-          "float-label": false,
-          "aria-label": unref(t)("el.pagination.page"),
-          type: "number",
-          placeholder: "Go To",
-          "onUpdate:modelValue": handleInput,
-          onChange: handleChange
-        }, null, 8, ["size", "class", "max", "disabled", "model-value", "aria-label"])
-      ], 10, ["disabled"]);
-    };
-  }
-});
-var Jumper = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__file", "jumper.vue"]]);
-
-const paginationTotalProps = buildProps({
-  total: {
-    type: Number,
-    default: 1e3
-  }
-});
-
-const __default__$I = defineComponent({
-  name: "ElPaginationTotal"
-});
-const _sfc_main$Z = /* @__PURE__ */ defineComponent({
-  ...__default__$I,
-  props: paginationTotalProps,
-  setup(__props) {
-    const { t } = useLocale();
-    const ns = useNamespace("pagination");
-    const { disabled } = usePagination();
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("span", {
-        class: normalizeClass(unref(ns).e("total")),
-        disabled: unref(disabled)
-      }, toDisplayString(unref(t)("el.pagination.total", {
-        total: _ctx.total
-      })), 11, ["disabled"]);
-    };
-  }
-});
-var Total = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["__file", "total.vue"]]);
-
-const paginationPagerProps = buildProps({
-  currentPage: {
-    type: Number,
-    default: 1
-  },
-  pageCount: {
-    type: Number,
-    required: true
-  },
-  pagerCount: {
-    type: Number,
-    default: 7
-  },
-  disabled: Boolean
-});
-
-const __default__$H = defineComponent({
-  name: "ElPaginationPager"
-});
-const _sfc_main$Y = /* @__PURE__ */ defineComponent({
-  ...__default__$H,
-  props: paginationPagerProps,
-  emits: [CHANGE_EVENT],
-  setup(__props, { emit }) {
-    const props = __props;
-    const nsPager = useNamespace("pager");
-    const nsIcon = useNamespace("icon");
-    const { t } = useLocale();
-    const showPrevMore = ref(false);
-    const showNextMore = ref(false);
-    const quickPrevHover = ref(false);
-    const quickNextHover = ref(false);
-    const quickPrevFocus = ref(false);
-    const quickNextFocus = ref(false);
-    const pagers = computed(() => {
-      const pagerCount = props.pagerCount;
-      const halfPagerCount = (pagerCount - 1) / 2;
-      const currentPage = Number(props.currentPage);
-      const pageCount = Number(props.pageCount);
-      let showPrevMore2 = false;
-      let showNextMore2 = false;
-      if (pageCount > pagerCount) {
-        if (currentPage > pagerCount - halfPagerCount) {
-          showPrevMore2 = true;
-        }
-        if (currentPage < pageCount - halfPagerCount) {
-          showNextMore2 = true;
-        }
-      }
-      const array = [];
-      if (showPrevMore2 && !showNextMore2) {
-        const startPage = pageCount - (pagerCount - 2);
-        for (let i = startPage; i < pageCount; i++) {
-          array.push(i);
-        }
-      } else if (!showPrevMore2 && showNextMore2) {
-        for (let i = 2; i < pagerCount; i++) {
-          array.push(i);
-        }
-      } else if (showPrevMore2 && showNextMore2) {
-        const offset = Math.floor(pagerCount / 2) - 1;
-        for (let i = currentPage - offset; i <= currentPage + offset; i++) {
-          array.push(i);
-        }
-      } else {
-        for (let i = 2; i < pageCount; i++) {
-          array.push(i);
-        }
-      }
-      return array;
-    });
-    const prevMoreKls = computed(() => [
-      "more",
-      "btn-quickprev",
-      nsIcon.b(),
-      nsPager.is("disabled", props.disabled)
-    ]);
-    const nextMoreKls = computed(() => [
-      "more",
-      "btn-quicknext",
-      nsIcon.b(),
-      nsPager.is("disabled", props.disabled)
-    ]);
-    const tabindex = computed(() => props.disabled ? -1 : 0);
-    watch(() => [props.pageCount, props.pagerCount, props.currentPage], ([pageCount, pagerCount, currentPage]) => {
-      const halfPagerCount = (pagerCount - 1) / 2;
-      let showPrev = false;
-      let showNext = false;
-      if (pageCount > pagerCount) {
-        showPrev = currentPage > pagerCount - halfPagerCount;
-        showNext = currentPage < pageCount - halfPagerCount;
-      }
-      quickPrevHover.value && (quickPrevHover.value = showPrev);
-      quickNextHover.value && (quickNextHover.value = showNext);
-      showPrevMore.value = showPrev;
-      showNextMore.value = showNext;
-    }, { immediate: true });
-    function onMouseEnter(forward = false) {
-      if (props.disabled)
-        return;
-      if (forward) {
-        quickPrevHover.value = true;
-      } else {
-        quickNextHover.value = true;
-      }
-    }
-    function onFocus(forward = false) {
-      if (forward) {
-        quickPrevFocus.value = true;
-      } else {
-        quickNextFocus.value = true;
-      }
-    }
-    function onEnter(e) {
-      const target = e.target;
-      if (target.tagName.toLowerCase() === "li" && Array.from(target.classList).includes("number")) {
-        const newPage = Number(target.textContent);
-        if (newPage !== props.currentPage) {
-          emit(CHANGE_EVENT, newPage);
-        }
-      } else if (target.tagName.toLowerCase() === "li" && Array.from(target.classList).includes("more")) {
-        onPagerClick(e);
-      }
-    }
-    function onPagerClick(event) {
-      const target = event.target;
-      if (target.tagName.toLowerCase() === "ul" || props.disabled) {
-        return;
-      }
-      let newPage = Number(target.textContent);
-      const pageCount = props.pageCount;
-      const currentPage = props.currentPage;
-      if (target.className.includes("more")) {
-        return;
-      }
-      if (!Number.isNaN(+newPage)) {
-        if (newPage < 1) {
-          newPage = 1;
-        }
-        if (newPage > pageCount) {
-          newPage = pageCount;
-        }
-      }
-      if (newPage !== currentPage) {
-        emit(CHANGE_EVENT, newPage);
-      }
-    }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("ul", {
-        class: normalizeClass(unref(nsPager).b()),
-        onClick: onPagerClick,
-        onKeyup: withKeys(onEnter, ["enter"])
-      }, [
-        _ctx.pageCount > 0 ? (openBlock(), createElementBlock("li", {
-          key: 0,
-          class: normalizeClass([[
-            unref(nsPager).is("active", _ctx.currentPage === 1),
-            unref(nsPager).is("disabled", _ctx.disabled)
-          ], "number"]),
-          "aria-current": _ctx.currentPage === 1,
-          "aria-label": unref(t)("el.pagination.currentPage", { pager: 1 }),
-          tabindex: unref(tabindex)
-        }, " 1 ", 10, ["aria-current", "aria-label", "tabindex"])) : createCommentVNode("v-if", true),
-        showPrevMore.value ? (openBlock(), createElementBlock("li", {
-          key: 1,
-          class: normalizeClass(unref(prevMoreKls)),
-          tabindex: unref(tabindex),
-          "aria-label": unref(t)("el.pagination.prevPages", { pager: _ctx.pagerCount - 2 }),
-          onMouseenter: ($event) => onMouseEnter(true),
-          onMouseleave: ($event) => quickPrevHover.value = false,
-          onFocus: ($event) => onFocus(true),
-          onBlur: ($event) => quickPrevFocus.value = false
-        }, [
-          createVNode(unref(more_filled_default))
-        ], 42, ["tabindex", "aria-label", "onMouseenter", "onMouseleave", "onFocus", "onBlur"])) : createCommentVNode("v-if", true),
-        (openBlock(true), createElementBlock(Fragment, null, renderList(unref(pagers), (pager) => {
-          return openBlock(), createElementBlock("li", {
-            key: pager,
-            class: normalizeClass([[
-              unref(nsPager).is("active", _ctx.currentPage === pager),
-              unref(nsPager).is("disabled", _ctx.disabled)
-            ], "number"]),
-            "aria-current": _ctx.currentPage === pager,
-            "aria-label": unref(t)("el.pagination.currentPage", { pager }),
-            tabindex: unref(tabindex)
-          }, toDisplayString(pager), 11, ["aria-current", "aria-label", "tabindex"]);
-        }), 128)),
-        showNextMore.value ? (openBlock(), createElementBlock("li", {
-          key: 2,
-          class: normalizeClass(unref(nextMoreKls)),
-          tabindex: unref(tabindex),
-          "aria-label": unref(t)("el.pagination.nextPages", { pager: _ctx.pagerCount - 2 }),
-          onMouseenter: ($event) => onMouseEnter(),
-          onMouseleave: ($event) => quickNextHover.value = false,
-          onFocus: ($event) => onFocus(),
-          onBlur: ($event) => quickNextFocus.value = false
-        }, [
-          createVNode(unref(more_filled_default))
-        ], 42, ["tabindex", "aria-label", "onMouseenter", "onMouseleave", "onFocus", "onBlur"])) : createCommentVNode("v-if", true),
-        _ctx.pageCount > 1 ? (openBlock(), createElementBlock("li", {
-          key: 3,
-          class: normalizeClass([[
-            unref(nsPager).is("active", _ctx.currentPage === _ctx.pageCount),
-            unref(nsPager).is("disabled", _ctx.disabled)
-          ], "number"]),
-          "aria-current": _ctx.currentPage === _ctx.pageCount,
-          "aria-label": unref(t)("el.pagination.currentPage", { pager: _ctx.pageCount }),
-          tabindex: unref(tabindex)
-        }, toDisplayString(_ctx.pageCount), 11, ["aria-current", "aria-label", "tabindex"])) : createCommentVNode("v-if", true)
-      ], 42, ["onKeyup"]);
-    };
-  }
-});
-var Pager = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__file", "pager.vue"]]);
-
-const isAbsent = (v) => typeof v !== "number";
-const paginationProps = buildProps({
-  pageSize: Number,
-  defaultPageSize: Number,
-  total: Number,
-  pageCount: Number,
-  pagerCount: {
-    type: Number,
-    validator: (value) => {
-      return isNumber(value) && Math.trunc(value) === value && value > 1 && value < 22 && value % 2 === 1;
-    },
-    default: 7
-  },
-  currentPage: Number,
-  defaultCurrentPage: Number,
-  layout: {
-    type: String,
-    default: ["prev", "pager", "next", "jumper", "->", "total"].join(", ")
-  },
-  pageSizes: {
-    type: definePropType(Array),
-    default: () => mutable([10, 20, 30, 40, 50, 100])
-  },
-  popperClass: {
-    type: String,
-    default: ""
-  },
-  popperStyle: {
-    type: definePropType([String, Object])
-  },
-  prevText: {
-    type: String,
-    default: ""
-  },
-  prevIcon: {
-    type: iconPropType,
-    default: () => arrow_left_default
-  },
-  nextText: {
-    type: String,
-    default: ""
-  },
-  nextIcon: {
-    type: iconPropType,
-    default: () => arrow_right_default
-  },
-  teleported: {
-    type: Boolean,
-    default: true
-  },
-  small: Boolean,
-  size: useSizeProp,
-  background: Boolean,
-  disabled: Boolean,
-  hideOnSinglePage: Boolean,
-  appendSizeTo: String
-});
-const paginationEmits = {
-  "update:current-page": (val) => isNumber(val),
-  "update:page-size": (val) => isNumber(val),
-  "size-change": (val) => isNumber(val),
-  change: (currentPage, pageSize) => isNumber(currentPage) && isNumber(pageSize),
-  "current-change": (val) => isNumber(val),
-  "prev-click": (val) => isNumber(val),
-  "next-click": (val) => isNumber(val)
-};
-const componentName = "ElPagination";
-var Pagination = defineComponent({
-  name: componentName,
-  props: paginationProps,
-  emits: paginationEmits,
-  setup(props, { emit, slots }) {
-    const { t } = useLocale();
-    const ns = useNamespace("pagination");
-    const vnodeProps = getCurrentInstance().vnode.props || {};
-    const _globalSize = useGlobalSize();
-    const _size = computed(() => {
-      var _a;
-      return props.small ? "small" : (_a = props.size) != null ? _a : _globalSize.value;
-    });
-    useDeprecated({
-      from: "small",
-      replacement: "size",
-      version: "3.0.0",
-      scope: "el-pagination",
-      ref: "https://element-plus.org/zh-CN/component/pagination.html"
-    }, computed(() => !!props.small));
-    const hasCurrentPageListener = "onUpdate:currentPage" in vnodeProps || "onUpdate:current-page" in vnodeProps || "onCurrentChange" in vnodeProps;
-    const hasPageSizeListener = "onUpdate:pageSize" in vnodeProps || "onUpdate:page-size" in vnodeProps || "onSizeChange" in vnodeProps;
-    const assertValidUsage = computed(() => {
-      if (isAbsent(props.total) && isAbsent(props.pageCount))
-        return false;
-      if (!isAbsent(props.currentPage) && !hasCurrentPageListener)
-        return false;
-      if (props.layout.includes("sizes")) {
-        if (!isAbsent(props.pageCount)) {
-          if (!hasPageSizeListener)
-            return false;
-        } else if (!isAbsent(props.total)) {
-          if (!isAbsent(props.pageSize)) {
-            if (!hasPageSizeListener) {
-              return false;
-            }
-          }
-        }
-      }
-      return true;
-    });
-    const innerPageSize = ref(isAbsent(props.defaultPageSize) ? 10 : props.defaultPageSize);
-    const innerCurrentPage = ref(isAbsent(props.defaultCurrentPage) ? 1 : props.defaultCurrentPage);
-    const pageSizeBridge = computed({
-      get() {
-        return isAbsent(props.pageSize) ? innerPageSize.value : props.pageSize;
-      },
-      set(v) {
-        if (isAbsent(props.pageSize)) {
-          innerPageSize.value = v;
-        }
-        if (hasPageSizeListener) {
-          emit("update:page-size", v);
-          emit("size-change", v);
-        }
-      }
-    });
-    const pageCountBridge = computed(() => {
-      let pageCount = 0;
-      if (!isAbsent(props.pageCount)) {
-        pageCount = props.pageCount;
-      } else if (!isAbsent(props.total)) {
-        pageCount = Math.max(1, Math.ceil(props.total / pageSizeBridge.value));
-      }
-      return pageCount;
-    });
-    const currentPageBridge = computed({
-      get() {
-        return isAbsent(props.currentPage) ? innerCurrentPage.value : props.currentPage;
-      },
-      set(v) {
-        let newCurrentPage = v;
-        if (v < 1) {
-          newCurrentPage = 1;
-        } else if (v > pageCountBridge.value) {
-          newCurrentPage = pageCountBridge.value;
-        }
-        if (isAbsent(props.currentPage)) {
-          innerCurrentPage.value = newCurrentPage;
-        }
-        if (hasCurrentPageListener) {
-          emit("update:current-page", newCurrentPage);
-          emit("current-change", newCurrentPage);
-        }
-      }
-    });
-    watch(pageCountBridge, (val) => {
-      if (currentPageBridge.value > val)
-        currentPageBridge.value = val;
-    });
-    watch([currentPageBridge, pageSizeBridge], (value) => {
-      emit(CHANGE_EVENT, ...value);
-    }, { flush: "post" });
-    function handleCurrentChange(val) {
-      currentPageBridge.value = val;
-    }
-    function handleSizeChange(val) {
-      pageSizeBridge.value = val;
-      const newPageCount = pageCountBridge.value;
-      if (currentPageBridge.value > newPageCount) {
-        currentPageBridge.value = newPageCount;
-      }
-    }
-    function prev() {
-      if (props.disabled)
-        return;
-      currentPageBridge.value -= 1;
-      emit("prev-click", currentPageBridge.value);
-    }
-    function next() {
-      if (props.disabled)
-        return;
-      currentPageBridge.value += 1;
-      emit("next-click", currentPageBridge.value);
-    }
-    function addClass(element, cls) {
-      if (element) {
-        if (!element.props) {
-          element.props = {};
-        }
-        element.props.class = [element.props.class, cls].join(" ");
-      }
-    }
-    provide(elPaginationKey, {
-      pageCount: pageCountBridge,
-      disabled: computed(() => props.disabled),
-      currentPage: currentPageBridge,
-      changeEvent: handleCurrentChange,
-      handleSizeChange
-    });
-    return () => {
-      var _a, _b;
-      if (!assertValidUsage.value) {
-        debugWarn(componentName, t("el.pagination.deprecationWarning"));
-        return null;
-      }
-      if (!props.layout)
-        return null;
-      if (props.hideOnSinglePage && pageCountBridge.value <= 1)
-        return null;
-      const rootChildren = [];
-      const rightWrapperChildren = [];
-      const rightWrapperRoot = h$1("div", { class: ns.e("rightwrapper") }, rightWrapperChildren);
-      const TEMPLATE_MAP = {
-        prev: h$1(Prev, {
-          disabled: props.disabled,
-          currentPage: currentPageBridge.value,
-          prevText: props.prevText,
-          prevIcon: props.prevIcon,
-          onClick: prev
-        }),
-        jumper: h$1(Jumper, {
-          size: _size.value
-        }),
-        pager: h$1(Pager, {
-          currentPage: currentPageBridge.value,
-          pageCount: pageCountBridge.value,
-          pagerCount: props.pagerCount,
-          onChange: handleCurrentChange,
-          disabled: props.disabled
-        }),
-        next: h$1(Next, {
-          disabled: props.disabled,
-          currentPage: currentPageBridge.value,
-          pageCount: pageCountBridge.value,
-          nextText: props.nextText,
-          nextIcon: props.nextIcon,
-          onClick: next
-        }),
-        sizes: h$1(Sizes, {
-          pageSize: pageSizeBridge.value,
-          pageSizes: props.pageSizes,
-          popperClass: props.popperClass,
-          popperStyle: props.popperStyle,
-          disabled: props.disabled,
-          teleported: props.teleported,
-          size: _size.value,
-          appendSizeTo: props.appendSizeTo
-        }),
-        slot: (_b = (_a = slots == null ? void 0 : slots.default) == null ? void 0 : _a.call(slots)) != null ? _b : null,
-        total: h$1(Total, { total: isAbsent(props.total) ? 0 : props.total })
-      };
-      const components = props.layout.split(",").map((item) => item.trim());
-      let haveRightWrapper = false;
-      components.forEach((c) => {
-        if (c === "->") {
-          haveRightWrapper = true;
-          return;
-        }
-        if (!haveRightWrapper) {
-          rootChildren.push(TEMPLATE_MAP[c]);
-        } else {
-          rightWrapperChildren.push(TEMPLATE_MAP[c]);
-        }
-      });
-      addClass(rootChildren[0], ns.is("first"));
-      addClass(rootChildren[rootChildren.length - 1], ns.is("last"));
-      if (haveRightWrapper && rightWrapperChildren.length > 0) {
-        addClass(rightWrapperChildren[0], ns.is("first"));
-        addClass(rightWrapperChildren[rightWrapperChildren.length - 1], ns.is("last"));
-        rootChildren.push(rightWrapperRoot);
-      }
-      return h$1("div", {
-        class: [
-          ns.b(),
-          ns.is("background", props.background),
-          ns.m(_size.value)
-        ]
-      }, rootChildren);
-    };
-  }
-});
-
-const ElPagination = withInstall(Pagination);
-
-const popconfirmProps = buildProps({
-  title: String,
-  confirmButtonText: String,
-  cancelButtonText: String,
-  confirmButtonType: {
-    type: String,
-    values: buttonTypes,
-    default: "primary"
-  },
-  cancelButtonType: {
-    type: String,
-    values: buttonTypes,
-    default: "text"
-  },
-  icon: {
-    type: iconPropType,
-    default: () => question_filled_default
-  },
-  iconColor: {
-    type: String,
-    default: "#f90"
-  },
-  hideIcon: Boolean,
-  hideAfter: {
-    type: Number,
-    default: 200
-  },
-  effect: {
-    ...useTooltipContentProps.effect,
-    default: "light"
-  },
-  teleported: useTooltipContentProps.teleported,
-  persistent: useTooltipContentProps.persistent,
-  width: {
-    type: [String, Number],
-    default: 150
-  },
-  virtualTriggering: useTooltipTriggerProps.virtualTriggering,
-  virtualRef: useTooltipTriggerProps.virtualRef
-});
-const popconfirmEmits = {
-  confirm: (e) => e instanceof MouseEvent,
-  cancel: (e) => e instanceof MouseEvent
-};
-
-const __default__$G = defineComponent({
-  name: "ElPopconfirm"
-});
-const _sfc_main$X = /* @__PURE__ */ defineComponent({
-  ...__default__$G,
-  props: popconfirmProps,
-  emits: popconfirmEmits,
-  setup(__props, { expose, emit }) {
-    const props = __props;
-    const { t } = useLocale();
-    const ns = useNamespace("popconfirm");
-    const tooltipRef = ref();
-    const rootRef = ref();
-    const popperRef = computed(() => {
-      var _a;
-      return (_a = unref(tooltipRef)) == null ? void 0 : _a.popperRef;
-    });
-    const showPopper = () => {
-      var _a, _b;
-      (_b = (_a = rootRef.value) == null ? void 0 : _a.focus) == null ? void 0 : _b.call(_a);
-    };
-    const hidePopper = () => {
-      var _a, _b;
-      (_b = (_a = tooltipRef.value) == null ? void 0 : _a.onClose) == null ? void 0 : _b.call(_a);
-    };
-    const style = computed(() => {
-      return {
-        width: addUnit(props.width)
-      };
-    });
-    const confirm = (e) => {
-      emit("confirm", e);
-      hidePopper();
-    };
-    const cancel = (e) => {
-      emit("cancel", e);
-      hidePopper();
-    };
-    const finalConfirmButtonText = computed(() => props.confirmButtonText || t("el.popconfirm.confirmButtonText"));
-    const finalCancelButtonText = computed(() => props.cancelButtonText || t("el.popconfirm.cancelButtonText"));
-    expose({
-      popperRef,
-      hide: hidePopper
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(unref(ElTooltip), mergeProps({
-        ref_key: "tooltipRef",
-        ref: tooltipRef,
-        trigger: "click",
-        effect: _ctx.effect
-      }, _ctx.$attrs, {
-        "popper-class": `${unref(ns).namespace.value}-popover`,
-        "popper-style": unref(style),
-        teleported: _ctx.teleported,
-        "fallback-placements": ["bottom", "top", "right", "left"],
-        "hide-after": _ctx.hideAfter,
-        persistent: _ctx.persistent,
-        loop: "",
-        onShow: showPopper
-      }), {
-        content: withCtx(() => [
-          createElementVNode("div", {
-            ref_key: "rootRef",
-            ref: rootRef,
-            tabindex: "-1",
-            class: normalizeClass(unref(ns).b())
-          }, [
-            createElementVNode("div", {
-              class: normalizeClass(unref(ns).e("main"))
-            }, [
-              !_ctx.hideIcon && _ctx.icon ? (openBlock(), createBlock(unref(ElIcon), {
-                key: 0,
-                class: normalizeClass(unref(ns).e("icon")),
-                style: normalizeStyle({ color: _ctx.iconColor })
-              }, {
-                default: withCtx(() => [
-                  (openBlock(), createBlock(resolveDynamicComponent(_ctx.icon)))
-                ]),
-                _: 1
-              }, 8, ["class", "style"])) : createCommentVNode("v-if", true),
-              createTextVNode(" " + toDisplayString(_ctx.title), 1)
-            ], 2),
-            createElementVNode("div", {
-              class: normalizeClass(unref(ns).e("action"))
-            }, [
-              renderSlot(_ctx.$slots, "actions", {
-                confirm,
-                cancel
-              }, () => [
-                createVNode(unref(ElButton), {
-                  size: "small",
-                  type: _ctx.cancelButtonType === "text" ? "" : _ctx.cancelButtonType,
-                  text: _ctx.cancelButtonType === "text",
-                  onClick: cancel
-                }, {
-                  default: withCtx(() => [
-                    createTextVNode(toDisplayString(unref(finalCancelButtonText)), 1)
-                  ]),
-                  _: 1
-                }, 8, ["type", "text"]),
-                createVNode(unref(ElButton), {
-                  size: "small",
-                  type: _ctx.confirmButtonType === "text" ? "" : _ctx.confirmButtonType,
-                  text: _ctx.confirmButtonType === "text",
-                  onClick: confirm
-                }, {
-                  default: withCtx(() => [
-                    createTextVNode(toDisplayString(unref(finalConfirmButtonText)), 1)
-                  ]),
-                  _: 1
-                }, 8, ["type", "text"])
-              ])
-            ], 2)
-          ], 2)
-        ]),
-        default: withCtx(() => [
-          _ctx.$slots.reference ? renderSlot(_ctx.$slots, "reference", { key: 0 }) : createCommentVNode("v-if", true)
-        ]),
-        _: 3
-      }, 16, ["effect", "popper-class", "popper-style", "teleported", "hide-after", "persistent"]);
-    };
-  }
-});
-var Popconfirm = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__file", "popconfirm.vue"]]);
-
-const ElPopconfirm = withInstall(Popconfirm);
-
-const popoverProps = buildProps({
-  trigger: useTooltipTriggerProps.trigger,
-  triggerKeys: useTooltipTriggerProps.triggerKeys,
-  placement: dropdownProps.placement,
-  disabled: useTooltipTriggerProps.disabled,
-  visible: useTooltipContentProps.visible,
-  transition: useTooltipContentProps.transition,
-  popperOptions: dropdownProps.popperOptions,
-  tabindex: dropdownProps.tabindex,
-  content: useTooltipContentProps.content,
-  popperStyle: useTooltipContentProps.popperStyle,
-  popperClass: useTooltipContentProps.popperClass,
-  enterable: {
-    ...useTooltipContentProps.enterable,
-    default: true
-  },
-  effect: {
-    ...useTooltipContentProps.effect,
-    default: "light"
-  },
-  teleported: useTooltipContentProps.teleported,
-  appendTo: useTooltipContentProps.appendTo,
-  zIndex: useTooltipContentProps.zIndex,
-  modal: useTooltipContentProps.modal,
-  modalClass: useTooltipContentProps.modalClass,
-  closeOnClickModal: useTooltipContentProps.closeOnClickModal,
-  title: String,
-  width: {
-    type: [String, Number],
-    default: 150
-  },
-  offset: {
-    type: Number,
-    default: 4
-  },
-  showAfter: {
-    type: Number,
-    default: 0
-  },
-  hideAfter: {
-    type: Number,
-    default: 200
-  },
-  autoClose: {
-    type: Number,
-    default: 0
-  },
-  showArrow: Boolean,
-  persistent: {
-    type: Boolean,
-    default: true
-  },
-  "onUpdate:visible": {
-    type: Function
-  }
-});
-const popoverEmits = {
-  "update:visible": (value) => isBoolean(value),
-  "before-enter": () => true,
-  "before-leave": () => true,
-  "after-enter": () => true,
-  "after-leave": () => true
-};
-
-const updateEventKeyRaw = `onUpdate:visible`;
-const __default__$F = defineComponent({
-  name: "ElPopover"
-});
-const _sfc_main$W = /* @__PURE__ */ defineComponent({
-  ...__default__$F,
-  props: popoverProps,
-  emits: popoverEmits,
-  setup(__props, { expose, emit }) {
-    const props = __props;
-    const onUpdateVisible = computed(() => {
-      return props[updateEventKeyRaw];
-    });
-    const ns = useNamespace("popover");
-    const tooltipRef = ref();
-    const popperRef = computed(() => {
-      var _a;
-      return (_a = unref(tooltipRef)) == null ? void 0 : _a.popperRef;
-    });
-    const style = computed(() => {
-      return [
-        {
-          width: addUnit(props.width)
-        },
-        props.popperStyle
-      ];
-    });
-    const kls = computed(() => {
-      return [ns.b(), props.popperClass, { [ns.m("plain")]: !!props.content }];
-    });
-    const gpuAcceleration = computed(() => {
-      return props.transition === `${ns.namespace.value}-fade-in-linear`;
-    });
-    const show = () => {
-      var _a;
-      (_a = tooltipRef.value) == null ? void 0 : _a.onOpen();
-    };
-    const hide = () => {
-      var _a;
-      (_a = tooltipRef.value) == null ? void 0 : _a.hide();
-    };
-    const beforeEnter = () => {
-      emit("before-enter");
-    };
-    const beforeLeave = () => {
-      emit("before-leave");
-    };
-    const afterEnter = () => {
-      emit("after-enter");
-    };
-    const afterLeave = () => {
-      emit("update:visible", false);
-      emit("after-leave");
-    };
-    expose({
-      popperRef,
-      show,
-      hide
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createBlock(unref(ElTooltip), mergeProps({
-        ref_key: "tooltipRef",
-        ref: tooltipRef
-      }, _ctx.$attrs, {
-        trigger: _ctx.trigger,
-        "trigger-keys": _ctx.triggerKeys,
-        placement: _ctx.placement,
-        disabled: _ctx.disabled,
-        visible: _ctx.visible,
-        transition: _ctx.transition,
-        "popper-options": _ctx.popperOptions,
-        tabindex: _ctx.tabindex,
-        content: _ctx.content,
-        offset: _ctx.offset,
-        "show-after": _ctx.showAfter,
-        "hide-after": _ctx.hideAfter,
-        "auto-close": _ctx.autoClose,
-        "show-arrow": _ctx.showArrow,
-        "aria-label": _ctx.title,
-        effect: _ctx.effect,
-        enterable: _ctx.enterable,
-        "popper-class": unref(kls),
-        "popper-style": unref(style),
-        teleported: _ctx.teleported,
-        "append-to": _ctx.appendTo,
-        persistent: _ctx.persistent,
-        "gpu-acceleration": unref(gpuAcceleration),
-        "z-index": _ctx.zIndex,
-        modal: _ctx.modal,
-        "modal-class": _ctx.modalClass,
-        "close-on-click-modal": _ctx.closeOnClickModal,
-        "onUpdate:visible": unref(onUpdateVisible),
-        onBeforeShow: beforeEnter,
-        onBeforeHide: beforeLeave,
-        onShow: afterEnter,
-        onHide: afterLeave
-      }), {
-        content: withCtx(() => [
-          _ctx.title ? (openBlock(), createElementBlock("div", {
-            key: 0,
-            class: normalizeClass(unref(ns).e("title")),
-            role: "title"
-          }, toDisplayString(_ctx.title), 3)) : createCommentVNode("v-if", true),
-          renderSlot(_ctx.$slots, "default", {}, () => [
-            createTextVNode(toDisplayString(_ctx.content), 1)
-          ])
-        ]),
-        default: withCtx(() => [
-          _ctx.$slots.reference ? renderSlot(_ctx.$slots, "reference", { key: 0 }) : createCommentVNode("v-if", true)
-        ]),
-        _: 3
-      }, 16, ["trigger", "trigger-keys", "placement", "disabled", "visible", "transition", "popper-options", "tabindex", "content", "offset", "show-after", "hide-after", "auto-close", "show-arrow", "aria-label", "effect", "enterable", "popper-class", "popper-style", "teleported", "append-to", "persistent", "gpu-acceleration", "z-index", "modal", "modal-class", "close-on-click-modal", "onUpdate:visible"]);
-    };
-  }
-});
-var Popover = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["__file", "popover.vue"]]);
-
-const attachEvents = (el, binding) => {
-  const popperComponent = binding.arg || binding.value;
-  const popover = popperComponent == null ? void 0 : popperComponent.popperRef;
-  if (popover) {
-    popover.triggerRef = el;
-  }
-};
-var PopoverDirective = {
-  mounted(el, binding) {
-    attachEvents(el, binding);
-  },
-  updated(el, binding) {
-    attachEvents(el, binding);
-  }
-};
-const VPopover = "popover";
-
-const ElPopoverDirective = withInstallDirective(PopoverDirective, VPopover);
-const ElPopover = withInstall(Popover, {
-  directive: ElPopoverDirective
-});
-
-const progressProps = buildProps({
-  type: {
-    type: String,
-    default: "line",
-    values: ["line", "circle", "dashboard"]
-  },
-  percentage: {
-    type: Number,
-    default: 0,
-    validator: (val) => val >= 0 && val <= 100
-  },
-  status: {
-    type: String,
-    default: "",
-    values: ["", "success", "exception", "warning"]
-  },
-  indeterminate: Boolean,
-  duration: {
-    type: Number,
-    default: 3
-  },
-  strokeWidth: {
-    type: Number,
-    default: 6
-  },
-  strokeLinecap: {
-    type: definePropType(String),
-    default: "round"
-  },
-  textInside: Boolean,
-  width: {
-    type: Number,
-    default: 126
-  },
-  showText: {
-    type: Boolean,
-    default: true
-  },
-  color: {
-    type: definePropType([
-      String,
-      Array,
-      Function
-    ]),
-    default: ""
-  },
-  striped: Boolean,
-  stripedFlow: Boolean,
-  format: {
-    type: definePropType(Function),
-    default: (percentage) => `${percentage}%`
-  }
-});
-
-const __default__$E = defineComponent({
-  name: "ElProgress"
-});
-const _sfc_main$V = /* @__PURE__ */ defineComponent({
-  ...__default__$E,
-  props: progressProps,
-  setup(__props) {
-    const props = __props;
-    const STATUS_COLOR_MAP = {
-      success: "#13ce66",
-      exception: "#ff4949",
-      warning: "#e6a23c",
-      default: "#20a0ff"
-    };
-    const ns = useNamespace("progress");
-    const barStyle = computed(() => {
-      const barStyle2 = {
-        width: `${props.percentage}%`,
-        animationDuration: `${props.duration}s`
-      };
-      const color = getCurrentColor(props.percentage);
-      if (color.includes("gradient")) {
-        barStyle2.background = color;
-      } else {
-        barStyle2.backgroundColor = color;
-      }
-      return barStyle2;
-    });
-    const relativeStrokeWidth = computed(() => (props.strokeWidth / props.width * 100).toFixed(1));
-    const radius = computed(() => {
-      if (["circle", "dashboard"].includes(props.type)) {
-        return Number.parseInt(`${50 - Number.parseFloat(relativeStrokeWidth.value) / 2}`, 10);
-      }
-      return 0;
-    });
-    const trackPath = computed(() => {
-      const r = radius.value;
-      const isDashboard = props.type === "dashboard";
-      return `
-          M 50 50
-          m 0 ${isDashboard ? "" : "-"}${r}
-          a ${r} ${r} 0 1 1 0 ${isDashboard ? "-" : ""}${r * 2}
-          a ${r} ${r} 0 1 1 0 ${isDashboard ? "" : "-"}${r * 2}
-          `;
-    });
-    const perimeter = computed(() => 2 * Math.PI * radius.value);
-    const rate = computed(() => props.type === "dashboard" ? 0.75 : 1);
-    const strokeDashoffset = computed(() => {
-      const offset = -1 * perimeter.value * (1 - rate.value) / 2;
-      return `${offset}px`;
-    });
-    const trailPathStyle = computed(() => ({
-      strokeDasharray: `${perimeter.value * rate.value}px, ${perimeter.value}px`,
-      strokeDashoffset: strokeDashoffset.value
-    }));
-    const circlePathStyle = computed(() => ({
-      strokeDasharray: `${perimeter.value * rate.value * (props.percentage / 100)}px, ${perimeter.value}px`,
-      strokeDashoffset: strokeDashoffset.value,
-      transition: "stroke-dasharray 0.6s ease 0s, stroke 0.6s ease, opacity ease 0.6s"
-    }));
-    const stroke = computed(() => {
-      let ret;
-      if (props.color) {
-        ret = getCurrentColor(props.percentage);
-      } else {
-        ret = STATUS_COLOR_MAP[props.status] || STATUS_COLOR_MAP.default;
-      }
-      return ret;
-    });
-    const statusIcon = computed(() => {
-      if (props.status === "warning") {
-        return warning_filled_default;
-      }
-      if (props.type === "line") {
-        return props.status === "success" ? circle_check_default : circle_close_default;
-      } else {
-        return props.status === "success" ? check_default : close_default;
-      }
-    });
-    const progressTextSize = computed(() => {
-      return props.type === "line" ? 12 + props.strokeWidth * 0.4 : props.width * 0.111111 + 2;
-    });
-    const content = computed(() => props.format(props.percentage));
-    function getColors(color) {
-      const span = 100 / color.length;
-      const seriesColors = color.map((seriesColor, index) => {
-        if (isString$1(seriesColor)) {
-          return {
-            color: seriesColor,
-            percentage: (index + 1) * span
-          };
-        }
-        return seriesColor;
-      });
-      return seriesColors.sort((a, b) => a.percentage - b.percentage);
-    }
-    const getCurrentColor = (percentage) => {
-      var _a;
-      const { color } = props;
-      if (isFunction$1(color)) {
-        return color(percentage);
-      } else if (isString$1(color)) {
-        return color;
-      } else {
-        const colors = getColors(color);
-        for (const color2 of colors) {
-          if (color2.percentage > percentage)
-            return color2.color;
-        }
-        return (_a = colors[colors.length - 1]) == null ? void 0 : _a.color;
-      }
-    };
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        class: normalizeClass([
-          unref(ns).b(),
-          unref(ns).m(_ctx.type),
-          unref(ns).is(_ctx.status),
-          {
-            [unref(ns).m("without-text")]: !_ctx.showText,
-            [unref(ns).m("text-inside")]: _ctx.textInside
-          }
-        ]),
-        role: "progressbar",
-        "aria-valuenow": _ctx.percentage,
-        "aria-valuemin": "0",
-        "aria-valuemax": "100"
-      }, [
-        _ctx.type === "line" ? (openBlock(), createElementBlock("div", {
-          key: 0,
-          class: normalizeClass(unref(ns).b("bar"))
-        }, [
-          createElementVNode("div", {
-            class: normalizeClass(unref(ns).be("bar", "outer")),
-            style: normalizeStyle({ height: `${_ctx.strokeWidth}px` })
-          }, [
-            createElementVNode("div", {
-              class: normalizeClass([
-                unref(ns).be("bar", "inner"),
-                { [unref(ns).bem("bar", "inner", "indeterminate")]: _ctx.indeterminate },
-                { [unref(ns).bem("bar", "inner", "striped")]: _ctx.striped },
-                { [unref(ns).bem("bar", "inner", "striped-flow")]: _ctx.stripedFlow }
-              ]),
-              style: normalizeStyle(unref(barStyle))
-            }, [
-              (_ctx.showText || _ctx.$slots.default) && _ctx.textInside ? (openBlock(), createElementBlock("div", {
-                key: 0,
-                class: normalizeClass(unref(ns).be("bar", "innerText"))
-              }, [
-                renderSlot(_ctx.$slots, "default", { percentage: _ctx.percentage }, () => [
-                  createElementVNode("span", null, toDisplayString(unref(content)), 1)
-                ])
-              ], 2)) : createCommentVNode("v-if", true)
-            ], 6)
-          ], 6)
-        ], 2)) : (openBlock(), createElementBlock("div", {
-          key: 1,
-          class: normalizeClass(unref(ns).b("circle")),
-          style: normalizeStyle({ height: `${_ctx.width}px`, width: `${_ctx.width}px` })
-        }, [
-          (openBlock(), createElementBlock("svg", { viewBox: "0 0 100 100" }, [
-            createElementVNode("path", {
-              class: normalizeClass(unref(ns).be("circle", "track")),
-              d: unref(trackPath),
-              stroke: `var(${unref(ns).cssVarName("fill-color-light")}, #e5e9f2)`,
-              "stroke-linecap": _ctx.strokeLinecap,
-              "stroke-width": unref(relativeStrokeWidth),
-              fill: "none",
-              style: normalizeStyle(unref(trailPathStyle))
-            }, null, 14, ["d", "stroke", "stroke-linecap", "stroke-width"]),
-            createElementVNode("path", {
-              class: normalizeClass(unref(ns).be("circle", "path")),
-              d: unref(trackPath),
-              stroke: unref(stroke),
-              fill: "none",
-              opacity: _ctx.percentage ? 1 : 0,
-              "stroke-linecap": _ctx.strokeLinecap,
-              "stroke-width": unref(relativeStrokeWidth),
-              style: normalizeStyle(unref(circlePathStyle))
-            }, null, 14, ["d", "stroke", "opacity", "stroke-linecap", "stroke-width"])
-          ]))
-        ], 6)),
-        (_ctx.showText || _ctx.$slots.default) && !_ctx.textInside ? (openBlock(), createElementBlock("div", {
-          key: 2,
-          class: normalizeClass(unref(ns).e("text")),
-          style: normalizeStyle({ fontSize: `${unref(progressTextSize)}px` })
-        }, [
-          renderSlot(_ctx.$slots, "default", { percentage: _ctx.percentage }, () => [
-            !_ctx.status ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(unref(content)), 1)) : (openBlock(), createBlock(unref(ElIcon), { key: 1 }, {
-              default: withCtx(() => [
-                (openBlock(), createBlock(resolveDynamicComponent(unref(statusIcon))))
-              ]),
-              _: 1
-            }))
-          ])
-        ], 6)) : createCommentVNode("v-if", true)
-      ], 10, ["aria-valuenow"]);
-    };
-  }
-});
-var Progress = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__file", "progress.vue"]]);
-
-const ElProgress = withInstall(Progress);
-
-const rateProps = buildProps({
-  modelValue: {
-    type: Number,
-    default: 0
-  },
-  id: {
-    type: String,
-    default: void 0
-  },
-  lowThreshold: {
-    type: Number,
-    default: 2
-  },
-  highThreshold: {
-    type: Number,
-    default: 4
-  },
-  max: {
-    type: Number,
-    default: 5
-  },
-  colors: {
-    type: definePropType([Array, Object]),
-    default: () => mutable(["", "", ""])
-  },
-  voidColor: {
-    type: String,
-    default: ""
-  },
-  disabledVoidColor: {
-    type: String,
-    default: ""
-  },
-  icons: {
-    type: definePropType([Array, Object]),
-    default: () => [star_filled_default, star_filled_default, star_filled_default]
-  },
-  voidIcon: {
-    type: iconPropType,
-    default: () => star_default
-  },
-  disabledVoidIcon: {
-    type: iconPropType,
-    default: () => star_filled_default
-  },
-  disabled: Boolean,
-  allowHalf: Boolean,
-  showText: Boolean,
-  showScore: Boolean,
-  textColor: {
-    type: String,
-    default: ""
-  },
-  texts: {
-    type: definePropType(Array),
-    default: () => mutable([
-      "Extremely bad",
-      "Disappointed",
-      "Fair",
-      "Satisfied",
-      "Surprise"
-    ])
-  },
-  scoreTemplate: {
-    type: String,
-    default: "{value}"
-  },
-  size: useSizeProp,
-  clearable: Boolean,
-  ...useAriaProps(["ariaLabel"])
-});
-const rateEmits = {
-  [CHANGE_EVENT]: (value) => isNumber(value),
-  [UPDATE_MODEL_EVENT]: (value) => isNumber(value)
-};
-
-const __default__$D = defineComponent({
-  name: "ElRate"
-});
-const _sfc_main$U = /* @__PURE__ */ defineComponent({
-  ...__default__$D,
-  props: rateProps,
-  emits: rateEmits,
-  setup(__props, { expose, emit }) {
-    const props = __props;
-    function getValueFromMap(value, map) {
-      const isExcludedObject = (val) => isObject$1(val);
-      const matchedKeys = Object.keys(map).map((key) => +key).filter((key) => {
-        const val = map[key];
-        const excluded = isExcludedObject(val) ? val.excluded : false;
-        return excluded ? value < key : value <= key;
-      }).sort((a, b) => a - b);
-      const matchedValue = map[matchedKeys[0]];
-      return isExcludedObject(matchedValue) && matchedValue.value || matchedValue;
-    }
-    const formContext = inject(formContextKey, void 0);
-    const formItemContext = inject(formItemContextKey, void 0);
-    const rateSize = useFormSize();
-    const ns = useNamespace("rate");
-    const { inputId, isLabeledByFormItem } = useFormItemInputId(props, {
-      formItemContext
-    });
-    const currentValue = ref(props.modelValue);
-    const hoverIndex = ref(-1);
-    const pointerAtLeftHalf = ref(true);
-    const iconRefs = ref([]);
-    const iconClientWidths = computed(() => iconRefs.value.map((icon) => icon.$el.clientWidth));
-    const rateClasses = computed(() => [ns.b(), ns.m(rateSize.value)]);
-    const rateDisabled = computed(() => props.disabled || (formContext == null ? void 0 : formContext.disabled));
-    const rateStyles = computed(() => {
-      return ns.cssVarBlock({
-        "void-color": props.voidColor,
-        "disabled-void-color": props.disabledVoidColor,
-        "fill-color": activeColor.value
-      });
-    });
-    const text = computed(() => {
-      let result = "";
-      if (props.showScore) {
-        result = props.scoreTemplate.replace(/\{\s*value\s*\}/, rateDisabled.value ? `${props.modelValue}` : `${currentValue.value}`);
-      } else if (props.showText) {
-        result = props.texts[Math.ceil(currentValue.value) - 1];
-      }
-      return result;
-    });
-    const valueDecimal = computed(() => props.modelValue * 100 - Math.floor(props.modelValue) * 100);
-    const colorMap = computed(() => isArray$1(props.colors) ? {
-      [props.lowThreshold]: props.colors[0],
-      [props.highThreshold]: { value: props.colors[1], excluded: true },
-      [props.max]: props.colors[2]
-    } : props.colors);
-    const activeColor = computed(() => {
-      const color = getValueFromMap(currentValue.value, colorMap.value);
-      return isObject$1(color) ? "" : color;
-    });
-    const decimalStyle = computed(() => {
-      let width = "";
-      if (rateDisabled.value) {
-        width = `${valueDecimal.value}%`;
-      } else if (props.allowHalf) {
-        width = "50%";
-      }
-      return {
-        color: activeColor.value,
-        width
-      };
-    });
-    const componentMap = computed(() => {
-      let icons = isArray$1(props.icons) ? [...props.icons] : { ...props.icons };
-      icons = markRaw(icons);
-      return isArray$1(icons) ? {
-        [props.lowThreshold]: icons[0],
-        [props.highThreshold]: {
-          value: icons[1],
-          excluded: true
-        },
-        [props.max]: icons[2]
-      } : icons;
-    });
-    const decimalIconComponent = computed(() => getValueFromMap(props.modelValue, componentMap.value));
-    const voidComponent = computed(() => rateDisabled.value ? isString$1(props.disabledVoidIcon) ? props.disabledVoidIcon : markRaw(props.disabledVoidIcon) : isString$1(props.voidIcon) ? props.voidIcon : markRaw(props.voidIcon));
-    const activeComponent = computed(() => getValueFromMap(currentValue.value, componentMap.value));
-    function showDecimalIcon(item) {
-      const showWhenDisabled = rateDisabled.value && valueDecimal.value > 0 && item - 1 < props.modelValue && item > props.modelValue;
-      const showWhenAllowHalf = props.allowHalf && pointerAtLeftHalf.value && item - 0.5 <= currentValue.value && item > currentValue.value;
-      return showWhenDisabled || showWhenAllowHalf;
-    }
-    function emitValue(value) {
-      if (props.clearable && value === props.modelValue) {
-        value = 0;
-      }
-      emit(UPDATE_MODEL_EVENT, value);
-      if (props.modelValue !== value) {
-        emit(CHANGE_EVENT, value);
-      }
-    }
-    function selectValue(value) {
-      if (rateDisabled.value) {
-        return;
-      }
-      if (props.allowHalf && pointerAtLeftHalf.value) {
-        emitValue(currentValue.value);
-      } else {
-        emitValue(value);
-      }
-    }
-    function handleKey(e) {
-      if (rateDisabled.value) {
-        return;
-      }
-      const code = getEventCode(e);
-      const step = props.allowHalf ? 0.5 : 1;
-      let _currentValue = currentValue.value;
-      switch (code) {
-        case EVENT_CODE.up:
-        case EVENT_CODE.right:
-          _currentValue += step;
-          break;
-        case EVENT_CODE.left:
-        case EVENT_CODE.down:
-          _currentValue -= step;
-          break;
-      }
-      _currentValue = clamp$1(_currentValue, 0, props.max);
-      if (_currentValue === currentValue.value) {
-        return;
-      }
-      e.stopPropagation();
-      e.preventDefault();
-      emit(UPDATE_MODEL_EVENT, _currentValue);
-      emit(CHANGE_EVENT, _currentValue);
-      return _currentValue;
-    }
-    function setCurrentValue(value, event) {
-      if (rateDisabled.value) {
-        return;
-      }
-      if (props.allowHalf && event) {
-        pointerAtLeftHalf.value = event.offsetX * 2 <= iconClientWidths.value[value - 1];
-        currentValue.value = pointerAtLeftHalf.value ? value - 0.5 : value;
-      } else {
-        currentValue.value = value;
-      }
-      hoverIndex.value = value;
-    }
-    function resetCurrentValue() {
-      if (rateDisabled.value) {
-        return;
-      }
-      if (props.allowHalf) {
-        pointerAtLeftHalf.value = props.modelValue !== Math.floor(props.modelValue);
-      }
-      currentValue.value = props.modelValue;
-      hoverIndex.value = -1;
-    }
-    watch(() => props.modelValue, (val) => {
-      currentValue.value = val;
-      pointerAtLeftHalf.value = props.modelValue !== Math.floor(props.modelValue);
-    });
-    if (!props.modelValue) {
-      emit(UPDATE_MODEL_EVENT, 0);
-    }
-    expose({
-      setCurrentValue,
-      resetCurrentValue
-    });
-    return (_ctx, _cache) => {
-      var _a;
-      return openBlock(), createElementBlock("div", {
-        id: unref(inputId),
-        class: normalizeClass([unref(rateClasses), unref(ns).is("disabled", unref(rateDisabled))]),
-        role: "slider",
-        "aria-label": !unref(isLabeledByFormItem) ? _ctx.ariaLabel || "rating" : void 0,
-        "aria-labelledby": unref(isLabeledByFormItem) ? (_a = unref(formItemContext)) == null ? void 0 : _a.labelId : void 0,
-        "aria-valuenow": currentValue.value,
-        "aria-valuetext": unref(text) || void 0,
-        "aria-valuemin": "0",
-        "aria-valuemax": _ctx.max,
-        tabindex: "0",
-        style: normalizeStyle(unref(rateStyles)),
-        onKeydown: handleKey
-      }, [
-        (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.max, (item, key) => {
-          return openBlock(), createElementBlock("span", {
-            key,
-            class: normalizeClass(unref(ns).e("item")),
-            onMousemove: ($event) => setCurrentValue(item, $event),
-            onMouseleave: resetCurrentValue,
-            onClick: ($event) => selectValue(item)
-          }, [
-            createVNode(unref(ElIcon), {
-              ref_for: true,
-              ref_key: "iconRefs",
-              ref: iconRefs,
-              class: normalizeClass([
-                unref(ns).e("icon"),
-                { hover: hoverIndex.value === item },
-                unref(ns).is("active", item <= currentValue.value),
-                unref(ns).is("focus-visible", item === Math.ceil(currentValue.value || 1))
-              ])
-            }, {
-              default: withCtx(() => [
-                withDirectives((openBlock(), createBlock(resolveDynamicComponent(unref(activeComponent)), null, null, 512)), [
-                  [vShow, !showDecimalIcon(item) && item <= currentValue.value]
-                ]),
-                withDirectives((openBlock(), createBlock(resolveDynamicComponent(unref(voidComponent)), null, null, 512)), [
-                  [vShow, !showDecimalIcon(item) && item > currentValue.value]
-                ]),
-                withDirectives((openBlock(), createBlock(resolveDynamicComponent(unref(voidComponent)), {
-                  class: normalizeClass([unref(ns).em("decimal", "box")])
-                }, null, 8, ["class"])), [
-                  [vShow, showDecimalIcon(item)]
-                ]),
-                withDirectives(createVNode(unref(ElIcon), {
-                  style: normalizeStyle(unref(decimalStyle)),
-                  class: normalizeClass([unref(ns).e("icon"), unref(ns).e("decimal")])
-                }, {
-                  default: withCtx(() => [
-                    (openBlock(), createBlock(resolveDynamicComponent(unref(decimalIconComponent))))
-                  ]),
-                  _: 2
-                }, 1032, ["style", "class"]), [
-                  [vShow, showDecimalIcon(item)]
-                ])
-              ]),
-              _: 2
-            }, 1032, ["class"])
-          ], 42, ["onMousemove", "onClick"]);
-        }), 128)),
-        _ctx.showText || _ctx.showScore ? (openBlock(), createElementBlock("span", {
-          key: 0,
-          class: normalizeClass(unref(ns).e("text")),
-          style: normalizeStyle({ color: _ctx.textColor })
-        }, toDisplayString(unref(text)), 7)) : createCommentVNode("v-if", true)
-      ], 46, ["id", "aria-label", "aria-labelledby", "aria-valuenow", "aria-valuetext", "aria-valuemax"]);
-    };
-  }
-});
-var Rate = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__file", "rate.vue"]]);
-
-const ElRate = withInstall(Rate);
-
-const IconMap = {
-  primary: "icon-primary",
-  success: "icon-success",
-  warning: "icon-warning",
-  error: "icon-error",
-  info: "icon-info"
-};
-const IconComponentMap = {
-  [IconMap.primary]: info_filled_default,
-  [IconMap.success]: circle_check_filled_default,
-  [IconMap.warning]: warning_filled_default,
-  [IconMap.error]: circle_close_filled_default,
-  [IconMap.info]: info_filled_default
-};
-const resultProps = buildProps({
-  title: {
-    type: String,
-    default: ""
-  },
-  subTitle: {
-    type: String,
-    default: ""
-  },
-  icon: {
-    type: String,
-    values: ["primary", "success", "warning", "info", "error"],
-    default: "info"
-  }
-});
-
-const __default__$C = defineComponent({
-  name: "ElResult"
-});
-const _sfc_main$T = /* @__PURE__ */ defineComponent({
-  ...__default__$C,
-  props: resultProps,
-  setup(__props) {
-    const props = __props;
-    const ns = useNamespace("result");
-    const resultIcon = computed(() => {
-      const icon = props.icon;
-      const iconClass = icon && IconMap[icon] ? IconMap[icon] : "icon-info";
-      const iconComponent = IconComponentMap[iconClass] || IconComponentMap["icon-info"];
-      return {
-        class: iconClass,
-        component: iconComponent
-      };
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        class: normalizeClass(unref(ns).b())
-      }, [
-        createElementVNode("div", {
-          class: normalizeClass(unref(ns).e("icon"))
-        }, [
-          renderSlot(_ctx.$slots, "icon", {}, () => [
-            unref(resultIcon).component ? (openBlock(), createBlock(resolveDynamicComponent(unref(resultIcon).component), {
-              key: 0,
-              class: normalizeClass(unref(resultIcon).class)
-            }, null, 8, ["class"])) : createCommentVNode("v-if", true)
-          ])
-        ], 2),
-        _ctx.title || _ctx.$slots.title ? (openBlock(), createElementBlock("div", {
-          key: 0,
-          class: normalizeClass(unref(ns).e("title"))
-        }, [
-          renderSlot(_ctx.$slots, "title", {}, () => [
-            createElementVNode("p", null, toDisplayString(_ctx.title), 1)
-          ])
-        ], 2)) : createCommentVNode("v-if", true),
-        _ctx.subTitle || _ctx.$slots["sub-title"] ? (openBlock(), createElementBlock("div", {
-          key: 1,
-          class: normalizeClass(unref(ns).e("subtitle"))
-        }, [
-          renderSlot(_ctx.$slots, "sub-title", {}, () => [
-            createElementVNode("p", null, toDisplayString(_ctx.subTitle), 1)
-          ])
-        ], 2)) : createCommentVNode("v-if", true),
-        _ctx.$slots.extra ? (openBlock(), createElementBlock("div", {
-          key: 2,
-          class: normalizeClass(unref(ns).e("extra"))
-        }, [
-          renderSlot(_ctx.$slots, "extra")
-        ], 2)) : createCommentVNode("v-if", true)
-      ], 2);
-    };
-  }
-});
-var Result = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__file", "result.vue"]]);
-
-const ElResult = withInstall(Result);
-
 var safeIsNaN = Number.isNaN || function ponyfill(value) {
   return typeof value === "number" && value !== value;
 };
@@ -45886,7 +39289,7 @@ const DynamicSizeGrid = createGrid$1({
 });
 var DynamicSizeGrid$1 = DynamicSizeGrid;
 
-const _sfc_main$S = defineComponent({
+const _sfc_main$1d = defineComponent({
   components: {
     ElDivider
   },
@@ -45919,7 +39322,7 @@ const _sfc_main$S = defineComponent({
     };
   }
 });
-function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_divider = resolveComponent("el-divider");
   return openBlock(), createElementBlock("div", {
     class: normalizeClass([
@@ -45938,7 +39341,7 @@ function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     }, toDisplayString(_ctx.item.label), 3)
   ], 6);
 }
-var GroupItem = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$a], ["__file", "group-item.vue"]]);
+var GroupItem = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$e], ["__file", "group-item.vue"]]);
 
 const getCell = function(event) {
   var _a;
@@ -46401,7 +39804,7 @@ const ensurePosition = (style, key) => {
   }
 };
 
-function useOption(props, { emit }) {
+function useOption$1(props, { emit }) {
   return {
     hoverItem: () => {
       emit("hover", props.disabled ? -1 : props.index);
@@ -46411,6 +39814,30 @@ function useOption(props, { emit }) {
         emit("select", props.item, props.index);
       }
     }
+  };
+}
+
+const defaultProps$5 = {
+  label: "label",
+  value: "value",
+  disabled: "disabled",
+  options: "options",
+  tip: "tip"
+};
+function useProps(props) {
+  const aliasProps = computed(() => ({ ...defaultProps$5, ...props.props }));
+  const getLabel = (option) => get(option, aliasProps.value.label);
+  const getValue = (option) => get(option, aliasProps.value.value);
+  const getDisabled = (option) => get(option, aliasProps.value.disabled);
+  const getOptions = (option) => get(option, aliasProps.value.options);
+  const getTip = (option) => get(option, aliasProps.value.tip);
+  return {
+    aliasProps,
+    getLabel,
+    getValue,
+    getDisabled,
+    getOptions,
+    getTip
   };
 }
 
@@ -46634,7 +40061,7 @@ const hasMeaningfulSlotContent = (content) => {
   }
   return true;
 };
-const _sfc_main$R = defineComponent({
+const _sfc_main$1c = defineComponent({
   components: { ElCheckbox, ElRadio, ElTooltip },
   props: optionV2Props,
   emits: optionV2Emits,
@@ -46643,7 +40070,7 @@ const _sfc_main$R = defineComponent({
     const isTextOverflowing = ref(false);
     const ns = useNamespace("select");
     const multiple = computed(() => select.props.multiple);
-    const { hoverItem, selectOptionClick } = useOption(props, { emit });
+    const { hoverItem, selectOptionClick } = useOption$1(props, { emit });
     const { getLabel, getTip } = useProps(select.props);
     const currentTip = computed(() => getTip(props.item));
     const hasDefaultSlot = computed(() => {
@@ -46697,7 +40124,7 @@ const _sfc_main$R = defineComponent({
     };
   }
 });
-function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_radio = resolveComponent("el-radio");
   const _component_el_checkbox = resolveComponent("el-checkbox");
   const _component_el_tooltip = resolveComponent("el-tooltip");
@@ -46779,7 +40206,7 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 46, ["id", "aria-selected", "aria-disabled", "onMousemove", "onClick", "onMouseenter"]);
 }
-var OptionItem = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$9], ["__file", "option-item.vue"]]);
+var OptionItem = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$d], ["__file", "option-item.vue"]]);
 
 const props = {
   loading: Boolean,
@@ -46792,7 +40219,7 @@ const props = {
   id: String,
   ariaLabel: String
 };
-var ElSelectMenu = defineComponent({
+var ElSelectMenu$1 = defineComponent({
   name: "ElSelectDropdown",
   props,
   setup(props2, {
@@ -47119,7 +40546,7 @@ function useAllowCreate(props, states) {
   };
 }
 
-const useSelect$1 = (props, emit) => {
+const useSelect$2 = (props, emit) => {
   const { t } = useLocale();
   const nsSelect = useNamespace("select");
   const nsInput = useNamespace("input");
@@ -48034,12 +41461,12 @@ const useSelect$1 = (props, emit) => {
     handleCompositionUpdate
   };
 };
-var useSelect$2 = useSelect$1;
+var useSelect$3 = useSelect$2;
 
-const _sfc_main$Q = defineComponent({
+const _sfc_main$1b = defineComponent({
   name: "ElSelectV2",
   components: {
-    ElSelectMenu,
+    ElSelectMenu: ElSelectMenu$1,
     ElTag,
     ElTooltip,
     ElIcon,
@@ -48057,7 +41484,7 @@ const _sfc_main$Q = defineComponent({
       }
       return multiple ? fallback : rawModelValue;
     });
-    const API = useSelect$2(reactive({
+    const API = useSelect$3(reactive({
       ...toRefs(props),
       modelValue
     }), emit);
@@ -48146,7 +41573,7 @@ const _sfc_main$Q = defineComponent({
     };
   }
 });
-function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
@@ -48598,9 +42025,6594 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
   ]);
 }
-var Select = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$8], ["__file", "select.vue"]]);
+var Select$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$c], ["__file", "select.vue"]]);
 
-const ElSelectV2 = withInstall(Select);
+const ElSelectV2 = withInstall(Select$1);
+
+const inputSelectControlTypes = ["input", "select"];
+const isInputSelectLayout = (value) => isArray$1(value) && value.length === 2 && value.every((item) => inputSelectControlTypes.includes(item));
+const inputSelectProps = buildProps({
+  layout: {
+    type: definePropType(Array),
+    default: () => ["select", "input"],
+    validator: isInputSelectLayout
+  },
+  leftValue: {
+    type: definePropType([
+      Array,
+      String,
+      Number,
+      Boolean,
+      Object
+    ]),
+    default: void 0
+  },
+  rightValue: {
+    type: definePropType([
+      Array,
+      String,
+      Number,
+      Boolean,
+      Object
+    ]),
+    default: void 0
+  },
+  leftProps: {
+    type: definePropType(Object),
+    default: () => ({})
+  },
+  rightProps: {
+    type: definePropType(Object),
+    default: () => ({})
+  },
+  leftDirectives: {
+    type: definePropType(Array),
+    default: () => []
+  },
+  rightDirectives: {
+    type: definePropType(Array),
+    default: () => []
+  }
+});
+const inputSelectEmits = {
+  "update:leftValue": (_value) => true,
+  "update:rightValue": (_value) => true,
+  "left-change": (_value) => true,
+  "right-change": (_value) => true,
+  "left-focus": (event) => event instanceof FocusEvent,
+  "right-focus": (event) => event instanceof FocusEvent,
+  "left-blur": (event) => event instanceof FocusEvent,
+  "right-blur": (event) => event instanceof FocusEvent,
+  "left-clear": () => true,
+  "right-clear": () => true,
+  "left-visible-change": (visible) => typeof visible === "boolean",
+  "right-visible-change": (visible) => typeof visible === "boolean"
+};
+
+const _sfc_main$1a = defineComponent({
+  name: "ElInputSelect",
+  inheritAttrs: false,
+  props: inputSelectProps,
+  emits: inputSelectEmits,
+  setup(props, { attrs, slots, emit, expose }) {
+    const ns = useNamespace("input-select");
+    const leftRef = ref();
+    const rightRef = ref();
+    const getControlSlots = (side) => {
+      const prefix = `${side}-`;
+      return Object.entries(slots).reduce((controlSlots, [name, slot]) => {
+        if (name.startsWith(prefix) && slot) {
+          controlSlots[name.slice(prefix.length)] = slot;
+        }
+        return controlSlots;
+      }, {});
+    };
+    const updateValue = (side, value) => {
+      if (side === "left")
+        emit("update:leftValue", value);
+      else
+        emit("update:rightValue", value);
+    };
+    const handleChange = (side, value) => {
+      if (side === "left")
+        emit("left-change", value);
+      else
+        emit("right-change", value);
+    };
+    const handleFocus = (side, event) => {
+      if (side === "left")
+        emit("left-focus", event);
+      else
+        emit("right-focus", event);
+    };
+    const handleBlur = (side, event) => {
+      if (side === "left")
+        emit("left-blur", event);
+      else
+        emit("right-blur", event);
+    };
+    const handleClear = (side) => {
+      if (side === "left")
+        emit("left-clear");
+      else
+        emit("right-clear");
+    };
+    const handleVisibleChange = (side, visible) => {
+      if (side === "left")
+        emit("left-visible-change", visible);
+      else
+        emit("right-visible-change", visible);
+    };
+    const renderControl = (side, control) => {
+      const isLeft = side === "left";
+      const controlProps = isLeft ? props.leftProps : props.rightProps;
+      const modelValue = isLeft ? props.leftValue : props.rightValue;
+      const component = control === "input" ? ElInput : ElSelectV2;
+      const controlRef = isLeft ? leftRef : rightRef;
+      const listeners = control === "select" ? {
+        onVisibleChange: (visible) => handleVisibleChange(side, visible)
+      } : {};
+      const controlVNode = withDirectives(createVNode(component, {
+        ...control === "select" ? { options: [] } : {},
+        ...controlProps,
+        ...listeners,
+        key: `${side}-${control}`,
+        ref: controlRef,
+        class: [
+          control === "input" && ns.e("control"),
+          ns.is(side),
+          controlProps == null ? void 0 : controlProps.class
+        ],
+        modelValue,
+        "onUpdate:modelValue": (value) => updateValue(side, value),
+        onChange: (value) => handleChange(side, value),
+        onFocus: (event) => handleFocus(side, event),
+        onBlur: (event) => handleBlur(side, event),
+        onClear: () => handleClear(side)
+      }, getControlSlots(side)), isLeft ? props.leftDirectives : props.rightDirectives);
+      return control === "select" ? h$1("div", {
+        key: `${side}-${control}`,
+        class: [ns.e("control"), ns.is(side)]
+      }, [controlVNode]) : controlVNode;
+    };
+    const focus = (side = "left") => {
+      var _a, _b;
+      const controlRef = side === "left" ? leftRef : rightRef;
+      (_b = (_a = controlRef.value) == null ? void 0 : _a.focus) == null ? void 0 : _b.call(_a);
+    };
+    const blur = (side = "left") => {
+      var _a, _b;
+      const controlRef = side === "left" ? leftRef : rightRef;
+      (_b = (_a = controlRef.value) == null ? void 0 : _a.blur) == null ? void 0 : _b.call(_a);
+    };
+    expose({
+      leftRef,
+      rightRef,
+      focus,
+      blur
+    });
+    return () => {
+      var _a, _b;
+      return h$1("div", {
+        ...attrs,
+        class: [
+          ns.b(),
+          ns.is("expanded", Boolean(((_a = props.leftProps) == null ? void 0 : _a.expand) || ((_b = props.rightProps) == null ? void 0 : _b.expand))),
+          attrs.class
+        ],
+        "data-layout": props.layout.join("-")
+      }, [
+        renderControl("left", props.layout[0]),
+        renderControl("right", props.layout[1])
+      ]);
+    };
+  }
+});
+var InputSelect = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["__file", "input-select.vue"]]);
+
+const ElInputSelect = withInstall(InputSelect);
+
+const inputNumberProps = buildProps({
+  id: {
+    type: String,
+    default: void 0
+  },
+  step: {
+    type: Number,
+    default: 1
+  },
+  stepStrictly: Boolean,
+  max: {
+    type: Number,
+    default: Number.MAX_SAFE_INTEGER
+  },
+  min: {
+    type: Number,
+    default: Number.MIN_SAFE_INTEGER
+  },
+  modelValue: {
+    type: [Number, null]
+  },
+  readonly: Boolean,
+  disabled: Boolean,
+  size: useSizeProp,
+  controls: {
+    type: Boolean,
+    default: true
+  },
+  controlsPosition: {
+    type: String,
+    default: "",
+    values: ["", "right"]
+  },
+  valueOnClear: {
+    type: [String, Number, null],
+    validator: (val) => val === null || isNumber(val) || ["min", "max"].includes(val),
+    default: null
+  },
+  name: String,
+  placeholder: String,
+  precision: {
+    type: Number,
+    validator: (val) => val >= 0 && val === Number.parseInt(`${val}`, 10)
+  },
+  validateEvent: {
+    type: Boolean,
+    default: true
+  },
+  ...useAriaProps(["ariaLabel"]),
+  inputmode: {
+    type: definePropType(String),
+    default: void 0
+  },
+  align: {
+    type: definePropType(String),
+    default: "center"
+  },
+  disabledScientific: Boolean
+});
+const inputNumberEmits = {
+  [CHANGE_EVENT]: (cur, prev) => prev !== cur,
+  blur: (e) => e instanceof FocusEvent,
+  focus: (e) => e instanceof FocusEvent,
+  [INPUT_EVENT]: (val) => isNumber(val) || isNil(val),
+  [UPDATE_MODEL_EVENT]: (val) => isNumber(val) || isNil(val)
+};
+
+const __default__$T = defineComponent({
+  name: "ElInputNumber"
+});
+const _sfc_main$19 = /* @__PURE__ */ defineComponent({
+  ...__default__$T,
+  props: inputNumberProps,
+  emits: inputNumberEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    const { t } = useLocale();
+    const ns = useNamespace("input-number");
+    const input = ref();
+    const data = reactive({
+      currentValue: props.modelValue,
+      userInput: null
+    });
+    const { formItem } = useFormItem();
+    const minDisabled = computed(() => isNumber(props.modelValue) && props.modelValue <= props.min);
+    const maxDisabled = computed(() => isNumber(props.modelValue) && props.modelValue >= props.max);
+    const numPrecision = computed(() => {
+      const stepPrecision = getPrecision(props.step);
+      if (!isUndefined(props.precision)) {
+        if (stepPrecision > props.precision) ;
+        return props.precision;
+      } else {
+        return Math.max(getPrecision(props.modelValue), stepPrecision);
+      }
+    });
+    const controlsAtRight = computed(() => {
+      return props.controls && props.controlsPosition === "right";
+    });
+    const inputNumberSize = useFormSize();
+    const inputNumberDisabled = useFormDisabled();
+    const displayValue = computed(() => {
+      if (data.userInput !== null) {
+        return data.userInput;
+      }
+      let currentValue = data.currentValue;
+      if (isNil(currentValue))
+        return "";
+      if (isNumber(currentValue)) {
+        if (Number.isNaN(currentValue))
+          return "";
+        if (!isUndefined(props.precision)) {
+          currentValue = currentValue.toFixed(props.precision);
+        }
+      }
+      return currentValue;
+    });
+    const toPrecision = (num, pre) => {
+      if (isUndefined(pre))
+        pre = numPrecision.value;
+      if (pre === 0)
+        return Math.round(num);
+      let snum = String(num);
+      const pointPos = snum.indexOf(".");
+      if (pointPos === -1)
+        return num;
+      const nums = snum.replace(".", "").split("");
+      const datum = nums[pointPos + pre];
+      if (!datum)
+        return num;
+      const length = snum.length;
+      if (snum.charAt(length - 1) === "5") {
+        snum = `${snum.slice(0, Math.max(0, length - 1))}6`;
+      }
+      return Number.parseFloat(Number(snum).toFixed(pre));
+    };
+    const getPrecision = (value) => {
+      if (isNil(value))
+        return 0;
+      const valueString = value.toString();
+      const dotPosition = valueString.indexOf(".");
+      let precision = 0;
+      if (dotPosition !== -1) {
+        precision = valueString.length - dotPosition - 1;
+      }
+      return precision;
+    };
+    const ensurePrecision = (val, coefficient = 1) => {
+      if (!isNumber(val))
+        return data.currentValue;
+      if (val >= Number.MAX_SAFE_INTEGER && coefficient === 1) {
+        return val;
+      } else if (val <= Number.MIN_SAFE_INTEGER && coefficient === -1) {
+        return val;
+      }
+      return toPrecision(val + props.step * coefficient);
+    };
+    const handleKeydown = (event) => {
+      const code = getEventCode(event);
+      const key = getEventKey(event);
+      if (props.disabledScientific && ["e", "E"].includes(key)) {
+        event.preventDefault();
+        return;
+      }
+      switch (code) {
+        case EVENT_CODE.up: {
+          event.preventDefault();
+          increase();
+          break;
+        }
+        case EVENT_CODE.down: {
+          event.preventDefault();
+          decrease();
+          break;
+        }
+      }
+    };
+    const increase = () => {
+      if (props.readonly || inputNumberDisabled.value || maxDisabled.value)
+        return;
+      const value = Number(displayValue.value) || 0;
+      const newVal = ensurePrecision(value);
+      setCurrentValue(newVal);
+      emit(INPUT_EVENT, data.currentValue);
+      setCurrentValueToModelValue();
+    };
+    const decrease = () => {
+      if (props.readonly || inputNumberDisabled.value || minDisabled.value)
+        return;
+      const value = Number(displayValue.value) || 0;
+      const newVal = ensurePrecision(value, -1);
+      setCurrentValue(newVal);
+      emit(INPUT_EVENT, data.currentValue);
+      setCurrentValueToModelValue();
+    };
+    const verifyValue = (value, update) => {
+      const { max, min, step, precision, stepStrictly, valueOnClear } = props;
+      if (max < min) {
+        throwError("InputNumber", "min should not be greater than max.");
+      }
+      let newVal = Number(value);
+      if (isNil(value) || Number.isNaN(newVal)) {
+        return null;
+      }
+      if (value === "") {
+        if (valueOnClear === null) {
+          return null;
+        }
+        newVal = isString$1(valueOnClear) ? { min, max }[valueOnClear] : valueOnClear;
+      }
+      if (stepStrictly) {
+        newVal = toPrecision(Math.round(toPrecision(newVal / step)) * step, precision);
+        if (newVal !== value) {
+          update && emit(UPDATE_MODEL_EVENT, newVal);
+        }
+      }
+      if (!isUndefined(precision)) {
+        newVal = toPrecision(newVal, precision);
+      }
+      if (newVal > max || newVal < min) {
+        newVal = newVal > max ? max : min;
+        update && emit(UPDATE_MODEL_EVENT, newVal);
+      }
+      return newVal;
+    };
+    const setCurrentValue = (value, emitChange = true) => {
+      var _a;
+      const oldVal = data.currentValue;
+      const newVal = verifyValue(value);
+      if (!emitChange) {
+        emit(UPDATE_MODEL_EVENT, newVal);
+        return;
+      }
+      if (oldVal === newVal && value)
+        return;
+      data.userInput = null;
+      emit(UPDATE_MODEL_EVENT, newVal);
+      if (oldVal !== newVal) {
+        emit(CHANGE_EVENT, newVal, oldVal);
+      }
+      if (props.validateEvent) {
+        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, "change").catch((err) => debugWarn());
+      }
+      data.currentValue = newVal;
+    };
+    const handleInput = (value) => {
+      data.userInput = value;
+      const newVal = value === "" ? null : Number(value);
+      emit(INPUT_EVENT, newVal);
+      setCurrentValue(newVal, false);
+    };
+    const handleInputChange = (value) => {
+      const newVal = value !== "" ? Number(value) : "";
+      if (isNumber(newVal) && !Number.isNaN(newVal) || value === "") {
+        setCurrentValue(newVal);
+      }
+      setCurrentValueToModelValue();
+      data.userInput = null;
+    };
+    const focus = () => {
+      var _a, _b;
+      (_b = (_a = input.value) == null ? void 0 : _a.focus) == null ? void 0 : _b.call(_a);
+    };
+    const blur = () => {
+      var _a, _b;
+      (_b = (_a = input.value) == null ? void 0 : _a.blur) == null ? void 0 : _b.call(_a);
+    };
+    const handleFocus = (event) => {
+      emit("focus", event);
+    };
+    const handleBlur = (event) => {
+      var _a, _b;
+      data.userInput = null;
+      if (data.currentValue === null && ((_a = input.value) == null ? void 0 : _a.input)) {
+        input.value.input.value = "";
+      }
+      emit("blur", event);
+      if (props.validateEvent) {
+        (_b = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _b.call(formItem, "blur").catch((err) => debugWarn());
+      }
+    };
+    const setCurrentValueToModelValue = () => {
+      if (data.currentValue !== props.modelValue) {
+        data.currentValue = props.modelValue;
+      }
+    };
+    const handleWheel = (e) => {
+      if (document.activeElement === e.target)
+        e.preventDefault();
+    };
+    watch(() => props.modelValue, (value, oldValue) => {
+      const newValue = verifyValue(value, true);
+      if (data.userInput === null && newValue !== oldValue) {
+        data.currentValue = newValue;
+      }
+    }, { immediate: true });
+    watch(() => props.precision, () => {
+      data.currentValue = verifyValue(props.modelValue);
+    });
+    onMounted(() => {
+      var _a;
+      const { min, max, modelValue } = props;
+      const innerInput = (_a = input.value) == null ? void 0 : _a.input;
+      innerInput.setAttribute("role", "spinbutton");
+      if (Number.isFinite(max)) {
+        innerInput.setAttribute("aria-valuemax", String(max));
+      } else {
+        innerInput.removeAttribute("aria-valuemax");
+      }
+      if (Number.isFinite(min)) {
+        innerInput.setAttribute("aria-valuemin", String(min));
+      } else {
+        innerInput.removeAttribute("aria-valuemin");
+      }
+      innerInput.setAttribute("aria-valuenow", data.currentValue || data.currentValue === 0 ? String(data.currentValue) : "");
+      innerInput.setAttribute("aria-disabled", String(inputNumberDisabled.value));
+      if (!isNumber(modelValue) && modelValue != null) {
+        let val = Number(modelValue);
+        if (Number.isNaN(val)) {
+          val = null;
+        }
+        emit(UPDATE_MODEL_EVENT, val);
+      }
+      innerInput.addEventListener("wheel", handleWheel, { passive: false });
+    });
+    onUpdated(() => {
+      var _a, _b;
+      const innerInput = (_a = input.value) == null ? void 0 : _a.input;
+      innerInput == null ? void 0 : innerInput.setAttribute("aria-valuenow", `${(_b = data.currentValue) != null ? _b : ""}`);
+    });
+    expose({
+      focus,
+      blur
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass([
+          unref(ns).b(),
+          unref(ns).m(unref(inputNumberSize)),
+          unref(ns).is("disabled", unref(inputNumberDisabled)),
+          unref(ns).is("without-controls", !_ctx.controls),
+          unref(ns).is("controls-right", unref(controlsAtRight)),
+          unref(ns).is(_ctx.align, !!_ctx.align)
+        ]),
+        onDragstart: withModifiers(() => {
+        }, ["prevent"])
+      }, [
+        _ctx.controls ? withDirectives((openBlock(), createElementBlock("span", {
+          key: 0,
+          role: "button",
+          "aria-label": unref(t)("el.inputNumber.decrease"),
+          class: normalizeClass([unref(ns).e("decrease"), unref(ns).is("disabled", unref(minDisabled))]),
+          onKeydown: withKeys(decrease, ["enter"])
+        }, [
+          renderSlot(_ctx.$slots, "decrease-icon", {}, () => [
+            createVNode(unref(ElIcon), null, {
+              default: withCtx(() => [
+                unref(controlsAtRight) ? (openBlock(), createBlock(unref(arrow_down_default), { key: 0 })) : (openBlock(), createBlock(unref(minus_default), { key: 1 }))
+              ]),
+              _: 1
+            })
+          ])
+        ], 42, ["aria-label", "onKeydown"])), [
+          [unref(vRepeatClick), decrease]
+        ]) : createCommentVNode("v-if", true),
+        _ctx.controls ? withDirectives((openBlock(), createElementBlock("span", {
+          key: 1,
+          role: "button",
+          "aria-label": unref(t)("el.inputNumber.increase"),
+          class: normalizeClass([unref(ns).e("increase"), unref(ns).is("disabled", unref(maxDisabled))]),
+          onKeydown: withKeys(increase, ["enter"])
+        }, [
+          renderSlot(_ctx.$slots, "increase-icon", {}, () => [
+            createVNode(unref(ElIcon), null, {
+              default: withCtx(() => [
+                unref(controlsAtRight) ? (openBlock(), createBlock(unref(arrow_up_default), { key: 0 })) : (openBlock(), createBlock(unref(plus_default), { key: 1 }))
+              ]),
+              _: 1
+            })
+          ])
+        ], 42, ["aria-label", "onKeydown"])), [
+          [unref(vRepeatClick), increase]
+        ]) : createCommentVNode("v-if", true),
+        createVNode(unref(ElInput), {
+          id: _ctx.id,
+          ref_key: "input",
+          ref: input,
+          type: "number",
+          step: _ctx.step,
+          "model-value": unref(displayValue),
+          placeholder: _ctx.placeholder,
+          readonly: _ctx.readonly,
+          disabled: unref(inputNumberDisabled),
+          size: unref(inputNumberSize),
+          max: _ctx.max,
+          min: _ctx.min,
+          name: _ctx.name,
+          "aria-label": _ctx.ariaLabel,
+          "validate-event": false,
+          inputmode: _ctx.inputmode,
+          onKeydown: handleKeydown,
+          onBlur: handleBlur,
+          onFocus: handleFocus,
+          onInput: handleInput,
+          onChange: handleInputChange
+        }, createSlots({
+          _: 2
+        }, [
+          _ctx.$slots.prefix ? {
+            name: "prefix",
+            fn: withCtx(() => [
+              renderSlot(_ctx.$slots, "prefix")
+            ])
+          } : void 0,
+          _ctx.$slots.suffix ? {
+            name: "suffix",
+            fn: withCtx(() => [
+              renderSlot(_ctx.$slots, "suffix")
+            ])
+          } : void 0
+        ]), 1032, ["id", "step", "model-value", "placeholder", "readonly", "disabled", "size", "max", "min", "name", "aria-label", "inputmode"])
+      ], 42, ["onDragstart"]);
+    };
+  }
+});
+var InputNumber = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["__file", "input-number.vue"]]);
+
+const ElInputNumber = withInstall(InputNumber);
+
+const inputTagProps = buildProps({
+  modelValue: {
+    type: definePropType(Array)
+  },
+  max: Number,
+  tagType: { ...tagProps.type, default: "gray" },
+  tagEffect: tagProps.effect,
+  trigger: {
+    type: definePropType(String),
+    default: EVENT_CODE.enter
+  },
+  draggable: Boolean,
+  delimiter: {
+    type: [String, RegExp],
+    default: ""
+  },
+  size: useSizeProp,
+  clearable: Boolean,
+  clearIcon: {
+    type: iconPropType,
+    default: circle_close_default
+  },
+  disabled: {
+    type: Boolean,
+    default: void 0
+  },
+  validateEvent: {
+    type: Boolean,
+    default: true
+  },
+  readonly: Boolean,
+  autofocus: Boolean,
+  id: {
+    type: String,
+    default: void 0
+  },
+  tabindex: {
+    type: [String, Number],
+    default: 0
+  },
+  maxlength: {
+    type: [String, Number]
+  },
+  minlength: {
+    type: [String, Number]
+  },
+  placeholder: String,
+  autocomplete: {
+    type: definePropType(String),
+    default: "off"
+  },
+  saveOnBlur: {
+    type: Boolean,
+    default: true
+  },
+  collapseTags: Boolean,
+  collapseTagsTooltip: Boolean,
+  maxCollapseTags: {
+    type: Number,
+    default: 1
+  },
+  ariaLabel: String
+});
+const inputTagEmits = {
+  [UPDATE_MODEL_EVENT]: (value) => isArray$1(value) || isUndefined(value),
+  [CHANGE_EVENT]: (value) => isArray$1(value) || isUndefined(value),
+  [INPUT_EVENT]: (value) => isString$1(value),
+  "add-tag": (value) => isString$1(value) || isArray$1(value),
+  "remove-tag": (value, index) => isString$1(value) && isNumber(index),
+  "drag-tag": (oldIndex, newIndex, value) => isNumber(oldIndex) && isNumber(newIndex) && isString$1(value),
+  focus: (evt) => evt instanceof FocusEvent,
+  blur: (evt) => evt instanceof FocusEvent,
+  clear: () => true
+};
+
+function useDragTag({
+  wrapperRef,
+  handleDragged,
+  afterDragged
+}) {
+  const ns = useNamespace("input-tag");
+  const dropIndicatorRef = shallowRef();
+  const showDropIndicator = ref(false);
+  let draggingIndex;
+  let draggingTag;
+  let dropIndex;
+  let dropType;
+  function getTagClassName(index) {
+    return `.${ns.e("inner")} .${ns.namespace.value}-tag:nth-child(${index + 1})`;
+  }
+  function handleDragStart(event, index) {
+    draggingIndex = index;
+    draggingTag = wrapperRef.value.querySelector(getTagClassName(index));
+    if (draggingTag) {
+      draggingTag.style.opacity = "0.5";
+    }
+    event.dataTransfer.effectAllowed = "move";
+  }
+  function handleDragOver(event, index) {
+    dropIndex = index;
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+    if (isUndefined(draggingIndex) || draggingIndex === index) {
+      showDropIndicator.value = false;
+      return;
+    }
+    const dropPosition = wrapperRef.value.querySelector(getTagClassName(index)).getBoundingClientRect();
+    const dropPrev = !(draggingIndex + 1 === index);
+    const dropNext = !(draggingIndex - 1 === index);
+    const distance = event.clientX - dropPosition.left;
+    const prevPercent = dropPrev ? dropNext ? 0.5 : 1 : -1;
+    const nextPercent = dropNext ? dropPrev ? 0.5 : 0 : 1;
+    if (distance <= dropPosition.width * prevPercent) {
+      dropType = "before";
+    } else if (distance > dropPosition.width * nextPercent) {
+      dropType = "after";
+    } else {
+      dropType = void 0;
+    }
+    const innerEl = wrapperRef.value.querySelector(`.${ns.e("inner")}`);
+    const innerPosition = innerEl.getBoundingClientRect();
+    const gap = Number.parseFloat(getStyle(innerEl, "gap")) / 2;
+    const indicatorTop = dropPosition.top - innerPosition.top;
+    let indicatorLeft = -9999;
+    if (dropType === "before") {
+      indicatorLeft = Math.max(dropPosition.left - innerPosition.left - gap, Math.floor(-gap / 2));
+    } else if (dropType === "after") {
+      const left = dropPosition.right - innerPosition.left;
+      indicatorLeft = left + (innerPosition.width === left ? Math.floor(gap / 2) : gap);
+    }
+    setStyle(dropIndicatorRef.value, {
+      top: `${indicatorTop}px`,
+      left: `${indicatorLeft}px`
+    });
+    showDropIndicator.value = !!dropType;
+  }
+  function handleDragEnd(event) {
+    event.preventDefault();
+    if (draggingTag) {
+      draggingTag.style.opacity = "";
+    }
+    if (dropType && !isUndefined(draggingIndex) && !isUndefined(dropIndex) && draggingIndex !== dropIndex) {
+      handleDragged(draggingIndex, dropIndex, dropType);
+    }
+    showDropIndicator.value = false;
+    draggingIndex = void 0;
+    draggingTag = null;
+    dropIndex = void 0;
+    dropType = void 0;
+    afterDragged == null ? void 0 : afterDragged();
+  }
+  return {
+    dropIndicatorRef,
+    showDropIndicator,
+    handleDragStart,
+    handleDragOver,
+    handleDragEnd
+  };
+}
+
+function useHovering() {
+  const hovering = ref(false);
+  const handleMouseEnter = () => {
+    hovering.value = true;
+  };
+  const handleMouseLeave = () => {
+    hovering.value = false;
+  };
+  return {
+    hovering,
+    handleMouseEnter,
+    handleMouseLeave
+  };
+}
+
+function useInputTag({ props, emit, formItem }) {
+  const disabled = useFormDisabled();
+  const size = useFormSize();
+  const inputRef = shallowRef();
+  const inputValue = ref();
+  const tagTooltipRef = ref();
+  const tagSize = computed(() => {
+    return ["small"].includes(size.value) ? "small" : "default";
+  });
+  const placeholder = computed(() => {
+    var _a;
+    return ((_a = props.modelValue) == null ? void 0 : _a.length) ? void 0 : props.placeholder;
+  });
+  const closable = computed(() => !(props.readonly || disabled.value));
+  const inputLimit = computed(() => {
+    var _a, _b;
+    return isUndefined(props.max) ? false : ((_b = (_a = props.modelValue) == null ? void 0 : _a.length) != null ? _b : 0) >= props.max;
+  });
+  const showTagList = computed(() => {
+    var _a;
+    return props.collapseTags ? (_a = props.modelValue) == null ? void 0 : _a.slice(0, props.maxCollapseTags) : props.modelValue;
+  });
+  const collapseTagList = computed(() => {
+    var _a;
+    return props.collapseTags ? (_a = props.modelValue) == null ? void 0 : _a.slice(props.maxCollapseTags) : [];
+  });
+  const addTagsEmit = (value) => {
+    var _a;
+    const list = [...(_a = props.modelValue) != null ? _a : [], ...castArray$1(value)];
+    emit(UPDATE_MODEL_EVENT, list);
+    emit(CHANGE_EVENT, list);
+    emit("add-tag", value);
+    inputValue.value = void 0;
+  };
+  const getDelimitedTags = (input) => {
+    var _a, _b;
+    const tags = input.split(props.delimiter).filter((val) => val && val !== input);
+    if (props.max) {
+      const maxInsert = props.max - ((_b = (_a = props.modelValue) == null ? void 0 : _a.length) != null ? _b : 0);
+      tags.splice(maxInsert);
+    }
+    return tags.length === 1 ? tags[0] : tags;
+  };
+  const handleInput = (event) => {
+    if (inputLimit.value) {
+      inputValue.value = void 0;
+      return;
+    }
+    if (isComposing.value)
+      return;
+    if (props.delimiter && inputValue.value) {
+      const tags = getDelimitedTags(inputValue.value);
+      if (tags.length) {
+        addTagsEmit(tags);
+      }
+    }
+    emit(INPUT_EVENT, event.target.value);
+  };
+  const handleKeydown = (event) => {
+    var _a;
+    if (isComposing.value)
+      return;
+    const code = getEventCode(event);
+    switch (code) {
+      case props.trigger:
+        event.preventDefault();
+        event.stopPropagation();
+        handleAddTag();
+        break;
+      case EVENT_CODE.numpadEnter:
+        if (props.trigger === EVENT_CODE.enter) {
+          event.preventDefault();
+          event.stopPropagation();
+          handleAddTag();
+        }
+        break;
+      case EVENT_CODE.backspace:
+        if (!inputValue.value && ((_a = props.modelValue) == null ? void 0 : _a.length)) {
+          event.preventDefault();
+          event.stopPropagation();
+          handleRemoveTag(props.modelValue.length - 1);
+        }
+        break;
+    }
+  };
+  const handleKeyup = (event) => {
+    if (isComposing.value || !isAndroid())
+      return;
+    const code = getEventCode(event);
+    switch (code) {
+      case EVENT_CODE.space:
+        if (props.trigger === EVENT_CODE.space) {
+          event.preventDefault();
+          event.stopPropagation();
+          handleAddTag();
+        }
+        break;
+    }
+  };
+  const handleAddTag = () => {
+    var _a;
+    const value = (_a = inputValue.value) == null ? void 0 : _a.trim();
+    if (!value || inputLimit.value)
+      return;
+    addTagsEmit(value);
+  };
+  const handleRemoveTag = (index) => {
+    var _a;
+    const value = ((_a = props.modelValue) != null ? _a : []).slice();
+    const [item] = value.splice(index, 1);
+    emit(UPDATE_MODEL_EVENT, value);
+    emit(CHANGE_EVENT, value);
+    emit("remove-tag", item, index);
+  };
+  const handleClear = () => {
+    inputValue.value = void 0;
+    emit(UPDATE_MODEL_EVENT, void 0);
+    emit(CHANGE_EVENT, void 0);
+    emit("clear");
+  };
+  const handleDragged = (draggingIndex, dropIndex, type) => {
+    var _a;
+    const value = ((_a = props.modelValue) != null ? _a : []).slice();
+    const [draggedItem] = value.splice(draggingIndex, 1);
+    const step = dropIndex > draggingIndex && type === "before" ? -1 : dropIndex < draggingIndex && type === "after" ? 1 : 0;
+    value.splice(dropIndex + step, 0, draggedItem);
+    emit(UPDATE_MODEL_EVENT, value);
+    emit(CHANGE_EVENT, value);
+    emit("drag-tag", draggingIndex, dropIndex + step, draggedItem);
+  };
+  const focus = () => {
+    var _a;
+    (_a = inputRef.value) == null ? void 0 : _a.focus();
+  };
+  const blur = () => {
+    var _a;
+    (_a = inputRef.value) == null ? void 0 : _a.blur();
+  };
+  const { wrapperRef, isFocused } = useFocusController(inputRef, {
+    disabled,
+    beforeBlur(event) {
+      var _a;
+      return (_a = tagTooltipRef.value) == null ? void 0 : _a.isFocusInsideContent(event);
+    },
+    afterBlur() {
+      var _a;
+      if (props.saveOnBlur) {
+        handleAddTag();
+      } else {
+        inputValue.value = void 0;
+      }
+      if (props.validateEvent) {
+        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, "blur").catch((err) => debugWarn());
+      }
+    }
+  });
+  const {
+    isComposing,
+    handleCompositionStart,
+    handleCompositionUpdate,
+    handleCompositionEnd
+  } = useComposition({ afterComposition: handleInput });
+  watch(() => props.modelValue, () => {
+    var _a;
+    if (props.validateEvent) {
+      (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, CHANGE_EVENT).catch((err) => debugWarn());
+    }
+  });
+  return {
+    inputRef,
+    wrapperRef,
+    tagTooltipRef,
+    isFocused,
+    isComposing,
+    inputValue,
+    size,
+    tagSize,
+    placeholder,
+    closable,
+    disabled,
+    inputLimit,
+    showTagList,
+    collapseTagList,
+    handleDragged,
+    handleInput,
+    handleKeydown,
+    handleKeyup,
+    handleAddTag,
+    handleRemoveTag,
+    handleClear,
+    handleCompositionStart,
+    handleCompositionUpdate,
+    handleCompositionEnd,
+    focus,
+    blur
+  };
+}
+
+function useInputTagDom({
+  props,
+  isFocused,
+  hovering,
+  disabled,
+  inputValue,
+  size,
+  validateState,
+  validateIcon,
+  needStatusIcon
+}) {
+  const attrs = useAttrs$1();
+  const slots = useSlots();
+  const ns = useNamespace("input-tag");
+  const nsInput = useNamespace("input");
+  const containerKls = computed(() => [
+    ns.b(),
+    ns.is("focused", isFocused.value),
+    ns.is("hovering", hovering.value),
+    ns.is("disabled", disabled.value),
+    ns.m(size.value),
+    ns.e("wrapper"),
+    attrs.class
+  ]);
+  const containerStyle = computed(() => [attrs.style]);
+  const innerKls = computed(() => {
+    var _a, _b;
+    return [
+      ns.e("inner"),
+      ns.is("draggable", props.draggable),
+      ns.is("left-space", !((_a = props.modelValue) == null ? void 0 : _a.length) && !slots.prefix),
+      ns.is("right-space", !((_b = props.modelValue) == null ? void 0 : _b.length) && !showSuffix.value)
+    ];
+  });
+  const showClear = computed(() => {
+    var _a;
+    return props.clearable && !disabled.value && !props.readonly && (((_a = props.modelValue) == null ? void 0 : _a.length) || inputValue.value) && (isFocused.value || hovering.value);
+  });
+  const showSuffix = computed(() => {
+    return slots.suffix || showClear.value || validateState.value && validateIcon.value && needStatusIcon.value;
+  });
+  return {
+    ns,
+    nsInput,
+    containerKls,
+    containerStyle,
+    innerKls,
+    showClear,
+    showSuffix
+  };
+}
+
+const __default__$S = defineComponent({
+  name: "ElInputTag",
+  inheritAttrs: false
+});
+const _sfc_main$18 = /* @__PURE__ */ defineComponent({
+  ...__default__$S,
+  props: inputTagProps,
+  emits: inputTagEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    const attrs = useAttrs();
+    const slots = useSlots();
+    const { form, formItem } = useFormItem();
+    const { inputId } = useFormItemInputId(props, { formItemContext: formItem });
+    const needStatusIcon = computed(() => {
+      var _a;
+      return (_a = form == null ? void 0 : form.statusIcon) != null ? _a : false;
+    });
+    const validateState = computed(() => (formItem == null ? void 0 : formItem.validateState) || "");
+    const validateIcon = computed(() => {
+      return validateState.value && ValidateComponentsMap[validateState.value];
+    });
+    const {
+      inputRef,
+      wrapperRef,
+      tagTooltipRef,
+      isFocused,
+      inputValue,
+      size,
+      tagSize,
+      placeholder,
+      closable,
+      disabled,
+      showTagList,
+      collapseTagList,
+      handleDragged,
+      handleInput,
+      handleKeydown,
+      handleKeyup,
+      handleRemoveTag,
+      handleClear,
+      handleCompositionStart,
+      handleCompositionUpdate,
+      handleCompositionEnd,
+      focus,
+      blur
+    } = useInputTag({ props, emit, formItem });
+    const { hovering, handleMouseEnter, handleMouseLeave } = useHovering();
+    const { calculatorRef, inputStyle } = useCalcInputWidth();
+    const {
+      dropIndicatorRef,
+      showDropIndicator,
+      handleDragStart,
+      handleDragOver,
+      handleDragEnd
+    } = useDragTag({ wrapperRef, handleDragged, afterDragged: focus });
+    const {
+      ns,
+      nsInput,
+      containerKls,
+      containerStyle,
+      innerKls,
+      showClear,
+      showSuffix
+    } = useInputTagDom({
+      props,
+      hovering,
+      isFocused,
+      inputValue,
+      disabled,
+      size,
+      validateState,
+      validateIcon,
+      needStatusIcon
+    });
+    expose({
+      focus,
+      blur
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        ref_key: "wrapperRef",
+        ref: wrapperRef,
+        class: normalizeClass(unref(containerKls)),
+        style: normalizeStyle(unref(containerStyle)),
+        onMouseenter: unref(handleMouseEnter),
+        onMouseleave: unref(handleMouseLeave)
+      }, [
+        unref(slots).prefix ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          class: normalizeClass(unref(ns).e("prefix"))
+        }, [
+          renderSlot(_ctx.$slots, "prefix")
+        ], 2)) : createCommentVNode("v-if", true),
+        createElementVNode("div", {
+          class: normalizeClass(unref(innerKls))
+        }, [
+          (openBlock(true), createElementBlock(Fragment, null, renderList(unref(showTagList), (item, index) => {
+            return openBlock(), createBlock(unref(ElTag), {
+              key: index,
+              size: unref(tagSize),
+              closable: unref(closable),
+              type: _ctx.tagType,
+              effect: _ctx.tagEffect,
+              round: "",
+              draggable: unref(closable) && _ctx.draggable,
+              "disable-transitions": "",
+              onClose: ($event) => unref(handleRemoveTag)(index),
+              onDragstart: (event) => unref(handleDragStart)(event, index),
+              onDragover: (event) => unref(handleDragOver)(event, index),
+              onDragend: unref(handleDragEnd),
+              onDrop: withModifiers(() => {
+              }, ["stop"])
+            }, {
+              default: withCtx(() => [
+                renderSlot(_ctx.$slots, "tag", {
+                  value: item,
+                  index
+                }, () => [
+                  createTextVNode(toDisplayString(item), 1)
+                ])
+              ]),
+              _: 2
+            }, 1032, ["size", "closable", "type", "effect", "draggable", "onClose", "onDragstart", "onDragover", "onDragend", "onDrop"]);
+          }), 128)),
+          _ctx.collapseTags && _ctx.modelValue && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(unref(ElTooltip), {
+            key: 0,
+            ref_key: "tagTooltipRef",
+            ref: tagTooltipRef,
+            disabled: !_ctx.collapseTagsTooltip,
+            "fallback-placements": ["bottom", "top", "right", "left"],
+            effect: _ctx.tagEffect,
+            placement: "bottom"
+          }, {
+            default: withCtx(() => [
+              createVNode(unref(ElTag), {
+                closable: false,
+                size: unref(tagSize),
+                type: _ctx.tagType,
+                effect: _ctx.tagEffect,
+                "disable-transitions": ""
+              }, {
+                default: withCtx(() => [
+                  createTextVNode(" + " + toDisplayString(_ctx.modelValue.length - _ctx.maxCollapseTags), 1)
+                ]),
+                _: 1
+              }, 8, ["size", "type", "effect"])
+            ]),
+            content: withCtx(() => [
+              createElementVNode("div", {
+                class: normalizeClass(unref(ns).e("input-tag-list"))
+              }, [
+                (openBlock(true), createElementBlock(Fragment, null, renderList(unref(collapseTagList), (item, index) => {
+                  return openBlock(), createBlock(unref(ElTag), {
+                    key: index,
+                    size: unref(tagSize),
+                    closable: unref(closable),
+                    type: _ctx.tagType,
+                    effect: _ctx.tagEffect,
+                    "disable-transitions": "",
+                    onClose: ($event) => unref(handleRemoveTag)(index + _ctx.maxCollapseTags)
+                  }, {
+                    default: withCtx(() => [
+                      renderSlot(_ctx.$slots, "tag", {
+                        value: item,
+                        index: index + _ctx.maxCollapseTags
+                      }, () => [
+                        createTextVNode(toDisplayString(item), 1)
+                      ])
+                    ]),
+                    _: 2
+                  }, 1032, ["size", "closable", "type", "effect", "onClose"]);
+                }), 128))
+              ], 2)
+            ]),
+            _: 3
+          }, 8, ["disabled", "effect"])) : createCommentVNode("v-if", true),
+          createElementVNode("div", {
+            class: normalizeClass(unref(ns).e("input-wrapper"))
+          }, [
+            withDirectives(createElementVNode("input", mergeProps({
+              id: unref(inputId),
+              ref_key: "inputRef",
+              ref: inputRef,
+              "onUpdate:modelValue": ($event) => isRef(inputValue) ? inputValue.value = $event : null
+            }, unref(attrs), {
+              type: "text",
+              minlength: _ctx.minlength,
+              maxlength: _ctx.maxlength,
+              disabled: unref(disabled),
+              readonly: _ctx.readonly,
+              autocomplete: _ctx.autocomplete,
+              tabindex: _ctx.tabindex,
+              placeholder: unref(placeholder),
+              autofocus: _ctx.autofocus,
+              ariaLabel: _ctx.ariaLabel,
+              class: unref(ns).e("input"),
+              style: unref(inputStyle),
+              onCompositionstart: unref(handleCompositionStart),
+              onCompositionupdate: unref(handleCompositionUpdate),
+              onCompositionend: unref(handleCompositionEnd),
+              onInput: unref(handleInput),
+              onKeydown: unref(handleKeydown),
+              onKeyup: unref(handleKeyup)
+            }), null, 16, ["id", "onUpdate:modelValue", "minlength", "maxlength", "disabled", "readonly", "autocomplete", "tabindex", "placeholder", "autofocus", "ariaLabel", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onInput", "onKeydown", "onKeyup"]), [
+              [vModelText, unref(inputValue)]
+            ]),
+            createElementVNode("span", {
+              ref_key: "calculatorRef",
+              ref: calculatorRef,
+              "aria-hidden": "true",
+              class: normalizeClass(unref(ns).e("input-calculator")),
+              textContent: toDisplayString(unref(inputValue))
+            }, null, 10, ["textContent"])
+          ], 2),
+          withDirectives(createElementVNode("div", {
+            ref_key: "dropIndicatorRef",
+            ref: dropIndicatorRef,
+            class: normalizeClass(unref(ns).e("drop-indicator"))
+          }, null, 2), [
+            [vShow, unref(showDropIndicator)]
+          ])
+        ], 2),
+        unref(showSuffix) ? (openBlock(), createElementBlock("div", {
+          key: 1,
+          class: normalizeClass(unref(ns).e("suffix"))
+        }, [
+          renderSlot(_ctx.$slots, "suffix"),
+          unref(showClear) ? (openBlock(), createBlock(unref(ElIcon), {
+            key: 0,
+            class: normalizeClass([unref(ns).e("icon"), unref(ns).e("clear")]),
+            onMousedown: withModifiers(unref(NOOP), ["prevent"]),
+            onClick: unref(handleClear)
+          }, {
+            default: withCtx(() => [
+              (openBlock(), createBlock(resolveDynamicComponent(_ctx.clearIcon)))
+            ]),
+            _: 1
+          }, 8, ["class", "onMousedown", "onClick"])) : createCommentVNode("v-if", true),
+          unref(validateState) && unref(validateIcon) && unref(needStatusIcon) ? (openBlock(), createBlock(unref(ElIcon), {
+            key: 1,
+            class: normalizeClass([
+              unref(nsInput).e("icon"),
+              unref(nsInput).e("validateIcon"),
+              unref(nsInput).is("loading", unref(validateState) === "validating")
+            ])
+          }, {
+            default: withCtx(() => [
+              (openBlock(), createBlock(resolveDynamicComponent(unref(validateIcon))))
+            ]),
+            _: 1
+          }, 8, ["class"])) : createCommentVNode("v-if", true)
+        ], 2)) : createCommentVNode("v-if", true)
+      ], 46, ["onMouseenter", "onMouseleave"]);
+    };
+  }
+});
+var InputTag = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["__file", "input-tag.vue"]]);
+
+const ElInputTag = withInstall(InputTag);
+
+const linkProps = buildProps({
+  type: {
+    type: String,
+    values: ["primary", "success", "warning", "info", "danger", "default"],
+    default: void 0
+  },
+  underline: {
+    type: [Boolean, String],
+    values: [true, false, "always", "never", "hover"],
+    default: "always"
+  },
+  disabled: Boolean,
+  href: { type: String, default: "" },
+  target: {
+    type: String,
+    default: "_self"
+  },
+  icon: {
+    type: iconPropType
+  }
+});
+const linkEmits = {
+  click: (evt) => evt instanceof MouseEvent
+};
+
+const __default__$R = defineComponent({
+  name: "ElLink"
+});
+const _sfc_main$17 = /* @__PURE__ */ defineComponent({
+  ...__default__$R,
+  props: linkProps,
+  emits: linkEmits,
+  setup(__props, { emit }) {
+    const props = __props;
+    const globalConfig = useGlobalConfig("link");
+    useDeprecated({
+      scope: "el-link",
+      from: "The underline option (boolean)",
+      replacement: "'always' | 'hover' | 'never'",
+      version: "3.0.0",
+      ref: "https://element-plus.org/en-US/component/link.html#underline"
+    }, computed(() => isBoolean(props.underline)));
+    const ns = useNamespace("link");
+    const linkKls = computed(() => {
+      var _a, _b, _c;
+      return [
+        ns.b(),
+        ns.m((_c = (_b = props.type) != null ? _b : (_a = globalConfig.value) == null ? void 0 : _a.type) != null ? _c : "default"),
+        ns.is("disabled", props.disabled),
+        ns.is("underline", underline.value === "always"),
+        ns.is("hover-underline", underline.value === "hover" && !props.disabled)
+      ];
+    });
+    const underline = computed(() => {
+      var _a, _b, _c;
+      if (isBoolean(props.underline)) {
+        return props.underline ? "hover" : "never";
+      } else
+        return (_c = (_b = props.underline) != null ? _b : (_a = globalConfig.value) == null ? void 0 : _a.underline) != null ? _c : "hover";
+    });
+    function handleClick(event) {
+      if (!props.disabled)
+        emit("click", event);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("a", {
+        class: normalizeClass(unref(linkKls)),
+        href: _ctx.disabled || !_ctx.href ? void 0 : _ctx.href,
+        target: _ctx.disabled || !_ctx.href ? void 0 : _ctx.target,
+        onClick: handleClick
+      }, [
+        _ctx.icon ? (openBlock(), createBlock(unref(ElIcon), { key: 0 }, {
+          default: withCtx(() => [
+            (openBlock(), createBlock(resolveDynamicComponent(_ctx.icon)))
+          ]),
+          _: 1
+        })) : createCommentVNode("v-if", true),
+        _ctx.$slots.default ? (openBlock(), createElementBlock("span", {
+          key: 1,
+          class: normalizeClass(unref(ns).e("inner"))
+        }, [
+          renderSlot(_ctx.$slots, "default")
+        ], 2)) : createCommentVNode("v-if", true),
+        _ctx.$slots.icon ? renderSlot(_ctx.$slots, "icon", { key: 2 }) : createCommentVNode("v-if", true)
+      ], 10, ["href", "target"]);
+    };
+  }
+});
+var Link = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["__file", "link.vue"]]);
+
+const ElLink = withInstall(Link);
+
+class SubMenu$1 {
+  constructor(parent, domNode) {
+    this.parent = parent;
+    this.domNode = domNode;
+    this.subIndex = 0;
+    this.subIndex = 0;
+    this.init();
+  }
+  init() {
+    this.subMenuItems = this.domNode.querySelectorAll("li");
+    this.addListeners();
+  }
+  gotoSubIndex(idx) {
+    if (idx === this.subMenuItems.length) {
+      idx = 0;
+    } else if (idx < 0) {
+      idx = this.subMenuItems.length - 1;
+    }
+    this.subMenuItems[idx].focus();
+    this.subIndex = idx;
+  }
+  addListeners() {
+    const parentNode = this.parent.domNode;
+    Array.prototype.forEach.call(this.subMenuItems, (el) => {
+      el.addEventListener("keydown", (event) => {
+        const code = getEventCode(event);
+        let prevDef = false;
+        switch (code) {
+          case EVENT_CODE.down: {
+            this.gotoSubIndex(this.subIndex + 1);
+            prevDef = true;
+            break;
+          }
+          case EVENT_CODE.up: {
+            this.gotoSubIndex(this.subIndex - 1);
+            prevDef = true;
+            break;
+          }
+          case EVENT_CODE.tab: {
+            triggerEvent(parentNode, "mouseleave");
+            break;
+          }
+          case EVENT_CODE.enter:
+          case EVENT_CODE.numpadEnter:
+          case EVENT_CODE.space: {
+            prevDef = true;
+            event.currentTarget.click();
+            break;
+          }
+        }
+        if (prevDef) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        return false;
+      });
+    });
+  }
+}
+var SubMenu$2 = SubMenu$1;
+
+class MenuItem$1 {
+  constructor(domNode, namespace) {
+    this.domNode = domNode;
+    this.submenu = null;
+    this.submenu = null;
+    this.init(namespace);
+  }
+  init(namespace) {
+    this.domNode.setAttribute("tabindex", "0");
+    const menuChild = this.domNode.querySelector(`.${namespace}-menu`);
+    if (menuChild) {
+      this.submenu = new SubMenu$2(this, menuChild);
+    }
+    this.addListeners();
+  }
+  addListeners() {
+    this.domNode.addEventListener("keydown", (event) => {
+      const code = getEventCode(event);
+      let prevDef = false;
+      switch (code) {
+        case EVENT_CODE.down: {
+          triggerEvent(event.currentTarget, "mouseenter");
+          this.submenu && this.submenu.gotoSubIndex(0);
+          prevDef = true;
+          break;
+        }
+        case EVENT_CODE.up: {
+          triggerEvent(event.currentTarget, "mouseenter");
+          this.submenu && this.submenu.gotoSubIndex(this.submenu.subMenuItems.length - 1);
+          prevDef = true;
+          break;
+        }
+        case EVENT_CODE.tab: {
+          triggerEvent(event.currentTarget, "mouseleave");
+          break;
+        }
+        case EVENT_CODE.enter:
+        case EVENT_CODE.numpadEnter:
+        case EVENT_CODE.space: {
+          prevDef = true;
+          event.currentTarget.click();
+          break;
+        }
+      }
+      if (prevDef) {
+        event.preventDefault();
+      }
+    });
+  }
+}
+var MenuItem$2 = MenuItem$1;
+
+class Menu$1 {
+  constructor(domNode, namespace) {
+    this.domNode = domNode;
+    this.init(namespace);
+  }
+  init(namespace) {
+    const menuChildren = this.domNode.childNodes;
+    Array.from(menuChildren).forEach((child) => {
+      if (child.nodeType === 1) {
+        new MenuItem$2(child, namespace);
+      }
+    });
+  }
+}
+var Menubar = Menu$1;
+
+const __default__$Q = defineComponent({
+  name: "ElMenuCollapseTransition"
+});
+const _sfc_main$16 = /* @__PURE__ */ defineComponent({
+  ...__default__$Q,
+  setup(__props) {
+    const ns = useNamespace("menu");
+    const listeners = {
+      onBeforeEnter: (el) => el.style.opacity = "0.2",
+      onEnter(el, done) {
+        addClass(el, `${ns.namespace.value}-opacity-transition`);
+        el.style.opacity = "1";
+        done();
+      },
+      onAfterEnter(el) {
+        removeClass(el, `${ns.namespace.value}-opacity-transition`);
+        el.style.opacity = "";
+      },
+      onBeforeLeave(el) {
+        if (!el.dataset)
+          el.dataset = {};
+        if (hasClass(el, ns.m("collapse"))) {
+          removeClass(el, ns.m("collapse"));
+          el.dataset.oldOverflow = el.style.overflow;
+          el.dataset.scrollWidth = el.clientWidth.toString();
+          addClass(el, ns.m("collapse"));
+        } else {
+          addClass(el, ns.m("collapse"));
+          el.dataset.oldOverflow = el.style.overflow;
+          el.dataset.scrollWidth = el.clientWidth.toString();
+          removeClass(el, ns.m("collapse"));
+        }
+        el.style.width = `${el.scrollWidth}px`;
+        el.style.overflow = "hidden";
+      },
+      onLeave(el) {
+        addClass(el, "horizontal-collapse-transition");
+        el.style.width = `${el.dataset.scrollWidth}px`;
+      }
+    };
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(Transition, mergeProps({ mode: "out-in" }, unref(listeners)), {
+        default: withCtx(() => [
+          renderSlot(_ctx.$slots, "default")
+        ]),
+        _: 3
+      }, 16);
+    };
+  }
+});
+var ElMenuCollapseTransition = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["__file", "menu-collapse-transition.vue"]]);
+
+function useMenu(instance, currentIndex) {
+  const indexPath = computed(() => {
+    let parent = instance.parent;
+    const path = [currentIndex.value];
+    while (parent.type.name !== "ElMenu") {
+      if (parent.props.index) {
+        path.unshift(parent.props.index);
+      }
+      parent = parent.parent;
+    }
+    return path;
+  });
+  const parentMenu = computed(() => {
+    let parent = instance.parent;
+    while (parent && !["ElMenu", "ElSubMenu"].includes(parent.type.name)) {
+      parent = parent.parent;
+    }
+    return parent;
+  });
+  return {
+    parentMenu,
+    indexPath
+  };
+}
+
+function useMenuColor(props) {
+  const menuBarColor = computed(() => {
+    const color = props.backgroundColor;
+    return color ? new TinyColor(color).shade(20).toString() : "";
+  });
+  return menuBarColor;
+}
+
+const useMenuCssVar = (props, level) => {
+  const ns = useNamespace("menu");
+  return computed(() => ns.cssVarBlock({
+    "text-color": props.textColor || "",
+    "hover-text-color": props.textColor || "",
+    "bg-color": props.backgroundColor || "",
+    "hover-bg-color": useMenuColor(props).value || "",
+    "active-color": props.activeTextColor || "",
+    level: `${level}`
+  }));
+};
+
+const MENU_INJECTION_KEY = "rootMenu";
+const SUB_MENU_INJECTION_KEY = "subMenu:";
+
+const subMenuProps = buildProps({
+  index: {
+    type: String,
+    required: true
+  },
+  showTimeout: Number,
+  hideTimeout: Number,
+  popperClass: String,
+  popperStyle: {
+    type: definePropType([String, Object])
+  },
+  disabled: Boolean,
+  teleported: {
+    type: Boolean,
+    default: void 0
+  },
+  popperOffset: Number,
+  expandCloseIcon: {
+    type: iconPropType
+  },
+  expandOpenIcon: {
+    type: iconPropType
+  },
+  collapseCloseIcon: {
+    type: iconPropType
+  },
+  collapseOpenIcon: {
+    type: iconPropType
+  }
+});
+const COMPONENT_NAME$d = "ElSubMenu";
+var SubMenu = defineComponent({
+  name: COMPONENT_NAME$d,
+  props: subMenuProps,
+  setup(props, { slots, expose }) {
+    const instance = getCurrentInstance();
+    const { indexPath, parentMenu } = useMenu(instance, computed(() => props.index));
+    const nsMenu = useNamespace("menu");
+    const nsSubMenu = useNamespace("sub-menu");
+    const rootMenu = inject(MENU_INJECTION_KEY);
+    if (!rootMenu)
+      throwError(COMPONENT_NAME$d, "can not inject root menu");
+    const subMenu = inject(`${SUB_MENU_INJECTION_KEY}${parentMenu.value.uid}`);
+    if (!subMenu)
+      throwError(COMPONENT_NAME$d, "can not inject sub menu");
+    const items = ref({});
+    const subMenus = ref({});
+    let timeout;
+    const mouseInChild = ref(false);
+    const verticalTitleRef = ref();
+    const vPopper = ref();
+    const isFirstLevel = computed(() => subMenu.level === 0);
+    const currentPlacement = computed(() => mode.value === "horizontal" && isFirstLevel.value ? "bottom-start" : "right-start");
+    const subMenuTitleIcon = computed(() => {
+      const isExpandedMode = mode.value === "horizontal" && isFirstLevel.value || mode.value === "vertical" && !rootMenu.props.collapse;
+      if (isExpandedMode) {
+        if (props.expandCloseIcon && props.expandOpenIcon) {
+          return opened.value ? props.expandOpenIcon : props.expandCloseIcon;
+        }
+        return arrow_down_default;
+      } else {
+        if (props.collapseCloseIcon && props.collapseOpenIcon) {
+          return opened.value ? props.collapseOpenIcon : props.collapseCloseIcon;
+        }
+        return arrow_right_default;
+      }
+    });
+    const appendToBody = computed(() => {
+      const value = props.teleported;
+      return isUndefined(value) ? isFirstLevel.value : value;
+    });
+    const menuTransitionName = computed(() => rootMenu.props.collapse ? `${nsMenu.namespace.value}-zoom-in-left` : `${nsMenu.namespace.value}-zoom-in-top`);
+    const fallbackPlacements = computed(() => mode.value === "horizontal" && isFirstLevel.value ? [
+      "bottom-start",
+      "bottom-end",
+      "top-start",
+      "top-end",
+      "right-start",
+      "left-start"
+    ] : [
+      "right-start",
+      "right",
+      "right-end",
+      "left-start",
+      "bottom-start",
+      "bottom-end",
+      "top-start",
+      "top-end"
+    ]);
+    const opened = computed(() => rootMenu.openedMenus.includes(props.index));
+    const active = computed(() => [...Object.values(items.value), ...Object.values(subMenus.value)].some(({ active: active2 }) => active2));
+    const mode = computed(() => rootMenu.props.mode);
+    const persistent = computed(() => rootMenu.props.persistent);
+    const item = reactive({
+      index: props.index,
+      indexPath,
+      active
+    });
+    const ulStyle = useMenuCssVar(rootMenu.props, subMenu.level + 1);
+    const subMenuPopperOffset = computed(() => {
+      var _a;
+      return (_a = props.popperOffset) != null ? _a : rootMenu.props.popperOffset;
+    });
+    const subMenuPopperClass = computed(() => {
+      var _a;
+      return (_a = props.popperClass) != null ? _a : rootMenu.props.popperClass;
+    });
+    const subMenuPopperStyle = computed(() => {
+      var _a;
+      return (_a = props.popperStyle) != null ? _a : rootMenu.props.popperStyle;
+    });
+    const subMenuShowTimeout = computed(() => {
+      var _a;
+      return (_a = props.showTimeout) != null ? _a : rootMenu.props.showTimeout;
+    });
+    const subMenuHideTimeout = computed(() => {
+      var _a;
+      return (_a = props.hideTimeout) != null ? _a : rootMenu.props.hideTimeout;
+    });
+    const doDestroy = () => {
+      var _a, _b, _c;
+      return (_c = (_b = (_a = vPopper.value) == null ? void 0 : _a.popperRef) == null ? void 0 : _b.popperInstanceRef) == null ? void 0 : _c.destroy();
+    };
+    const handleCollapseToggle = (value) => {
+      if (!value) {
+        doDestroy();
+      }
+    };
+    const handleClick = () => {
+      if (rootMenu.props.menuTrigger === "hover" && rootMenu.props.mode === "horizontal" || rootMenu.props.collapse && rootMenu.props.mode === "vertical" || props.disabled)
+        return;
+      rootMenu.handleSubMenuClick({
+        index: props.index,
+        indexPath: indexPath.value,
+        active: active.value
+      });
+    };
+    const handleMouseenter = (event, showTimeout = subMenuShowTimeout.value) => {
+      var _a;
+      if (event.type === "focus")
+        return;
+      if (rootMenu.props.menuTrigger === "click" && rootMenu.props.mode === "horizontal" || !rootMenu.props.collapse && rootMenu.props.mode === "vertical" || props.disabled) {
+        subMenu.mouseInChild.value = true;
+        return;
+      }
+      subMenu.mouseInChild.value = true;
+      timeout == null ? void 0 : timeout();
+      ({ stop: timeout } = useTimeoutFn(() => {
+        rootMenu.openMenu(props.index, indexPath.value);
+      }, showTimeout));
+      if (appendToBody.value) {
+        (_a = parentMenu.value.vnode.el) == null ? void 0 : _a.dispatchEvent(new MouseEvent("mouseenter"));
+      }
+      if (event.type === "mouseenter" && event.target) {
+        nextTick(() => {
+          focusElement(event.target, { preventScroll: true });
+        });
+      }
+    };
+    const handleMouseleave = (deepDispatch = false) => {
+      var _a;
+      if (rootMenu.props.menuTrigger === "click" && rootMenu.props.mode === "horizontal" || !rootMenu.props.collapse && rootMenu.props.mode === "vertical") {
+        subMenu.mouseInChild.value = false;
+        return;
+      }
+      timeout == null ? void 0 : timeout();
+      subMenu.mouseInChild.value = false;
+      ({ stop: timeout } = useTimeoutFn(() => !mouseInChild.value && rootMenu.closeMenu(props.index, indexPath.value), subMenuHideTimeout.value));
+      if (appendToBody.value && deepDispatch) {
+        (_a = subMenu.handleMouseleave) == null ? void 0 : _a.call(subMenu, true);
+      }
+    };
+    watch(() => rootMenu.props.collapse, (value) => handleCollapseToggle(Boolean(value)));
+    {
+      const addSubMenu = (item2) => {
+        subMenus.value[item2.index] = item2;
+      };
+      const removeSubMenu = (item2) => {
+        delete subMenus.value[item2.index];
+      };
+      provide(`${SUB_MENU_INJECTION_KEY}${instance.uid}`, {
+        addSubMenu,
+        removeSubMenu,
+        handleMouseleave,
+        mouseInChild,
+        level: subMenu.level + 1
+      });
+    }
+    expose({
+      opened
+    });
+    onMounted(() => {
+      rootMenu.addSubMenu(item);
+      subMenu.addSubMenu(item);
+    });
+    onBeforeUnmount(() => {
+      subMenu.removeSubMenu(item);
+      rootMenu.removeSubMenu(item);
+    });
+    return () => {
+      var _a;
+      const titleTag = [
+        (_a = slots.title) == null ? void 0 : _a.call(slots),
+        h$1(ElIcon, {
+          class: nsSubMenu.e("icon-arrow"),
+          style: {
+            transform: opened.value ? props.expandCloseIcon && props.expandOpenIcon || props.collapseCloseIcon && props.collapseOpenIcon && rootMenu.props.collapse ? "none" : "rotateZ(180deg)" : "none"
+          }
+        }, {
+          default: () => isString$1(subMenuTitleIcon.value) ? h$1(instance.appContext.components[subMenuTitleIcon.value]) : h$1(subMenuTitleIcon.value)
+        })
+      ];
+      const child = rootMenu.isMenuPopup ? h$1(ElTooltip, {
+        ref: vPopper,
+        visible: opened.value,
+        effect: "light",
+        pure: true,
+        offset: subMenuPopperOffset.value,
+        showArrow: false,
+        persistent: persistent.value,
+        popperClass: subMenuPopperClass.value,
+        popperStyle: subMenuPopperStyle.value,
+        placement: currentPlacement.value,
+        teleported: appendToBody.value,
+        fallbackPlacements: fallbackPlacements.value,
+        transition: menuTransitionName.value,
+        gpuAcceleration: false
+      }, {
+        content: () => {
+          var _a2;
+          return h$1("div", {
+            class: [
+              nsMenu.m(mode.value),
+              nsMenu.m("popup-container"),
+              subMenuPopperClass.value
+            ],
+            onMouseenter: (evt) => handleMouseenter(evt, 100),
+            onMouseleave: () => handleMouseleave(true),
+            onFocus: (evt) => handleMouseenter(evt, 100)
+          }, [
+            h$1("ul", {
+              class: [
+                nsMenu.b(),
+                nsMenu.m("popup"),
+                nsMenu.m(`popup-${currentPlacement.value}`)
+              ],
+              style: ulStyle.value
+            }, [(_a2 = slots.default) == null ? void 0 : _a2.call(slots)])
+          ]);
+        },
+        default: () => h$1("div", {
+          class: nsSubMenu.e("title"),
+          onClick: handleClick
+        }, titleTag)
+      }) : h$1(Fragment, {}, [
+        h$1("div", {
+          class: nsSubMenu.e("title"),
+          ref: verticalTitleRef,
+          onClick: handleClick
+        }, titleTag),
+        h$1(ElCollapseTransition, {}, {
+          default: () => {
+            var _a2;
+            return withDirectives(h$1("ul", {
+              role: "menu",
+              class: [nsMenu.b(), nsMenu.m("inline")],
+              style: ulStyle.value
+            }, [(_a2 = slots.default) == null ? void 0 : _a2.call(slots)]), [[vShow, opened.value]]);
+          }
+        })
+      ]);
+      return h$1("li", {
+        class: [
+          nsSubMenu.b(),
+          nsSubMenu.is("active", active.value),
+          nsSubMenu.is("opened", opened.value),
+          nsSubMenu.is("disabled", props.disabled)
+        ],
+        role: "menuitem",
+        ariaHaspopup: true,
+        ariaExpanded: opened.value,
+        onMouseenter: handleMouseenter,
+        onMouseleave: () => handleMouseleave(),
+        onFocus: handleMouseenter
+      }, [child]);
+    };
+  }
+});
+
+const menuProps = buildProps({
+  mode: {
+    type: String,
+    values: ["horizontal", "vertical"],
+    default: "vertical"
+  },
+  defaultActive: {
+    type: String,
+    default: ""
+  },
+  defaultOpeneds: {
+    type: definePropType(Array),
+    default: () => mutable([])
+  },
+  uniqueOpened: Boolean,
+  router: Boolean,
+  menuTrigger: {
+    type: String,
+    values: ["hover", "click"],
+    default: "hover"
+  },
+  collapse: Boolean,
+  backgroundColor: String,
+  textColor: String,
+  activeTextColor: String,
+  closeOnClickOutside: Boolean,
+  collapseTransition: {
+    type: Boolean,
+    default: true
+  },
+  ellipsis: {
+    type: Boolean,
+    default: true
+  },
+  popperOffset: {
+    type: Number,
+    default: 6
+  },
+  ellipsisIcon: {
+    type: iconPropType,
+    default: () => more_default
+  },
+  popperEffect: {
+    type: definePropType(String),
+    default: "dark"
+  },
+  popperClass: String,
+  popperStyle: {
+    type: definePropType([String, Object])
+  },
+  showTimeout: {
+    type: Number,
+    default: 300
+  },
+  hideTimeout: {
+    type: Number,
+    default: 300
+  },
+  persistent: {
+    type: Boolean,
+    default: true
+  }
+});
+const checkIndexPath = (indexPath) => isArray$1(indexPath) && indexPath.every((path) => isString$1(path));
+const menuEmits = {
+  close: (index, indexPath) => isString$1(index) && checkIndexPath(indexPath),
+  open: (index, indexPath) => isString$1(index) && checkIndexPath(indexPath),
+  select: (index, indexPath, item, routerResult) => isString$1(index) && checkIndexPath(indexPath) && isObject$1(item) && (isUndefined(routerResult) || routerResult instanceof Promise)
+};
+var Menu = defineComponent({
+  name: "ElMenu",
+  props: menuProps,
+  emits: menuEmits,
+  setup(props, { emit, slots, expose }) {
+    const instance = getCurrentInstance();
+    const router = instance.appContext.config.globalProperties.$router;
+    const menu = ref();
+    const subMenu = ref();
+    const nsMenu = useNamespace("menu");
+    const nsSubMenu = useNamespace("sub-menu");
+    let moreItemWidth = 64;
+    const sliceIndex = ref(-1);
+    const openedMenus = ref(props.defaultOpeneds && !props.collapse ? props.defaultOpeneds.slice(0) : []);
+    const activeIndex = ref(props.defaultActive);
+    const items = ref({});
+    const subMenus = ref({});
+    const isMenuPopup = computed(() => props.mode === "horizontal" || props.mode === "vertical" && props.collapse);
+    const initMenu = () => {
+      const activeItem = activeIndex.value && items.value[activeIndex.value];
+      if (!activeItem || props.mode === "horizontal" || props.collapse)
+        return;
+      const indexPath = activeItem.indexPath;
+      indexPath.forEach((index) => {
+        const subMenu2 = subMenus.value[index];
+        subMenu2 && openMenu(index, subMenu2.indexPath);
+      });
+    };
+    const openMenu = (index, indexPath) => {
+      if (openedMenus.value.includes(index))
+        return;
+      if (props.uniqueOpened) {
+        openedMenus.value = openedMenus.value.filter((index2) => indexPath.includes(index2));
+      }
+      openedMenus.value.push(index);
+      emit("open", index, indexPath);
+    };
+    const close = (index) => {
+      const i = openedMenus.value.indexOf(index);
+      if (i !== -1) {
+        openedMenus.value.splice(i, 1);
+      }
+    };
+    const closeMenu = (index, indexPath) => {
+      close(index);
+      emit("close", index, indexPath);
+    };
+    const handleSubMenuClick = ({
+      index,
+      indexPath
+    }) => {
+      const isOpened = openedMenus.value.includes(index);
+      isOpened ? closeMenu(index, indexPath) : openMenu(index, indexPath);
+    };
+    const handleMenuItemClick = (menuItem) => {
+      if (props.mode === "horizontal" || props.collapse) {
+        openedMenus.value = [];
+      }
+      if (props.collapse)
+        return;
+      const { index, indexPath } = menuItem;
+      if (isNil(index) || isNil(indexPath))
+        return;
+      if (props.router && router) {
+        const route = menuItem.route || index;
+        const routerResult = router.push(route).then((res) => {
+          if (!res)
+            activeIndex.value = index;
+          return res;
+        });
+        emit("select", index, indexPath, { index, indexPath, route }, routerResult);
+      } else {
+        activeIndex.value = index;
+        emit("select", index, indexPath, { index, indexPath });
+      }
+    };
+    const updateActiveIndex = (val) => {
+      var _a;
+      const itemsInData = items.value;
+      const item = itemsInData[val] || activeIndex.value && itemsInData[activeIndex.value] || itemsInData[props.defaultActive];
+      activeIndex.value = (_a = item == null ? void 0 : item.index) != null ? _a : val;
+    };
+    const calcMenuItemWidth = (menuItem) => {
+      const computedStyle = getComputedStyle(menuItem);
+      const marginLeft = Number.parseInt(computedStyle.marginLeft, 10);
+      const marginRight = Number.parseInt(computedStyle.marginRight, 10);
+      return menuItem.offsetWidth + marginLeft + marginRight || 0;
+    };
+    const calcSliceIndex = () => {
+      var _a, _b;
+      if (!menu.value)
+        return -1;
+      const items2 = Array.from((_b = (_a = menu.value) == null ? void 0 : _a.childNodes) != null ? _b : []).filter((item) => item.nodeName !== "#comment" && (item.nodeName !== "#text" || item.nodeValue));
+      const computedMenuStyle = getComputedStyle(menu.value);
+      const paddingLeft = Number.parseInt(computedMenuStyle.paddingLeft, 10);
+      const paddingRight = Number.parseInt(computedMenuStyle.paddingRight, 10);
+      const menuWidth = menu.value.clientWidth - paddingLeft - paddingRight;
+      let calcWidth = 0;
+      let sliceIndex2 = 0;
+      items2.forEach((item, index) => {
+        calcWidth += calcMenuItemWidth(item);
+        if (calcWidth <= menuWidth - moreItemWidth) {
+          sliceIndex2 = index + 1;
+        }
+      });
+      return sliceIndex2 === items2.length ? -1 : sliceIndex2;
+    };
+    const getIndexPath = (index) => subMenus.value[index].indexPath;
+    const debounce = (fn, wait = 33.34) => {
+      let timer;
+      return () => {
+        timer && clearTimeout(timer);
+        timer = setTimeout(() => {
+          fn();
+        }, wait);
+      };
+    };
+    let isFirstTimeRender = true;
+    const handleResize = () => {
+      const el = unrefElement(subMenu);
+      if (el)
+        moreItemWidth = calcMenuItemWidth(el) || 64;
+      if (sliceIndex.value === calcSliceIndex())
+        return;
+      const callback = () => {
+        sliceIndex.value = -1;
+        nextTick(() => {
+          sliceIndex.value = calcSliceIndex();
+        });
+      };
+      isFirstTimeRender ? callback() : debounce(callback)();
+      isFirstTimeRender = false;
+    };
+    watch(() => props.defaultActive, (currentActive) => {
+      if (!items.value[currentActive]) {
+        activeIndex.value = "";
+      }
+      updateActiveIndex(currentActive);
+    });
+    watch(() => props.collapse, (value) => {
+      if (value)
+        openedMenus.value = [];
+    });
+    watch(items.value, initMenu);
+    let resizeStopper;
+    watchEffect(() => {
+      if (props.mode === "horizontal" && props.ellipsis)
+        resizeStopper = useResizeObserver(menu, handleResize).stop;
+      else
+        resizeStopper == null ? void 0 : resizeStopper();
+    });
+    const mouseInChild = ref(false);
+    {
+      const addSubMenu = (item) => {
+        subMenus.value[item.index] = item;
+      };
+      const removeSubMenu = (item) => {
+        delete subMenus.value[item.index];
+      };
+      const addMenuItem = (item) => {
+        items.value[item.index] = item;
+      };
+      const removeMenuItem = (item) => {
+        delete items.value[item.index];
+      };
+      provide(MENU_INJECTION_KEY, reactive({
+        props,
+        openedMenus,
+        items,
+        subMenus,
+        activeIndex,
+        isMenuPopup,
+        addMenuItem,
+        removeMenuItem,
+        addSubMenu,
+        removeSubMenu,
+        openMenu,
+        closeMenu,
+        handleMenuItemClick,
+        handleSubMenuClick
+      }));
+      provide(`${SUB_MENU_INJECTION_KEY}${instance.uid}`, {
+        addSubMenu,
+        removeSubMenu,
+        mouseInChild,
+        level: 0
+      });
+    }
+    onMounted(() => {
+      if (props.mode === "horizontal") {
+        new Menubar(instance.vnode.el, nsMenu.namespace.value);
+      }
+    });
+    {
+      const open = (index) => {
+        const { indexPath } = subMenus.value[index];
+        indexPath.forEach((i) => openMenu(i, indexPath));
+      };
+      expose({
+        open,
+        close,
+        updateActiveIndex,
+        handleResize
+      });
+    }
+    const ulStyle = useMenuCssVar(props, 0);
+    return () => {
+      var _a, _b;
+      let slot = (_b = (_a = slots.default) == null ? void 0 : _a.call(slots)) != null ? _b : [];
+      const vShowMore = [];
+      if (props.mode === "horizontal" && menu.value) {
+        const originalSlot = flattedChildren(slot).filter((vnode) => {
+          return (vnode == null ? void 0 : vnode.shapeFlag) !== 8;
+        });
+        const slotDefault = sliceIndex.value === -1 ? originalSlot : originalSlot.slice(0, sliceIndex.value);
+        const slotMore = sliceIndex.value === -1 ? [] : originalSlot.slice(sliceIndex.value);
+        if ((slotMore == null ? void 0 : slotMore.length) && props.ellipsis) {
+          slot = slotDefault;
+          vShowMore.push(h$1(SubMenu, {
+            ref: subMenu,
+            index: "sub-menu-more",
+            class: nsSubMenu.e("hide-arrow"),
+            popperOffset: props.popperOffset
+          }, {
+            title: () => h$1(ElIcon, {
+              class: nsSubMenu.e("icon-more")
+            }, {
+              default: () => h$1(props.ellipsisIcon)
+            }),
+            default: () => slotMore
+          }));
+        }
+      }
+      const directives = props.closeOnClickOutside ? [
+        [
+          ClickOutside,
+          () => {
+            if (!openedMenus.value.length)
+              return;
+            if (!mouseInChild.value) {
+              openedMenus.value.forEach((openedMenu) => emit("close", openedMenu, getIndexPath(openedMenu)));
+              openedMenus.value = [];
+            }
+          }
+        ]
+      ] : [];
+      const vMenu = withDirectives(h$1("ul", {
+        key: String(props.collapse),
+        role: "menubar",
+        ref: menu,
+        style: ulStyle.value,
+        class: {
+          [nsMenu.b()]: true,
+          [nsMenu.m(props.mode)]: true,
+          [nsMenu.m("collapse")]: props.collapse
+        }
+      }, [...slot, ...vShowMore]), directives);
+      if (props.collapseTransition && props.mode === "vertical") {
+        return h$1(ElMenuCollapseTransition, () => vMenu);
+      }
+      return vMenu;
+    };
+  }
+});
+
+const menuItemProps = buildProps({
+  index: {
+    type: definePropType([String, null]),
+    default: null
+  },
+  route: {
+    type: definePropType([String, Object])
+  },
+  disabled: Boolean
+});
+const menuItemEmits = {
+  click: (item) => isString$1(item.index) && isArray$1(item.indexPath)
+};
+
+const COMPONENT_NAME$c = "ElMenuItem";
+const __default__$P = defineComponent({
+  name: COMPONENT_NAME$c
+});
+const _sfc_main$15 = /* @__PURE__ */ defineComponent({
+  ...__default__$P,
+  props: menuItemProps,
+  emits: menuItemEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    isPropAbsent(props.index) && debugWarn();
+    const instance = getCurrentInstance();
+    const rootMenu = inject(MENU_INJECTION_KEY);
+    const nsMenu = useNamespace("menu");
+    const nsMenuItem = useNamespace("menu-item");
+    if (!rootMenu)
+      throwError(COMPONENT_NAME$c, "can not inject root menu");
+    const { parentMenu, indexPath } = useMenu(instance, toRef(props, "index"));
+    const subMenu = inject(`${SUB_MENU_INJECTION_KEY}${parentMenu.value.uid}`);
+    if (!subMenu)
+      throwError(COMPONENT_NAME$c, "can not inject sub menu");
+    const active = computed(() => props.index === rootMenu.activeIndex);
+    const item = reactive({
+      index: props.index,
+      indexPath,
+      active
+    });
+    const handleClick = () => {
+      if (!props.disabled) {
+        rootMenu.handleMenuItemClick({
+          index: props.index,
+          indexPath: indexPath.value,
+          route: props.route
+        });
+        emit("click", item);
+      }
+    };
+    onMounted(() => {
+      subMenu.addSubMenu(item);
+      rootMenu.addMenuItem(item);
+    });
+    onBeforeUnmount(() => {
+      subMenu.removeSubMenu(item);
+      rootMenu.removeMenuItem(item);
+    });
+    expose({
+      parentMenu,
+      rootMenu,
+      active,
+      nsMenu,
+      nsMenuItem,
+      handleClick
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("li", {
+        class: normalizeClass([
+          unref(nsMenuItem).b(),
+          unref(nsMenuItem).is("active", unref(active)),
+          unref(nsMenuItem).is("disabled", _ctx.disabled)
+        ]),
+        role: "menuitem",
+        tabindex: "-1",
+        onClick: handleClick
+      }, [
+        unref(parentMenu).type.name === "ElMenu" && unref(rootMenu).props.collapse && _ctx.$slots.title ? (openBlock(), createBlock(unref(ElTooltip), {
+          key: 0,
+          effect: unref(rootMenu).props.popperEffect,
+          placement: "right",
+          "fallback-placements": ["left"],
+          persistent: unref(rootMenu).props.persistent,
+          "focus-on-target": "",
+          disabled: true
+        }, {
+          content: withCtx(() => [
+            renderSlot(_ctx.$slots, "title")
+          ]),
+          default: withCtx(() => [
+            createElementVNode("div", {
+              class: normalizeClass(unref(nsMenu).be("tooltip", "trigger"))
+            }, [
+              renderSlot(_ctx.$slots, "default")
+            ], 2)
+          ]),
+          _: 3
+        }, 8, ["effect", "persistent"])) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+          renderSlot(_ctx.$slots, "default"),
+          renderSlot(_ctx.$slots, "title")
+        ], 64))
+      ], 2);
+    };
+  }
+});
+var MenuItem = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["__file", "menu-item.vue"]]);
+
+const menuItemGroupProps = {
+  title: String
+};
+
+const __default__$O = defineComponent({
+  name: "ElMenuItemGroup"
+});
+const _sfc_main$14 = /* @__PURE__ */ defineComponent({
+  ...__default__$O,
+  props: menuItemGroupProps,
+  setup(__props) {
+    const ns = useNamespace("menu-item-group");
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("li", {
+        class: normalizeClass(unref(ns).b())
+      }, [
+        createElementVNode("div", {
+          class: normalizeClass(unref(ns).e("title"))
+        }, [
+          !_ctx.$slots.title ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+            createTextVNode(toDisplayString(_ctx.title), 1)
+          ], 64)) : renderSlot(_ctx.$slots, "title", { key: 1 })
+        ], 2),
+        createElementVNode("ul", null, [
+          renderSlot(_ctx.$slots, "default")
+        ])
+      ], 2);
+    };
+  }
+});
+var MenuItemGroup = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__file", "menu-item-group.vue"]]);
+
+const ElMenu = withInstall(Menu, {
+  MenuItem,
+  MenuItemGroup,
+  SubMenu
+});
+const ElMenuItem = withNoopInstall(MenuItem);
+const ElMenuItemGroup = withNoopInstall(MenuItemGroup);
+const ElSubMenu = withNoopInstall(SubMenu);
+
+const pageHeaderProps = buildProps({
+  icon: {
+    type: iconPropType,
+    default: () => back_default
+  },
+  title: String,
+  content: {
+    type: String,
+    default: ""
+  }
+});
+const pageHeaderEmits = {
+  back: () => true
+};
+
+const __default__$N = defineComponent({
+  name: "ElPageHeader"
+});
+const _sfc_main$13 = /* @__PURE__ */ defineComponent({
+  ...__default__$N,
+  props: pageHeaderProps,
+  emits: pageHeaderEmits,
+  setup(__props, { emit }) {
+    const { t } = useLocale();
+    const ns = useNamespace("page-header");
+    function handleClick() {
+      emit("back");
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass([
+          unref(ns).b(),
+          unref(ns).is("contentful", !!_ctx.$slots.default),
+          {
+            [unref(ns).m("has-breadcrumb")]: !!_ctx.$slots.breadcrumb,
+            [unref(ns).m("has-extra")]: !!_ctx.$slots.extra
+          }
+        ])
+      }, [
+        _ctx.$slots.breadcrumb ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          class: normalizeClass(unref(ns).e("breadcrumb"))
+        }, [
+          renderSlot(_ctx.$slots, "breadcrumb")
+        ], 2)) : createCommentVNode("v-if", true),
+        createElementVNode("div", {
+          class: normalizeClass(unref(ns).e("header"))
+        }, [
+          createElementVNode("div", {
+            class: normalizeClass(unref(ns).e("left"))
+          }, [
+            createElementVNode("div", {
+              class: normalizeClass(unref(ns).e("back")),
+              role: "button",
+              tabindex: "0",
+              onClick: handleClick
+            }, [
+              _ctx.icon || _ctx.$slots.icon ? (openBlock(), createElementBlock("div", {
+                key: 0,
+                "aria-label": _ctx.title || unref(t)("el.pageHeader.title"),
+                class: normalizeClass(unref(ns).e("icon"))
+              }, [
+                renderSlot(_ctx.$slots, "icon", {}, () => [
+                  _ctx.icon ? (openBlock(), createBlock(unref(ElIcon), { key: 0 }, {
+                    default: withCtx(() => [
+                      (openBlock(), createBlock(resolveDynamicComponent(_ctx.icon)))
+                    ]),
+                    _: 1
+                  })) : createCommentVNode("v-if", true)
+                ])
+              ], 10, ["aria-label"])) : createCommentVNode("v-if", true),
+              createElementVNode("div", {
+                class: normalizeClass(unref(ns).e("title"))
+              }, [
+                renderSlot(_ctx.$slots, "title", {}, () => [
+                  createTextVNode(toDisplayString(_ctx.title || unref(t)("el.pageHeader.title")), 1)
+                ])
+              ], 2)
+            ], 2),
+            createVNode(unref(ElDivider), { direction: "vertical" }),
+            createElementVNode("div", {
+              class: normalizeClass(unref(ns).e("content"))
+            }, [
+              renderSlot(_ctx.$slots, "content", {}, () => [
+                createTextVNode(toDisplayString(_ctx.content), 1)
+              ])
+            ], 2)
+          ], 2),
+          _ctx.$slots.extra ? (openBlock(), createElementBlock("div", {
+            key: 0,
+            class: normalizeClass(unref(ns).e("extra"))
+          }, [
+            renderSlot(_ctx.$slots, "extra")
+          ], 2)) : createCommentVNode("v-if", true)
+        ], 2),
+        _ctx.$slots.default ? (openBlock(), createElementBlock("div", {
+          key: 1,
+          class: normalizeClass(unref(ns).e("main"))
+        }, [
+          renderSlot(_ctx.$slots, "default")
+        ], 2)) : createCommentVNode("v-if", true)
+      ], 2);
+    };
+  }
+});
+var PageHeader = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__file", "page-header.vue"]]);
+
+const ElPageHeader = withInstall(PageHeader);
+
+const elPaginationKey = Symbol("elPaginationKey");
+
+const paginationPrevProps = buildProps({
+  disabled: Boolean,
+  currentPage: {
+    type: Number,
+    default: 1
+  },
+  prevText: {
+    type: String
+  },
+  prevIcon: {
+    type: iconPropType
+  }
+});
+const paginationPrevEmits = {
+  click: (evt) => evt instanceof MouseEvent
+};
+
+const __default__$M = defineComponent({
+  name: "ElPaginationPrev"
+});
+const _sfc_main$12 = /* @__PURE__ */ defineComponent({
+  ...__default__$M,
+  props: paginationPrevProps,
+  emits: paginationPrevEmits,
+  setup(__props) {
+    const props = __props;
+    const { t } = useLocale();
+    const internalDisabled = computed(() => props.disabled || props.currentPage <= 1);
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("button", {
+        type: "button",
+        class: "btn-prev",
+        disabled: unref(internalDisabled),
+        "aria-label": _ctx.prevText || unref(t)("el.pagination.prev"),
+        "aria-disabled": unref(internalDisabled),
+        onClick: ($event) => _ctx.$emit("click", $event)
+      }, [
+        _ctx.prevText ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(_ctx.prevText), 1)) : (openBlock(), createBlock(unref(ElIcon), { key: 1 }, {
+          default: withCtx(() => [
+            (openBlock(), createElementBlock("svg", {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "16",
+              height: "16",
+              viewBox: "0 0 16 16"
+            }, [
+              createElementVNode("g", { "clip-path": "url(#clip0_11356_6847)" }, [
+                createElementVNode("path", { d: "M10.694 16L4.35603 9.65333C3.91994 9.21519 3.67512 8.62218 3.67512 8.004C3.67512 7.38582 3.91994 6.79281 4.35603 6.35467L10.7014 0L12.1134 1.414L5.76803 7.768C5.70554 7.83051 5.67044 7.91528 5.67044 8.00367C5.67044 8.09206 5.70554 8.17682 5.76803 8.23933L12.1054 14.586L10.694 16Z" })
+              ]),
+              createElementVNode("defs", null, [
+                createElementVNode("clipPath", { id: "clip0_11356_6847" }, [
+                  createElementVNode("rect", {
+                    width: "16",
+                    height: "16",
+                    fill: "white"
+                  })
+                ])
+              ])
+            ]))
+          ]),
+          _: 1
+        }))
+      ], 8, ["disabled", "aria-label", "aria-disabled", "onClick"]);
+    };
+  }
+});
+var Prev = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__file", "prev.vue"]]);
+
+const paginationNextProps = buildProps({
+  disabled: Boolean,
+  currentPage: {
+    type: Number,
+    default: 1
+  },
+  pageCount: {
+    type: Number,
+    default: 50
+  },
+  nextText: {
+    type: String
+  },
+  nextIcon: {
+    type: iconPropType
+  }
+});
+
+const __default__$L = defineComponent({
+  name: "ElPaginationNext"
+});
+const _sfc_main$11 = /* @__PURE__ */ defineComponent({
+  ...__default__$L,
+  props: paginationNextProps,
+  emits: ["click"],
+  setup(__props) {
+    const props = __props;
+    const { t } = useLocale();
+    const internalDisabled = computed(() => props.disabled || props.currentPage === props.pageCount || props.pageCount === 0);
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("button", {
+        type: "button",
+        class: "btn-next",
+        disabled: unref(internalDisabled),
+        "aria-label": _ctx.nextText || unref(t)("el.pagination.next"),
+        "aria-disabled": unref(internalDisabled),
+        onClick: ($event) => _ctx.$emit("click", $event)
+      }, [
+        _ctx.nextText ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(_ctx.nextText), 1)) : (openBlock(), createBlock(unref(ElIcon), { key: 1 }, {
+          default: withCtx(() => [
+            (openBlock(), createElementBlock("svg", {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "16",
+              height: "16",
+              viewBox: "0 0 16 16"
+            }, [
+              createElementVNode("g", { "clip-path": "url(#clip0_11356_6918)" }, [
+                createElementVNode("path", { d: "M5.418 16L11.756 9.65333C12.1921 9.21519 12.4369 8.62218 12.4369 8.004C12.4369 7.38582 12.1921 6.79281 11.756 6.35467L5.41067 0L4 1.414L10.3453 7.768C10.4078 7.83051 10.4429 7.91528 10.4429 8.00367C10.4429 8.09206 10.4078 8.17682 10.3453 8.23933L4.00667 14.586L5.418 16Z" })
+              ]),
+              createElementVNode("defs", null, [
+                createElementVNode("clipPath", { id: "clip0_11356_6918" }, [
+                  createElementVNode("rect", {
+                    width: "16",
+                    height: "16",
+                    fill: "white"
+                  })
+                ])
+              ])
+            ]))
+          ]),
+          _: 1
+        }))
+      ], 8, ["disabled", "aria-label", "aria-disabled", "onClick"]);
+    };
+  }
+});
+var Next = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__file", "next.vue"]]);
+
+const selectGroupKey = Symbol("ElSelectGroup");
+const selectKey = Symbol("ElSelect");
+
+const COMPONENT_NAME$b = "ElOption";
+const optionProps = buildProps({
+  value: {
+    type: [String, Number, Boolean, Object],
+    required: true
+  },
+  label: {
+    type: [String, Number]
+  },
+  created: Boolean,
+  showTip: {
+    type: Boolean,
+    default: true
+  },
+  tip: String,
+  placement: {
+    type: definePropType(String),
+    values: Ee,
+    default: "left"
+  },
+  disabled: Boolean,
+  rawOption: {
+    type: definePropType(Object)
+  }
+});
+
+function useOption(props, states) {
+  const select = inject(selectKey);
+  if (!select) {
+    throwError(COMPONENT_NAME$b, "usage: <el-select><el-option /></el-select/>");
+  }
+  const selectGroup = inject(selectGroupKey, { disabled: false });
+  const itemSelected = computed(() => {
+    return contains(castArray$1(select.props.modelValue), props.value);
+  });
+  const limitReached = computed(() => {
+    var _a;
+    if (select.props.multiple) {
+      const modelValue = castArray$1((_a = select.props.modelValue) != null ? _a : []);
+      return !itemSelected.value && modelValue.length >= select.props.multipleLimit && select.props.multipleLimit > 0;
+    } else {
+      return false;
+    }
+  });
+  const currentLabel = computed(() => {
+    var _a;
+    return (_a = props.label) != null ? _a : isObject$1(props.value) ? "" : props.value;
+  });
+  const currentValue = computed(() => {
+    return props.value || props.label || "";
+  });
+  const isDisabled = computed(() => {
+    return props.disabled || states.groupDisabled || limitReached.value;
+  });
+  const instance = getCurrentInstance();
+  const contains = (arr = [], target) => {
+    if (!isObject$1(props.value)) {
+      return arr && arr.includes(target);
+    } else {
+      const valueKey = select.props.valueKey;
+      return arr && arr.some((item) => {
+        return toRaw(get(item, valueKey)) === get(target, valueKey);
+      });
+    }
+  };
+  const hoverItem = () => {
+    if (isDisabled.value) {
+      select.states.hoveringIndex = -1;
+      return;
+    }
+    select.states.hoveringIndex = select.optionsArray.indexOf(instance.proxy);
+  };
+  const updateOption = (query) => {
+    const regexp = new RegExp(escapeStringRegexp(query), "i");
+    states.visible = regexp.test(String(currentLabel.value)) || props.created;
+  };
+  watch(() => currentLabel.value, () => {
+    if (!props.created && !select.props.remote)
+      select.setSelected();
+  });
+  watch(() => props.value, (val, oldVal) => {
+    const { remote, valueKey } = select.props;
+    const shouldUpdate = remote ? val !== oldVal : !isEqual$1(val, oldVal);
+    if (shouldUpdate) {
+      select.onOptionDestroy(oldVal, instance.proxy);
+      select.onOptionCreate(instance.proxy);
+    }
+    if (!props.created && !remote) {
+      if (valueKey && isObject$1(val) && isObject$1(oldVal) && val[valueKey] === oldVal[valueKey]) {
+        return;
+      }
+      select.setSelected();
+    }
+  });
+  watch(() => selectGroup.disabled, () => {
+    states.groupDisabled = selectGroup.disabled;
+  }, { immediate: true });
+  return {
+    select,
+    currentLabel,
+    currentValue,
+    itemSelected,
+    isDisabled,
+    hoverItem,
+    updateOption
+  };
+}
+
+const _sfc_main$10 = defineComponent({
+  name: COMPONENT_NAME$b,
+  componentName: COMPONENT_NAME$b,
+  components: {
+    ElCheckbox,
+    ElRadio,
+    ElTooltip
+  },
+  props: optionProps,
+  setup(props, { slots }) {
+    const ns = useNamespace("select");
+    const id = useId();
+    const isTextOverflowing = ref(false);
+    const hasDefaultSlot = computed(() => {
+      var _a, _b;
+      return ((_b = (_a = slots.default) == null ? void 0 : _a.call(slots)) != null ? _b : []).some((node) => {
+        var _a2;
+        if (node.type === Comment)
+          return false;
+        if (node.type === Text$1) {
+          return Boolean(String((_a2 = node.children) != null ? _a2 : "").trim());
+        }
+        return true;
+      });
+    });
+    const containerKls = computed(() => [
+      ns.be("dropdown", "item"),
+      ns.is("disabled", unref(isDisabled)),
+      ns.is("selected", unref(itemSelected)),
+      ns.is("hovering", unref(hover))
+    ]);
+    const states = reactive({
+      index: -1,
+      groupDisabled: false,
+      visible: true,
+      hover: false
+    });
+    const {
+      currentLabel,
+      itemSelected,
+      isDisabled,
+      select,
+      hoverItem,
+      updateOption
+    } = useOption(props, states);
+    const { visible, hover } = toRefs(states);
+    const vm = getCurrentInstance().proxy;
+    select.onOptionCreate(vm);
+    const multiple = computed(() => select.props.multiple);
+    const isSelectedTop = computed(() => multiple.value && itemSelected.value);
+    const getGroupElement = (option = vm) => {
+      var _a, _b;
+      return (_b = (_a = option.$el) == null ? void 0 : _a.closest) == null ? void 0 : _b.call(_a, `.${ns.b("group")}`);
+    };
+    const isGroupOption = () => Boolean(getGroupElement());
+    const optionStyle = computed(() => {
+      if (!multiple.value)
+        return {};
+      return {
+        order: isSelectedTop.value ? 1 : 3
+      };
+    });
+    onBeforeUnmount(() => {
+      const key = vm.value;
+      nextTick(() => {
+        const { selected: selectedOptions } = select.states;
+        const doesSelected = selectedOptions.some((item) => {
+          return item.value === vm.value;
+        });
+        if (select.states.cachedOptions.get(key) === vm && !doesSelected) {
+          select.states.cachedOptions.delete(key);
+        }
+      });
+      select.onOptionDestroy(key, vm);
+    });
+    function selectOptionClick() {
+      if (!isDisabled.value) {
+        select.handleOptionSelect(vm);
+      }
+    }
+    function handleGroupCheckboxClick(event) {
+      if (isGroupOption()) {
+        event.stopPropagation();
+      }
+    }
+    function handleGroupCheckboxChange() {
+      if (isGroupOption()) {
+        selectOptionClick();
+      }
+    }
+    function isGreaterThan(a, b, epsilon = 0.03) {
+      return a - b > epsilon;
+    }
+    const getPadding = (el) => {
+      const style = window.getComputedStyle(el, null);
+      const paddingLeft = Number.parseInt(style.paddingLeft, 10) || 0;
+      const paddingRight = Number.parseInt(style.paddingRight, 10) || 0;
+      const paddingTop = Number.parseInt(style.paddingTop, 10) || 0;
+      const paddingBottom = Number.parseInt(style.paddingBottom, 10) || 0;
+      return {
+        left: paddingLeft,
+        right: paddingRight,
+        top: paddingTop,
+        bottom: paddingBottom
+      };
+    };
+    const handleCellMouseEnter = (event) => {
+      const cellChild = event.target.querySelector(".option-wrap-content");
+      if (!cellChild)
+        return;
+      if (cellChild && !(cellChild == null ? void 0 : cellChild.childNodes.length)) {
+        isTextOverflowing.value = false;
+        return;
+      }
+      const range = document.createRange();
+      range.setStart(cellChild, 0);
+      range.setEnd(cellChild, cellChild.childNodes.length);
+      const { width: rangeWidth, height: rangeHeight } = range.getBoundingClientRect();
+      const { width: cellChildWidth, height: cellChildHeight } = cellChild.getBoundingClientRect();
+      const { top, left, right, bottom } = getPadding(cellChild);
+      const horizontalPadding = left + right;
+      const verticalPadding = top + bottom;
+      isTextOverflowing.value = isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth);
+    };
+    return {
+      multiple,
+      ns,
+      id,
+      hasDefaultSlot,
+      containerKls,
+      rawOption: props.rawOption,
+      currentLabel,
+      itemSelected,
+      isDisabled,
+      select,
+      visible,
+      hover,
+      states,
+      isTextOverflowing,
+      showTip: props.showTip,
+      tip: computed(() => props.tip),
+      placement: props.placement,
+      optionStyle,
+      handleCellMouseEnter,
+      hoverItem,
+      updateOption,
+      selectOptionClick,
+      handleGroupCheckboxClick,
+      handleGroupCheckboxChange
+    };
+  }
+});
+function _sfc_render$b(_ctx, _cache) {
+  const _component_el_radio = resolveComponent("el-radio");
+  const _component_el_checkbox = resolveComponent("el-checkbox");
+  const _component_el_tooltip = resolveComponent("el-tooltip");
+  return withDirectives((openBlock(), createElementBlock("li", {
+    id: _ctx.id,
+    class: normalizeClass([_ctx.containerKls, _ctx.ns.is("multiple", _ctx.multiple)]),
+    style: normalizeStyle(_ctx.optionStyle),
+    role: "option",
+    "aria-disabled": _ctx.isDisabled || void 0,
+    "aria-selected": _ctx.itemSelected,
+    onMousemove: _ctx.hoverItem,
+    onClick: withModifiers(_ctx.selectOptionClick, ["stop"]),
+    onMouseenter: _ctx.handleCellMouseEnter
+  }, [
+    createElementVNode("div", { class: "option-wrap" }, [
+      !_ctx.multiple ? (openBlock(), createBlock(_component_el_radio, {
+        key: 0,
+        "model-value": _ctx.itemSelected,
+        value: true,
+        disabled: _ctx.isDisabled,
+        onClick: withModifiers(() => {
+        }, ["stop"]),
+        onChange: _ctx.selectOptionClick
+      }, null, 8, ["model-value", "disabled", "onClick", "onChange"])) : createCommentVNode("v-if", true),
+      _ctx.multiple ? (openBlock(), createBlock(_component_el_checkbox, {
+        key: 1,
+        modelValue: _ctx.itemSelected,
+        "onUpdate:modelValue": ($event) => _ctx.itemSelected = $event,
+        disabled: _ctx.isDisabled,
+        onChange: _ctx.handleGroupCheckboxChange,
+        onClick: _ctx.handleGroupCheckboxClick
+      }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled", "onChange", "onClick"])) : createCommentVNode("v-if", true),
+      _ctx.hasDefaultSlot ? (openBlock(), createElementBlock("div", {
+        key: 2,
+        class: "option-wrap-custom-content"
+      }, [
+        renderSlot(_ctx.$slots, "default")
+      ])) : (openBlock(), createBlock(_component_el_tooltip, {
+        key: 3,
+        ref: "tooltipRef",
+        effect: "light",
+        disabled: !_ctx.select.props.showOptionTooltip || !_ctx.showTip || !_ctx.isTextOverflowing && !_ctx.tip,
+        placement: _ctx.placement,
+        "popper-class": "optionPopperClass"
+      }, {
+        content: withCtx(() => [
+          _ctx.isTextOverflowing ? (openBlock(), createElementBlock("div", { key: 0 }, toDisplayString(_ctx.currentLabel), 1)) : createCommentVNode("v-if", true),
+          _ctx.tip ? (openBlock(), createElementBlock("div", { key: 1 }, toDisplayString(_ctx.tip), 1)) : createCommentVNode("v-if", true)
+        ]),
+        default: withCtx(() => {
+          var _a;
+          return [
+            createElementVNode("div", { class: "option-wrap-content" }, [
+              renderSlot(_ctx.$slots, "optionIcon", {
+                item: _ctx.rawOption,
+                value: _ctx.select.props.modelValue
+              }),
+              createElementVNode("span", {
+                class: normalizeClass(["select-label", { "select-margin": (_a = _ctx.$slots) == null ? void 0 : _a.optionIcon }])
+              }, toDisplayString(_ctx.currentLabel), 3)
+            ])
+          ];
+        }),
+        _: 3
+      }, 8, ["disabled", "placement"]))
+    ])
+  ], 46, ["id", "aria-disabled", "aria-selected", "onMousemove", "onClick", "onMouseenter"])), [
+    [vShow, _ctx.visible]
+  ]);
+}
+var Option = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$b], ["__file", "option.vue"]]);
+
+const _sfc_main$$ = defineComponent({
+  name: "ElSelectDropdown",
+  componentName: "ElSelectDropdown",
+  setup() {
+    const select = inject(selectKey);
+    const ns = useNamespace("select");
+    const popperClass = computed(() => select.props.popperClass);
+    const isMultiple = computed(() => select.props.multiple);
+    const isFitInputWidth = computed(() => select.props.fitInputWidth);
+    const optionWidth = computed(() => addUnit(select.props.optionWidth));
+    const minWidth = ref("");
+    const dropdownStyle = computed(() => {
+      if (!isFitInputWidth.value && optionWidth.value) {
+        return {
+          width: optionWidth.value
+        };
+      }
+      return {
+        [isFitInputWidth.value ? "width" : "minWidth"]: minWidth.value
+      };
+    });
+    function updateMinWidth() {
+      var _a;
+      const offsetWidth = (_a = select.selectRef) == null ? void 0 : _a.offsetWidth;
+      if (offsetWidth) {
+        minWidth.value = `${offsetWidth - BORDER_HORIZONTAL_WIDTH}px`;
+      } else {
+        minWidth.value = "";
+      }
+    }
+    onMounted(() => {
+      updateMinWidth();
+      useResizeObserver(select.selectRef, updateMinWidth);
+    });
+    return {
+      ns,
+      minWidth,
+      dropdownStyle,
+      popperClass,
+      isMultiple,
+      isFitInputWidth
+    };
+  }
+});
+function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass([_ctx.ns.b("dropdown"), _ctx.ns.is("multiple", _ctx.isMultiple), _ctx.popperClass]),
+    style: normalizeStyle(_ctx.dropdownStyle)
+  }, [
+    _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
+      key: 0,
+      class: normalizeClass(_ctx.ns.be("dropdown", "header"))
+    }, [
+      renderSlot(_ctx.$slots, "header")
+    ], 2)) : createCommentVNode("v-if", true),
+    renderSlot(_ctx.$slots, "default"),
+    _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+      key: 1,
+      class: normalizeClass(_ctx.ns.be("dropdown", "footer"))
+    }, [
+      renderSlot(_ctx.$slots, "footer")
+    ], 2)) : createCommentVNode("v-if", true)
+  ], 6);
+}
+var ElSelectMenu = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$a], ["__file", "select-dropdown.vue"]]);
+
+const useSelect$1 = (props, emit) => {
+  const { t } = useLocale();
+  const contentId = useId();
+  const nsSelect = useNamespace("select");
+  const nsInput = useNamespace("input");
+  const states = reactive({
+    inputValue: "",
+    options: /* @__PURE__ */ new Map(),
+    cachedOptions: /* @__PURE__ */ new Map(),
+    optionValues: [],
+    selected: [],
+    selectionWidth: 0,
+    collapseItemWidth: 0,
+    selectedLabel: "",
+    hoveringIndex: -1,
+    previousQuery: null,
+    inputHovering: false,
+    menuVisibleOnFocus: false,
+    isBeforeHide: false
+  });
+  const selectRef = ref();
+  const selectionRef = ref();
+  const tooltipRef = ref();
+  const tagTooltipRef = ref();
+  const inputRef = ref();
+  const prefixRef = ref();
+  const suffixRef = ref();
+  const menuRef = ref();
+  const tagMenuRef = ref();
+  const collapseItemRef = ref();
+  const scrollbarRef = ref();
+  const expanded = ref(false);
+  const hoverOption = ref();
+  const debouncing = ref(false);
+  const { form, formItem } = useFormItem();
+  const { inputId } = useFormItemInputId(props, {
+    formItemContext: formItem
+  });
+  const { valueOnClear, isEmptyValue } = useEmptyValues(props);
+  const {
+    isComposing,
+    handleCompositionStart,
+    handleCompositionUpdate,
+    handleCompositionEnd
+  } = useComposition({
+    afterComposition: (e) => onInput(e)
+  });
+  const selectDisabled = computed(() => props.disabled || !!(form == null ? void 0 : form.disabled));
+  const { wrapperRef, isFocused, handleBlur } = useFocusController(inputRef, {
+    disabled: selectDisabled,
+    afterFocus() {
+      if (props.automaticDropdown && !expanded.value) {
+        expanded.value = true;
+        states.menuVisibleOnFocus = true;
+      }
+    },
+    beforeBlur(event) {
+      var _a, _b;
+      return ((_a = tooltipRef.value) == null ? void 0 : _a.isFocusInsideContent(event)) || ((_b = tagTooltipRef.value) == null ? void 0 : _b.isFocusInsideContent(event));
+    },
+    afterBlur() {
+      var _a;
+      expanded.value = false;
+      states.menuVisibleOnFocus = false;
+      if (props.validateEvent) {
+        (_a = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a.call(formItem, "blur").catch((err) => debugWarn());
+      }
+    }
+  });
+  const hasModelValue = computed(() => {
+    return isArray$1(props.modelValue) ? props.modelValue.length > 0 : !isEmptyValue(props.modelValue);
+  });
+  const needStatusIcon = computed(() => {
+    var _a;
+    return (_a = form == null ? void 0 : form.statusIcon) != null ? _a : false;
+  });
+  const showClearBtn = computed(() => {
+    return props.clearable && !props.multiple && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
+  });
+  const iconComponent = computed(() => props.remote && props.filterable && !props.remoteShowSuffix ? "" : props.suffixIcon);
+  const iconReverse = computed(() => nsSelect.is("reverse", !!(iconComponent.value && expanded.value)));
+  const validateState = computed(() => (formItem == null ? void 0 : formItem.validateState) || "");
+  const validateMessage = computed(() => (formItem == null ? void 0 : formItem.validateMessage) || "");
+  const validateIcon = computed(() => validateState.value && ValidateComponentsMap[validateState.value]);
+  const debounce = computed(() => props.remote ? props.debounce : 0);
+  const isRemoteSearchEmpty = computed(() => props.remote && !states.inputValue && states.options.size === 0);
+  const emptyText = computed(() => {
+    if (props.loading) {
+      return props.loadingText || t("el.select.loading");
+    } else {
+      if (props.filterable && states.inputValue && states.options.size > 0 && filteredOptionsCount.value === 0) {
+        return props.noMatchText || t("el.select.noMatch");
+      }
+      if (states.options.size === 0) {
+        return props.noDataText || t("el.select.noData");
+      }
+    }
+    return null;
+  });
+  const filteredOptionsCount = computed(() => optionsArray.value.filter((option) => option.visible).length);
+  const optionsArray = computed(() => {
+    const list = Array.from(states.options.values());
+    const newList = [];
+    states.optionValues.forEach((item) => {
+      const index = list.findIndex((i) => i.value === item);
+      if (index > -1) {
+        newList.push(list[index]);
+      }
+    });
+    return newList.length >= list.length ? newList : list;
+  });
+  const cachedOptionsArray = computed(() => Array.from(states.cachedOptions.values()));
+  const showNewOption = computed(() => {
+    const hasExistingOption = optionsArray.value.filter((option) => {
+      return !option.created;
+    }).some((option) => {
+      return option.currentLabel === states.inputValue;
+    });
+    return props.filterable && props.allowCreate && states.inputValue !== "" && !hasExistingOption;
+  });
+  const updateOptions = () => {
+    if (props.filterable && isFunction$1(props.filterMethod))
+      return;
+    if (props.filterable && props.remote && isFunction$1(props.remoteMethod))
+      return;
+    optionsArray.value.forEach((option) => {
+      var _a;
+      (_a = option.updateOption) == null ? void 0 : _a.call(option, states.inputValue);
+    });
+  };
+  const noPendingAutoSelection = Symbol("noPendingAutoSelection");
+  let pendingAutoSelectValue = noPendingAutoSelection;
+  const selectSize = useFormSize();
+  const collapseTagSize = computed(() => ["small"].includes(selectSize.value) ? "small" : "default");
+  const dropdownMenuVisible = computed({
+    get() {
+      return expanded.value && (props.loading || !isRemoteSearchEmpty.value) && (!debouncing.value || !isEmpty(states.previousQuery));
+    },
+    set(val) {
+      expanded.value = val;
+    }
+  });
+  const shouldShowPlaceholder = computed(() => {
+    if (props.multiple && !isUndefined(props.modelValue)) {
+      return castArray$1(props.modelValue).length === 0 && !states.inputValue;
+    }
+    const value = isArray$1(props.modelValue) ? props.modelValue[0] : props.modelValue;
+    return props.filterable || isUndefined(value) ? !states.inputValue : true;
+  });
+  const currentPlaceholder = computed(() => {
+    var _a;
+    const _placeholder = (_a = props.placeholder) != null ? _a : t("el.select.placeholder");
+    return props.multiple || !hasModelValue.value ? _placeholder : states.selectedLabel;
+  });
+  const mouseEnterEventName = computed(() => isIOS ? null : "mouseenter");
+  watch(() => props.modelValue, (val, oldVal) => {
+    if (pendingAutoSelectValue !== noPendingAutoSelection && isEqual$1(val, pendingAutoSelectValue)) {
+      pendingAutoSelectValue = noPendingAutoSelection;
+    }
+    if (props.multiple) {
+      if (props.filterable && !props.reserveKeyword) {
+        states.inputValue = "";
+        handleQueryChange("");
+      }
+    }
+    setSelected();
+    if (!isEqual$1(val, oldVal) && props.validateEvent) {
+      formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn());
+    }
+  }, {
+    flush: "post",
+    deep: true
+  });
+  watch(() => expanded.value, (val) => {
+    if (val) {
+      handleQueryChange(states.inputValue);
+    } else {
+      states.inputValue = "";
+      states.previousQuery = null;
+      states.isBeforeHide = true;
+    }
+    emit("visible-change", val);
+  });
+  watch(() => states.options.entries(), () => {
+    if (!isClient)
+      return;
+    setSelected();
+    if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptionsCount.value) {
+      checkDefaultFirstOption();
+    }
+  }, {
+    flush: "post"
+  });
+  watch([() => states.hoveringIndex, optionsArray], ([val]) => {
+    if (isNumber(val) && val > -1) {
+      hoverOption.value = optionsArray.value[val] || {};
+    } else {
+      hoverOption.value = {};
+    }
+    optionsArray.value.forEach((option) => {
+      option.hover = hoverOption.value === option;
+    });
+  });
+  watchEffect(() => {
+    if (states.isBeforeHide)
+      return;
+    updateOptions();
+  });
+  const handleQueryChange = (val) => {
+    if (states.previousQuery === val || isComposing.value) {
+      return;
+    }
+    states.previousQuery = val;
+    if (props.filterable && isFunction$1(props.filterMethod)) {
+      props.filterMethod(val);
+    } else if (props.filterable && props.remote && isFunction$1(props.remoteMethod)) {
+      props.remoteMethod(val);
+    }
+    if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptionsCount.value) {
+      nextTick(checkDefaultFirstOption);
+    } else {
+      nextTick(updateHoveringIndex);
+    }
+  };
+  const checkDefaultFirstOption = () => {
+    const optionsInDropdown = optionsArray.value.filter((n) => n.visible && !n.disabled && !n.states.groupDisabled);
+    const userCreatedOption = optionsInDropdown.find((n) => n.created);
+    const firstOriginOption = optionsInDropdown[0];
+    const valueList = optionsArray.value.map((item) => item.value);
+    states.hoveringIndex = getValueIndex(valueList, userCreatedOption || firstOriginOption);
+  };
+  const setSelected = () => {
+    if (!props.multiple) {
+      const value = isArray$1(props.modelValue) ? props.modelValue[0] : props.modelValue;
+      const option = getOption(value);
+      states.selectedLabel = option.currentLabel;
+      states.selected = [option];
+      return;
+    } else {
+      states.selectedLabel = "";
+    }
+    const selectedValues = isUndefined(props.modelValue) ? [] : castArray$1(props.modelValue);
+    const result = [];
+    optionsArray.value.forEach((option) => {
+      if (getValueIndex(selectedValues, option) > -1) {
+        result.push(getOption(option.value));
+      }
+    });
+    selectedValues.forEach((value) => {
+      const selectedOption = getOption(value);
+      if (result.some((option) => getValueKey(option) === getValueKey(selectedOption))) {
+        return;
+      }
+      result.push(selectedOption);
+    });
+    states.selected = result;
+  };
+  const findCachedOption = (value) => {
+    const isObjectValue = isPlainObject$1(value);
+    for (let i = states.cachedOptions.size - 1; i >= 0; i--) {
+      const cachedOption = cachedOptionsArray.value[i];
+      const isEqualValue = isObjectValue ? get(cachedOption.value, props.valueKey) === get(value, props.valueKey) : cachedOption.value === value;
+      if (isEqualValue) {
+        return cachedOption;
+      }
+    }
+  };
+  const getOption = (value) => {
+    const isObjectValue = isPlainObject$1(value);
+    const cachedOption = findCachedOption(value);
+    if (cachedOption) {
+      return {
+        index: optionsArray.value.filter((opt) => !opt.created).indexOf(cachedOption),
+        value,
+        currentLabel: cachedOption.currentLabel,
+        get isDisabled() {
+          return cachedOption.isDisabled;
+        }
+      };
+    }
+    const label = isObjectValue ? value.label : value != null ? value : "";
+    return {
+      index: -1,
+      value,
+      currentLabel: label
+    };
+  };
+  const getLabelSlotItem = (item) => {
+    var _a, _b;
+    const cachedOption = findCachedOption(item.value);
+    if (cachedOption) {
+      const optionSource = cachedOption;
+      if (isPlainObject$1(optionSource.rawOption)) {
+        return optionSource.rawOption;
+      }
+      if (isPlainObject$1(optionSource.value)) {
+        return optionSource.value;
+      }
+      const slotItem = {
+        ...(_a = optionSource.$attrs) != null ? _a : {},
+        ...(_b = optionSource.$props) != null ? _b : cachedOption
+      };
+      return Object.keys(slotItem).length ? slotItem : item;
+    }
+    return isPlainObject$1(item.value) ? item.value : item;
+  };
+  const updateHoveringIndex = () => {
+    states.hoveringIndex = optionsArray.value.findIndex((item) => states.selected.some((selected) => getValueKey(selected) === getValueKey(item)));
+  };
+  const resetSelectionWidth = () => {
+    states.selectionWidth = Number.parseFloat(window.getComputedStyle(selectionRef.value).width);
+  };
+  const resetCollapseItemWidth = () => {
+    states.collapseItemWidth = collapseItemRef.value.getBoundingClientRect().width;
+  };
+  const updateTooltip = () => {
+    var _a, _b;
+    (_b = (_a = tooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
+  };
+  const updateTagTooltip = () => {
+    var _a, _b;
+    (_b = (_a = tagTooltipRef.value) == null ? void 0 : _a.updatePopper) == null ? void 0 : _b.call(_a);
+  };
+  const onInputChange = () => {
+    if (states.inputValue.length > 0 && !expanded.value) {
+      expanded.value = true;
+    }
+    handleQueryChange(states.inputValue);
+  };
+  const onInput = (event) => {
+    states.inputValue = event.target.value;
+    if (props.remote) {
+      debouncing.value = true;
+      debouncedOnInputChange();
+    } else {
+      return onInputChange();
+    }
+  };
+  const debouncedOnInputChange = useDebounceFn(() => {
+    onInputChange();
+    debouncing.value = false;
+  }, debounce);
+  const emitChange = (val) => {
+    if (!isEqual$1(props.modelValue, val)) {
+      emit(CHANGE_EVENT, val);
+    }
+  };
+  const checkBeforeChange = async (value, oldValue) => {
+    if (isEqual$1(value, oldValue) || !props.beforeChange)
+      return true;
+    const shouldChange = props.beforeChange(value, oldValue);
+    const isPromiseOrBool = [
+      isPromise(shouldChange),
+      isBoolean(shouldChange)
+    ].includes(true);
+    if (!isPromiseOrBool) {
+      throwError("ElSelect", "beforeChange must return type `Promise<boolean>` or `boolean`");
+    }
+    if (isPromise(shouldChange)) {
+      try {
+        return !!await shouldChange;
+      } catch (error) {
+        return false;
+      }
+    }
+    return shouldChange;
+  };
+  const getLastNotDisabledIndex = (value) => findLastIndex(value, (it) => {
+    const option = states.cachedOptions.get(it);
+    return option && !option.disabled && !option.states.groupDisabled;
+  });
+  const deletePrevTag = (e) => {
+    const code = getEventCode(e);
+    if (!props.multiple)
+      return;
+    if (code === EVENT_CODE.delete)
+      return;
+    if (e.target.value.length <= 0) {
+      const value = castArray$1(props.modelValue).slice();
+      const lastNotDisabledIndex = getLastNotDisabledIndex(value);
+      if (lastNotDisabledIndex < 0)
+        return;
+      const removeTagValue = value[lastNotDisabledIndex];
+      value.splice(lastNotDisabledIndex, 1);
+      emit(UPDATE_MODEL_EVENT, value);
+      emitChange(value);
+      emit("remove-tag", removeTagValue);
+    }
+  };
+  const deleteTag = (event, tag) => {
+    const index = states.selected.indexOf(tag);
+    if (index > -1 && !selectDisabled.value) {
+      const value = castArray$1(props.modelValue).slice();
+      const targetIndex = value.indexOf(tag.value);
+      if (targetIndex >= 0) {
+        value.splice(targetIndex, 1);
+        emit(UPDATE_MODEL_EVENT, value);
+        emitChange(value);
+        emit("remove-tag", tag.value);
+      }
+    }
+    event.stopPropagation();
+    focus();
+  };
+  const deleteSelected = (event) => {
+    event.stopPropagation();
+    const value = props.multiple ? [] : valueOnClear.value;
+    if (props.multiple) {
+      for (const item of states.selected) {
+        if (item.isDisabled)
+          value.push(item.value);
+      }
+    }
+    emit(UPDATE_MODEL_EVENT, value);
+    emitChange(value);
+    states.hoveringIndex = -1;
+    expanded.value = false;
+    emit("clear");
+    focus();
+  };
+  const handleOptionSelect = async (option) => {
+    var _a;
+    if (props.multiple) {
+      const value = castArray$1((_a = props.modelValue) != null ? _a : []).slice();
+      const optionIndex = getValueIndex(value, option);
+      const isSelected = optionIndex > -1;
+      const canSelect = props.multipleLimit <= 0 || value.length < props.multipleLimit;
+      if (optionIndex > -1) {
+        value.splice(optionIndex, 1);
+      } else if (canSelect) {
+        value.push(option.value);
+      }
+      if (!await checkBeforeChange(value, props.modelValue))
+        return;
+      emit(UPDATE_MODEL_EVENT, value);
+      emitChange(value);
+      if (isSelected || canSelect) {
+        emit("option-select", option, value);
+      }
+      if (option.created) {
+        handleQueryChange("");
+      }
+      if (props.filterable && !props.reserveKeyword) {
+        states.inputValue = "";
+      }
+    } else {
+      if (!await checkBeforeChange(option.value, props.modelValue))
+        return;
+      !isEqual$1(props.modelValue, option.value) && emit(UPDATE_MODEL_EVENT, option.value);
+      emitChange(option.value);
+      emit("option-select", option, option.value);
+      expanded.value = false;
+    }
+    focus();
+    if (expanded.value)
+      return;
+    nextTick(() => {
+      scrollToOption(option);
+    });
+  };
+  const getValueIndex = (arr, option) => {
+    if (isUndefined(option))
+      return -1;
+    if (!isObject$1(option.value))
+      return arr.indexOf(option.value);
+    return arr.findIndex((item) => {
+      return isEqual$1(get(item, props.valueKey), getValueKey(option));
+    });
+  };
+  const getOptionValueKey = (value) => isObject$1(value) ? get(value, props.valueKey) : value;
+  const selectAllExcludedValueKeys = computed(() => new Set(props.selectAllExcludedValues.map(getOptionValueKey)));
+  const visibleMultipleOptions = computed(() => props.multiple ? optionsArray.value.filter((option) => option.visible) : []);
+  const selectableMultipleOptions = computed(() => visibleMultipleOptions.value.filter((option) => !option.isDisabled && !selectAllExcludedValueKeys.value.has(getOptionValueKey(option.value))));
+  const isMultipleOptionSelected = (option) => getValueIndex(castArray$1(props.modelValue), option) > -1;
+  const hasVisibleSelectedOptions = computed(() => visibleMultipleOptions.value.some(isMultipleOptionSelected));
+  const hasVisibleUnselectedOptions = computed(() => visibleMultipleOptions.value.some((option) => !isMultipleOptionSelected(option)));
+  const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+  const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isMultipleOptionSelected));
+  const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isMultipleOptionSelected) && !isAllVisibleOptionsSelected.value);
+  const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
+  const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
+  const toggleSelectAll = async () => {
+    if (!props.multiple || selectDisabled.value || selectableMultipleOptions.value.length === 0) {
+      return;
+    }
+    let value = castArray$1(props.modelValue).slice();
+    if (isAllVisibleOptionsSelected.value) {
+      value = value.filter((selectedValue) => {
+        const option = optionsArray.value.find((item) => getValueIndex([selectedValue], item) > -1);
+        return selectAllExcludedValueKeys.value.has(getOptionValueKey(selectedValue)) || Boolean(option == null ? void 0 : option.isDisabled);
+      });
+    } else {
+      for (const option of selectableMultipleOptions.value) {
+        if (getValueIndex(value, option) > -1)
+          continue;
+        if (props.multipleLimit > 0 && value.length >= props.multipleLimit) {
+          break;
+        }
+        value.push(option.value);
+      }
+    }
+    if (!await checkBeforeChange(value, props.modelValue))
+      return;
+    emit(UPDATE_MODEL_EVENT, value);
+    emitChange(value);
+    emit("select-all", value);
+    focus();
+  };
+  const scrollToOption = (option) => {
+    var _a, _b, _c, _d, _e;
+    const targetOption = isArray$1(option) ? option[0] : option;
+    let target = null;
+    if (!isNil(targetOption == null ? void 0 : targetOption.value)) {
+      const options = optionsArray.value.filter((item) => item.value === targetOption.value);
+      if (options.length > 0) {
+        target = options[0].$el;
+      }
+    }
+    if (tooltipRef.value && target) {
+      const menu = (_d = (_c = (_b = (_a = tooltipRef.value) == null ? void 0 : _a.popperRef) == null ? void 0 : _b.contentRef) == null ? void 0 : _c.querySelector) == null ? void 0 : _d.call(_c, `.${nsSelect.be("dropdown", "wrap")}`);
+      if (menu) {
+        scrollIntoView(menu, target);
+      }
+    }
+    (_e = scrollbarRef.value) == null ? void 0 : _e.handleScroll();
+  };
+  const onOptionCreate = (vm) => {
+    states.options.set(vm.value, vm);
+    states.cachedOptions.set(vm.value, vm);
+  };
+  const onOptionDestroy = (key, vm) => {
+    if (states.options.get(key) === vm) {
+      states.options.delete(key);
+    }
+  };
+  const popperRef = computed(() => {
+    var _a, _b;
+    return (_b = (_a = tooltipRef.value) == null ? void 0 : _a.popperRef) == null ? void 0 : _b.contentRef;
+  });
+  const handleMenuEnter = () => {
+    states.isBeforeHide = false;
+    nextTick(() => {
+      var _a;
+      (_a = scrollbarRef.value) == null ? void 0 : _a.update();
+      scrollToOption(states.selected);
+    });
+  };
+  const focus = () => {
+    var _a;
+    (_a = inputRef.value) == null ? void 0 : _a.focus();
+  };
+  const blur = () => {
+    var _a;
+    if (expanded.value) {
+      expanded.value = false;
+      nextTick(() => {
+        var _a2;
+        return (_a2 = inputRef.value) == null ? void 0 : _a2.blur();
+      });
+      return;
+    }
+    (_a = inputRef.value) == null ? void 0 : _a.blur();
+  };
+  const handleClearClick = (event) => {
+    deleteSelected(event);
+  };
+  const handleClickOutside = (event) => {
+    expanded.value = false;
+    if (isFocused.value) {
+      const _event = new FocusEvent("blur", event);
+      nextTick(() => handleBlur(_event));
+    }
+  };
+  const handleEsc = () => {
+    if (states.inputValue.length > 0) {
+      states.inputValue = "";
+    } else {
+      expanded.value = false;
+    }
+  };
+  const toggleMenu = () => {
+    if (selectDisabled.value)
+      return;
+    if (isIOS)
+      states.inputHovering = true;
+    if (states.menuVisibleOnFocus) {
+      states.menuVisibleOnFocus = false;
+    } else {
+      expanded.value = !expanded.value;
+    }
+  };
+  const selectOption = () => {
+    if (!expanded.value) {
+      toggleMenu();
+    } else {
+      const option = optionsArray.value[states.hoveringIndex];
+      if (option && !option.isDisabled) {
+        handleOptionSelect(option);
+      }
+    }
+  };
+  const getValueKey = (item) => getOptionValueKey(item.value);
+  const optionsAllDisabled = computed(() => optionsArray.value.filter((option) => option.visible).every((option) => option.isDisabled));
+  const showTagList = computed(() => {
+    if (!props.multiple) {
+      return [];
+    }
+    return props.collapseTags ? states.selected.slice(0, props.maxCollapseTags) : states.selected;
+  });
+  const collapseTagList = computed(() => {
+    if (!props.multiple) {
+      return [];
+    }
+    return props.collapseTags ? states.selected.slice(props.maxCollapseTags) : [];
+  });
+  const navigateOptions = (direction) => {
+    if (!expanded.value) {
+      expanded.value = true;
+      return;
+    }
+    if (states.options.size === 0 || filteredOptionsCount.value === 0 || isComposing.value)
+      return;
+    if (!optionsAllDisabled.value) {
+      if (direction === "next") {
+        states.hoveringIndex++;
+        if (states.hoveringIndex === states.options.size) {
+          states.hoveringIndex = 0;
+        }
+      } else if (direction === "prev") {
+        states.hoveringIndex--;
+        if (states.hoveringIndex < 0) {
+          states.hoveringIndex = states.options.size - 1;
+        }
+      }
+      const option = optionsArray.value[states.hoveringIndex];
+      if (option.isDisabled || !option.visible) {
+        navigateOptions(direction);
+      }
+      nextTick(() => scrollToOption(hoverOption.value));
+    }
+  };
+  const getGapWidth = () => {
+    if (!selectionRef.value)
+      return 0;
+    const style = window.getComputedStyle(selectionRef.value);
+    return Number.parseFloat(style.gap || "6px");
+  };
+  const tagStyle = computed(() => {
+    const gapWidth = getGapWidth();
+    const inputSlotWidth = props.filterable ? gapWidth + MINIMUM_INPUT_WIDTH : 0;
+    const maxWidth = collapseItemRef.value && props.maxCollapseTags === 1 ? states.selectionWidth - states.collapseItemWidth - gapWidth - inputSlotWidth : states.selectionWidth - inputSlotWidth;
+    return { maxWidth: `${maxWidth}px` };
+  });
+  const collapseTagStyle = computed(() => {
+    return { maxWidth: `${states.selectionWidth}px` };
+  });
+  const popupScroll = (data) => {
+    emit("popup-scroll", data);
+  };
+  useResizeObserver(selectionRef, resetSelectionWidth);
+  useResizeObserver(wrapperRef, updateTooltip);
+  useResizeObserver(tagMenuRef, updateTagTooltip);
+  useResizeObserver(collapseItemRef, resetCollapseItemWidth);
+  let stop;
+  watch(() => dropdownMenuVisible.value, (newVal) => {
+    if (newVal) {
+      stop = useResizeObserver(menuRef, updateTooltip).stop;
+    } else {
+      stop == null ? void 0 : stop();
+      stop = void 0;
+    }
+  });
+  onMounted(() => {
+    setSelected();
+  });
+  return {
+    inputId,
+    contentId,
+    nsSelect,
+    nsInput,
+    states,
+    isFocused,
+    expanded,
+    optionsArray,
+    hoverOption,
+    selectSize,
+    filteredOptionsCount,
+    visibleMultipleOptions,
+    hasVisibleSelectedOptions,
+    hasVisibleUnselectedOptions,
+    multipleSectionLabel,
+    isAllVisibleOptionsSelected,
+    isSelectAllIndeterminate,
+    selectAllLabel,
+    isSelectAllDisabled,
+    updateTooltip,
+    updateTagTooltip,
+    debouncedOnInputChange,
+    onInput,
+    deletePrevTag,
+    deleteTag,
+    deleteSelected,
+    handleOptionSelect,
+    toggleSelectAll,
+    scrollToOption,
+    hasModelValue,
+    shouldShowPlaceholder,
+    currentPlaceholder,
+    mouseEnterEventName,
+    needStatusIcon,
+    showClearBtn,
+    iconComponent,
+    iconReverse,
+    validateState,
+    validateMessage,
+    validateIcon,
+    showNewOption,
+    updateOptions,
+    collapseTagSize,
+    setSelected,
+    selectDisabled,
+    emptyText,
+    handleCompositionStart,
+    handleCompositionUpdate,
+    handleCompositionEnd,
+    onOptionCreate,
+    onOptionDestroy,
+    handleMenuEnter,
+    focus,
+    blur,
+    handleClearClick,
+    handleClickOutside,
+    handleEsc,
+    toggleMenu,
+    selectOption,
+    getValueKey,
+    getLabelSlotItem,
+    navigateOptions,
+    dropdownMenuVisible,
+    showTagList,
+    collapseTagList,
+    popupScroll,
+    getOption,
+    tagStyle,
+    collapseTagStyle,
+    popperRef,
+    inputRef,
+    tooltipRef,
+    tagTooltipRef,
+    prefixRef,
+    suffixRef,
+    selectRef,
+    wrapperRef,
+    selectionRef,
+    scrollbarRef,
+    menuRef,
+    tagMenuRef,
+    collapseItemRef
+  };
+};
+
+var ElOptions = defineComponent({
+  name: "ElOptions",
+  setup(_, { slots }) {
+    const select = inject(selectKey);
+    let cachedValueList = [];
+    return () => {
+      var _a, _b;
+      const children = (_a = slots.default) == null ? void 0 : _a.call(slots);
+      const valueList = [];
+      function filterOptions(children2) {
+        if (!isArray$1(children2))
+          return;
+        children2.forEach((item) => {
+          var _a2, _b2, _c, _d;
+          const name = (_a2 = (item == null ? void 0 : item.type) || {}) == null ? void 0 : _a2.name;
+          if (name === "ElOptionGroup") {
+            filterOptions(!isString$1(item.children) && !isArray$1(item.children) && isFunction$1((_b2 = item.children) == null ? void 0 : _b2.default) ? (_c = item.children) == null ? void 0 : _c.default() : item.children);
+          } else if (name === "ElOption") {
+            valueList.push((_d = item.props) == null ? void 0 : _d.value);
+          } else if (isArray$1(item.children)) {
+            filterOptions(item.children);
+          }
+        });
+      }
+      if (children.length) {
+        filterOptions((_b = children[0]) == null ? void 0 : _b.children);
+      }
+      if (!isEqual$1(valueList, cachedValueList)) {
+        cachedValueList = valueList;
+        if (select) {
+          select.states.optionValues = valueList;
+        }
+      }
+      return children;
+    };
+  }
+});
+
+const selectProps = buildProps({
+  name: String,
+  id: String,
+  modelValue: {
+    type: definePropType([
+      Array,
+      String,
+      Number,
+      Boolean,
+      Object
+    ]),
+    default: void 0
+  },
+  autocomplete: {
+    type: String,
+    default: "off"
+  },
+  automaticDropdown: Boolean,
+  size: useSizeProp,
+  expand: Boolean,
+  effect: {
+    type: definePropType(String),
+    default: "light"
+  },
+  disabled: Boolean,
+  addItem: Boolean,
+  inputType: {
+    type: String,
+    values: ["error", "info", "warning"]
+  },
+  clearable: Boolean,
+  filterable: {
+    type: Boolean,
+    default: true
+  },
+  beforeChange: {
+    type: definePropType(Function)
+  },
+  allowCreate: Boolean,
+  loading: Boolean,
+  popperClass: {
+    type: String,
+    default: ""
+  },
+  popperStyle: {
+    type: definePropType([String, Object])
+  },
+  popperOptions: {
+    type: definePropType(Object),
+    default: () => ({})
+  },
+  remote: Boolean,
+  debounce: {
+    type: Number,
+    default: 300
+  },
+  loadingText: String,
+  noMatchText: String,
+  noDataText: String,
+  remoteMethod: {
+    type: definePropType(Function)
+  },
+  filterMethod: {
+    type: definePropType(Function)
+  },
+  multiple: Boolean,
+  multipleLimit: {
+    type: Number,
+    default: 0
+  },
+  selectAllExcludedValues: {
+    type: definePropType(Array),
+    default: () => []
+  },
+  showSelectAll: {
+    type: Boolean,
+    default: true
+  },
+  filterMaxLength: {
+    type: Number,
+    default: 99
+  },
+  placeholder: {
+    type: String
+  },
+  defaultFirstOption: Boolean,
+  reserveKeyword: {
+    type: Boolean,
+    default: true
+  },
+  floatLabel: {
+    type: Boolean,
+    default: true
+  },
+  addShowTip: String,
+  haveAll: {
+    type: String
+  },
+  valueKey: {
+    type: String,
+    default: "value"
+  },
+  collapseTags: Boolean,
+  collapseTagsTooltip: Boolean,
+  maxCollapseTags: {
+    type: Number,
+    default: 1
+  },
+  teleported: useTooltipContentProps.teleported,
+  persistent: {
+    type: Boolean,
+    default: true
+  },
+  clearIcon: {
+    type: iconPropType,
+    default: circle_close_default
+  },
+  fitInputWidth: {
+    type: Boolean,
+    default: true
+  },
+  optionWidth: {
+    type: [String, Number],
+    default: void 0
+  },
+  showOptionTooltip: {
+    type: Boolean,
+    default: true
+  },
+  suffixIcon: {
+    type: iconPropType,
+    default: arrow_down_default
+  },
+  labelSuffix: {
+    type: String,
+    default: ""
+  },
+  tagType: { ...tagProps.type, default: "info" },
+  tagEffect: { ...tagProps.effect, default: "light" },
+  validateEvent: {
+    type: Boolean,
+    default: true
+  },
+  remoteShowSuffix: Boolean,
+  showArrow: Boolean,
+  offset: {
+    type: Number,
+    default: 4
+  },
+  placement: {
+    type: definePropType(String),
+    values: Ee,
+    default: "bottom-start"
+  },
+  fallbackPlacements: {
+    type: definePropType(Array),
+    default: ["bottom-start", "top-start", "right", "left"]
+  },
+  tabindex: {
+    type: [String, Number],
+    default: 0
+  },
+  appendTo: useTooltipContentProps.appendTo,
+  options: {
+    type: definePropType(Array)
+  },
+  props: {
+    type: definePropType(Object),
+    default: () => defaultProps$5
+  },
+  ...useEmptyValuesProps,
+  ...useAriaProps(["ariaLabel"])
+});
+const selectEmits = {
+  [UPDATE_MODEL_EVENT]: (val) => true,
+  [CHANGE_EVENT]: (val) => true,
+  "option-select": (option, val) => true,
+  "select-all": (val) => true,
+  "popup-scroll": scrollbarEmits.scroll,
+  "remove-tag": (val) => true,
+  "visible-change": (visible) => true,
+  focus: (evt) => evt instanceof FocusEvent,
+  blur: (evt) => evt instanceof FocusEvent,
+  clear: () => true
+};
+
+const _sfc_main$_ = defineComponent({
+  name: "ElOptionGroup",
+  components: { ElDivider: ElDivider$1 },
+  componentName: "ElOptionGroup",
+  props: {
+    label: String,
+    disabled: Boolean
+  },
+  setup(props) {
+    const select = inject(selectKey);
+    const ns = useNamespace("select");
+    const groupRef = ref();
+    const instance = getCurrentInstance();
+    const children = ref([]);
+    provide(selectGroupKey, reactive({
+      ...toRefs(props)
+    }));
+    const visible = computed(() => children.value.some((option) => option.visible === true));
+    const hasVisibleSelectedOptions = computed(() => children.value.some((option) => option.visible === true && unref(option.itemSelected)));
+    const hasVisibleUnselectedOptions = computed(() => children.value.some((option) => option.visible === true && !unref(option.itemSelected)));
+    const isFirstVisibleGroup = computed(() => {
+      const firstVisibleOption = select.optionsArray.find((option) => option.visible);
+      return !!firstVisibleOption && children.value.includes(firstVisibleOption);
+    });
+    const isOption = (node) => {
+      var _a;
+      return node.type.name === "ElOption" && !!((_a = node.component) == null ? void 0 : _a.proxy);
+    };
+    const flattedChildren = (node) => {
+      const nodes = castArray$1(node);
+      const children2 = [];
+      nodes.forEach((child) => {
+        var _a;
+        if (!isVNode(child))
+          return;
+        if (isOption(child)) {
+          children2.push(child.component.proxy);
+        } else if (isArray$1(child.children) && child.children.length) {
+          children2.push(...flattedChildren(child.children));
+        } else if ((_a = child.component) == null ? void 0 : _a.subTree) {
+          children2.push(...flattedChildren(child.component.subTree));
+        }
+      });
+      return children2;
+    };
+    const updateChildren = () => {
+      children.value = flattedChildren(instance.subTree);
+    };
+    onMounted(() => {
+      updateChildren();
+    });
+    useMutationObserver(groupRef, updateChildren, {
+      attributes: true,
+      subtree: true,
+      childList: true
+    });
+    return {
+      groupRef,
+      select,
+      visible,
+      hasVisibleSelectedOptions,
+      hasVisibleUnselectedOptions,
+      isFirstVisibleGroup,
+      ns
+    };
+  }
+});
+function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_el_divider = resolveComponent("el-divider");
+  return withDirectives((openBlock(), createElementBlock("ul", {
+    ref: "groupRef",
+    class: normalizeClass([_ctx.ns.be("group", "wrap"), _ctx.ns.is("multiple", _ctx.select.props.multiple)])
+  }, [
+    _ctx.select.props.multiple ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+      _ctx.hasVisibleSelectedOptions ? (openBlock(), createElementBlock("li", {
+        key: 0,
+        class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("selected-group")])
+      }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
+      _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("li", {
+        key: 1,
+        class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("unselected-group")])
+      }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
+      renderSlot(_ctx.$slots, "default")
+    ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+      !_ctx.isFirstVisibleGroup ? (openBlock(), createBlock(_component_el_divider, { key: 0 })) : createCommentVNode("v-if", true),
+      createElementVNode("li", {
+        class: normalizeClass(_ctx.ns.be("group", "title"))
+      }, toDisplayString(_ctx.label), 3),
+      createElementVNode("li", null, [
+        createElementVNode("ul", {
+          class: normalizeClass(_ctx.ns.b("group"))
+        }, [
+          renderSlot(_ctx.$slots, "default")
+        ], 2)
+      ])
+    ], 64))
+  ], 2)), [
+    [vShow, _ctx.visible]
+  ]);
+}
+var OptionGroup = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$9], ["__file", "option-group.vue"]]);
+
+const COMPONENT_NAME$a = "ElSelect";
+const _sfc_main$Z = defineComponent({
+  name: COMPONENT_NAME$a,
+  componentName: COMPONENT_NAME$a,
+  components: {
+    ElSelectMenu,
+    ElOption: Option,
+    ElOptions,
+    ElOptionGroup: OptionGroup,
+    ElTag,
+    ElScrollbar,
+    ElTooltip,
+    ElIcon,
+    ElCheckbox
+  },
+  directives: { ClickOutside },
+  props: selectProps,
+  emits: [
+    UPDATE_MODEL_EVENT,
+    CHANGE_EVENT,
+    "option-select",
+    "select-all",
+    "remove-tag",
+    "add-item",
+    "clear",
+    "visible-change",
+    "focus",
+    "blur",
+    "popup-scroll"
+  ],
+  setup(props, { emit, slots }) {
+    const instance = getCurrentInstance();
+    const originalWarnHandler = instance.appContext.config.warnHandler;
+    instance.appContext.config.warnHandler = (...args) => {
+      if (!args[0] || args[0].includes('Slot "default" invoked outside of the render function')) {
+        return;
+      }
+      console.warn(...args);
+    };
+    const modelValue = computed(() => {
+      const { modelValue: rawModelValue, multiple } = props;
+      const fallback = multiple ? [] : void 0;
+      if (isArray$1(rawModelValue)) {
+        return multiple ? rawModelValue : fallback;
+      }
+      return multiple ? fallback : rawModelValue;
+    });
+    const _props = reactive({
+      ...toRefs(props),
+      modelValue
+    });
+    const API = useSelect$1(_props, emit);
+    const { calculatorRef, inputStyle } = useCalcInputWidth();
+    const { getLabel, getValue, getOptions, getDisabled, getTip } = useProps(props);
+    const validateError = computed(() => (API == null ? void 0 : API.validateState.value) === "error");
+    const validateMsg = computed(() => {
+      var _a;
+      return String((_a = API == null ? void 0 : API.validateMessage.value) != null ? _a : "");
+    });
+    const showEmptyErrorTooltip = computed(() => props.inputType === "error" && !API.hasModelValue.value);
+    const errorTooltipContent = computed(() => {
+      if (validateError.value && validateMsg.value)
+        return validateMsg.value;
+      if (showEmptyErrorTooltip.value)
+        return "Required";
+      return "";
+    });
+    const errorTooltipDisabled = computed(() => !errorTooltipContent.value);
+    const errorTooltipVisible = ref(false);
+    const dropdownPlacement = ref(props.placement);
+    const dropdownPlacementModifier = {
+      name: "syncErrorTooltipPlacement",
+      enabled: true,
+      phase: "afterWrite",
+      fn: ({ state }) => {
+        dropdownPlacement.value = state.placement;
+      }
+    };
+    const dropdownPopperOptions = computed(() => {
+      var _a;
+      return {
+        ...props.popperOptions,
+        modifiers: [
+          ...(_a = props.popperOptions.modifiers) != null ? _a : [],
+          dropdownPlacementModifier
+        ]
+      };
+    });
+    const errorTooltipPlacement = computed(() => API.dropdownMenuVisible.value && dropdownPlacement.value.startsWith("top") ? "left-start" : "top-start");
+    const handleSelectClick = () => {
+      API.toggleMenu();
+      errorTooltipVisible.value = !errorTooltipDisabled.value;
+    };
+    const handleSelectClickOutside = (event) => {
+      errorTooltipVisible.value = false;
+      API.handleClickOutside(event);
+    };
+    watch([API.isFocused, errorTooltipDisabled], ([focused, disabled]) => {
+      errorTooltipVisible.value = focused && !disabled;
+    });
+    const getOptionProps = (option) => ({
+      label: getLabel(option),
+      value: getValue(option),
+      disabled: getDisabled(option),
+      tip: getTip(option),
+      rawOption: option
+    });
+    const flatTreeSelectData = (data) => {
+      return data.reduce((acc, item) => {
+        acc.push(item);
+        if (item.children && item.children.length > 0) {
+          acc.push(...flatTreeSelectData(item.children));
+        }
+        return acc;
+      }, []);
+    };
+    const handleAddSelect = () => {
+      emit("add-item", API.states.inputValue);
+    };
+    const manuallyRenderSlots = (vnodes) => {
+      const children = flattedChildren(vnodes || []);
+      children.forEach((item) => {
+        var _a;
+        if (isObject$1(item) && (item.type.name === "ElOption" || item.type.name === "ElTree")) {
+          const _name = item.type.name;
+          if (_name === "ElTree") {
+            const treeData = ((_a = item.props) == null ? void 0 : _a.data) || [];
+            const flatData = flatTreeSelectData(treeData);
+            flatData.forEach((treeItem) => {
+              treeItem.rawOption = treeItem;
+              treeItem.currentLabel = treeItem.label || (isObject$1(treeItem.value) ? "" : treeItem.value);
+              API.onOptionCreate(treeItem);
+            });
+          } else if (_name === "ElOption") {
+            const obj = { ...item.props };
+            obj.currentLabel = obj.label || (isObject$1(obj.value) ? "" : obj.value);
+            API.onOptionCreate(obj);
+          }
+        }
+      });
+    };
+    watch(() => {
+      var _a;
+      return [(_a = slots.default) == null ? void 0 : _a.call(slots), modelValue.value];
+    }, () => {
+      var _a;
+      if (props.persistent || API.states.options.size > 0) {
+        return;
+      }
+      manuallyRenderSlots((_a = slots.default) == null ? void 0 : _a.call(slots));
+    }, {
+      immediate: true
+    });
+    provide(selectKey, reactive({
+      props: _props,
+      states: API.states,
+      selectRef: API.selectRef,
+      optionsArray: API.optionsArray,
+      setSelected: API.setSelected,
+      handleOptionSelect: API.handleOptionSelect,
+      onOptionCreate: API.onOptionCreate,
+      onOptionDestroy: API.onOptionDestroy
+    }));
+    const selectedLabel = computed(() => {
+      if (!props.multiple) {
+        return API.states.selectedLabel;
+      }
+      return API.states.selected.map((i) => i.currentLabel);
+    });
+    onBeforeUnmount(() => {
+      instance.appContext.config.warnHandler = originalWarnHandler;
+    });
+    return {
+      ...API,
+      modelValue,
+      selectedLabel,
+      calculatorRef,
+      inputStyle,
+      validateError,
+      validateMsg,
+      errorTooltipContent,
+      errorTooltipDisabled,
+      errorTooltipVisible,
+      errorTooltipPlacement,
+      dropdownPopperOptions,
+      handleSelectClick,
+      handleSelectClickOutside,
+      handleAddSelect,
+      getLabel,
+      isEmpty,
+      getValue,
+      getOptions,
+      getDisabled,
+      getOptionProps
+    };
+  }
+});
+function _sfc_render$8(_ctx, _cache) {
+  const _component_el_tag = resolveComponent("el-tag");
+  const _component_el_tooltip = resolveComponent("el-tooltip");
+  const _component_el_icon = resolveComponent("el-icon");
+  const _component_el_option = resolveComponent("el-option");
+  const _component_el_option_group = resolveComponent("el-option-group");
+  const _component_el_options = resolveComponent("el-options");
+  const _component_el_scrollbar = resolveComponent("el-scrollbar");
+  const _component_el_checkbox = resolveComponent("el-checkbox");
+  const _component_el_select_menu = resolveComponent("el-select-menu");
+  const _directive_click_outside = resolveDirective("click-outside");
+  return withDirectives((openBlock(), createElementBlock("div", {
+    ref: "selectRef",
+    class: normalizeClass([
+      _ctx.nsSelect.b(),
+      _ctx.nsSelect.m(_ctx.selectSize),
+      _ctx.nsSelect.m(_ctx.inputType),
+      _ctx.nsSelect.is("expanded", _ctx.$props.expand),
+      {
+        [_ctx.nsSelect.m("inputType")]: !!_ctx.inputType,
+        [_ctx.nsSelect.m("filled")]: !!_ctx.inputType && _ctx.hasModelValue
+      },
+      _ctx.multiple && _ctx.isFocused ? "multi-select" : ""
+    ]),
+    [toHandlerKey(_ctx.mouseEnterEventName)]: ($event) => _ctx.states.inputHovering = true,
+    onMouseleave: ($event) => _ctx.states.inputHovering = false
+  }, [
+    createVNode(_component_el_tooltip, {
+      trigger: "click",
+      effect: "light",
+      placement: _ctx.errorTooltipPlacement,
+      offset: 4,
+      content: _ctx.errorTooltipContent,
+      disabled: _ctx.errorTooltipDisabled,
+      visible: _ctx.errorTooltipVisible
+    }, {
+      default: withCtx(() => [
+        createElementVNode("div", {
+          class: normalizeClass([
+            _ctx.nsSelect.e("container"),
+            _ctx.nsSelect.is("append", !!_ctx.$slots.append),
+            _ctx.nsSelect.is("multiple", _ctx.multiple)
+          ])
+        }, [
+          createVNode(_component_el_tooltip, {
+            ref: "tooltipRef",
+            visible: _ctx.dropdownMenuVisible,
+            placement: _ctx.placement,
+            teleported: _ctx.teleported,
+            "popper-class": [_ctx.nsSelect.e("popper"), _ctx.popperClass],
+            "popper-style": _ctx.popperStyle,
+            "popper-options": _ctx.dropdownPopperOptions,
+            "fallback-placements": _ctx.fallbackPlacements,
+            effect: _ctx.effect,
+            pure: "",
+            trigger: "click",
+            transition: `${_ctx.nsSelect.namespace.value}-zoom-in-top`,
+            "stop-popper-mouse-event": false,
+            "gpu-acceleration": false,
+            persistent: _ctx.persistent,
+            "append-to": _ctx.appendTo,
+            "show-arrow": false,
+            offset: _ctx.offset,
+            onBeforeShow: _ctx.handleMenuEnter,
+            onHide: ($event) => _ctx.states.isBeforeHide = false
+          }, {
+            default: withCtx(() => {
+              var _a;
+              return [
+                createElementVNode("div", {
+                  ref: "wrapperRef",
+                  class: normalizeClass([
+                    _ctx.nsSelect.e("wrapper"),
+                    _ctx.nsSelect.is("focused", _ctx.isFocused),
+                    _ctx.nsSelect.is("all", !!_ctx.haveAll),
+                    _ctx.nsSelect.is("hovering", _ctx.states.inputHovering),
+                    _ctx.nsSelect.is("filterable", _ctx.filterable),
+                    _ctx.nsSelect.is("disabled", _ctx.selectDisabled),
+                    _ctx.nsSelect.is("value", _ctx.hasModelValue),
+                    _ctx.nsSelect.is("multiple", _ctx.multiple)
+                  ]),
+                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
+                }, [
+                  _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
+                    key: 0,
+                    class: normalizeClass(["float-label", {
+                      "prefix-label": _ctx.$slots.prefix,
+                      "select-visible": _ctx.dropdownMenuVisible || !_ctx.isEmpty(_ctx.states.inputValue)
+                    }])
+                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+                  _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
+                    key: 1,
+                    ref: "prefixRef",
+                    class: normalizeClass(_ctx.nsSelect.e("prefix"))
+                  }, [
+                    renderSlot(_ctx.$slots, "prefix")
+                  ], 2)) : createCommentVNode("v-if", true),
+                  createElementVNode("div", {
+                    ref: "selectionRef",
+                    class: normalizeClass([
+                      _ctx.nsSelect.e("selection"),
+                      _ctx.nsSelect.is("near", _ctx.multiple && !_ctx.$slots.prefix && !!_ctx.states.selected.length)
+                    ])
+                  }, [
+                    _ctx.multiple ? renderSlot(_ctx.$slots, "tag", {
+                      key: 0,
+                      data: _ctx.states.selected,
+                      deleteTag: _ctx.deleteTag,
+                      selectDisabled: _ctx.selectDisabled
+                    }, () => [
+                      _ctx.haveAll && !_ctx.states.selected.length ? (openBlock(), createElementBlock("span", {
+                        key: 0,
+                        class: "select-all-tag"
+                      }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
+                      (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.showTagList, (item) => {
+                        return openBlock(), createElementBlock("div", {
+                          key: _ctx.getValueKey(item),
+                          class: normalizeClass(_ctx.nsSelect.e("selected-item"))
+                        }, [
+                          createVNode(_component_el_tag, {
+                            closable: false,
+                            size: _ctx.collapseTagSize,
+                            type: _ctx.tagType,
+                            effect: _ctx.tagEffect,
+                            "disable-transitions": "",
+                            style: normalizeStyle(_ctx.tagStyle),
+                            round: ""
+                          }, {
+                            default: withCtx(() => [
+                              createElementVNode("span", {
+                                class: normalizeClass(_ctx.nsSelect.e("tags-text"))
+                              }, [
+                                renderSlot(_ctx.$slots, "label", {
+                                  item: _ctx.getLabelSlotItem(item),
+                                  index: item.index,
+                                  label: item.currentLabel,
+                                  value: item.value
+                                }, () => [
+                                  createTextVNode(toDisplayString(item.currentLabel), 1)
+                                ])
+                              ], 2)
+                            ]),
+                            _: 2
+                          }, 1032, ["size", "type", "effect", "style"])
+                        ], 2);
+                      }), 128)),
+                      _ctx.collapseTags && _ctx.states.selected.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
+                        key: 1,
+                        ref: "tagTooltipRef",
+                        disabled: _ctx.dropdownMenuVisible || !_ctx.collapseTagsTooltip,
+                        "fallback-placements": ["bottom", "top", "right", "left"],
+                        effect: _ctx.effect,
+                        placement: "bottom",
+                        "popper-class": _ctx.popperClass,
+                        "popper-style": _ctx.popperStyle,
+                        teleported: _ctx.teleported
+                      }, {
+                        default: withCtx(() => [
+                          createElementVNode("div", {
+                            ref: "collapseItemRef",
+                            class: normalizeClass(_ctx.nsSelect.e("selected-item"))
+                          }, [
+                            createVNode(_component_el_tag, {
+                              closable: false,
+                              size: _ctx.collapseTagSize,
+                              type: _ctx.tagType,
+                              effect: _ctx.tagEffect,
+                              "disable-transitions": "",
+                              style: normalizeStyle(_ctx.collapseTagStyle),
+                              round: ""
+                            }, {
+                              default: withCtx(() => [
+                                createElementVNode("span", {
+                                  class: normalizeClass(_ctx.nsSelect.e("tags-text"))
+                                }, " + " + toDisplayString(_ctx.states.selected.length - _ctx.maxCollapseTags), 3)
+                              ]),
+                              _: 1
+                            }, 8, ["size", "type", "effect", "style"])
+                          ], 2)
+                        ]),
+                        content: withCtx(() => [
+                          createElementVNode("div", {
+                            ref: "tagMenuRef",
+                            class: normalizeClass(_ctx.nsSelect.e("selection"))
+                          }, [
+                            (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.collapseTagList, (item) => {
+                              return openBlock(), createElementBlock("div", {
+                                key: _ctx.getValueKey(item),
+                                class: normalizeClass(_ctx.nsSelect.e("selected-item"))
+                              }, [
+                                createVNode(_component_el_tag, {
+                                  class: "in-tooltip",
+                                  closable: false,
+                                  size: _ctx.collapseTagSize,
+                                  type: _ctx.tagType,
+                                  effect: _ctx.tagEffect,
+                                  "disable-transitions": "",
+                                  round: ""
+                                }, {
+                                  default: withCtx(() => [
+                                    createElementVNode("span", {
+                                      class: normalizeClass(_ctx.nsSelect.e("tags-text"))
+                                    }, [
+                                      renderSlot(_ctx.$slots, "label", {
+                                        item: _ctx.getLabelSlotItem(item),
+                                        index: item.index,
+                                        label: item.currentLabel,
+                                        value: item.value
+                                      }, () => [
+                                        createTextVNode(toDisplayString(item.currentLabel), 1)
+                                      ])
+                                    ], 2)
+                                  ]),
+                                  _: 2
+                                }, 1032, ["size", "type", "effect"])
+                              ], 2);
+                            }), 128))
+                          ], 2)
+                        ]),
+                        _: 3
+                      }, 8, ["disabled", "effect", "popper-class", "popper-style", "teleported"])) : createCommentVNode("v-if", true)
+                    ]) : createCommentVNode("v-if", true),
+                    createElementVNode("div", {
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("selected-item"),
+                        _ctx.nsSelect.e("input-wrapper"),
+                        _ctx.nsSelect.is("hidden", !_ctx.filterable)
+                      ])
+                    }, [
+                      withDirectives(createElementVNode("input", {
+                        id: _ctx.inputId,
+                        ref: "inputRef",
+                        "onUpdate:modelValue": ($event) => _ctx.states.inputValue = $event,
+                        type: "text",
+                        name: _ctx.name,
+                        class: normalizeClass([_ctx.nsSelect.e("input"), _ctx.nsSelect.is(_ctx.selectSize)]),
+                        disabled: _ctx.selectDisabled,
+                        autocomplete: _ctx.autocomplete,
+                        maxlength: _ctx.filterMaxLength,
+                        style: normalizeStyle(_ctx.inputStyle),
+                        tabindex: _ctx.tabindex,
+                        role: "combobox",
+                        readonly: !_ctx.filterable,
+                        spellcheck: "false",
+                        "aria-activedescendant": ((_a = _ctx.hoverOption) == null ? void 0 : _a.id) || "",
+                        "aria-controls": _ctx.contentId,
+                        "aria-expanded": _ctx.dropdownMenuVisible,
+                        "aria-label": _ctx.ariaLabel,
+                        "aria-autocomplete": "none",
+                        "aria-haspopup": "listbox",
+                        onKeydown: [
+                          withKeys(withModifiers(($event) => _ctx.navigateOptions("next"), ["stop", "prevent"]), ["down"]),
+                          withKeys(withModifiers(($event) => _ctx.navigateOptions("prev"), ["stop", "prevent"]), ["up"]),
+                          withKeys(withModifiers(_ctx.handleEsc, ["stop", "prevent"]), ["esc"]),
+                          withKeys(withModifiers(_ctx.selectOption, ["stop", "prevent"]), ["enter"]),
+                          withKeys(withModifiers(_ctx.deletePrevTag, ["stop"]), ["delete"])
+                        ],
+                        onCompositionstart: _ctx.handleCompositionStart,
+                        onCompositionupdate: _ctx.handleCompositionUpdate,
+                        onCompositionend: _ctx.handleCompositionEnd,
+                        onInput: _ctx.onInput,
+                        onClick: withModifiers(_ctx.toggleMenu, ["stop"])
+                      }, null, 46, ["id", "onUpdate:modelValue", "name", "disabled", "autocomplete", "maxlength", "tabindex", "readonly", "aria-activedescendant", "aria-controls", "aria-expanded", "aria-label", "onKeydown", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onInput", "onClick"]), [
+                        [vModelText, _ctx.states.inputValue]
+                      ]),
+                      _ctx.filterable ? (openBlock(), createElementBlock("span", {
+                        key: 0,
+                        ref: "calculatorRef",
+                        "aria-hidden": "true",
+                        class: normalizeClass(_ctx.nsSelect.e("input-calculator")),
+                        textContent: toDisplayString(_ctx.states.inputValue)
+                      }, null, 10, ["textContent"])) : createCommentVNode("v-if", true)
+                    ], 2),
+                    !_ctx.floatLabel && !_ctx.states.inputValue || _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (openBlock(), createElementBlock("div", {
+                      key: 1,
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("selected-item"),
+                        _ctx.nsSelect.e("placeholder"),
+                        _ctx.nsSelect.is("transparent", !_ctx.hasModelValue || _ctx.expanded && !_ctx.states.inputValue)
+                      ])
+                    }, [
+                      renderSlot(_ctx.$slots, "label", {
+                        item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
+                        index: _ctx.getOption(_ctx.modelValue).index,
+                        label: _ctx.currentPlaceholder,
+                        value: _ctx.modelValue
+                      }, () => [
+                        _ctx.$slots.itemIcon ? (openBlock(), createElementBlock("div", {
+                          key: 0,
+                          class: "iconItemWrap"
+                        }, [
+                          renderSlot(_ctx.$slots, "itemIcon", {
+                            item: _ctx.getLabelSlotItem(_ctx.getOption(_ctx.modelValue)),
+                            index: _ctx.getOption(_ctx.modelValue).index,
+                            label: _ctx.currentPlaceholder,
+                            value: _ctx.modelValue
+                          }),
+                          createElementVNode("span", { class: "itemPlaceholder" }, toDisplayString(_ctx.currentPlaceholder), 1)
+                        ])) : (openBlock(), createElementBlock("span", { key: 1 }, toDisplayString(_ctx.currentPlaceholder), 1))
+                      ])
+                    ], 2)) : createCommentVNode("v-if", true)
+                  ], 2),
+                  createElementVNode("div", {
+                    ref: "suffixRef",
+                    class: normalizeClass(_ctx.nsSelect.e("suffix"))
+                  }, [
+                    createTextVNode(toDisplayString(_ctx.labelSuffix) + " ", 1),
+                    _ctx.$slots.info ? renderSlot(_ctx.$slots, "info", { key: 0 }) : createCommentVNode("v-if", true),
+                    _ctx.$slots.suffixBeforeIcon ? renderSlot(_ctx.$slots, "suffixBeforeIcon", { key: 1 }) : createCommentVNode("v-if", true),
+                    _ctx.iconComponent && !_ctx.showClearBtn && !_ctx.$slots.info ? (openBlock(), createBlock(_component_el_icon, {
+                      key: 2,
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("caret"),
+                        _ctx.nsSelect.e("icon"),
+                        _ctx.iconReverse
+                      ])
+                    }, {
+                      default: withCtx(() => [
+                        (openBlock(), createElementBlock("svg", {
+                          width: "24",
+                          height: "24",
+                          viewBox: "0 0 24 24",
+                          xmlns: "http://www.w3.org/2000/svg"
+                        }, [
+                          createElementVNode("path", { d: "M5.00012 9H19.0001L12.7071 15.293C12.5196 15.4805 12.2653 15.5858 12.0001 15.5858C11.735 15.5858 11.4806 15.4805 11.2931 15.293L5.00012 9Z" })
+                        ]))
+                      ]),
+                      _: 1
+                    }, 8, ["class"])) : createCommentVNode("v-if", true),
+                    _ctx.showClearBtn && _ctx.clearIcon ? (openBlock(), createBlock(_component_el_icon, {
+                      key: 3,
+                      class: normalizeClass([
+                        _ctx.nsSelect.e("caret"),
+                        _ctx.nsSelect.e("icon"),
+                        _ctx.nsSelect.e("clear")
+                      ]),
+                      onClick: _ctx.handleClearClick
+                    }, {
+                      default: withCtx(() => [
+                        (openBlock(), createElementBlock("svg", {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "12",
+                          height: "12",
+                          viewBox: "0 0 12 12",
+                          fill: "none"
+                        }, [
+                          createElementVNode("path", {
+                            d: "M9.35349 3.35348L8.64648 2.64648L5.99998 5.29298L3.35348 2.64648L2.64648 3.35348L5.29298 5.99998L2.64648 8.64648L3.35348 9.35349L5.99998 6.70698L8.64648 9.35349L9.35349 8.64648L6.70698 5.99998L9.35349 3.35348Z",
+                            fill: "#2A3F4D"
+                          })
+                        ]))
+                      ]),
+                      _: 1
+                    }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true),
+                    _ctx.$slots.suffixAfterIcon ? renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : createCommentVNode("v-if", true)
+                  ], 2)
+                ], 10, ["onClick"])
+              ];
+            }),
+            content: withCtx(() => [
+              createVNode(_component_el_select_menu, { ref: "menuRef" }, {
+                default: withCtx(() => [
+                  _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
+                    key: 0,
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "header")),
+                    onClick: withModifiers(() => {
+                    }, ["stop"])
+                  }, [
+                    renderSlot(_ctx.$slots, "header")
+                  ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+                  withDirectives(createVNode(_component_el_scrollbar, {
+                    id: _ctx.contentId,
+                    ref: "scrollbarRef",
+                    tag: "ul",
+                    "wrap-class": _ctx.nsSelect.be("dropdown", "wrap"),
+                    "view-class": _ctx.nsSelect.be("dropdown", "list"),
+                    class: normalizeClass([_ctx.nsSelect.is("empty", _ctx.filteredOptionsCount === 0)]),
+                    role: "listbox",
+                    "aria-label": _ctx.ariaLabel,
+                    "aria-orientation": "vertical",
+                    onScroll: _ctx.popupScroll
+                  }, {
+                    default: withCtx(() => [
+                      _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                        key: 0,
+                        class: normalizeClass([
+                          _ctx.nsSelect.be("dropdown", "section-title"),
+                          _ctx.nsSelect.is("selected-section", _ctx.hasVisibleSelectedOptions)
+                        ])
+                      }, toDisplayString(_ctx.multipleSectionLabel), 3)) : createCommentVNode("v-if", true),
+                      _ctx.multiple && _ctx.hasVisibleSelectedOptions && _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("div", {
+                        key: 1,
+                        class: normalizeClass([
+                          _ctx.nsSelect.be("dropdown", "section-title"),
+                          _ctx.nsSelect.is("unselected-section")
+                        ])
+                      }, " Unselected ", 2)) : createCommentVNode("v-if", true),
+                      _ctx.states.selected.length && _ctx.haveAll ? (openBlock(), createElementBlock("div", {
+                        key: 2,
+                        class: "select-all-item"
+                      }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
+                      _ctx.addShowTip && _ctx.filterable ? (openBlock(), createElementBlock("div", {
+                        key: 3,
+                        class: "select-add-tip"
+                      }, toDisplayString(_ctx.addShowTip), 1)) : createCommentVNode("v-if", true),
+                      _ctx.showNewOption ? (openBlock(), createBlock(_component_el_option, {
+                        key: 4,
+                        value: _ctx.states.inputValue,
+                        created: true
+                      }, null, 8, ["value"])) : createCommentVNode("v-if", true),
+                      createVNode(_component_el_options, null, {
+                        default: withCtx(() => [
+                          renderSlot(_ctx.$slots, "default", {}, () => [
+                            (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option, index) => {
+                              var _a;
+                              return openBlock(), createElementBlock(Fragment, { key: index }, [
+                                ((_a = _ctx.getOptions(option)) == null ? void 0 : _a.length) ? (openBlock(), createBlock(_component_el_option_group, {
+                                  key: 0,
+                                  label: _ctx.getLabel(option),
+                                  disabled: _ctx.getDisabled(option)
+                                }, {
+                                  default: withCtx(() => [
+                                    (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.getOptions(option), (item) => {
+                                      return openBlock(), createBlock(_component_el_option, mergeProps({
+                                        key: _ctx.getValue(item)
+                                      }, _ctx.getOptionProps(item)), null, 16);
+                                    }), 128))
+                                  ]),
+                                  _: 2
+                                }, 1032, ["label", "disabled"])) : (openBlock(), createBlock(_component_el_option, normalizeProps(mergeProps({ key: 1 }, _ctx.getOptionProps(option))), null, 16))
+                              ], 64);
+                            }), 128))
+                          ])
+                        ]),
+                        _: 3
+                      })
+                    ]),
+                    _: 3
+                  }, 8, ["id", "wrap-class", "view-class", "class", "aria-label", "onScroll"]), [
+                    [vShow, (_ctx.states.options.size > 0 || _ctx.addItem) && !_ctx.loading]
+                  ]),
+                  _ctx.$slots.loading && _ctx.loading ? (openBlock(), createElementBlock("div", {
+                    key: 1,
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "loading"))
+                  }, [
+                    renderSlot(_ctx.$slots, "loading")
+                  ], 2)) : _ctx.loading || _ctx.filteredOptionsCount === 0 ? (openBlock(), createElementBlock("div", {
+                    key: 2,
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
+                  }, [
+                    renderSlot(_ctx.$slots, "empty", {}, () => [
+                      !_ctx.addItem ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(_ctx.emptyText), 1)) : (openBlock(), createElementBlock("div", {
+                        key: 1,
+                        class: "el-select-dropdown__item add-item",
+                        onClick: _ctx.handleAddSelect
+                      }, [
+                        createVNode(_component_el_icon, { color: "#4f566" }, {
+                          default: withCtx(() => [
+                            (openBlock(), createElementBlock("svg", {
+                              width: "12",
+                              height: "12",
+                              viewBox: "0 0 12 12",
+                              xmlns: "http://www.w3.org/2000/svg"
+                            }, [
+                              createElementVNode("g", { "clip-path": "url(#clip0_743_39597)" }, [
+                                createElementVNode("path", { d: "M12 5.25H6.75V0H5.25V5.25H0V6.75H5.25V12H6.75V6.75H12V5.25Z" })
+                              ]),
+                              createElementVNode("defs", null, [
+                                createElementVNode("clipPath", { id: "clip0_743_39597" }, [
+                                  createElementVNode("rect", {
+                                    width: "12",
+                                    height: "12",
+                                    fill: "white"
+                                  })
+                                ])
+                              ])
+                            ]))
+                          ]),
+                          _: 1
+                        }),
+                        createElementVNode("span", { class: "tip" }, toDisplayString(_ctx.states.inputValue), 1)
+                      ], 8, ["onClick"]))
+                    ])
+                  ], 2)) : createCommentVNode("v-if", true),
+                  _ctx.showSelectAll && _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                    key: 3,
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
+                    onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])
+                  }, [
+                    createVNode(_component_el_checkbox, {
+                      "model-value": _ctx.isAllVisibleOptionsSelected,
+                      indeterminate: _ctx.isSelectAllIndeterminate,
+                      disabled: _ctx.isSelectAllDisabled,
+                      onClick: withModifiers(() => {
+                      }, ["stop"]),
+                      onChange: _ctx.toggleSelectAll
+                    }, null, 8, ["model-value", "indeterminate", "disabled", "onClick", "onChange"]),
+                    createElementVNode("span", null, toDisplayString(_ctx.selectAllLabel), 1)
+                  ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+                  _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+                    key: 4,
+                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
+                    onClick: withModifiers(() => {
+                    }, ["stop"])
+                  }, [
+                    renderSlot(_ctx.$slots, "footer")
+                  ], 10, ["onClick"])) : createCommentVNode("v-if", true)
+                ]),
+                _: 3
+              }, 512)
+            ]),
+            _: 3
+          }, 8, ["visible", "placement", "teleported", "popper-class", "popper-style", "popper-options", "fallback-placements", "effect", "transition", "persistent", "append-to", "offset", "onBeforeShow", "onHide"]),
+          _ctx.$slots.append ? (openBlock(), createElementBlock("div", {
+            key: 0,
+            class: normalizeClass(_ctx.nsSelect.e("append")),
+            onMousedown: withModifiers(() => {
+            }, ["stop"]),
+            onClick: withModifiers(() => {
+            }, ["stop"])
+          }, [
+            renderSlot(_ctx.$slots, "append")
+          ], 42, ["onMousedown", "onClick"])) : createCommentVNode("v-if", true)
+        ], 2)
+      ]),
+      _: 3
+    }, 8, ["placement", "content", "disabled", "visible"])
+  ], 16, ["onMouseleave"])), [
+    [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
+  ]);
+}
+var Select = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$8], ["__file", "select.vue"]]);
+
+const ElSelect = withInstall(Select, {
+  Option,
+  OptionGroup
+});
+const ElOption = withNoopInstall(Option);
+const ElOptionGroup = withNoopInstall(OptionGroup);
+
+const usePagination = () => inject(elPaginationKey, {});
+
+const paginationSizesProps = buildProps({
+  pageSize: {
+    type: Number,
+    required: true
+  },
+  pageSizes: {
+    type: definePropType(Array),
+    default: () => mutable([10, 20, 30, 40, 50, 100])
+  },
+  popperClass: {
+    type: String
+  },
+  popperStyle: {
+    type: definePropType([String, Object])
+  },
+  disabled: Boolean,
+  teleported: Boolean,
+  size: {
+    type: String,
+    values: componentSizes
+  },
+  appendSizeTo: String
+});
+
+const __default__$K = defineComponent({
+  name: "ElPaginationSizes"
+});
+const _sfc_main$Y = /* @__PURE__ */ defineComponent({
+  ...__default__$K,
+  props: paginationSizesProps,
+  emits: ["page-size-change"],
+  setup(__props, { emit }) {
+    const props = __props;
+    const { t } = useLocale();
+    const ns = useNamespace("pagination");
+    const pagination = usePagination();
+    const innerPageSize = ref(props.pageSize);
+    const popperClassComputed = computed(() => `${props.popperClass} pagination-select-wrap`);
+    watch(() => props.pageSizes, (newVal, oldVal) => {
+      if (isEqual$1(newVal, oldVal))
+        return;
+      if (isArray$1(newVal)) {
+        const pageSize = newVal.includes(props.pageSize) ? props.pageSize : props.pageSizes[0];
+        emit("page-size-change", pageSize);
+      }
+    });
+    watch(() => props.pageSize, (newVal) => {
+      innerPageSize.value = newVal;
+    });
+    const innerPageSizes = computed(() => props.pageSizes);
+    function handleChange(val) {
+      var _a;
+      if (val !== innerPageSize.value) {
+        innerPageSize.value = val;
+        (_a = pagination.handleSizeChange) == null ? void 0 : _a.call(pagination, Number(val));
+      }
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("span", {
+        class: normalizeClass(unref(ns).e("sizes"))
+      }, [
+        createVNode(unref(ElSelect), {
+          class: "pagination-select",
+          "model-value": innerPageSize.value,
+          disabled: _ctx.disabled,
+          "popper-style": _ctx.popperStyle,
+          "popper-class": unref(popperClassComputed),
+          size: _ctx.size,
+          teleported: _ctx.teleported,
+          "validate-event": false,
+          "append-to": _ctx.appendSizeTo,
+          "show-arrow": false,
+          offset: 4,
+          onChange: handleChange
+        }, {
+          default: withCtx(() => [
+            (openBlock(true), createElementBlock(Fragment, null, renderList(unref(innerPageSizes), (item) => {
+              return openBlock(), createBlock(unref(ElOption), {
+                key: item,
+                value: item,
+                label: item + unref(t)("el.pagination.pagesize")
+              }, null, 8, ["value", "label"]);
+            }), 128))
+          ]),
+          _: 1
+        }, 8, ["model-value", "disabled", "popper-style", "popper-class", "size", "teleported", "append-to"])
+      ], 2);
+    };
+  }
+});
+var Sizes = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__file", "sizes.vue"]]);
+
+const paginationJumperProps = buildProps({
+  size: {
+    type: String,
+    values: componentSizes
+  }
+});
+
+const __default__$J = defineComponent({
+  name: "ElPaginationJumper"
+});
+const _sfc_main$X = /* @__PURE__ */ defineComponent({
+  ...__default__$J,
+  props: paginationJumperProps,
+  setup(__props) {
+    const { t } = useLocale();
+    const ns = useNamespace("pagination");
+    const { pageCount, disabled, currentPage, changeEvent } = usePagination();
+    const userInput = ref();
+    const innerValue = computed(() => {
+      var _a;
+      return (_a = userInput.value) != null ? _a : currentPage == null ? void 0 : currentPage.value;
+    });
+    function handleInput(val) {
+      userInput.value = val ? +val : "";
+    }
+    function handleChange(val) {
+      val = Math.trunc(+val);
+      changeEvent == null ? void 0 : changeEvent(val);
+      userInput.value = void 0;
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("span", {
+        class: normalizeClass(unref(ns).e("jump")),
+        disabled: unref(disabled)
+      }, [
+        createVNode(unref(ElInput), {
+          size: _ctx.size,
+          class: normalizeClass([unref(ns).e("editor"), unref(ns).is("in-pagination")]),
+          min: 1,
+          max: unref(pageCount),
+          disabled: unref(disabled),
+          "model-value": unref(innerValue),
+          "validate-event": false,
+          "float-label": false,
+          "aria-label": unref(t)("el.pagination.page"),
+          type: "number",
+          placeholder: "Go To",
+          "onUpdate:modelValue": handleInput,
+          onChange: handleChange
+        }, null, 8, ["size", "class", "max", "disabled", "model-value", "aria-label"])
+      ], 10, ["disabled"]);
+    };
+  }
+});
+var Jumper = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__file", "jumper.vue"]]);
+
+const paginationTotalProps = buildProps({
+  total: {
+    type: Number,
+    default: 1e3
+  }
+});
+
+const __default__$I = defineComponent({
+  name: "ElPaginationTotal"
+});
+const _sfc_main$W = /* @__PURE__ */ defineComponent({
+  ...__default__$I,
+  props: paginationTotalProps,
+  setup(__props) {
+    const { t } = useLocale();
+    const ns = useNamespace("pagination");
+    const { disabled } = usePagination();
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("span", {
+        class: normalizeClass(unref(ns).e("total")),
+        disabled: unref(disabled)
+      }, toDisplayString(unref(t)("el.pagination.total", {
+        total: _ctx.total
+      })), 11, ["disabled"]);
+    };
+  }
+});
+var Total = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["__file", "total.vue"]]);
+
+const paginationPagerProps = buildProps({
+  currentPage: {
+    type: Number,
+    default: 1
+  },
+  pageCount: {
+    type: Number,
+    required: true
+  },
+  pagerCount: {
+    type: Number,
+    default: 7
+  },
+  disabled: Boolean
+});
+
+const __default__$H = defineComponent({
+  name: "ElPaginationPager"
+});
+const _sfc_main$V = /* @__PURE__ */ defineComponent({
+  ...__default__$H,
+  props: paginationPagerProps,
+  emits: [CHANGE_EVENT],
+  setup(__props, { emit }) {
+    const props = __props;
+    const nsPager = useNamespace("pager");
+    const nsIcon = useNamespace("icon");
+    const { t } = useLocale();
+    const showPrevMore = ref(false);
+    const showNextMore = ref(false);
+    const quickPrevHover = ref(false);
+    const quickNextHover = ref(false);
+    const quickPrevFocus = ref(false);
+    const quickNextFocus = ref(false);
+    const pagers = computed(() => {
+      const pagerCount = props.pagerCount;
+      const halfPagerCount = (pagerCount - 1) / 2;
+      const currentPage = Number(props.currentPage);
+      const pageCount = Number(props.pageCount);
+      let showPrevMore2 = false;
+      let showNextMore2 = false;
+      if (pageCount > pagerCount) {
+        if (currentPage > pagerCount - halfPagerCount) {
+          showPrevMore2 = true;
+        }
+        if (currentPage < pageCount - halfPagerCount) {
+          showNextMore2 = true;
+        }
+      }
+      const array = [];
+      if (showPrevMore2 && !showNextMore2) {
+        const startPage = pageCount - (pagerCount - 2);
+        for (let i = startPage; i < pageCount; i++) {
+          array.push(i);
+        }
+      } else if (!showPrevMore2 && showNextMore2) {
+        for (let i = 2; i < pagerCount; i++) {
+          array.push(i);
+        }
+      } else if (showPrevMore2 && showNextMore2) {
+        const offset = Math.floor(pagerCount / 2) - 1;
+        for (let i = currentPage - offset; i <= currentPage + offset; i++) {
+          array.push(i);
+        }
+      } else {
+        for (let i = 2; i < pageCount; i++) {
+          array.push(i);
+        }
+      }
+      return array;
+    });
+    const prevMoreKls = computed(() => [
+      "more",
+      "btn-quickprev",
+      nsIcon.b(),
+      nsPager.is("disabled", props.disabled)
+    ]);
+    const nextMoreKls = computed(() => [
+      "more",
+      "btn-quicknext",
+      nsIcon.b(),
+      nsPager.is("disabled", props.disabled)
+    ]);
+    const tabindex = computed(() => props.disabled ? -1 : 0);
+    watch(() => [props.pageCount, props.pagerCount, props.currentPage], ([pageCount, pagerCount, currentPage]) => {
+      const halfPagerCount = (pagerCount - 1) / 2;
+      let showPrev = false;
+      let showNext = false;
+      if (pageCount > pagerCount) {
+        showPrev = currentPage > pagerCount - halfPagerCount;
+        showNext = currentPage < pageCount - halfPagerCount;
+      }
+      quickPrevHover.value && (quickPrevHover.value = showPrev);
+      quickNextHover.value && (quickNextHover.value = showNext);
+      showPrevMore.value = showPrev;
+      showNextMore.value = showNext;
+    }, { immediate: true });
+    function onMouseEnter(forward = false) {
+      if (props.disabled)
+        return;
+      if (forward) {
+        quickPrevHover.value = true;
+      } else {
+        quickNextHover.value = true;
+      }
+    }
+    function onFocus(forward = false) {
+      if (forward) {
+        quickPrevFocus.value = true;
+      } else {
+        quickNextFocus.value = true;
+      }
+    }
+    function onEnter(e) {
+      const target = e.target;
+      if (target.tagName.toLowerCase() === "li" && Array.from(target.classList).includes("number")) {
+        const newPage = Number(target.textContent);
+        if (newPage !== props.currentPage) {
+          emit(CHANGE_EVENT, newPage);
+        }
+      } else if (target.tagName.toLowerCase() === "li" && Array.from(target.classList).includes("more")) {
+        onPagerClick(e);
+      }
+    }
+    function onPagerClick(event) {
+      const target = event.target;
+      if (target.tagName.toLowerCase() === "ul" || props.disabled) {
+        return;
+      }
+      let newPage = Number(target.textContent);
+      const pageCount = props.pageCount;
+      const currentPage = props.currentPage;
+      if (target.className.includes("more")) {
+        return;
+      }
+      if (!Number.isNaN(+newPage)) {
+        if (newPage < 1) {
+          newPage = 1;
+        }
+        if (newPage > pageCount) {
+          newPage = pageCount;
+        }
+      }
+      if (newPage !== currentPage) {
+        emit(CHANGE_EVENT, newPage);
+      }
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("ul", {
+        class: normalizeClass(unref(nsPager).b()),
+        onClick: onPagerClick,
+        onKeyup: withKeys(onEnter, ["enter"])
+      }, [
+        _ctx.pageCount > 0 ? (openBlock(), createElementBlock("li", {
+          key: 0,
+          class: normalizeClass([[
+            unref(nsPager).is("active", _ctx.currentPage === 1),
+            unref(nsPager).is("disabled", _ctx.disabled)
+          ], "number"]),
+          "aria-current": _ctx.currentPage === 1,
+          "aria-label": unref(t)("el.pagination.currentPage", { pager: 1 }),
+          tabindex: unref(tabindex)
+        }, " 1 ", 10, ["aria-current", "aria-label", "tabindex"])) : createCommentVNode("v-if", true),
+        showPrevMore.value ? (openBlock(), createElementBlock("li", {
+          key: 1,
+          class: normalizeClass(unref(prevMoreKls)),
+          tabindex: unref(tabindex),
+          "aria-label": unref(t)("el.pagination.prevPages", { pager: _ctx.pagerCount - 2 }),
+          onMouseenter: ($event) => onMouseEnter(true),
+          onMouseleave: ($event) => quickPrevHover.value = false,
+          onFocus: ($event) => onFocus(true),
+          onBlur: ($event) => quickPrevFocus.value = false
+        }, [
+          createVNode(unref(more_filled_default))
+        ], 42, ["tabindex", "aria-label", "onMouseenter", "onMouseleave", "onFocus", "onBlur"])) : createCommentVNode("v-if", true),
+        (openBlock(true), createElementBlock(Fragment, null, renderList(unref(pagers), (pager) => {
+          return openBlock(), createElementBlock("li", {
+            key: pager,
+            class: normalizeClass([[
+              unref(nsPager).is("active", _ctx.currentPage === pager),
+              unref(nsPager).is("disabled", _ctx.disabled)
+            ], "number"]),
+            "aria-current": _ctx.currentPage === pager,
+            "aria-label": unref(t)("el.pagination.currentPage", { pager }),
+            tabindex: unref(tabindex)
+          }, toDisplayString(pager), 11, ["aria-current", "aria-label", "tabindex"]);
+        }), 128)),
+        showNextMore.value ? (openBlock(), createElementBlock("li", {
+          key: 2,
+          class: normalizeClass(unref(nextMoreKls)),
+          tabindex: unref(tabindex),
+          "aria-label": unref(t)("el.pagination.nextPages", { pager: _ctx.pagerCount - 2 }),
+          onMouseenter: ($event) => onMouseEnter(),
+          onMouseleave: ($event) => quickNextHover.value = false,
+          onFocus: ($event) => onFocus(),
+          onBlur: ($event) => quickNextFocus.value = false
+        }, [
+          createVNode(unref(more_filled_default))
+        ], 42, ["tabindex", "aria-label", "onMouseenter", "onMouseleave", "onFocus", "onBlur"])) : createCommentVNode("v-if", true),
+        _ctx.pageCount > 1 ? (openBlock(), createElementBlock("li", {
+          key: 3,
+          class: normalizeClass([[
+            unref(nsPager).is("active", _ctx.currentPage === _ctx.pageCount),
+            unref(nsPager).is("disabled", _ctx.disabled)
+          ], "number"]),
+          "aria-current": _ctx.currentPage === _ctx.pageCount,
+          "aria-label": unref(t)("el.pagination.currentPage", { pager: _ctx.pageCount }),
+          tabindex: unref(tabindex)
+        }, toDisplayString(_ctx.pageCount), 11, ["aria-current", "aria-label", "tabindex"])) : createCommentVNode("v-if", true)
+      ], 42, ["onKeyup"]);
+    };
+  }
+});
+var Pager = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__file", "pager.vue"]]);
+
+const isAbsent = (v) => typeof v !== "number";
+const paginationProps = buildProps({
+  pageSize: Number,
+  defaultPageSize: Number,
+  total: Number,
+  pageCount: Number,
+  pagerCount: {
+    type: Number,
+    validator: (value) => {
+      return isNumber(value) && Math.trunc(value) === value && value > 1 && value < 22 && value % 2 === 1;
+    },
+    default: 7
+  },
+  currentPage: Number,
+  defaultCurrentPage: Number,
+  layout: {
+    type: String,
+    default: ["prev", "pager", "next", "jumper", "->", "total"].join(", ")
+  },
+  pageSizes: {
+    type: definePropType(Array),
+    default: () => mutable([10, 20, 30, 40, 50, 100])
+  },
+  popperClass: {
+    type: String,
+    default: ""
+  },
+  popperStyle: {
+    type: definePropType([String, Object])
+  },
+  prevText: {
+    type: String,
+    default: ""
+  },
+  prevIcon: {
+    type: iconPropType,
+    default: () => arrow_left_default
+  },
+  nextText: {
+    type: String,
+    default: ""
+  },
+  nextIcon: {
+    type: iconPropType,
+    default: () => arrow_right_default
+  },
+  teleported: {
+    type: Boolean,
+    default: true
+  },
+  small: Boolean,
+  size: useSizeProp,
+  background: Boolean,
+  disabled: Boolean,
+  hideOnSinglePage: Boolean,
+  appendSizeTo: String
+});
+const paginationEmits = {
+  "update:current-page": (val) => isNumber(val),
+  "update:page-size": (val) => isNumber(val),
+  "size-change": (val) => isNumber(val),
+  change: (currentPage, pageSize) => isNumber(currentPage) && isNumber(pageSize),
+  "current-change": (val) => isNumber(val),
+  "prev-click": (val) => isNumber(val),
+  "next-click": (val) => isNumber(val)
+};
+const componentName = "ElPagination";
+var Pagination = defineComponent({
+  name: componentName,
+  props: paginationProps,
+  emits: paginationEmits,
+  setup(props, { emit, slots }) {
+    const { t } = useLocale();
+    const ns = useNamespace("pagination");
+    const vnodeProps = getCurrentInstance().vnode.props || {};
+    const _globalSize = useGlobalSize();
+    const _size = computed(() => {
+      var _a;
+      return props.small ? "small" : (_a = props.size) != null ? _a : _globalSize.value;
+    });
+    useDeprecated({
+      from: "small",
+      replacement: "size",
+      version: "3.0.0",
+      scope: "el-pagination",
+      ref: "https://element-plus.org/zh-CN/component/pagination.html"
+    }, computed(() => !!props.small));
+    const hasCurrentPageListener = "onUpdate:currentPage" in vnodeProps || "onUpdate:current-page" in vnodeProps || "onCurrentChange" in vnodeProps;
+    const hasPageSizeListener = "onUpdate:pageSize" in vnodeProps || "onUpdate:page-size" in vnodeProps || "onSizeChange" in vnodeProps;
+    const assertValidUsage = computed(() => {
+      if (isAbsent(props.total) && isAbsent(props.pageCount))
+        return false;
+      if (!isAbsent(props.currentPage) && !hasCurrentPageListener)
+        return false;
+      if (props.layout.includes("sizes")) {
+        if (!isAbsent(props.pageCount)) {
+          if (!hasPageSizeListener)
+            return false;
+        } else if (!isAbsent(props.total)) {
+          if (!isAbsent(props.pageSize)) {
+            if (!hasPageSizeListener) {
+              return false;
+            }
+          }
+        }
+      }
+      return true;
+    });
+    const innerPageSize = ref(isAbsent(props.defaultPageSize) ? 10 : props.defaultPageSize);
+    const innerCurrentPage = ref(isAbsent(props.defaultCurrentPage) ? 1 : props.defaultCurrentPage);
+    const pageSizeBridge = computed({
+      get() {
+        return isAbsent(props.pageSize) ? innerPageSize.value : props.pageSize;
+      },
+      set(v) {
+        if (isAbsent(props.pageSize)) {
+          innerPageSize.value = v;
+        }
+        if (hasPageSizeListener) {
+          emit("update:page-size", v);
+          emit("size-change", v);
+        }
+      }
+    });
+    const pageCountBridge = computed(() => {
+      let pageCount = 0;
+      if (!isAbsent(props.pageCount)) {
+        pageCount = props.pageCount;
+      } else if (!isAbsent(props.total)) {
+        pageCount = Math.max(1, Math.ceil(props.total / pageSizeBridge.value));
+      }
+      return pageCount;
+    });
+    const currentPageBridge = computed({
+      get() {
+        return isAbsent(props.currentPage) ? innerCurrentPage.value : props.currentPage;
+      },
+      set(v) {
+        let newCurrentPage = v;
+        if (v < 1) {
+          newCurrentPage = 1;
+        } else if (v > pageCountBridge.value) {
+          newCurrentPage = pageCountBridge.value;
+        }
+        if (isAbsent(props.currentPage)) {
+          innerCurrentPage.value = newCurrentPage;
+        }
+        if (hasCurrentPageListener) {
+          emit("update:current-page", newCurrentPage);
+          emit("current-change", newCurrentPage);
+        }
+      }
+    });
+    watch(pageCountBridge, (val) => {
+      if (currentPageBridge.value > val)
+        currentPageBridge.value = val;
+    });
+    watch([currentPageBridge, pageSizeBridge], (value) => {
+      emit(CHANGE_EVENT, ...value);
+    }, { flush: "post" });
+    function handleCurrentChange(val) {
+      currentPageBridge.value = val;
+    }
+    function handleSizeChange(val) {
+      pageSizeBridge.value = val;
+      const newPageCount = pageCountBridge.value;
+      if (currentPageBridge.value > newPageCount) {
+        currentPageBridge.value = newPageCount;
+      }
+    }
+    function prev() {
+      if (props.disabled)
+        return;
+      currentPageBridge.value -= 1;
+      emit("prev-click", currentPageBridge.value);
+    }
+    function next() {
+      if (props.disabled)
+        return;
+      currentPageBridge.value += 1;
+      emit("next-click", currentPageBridge.value);
+    }
+    function addClass(element, cls) {
+      if (element) {
+        if (!element.props) {
+          element.props = {};
+        }
+        element.props.class = [element.props.class, cls].join(" ");
+      }
+    }
+    provide(elPaginationKey, {
+      pageCount: pageCountBridge,
+      disabled: computed(() => props.disabled),
+      currentPage: currentPageBridge,
+      changeEvent: handleCurrentChange,
+      handleSizeChange
+    });
+    return () => {
+      var _a, _b;
+      if (!assertValidUsage.value) {
+        debugWarn(componentName, t("el.pagination.deprecationWarning"));
+        return null;
+      }
+      if (!props.layout)
+        return null;
+      if (props.hideOnSinglePage && pageCountBridge.value <= 1)
+        return null;
+      const rootChildren = [];
+      const rightWrapperChildren = [];
+      const rightWrapperRoot = h$1("div", { class: ns.e("rightwrapper") }, rightWrapperChildren);
+      const TEMPLATE_MAP = {
+        prev: h$1(Prev, {
+          disabled: props.disabled,
+          currentPage: currentPageBridge.value,
+          prevText: props.prevText,
+          prevIcon: props.prevIcon,
+          onClick: prev
+        }),
+        jumper: h$1(Jumper, {
+          size: _size.value
+        }),
+        pager: h$1(Pager, {
+          currentPage: currentPageBridge.value,
+          pageCount: pageCountBridge.value,
+          pagerCount: props.pagerCount,
+          onChange: handleCurrentChange,
+          disabled: props.disabled
+        }),
+        next: h$1(Next, {
+          disabled: props.disabled,
+          currentPage: currentPageBridge.value,
+          pageCount: pageCountBridge.value,
+          nextText: props.nextText,
+          nextIcon: props.nextIcon,
+          onClick: next
+        }),
+        sizes: h$1(Sizes, {
+          pageSize: pageSizeBridge.value,
+          pageSizes: props.pageSizes,
+          popperClass: props.popperClass,
+          popperStyle: props.popperStyle,
+          disabled: props.disabled,
+          teleported: props.teleported,
+          size: _size.value,
+          appendSizeTo: props.appendSizeTo
+        }),
+        slot: (_b = (_a = slots == null ? void 0 : slots.default) == null ? void 0 : _a.call(slots)) != null ? _b : null,
+        total: h$1(Total, { total: isAbsent(props.total) ? 0 : props.total })
+      };
+      const components = props.layout.split(",").map((item) => item.trim());
+      let haveRightWrapper = false;
+      components.forEach((c) => {
+        if (c === "->") {
+          haveRightWrapper = true;
+          return;
+        }
+        if (!haveRightWrapper) {
+          rootChildren.push(TEMPLATE_MAP[c]);
+        } else {
+          rightWrapperChildren.push(TEMPLATE_MAP[c]);
+        }
+      });
+      addClass(rootChildren[0], ns.is("first"));
+      addClass(rootChildren[rootChildren.length - 1], ns.is("last"));
+      if (haveRightWrapper && rightWrapperChildren.length > 0) {
+        addClass(rightWrapperChildren[0], ns.is("first"));
+        addClass(rightWrapperChildren[rightWrapperChildren.length - 1], ns.is("last"));
+        rootChildren.push(rightWrapperRoot);
+      }
+      return h$1("div", {
+        class: [
+          ns.b(),
+          ns.is("background", props.background),
+          ns.m(_size.value)
+        ]
+      }, rootChildren);
+    };
+  }
+});
+
+const ElPagination = withInstall(Pagination);
+
+const popconfirmProps = buildProps({
+  title: String,
+  confirmButtonText: String,
+  cancelButtonText: String,
+  confirmButtonType: {
+    type: String,
+    values: buttonTypes,
+    default: "primary"
+  },
+  cancelButtonType: {
+    type: String,
+    values: buttonTypes,
+    default: "text"
+  },
+  icon: {
+    type: iconPropType,
+    default: () => question_filled_default
+  },
+  iconColor: {
+    type: String,
+    default: "#f90"
+  },
+  hideIcon: Boolean,
+  hideAfter: {
+    type: Number,
+    default: 200
+  },
+  effect: {
+    ...useTooltipContentProps.effect,
+    default: "light"
+  },
+  teleported: useTooltipContentProps.teleported,
+  persistent: useTooltipContentProps.persistent,
+  width: {
+    type: [String, Number],
+    default: 150
+  },
+  virtualTriggering: useTooltipTriggerProps.virtualTriggering,
+  virtualRef: useTooltipTriggerProps.virtualRef
+});
+const popconfirmEmits = {
+  confirm: (e) => e instanceof MouseEvent,
+  cancel: (e) => e instanceof MouseEvent
+};
+
+const __default__$G = defineComponent({
+  name: "ElPopconfirm"
+});
+const _sfc_main$U = /* @__PURE__ */ defineComponent({
+  ...__default__$G,
+  props: popconfirmProps,
+  emits: popconfirmEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    const { t } = useLocale();
+    const ns = useNamespace("popconfirm");
+    const tooltipRef = ref();
+    const rootRef = ref();
+    const popperRef = computed(() => {
+      var _a;
+      return (_a = unref(tooltipRef)) == null ? void 0 : _a.popperRef;
+    });
+    const showPopper = () => {
+      var _a, _b;
+      (_b = (_a = rootRef.value) == null ? void 0 : _a.focus) == null ? void 0 : _b.call(_a);
+    };
+    const hidePopper = () => {
+      var _a, _b;
+      (_b = (_a = tooltipRef.value) == null ? void 0 : _a.onClose) == null ? void 0 : _b.call(_a);
+    };
+    const style = computed(() => {
+      return {
+        width: addUnit(props.width)
+      };
+    });
+    const confirm = (e) => {
+      emit("confirm", e);
+      hidePopper();
+    };
+    const cancel = (e) => {
+      emit("cancel", e);
+      hidePopper();
+    };
+    const finalConfirmButtonText = computed(() => props.confirmButtonText || t("el.popconfirm.confirmButtonText"));
+    const finalCancelButtonText = computed(() => props.cancelButtonText || t("el.popconfirm.cancelButtonText"));
+    expose({
+      popperRef,
+      hide: hidePopper
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(ElTooltip), mergeProps({
+        ref_key: "tooltipRef",
+        ref: tooltipRef,
+        trigger: "click",
+        effect: _ctx.effect
+      }, _ctx.$attrs, {
+        "popper-class": `${unref(ns).namespace.value}-popover`,
+        "popper-style": unref(style),
+        teleported: _ctx.teleported,
+        "fallback-placements": ["bottom", "top", "right", "left"],
+        "hide-after": _ctx.hideAfter,
+        persistent: _ctx.persistent,
+        loop: "",
+        onShow: showPopper
+      }), {
+        content: withCtx(() => [
+          createElementVNode("div", {
+            ref_key: "rootRef",
+            ref: rootRef,
+            tabindex: "-1",
+            class: normalizeClass(unref(ns).b())
+          }, [
+            createElementVNode("div", {
+              class: normalizeClass(unref(ns).e("main"))
+            }, [
+              !_ctx.hideIcon && _ctx.icon ? (openBlock(), createBlock(unref(ElIcon), {
+                key: 0,
+                class: normalizeClass(unref(ns).e("icon")),
+                style: normalizeStyle({ color: _ctx.iconColor })
+              }, {
+                default: withCtx(() => [
+                  (openBlock(), createBlock(resolveDynamicComponent(_ctx.icon)))
+                ]),
+                _: 1
+              }, 8, ["class", "style"])) : createCommentVNode("v-if", true),
+              createTextVNode(" " + toDisplayString(_ctx.title), 1)
+            ], 2),
+            createElementVNode("div", {
+              class: normalizeClass(unref(ns).e("action"))
+            }, [
+              renderSlot(_ctx.$slots, "actions", {
+                confirm,
+                cancel
+              }, () => [
+                createVNode(unref(ElButton), {
+                  size: "small",
+                  type: _ctx.cancelButtonType === "text" ? "" : _ctx.cancelButtonType,
+                  text: _ctx.cancelButtonType === "text",
+                  onClick: cancel
+                }, {
+                  default: withCtx(() => [
+                    createTextVNode(toDisplayString(unref(finalCancelButtonText)), 1)
+                  ]),
+                  _: 1
+                }, 8, ["type", "text"]),
+                createVNode(unref(ElButton), {
+                  size: "small",
+                  type: _ctx.confirmButtonType === "text" ? "" : _ctx.confirmButtonType,
+                  text: _ctx.confirmButtonType === "text",
+                  onClick: confirm
+                }, {
+                  default: withCtx(() => [
+                    createTextVNode(toDisplayString(unref(finalConfirmButtonText)), 1)
+                  ]),
+                  _: 1
+                }, 8, ["type", "text"])
+              ])
+            ], 2)
+          ], 2)
+        ]),
+        default: withCtx(() => [
+          _ctx.$slots.reference ? renderSlot(_ctx.$slots, "reference", { key: 0 }) : createCommentVNode("v-if", true)
+        ]),
+        _: 3
+      }, 16, ["effect", "popper-class", "popper-style", "teleported", "hide-after", "persistent"]);
+    };
+  }
+});
+var Popconfirm = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__file", "popconfirm.vue"]]);
+
+const ElPopconfirm = withInstall(Popconfirm);
+
+const popoverProps = buildProps({
+  trigger: useTooltipTriggerProps.trigger,
+  triggerKeys: useTooltipTriggerProps.triggerKeys,
+  placement: dropdownProps.placement,
+  disabled: useTooltipTriggerProps.disabled,
+  visible: useTooltipContentProps.visible,
+  transition: useTooltipContentProps.transition,
+  popperOptions: dropdownProps.popperOptions,
+  tabindex: dropdownProps.tabindex,
+  content: useTooltipContentProps.content,
+  popperStyle: useTooltipContentProps.popperStyle,
+  popperClass: useTooltipContentProps.popperClass,
+  enterable: {
+    ...useTooltipContentProps.enterable,
+    default: true
+  },
+  effect: {
+    ...useTooltipContentProps.effect,
+    default: "light"
+  },
+  teleported: useTooltipContentProps.teleported,
+  appendTo: useTooltipContentProps.appendTo,
+  zIndex: useTooltipContentProps.zIndex,
+  modal: useTooltipContentProps.modal,
+  modalClass: useTooltipContentProps.modalClass,
+  closeOnClickModal: useTooltipContentProps.closeOnClickModal,
+  title: String,
+  width: {
+    type: [String, Number],
+    default: 150
+  },
+  offset: {
+    type: Number,
+    default: 4
+  },
+  showAfter: {
+    type: Number,
+    default: 0
+  },
+  hideAfter: {
+    type: Number,
+    default: 200
+  },
+  autoClose: {
+    type: Number,
+    default: 0
+  },
+  showArrow: Boolean,
+  persistent: {
+    type: Boolean,
+    default: true
+  },
+  "onUpdate:visible": {
+    type: Function
+  }
+});
+const popoverEmits = {
+  "update:visible": (value) => isBoolean(value),
+  "before-enter": () => true,
+  "before-leave": () => true,
+  "after-enter": () => true,
+  "after-leave": () => true
+};
+
+const updateEventKeyRaw = `onUpdate:visible`;
+const __default__$F = defineComponent({
+  name: "ElPopover"
+});
+const _sfc_main$T = /* @__PURE__ */ defineComponent({
+  ...__default__$F,
+  props: popoverProps,
+  emits: popoverEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    const onUpdateVisible = computed(() => {
+      return props[updateEventKeyRaw];
+    });
+    const ns = useNamespace("popover");
+    const tooltipRef = ref();
+    const popperRef = computed(() => {
+      var _a;
+      return (_a = unref(tooltipRef)) == null ? void 0 : _a.popperRef;
+    });
+    const style = computed(() => {
+      return [
+        {
+          width: addUnit(props.width)
+        },
+        props.popperStyle
+      ];
+    });
+    const kls = computed(() => {
+      return [ns.b(), props.popperClass, { [ns.m("plain")]: !!props.content }];
+    });
+    const gpuAcceleration = computed(() => {
+      return props.transition === `${ns.namespace.value}-fade-in-linear`;
+    });
+    const show = () => {
+      var _a;
+      (_a = tooltipRef.value) == null ? void 0 : _a.onOpen();
+    };
+    const hide = () => {
+      var _a;
+      (_a = tooltipRef.value) == null ? void 0 : _a.hide();
+    };
+    const beforeEnter = () => {
+      emit("before-enter");
+    };
+    const beforeLeave = () => {
+      emit("before-leave");
+    };
+    const afterEnter = () => {
+      emit("after-enter");
+    };
+    const afterLeave = () => {
+      emit("update:visible", false);
+      emit("after-leave");
+    };
+    expose({
+      popperRef,
+      show,
+      hide
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(ElTooltip), mergeProps({
+        ref_key: "tooltipRef",
+        ref: tooltipRef
+      }, _ctx.$attrs, {
+        trigger: _ctx.trigger,
+        "trigger-keys": _ctx.triggerKeys,
+        placement: _ctx.placement,
+        disabled: _ctx.disabled,
+        visible: _ctx.visible,
+        transition: _ctx.transition,
+        "popper-options": _ctx.popperOptions,
+        tabindex: _ctx.tabindex,
+        content: _ctx.content,
+        offset: _ctx.offset,
+        "show-after": _ctx.showAfter,
+        "hide-after": _ctx.hideAfter,
+        "auto-close": _ctx.autoClose,
+        "show-arrow": _ctx.showArrow,
+        "aria-label": _ctx.title,
+        effect: _ctx.effect,
+        enterable: _ctx.enterable,
+        "popper-class": unref(kls),
+        "popper-style": unref(style),
+        teleported: _ctx.teleported,
+        "append-to": _ctx.appendTo,
+        persistent: _ctx.persistent,
+        "gpu-acceleration": unref(gpuAcceleration),
+        "z-index": _ctx.zIndex,
+        modal: _ctx.modal,
+        "modal-class": _ctx.modalClass,
+        "close-on-click-modal": _ctx.closeOnClickModal,
+        "onUpdate:visible": unref(onUpdateVisible),
+        onBeforeShow: beforeEnter,
+        onBeforeHide: beforeLeave,
+        onShow: afterEnter,
+        onHide: afterLeave
+      }), {
+        content: withCtx(() => [
+          _ctx.title ? (openBlock(), createElementBlock("div", {
+            key: 0,
+            class: normalizeClass(unref(ns).e("title")),
+            role: "title"
+          }, toDisplayString(_ctx.title), 3)) : createCommentVNode("v-if", true),
+          renderSlot(_ctx.$slots, "default", {}, () => [
+            createTextVNode(toDisplayString(_ctx.content), 1)
+          ])
+        ]),
+        default: withCtx(() => [
+          _ctx.$slots.reference ? renderSlot(_ctx.$slots, "reference", { key: 0 }) : createCommentVNode("v-if", true)
+        ]),
+        _: 3
+      }, 16, ["trigger", "trigger-keys", "placement", "disabled", "visible", "transition", "popper-options", "tabindex", "content", "offset", "show-after", "hide-after", "auto-close", "show-arrow", "aria-label", "effect", "enterable", "popper-class", "popper-style", "teleported", "append-to", "persistent", "gpu-acceleration", "z-index", "modal", "modal-class", "close-on-click-modal", "onUpdate:visible"]);
+    };
+  }
+});
+var Popover = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__file", "popover.vue"]]);
+
+const attachEvents = (el, binding) => {
+  const popperComponent = binding.arg || binding.value;
+  const popover = popperComponent == null ? void 0 : popperComponent.popperRef;
+  if (popover) {
+    popover.triggerRef = el;
+  }
+};
+var PopoverDirective = {
+  mounted(el, binding) {
+    attachEvents(el, binding);
+  },
+  updated(el, binding) {
+    attachEvents(el, binding);
+  }
+};
+const VPopover = "popover";
+
+const ElPopoverDirective = withInstallDirective(PopoverDirective, VPopover);
+const ElPopover = withInstall(Popover, {
+  directive: ElPopoverDirective
+});
+
+const progressProps = buildProps({
+  type: {
+    type: String,
+    default: "line",
+    values: ["line", "circle", "dashboard"]
+  },
+  percentage: {
+    type: Number,
+    default: 0,
+    validator: (val) => val >= 0 && val <= 100
+  },
+  status: {
+    type: String,
+    default: "",
+    values: ["", "success", "exception", "warning"]
+  },
+  indeterminate: Boolean,
+  duration: {
+    type: Number,
+    default: 3
+  },
+  strokeWidth: {
+    type: Number,
+    default: 6
+  },
+  strokeLinecap: {
+    type: definePropType(String),
+    default: "round"
+  },
+  textInside: Boolean,
+  width: {
+    type: Number,
+    default: 126
+  },
+  showText: {
+    type: Boolean,
+    default: true
+  },
+  color: {
+    type: definePropType([
+      String,
+      Array,
+      Function
+    ]),
+    default: ""
+  },
+  striped: Boolean,
+  stripedFlow: Boolean,
+  format: {
+    type: definePropType(Function),
+    default: (percentage) => `${percentage}%`
+  }
+});
+
+const __default__$E = defineComponent({
+  name: "ElProgress"
+});
+const _sfc_main$S = /* @__PURE__ */ defineComponent({
+  ...__default__$E,
+  props: progressProps,
+  setup(__props) {
+    const props = __props;
+    const STATUS_COLOR_MAP = {
+      success: "#13ce66",
+      exception: "#ff4949",
+      warning: "#e6a23c",
+      default: "#20a0ff"
+    };
+    const ns = useNamespace("progress");
+    const barStyle = computed(() => {
+      const barStyle2 = {
+        width: `${props.percentage}%`,
+        animationDuration: `${props.duration}s`
+      };
+      const color = getCurrentColor(props.percentage);
+      if (color.includes("gradient")) {
+        barStyle2.background = color;
+      } else {
+        barStyle2.backgroundColor = color;
+      }
+      return barStyle2;
+    });
+    const relativeStrokeWidth = computed(() => (props.strokeWidth / props.width * 100).toFixed(1));
+    const radius = computed(() => {
+      if (["circle", "dashboard"].includes(props.type)) {
+        return Number.parseInt(`${50 - Number.parseFloat(relativeStrokeWidth.value) / 2}`, 10);
+      }
+      return 0;
+    });
+    const trackPath = computed(() => {
+      const r = radius.value;
+      const isDashboard = props.type === "dashboard";
+      return `
+          M 50 50
+          m 0 ${isDashboard ? "" : "-"}${r}
+          a ${r} ${r} 0 1 1 0 ${isDashboard ? "-" : ""}${r * 2}
+          a ${r} ${r} 0 1 1 0 ${isDashboard ? "" : "-"}${r * 2}
+          `;
+    });
+    const perimeter = computed(() => 2 * Math.PI * radius.value);
+    const rate = computed(() => props.type === "dashboard" ? 0.75 : 1);
+    const strokeDashoffset = computed(() => {
+      const offset = -1 * perimeter.value * (1 - rate.value) / 2;
+      return `${offset}px`;
+    });
+    const trailPathStyle = computed(() => ({
+      strokeDasharray: `${perimeter.value * rate.value}px, ${perimeter.value}px`,
+      strokeDashoffset: strokeDashoffset.value
+    }));
+    const circlePathStyle = computed(() => ({
+      strokeDasharray: `${perimeter.value * rate.value * (props.percentage / 100)}px, ${perimeter.value}px`,
+      strokeDashoffset: strokeDashoffset.value,
+      transition: "stroke-dasharray 0.6s ease 0s, stroke 0.6s ease, opacity ease 0.6s"
+    }));
+    const stroke = computed(() => {
+      let ret;
+      if (props.color) {
+        ret = getCurrentColor(props.percentage);
+      } else {
+        ret = STATUS_COLOR_MAP[props.status] || STATUS_COLOR_MAP.default;
+      }
+      return ret;
+    });
+    const statusIcon = computed(() => {
+      if (props.status === "warning") {
+        return warning_filled_default;
+      }
+      if (props.type === "line") {
+        return props.status === "success" ? circle_check_default : circle_close_default;
+      } else {
+        return props.status === "success" ? check_default : close_default;
+      }
+    });
+    const progressTextSize = computed(() => {
+      return props.type === "line" ? 12 + props.strokeWidth * 0.4 : props.width * 0.111111 + 2;
+    });
+    const content = computed(() => props.format(props.percentage));
+    function getColors(color) {
+      const span = 100 / color.length;
+      const seriesColors = color.map((seriesColor, index) => {
+        if (isString$1(seriesColor)) {
+          return {
+            color: seriesColor,
+            percentage: (index + 1) * span
+          };
+        }
+        return seriesColor;
+      });
+      return seriesColors.sort((a, b) => a.percentage - b.percentage);
+    }
+    const getCurrentColor = (percentage) => {
+      var _a;
+      const { color } = props;
+      if (isFunction$1(color)) {
+        return color(percentage);
+      } else if (isString$1(color)) {
+        return color;
+      } else {
+        const colors = getColors(color);
+        for (const color2 of colors) {
+          if (color2.percentage > percentage)
+            return color2.color;
+        }
+        return (_a = colors[colors.length - 1]) == null ? void 0 : _a.color;
+      }
+    };
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass([
+          unref(ns).b(),
+          unref(ns).m(_ctx.type),
+          unref(ns).is(_ctx.status),
+          {
+            [unref(ns).m("without-text")]: !_ctx.showText,
+            [unref(ns).m("text-inside")]: _ctx.textInside
+          }
+        ]),
+        role: "progressbar",
+        "aria-valuenow": _ctx.percentage,
+        "aria-valuemin": "0",
+        "aria-valuemax": "100"
+      }, [
+        _ctx.type === "line" ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          class: normalizeClass(unref(ns).b("bar"))
+        }, [
+          createElementVNode("div", {
+            class: normalizeClass(unref(ns).be("bar", "outer")),
+            style: normalizeStyle({ height: `${_ctx.strokeWidth}px` })
+          }, [
+            createElementVNode("div", {
+              class: normalizeClass([
+                unref(ns).be("bar", "inner"),
+                { [unref(ns).bem("bar", "inner", "indeterminate")]: _ctx.indeterminate },
+                { [unref(ns).bem("bar", "inner", "striped")]: _ctx.striped },
+                { [unref(ns).bem("bar", "inner", "striped-flow")]: _ctx.stripedFlow }
+              ]),
+              style: normalizeStyle(unref(barStyle))
+            }, [
+              (_ctx.showText || _ctx.$slots.default) && _ctx.textInside ? (openBlock(), createElementBlock("div", {
+                key: 0,
+                class: normalizeClass(unref(ns).be("bar", "innerText"))
+              }, [
+                renderSlot(_ctx.$slots, "default", { percentage: _ctx.percentage }, () => [
+                  createElementVNode("span", null, toDisplayString(unref(content)), 1)
+                ])
+              ], 2)) : createCommentVNode("v-if", true)
+            ], 6)
+          ], 6)
+        ], 2)) : (openBlock(), createElementBlock("div", {
+          key: 1,
+          class: normalizeClass(unref(ns).b("circle")),
+          style: normalizeStyle({ height: `${_ctx.width}px`, width: `${_ctx.width}px` })
+        }, [
+          (openBlock(), createElementBlock("svg", { viewBox: "0 0 100 100" }, [
+            createElementVNode("path", {
+              class: normalizeClass(unref(ns).be("circle", "track")),
+              d: unref(trackPath),
+              stroke: `var(${unref(ns).cssVarName("fill-color-light")}, #e5e9f2)`,
+              "stroke-linecap": _ctx.strokeLinecap,
+              "stroke-width": unref(relativeStrokeWidth),
+              fill: "none",
+              style: normalizeStyle(unref(trailPathStyle))
+            }, null, 14, ["d", "stroke", "stroke-linecap", "stroke-width"]),
+            createElementVNode("path", {
+              class: normalizeClass(unref(ns).be("circle", "path")),
+              d: unref(trackPath),
+              stroke: unref(stroke),
+              fill: "none",
+              opacity: _ctx.percentage ? 1 : 0,
+              "stroke-linecap": _ctx.strokeLinecap,
+              "stroke-width": unref(relativeStrokeWidth),
+              style: normalizeStyle(unref(circlePathStyle))
+            }, null, 14, ["d", "stroke", "opacity", "stroke-linecap", "stroke-width"])
+          ]))
+        ], 6)),
+        (_ctx.showText || _ctx.$slots.default) && !_ctx.textInside ? (openBlock(), createElementBlock("div", {
+          key: 2,
+          class: normalizeClass(unref(ns).e("text")),
+          style: normalizeStyle({ fontSize: `${unref(progressTextSize)}px` })
+        }, [
+          renderSlot(_ctx.$slots, "default", { percentage: _ctx.percentage }, () => [
+            !_ctx.status ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(unref(content)), 1)) : (openBlock(), createBlock(unref(ElIcon), { key: 1 }, {
+              default: withCtx(() => [
+                (openBlock(), createBlock(resolveDynamicComponent(unref(statusIcon))))
+              ]),
+              _: 1
+            }))
+          ])
+        ], 6)) : createCommentVNode("v-if", true)
+      ], 10, ["aria-valuenow"]);
+    };
+  }
+});
+var Progress = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["__file", "progress.vue"]]);
+
+const ElProgress = withInstall(Progress);
+
+const rateProps = buildProps({
+  modelValue: {
+    type: Number,
+    default: 0
+  },
+  id: {
+    type: String,
+    default: void 0
+  },
+  lowThreshold: {
+    type: Number,
+    default: 2
+  },
+  highThreshold: {
+    type: Number,
+    default: 4
+  },
+  max: {
+    type: Number,
+    default: 5
+  },
+  colors: {
+    type: definePropType([Array, Object]),
+    default: () => mutable(["", "", ""])
+  },
+  voidColor: {
+    type: String,
+    default: ""
+  },
+  disabledVoidColor: {
+    type: String,
+    default: ""
+  },
+  icons: {
+    type: definePropType([Array, Object]),
+    default: () => [star_filled_default, star_filled_default, star_filled_default]
+  },
+  voidIcon: {
+    type: iconPropType,
+    default: () => star_default
+  },
+  disabledVoidIcon: {
+    type: iconPropType,
+    default: () => star_filled_default
+  },
+  disabled: Boolean,
+  allowHalf: Boolean,
+  showText: Boolean,
+  showScore: Boolean,
+  textColor: {
+    type: String,
+    default: ""
+  },
+  texts: {
+    type: definePropType(Array),
+    default: () => mutable([
+      "Extremely bad",
+      "Disappointed",
+      "Fair",
+      "Satisfied",
+      "Surprise"
+    ])
+  },
+  scoreTemplate: {
+    type: String,
+    default: "{value}"
+  },
+  size: useSizeProp,
+  clearable: Boolean,
+  ...useAriaProps(["ariaLabel"])
+});
+const rateEmits = {
+  [CHANGE_EVENT]: (value) => isNumber(value),
+  [UPDATE_MODEL_EVENT]: (value) => isNumber(value)
+};
+
+const __default__$D = defineComponent({
+  name: "ElRate"
+});
+const _sfc_main$R = /* @__PURE__ */ defineComponent({
+  ...__default__$D,
+  props: rateProps,
+  emits: rateEmits,
+  setup(__props, { expose, emit }) {
+    const props = __props;
+    function getValueFromMap(value, map) {
+      const isExcludedObject = (val) => isObject$1(val);
+      const matchedKeys = Object.keys(map).map((key) => +key).filter((key) => {
+        const val = map[key];
+        const excluded = isExcludedObject(val) ? val.excluded : false;
+        return excluded ? value < key : value <= key;
+      }).sort((a, b) => a - b);
+      const matchedValue = map[matchedKeys[0]];
+      return isExcludedObject(matchedValue) && matchedValue.value || matchedValue;
+    }
+    const formContext = inject(formContextKey, void 0);
+    const formItemContext = inject(formItemContextKey, void 0);
+    const rateSize = useFormSize();
+    const ns = useNamespace("rate");
+    const { inputId, isLabeledByFormItem } = useFormItemInputId(props, {
+      formItemContext
+    });
+    const currentValue = ref(props.modelValue);
+    const hoverIndex = ref(-1);
+    const pointerAtLeftHalf = ref(true);
+    const iconRefs = ref([]);
+    const iconClientWidths = computed(() => iconRefs.value.map((icon) => icon.$el.clientWidth));
+    const rateClasses = computed(() => [ns.b(), ns.m(rateSize.value)]);
+    const rateDisabled = computed(() => props.disabled || (formContext == null ? void 0 : formContext.disabled));
+    const rateStyles = computed(() => {
+      return ns.cssVarBlock({
+        "void-color": props.voidColor,
+        "disabled-void-color": props.disabledVoidColor,
+        "fill-color": activeColor.value
+      });
+    });
+    const text = computed(() => {
+      let result = "";
+      if (props.showScore) {
+        result = props.scoreTemplate.replace(/\{\s*value\s*\}/, rateDisabled.value ? `${props.modelValue}` : `${currentValue.value}`);
+      } else if (props.showText) {
+        result = props.texts[Math.ceil(currentValue.value) - 1];
+      }
+      return result;
+    });
+    const valueDecimal = computed(() => props.modelValue * 100 - Math.floor(props.modelValue) * 100);
+    const colorMap = computed(() => isArray$1(props.colors) ? {
+      [props.lowThreshold]: props.colors[0],
+      [props.highThreshold]: { value: props.colors[1], excluded: true },
+      [props.max]: props.colors[2]
+    } : props.colors);
+    const activeColor = computed(() => {
+      const color = getValueFromMap(currentValue.value, colorMap.value);
+      return isObject$1(color) ? "" : color;
+    });
+    const decimalStyle = computed(() => {
+      let width = "";
+      if (rateDisabled.value) {
+        width = `${valueDecimal.value}%`;
+      } else if (props.allowHalf) {
+        width = "50%";
+      }
+      return {
+        color: activeColor.value,
+        width
+      };
+    });
+    const componentMap = computed(() => {
+      let icons = isArray$1(props.icons) ? [...props.icons] : { ...props.icons };
+      icons = markRaw(icons);
+      return isArray$1(icons) ? {
+        [props.lowThreshold]: icons[0],
+        [props.highThreshold]: {
+          value: icons[1],
+          excluded: true
+        },
+        [props.max]: icons[2]
+      } : icons;
+    });
+    const decimalIconComponent = computed(() => getValueFromMap(props.modelValue, componentMap.value));
+    const voidComponent = computed(() => rateDisabled.value ? isString$1(props.disabledVoidIcon) ? props.disabledVoidIcon : markRaw(props.disabledVoidIcon) : isString$1(props.voidIcon) ? props.voidIcon : markRaw(props.voidIcon));
+    const activeComponent = computed(() => getValueFromMap(currentValue.value, componentMap.value));
+    function showDecimalIcon(item) {
+      const showWhenDisabled = rateDisabled.value && valueDecimal.value > 0 && item - 1 < props.modelValue && item > props.modelValue;
+      const showWhenAllowHalf = props.allowHalf && pointerAtLeftHalf.value && item - 0.5 <= currentValue.value && item > currentValue.value;
+      return showWhenDisabled || showWhenAllowHalf;
+    }
+    function emitValue(value) {
+      if (props.clearable && value === props.modelValue) {
+        value = 0;
+      }
+      emit(UPDATE_MODEL_EVENT, value);
+      if (props.modelValue !== value) {
+        emit(CHANGE_EVENT, value);
+      }
+    }
+    function selectValue(value) {
+      if (rateDisabled.value) {
+        return;
+      }
+      if (props.allowHalf && pointerAtLeftHalf.value) {
+        emitValue(currentValue.value);
+      } else {
+        emitValue(value);
+      }
+    }
+    function handleKey(e) {
+      if (rateDisabled.value) {
+        return;
+      }
+      const code = getEventCode(e);
+      const step = props.allowHalf ? 0.5 : 1;
+      let _currentValue = currentValue.value;
+      switch (code) {
+        case EVENT_CODE.up:
+        case EVENT_CODE.right:
+          _currentValue += step;
+          break;
+        case EVENT_CODE.left:
+        case EVENT_CODE.down:
+          _currentValue -= step;
+          break;
+      }
+      _currentValue = clamp$1(_currentValue, 0, props.max);
+      if (_currentValue === currentValue.value) {
+        return;
+      }
+      e.stopPropagation();
+      e.preventDefault();
+      emit(UPDATE_MODEL_EVENT, _currentValue);
+      emit(CHANGE_EVENT, _currentValue);
+      return _currentValue;
+    }
+    function setCurrentValue(value, event) {
+      if (rateDisabled.value) {
+        return;
+      }
+      if (props.allowHalf && event) {
+        pointerAtLeftHalf.value = event.offsetX * 2 <= iconClientWidths.value[value - 1];
+        currentValue.value = pointerAtLeftHalf.value ? value - 0.5 : value;
+      } else {
+        currentValue.value = value;
+      }
+      hoverIndex.value = value;
+    }
+    function resetCurrentValue() {
+      if (rateDisabled.value) {
+        return;
+      }
+      if (props.allowHalf) {
+        pointerAtLeftHalf.value = props.modelValue !== Math.floor(props.modelValue);
+      }
+      currentValue.value = props.modelValue;
+      hoverIndex.value = -1;
+    }
+    watch(() => props.modelValue, (val) => {
+      currentValue.value = val;
+      pointerAtLeftHalf.value = props.modelValue !== Math.floor(props.modelValue);
+    });
+    if (!props.modelValue) {
+      emit(UPDATE_MODEL_EVENT, 0);
+    }
+    expose({
+      setCurrentValue,
+      resetCurrentValue
+    });
+    return (_ctx, _cache) => {
+      var _a;
+      return openBlock(), createElementBlock("div", {
+        id: unref(inputId),
+        class: normalizeClass([unref(rateClasses), unref(ns).is("disabled", unref(rateDisabled))]),
+        role: "slider",
+        "aria-label": !unref(isLabeledByFormItem) ? _ctx.ariaLabel || "rating" : void 0,
+        "aria-labelledby": unref(isLabeledByFormItem) ? (_a = unref(formItemContext)) == null ? void 0 : _a.labelId : void 0,
+        "aria-valuenow": currentValue.value,
+        "aria-valuetext": unref(text) || void 0,
+        "aria-valuemin": "0",
+        "aria-valuemax": _ctx.max,
+        tabindex: "0",
+        style: normalizeStyle(unref(rateStyles)),
+        onKeydown: handleKey
+      }, [
+        (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.max, (item, key) => {
+          return openBlock(), createElementBlock("span", {
+            key,
+            class: normalizeClass(unref(ns).e("item")),
+            onMousemove: ($event) => setCurrentValue(item, $event),
+            onMouseleave: resetCurrentValue,
+            onClick: ($event) => selectValue(item)
+          }, [
+            createVNode(unref(ElIcon), {
+              ref_for: true,
+              ref_key: "iconRefs",
+              ref: iconRefs,
+              class: normalizeClass([
+                unref(ns).e("icon"),
+                { hover: hoverIndex.value === item },
+                unref(ns).is("active", item <= currentValue.value),
+                unref(ns).is("focus-visible", item === Math.ceil(currentValue.value || 1))
+              ])
+            }, {
+              default: withCtx(() => [
+                withDirectives((openBlock(), createBlock(resolveDynamicComponent(unref(activeComponent)), null, null, 512)), [
+                  [vShow, !showDecimalIcon(item) && item <= currentValue.value]
+                ]),
+                withDirectives((openBlock(), createBlock(resolveDynamicComponent(unref(voidComponent)), null, null, 512)), [
+                  [vShow, !showDecimalIcon(item) && item > currentValue.value]
+                ]),
+                withDirectives((openBlock(), createBlock(resolveDynamicComponent(unref(voidComponent)), {
+                  class: normalizeClass([unref(ns).em("decimal", "box")])
+                }, null, 8, ["class"])), [
+                  [vShow, showDecimalIcon(item)]
+                ]),
+                withDirectives(createVNode(unref(ElIcon), {
+                  style: normalizeStyle(unref(decimalStyle)),
+                  class: normalizeClass([unref(ns).e("icon"), unref(ns).e("decimal")])
+                }, {
+                  default: withCtx(() => [
+                    (openBlock(), createBlock(resolveDynamicComponent(unref(decimalIconComponent))))
+                  ]),
+                  _: 2
+                }, 1032, ["style", "class"]), [
+                  [vShow, showDecimalIcon(item)]
+                ])
+              ]),
+              _: 2
+            }, 1032, ["class"])
+          ], 42, ["onMousemove", "onClick"]);
+        }), 128)),
+        _ctx.showText || _ctx.showScore ? (openBlock(), createElementBlock("span", {
+          key: 0,
+          class: normalizeClass(unref(ns).e("text")),
+          style: normalizeStyle({ color: _ctx.textColor })
+        }, toDisplayString(unref(text)), 7)) : createCommentVNode("v-if", true)
+      ], 46, ["id", "aria-label", "aria-labelledby", "aria-valuenow", "aria-valuetext", "aria-valuemax"]);
+    };
+  }
+});
+var Rate = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["__file", "rate.vue"]]);
+
+const ElRate = withInstall(Rate);
+
+const IconMap = {
+  primary: "icon-primary",
+  success: "icon-success",
+  warning: "icon-warning",
+  error: "icon-error",
+  info: "icon-info"
+};
+const IconComponentMap = {
+  [IconMap.primary]: info_filled_default,
+  [IconMap.success]: circle_check_filled_default,
+  [IconMap.warning]: warning_filled_default,
+  [IconMap.error]: circle_close_filled_default,
+  [IconMap.info]: info_filled_default
+};
+const resultProps = buildProps({
+  title: {
+    type: String,
+    default: ""
+  },
+  subTitle: {
+    type: String,
+    default: ""
+  },
+  icon: {
+    type: String,
+    values: ["primary", "success", "warning", "info", "error"],
+    default: "info"
+  }
+});
+
+const __default__$C = defineComponent({
+  name: "ElResult"
+});
+const _sfc_main$Q = /* @__PURE__ */ defineComponent({
+  ...__default__$C,
+  props: resultProps,
+  setup(__props) {
+    const props = __props;
+    const ns = useNamespace("result");
+    const resultIcon = computed(() => {
+      const icon = props.icon;
+      const iconClass = icon && IconMap[icon] ? IconMap[icon] : "icon-info";
+      const iconComponent = IconComponentMap[iconClass] || IconComponentMap["icon-info"];
+      return {
+        class: iconClass,
+        component: iconComponent
+      };
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass(unref(ns).b())
+      }, [
+        createElementVNode("div", {
+          class: normalizeClass(unref(ns).e("icon"))
+        }, [
+          renderSlot(_ctx.$slots, "icon", {}, () => [
+            unref(resultIcon).component ? (openBlock(), createBlock(resolveDynamicComponent(unref(resultIcon).component), {
+              key: 0,
+              class: normalizeClass(unref(resultIcon).class)
+            }, null, 8, ["class"])) : createCommentVNode("v-if", true)
+          ])
+        ], 2),
+        _ctx.title || _ctx.$slots.title ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          class: normalizeClass(unref(ns).e("title"))
+        }, [
+          renderSlot(_ctx.$slots, "title", {}, () => [
+            createElementVNode("p", null, toDisplayString(_ctx.title), 1)
+          ])
+        ], 2)) : createCommentVNode("v-if", true),
+        _ctx.subTitle || _ctx.$slots["sub-title"] ? (openBlock(), createElementBlock("div", {
+          key: 1,
+          class: normalizeClass(unref(ns).e("subtitle"))
+        }, [
+          renderSlot(_ctx.$slots, "sub-title", {}, () => [
+            createElementVNode("p", null, toDisplayString(_ctx.subTitle), 1)
+          ])
+        ], 2)) : createCommentVNode("v-if", true),
+        _ctx.$slots.extra ? (openBlock(), createElementBlock("div", {
+          key: 2,
+          class: normalizeClass(unref(ns).e("extra"))
+        }, [
+          renderSlot(_ctx.$slots, "extra")
+        ], 2)) : createCommentVNode("v-if", true)
+      ], 2);
+    };
+  }
+});
+var Result = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__file", "result.vue"]]);
+
+const ElResult = withInstall(Result);
 
 const skeletonProps = buildProps({
   animated: Boolean,

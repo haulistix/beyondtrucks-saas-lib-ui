@@ -39765,6 +39765,14 @@
     rightProps: {
       type: definePropType(Object),
       default: () => ({})
+    },
+    leftDirectives: {
+      type: definePropType(Array),
+      default: () => []
+    },
+    rightDirectives: {
+      type: definePropType(Array),
+      default: () => []
     }
   });
   const inputSelectEmits = {
@@ -39845,7 +39853,7 @@
         const listeners = control === "select" ? {
           onVisibleChange: (visible) => handleVisibleChange(side, visible)
         } : {};
-        return vue.createVNode(component, {
+        return vue.withDirectives(vue.createVNode(component, {
           ...controlProps,
           ...listeners,
           key: `${side}-${control}`,
@@ -39861,7 +39869,7 @@
           onFocus: (event) => handleFocus(side, event),
           onBlur: (event) => handleBlur(side, event),
           onClear: () => handleClear(side)
-        }, getControlSlots(side));
+        }, getControlSlots(side)), isLeft ? props.leftDirectives : props.rightDirectives);
       };
       const focus = (side = "left") => {
         var _a, _b;

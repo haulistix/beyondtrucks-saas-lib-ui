@@ -6,7 +6,7 @@ import ElTooltipTrigger from './trigger2.mjs';
 import ElTooltipContent from './content2.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { usePopperContainer } from '../../../hooks/use-popper-container/index.mjs';
-import ElPopperArrow from '../../popper/src/arrow.mjs';
+import ElPopperArrow from '../../popper/src/arrow2.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { useId } from '../../../hooks/use-id/index.mjs';
 import { useDelayedToggle } from '../../../hooks/use-delayed-toggle/index.mjs';

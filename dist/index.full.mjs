@@ -39761,6 +39761,14 @@ const inputSelectProps = buildProps({
   rightProps: {
     type: definePropType(Object),
     default: () => ({})
+  },
+  leftDirectives: {
+    type: definePropType(Array),
+    default: () => []
+  },
+  rightDirectives: {
+    type: definePropType(Array),
+    default: () => []
   }
 });
 const inputSelectEmits = {
@@ -39841,7 +39849,7 @@ const _sfc_main$19 = defineComponent({
       const listeners = control === "select" ? {
         onVisibleChange: (visible) => handleVisibleChange(side, visible)
       } : {};
-      return createVNode(component, {
+      return withDirectives(createVNode(component, {
         ...controlProps,
         ...listeners,
         key: `${side}-${control}`,
@@ -39857,7 +39865,7 @@ const _sfc_main$19 = defineComponent({
         onFocus: (event) => handleFocus(side, event),
         onBlur: (event) => handleBlur(side, event),
         onClear: () => handleClear(side)
-      }, getControlSlots(side));
+      }, getControlSlots(side)), isLeft ? props.leftDirectives : props.rightDirectives);
     };
     const focus = (side = "left") => {
       var _a, _b;

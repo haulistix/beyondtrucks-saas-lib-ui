@@ -318,6 +318,7 @@
       &.is-diagonal-header {
         padding: 0;
         overflow: hidden;
+        border-right: var(--el-table-border);
 
         &::after {
           content: '';

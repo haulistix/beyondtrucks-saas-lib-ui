@@ -19,6 +19,7 @@ import { DebouncedFunc } from "lodash";
 import { DebuggerEvent } from "vue";
 import { DefineComponent } from "vue";
 import type { Directive } from "vue";
+import { DirectiveArguments } from "vue";
 import { EmitsOptions } from "vue";
 import { ExtractPropTypes } from "vue";
 import type { h } from "vue";
@@ -16304,6 +16305,8 @@ declare const _default_55: DefineComponent<{
     readonly rightValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
     readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
+    readonly rightDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
 }, () => VNode<RendererNode, RendererElement, {
     [key: string]: any;
 }>, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
@@ -16349,6 +16352,8 @@ declare const _default_55: DefineComponent<{
     readonly rightValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
     readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
+    readonly rightDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
 }>> & {
     "onUpdate:leftValue"?: ((_value: InputSelectValue) => any) | undefined;
     "onUpdate:rightValue"?: ((_value: InputSelectValue) => any) | undefined;
@@ -16392,6 +16397,8 @@ declare const _default_55: DefineComponent<{
     readonly rightValue: EpPropMergeType<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown>;
     readonly leftProps: EpPropMergeType<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown>;
     readonly rightProps: EpPropMergeType<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown>;
+    readonly leftDirectives: DirectiveArguments;
+    readonly rightDirectives: DirectiveArguments;
 }>;
 declare const _default_56: __VLS_WithTemplateSlots_49<typeof __VLS_component_49, ReturnType<typeof __VLS_template_49>>;
 declare const _default_57: __VLS_WithTemplateSlots_50<typeof __VLS_component_50, ReturnType<typeof __VLS_template_50>>;
@@ -24412,6 +24419,7 @@ export declare const inputSelectControlTypes: readonly [
     "input",
     "select"
 ];
+export declare type InputSelectDirectives = DirectiveArguments;
 export declare type InputSelectEmits = typeof inputSelectEmits;
 export declare const inputSelectEmits: {
     "update:leftValue": (_value: InputSelectValue) => boolean;
@@ -24472,6 +24480,8 @@ export declare const inputSelectProps: {
     readonly rightValue: EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
     readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
+    readonly rightDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
 };
 export declare type InputSelectPropsPublic = __ExtractPublicPropTypes<typeof inputSelectProps>;
 export declare type InputSelectValue = InputPropsPublic["modelValue"] | SelectPropsPublic["modelValue"];

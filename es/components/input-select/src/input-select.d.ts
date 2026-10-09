@@ -1,4 +1,4 @@
-import type { ExtractPropTypes, __ExtractPublicPropTypes } from 'vue';
+import type { DirectiveArguments, ExtractPropTypes, __ExtractPublicPropTypes } from 'vue';
 import type { InputPropsPublic } from 'element-plus/es/components/input';
 import type { SelectPropsPublic } from 'element-plus/es/components/select';
 export declare const inputSelectControlTypes: readonly ["input", "select"];
@@ -6,12 +6,15 @@ export type InputSelectControl = (typeof inputSelectControlTypes)[number];
 export type InputSelectLayout = ['input', 'select'] | ['select', 'select'] | ['select', 'input'] | ['input', 'input'];
 export type InputSelectValue = InputPropsPublic['modelValue'] | SelectPropsPublic['modelValue'];
 export type InputSelectControlProps = Partial<Omit<InputPropsPublic, 'modelValue'>> | Partial<Omit<SelectPropsPublic, 'modelValue'>>;
+export type InputSelectDirectives = DirectiveArguments;
 export declare const inputSelectProps: {
     readonly layout: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => InputSelectLayout) | ((new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => InputSelectLayout))[], unknown, InputSelectLayout, () => InputSelectLayout, boolean>;
     readonly leftValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
     readonly rightValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue) | ((new (...args: any[]) => string | number | boolean | Record<string, any> | import("element-plus/es/utils").EpPropMergeType<(ObjectConstructor | BooleanConstructor | NumberConstructor | StringConstructor)[], unknown, unknown>[]) | (() => InputSelectValue))[], unknown, unknown, undefined, boolean>;
     readonly leftProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly rightProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectPropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftDirectives: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
+    readonly rightDirectives: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
 };
 export declare const inputSelectEmits: {
     'update:leftValue': (_value: InputSelectValue) => boolean;

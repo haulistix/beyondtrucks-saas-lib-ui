@@ -5,7 +5,7 @@ import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { ElCheckbox } from '../../checkbox/index.mjs';
 import { useProps } from '../../select-v2/src/useProps.mjs';
-import Option from './option2.mjs';
+import Option from './option.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
 import { useSelect } from './useSelect.mjs';
 import { selectKey } from './token.mjs';

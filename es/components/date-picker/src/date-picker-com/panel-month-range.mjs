@@ -1,6 +1,6 @@
 import { defineComponent, inject, toRef, ref, computed, watch, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, renderSlot, Fragment, renderList, toDisplayString, createCommentVNode, createVNode, withCtx, createBlock } from 'vue';
 import dayjs from 'dayjs';
-import ElButton from '../../../button/src/button2.mjs';
+import ElButton from '../../../button/src/button.mjs';
 import { ElIcon } from '../../../icon/index.mjs';
 import { isValidRange, getDefaultValue, correctlyParseUserInput } from '../utils.mjs';
 import { panelMonthRangeProps, panelMonthRangeEmits } from '../props/panel-month-range.mjs';

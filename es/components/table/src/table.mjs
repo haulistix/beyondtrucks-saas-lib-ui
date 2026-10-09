@@ -1,6 +1,6 @@
 import { defineComponent, getCurrentInstance, provide, ref, shallowRef, computed, watch, onBeforeUnmount, toRaw, nextTick, resolveComponent, resolveDirective, openBlock, createElementBlock, normalizeClass, normalizeStyle, createElementVNode, renderSlot, withDirectives, createVNode, createCommentVNode, withCtx, createBlock, createTextVNode, toDisplayString, vShow, withModifiers } from 'vue';
 import TableText from './table-footer/tableText.mjs';
-import ElTooltip from '../../tooltip/src/tooltip.mjs';
+import ElTooltip from '../../tooltip/src/tooltip2.mjs';
 import { debounce, cloneDeep } from 'lodash-unified';
 import { ElScrollbar } from '../../scrollbar/index.mjs';
 import { createStore } from './store/helper.mjs';

@@ -1,6 +1,6 @@
 import { createVNode, renderSlot, mergeProps } from 'vue';
 import { SortOrder, Alignment } from '../constants.mjs';
-import { placeholderSign, rowDeletePlaceholderMergedSign, rowDeleteColumnKey } from '../private.mjs';
+import { placeholderSign, rowDeletePlaceholderMergedSign, rowDeleteColumnKey, rowDeleteColumnWidth } from '../private.mjs';
 import { enforceUnit, componentToSlot, tryCall } from '../utils.mjs';
 import HeaderCell$1 from '../components/header-cell.mjs';
 import SortIcon from '../components/sort-icon.mjs';
@@ -112,6 +112,7 @@ const HeaderCellRenderer = (props, {
     document.addEventListener("mouseup", handleMouseUp);
   };
   const handleHeaderMouseMove = (event) => {
+    var _a, _b;
     const canUseAddColumnTrigger = ghostTable ? editTable : canEditTable && editable;
     if (!showAddColumnTrigger || !canUseAddColumnTrigger || column.placeholderSign === placeholderSign) {
       clearAddColumnTrigger();
@@ -130,17 +131,20 @@ const HeaderCellRenderer = (props, {
     const rect = currentTarget.getBoundingClientRect();
     const rootRect = root.getBoundingClientRect();
     const columnIndex = getVisibleColumnIndex();
-    if (columnIndex < 0 || rect.width <= 8) {
+    const mergedRowDeleteRect = column[rowDeletePlaceholderMergedSign] ? (_a = root.querySelector(`.${ns.e("header-cell")}.is-row-delete-column`)) == null ? void 0 : _a.getBoundingClientRect() : void 0;
+    const columnRight = (_b = mergedRowDeleteRect == null ? void 0 : mergedRowDeleteRect.left) != null ? _b : rect.right - (column[rowDeletePlaceholderMergedSign] ? rowDeleteColumnWidth : 0);
+    const columnWidth = columnRight - rect.left;
+    if (columnIndex < 0 || columnWidth <= 8) {
       clearAddColumnTrigger();
       return;
     }
-    const isLeftHalf = event.clientX < rect.left + rect.width / 2;
+    const isLeftHalf = event.clientX < rect.left + columnWidth / 2;
     const disableInsertBeforeFirstColumn = columnIndex === 0 && isLeftHalf && column.allowInsertBeforeFirstColumn === false;
     if (disableInsertBeforeFirstColumn) {
       clearAddColumnTrigger();
       return;
     }
-    emitAddColumnTrigger(isLeftHalf ? columnIndex : columnIndex + 1, isLeftHalf ? rect.left - rootRect.left : rect.right - rootRect.left, columnIndex);
+    emitAddColumnTrigger(isLeftHalf ? columnIndex : columnIndex + 1, isLeftHalf ? rect.left - rootRect.left : columnRight - rootRect.left, columnIndex);
   };
   const handleHeaderMouseOut = (event) => {
     const currentTarget = event.currentTarget;

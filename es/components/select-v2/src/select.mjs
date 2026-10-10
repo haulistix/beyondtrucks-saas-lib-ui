@@ -484,7 +484,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 ]),
                 _: 2
               }, [
-                _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll || _ctx.multiple && _ctx.currentMultipleOptions.length && !_ctx.hasMultipleOptionGroups ? {
+                _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll || _ctx.currentOptions.length && !_ctx.hasOptionGroups ? {
                   name: "header",
                   fn: withCtx(() => [
                     _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
@@ -499,10 +499,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                       key: 1,
                       class: "select-all-item"
                     }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
-                    _ctx.multiple && _ctx.currentMultipleOptions.length && !_ctx.hasMultipleOptionGroups ? (openBlock(), createElementBlock("div", {
+                    _ctx.currentOptions.length && !_ctx.hasOptionGroups ? (openBlock(), createElementBlock("div", {
                       key: 2,
                       class: normalizeClass(_ctx.nsSelect.be("dropdown", "section-title"))
-                    }, toDisplayString(_ctx.multipleSectionLabel), 3)) : createCommentVNode("v-if", true)
+                    }, toDisplayString(_ctx.selectionSectionLabel), 3)) : createCommentVNode("v-if", true)
                   ])
                 } : void 0,
                 _ctx.$slots.loading && _ctx.loading ? {
@@ -526,10 +526,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     ], 2)
                   ])
                 } : void 0,
-                _ctx.$slots.footer || _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? {
+                _ctx.$slots.footer || _ctx.showSelectAll && _ctx.multiple && _ctx.currentOptions.length ? {
                   name: "footer",
                   fn: withCtx(() => [
-                    _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                    _ctx.showSelectAll && _ctx.multiple && _ctx.currentOptions.length ? (openBlock(), createElementBlock("div", {
                       key: 0,
                       class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                       onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])

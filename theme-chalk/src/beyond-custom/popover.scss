@@ -16,13 +16,16 @@
 }
 
 .el-popper.is-light[role='tooltip'] {
-  min-height: 32px;
   color: var(--color-gray-990);
   font-size: 12px;
   line-height: 16px;
   display: flex;
   border: 1px solid var(--color-gray-100);
   align-items: center;
+
+  &:not(.el-popover) {
+    min-height: 32px;
+  }
 
   .el-button + .el-button {
     margin-left: 4px;

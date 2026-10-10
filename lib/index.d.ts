@@ -17112,10 +17112,10 @@ declare const _default_75: DefineComponent<{
     hoverOption: Ref<any>;
     selectSize: ComputedRef<"" | "small" | "default" | "large">;
     filteredOptionsCount: ComputedRef<number>;
-    visibleMultipleOptions: ComputedRef<SelectOptionProxy[]>;
+    visibleOptions: ComputedRef<SelectOptionProxy[]>;
     hasVisibleSelectedOptions: ComputedRef<boolean>;
     hasVisibleUnselectedOptions: ComputedRef<boolean>;
-    multipleSectionLabel: ComputedRef<"Selected" | "Unselected">;
+    selectionSectionLabel: ComputedRef<"Selected" | "Unselected">;
     isAllVisibleOptionsSelected: ComputedRef<boolean>;
     isSelectAllIndeterminate: ComputedRef<boolean>;
     selectAllLabel: ComputedRef<"Deselect All" | "Select All">;
@@ -17470,8 +17470,6 @@ declare const _default_76: DefineComponent<{
     tip: ComputedRef<string | undefined>;
     placement: EpPropMergeType<(new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement) | ((new (...args: any[]) => "left" | "right" | "top" | "bottom" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end") | (() => Placement))[], Placement, unknown>;
     optionStyle: ComputedRef<{
-        order?: undefined;
-    } | {
         order: number;
     }>;
     handleCellMouseEnter: (event: MouseEvent) => void;
@@ -17525,7 +17523,6 @@ declare const _default_77: DefineComponent<{
     visible: ComputedRef<boolean>;
     hasVisibleSelectedOptions: ComputedRef<boolean>;
     hasVisibleUnselectedOptions: ComputedRef<boolean>;
-    isFirstVisibleGroup: ComputedRef<boolean>;
     ns: {
         namespace: ComputedRef<string>;
         b: (blockSuffix?: string) => string;
@@ -17849,11 +17846,11 @@ declare const _default_78: DefineComponent<{
         [x: string]: any;
         created?: boolean | undefined;
     })[]>;
-    currentMultipleOptions: ComputedRef<Option_2[]>;
-    hasMultipleOptionGroups: ComputedRef<boolean>;
+    currentOptions: ComputedRef<Option_2[]>;
+    hasOptionGroups: ComputedRef<boolean>;
     hasVisibleSelectedOptions: ComputedRef<boolean>;
     hasVisibleUnselectedOptions: ComputedRef<boolean>;
-    multipleSectionLabel: ComputedRef<"Selected" | "Unselected">;
+    selectionSectionLabel: ComputedRef<"Selected" | "Unselected">;
     isAllVisibleOptionsSelected: ComputedRef<boolean>;
     isSelectAllIndeterminate: ComputedRef<boolean>;
     selectAllLabel: ComputedRef<"Deselect All" | "Select All">;

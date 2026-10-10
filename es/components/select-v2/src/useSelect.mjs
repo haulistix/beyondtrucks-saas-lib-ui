@@ -134,17 +134,18 @@ const useSelect = (props, emit) => {
   const isFilterMethodValid = computed(() => props.filterable && isFunction(props.filterMethod));
   const isRemoteMethodValid = computed(() => props.filterable && props.remote && isFunction(props.remoteMethod));
   const isOptionSelected = (option) => {
-    if (!props.multiple || !isArray(props.modelValue))
-      return false;
     const optionValue = getValue(option);
+    if (!props.multiple) {
+      return getValueKey(props.modelValue) === getValueKey(optionValue);
+    }
+    if (!isArray(props.modelValue))
+      return false;
     if (!isObject(optionValue)) {
       return props.modelValue.includes(optionValue);
     }
     return props.modelValue.some((value) => getValueKey(value) === getValueKey(optionValue));
   };
   const reorderFilteredOptions = (options) => {
-    if (!props.multiple)
-      return options;
     if (options.some((option) => option.type === "Group")) {
       const groups = [];
       options.forEach((option) => {
@@ -231,13 +232,13 @@ const useSelect = (props, emit) => {
     });
     return valueMap;
   });
-  const currentMultipleOptions = computed(() => props.multiple ? filteredOptions.value.filter((option) => option.type !== "Group") : []);
-  const hasMultipleOptionGroups = computed(() => filteredOptions.value.some((option) => option.businessGroup));
+  const currentOptions = computed(() => filteredOptions.value.filter((option) => option.type !== "Group"));
+  const hasOptionGroups = computed(() => filteredOptions.value.some((option) => option.businessGroup));
   const selectAllExcludedValueKeys = computed(() => new Set(props.selectAllExcludedValues.map(getValueKey)));
-  const selectableMultipleOptions = computed(() => currentMultipleOptions.value.filter((option) => !getDisabled(option) && !selectAllExcludedValueKeys.value.has(getValueKey(getValue(option)))));
-  const hasVisibleSelectedOptions = computed(() => currentMultipleOptions.value.some(isOptionSelected));
-  const hasVisibleUnselectedOptions = computed(() => currentMultipleOptions.value.some((option) => !isOptionSelected(option)));
-  const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+  const selectableMultipleOptions = computed(() => currentOptions.value.filter((option) => !getDisabled(option) && !selectAllExcludedValueKeys.value.has(getValueKey(getValue(option)))));
+  const hasVisibleSelectedOptions = computed(() => currentOptions.value.some(isOptionSelected));
+  const hasVisibleUnselectedOptions = computed(() => currentOptions.value.some((option) => !isOptionSelected(option)));
+  const selectionSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
   const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
   const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
   const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
@@ -250,7 +251,7 @@ const useSelect = (props, emit) => {
       }
       return height + props.itemHeight;
     }, 0);
-    const selectionSectionHeight = props.multiple && !filteredOptions.value.some((option) => option.type === "Group") && hasVisibleSelectedOptions.value && hasVisibleUnselectedOptions.value ? SELECT_V2_GROUP_DIVIDER_SIZE + SELECT_V2_GROUP_TITLE_HEIGHT : 0;
+    const selectionSectionHeight = !filteredOptions.value.some((option) => option.type === "Group") && hasVisibleSelectedOptions.value && hasVisibleUnselectedOptions.value ? SELECT_V2_GROUP_DIVIDER_SIZE + SELECT_V2_GROUP_TITLE_HEIGHT : 0;
     const contentHeight = totalHeight + selectionSectionHeight;
     return contentHeight > props.height ? props.height : contentHeight;
   });
@@ -862,11 +863,11 @@ const useSelect = (props, emit) => {
     allOptions,
     allOptionsValueMap,
     filteredOptions,
-    currentMultipleOptions,
-    hasMultipleOptionGroups,
+    currentOptions,
+    hasOptionGroups,
     hasVisibleSelectedOptions,
     hasVisibleUnselectedOptions,
-    multipleSectionLabel,
+    selectionSectionLabel,
     isAllVisibleOptionsSelected,
     isSelectAllIndeterminate,
     selectAllLabel,

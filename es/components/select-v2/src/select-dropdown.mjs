@@ -77,7 +77,7 @@ var ElSelectMenu = defineComponent({
       return isEqual(modelValue, getValue(target));
     };
     const selectionDividerIndex = computed(() => {
-      if (!select.props.multiple || hasGroups.value)
+      if (hasGroups.value)
         return -1;
       const selectedCount = props2.data.filter((item) => isItemSelected(select.props.modelValue, item)).length;
       return selectedCount > 0 && selectedCount < props2.data.length ? selectedCount : -1;

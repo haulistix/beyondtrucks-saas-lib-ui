@@ -35155,9 +35155,9 @@ const _sfc_main$1s = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElDivider$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["__file", "divider.vue"]]);
+var Divider = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["__file", "divider.vue"]]);
 
-const ElDivider = withInstall(ElDivider$1);
+const ElDivider = withInstall(Divider);
 
 function useResizable(props, target) {
   const { width, height } = useWindowSize();
@@ -40271,7 +40271,7 @@ var ElSelectMenu$1 = defineComponent({
       return isEqual(modelValue, getValue(target));
     };
     const selectionDividerIndex = computed(() => {
-      if (!select.props.multiple || hasGroups.value)
+      if (hasGroups.value)
         return -1;
       const selectedCount = props2.data.filter((item) => isItemSelected(select.props.modelValue, item)).length;
       return selectedCount > 0 && selectedCount < props2.data.length ? selectedCount : -1;
@@ -40659,17 +40659,18 @@ const useSelect$2 = (props, emit) => {
   const isFilterMethodValid = computed(() => props.filterable && isFunction$1(props.filterMethod));
   const isRemoteMethodValid = computed(() => props.filterable && props.remote && isFunction$1(props.remoteMethod));
   const isOptionSelected = (option) => {
-    if (!props.multiple || !isArray$1(props.modelValue))
-      return false;
     const optionValue = getValue(option);
+    if (!props.multiple) {
+      return getValueKey(props.modelValue) === getValueKey(optionValue);
+    }
+    if (!isArray$1(props.modelValue))
+      return false;
     if (!isObject$1(optionValue)) {
       return props.modelValue.includes(optionValue);
     }
     return props.modelValue.some((value) => getValueKey(value) === getValueKey(optionValue));
   };
   const reorderFilteredOptions = (options) => {
-    if (!props.multiple)
-      return options;
     if (options.some((option) => option.type === "Group")) {
       const groups = [];
       options.forEach((option) => {
@@ -40756,13 +40757,13 @@ const useSelect$2 = (props, emit) => {
     });
     return valueMap;
   });
-  const currentMultipleOptions = computed(() => props.multiple ? filteredOptions.value.filter((option) => option.type !== "Group") : []);
-  const hasMultipleOptionGroups = computed(() => filteredOptions.value.some((option) => option.businessGroup));
+  const currentOptions = computed(() => filteredOptions.value.filter((option) => option.type !== "Group"));
+  const hasOptionGroups = computed(() => filteredOptions.value.some((option) => option.businessGroup));
   const selectAllExcludedValueKeys = computed(() => new Set(props.selectAllExcludedValues.map(getValueKey)));
-  const selectableMultipleOptions = computed(() => currentMultipleOptions.value.filter((option) => !getDisabled(option) && !selectAllExcludedValueKeys.value.has(getValueKey(getValue(option)))));
-  const hasVisibleSelectedOptions = computed(() => currentMultipleOptions.value.some(isOptionSelected));
-  const hasVisibleUnselectedOptions = computed(() => currentMultipleOptions.value.some((option) => !isOptionSelected(option)));
-  const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+  const selectableMultipleOptions = computed(() => currentOptions.value.filter((option) => !getDisabled(option) && !selectAllExcludedValueKeys.value.has(getValueKey(getValue(option)))));
+  const hasVisibleSelectedOptions = computed(() => currentOptions.value.some(isOptionSelected));
+  const hasVisibleUnselectedOptions = computed(() => currentOptions.value.some((option) => !isOptionSelected(option)));
+  const selectionSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
   const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
   const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
   const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
@@ -40775,7 +40776,7 @@ const useSelect$2 = (props, emit) => {
       }
       return height + props.itemHeight;
     }, 0);
-    const selectionSectionHeight = props.multiple && !filteredOptions.value.some((option) => option.type === "Group") && hasVisibleSelectedOptions.value && hasVisibleUnselectedOptions.value ? SELECT_V2_GROUP_DIVIDER_SIZE + SELECT_V2_GROUP_TITLE_HEIGHT : 0;
+    const selectionSectionHeight = !filteredOptions.value.some((option) => option.type === "Group") && hasVisibleSelectedOptions.value && hasVisibleUnselectedOptions.value ? SELECT_V2_GROUP_DIVIDER_SIZE + SELECT_V2_GROUP_TITLE_HEIGHT : 0;
     const contentHeight = totalHeight + selectionSectionHeight;
     return contentHeight > props.height ? props.height : contentHeight;
   });
@@ -41387,11 +41388,11 @@ const useSelect$2 = (props, emit) => {
     allOptions,
     allOptionsValueMap,
     filteredOptions,
-    currentMultipleOptions,
-    hasMultipleOptionGroups,
+    currentOptions,
+    hasOptionGroups,
     hasVisibleSelectedOptions,
     hasVisibleUnselectedOptions,
-    multipleSectionLabel,
+    selectionSectionLabel,
     isAllVisibleOptionsSelected,
     isSelectAllIndeterminate,
     selectAllLabel,
@@ -41933,7 +41934,7 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
                 ]),
                 _: 2
               }, [
-                _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll || _ctx.multiple && _ctx.currentMultipleOptions.length && !_ctx.hasMultipleOptionGroups ? {
+                _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll || _ctx.currentOptions.length && !_ctx.hasOptionGroups ? {
                   name: "header",
                   fn: withCtx(() => [
                     _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
@@ -41948,10 +41949,10 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
                       key: 1,
                       class: "select-all-item"
                     }, toDisplayString(_ctx.haveAll), 1)) : createCommentVNode("v-if", true),
-                    _ctx.multiple && _ctx.currentMultipleOptions.length && !_ctx.hasMultipleOptionGroups ? (openBlock(), createElementBlock("div", {
+                    _ctx.currentOptions.length && !_ctx.hasOptionGroups ? (openBlock(), createElementBlock("div", {
                       key: 2,
                       class: normalizeClass(_ctx.nsSelect.be("dropdown", "section-title"))
-                    }, toDisplayString(_ctx.multipleSectionLabel), 3)) : createCommentVNode("v-if", true)
+                    }, toDisplayString(_ctx.selectionSectionLabel), 3)) : createCommentVNode("v-if", true)
                   ])
                 } : void 0,
                 _ctx.$slots.loading && _ctx.loading ? {
@@ -41975,10 +41976,10 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
                     ], 2)
                   ])
                 } : void 0,
-                _ctx.$slots.footer || _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? {
+                _ctx.$slots.footer || _ctx.showSelectAll && _ctx.multiple && _ctx.currentOptions.length ? {
                   name: "footer",
                   fn: withCtx(() => [
-                    _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                    _ctx.showSelectAll && _ctx.multiple && _ctx.currentOptions.length ? (openBlock(), createElementBlock("div", {
                       key: 0,
                       class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                       onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])
@@ -44825,19 +44826,14 @@ const _sfc_main$10 = defineComponent({
     const vm = getCurrentInstance().proxy;
     select.onOptionCreate(vm);
     const multiple = computed(() => select.props.multiple);
-    const isSelectedTop = computed(() => multiple.value && itemSelected.value);
     const getGroupElement = (option = vm) => {
       var _a, _b;
       return (_b = (_a = option.$el) == null ? void 0 : _a.closest) == null ? void 0 : _b.call(_a, `.${ns.b("group")}`);
     };
     const isGroupOption = () => Boolean(getGroupElement());
-    const optionStyle = computed(() => {
-      if (!multiple.value)
-        return {};
-      return {
-        order: isSelectedTop.value ? 1 : 3
-      };
-    });
+    const optionStyle = computed(() => ({
+      order: itemSelected.value ? 1 : 3
+    }));
     onBeforeUnmount(() => {
       const key = vm.value;
       nextTick(() => {
@@ -45176,7 +45172,8 @@ const useSelect$1 = (props, emit) => {
         newList.push(list[index]);
       }
     });
-    return newList.length >= list.length ? newList : list;
+    const orderedOptions = newList.length >= list.length ? newList : list;
+    return props.multiple ? orderedOptions : orderedOptions.sort((a, b) => Number(unref(b.itemSelected)) - Number(unref(a.itemSelected)));
   });
   const cachedOptionsArray = computed(() => Array.from(states.cachedOptions.values()));
   const showNewOption = computed(() => {
@@ -45538,14 +45535,14 @@ const useSelect$1 = (props, emit) => {
   };
   const getOptionValueKey = (value) => isObject$1(value) ? get(value, props.valueKey) : value;
   const selectAllExcludedValueKeys = computed(() => new Set(props.selectAllExcludedValues.map(getOptionValueKey)));
-  const visibleMultipleOptions = computed(() => props.multiple ? optionsArray.value.filter((option) => option.visible) : []);
-  const selectableMultipleOptions = computed(() => visibleMultipleOptions.value.filter((option) => !option.isDisabled && !selectAllExcludedValueKeys.value.has(getOptionValueKey(option.value))));
-  const isMultipleOptionSelected = (option) => getValueIndex(castArray$1(props.modelValue), option) > -1;
-  const hasVisibleSelectedOptions = computed(() => visibleMultipleOptions.value.some(isMultipleOptionSelected));
-  const hasVisibleUnselectedOptions = computed(() => visibleMultipleOptions.value.some((option) => !isMultipleOptionSelected(option)));
-  const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
-  const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isMultipleOptionSelected));
-  const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isMultipleOptionSelected) && !isAllVisibleOptionsSelected.value);
+  const visibleOptions = computed(() => optionsArray.value.filter((option) => option.visible));
+  const selectableMultipleOptions = computed(() => visibleOptions.value.filter((option) => !option.isDisabled && !selectAllExcludedValueKeys.value.has(getOptionValueKey(option.value))));
+  const isOptionSelected = (option) => getValueIndex(castArray$1(props.modelValue), option) > -1;
+  const hasVisibleSelectedOptions = computed(() => visibleOptions.value.some(isOptionSelected));
+  const hasVisibleUnselectedOptions = computed(() => visibleOptions.value.some((option) => !isOptionSelected(option)));
+  const selectionSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+  const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
+  const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
   const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
   const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
   const toggleSelectAll = async () => {
@@ -45754,10 +45751,10 @@ const useSelect$1 = (props, emit) => {
     hoverOption,
     selectSize,
     filteredOptionsCount,
-    visibleMultipleOptions,
+    visibleOptions,
     hasVisibleSelectedOptions,
     hasVisibleUnselectedOptions,
-    multipleSectionLabel,
+    selectionSectionLabel,
     isAllVisibleOptionsSelected,
     isSelectAllIndeterminate,
     selectAllLabel,
@@ -46054,7 +46051,6 @@ const selectEmits = {
 
 const _sfc_main$_ = defineComponent({
   name: "ElOptionGroup",
-  components: { ElDivider: ElDivider$1 },
   componentName: "ElOptionGroup",
   props: {
     label: String,
@@ -46072,10 +46068,6 @@ const _sfc_main$_ = defineComponent({
     const visible = computed(() => children.value.some((option) => option.visible === true));
     const hasVisibleSelectedOptions = computed(() => children.value.some((option) => option.visible === true && unref(option.itemSelected)));
     const hasVisibleUnselectedOptions = computed(() => children.value.some((option) => option.visible === true && !unref(option.itemSelected)));
-    const isFirstVisibleGroup = computed(() => {
-      const firstVisibleOption = select.optionsArray.find((option) => option.visible);
-      return !!firstVisibleOption && children.value.includes(firstVisibleOption);
-    });
     const isOption = (node) => {
       var _a;
       return node.type.name === "ElOption" && !!((_a = node.component) == null ? void 0 : _a.proxy);
@@ -46114,40 +46106,28 @@ const _sfc_main$_ = defineComponent({
       visible,
       hasVisibleSelectedOptions,
       hasVisibleUnselectedOptions,
-      isFirstVisibleGroup,
       ns
     };
   }
 });
 function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_el_divider = resolveComponent("el-divider");
   return withDirectives((openBlock(), createElementBlock("ul", {
     ref: "groupRef",
-    class: normalizeClass([_ctx.ns.be("group", "wrap"), _ctx.ns.is("multiple", _ctx.select.props.multiple)])
+    class: normalizeClass([
+      _ctx.ns.be("group", "wrap"),
+      _ctx.ns.is("multiple", _ctx.select.props.multiple),
+      _ctx.ns.is("selection-group", true)
+    ])
   }, [
-    _ctx.select.props.multiple ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-      _ctx.hasVisibleSelectedOptions ? (openBlock(), createElementBlock("li", {
-        key: 0,
-        class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("selected-group")])
-      }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
-      _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("li", {
-        key: 1,
-        class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("unselected-group")])
-      }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
-      renderSlot(_ctx.$slots, "default")
-    ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-      !_ctx.isFirstVisibleGroup ? (openBlock(), createBlock(_component_el_divider, { key: 0 })) : createCommentVNode("v-if", true),
-      createElementVNode("li", {
-        class: normalizeClass(_ctx.ns.be("group", "title"))
-      }, toDisplayString(_ctx.label), 3),
-      createElementVNode("li", null, [
-        createElementVNode("ul", {
-          class: normalizeClass(_ctx.ns.b("group"))
-        }, [
-          renderSlot(_ctx.$slots, "default")
-        ], 2)
-      ])
-    ], 64))
+    _ctx.hasVisibleSelectedOptions ? (openBlock(), createElementBlock("li", {
+      key: 0,
+      class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("selected-group")])
+    }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
+    _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("li", {
+      key: 1,
+      class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("unselected-group")])
+    }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
+    renderSlot(_ctx.$slots, "default")
   ], 2)), [
     [vShow, _ctx.visible]
   ]);
@@ -46734,14 +46714,14 @@ function _sfc_render$8(_ctx, _cache) {
                     onScroll: _ctx.popupScroll
                   }, {
                     default: withCtx(() => [
-                      _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                      _ctx.visibleOptions.length ? (openBlock(), createElementBlock("div", {
                         key: 0,
                         class: normalizeClass([
                           _ctx.nsSelect.be("dropdown", "section-title"),
                           _ctx.nsSelect.is("selected-section", _ctx.hasVisibleSelectedOptions)
                         ])
-                      }, toDisplayString(_ctx.multipleSectionLabel), 3)) : createCommentVNode("v-if", true),
-                      _ctx.multiple && _ctx.hasVisibleSelectedOptions && _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("div", {
+                      }, toDisplayString(_ctx.selectionSectionLabel), 3)) : createCommentVNode("v-if", true),
+                      _ctx.hasVisibleSelectedOptions && _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("div", {
                         key: 1,
                         class: normalizeClass([
                           _ctx.nsSelect.be("dropdown", "section-title"),
@@ -46835,7 +46815,7 @@ function _sfc_render$8(_ctx, _cache) {
                       ], 8, ["onClick"]))
                     ])
                   ], 2)) : createCommentVNode("v-if", true),
-                  _ctx.showSelectAll && _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                  _ctx.showSelectAll && _ctx.multiple && _ctx.visibleOptions.length ? (openBlock(), createElementBlock("div", {
                     key: 3,
                     class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                     onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])

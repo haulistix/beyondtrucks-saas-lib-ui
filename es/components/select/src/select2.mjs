@@ -600,14 +600,14 @@ function _sfc_render(_ctx, _cache) {
                     onScroll: _ctx.popupScroll
                   }, {
                     default: withCtx(() => [
-                      _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                      _ctx.visibleOptions.length ? (openBlock(), createElementBlock("div", {
                         key: 0,
                         class: normalizeClass([
                           _ctx.nsSelect.be("dropdown", "section-title"),
                           _ctx.nsSelect.is("selected-section", _ctx.hasVisibleSelectedOptions)
                         ])
-                      }, toDisplayString(_ctx.multipleSectionLabel), 3)) : createCommentVNode("v-if", true),
-                      _ctx.multiple && _ctx.hasVisibleSelectedOptions && _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("div", {
+                      }, toDisplayString(_ctx.selectionSectionLabel), 3)) : createCommentVNode("v-if", true),
+                      _ctx.hasVisibleSelectedOptions && _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("div", {
                         key: 1,
                         class: normalizeClass([
                           _ctx.nsSelect.be("dropdown", "section-title"),
@@ -701,7 +701,7 @@ function _sfc_render(_ctx, _cache) {
                       ], 8, ["onClick"]))
                     ])
                   ], 2)) : createCommentVNode("v-if", true),
-                  _ctx.showSelectAll && _ctx.multiple && _ctx.visibleMultipleOptions.length ? (openBlock(), createElementBlock("div", {
+                  _ctx.showSelectAll && _ctx.multiple && _ctx.visibleOptions.length ? (openBlock(), createElementBlock("div", {
                     key: 3,
                     class: normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                     onClick: withModifiers(_ctx.toggleSelectAll, ["stop"])

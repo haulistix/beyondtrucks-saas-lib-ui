@@ -35159,9 +35159,9 @@
       };
     }
   });
-  var ElDivider$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["__file", "divider.vue"]]);
+  var Divider = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["__file", "divider.vue"]]);
 
-  const ElDivider = withInstall(ElDivider$1);
+  const ElDivider = withInstall(Divider);
 
   function useResizable(props, target) {
     const { width, height } = useWindowSize();
@@ -40275,7 +40275,7 @@
         return isEqual(modelValue, getValue(target));
       };
       const selectionDividerIndex = vue.computed(() => {
-        if (!select.props.multiple || hasGroups.value)
+        if (hasGroups.value)
           return -1;
         const selectedCount = props2.data.filter((item) => isItemSelected(select.props.modelValue, item)).length;
         return selectedCount > 0 && selectedCount < props2.data.length ? selectedCount : -1;
@@ -40663,17 +40663,18 @@
     const isFilterMethodValid = vue.computed(() => props.filterable && isFunction$1(props.filterMethod));
     const isRemoteMethodValid = vue.computed(() => props.filterable && props.remote && isFunction$1(props.remoteMethod));
     const isOptionSelected = (option) => {
-      if (!props.multiple || !isArray$1(props.modelValue))
-        return false;
       const optionValue = getValue(option);
+      if (!props.multiple) {
+        return getValueKey(props.modelValue) === getValueKey(optionValue);
+      }
+      if (!isArray$1(props.modelValue))
+        return false;
       if (!isObject$1(optionValue)) {
         return props.modelValue.includes(optionValue);
       }
       return props.modelValue.some((value) => getValueKey(value) === getValueKey(optionValue));
     };
     const reorderFilteredOptions = (options) => {
-      if (!props.multiple)
-        return options;
       if (options.some((option) => option.type === "Group")) {
         const groups = [];
         options.forEach((option) => {
@@ -40760,13 +40761,13 @@
       });
       return valueMap;
     });
-    const currentMultipleOptions = vue.computed(() => props.multiple ? filteredOptions.value.filter((option) => option.type !== "Group") : []);
-    const hasMultipleOptionGroups = vue.computed(() => filteredOptions.value.some((option) => option.businessGroup));
+    const currentOptions = vue.computed(() => filteredOptions.value.filter((option) => option.type !== "Group"));
+    const hasOptionGroups = vue.computed(() => filteredOptions.value.some((option) => option.businessGroup));
     const selectAllExcludedValueKeys = vue.computed(() => new Set(props.selectAllExcludedValues.map(getValueKey)));
-    const selectableMultipleOptions = vue.computed(() => currentMultipleOptions.value.filter((option) => !getDisabled(option) && !selectAllExcludedValueKeys.value.has(getValueKey(getValue(option)))));
-    const hasVisibleSelectedOptions = vue.computed(() => currentMultipleOptions.value.some(isOptionSelected));
-    const hasVisibleUnselectedOptions = vue.computed(() => currentMultipleOptions.value.some((option) => !isOptionSelected(option)));
-    const multipleSectionLabel = vue.computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+    const selectableMultipleOptions = vue.computed(() => currentOptions.value.filter((option) => !getDisabled(option) && !selectAllExcludedValueKeys.value.has(getValueKey(getValue(option)))));
+    const hasVisibleSelectedOptions = vue.computed(() => currentOptions.value.some(isOptionSelected));
+    const hasVisibleUnselectedOptions = vue.computed(() => currentOptions.value.some((option) => !isOptionSelected(option)));
+    const selectionSectionLabel = vue.computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
     const isAllVisibleOptionsSelected = vue.computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
     const isSelectAllIndeterminate = vue.computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
     const selectAllLabel = vue.computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
@@ -40779,7 +40780,7 @@
         }
         return height + props.itemHeight;
       }, 0);
-      const selectionSectionHeight = props.multiple && !filteredOptions.value.some((option) => option.type === "Group") && hasVisibleSelectedOptions.value && hasVisibleUnselectedOptions.value ? SELECT_V2_GROUP_DIVIDER_SIZE + SELECT_V2_GROUP_TITLE_HEIGHT : 0;
+      const selectionSectionHeight = !filteredOptions.value.some((option) => option.type === "Group") && hasVisibleSelectedOptions.value && hasVisibleUnselectedOptions.value ? SELECT_V2_GROUP_DIVIDER_SIZE + SELECT_V2_GROUP_TITLE_HEIGHT : 0;
       const contentHeight = totalHeight + selectionSectionHeight;
       return contentHeight > props.height ? props.height : contentHeight;
     });
@@ -41391,11 +41392,11 @@
       allOptions,
       allOptionsValueMap,
       filteredOptions,
-      currentMultipleOptions,
-      hasMultipleOptionGroups,
+      currentOptions,
+      hasOptionGroups,
       hasVisibleSelectedOptions,
       hasVisibleUnselectedOptions,
-      multipleSectionLabel,
+      selectionSectionLabel,
       isAllVisibleOptionsSelected,
       isSelectAllIndeterminate,
       selectAllLabel,
@@ -41937,7 +41938,7 @@
                   ]),
                   _: 2
                 }, [
-                  _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll || _ctx.multiple && _ctx.currentMultipleOptions.length && !_ctx.hasMultipleOptionGroups ? {
+                  _ctx.$slots.header || _ctx.multiple && _ctx.modelValue.length && _ctx.haveAll || _ctx.currentOptions.length && !_ctx.hasOptionGroups ? {
                     name: "header",
                     fn: vue.withCtx(() => [
                       _ctx.$slots.header ? (vue.openBlock(), vue.createElementBlock("div", {
@@ -41952,10 +41953,10 @@
                         key: 1,
                         class: "select-all-item"
                       }, vue.toDisplayString(_ctx.haveAll), 1)) : vue.createCommentVNode("v-if", true),
-                      _ctx.multiple && _ctx.currentMultipleOptions.length && !_ctx.hasMultipleOptionGroups ? (vue.openBlock(), vue.createElementBlock("div", {
+                      _ctx.currentOptions.length && !_ctx.hasOptionGroups ? (vue.openBlock(), vue.createElementBlock("div", {
                         key: 2,
                         class: vue.normalizeClass(_ctx.nsSelect.be("dropdown", "section-title"))
-                      }, vue.toDisplayString(_ctx.multipleSectionLabel), 3)) : vue.createCommentVNode("v-if", true)
+                      }, vue.toDisplayString(_ctx.selectionSectionLabel), 3)) : vue.createCommentVNode("v-if", true)
                     ])
                   } : void 0,
                   _ctx.$slots.loading && _ctx.loading ? {
@@ -41979,10 +41980,10 @@
                       ], 2)
                     ])
                   } : void 0,
-                  _ctx.$slots.footer || _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? {
+                  _ctx.$slots.footer || _ctx.showSelectAll && _ctx.multiple && _ctx.currentOptions.length ? {
                     name: "footer",
                     fn: vue.withCtx(() => [
-                      _ctx.showSelectAll && _ctx.multiple && _ctx.currentMultipleOptions.length ? (vue.openBlock(), vue.createElementBlock("div", {
+                      _ctx.showSelectAll && _ctx.multiple && _ctx.currentOptions.length ? (vue.openBlock(), vue.createElementBlock("div", {
                         key: 0,
                         class: vue.normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                         onClick: vue.withModifiers(_ctx.toggleSelectAll, ["stop"])
@@ -44829,19 +44830,14 @@
       const vm = vue.getCurrentInstance().proxy;
       select.onOptionCreate(vm);
       const multiple = vue.computed(() => select.props.multiple);
-      const isSelectedTop = vue.computed(() => multiple.value && itemSelected.value);
       const getGroupElement = (option = vm) => {
         var _a, _b;
         return (_b = (_a = option.$el) == null ? void 0 : _a.closest) == null ? void 0 : _b.call(_a, `.${ns.b("group")}`);
       };
       const isGroupOption = () => Boolean(getGroupElement());
-      const optionStyle = vue.computed(() => {
-        if (!multiple.value)
-          return {};
-        return {
-          order: isSelectedTop.value ? 1 : 3
-        };
-      });
+      const optionStyle = vue.computed(() => ({
+        order: itemSelected.value ? 1 : 3
+      }));
       vue.onBeforeUnmount(() => {
         const key = vm.value;
         vue.nextTick(() => {
@@ -45180,7 +45176,8 @@
           newList.push(list[index]);
         }
       });
-      return newList.length >= list.length ? newList : list;
+      const orderedOptions = newList.length >= list.length ? newList : list;
+      return props.multiple ? orderedOptions : orderedOptions.sort((a, b) => Number(vue.unref(b.itemSelected)) - Number(vue.unref(a.itemSelected)));
     });
     const cachedOptionsArray = vue.computed(() => Array.from(states.cachedOptions.values()));
     const showNewOption = vue.computed(() => {
@@ -45542,14 +45539,14 @@
     };
     const getOptionValueKey = (value) => isObject$1(value) ? get(value, props.valueKey) : value;
     const selectAllExcludedValueKeys = vue.computed(() => new Set(props.selectAllExcludedValues.map(getOptionValueKey)));
-    const visibleMultipleOptions = vue.computed(() => props.multiple ? optionsArray.value.filter((option) => option.visible) : []);
-    const selectableMultipleOptions = vue.computed(() => visibleMultipleOptions.value.filter((option) => !option.isDisabled && !selectAllExcludedValueKeys.value.has(getOptionValueKey(option.value))));
-    const isMultipleOptionSelected = (option) => getValueIndex(castArray$1(props.modelValue), option) > -1;
-    const hasVisibleSelectedOptions = vue.computed(() => visibleMultipleOptions.value.some(isMultipleOptionSelected));
-    const hasVisibleUnselectedOptions = vue.computed(() => visibleMultipleOptions.value.some((option) => !isMultipleOptionSelected(option)));
-    const multipleSectionLabel = vue.computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
-    const isAllVisibleOptionsSelected = vue.computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isMultipleOptionSelected));
-    const isSelectAllIndeterminate = vue.computed(() => selectableMultipleOptions.value.some(isMultipleOptionSelected) && !isAllVisibleOptionsSelected.value);
+    const visibleOptions = vue.computed(() => optionsArray.value.filter((option) => option.visible));
+    const selectableMultipleOptions = vue.computed(() => visibleOptions.value.filter((option) => !option.isDisabled && !selectAllExcludedValueKeys.value.has(getOptionValueKey(option.value))));
+    const isOptionSelected = (option) => getValueIndex(castArray$1(props.modelValue), option) > -1;
+    const hasVisibleSelectedOptions = vue.computed(() => visibleOptions.value.some(isOptionSelected));
+    const hasVisibleUnselectedOptions = vue.computed(() => visibleOptions.value.some((option) => !isOptionSelected(option)));
+    const selectionSectionLabel = vue.computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+    const isAllVisibleOptionsSelected = vue.computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
+    const isSelectAllIndeterminate = vue.computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
     const selectAllLabel = vue.computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
     const isSelectAllDisabled = vue.computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
     const toggleSelectAll = async () => {
@@ -45758,10 +45755,10 @@
       hoverOption,
       selectSize,
       filteredOptionsCount,
-      visibleMultipleOptions,
+      visibleOptions,
       hasVisibleSelectedOptions,
       hasVisibleUnselectedOptions,
-      multipleSectionLabel,
+      selectionSectionLabel,
       isAllVisibleOptionsSelected,
       isSelectAllIndeterminate,
       selectAllLabel,
@@ -46058,7 +46055,6 @@
 
   const _sfc_main$_ = vue.defineComponent({
     name: "ElOptionGroup",
-    components: { ElDivider: ElDivider$1 },
     componentName: "ElOptionGroup",
     props: {
       label: String,
@@ -46076,10 +46072,6 @@
       const visible = vue.computed(() => children.value.some((option) => option.visible === true));
       const hasVisibleSelectedOptions = vue.computed(() => children.value.some((option) => option.visible === true && vue.unref(option.itemSelected)));
       const hasVisibleUnselectedOptions = vue.computed(() => children.value.some((option) => option.visible === true && !vue.unref(option.itemSelected)));
-      const isFirstVisibleGroup = vue.computed(() => {
-        const firstVisibleOption = select.optionsArray.find((option) => option.visible);
-        return !!firstVisibleOption && children.value.includes(firstVisibleOption);
-      });
       const isOption = (node) => {
         var _a;
         return node.type.name === "ElOption" && !!((_a = node.component) == null ? void 0 : _a.proxy);
@@ -46118,40 +46110,28 @@
         visible,
         hasVisibleSelectedOptions,
         hasVisibleUnselectedOptions,
-        isFirstVisibleGroup,
         ns
       };
     }
   });
   function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_el_divider = vue.resolveComponent("el-divider");
     return vue.withDirectives((vue.openBlock(), vue.createElementBlock("ul", {
       ref: "groupRef",
-      class: vue.normalizeClass([_ctx.ns.be("group", "wrap"), _ctx.ns.is("multiple", _ctx.select.props.multiple)])
+      class: vue.normalizeClass([
+        _ctx.ns.be("group", "wrap"),
+        _ctx.ns.is("multiple", _ctx.select.props.multiple),
+        _ctx.ns.is("selection-group", true)
+      ])
     }, [
-      _ctx.select.props.multiple ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
-        _ctx.hasVisibleSelectedOptions ? (vue.openBlock(), vue.createElementBlock("li", {
-          key: 0,
-          class: vue.normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("selected-group")])
-        }, vue.toDisplayString(_ctx.label), 3)) : vue.createCommentVNode("v-if", true),
-        _ctx.hasVisibleUnselectedOptions ? (vue.openBlock(), vue.createElementBlock("li", {
-          key: 1,
-          class: vue.normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("unselected-group")])
-        }, vue.toDisplayString(_ctx.label), 3)) : vue.createCommentVNode("v-if", true),
-        vue.renderSlot(_ctx.$slots, "default")
-      ], 64)) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
-        !_ctx.isFirstVisibleGroup ? (vue.openBlock(), vue.createBlock(_component_el_divider, { key: 0 })) : vue.createCommentVNode("v-if", true),
-        vue.createElementVNode("li", {
-          class: vue.normalizeClass(_ctx.ns.be("group", "title"))
-        }, vue.toDisplayString(_ctx.label), 3),
-        vue.createElementVNode("li", null, [
-          vue.createElementVNode("ul", {
-            class: vue.normalizeClass(_ctx.ns.b("group"))
-          }, [
-            vue.renderSlot(_ctx.$slots, "default")
-          ], 2)
-        ])
-      ], 64))
+      _ctx.hasVisibleSelectedOptions ? (vue.openBlock(), vue.createElementBlock("li", {
+        key: 0,
+        class: vue.normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("selected-group")])
+      }, vue.toDisplayString(_ctx.label), 3)) : vue.createCommentVNode("v-if", true),
+      _ctx.hasVisibleUnselectedOptions ? (vue.openBlock(), vue.createElementBlock("li", {
+        key: 1,
+        class: vue.normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("unselected-group")])
+      }, vue.toDisplayString(_ctx.label), 3)) : vue.createCommentVNode("v-if", true),
+      vue.renderSlot(_ctx.$slots, "default")
     ], 2)), [
       [vue.vShow, _ctx.visible]
     ]);
@@ -46738,14 +46718,14 @@
                       onScroll: _ctx.popupScroll
                     }, {
                       default: vue.withCtx(() => [
-                        _ctx.multiple && _ctx.visibleMultipleOptions.length ? (vue.openBlock(), vue.createElementBlock("div", {
+                        _ctx.visibleOptions.length ? (vue.openBlock(), vue.createElementBlock("div", {
                           key: 0,
                           class: vue.normalizeClass([
                             _ctx.nsSelect.be("dropdown", "section-title"),
                             _ctx.nsSelect.is("selected-section", _ctx.hasVisibleSelectedOptions)
                           ])
-                        }, vue.toDisplayString(_ctx.multipleSectionLabel), 3)) : vue.createCommentVNode("v-if", true),
-                        _ctx.multiple && _ctx.hasVisibleSelectedOptions && _ctx.hasVisibleUnselectedOptions ? (vue.openBlock(), vue.createElementBlock("div", {
+                        }, vue.toDisplayString(_ctx.selectionSectionLabel), 3)) : vue.createCommentVNode("v-if", true),
+                        _ctx.hasVisibleSelectedOptions && _ctx.hasVisibleUnselectedOptions ? (vue.openBlock(), vue.createElementBlock("div", {
                           key: 1,
                           class: vue.normalizeClass([
                             _ctx.nsSelect.be("dropdown", "section-title"),
@@ -46839,7 +46819,7 @@
                         ], 8, ["onClick"]))
                       ])
                     ], 2)) : vue.createCommentVNode("v-if", true),
-                    _ctx.showSelectAll && _ctx.multiple && _ctx.visibleMultipleOptions.length ? (vue.openBlock(), vue.createElementBlock("div", {
+                    _ctx.showSelectAll && _ctx.multiple && _ctx.visibleOptions.length ? (vue.openBlock(), vue.createElementBlock("div", {
                       key: 3,
                       class: vue.normalizeClass(_ctx.nsSelect.be("dropdown", "bulk-action")),
                       onClick: vue.withModifiers(_ctx.toggleSelectAll, ["stop"])

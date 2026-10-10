@@ -1,8 +1,8 @@
-import ElDivider$1 from './src/divider.mjs';
-export { dividerProps } from './src/divider2.mjs';
+import Divider from './src/divider2.mjs';
+export { dividerProps } from './src/divider.mjs';
 import { withInstall } from '../../utils/vue/install.mjs';
 
-const ElDivider = withInstall(ElDivider$1);
+const ElDivider = withInstall(Divider);
 
 export { ElDivider, ElDivider as default };
 //# sourceMappingURL=index.mjs.map

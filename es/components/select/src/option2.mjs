@@ -57,19 +57,14 @@ const _sfc_main = defineComponent({
     const vm = getCurrentInstance().proxy;
     select.onOptionCreate(vm);
     const multiple = computed(() => select.props.multiple);
-    const isSelectedTop = computed(() => multiple.value && itemSelected.value);
     const getGroupElement = (option = vm) => {
       var _a, _b;
       return (_b = (_a = option.$el) == null ? void 0 : _a.closest) == null ? void 0 : _b.call(_a, `.${ns.b("group")}`);
     };
     const isGroupOption = () => Boolean(getGroupElement());
-    const optionStyle = computed(() => {
-      if (!multiple.value)
-        return {};
-      return {
-        order: isSelectedTop.value ? 1 : 3
-      };
-    });
+    const optionStyle = computed(() => ({
+      order: itemSelected.value ? 1 : 3
+    }));
     onBeforeUnmount(() => {
       const key = vm.value;
       nextTick(() => {

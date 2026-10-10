@@ -281,11 +281,11 @@ declare const _default: import("vue").DefineComponent<{
         [x: string]: any;
         created?: boolean | undefined;
     })[]>;
-    currentMultipleOptions: import("vue").ComputedRef<import("./select.types").Option[]>;
-    hasMultipleOptionGroups: import("vue").ComputedRef<boolean>;
+    currentOptions: import("vue").ComputedRef<import("./select.types").Option[]>;
+    hasOptionGroups: import("vue").ComputedRef<boolean>;
     hasVisibleSelectedOptions: import("vue").ComputedRef<boolean>;
     hasVisibleUnselectedOptions: import("vue").ComputedRef<boolean>;
-    multipleSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
+    selectionSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
     isAllVisibleOptionsSelected: import("vue").ComputedRef<boolean>;
     isSelectAllIndeterminate: import("vue").ComputedRef<boolean>;
     selectAllLabel: import("vue").ComputedRef<"Deselect All" | "Select All">;

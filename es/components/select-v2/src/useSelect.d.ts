@@ -19,11 +19,11 @@ declare const useSelect: (props: SelectV2Props, emit: SelectV2EmitFn) => {
         [x: string]: any;
         created?: boolean | undefined;
     })[]>;
-    currentMultipleOptions: import("vue").ComputedRef<Option[]>;
-    hasMultipleOptionGroups: import("vue").ComputedRef<boolean>;
+    currentOptions: import("vue").ComputedRef<Option[]>;
+    hasOptionGroups: import("vue").ComputedRef<boolean>;
     hasVisibleSelectedOptions: import("vue").ComputedRef<boolean>;
     hasVisibleUnselectedOptions: import("vue").ComputedRef<boolean>;
-    multipleSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
+    selectionSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
     isAllVisibleOptionsSelected: import("vue").ComputedRef<boolean>;
     isSelectAllIndeterminate: import("vue").ComputedRef<boolean>;
     selectAllLabel: import("vue").ComputedRef<"Deselect All" | "Select All">;

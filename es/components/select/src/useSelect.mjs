@@ -1,4 +1,4 @@
-import { reactive, ref, computed, watch, watchEffect, nextTick, onMounted } from 'vue';
+import { reactive, ref, computed, unref, watch, watchEffect, nextTick, onMounted } from 'vue';
 import { castArray, isEqual, findLastIndex, get, isNil } from 'lodash-unified';
 import { isIOS, isClient, useDebounceFn, useResizeObserver } from '@vueuse/core';
 import { useLocale } from '../../../hooks/use-locale/index.mjs';
@@ -128,7 +128,8 @@ const useSelect = (props, emit) => {
         newList.push(list[index]);
       }
     });
-    return newList.length >= list.length ? newList : list;
+    const orderedOptions = newList.length >= list.length ? newList : list;
+    return props.multiple ? orderedOptions : orderedOptions.sort((a, b) => Number(unref(b.itemSelected)) - Number(unref(a.itemSelected)));
   });
   const cachedOptionsArray = computed(() => Array.from(states.cachedOptions.values()));
   const showNewOption = computed(() => {
@@ -490,14 +491,14 @@ const useSelect = (props, emit) => {
   };
   const getOptionValueKey = (value) => isObject(value) ? get(value, props.valueKey) : value;
   const selectAllExcludedValueKeys = computed(() => new Set(props.selectAllExcludedValues.map(getOptionValueKey)));
-  const visibleMultipleOptions = computed(() => props.multiple ? optionsArray.value.filter((option) => option.visible) : []);
-  const selectableMultipleOptions = computed(() => visibleMultipleOptions.value.filter((option) => !option.isDisabled && !selectAllExcludedValueKeys.value.has(getOptionValueKey(option.value))));
-  const isMultipleOptionSelected = (option) => getValueIndex(castArray(props.modelValue), option) > -1;
-  const hasVisibleSelectedOptions = computed(() => visibleMultipleOptions.value.some(isMultipleOptionSelected));
-  const hasVisibleUnselectedOptions = computed(() => visibleMultipleOptions.value.some((option) => !isMultipleOptionSelected(option)));
-  const multipleSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
-  const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isMultipleOptionSelected));
-  const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isMultipleOptionSelected) && !isAllVisibleOptionsSelected.value);
+  const visibleOptions = computed(() => optionsArray.value.filter((option) => option.visible));
+  const selectableMultipleOptions = computed(() => visibleOptions.value.filter((option) => !option.isDisabled && !selectAllExcludedValueKeys.value.has(getOptionValueKey(option.value))));
+  const isOptionSelected = (option) => getValueIndex(castArray(props.modelValue), option) > -1;
+  const hasVisibleSelectedOptions = computed(() => visibleOptions.value.some(isOptionSelected));
+  const hasVisibleUnselectedOptions = computed(() => visibleOptions.value.some((option) => !isOptionSelected(option)));
+  const selectionSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
+  const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
+  const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
   const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
   const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
   const toggleSelectAll = async () => {
@@ -706,10 +707,10 @@ const useSelect = (props, emit) => {
     hoverOption,
     selectSize,
     filteredOptionsCount,
-    visibleMultipleOptions,
+    visibleOptions,
     hasVisibleSelectedOptions,
     hasVisibleUnselectedOptions,
-    multipleSectionLabel,
+    selectionSectionLabel,
     isAllVisibleOptionsSelected,
     isSelectAllIndeterminate,
     selectAllLabel,

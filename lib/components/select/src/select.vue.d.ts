@@ -234,10 +234,10 @@ declare const _default: import("vue").DefineComponent<{
     hoverOption: import("vue").Ref<any>;
     selectSize: import("vue").ComputedRef<"" | "small" | "default" | "large">;
     filteredOptionsCount: import("vue").ComputedRef<number>;
-    visibleMultipleOptions: import("vue").ComputedRef<import("./type").OptionPublicInstance[]>;
+    visibleOptions: import("vue").ComputedRef<import("./type").OptionPublicInstance[]>;
     hasVisibleSelectedOptions: import("vue").ComputedRef<boolean>;
     hasVisibleUnselectedOptions: import("vue").ComputedRef<boolean>;
-    multipleSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
+    selectionSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
     isAllVisibleOptionsSelected: import("vue").ComputedRef<boolean>;
     isSelectAllIndeterminate: import("vue").ComputedRef<boolean>;
     selectAllLabel: import("vue").ComputedRef<"Deselect All" | "Select All">;

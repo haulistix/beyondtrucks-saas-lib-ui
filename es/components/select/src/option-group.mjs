@@ -1,6 +1,5 @@
-import { defineComponent, inject, ref, getCurrentInstance, provide, reactive, toRefs, computed, unref, onMounted, resolveComponent, withDirectives, openBlock, createElementBlock, normalizeClass, Fragment, toDisplayString, createCommentVNode, renderSlot, createBlock, createElementVNode, vShow, isVNode } from 'vue';
+import { defineComponent, inject, ref, getCurrentInstance, provide, reactive, toRefs, computed, unref, onMounted, withDirectives, openBlock, createElementBlock, normalizeClass, toDisplayString, createCommentVNode, renderSlot, vShow, isVNode } from 'vue';
 import { useMutationObserver } from '@vueuse/core';
-import ElDivider from '../../divider/src/divider.mjs';
 import { selectKey, selectGroupKey } from './token.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
@@ -9,7 +8,6 @@ import { isArray } from '@vue/shared';
 
 const _sfc_main = defineComponent({
   name: "ElOptionGroup",
-  components: { ElDivider },
   componentName: "ElOptionGroup",
   props: {
     label: String,
@@ -27,10 +25,6 @@ const _sfc_main = defineComponent({
     const visible = computed(() => children.value.some((option) => option.visible === true));
     const hasVisibleSelectedOptions = computed(() => children.value.some((option) => option.visible === true && unref(option.itemSelected)));
     const hasVisibleUnselectedOptions = computed(() => children.value.some((option) => option.visible === true && !unref(option.itemSelected)));
-    const isFirstVisibleGroup = computed(() => {
-      const firstVisibleOption = select.optionsArray.find((option) => option.visible);
-      return !!firstVisibleOption && children.value.includes(firstVisibleOption);
-    });
     const isOption = (node) => {
       var _a;
       return node.type.name === "ElOption" && !!((_a = node.component) == null ? void 0 : _a.proxy);
@@ -69,40 +63,28 @@ const _sfc_main = defineComponent({
       visible,
       hasVisibleSelectedOptions,
       hasVisibleUnselectedOptions,
-      isFirstVisibleGroup,
       ns
     };
   }
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_el_divider = resolveComponent("el-divider");
   return withDirectives((openBlock(), createElementBlock("ul", {
     ref: "groupRef",
-    class: normalizeClass([_ctx.ns.be("group", "wrap"), _ctx.ns.is("multiple", _ctx.select.props.multiple)])
+    class: normalizeClass([
+      _ctx.ns.be("group", "wrap"),
+      _ctx.ns.is("multiple", _ctx.select.props.multiple),
+      _ctx.ns.is("selection-group", true)
+    ])
   }, [
-    _ctx.select.props.multiple ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-      _ctx.hasVisibleSelectedOptions ? (openBlock(), createElementBlock("li", {
-        key: 0,
-        class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("selected-group")])
-      }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
-      _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("li", {
-        key: 1,
-        class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("unselected-group")])
-      }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
-      renderSlot(_ctx.$slots, "default")
-    ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-      !_ctx.isFirstVisibleGroup ? (openBlock(), createBlock(_component_el_divider, { key: 0 })) : createCommentVNode("v-if", true),
-      createElementVNode("li", {
-        class: normalizeClass(_ctx.ns.be("group", "title"))
-      }, toDisplayString(_ctx.label), 3),
-      createElementVNode("li", null, [
-        createElementVNode("ul", {
-          class: normalizeClass(_ctx.ns.b("group"))
-        }, [
-          renderSlot(_ctx.$slots, "default")
-        ], 2)
-      ])
-    ], 64))
+    _ctx.hasVisibleSelectedOptions ? (openBlock(), createElementBlock("li", {
+      key: 0,
+      class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("selected-group")])
+    }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
+    _ctx.hasVisibleUnselectedOptions ? (openBlock(), createElementBlock("li", {
+      key: 1,
+      class: normalizeClass([_ctx.ns.be("group", "business-title"), _ctx.ns.is("unselected-group")])
+    }, toDisplayString(_ctx.label), 3)) : createCommentVNode("v-if", true),
+    renderSlot(_ctx.$slots, "default")
   ], 2)), [
     [vShow, _ctx.visible]
   ]);

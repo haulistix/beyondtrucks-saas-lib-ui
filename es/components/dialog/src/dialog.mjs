@@ -1,4 +1,4 @@
-import { dialogContentProps } from './dialog-content2.mjs';
+import { dialogContentProps } from './dialog-content.mjs';
 import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs';
 import { teleportProps } from '../../teleport/src/teleport2.mjs';
 import { UPDATE_MODEL_EVENT } from '../../../constants/event.mjs';
@@ -15,7 +15,10 @@ const dialogProps = buildProps({
   beforeClose: {
     type: definePropType(Function)
   },
-  destroyOnClose: Boolean,
+  destroyOnClose: {
+    type: Boolean,
+    default: true
+  },
   closeOnClickModal: {
     type: Boolean,
     default: true

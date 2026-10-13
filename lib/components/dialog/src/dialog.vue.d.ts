@@ -18,7 +18,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly destroyOnClose: BooleanConstructor;
+    readonly destroyOnClose: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnClickModal: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnPressEscape: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly lockScroll: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
@@ -92,7 +92,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly destroyOnClose: BooleanConstructor;
+    readonly destroyOnClose: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnClickModal: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnPressEscape: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly lockScroll: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
@@ -167,13 +167,13 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly headerBackgroundColor: string;
     readonly headerType: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => import("./dialog-content.js").HeaderType) | (() => import("./dialog-content.js").HeaderType) | ((new (...args: any[]) => import("./dialog-content.js").HeaderType) | (() => import("./dialog-content.js").HeaderType))[], unknown, unknown>;
     readonly fullscreen: boolean;
+    readonly destroyOnClose: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly closeOnPressEscape: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly lockScroll: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly openDelay: number;
     readonly closeDelay: number;
     readonly headerAriaLevel: string;
     readonly appendToBody: boolean;
-    readonly destroyOnClose: boolean;
     readonly modalPenetrable: boolean;
     readonly trapFocus: boolean;
 }>;

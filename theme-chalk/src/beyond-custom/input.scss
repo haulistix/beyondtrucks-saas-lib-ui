@@ -44,7 +44,7 @@
       background-color: #fff;
     }
 
-    &.el-input--filled {
+    &.el-input--filled:not(.el-input--error) {
       .el-input__wrapper {
         background-color: #fff;
       }
@@ -79,7 +79,7 @@
   }
 
   &.el-input--inputType {
-    &.el-input--filled {
+    &.el-input--filled:not(.el-input--error) {
       .el-textarea__inner {
         background-color: #fff;
       }

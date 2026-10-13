@@ -1,5 +1,5 @@
-import InputDown from './src/input-down.mjs';
-export { inputDownEmits, inputDownProps } from './src/input-down2.mjs';
+import InputDown from './src/input-down2.mjs';
+export { inputDownEmits, inputDownProps } from './src/input-down.mjs';
 import { withInstall } from '../../utils/vue/install.mjs';
 
 const ElInputDown = withInstall(InputDown);

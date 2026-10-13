@@ -16771,12 +16771,12 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
       { resize: props.resize }
     ]);
     const nativeInputValue = computed(() => isNil(props.modelValue) ? "" : String(props.modelValue));
-    const showEmptyErrorTooltip = computed(() => props.inputType === "error" && isEmpty(nativeInputValue.value));
+    const showErrorTooltip = computed(() => props.inputType === "error" && (isEmpty(nativeInputValue.value) || !isEmpty(props.infoTip)));
     const isTextOverflowing = ref(false);
     const inputTooltipSource = computed(() => {
       if (validateError.value && !isEmpty(validateMsg.value))
         return "error";
-      if (showEmptyErrorTooltip.value)
+      if (showErrorTooltip.value)
         return "error";
       if (isTextOverflowing.value && !isEmpty(nativeInputValue.value)) {
         return "overflow";
@@ -34673,7 +34673,10 @@ const dialogProps = buildProps({
   beforeClose: {
     type: definePropType(Function)
   },
-  destroyOnClose: Boolean,
+  destroyOnClose: {
+    type: Boolean,
+    default: true
+  },
   closeOnClickModal: {
     type: Boolean,
     default: true

@@ -2546,7 +2546,7 @@ declare const __VLS_component_39: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly destroyOnClose: BooleanConstructor;
+    readonly destroyOnClose: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnPressEscape: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly lockScroll: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
@@ -2623,7 +2623,7 @@ declare const __VLS_component_39: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly destroyOnClose: BooleanConstructor;
+    readonly destroyOnClose: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnPressEscape: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly lockScroll: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
@@ -2701,13 +2701,13 @@ declare const __VLS_component_39: DefineComponent<{
     readonly headerBackgroundColor: string;
     readonly headerType: EpPropMergeType<(new (...args: any[]) => HeaderType) | (() => HeaderType) | ((new (...args: any[]) => HeaderType) | (() => HeaderType))[], unknown, unknown>;
     readonly fullscreen: boolean;
+    readonly destroyOnClose: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly closeOnPressEscape: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly lockScroll: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly openDelay: number;
     readonly closeDelay: number;
     readonly headerAriaLevel: string;
     readonly appendToBody: boolean;
-    readonly destroyOnClose: boolean;
     readonly modalPenetrable: boolean;
     readonly trapFocus: boolean;
 }>;
@@ -3061,7 +3061,7 @@ declare const __VLS_component_41: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly destroyOnClose: BooleanConstructor;
+    readonly destroyOnClose: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnPressEscape: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly lockScroll: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
@@ -3144,7 +3144,7 @@ declare const __VLS_component_41: DefineComponent<{
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly destroyOnClose: BooleanConstructor;
+    readonly destroyOnClose: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnPressEscape: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly lockScroll: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
@@ -3226,13 +3226,13 @@ declare const __VLS_component_41: DefineComponent<{
     readonly headerBackgroundColor: string;
     readonly headerType: EpPropMergeType<(new (...args: any[]) => HeaderType) | (() => HeaderType) | ((new (...args: any[]) => HeaderType) | (() => HeaderType))[], unknown, unknown>;
     readonly fullscreen: boolean;
+    readonly destroyOnClose: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly closeOnPressEscape: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly lockScroll: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly openDelay: number;
     readonly closeDelay: number;
     readonly headerAriaLevel: string;
     readonly appendToBody: boolean;
-    readonly destroyOnClose: boolean;
     readonly modalPenetrable: boolean;
     readonly trapFocus: boolean;
     readonly withHeader: EpPropMergeType<BooleanConstructor, unknown, unknown>;
@@ -21082,7 +21082,7 @@ export declare const dialogProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly destroyOnClose: BooleanConstructor;
+    readonly destroyOnClose: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnPressEscape: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly lockScroll: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
@@ -21188,7 +21188,7 @@ export declare const drawerProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly destroyOnClose: BooleanConstructor;
+    readonly destroyOnClose: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly closeOnPressEscape: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly lockScroll: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;

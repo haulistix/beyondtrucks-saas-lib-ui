@@ -16775,12 +16775,12 @@
         { resize: props.resize }
       ]);
       const nativeInputValue = vue.computed(() => isNil(props.modelValue) ? "" : String(props.modelValue));
-      const showEmptyErrorTooltip = vue.computed(() => props.inputType === "error" && isEmpty(nativeInputValue.value));
+      const showErrorTooltip = vue.computed(() => props.inputType === "error" && (isEmpty(nativeInputValue.value) || !isEmpty(props.infoTip)));
       const isTextOverflowing = vue.ref(false);
       const inputTooltipSource = vue.computed(() => {
         if (validateError.value && !isEmpty(validateMsg.value))
           return "error";
-        if (showEmptyErrorTooltip.value)
+        if (showErrorTooltip.value)
           return "error";
         if (isTextOverflowing.value && !isEmpty(nativeInputValue.value)) {
           return "overflow";
@@ -34677,7 +34677,10 @@
     beforeClose: {
       type: definePropType(Function)
     },
-    destroyOnClose: Boolean,
+    destroyOnClose: {
+      type: Boolean,
+      default: true
+    },
     closeOnClickModal: {
       type: Boolean,
       default: true

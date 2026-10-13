@@ -406,4 +406,8 @@ export type TableV2Instance = InstanceType<typeof TableV2> & {
      * @description validates current table data against required columns
      */
     validateRequiredColumns: () => boolean;
+    /**
+     * @description resets the ghost row draft to the current template
+     */
+    clearGhostRow: () => void;
 };

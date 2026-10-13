@@ -78,14 +78,14 @@
           'input-placeholder-color',
           map.get($input, 'placeholder-color')
       );
-      background-color: #fff;
+      background-color: transparent;
       display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       line-height: 16px;
       max-width: calc(100% - 34px);
-      left: 12px;
+      left: var(#{getCssVarName('float-label', 'left')}, 12px);
       top: 8px  ;
     }
     @include when(filterable) {

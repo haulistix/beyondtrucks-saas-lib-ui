@@ -78,6 +78,7 @@ export declare const useTooltipProps: {
     transition: StringConstructor;
     teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     modal: BooleanConstructor;
+    locked: BooleanConstructor;
     modalClass: StringConstructor;
     closeOnClickModal: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     loop: BooleanConstructor;

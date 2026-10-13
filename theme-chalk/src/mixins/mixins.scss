@@ -237,26 +237,27 @@ $E: null;
   }
 }
 
-@mixin float-label-error {
-  background: transparent;
-}
-
-@mixin float-label-value {
-  left: 8px;
+@mixin float-label-value($border-offset: -1px) {
+  #{getCssVarName('float-label', 'left')}: 8px;
+  top: $border-offset;
+  left: getCssVar('float-label', 'left');
   padding: 0 4px;
-  color: var(--color-gray-700) !important;
-  transform: translateY(-15px);
-  transition: transform .1s ease;
-  background: linear-gradient(to bottom, #fff 52%, transparent 48%);
+  color: var(
+    #{getCssVarName('float-label', 'color')},
+    #{getCssVar('text-color', 'secondary')}
+  );
+  line-height: 16px;
+  transform: translateY(-50%);
+  transition: transform 0.1s ease;
+  background: linear-gradient(
+    to bottom,
+    var(#{getCssVarName('float-label', 'bg-color')}, #{getCssVar('bg-color')})
+      calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
   font-size: 13px;
 }
 
 @mixin select-float-label {
-  left: 8px;
-  padding: 0 4px;
-  color: var(--color-gray-700);
-  transform: translateY(-16px);
-  transition: transform .1s ease;
-  background: linear-gradient(to bottom, #fff 10px, transparent 6px);
-  font-size: 13px;
+  @include float-label-value;
 }

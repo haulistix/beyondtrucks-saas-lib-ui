@@ -76,8 +76,8 @@ const useStyles = (props, {
   const footerHeight = computed(() => enforceUnit({ height: unref(effectiveFooterHeight) }));
   const emptyStyle = computed(() => ({
     top: addUnit(unref(headerHeight)),
-    height: addUnit(props.rowHeight),
-    width: addUnit(unref(effectiveWidth))
+    height: addUnit(Math.max(unref(windowHeight) - unref(effectiveHScrollbarSize), 0)),
+    width: addUnit(unref(availableBodyWidth))
   }));
   return {
     addRowHeight,

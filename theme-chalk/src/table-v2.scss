@@ -218,10 +218,14 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+  }
 
-    .el-empty {
-      padding: 12px 0;
-    }
+  @include e('empty-text') {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    color: getCssVar('text-color', 'placeholder');
+    text-align: center;
   }
 
   @include e('overlay') {

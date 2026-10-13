@@ -1,4 +1,4 @@
-import { defineComponent, ref, inject, computed, onBeforeUnmount, unref, watch, openBlock, createBlock, withCtx, withDirectives, vShow, createCommentVNode, Transition, createVNode, mergeProps, renderSlot, nextTick } from 'vue';
+import { defineComponent, ref, inject, computed, onBeforeUnmount, unref, watch, nextTick, openBlock, createBlock, withCtx, withDirectives, vShow, createCommentVNode, Transition, createVNode, mergeProps, withKeys, renderSlot } from 'vue';
 import { computedEager, onClickOutside } from '@vueuse/core';
 import '../../popper/index.mjs';
 import { ElOverlay } from '../../overlay/index.mjs';
@@ -118,6 +118,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         return;
       onClose();
     };
+    const onEscape = (event) => {
+      if (!props.locked)
+        return;
+      event.preventDefault();
+      event.stopPropagation();
+    };
     const isFocusInsideContent = (event) => {
       var _a2;
       const popperContent = (_a2 = contentRef.value) == null ? void 0 : _a2.popperContentRef;
@@ -146,6 +152,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     });
     watch(() => props.zIndex, () => {
       updateContentZIndex();
+    });
+    watch(() => props.locked, async (locked) => {
+      var _a2;
+      if (!locked || !unref(open))
+        return;
+      await nextTick();
+      if (!isFocusInsideContent()) {
+        (_a2 = popperContentRef.value) == null ? void 0 : _a2.focus({ preventScroll: true });
+      }
     });
     watch(() => props.content, () => {
       var _a2, _b;
@@ -206,7 +221,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                   "trigger-target-el": _ctx.triggerTargetEl,
                   visible: unref(shouldShow),
                   "z-index": zIndex.value,
-                  loop: _ctx.loop,
+                  loop: _ctx.locked || _ctx.loop,
+                  "focus-on-show": _ctx.locked,
+                  trapping: _ctx.locked,
+                  onKeydownCapture: withKeys(onEscape, ["esc"]),
                   onMouseenter: unref(onContentEnter),
                   onMouseleave: unref(onContentLeave),
                   onBlur,
@@ -216,7 +234,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                     renderSlot(_ctx.$slots, "default")
                   ]),
                   _: 3
-                }, 16, ["id", "aria-label", "aria-hidden", "boundaries-padding", "fallback-placements", "gpu-acceleration", "offset", "placement", "popper-options", "arrow-offset", "strategy", "effect", "enterable", "pure", "popper-class", "popper-style", "reference-el", "trigger-target-el", "visible", "z-index", "loop", "onMouseenter", "onMouseleave", "onClose"]), [
+                }, 16, ["id", "aria-label", "aria-hidden", "boundaries-padding", "fallback-placements", "gpu-acceleration", "offset", "placement", "popper-options", "arrow-offset", "strategy", "effect", "enterable", "pure", "popper-class", "popper-style", "reference-el", "trigger-target-el", "visible", "z-index", "loop", "focus-on-show", "trapping", "onKeydownCapture", "onMouseenter", "onMouseleave", "onClose"]), [
                   [vShow, unref(shouldShow)]
                 ])
               ]),

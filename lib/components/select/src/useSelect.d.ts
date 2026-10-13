@@ -74,7 +74,7 @@ export declare const useSelect: (props: SelectProps, emit: SelectEmits) => {
     selectionSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
     isAllVisibleOptionsSelected: import("vue").ComputedRef<boolean>;
     isSelectAllIndeterminate: import("vue").ComputedRef<boolean>;
-    selectAllLabel: import("vue").ComputedRef<"Deselect All" | "Select All">;
+    selectAllLabel: string;
     isSelectAllDisabled: import("vue").ComputedRef<boolean>;
     updateTooltip: () => void;
     updateTagTooltip: () => void;

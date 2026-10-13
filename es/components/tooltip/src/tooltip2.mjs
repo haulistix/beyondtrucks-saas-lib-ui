@@ -6,7 +6,7 @@ import ElTooltipTrigger from './trigger2.mjs';
 import ElTooltipContent from './content2.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { usePopperContainer } from '../../../hooks/use-popper-container/index.mjs';
-import ElPopperArrow from '../../popper/src/arrow2.mjs';
+import ElPopperArrow from '../../popper/src/arrow.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 import { useId } from '../../../hooks/use-id/index.mjs';
 import { useDelayedToggle } from '../../../hooks/use-delayed-toggle/index.mjs';
@@ -35,10 +35,19 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
     const open = ref(false);
     const toggleReason = ref();
-    const { show, hide, hasUpdateHandler } = useTooltipModelToggle({
+    const {
+      show,
+      hide: doHide,
+      hasUpdateHandler
+    } = useTooltipModelToggle({
       indicator: open,
       toggleReason
     });
+    const hide = (event) => {
+      if (props.locked && open.value)
+        return;
+      doHide(event);
+    };
     const { onOpen, onClose } = useDelayedToggle({
       showAfter: toRef(props, "showAfter"),
       hideAfter: toRef(props, "hideAfter"),
@@ -87,7 +96,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       var _a;
       return (_a = contentRef.value) == null ? void 0 : _a.isFocusInsideContent(event);
     };
-    onDeactivated(() => open.value && hide());
+    onDeactivated(() => {
+      if (!open.value)
+        return;
+      doHide();
+      if (props.locked)
+        open.value = false;
+    });
     expose({
       popperRef,
       contentRef,
@@ -131,6 +146,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             "gpu-acceleration": _ctx.gpuAcceleration,
             offset: _ctx.offset,
             modal: _ctx.modal,
+            locked: _ctx.locked,
             "modal-class": _ctx.modalClass,
             "close-on-click-modal": _ctx.closeOnClickModal,
             persistent: _ctx.persistent,
@@ -162,7 +178,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               _ctx.showArrow ? (openBlock(), createBlock(unref(ElPopperArrow), { key: 0 })) : createCommentVNode("v-if", true)
             ]),
             _: 3
-          }, 8, ["aria-label", "boundaries-padding", "content", "disabled", "effect", "enterable", "fallback-placements", "hide-after", "gpu-acceleration", "offset", "modal", "modal-class", "close-on-click-modal", "persistent", "popper-class", "popper-style", "placement", "popper-options", "arrow-offset", "pure", "raw-content", "reference-el", "trigger-target-el", "show-after", "strategy", "teleported", "transition", "virtual-triggering", "z-index", "append-to", "loop"])
+          }, 8, ["aria-label", "boundaries-padding", "content", "disabled", "effect", "enterable", "fallback-placements", "hide-after", "gpu-acceleration", "offset", "modal", "locked", "modal-class", "close-on-click-modal", "persistent", "popper-class", "popper-style", "placement", "popper-options", "arrow-offset", "pure", "raw-content", "reference-el", "trigger-target-el", "show-after", "strategy", "teleported", "transition", "virtual-triggering", "z-index", "append-to", "loop"])
         ]),
         _: 3
       }, 8, ["role"]);

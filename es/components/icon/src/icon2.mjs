@@ -25,12 +25,17 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       };
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("i", mergeProps({
+      return _ctx.$attrs.innerHTML != null ? (openBlock(), createElementBlock("i", mergeProps({
+        key: 0,
+        class: unref(ns).b(),
+        style: unref(style)
+      }, _ctx.$attrs), null, 16)) : (openBlock(), createElementBlock("i", mergeProps({
+        key: 1,
         class: unref(ns).b(),
         style: unref(style)
       }, _ctx.$attrs), [
         renderSlot(_ctx.$slots, "default")
-      ], 16);
+      ], 16));
     };
   }
 });

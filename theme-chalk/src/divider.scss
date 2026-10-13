@@ -9,7 +9,7 @@
     height: 1px;
     width: 100%;
     margin: var(--el-margin);
-    border-top: 1px getCssVar('border-color') getCssVar('border-style');
+    border-top: 1px solid var(--color-gray-100);
   }
 
   @include m(vertical) {
@@ -19,7 +19,7 @@
     margin: 0 8px;
     vertical-align: middle;
     position: relative;
-    border-left: 1px getCssVar('border-color') getCssVar('border-style');
+    border-left: 1px solid var(--color-gray-100);
   }
 
   @include e(text) {

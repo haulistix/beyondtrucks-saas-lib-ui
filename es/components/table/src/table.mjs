@@ -76,10 +76,14 @@ const _sfc_main = defineComponent({
     const isGhostRowScrolling = ref(false);
     let previousGhostRowScrollTop = 0;
     let ghostRowScrollTimer;
-    const ghostRowData = ref({
+    const createGhostRowData = () => ({
       [ghostRowSign]: true,
       [ghostRowKey]: "ghost-row"
     });
+    const ghostRowData = ref(createGhostRowData());
+    const clearGhostRow = () => {
+      ghostRowData.value = createGhostRowData();
+    };
     const addColumnTrigger = shallowRef(null);
     const addRowTrigger = ref(null);
     const startRowEdit = (row, prop, rowIndex, cellIndex) => {
@@ -271,7 +275,7 @@ const _sfc_main = defineComponent({
     });
     const computedEmptyText = computed(() => {
       var _a;
-      return (_a = props.emptyText) != null ? _a : t("el.table.emptyText");
+      return (_a = props.emptyText) != null ? _a : `(${t("el.table.emptyText")})`;
     });
     const isEmptyRequiredValue = (value) => value === "" || value === null || value === void 0;
     const validateRequiredColumns = () => {
@@ -383,7 +387,8 @@ const _sfc_main = defineComponent({
       allowDragLastColumn: props.allowDragLastColumn,
       showAddColumnTrigger: effectiveShowAddColumnTrigger,
       showAddRowTrigger: effectiveShowAddRowTrigger,
-      validateRequiredColumns
+      validateRequiredColumns,
+      clearGhostRow
     };
   }
 });

@@ -73,8 +73,7 @@
 
   &.el-input--error {
     .el-textarea__inner,
-    .el-input__count:not(.is-outside),
-    .float-label {
+    .el-input__count:not(.is-outside) {
       background-color: var(--color-red-200);
     }
   }
@@ -101,13 +100,13 @@
   }
 
   .float-label.has-value {
-    @include float-label-value;
+    @include float-label-value(0);
   }
 
   .el-textarea__inner {
     &.is-focus {
       ~ .float-label {
-        transform: translateY(-15px);
+        @include float-label-value(0);
       }
     }
   }
@@ -125,19 +124,7 @@
     }
 
     .float-label {
-      left: 26px;
-    }
-
-    .el-textarea__inner {
-      &.is-focus {
-        ~ .float-label {
-          transform: translate(-20px, -15px);
-        }
-      }
-    }
-
-    .float-label.has-value {
-      transform: translate(-20px, -15px);
+      left: var(--el-float-label-left, 26px);
     }
   }
 
@@ -156,5 +143,5 @@
 }
 
 .el-input__prefix ~ .float-label {
-  left: 28px;
+  left: var(--el-float-label-left, 28px);
 }

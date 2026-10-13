@@ -884,6 +884,10 @@ declare const _default: import("vue").DefineComponent<{
      * @description validates required columns in the table data, returns `false` when any required cell is empty
      */
     validateRequiredColumns: () => boolean;
+    /**
+     * @description resets the ghost row draft without changing table data
+     */
+    clearGhostRow: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     data: {
         type: import("vue").PropType<any[]>;

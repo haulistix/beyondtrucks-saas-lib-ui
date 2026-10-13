@@ -141,6 +141,7 @@ export declare const popoverProps: {
     };
     readonly zIndex: NumberConstructor;
     readonly modal: BooleanConstructor;
+    readonly locked: BooleanConstructor;
     readonly modalClass: StringConstructor;
     readonly closeOnClickModal: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly title: StringConstructor;

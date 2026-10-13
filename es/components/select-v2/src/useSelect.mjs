@@ -241,7 +241,7 @@ const useSelect = (props, emit) => {
   const selectionSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
   const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
   const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
-  const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
+  const selectAllLabel = "Select All";
   const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
   const popupHeight = computed(() => {
     const totalHeight = filteredOptions.value.reduce((height, option, index) => {

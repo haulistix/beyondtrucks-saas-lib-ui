@@ -4980,6 +4980,7 @@ declare const __VLS_component_5: DefineComponent<{
     transition: StringConstructor;
     teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     modal: BooleanConstructor;
+    locked: BooleanConstructor;
     modalClass: StringConstructor;
     closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     loop: BooleanConstructor;
@@ -5342,6 +5343,7 @@ declare const __VLS_component_5: DefineComponent<{
     transition: StringConstructor;
     teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     modal: BooleanConstructor;
+    locked: BooleanConstructor;
     modalClass: StringConstructor;
     closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     loop: BooleanConstructor;
@@ -5634,6 +5636,7 @@ declare const __VLS_component_5: DefineComponent<{
     rawContent: boolean;
     persistent: boolean;
     modal: boolean;
+    locked: boolean;
     showArrow: boolean;
 }>;
 declare const __VLS_component_50: DefineComponent<{
@@ -7044,6 +7047,7 @@ declare const __VLS_component_7: DefineComponent<{
     readonly transition: StringConstructor;
     readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly modal: BooleanConstructor;
+    readonly locked: BooleanConstructor;
     readonly modalClass: StringConstructor;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly disabled: BooleanConstructor;
@@ -7324,6 +7328,7 @@ declare const __VLS_component_7: DefineComponent<{
     readonly transition: StringConstructor;
     readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly modal: BooleanConstructor;
+    readonly locked: BooleanConstructor;
     readonly modalClass: StringConstructor;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly disabled: BooleanConstructor;
@@ -7608,6 +7613,7 @@ declare const __VLS_component_7: DefineComponent<{
     readonly rawContent: boolean;
     readonly persistent: boolean;
     readonly modal: boolean;
+    readonly locked: boolean;
 }>;
 declare const __VLS_component_70: DefineComponent<{
     row: {
@@ -11074,6 +11080,7 @@ declare const __VLS_component_94: DefineComponent<{
     };
     readonly zIndex: NumberConstructor;
     readonly modal: BooleanConstructor;
+    readonly locked: BooleanConstructor;
     readonly modalClass: StringConstructor;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly title: StringConstructor;
@@ -11251,6 +11258,7 @@ declare const __VLS_component_94: DefineComponent<{
     };
     readonly zIndex: NumberConstructor;
     readonly modal: BooleanConstructor;
+    readonly locked: BooleanConstructor;
     readonly modalClass: StringConstructor;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly title: StringConstructor;
@@ -11303,6 +11311,7 @@ declare const __VLS_component_94: DefineComponent<{
     readonly closeOnClickModal: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly persistent: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly modal: boolean;
+    readonly locked: boolean;
     readonly showArrow: boolean;
 }>;
 declare function __VLS_template(): {
@@ -17118,7 +17127,7 @@ declare const _default_75: DefineComponent<{
     selectionSectionLabel: ComputedRef<"Selected" | "Unselected">;
     isAllVisibleOptionsSelected: ComputedRef<boolean>;
     isSelectAllIndeterminate: ComputedRef<boolean>;
-    selectAllLabel: ComputedRef<"Deselect All" | "Select All">;
+    selectAllLabel: string;
     isSelectAllDisabled: ComputedRef<boolean>;
     updateTooltip: () => void;
     updateTagTooltip: () => void;
@@ -17853,7 +17862,7 @@ declare const _default_78: DefineComponent<{
     selectionSectionLabel: ComputedRef<"Selected" | "Unselected">;
     isAllVisibleOptionsSelected: ComputedRef<boolean>;
     isSelectAllIndeterminate: ComputedRef<boolean>;
-    selectAllLabel: ComputedRef<"Deselect All" | "Select All">;
+    selectAllLabel: string;
     isSelectAllDisabled: ComputedRef<boolean>;
     iconComponent: ComputedRef<EpPropMergeType<(new (...args: any[]) => (string | Component) & {}) | (() => string | Component) | ((new (...args: any[]) => (string | Component) & {}) | (() => string | Component))[], unknown, unknown> | undefined>;
     iconReverse: ComputedRef<string | undefined>;
@@ -19350,6 +19359,10 @@ declare const _default_86: DefineComponent<{
     * @description validates required columns in the table data, returns `false` when any required cell is empty
     */
     validateRequiredColumns: () => boolean;
+    /**
+    * @description resets the ghost row draft without changing table data
+    */
+    clearGhostRow: () => void;
 }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, ("select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row")[], "select" | "scroll" | "select-all" | "expand-change" | "current-change" | "selection-change" | "sort-change" | "filter-change" | "header-click" | "header-contextmenu" | "header-dragend" | "cell-mouse-enter" | "cell-mouse-leave" | "cell-contextmenu" | "cell-click" | "cell-dblclick" | "row-click" | "row-contextmenu" | "row-dblclick" | "editable-cell-active-change" | "add-column" | "add-row" | "add-ghost-row", VNodeProps & AllowedComponentProps & ComponentCustomProps, Readonly<ExtractPropTypes<{
     data: {
         type: PropType<any[]>;
@@ -25903,6 +25916,7 @@ export declare const popoverProps: {
     };
     readonly zIndex: NumberConstructor;
     readonly modal: BooleanConstructor;
+    readonly locked: BooleanConstructor;
     readonly modalClass: StringConstructor;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly title: StringConstructor;
@@ -28592,6 +28606,10 @@ export declare type TableV2Instance = InstanceType<typeof TableV2> & {
      * @description validates current table data against required columns
      */
     validateRequiredColumns: () => boolean;
+    /**
+     * @description resets the ghost row draft to the current template
+     */
+    clearGhostRow: () => void;
 };
 export declare type TableV2OverflowTooltipOptions = Partial<Pick<ElTooltipProps, "appendTo" | "effect" | "enterable" | "hideAfter" | "offset" | "placement" | "popperClass" | "popperOptions" | "showAfter" | "showArrow" | "transition">>;
 export declare const TableV2Placeholder: unique symbol;
@@ -31276,6 +31294,7 @@ export declare const useTooltipContentProps: {
     readonly transition: StringConstructor;
     readonly teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly modal: BooleanConstructor;
+    readonly locked: BooleanConstructor;
     readonly modalClass: StringConstructor;
     readonly closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly disabled: BooleanConstructor;
@@ -31613,6 +31632,7 @@ export declare const useTooltipProps: {
     transition: StringConstructor;
     teleported: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     modal: BooleanConstructor;
+    locked: BooleanConstructor;
     modalClass: StringConstructor;
     closeOnClickModal: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     loop: BooleanConstructor;

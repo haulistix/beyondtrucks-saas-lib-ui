@@ -76,6 +76,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     transition: StringConstructor;
     teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     modal: BooleanConstructor;
+    locked: BooleanConstructor;
     modalClass: StringConstructor;
     closeOnClickModal: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     loop: BooleanConstructor;
@@ -434,6 +435,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     transition: StringConstructor;
     teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     modal: BooleanConstructor;
+    locked: BooleanConstructor;
     modalClass: StringConstructor;
     closeOnClickModal: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     loop: BooleanConstructor;
@@ -722,6 +724,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     rawContent: boolean;
     persistent: boolean;
     modal: boolean;
+    locked: boolean;
     showArrow: boolean;
 }>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;

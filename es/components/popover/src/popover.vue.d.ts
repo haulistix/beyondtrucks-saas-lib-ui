@@ -143,6 +143,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     };
     readonly zIndex: NumberConstructor;
     readonly modal: BooleanConstructor;
+    readonly locked: BooleanConstructor;
     readonly modalClass: StringConstructor;
     readonly closeOnClickModal: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly title: StringConstructor;
@@ -313,6 +314,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     };
     readonly zIndex: NumberConstructor;
     readonly modal: BooleanConstructor;
+    readonly locked: BooleanConstructor;
     readonly modalClass: StringConstructor;
     readonly closeOnClickModal: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly title: StringConstructor;
@@ -355,6 +357,7 @@ declare const __VLS_component: import("vue").DefineComponent<{
     readonly closeOnClickModal: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly persistent: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly modal: boolean;
+    readonly locked: boolean;
     readonly showArrow: boolean;
 }>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;

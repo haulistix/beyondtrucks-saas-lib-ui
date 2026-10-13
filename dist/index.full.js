@@ -12741,12 +12741,17 @@
         };
       });
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("i", vue.mergeProps({
+        return _ctx.$attrs.innerHTML != null ? (vue.openBlock(), vue.createElementBlock("i", vue.mergeProps({
+          key: 0,
+          class: vue.unref(ns).b(),
+          style: vue.unref(style)
+        }, _ctx.$attrs), null, 16)) : (vue.openBlock(), vue.createElementBlock("i", vue.mergeProps({
+          key: 1,
           class: vue.unref(ns).b(),
           style: vue.unref(style)
         }, _ctx.$attrs), [
           vue.renderSlot(_ctx.$slots, "default")
-        ], 16);
+        ], 16));
       };
     }
   });
@@ -15878,6 +15883,7 @@
       default: true
     },
     modal: Boolean,
+    locked: Boolean,
     modalClass: String,
     closeOnClickModal: {
       type: Boolean,
@@ -16167,6 +16173,12 @@
           return;
         onClose();
       };
+      const onEscape = (event) => {
+        if (!props.locked)
+          return;
+        event.preventDefault();
+        event.stopPropagation();
+      };
       const isFocusInsideContent = (event) => {
         var _a2;
         const popperContent = (_a2 = contentRef.value) == null ? void 0 : _a2.popperContentRef;
@@ -16195,6 +16207,15 @@
       });
       vue.watch(() => props.zIndex, () => {
         updateContentZIndex();
+      });
+      vue.watch(() => props.locked, async (locked) => {
+        var _a2;
+        if (!locked || !vue.unref(open))
+          return;
+        await vue.nextTick();
+        if (!isFocusInsideContent()) {
+          (_a2 = popperContentRef.value) == null ? void 0 : _a2.focus({ preventScroll: true });
+        }
       });
       vue.watch(() => props.content, () => {
         var _a2, _b;
@@ -16255,7 +16276,10 @@
                     "trigger-target-el": _ctx.triggerTargetEl,
                     visible: vue.unref(shouldShow),
                     "z-index": zIndex.value,
-                    loop: _ctx.loop,
+                    loop: _ctx.locked || _ctx.loop,
+                    "focus-on-show": _ctx.locked,
+                    trapping: _ctx.locked,
+                    onKeydownCapture: vue.withKeys(onEscape, ["esc"]),
                     onMouseenter: vue.unref(onContentEnter),
                     onMouseleave: vue.unref(onContentLeave),
                     onBlur,
@@ -16265,7 +16289,7 @@
                       vue.renderSlot(_ctx.$slots, "default")
                     ]),
                     _: 3
-                  }, 16, ["id", "aria-label", "aria-hidden", "boundaries-padding", "fallback-placements", "gpu-acceleration", "offset", "placement", "popper-options", "arrow-offset", "strategy", "effect", "enterable", "pure", "popper-class", "popper-style", "reference-el", "trigger-target-el", "visible", "z-index", "loop", "onMouseenter", "onMouseleave", "onClose"]), [
+                  }, 16, ["id", "aria-label", "aria-hidden", "boundaries-padding", "fallback-placements", "gpu-acceleration", "offset", "placement", "popper-options", "arrow-offset", "strategy", "effect", "enterable", "pure", "popper-class", "popper-style", "reference-el", "trigger-target-el", "visible", "z-index", "loop", "focus-on-show", "trapping", "onKeydownCapture", "onMouseenter", "onMouseleave", "onClose"]), [
                     [vue.vShow, vue.unref(shouldShow)]
                   ])
                 ]),
@@ -16303,10 +16327,19 @@
       };
       const open = vue.ref(false);
       const toggleReason = vue.ref();
-      const { show, hide, hasUpdateHandler } = useTooltipModelToggle({
+      const {
+        show,
+        hide: doHide,
+        hasUpdateHandler
+      } = useTooltipModelToggle({
         indicator: open,
         toggleReason
       });
+      const hide = (event) => {
+        if (props.locked && open.value)
+          return;
+        doHide(event);
+      };
       const { onOpen, onClose } = useDelayedToggle({
         showAfter: vue.toRef(props, "showAfter"),
         hideAfter: vue.toRef(props, "hideAfter"),
@@ -16355,7 +16388,13 @@
         var _a;
         return (_a = contentRef.value) == null ? void 0 : _a.isFocusInsideContent(event);
       };
-      vue.onDeactivated(() => open.value && hide());
+      vue.onDeactivated(() => {
+        if (!open.value)
+          return;
+        doHide();
+        if (props.locked)
+          open.value = false;
+      });
       expose({
         popperRef,
         contentRef,
@@ -16399,6 +16438,7 @@
               "gpu-acceleration": _ctx.gpuAcceleration,
               offset: _ctx.offset,
               modal: _ctx.modal,
+              locked: _ctx.locked,
               "modal-class": _ctx.modalClass,
               "close-on-click-modal": _ctx.closeOnClickModal,
               persistent: _ctx.persistent,
@@ -16430,7 +16470,7 @@
                 _ctx.showArrow ? (vue.openBlock(), vue.createBlock(vue.unref(ElPopperArrow), { key: 0 })) : vue.createCommentVNode("v-if", true)
               ]),
               _: 3
-            }, 8, ["aria-label", "boundaries-padding", "content", "disabled", "effect", "enterable", "fallback-placements", "hide-after", "gpu-acceleration", "offset", "modal", "modal-class", "close-on-click-modal", "persistent", "popper-class", "popper-style", "placement", "popper-options", "arrow-offset", "pure", "raw-content", "reference-el", "trigger-target-el", "show-after", "strategy", "teleported", "transition", "virtual-triggering", "z-index", "append-to", "loop"])
+            }, 8, ["aria-label", "boundaries-padding", "content", "disabled", "effect", "enterable", "fallback-placements", "hide-after", "gpu-acceleration", "offset", "modal", "locked", "modal-class", "close-on-click-modal", "persistent", "popper-class", "popper-style", "placement", "popper-options", "arrow-offset", "pure", "raw-content", "reference-el", "trigger-target-el", "show-after", "strategy", "teleported", "transition", "virtual-triggering", "z-index", "append-to", "loop"])
           ]),
           _: 3
         }, 8, ["role"]);
@@ -16732,11 +16772,7 @@
       const textareaStyle = vue.computed(() => [
         props.inputStyle,
         textareaCalcStyle.value,
-        { resize: props.resize },
-        props.expand ? {
-          height: "94px",
-          overflowY: "auto"
-        } : {}
+        { resize: props.resize }
       ]);
       const nativeInputValue = vue.computed(() => isNil(props.modelValue) ? "" : String(props.modelValue));
       const showEmptyErrorTooltip = vue.computed(() => props.inputType === "error" && isEmpty(nativeInputValue.value));
@@ -16813,7 +16849,7 @@
         (_a = textarea.value) == null ? void 0 : _a.focus();
       };
       const resizeTextarea = () => {
-        const autosize = props.autosize || props.expand;
+        const autosize = props.expand || props.autosize;
         if (!isClient || !isTextarea.value || !textarea.value)
           return;
         if (autosize) {
@@ -28743,7 +28779,7 @@
       };
     }
   });
-  var Footer$2 = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["__file", "footer.vue"]]);
+  var Footer$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["__file", "footer.vue"]]);
 
   const __default__$15 = vue.defineComponent({
     name: "ElHeader"
@@ -28796,12 +28832,12 @@
 
   const ElContainer = withInstall(Container, {
     Aside,
-    Footer: Footer$2,
+    Footer: Footer$1,
     Header: Header$1,
     Main
   });
   const ElAside = withNoopInstall(Aside);
-  const ElFooter = withNoopInstall(Footer$2);
+  const ElFooter = withNoopInstall(Footer$1);
   const ElHeader = withNoopInstall(Header$1);
   const ElMain = withNoopInstall(Main);
 
@@ -36485,9 +36521,9 @@
       };
     }
   });
-  var Empty = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["__file", "empty.vue"]]);
+  var Empty$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["__file", "empty.vue"]]);
 
-  const ElEmpty = withInstall(Empty);
+  const ElEmpty = withInstall(Empty$1);
 
   const imageViewerProps = buildProps({
     urlList: {
@@ -40770,7 +40806,7 @@
     const selectionSectionLabel = vue.computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
     const isAllVisibleOptionsSelected = vue.computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
     const isSelectAllIndeterminate = vue.computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
-    const selectAllLabel = vue.computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
+    const selectAllLabel = "Select All";
     const isSelectAllDisabled = vue.computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
     const popupHeight = vue.computed(() => {
       const totalHeight = filteredOptions.value.reduce((height, option, index) => {
@@ -45547,7 +45583,7 @@
     const selectionSectionLabel = vue.computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
     const isAllVisibleOptionsSelected = vue.computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
     const isSelectAllIndeterminate = vue.computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
-    const selectAllLabel = vue.computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
+    const selectAllLabel = "Select All";
     const isSelectAllDisabled = vue.computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
     const toggleSelectAll = async () => {
       if (!props.multiple || selectDisabled.value || selectableMultipleOptions.value.length === 0) {
@@ -47747,6 +47783,7 @@
     appendTo: useTooltipContentProps.appendTo,
     zIndex: useTooltipContentProps.zIndex,
     modal: useTooltipContentProps.modal,
+    locked: useTooltipContentProps.locked,
     modalClass: useTooltipContentProps.modalClass,
     closeOnClickModal: useTooltipContentProps.closeOnClickModal,
     title: String,
@@ -47797,8 +47834,15 @@
     emits: popoverEmits,
     setup(__props, { expose, emit }) {
       const props = __props;
+      const isOpen = vue.ref(false);
+      const isLockedOpen = vue.computed(() => props.locked && isOpen.value);
       const onUpdateVisible = vue.computed(() => {
-        return props[updateEventKeyRaw];
+        const handler = props[updateEventKeyRaw];
+        return handler ? (visible) => {
+          if (!visible && isLockedOpen.value)
+            return;
+          handler(visible);
+        } : void 0;
       });
       const ns = useNamespace("popover");
       const tooltipRef = vue.ref();
@@ -47826,9 +47870,12 @@
       };
       const hide = () => {
         var _a;
+        if (isLockedOpen.value)
+          return;
         (_a = tooltipRef.value) == null ? void 0 : _a.hide();
       };
       const beforeEnter = () => {
+        isOpen.value = true;
         emit("before-enter");
       };
       const beforeLeave = () => {
@@ -47838,6 +47885,7 @@
         emit("after-enter");
       };
       const afterLeave = () => {
+        isOpen.value = false;
         emit("update:visible", false);
         emit("after-leave");
       };
@@ -47854,8 +47902,8 @@
           trigger: _ctx.trigger,
           "trigger-keys": _ctx.triggerKeys,
           placement: _ctx.placement,
-          disabled: _ctx.disabled,
-          visible: _ctx.visible,
+          disabled: vue.unref(isLockedOpen) ? false : _ctx.disabled,
+          visible: vue.unref(isLockedOpen) ? true : _ctx.visible,
           transition: _ctx.transition,
           "popper-options": _ctx.popperOptions,
           tabindex: _ctx.tabindex,
@@ -47870,14 +47918,15 @@
           enterable: _ctx.enterable,
           "popper-class": vue.unref(kls),
           "popper-style": vue.unref(style),
-          teleported: _ctx.teleported,
-          "append-to": _ctx.appendTo,
+          teleported: _ctx.locked || _ctx.teleported,
+          "append-to": _ctx.locked ? "body" : _ctx.appendTo,
           persistent: _ctx.persistent,
           "gpu-acceleration": vue.unref(gpuAcceleration),
           "z-index": _ctx.zIndex,
-          modal: _ctx.modal,
+          modal: _ctx.locked || _ctx.modal,
+          locked: _ctx.locked,
           "modal-class": _ctx.modalClass,
-          "close-on-click-modal": _ctx.closeOnClickModal,
+          "close-on-click-modal": _ctx.locked ? false : _ctx.closeOnClickModal,
           "onUpdate:visible": vue.unref(onUpdateVisible),
           onBeforeShow: beforeEnter,
           onBeforeHide: beforeLeave,
@@ -47898,7 +47947,7 @@
             _ctx.$slots.reference ? vue.renderSlot(_ctx.$slots, "reference", { key: 0 }) : vue.createCommentVNode("v-if", true)
           ]),
           _: 3
-        }, 16, ["trigger", "trigger-keys", "placement", "disabled", "visible", "transition", "popper-options", "tabindex", "content", "offset", "show-after", "hide-after", "auto-close", "show-arrow", "aria-label", "effect", "enterable", "popper-class", "popper-style", "teleported", "append-to", "persistent", "gpu-acceleration", "z-index", "modal", "modal-class", "close-on-click-modal", "onUpdate:visible"]);
+        }, 16, ["trigger", "trigger-keys", "placement", "disabled", "visible", "transition", "popper-options", "tabindex", "content", "offset", "show-after", "hide-after", "auto-close", "show-arrow", "aria-label", "effect", "enterable", "popper-class", "popper-style", "teleported", "append-to", "persistent", "gpu-acceleration", "z-index", "modal", "locked", "modal-class", "close-on-click-modal", "onUpdate:visible"]);
       };
     }
   });
@@ -54529,10 +54578,14 @@
       const isGhostRowScrolling = vue.ref(false);
       let previousGhostRowScrollTop = 0;
       let ghostRowScrollTimer;
-      const ghostRowData = vue.ref({
+      const createGhostRowData = () => ({
         [ghostRowSign$1]: true,
         [ghostRowKey$1]: "ghost-row"
       });
+      const ghostRowData = vue.ref(createGhostRowData());
+      const clearGhostRow = () => {
+        ghostRowData.value = createGhostRowData();
+      };
       const addColumnTrigger = vue.shallowRef(null);
       const addRowTrigger = vue.ref(null);
       const startRowEdit = (row, prop, rowIndex, cellIndex) => {
@@ -54724,7 +54777,7 @@
       });
       const computedEmptyText = vue.computed(() => {
         var _a;
-        return (_a = props.emptyText) != null ? _a : t("el.table.emptyText");
+        return (_a = props.emptyText) != null ? _a : `(${t("el.table.emptyText")})`;
       });
       const isEmptyRequiredValue = (value) => value === "" || value === null || value === void 0;
       const validateRequiredColumns = () => {
@@ -54836,7 +54889,8 @@
         allowDragLastColumn: props.allowDragLastColumn,
         showAddColumnTrigger: effectiveShowAddColumnTrigger,
         showAddRowTrigger: effectiveShowAddRowTrigger,
-        validateRequiredColumns
+        validateRequiredColumns,
+        clearGhostRow
       };
     }
   });
@@ -57000,8 +57054,8 @@
     const footerHeight = vue.computed(() => enforceUnit({ height: vue.unref(effectiveFooterHeight) }));
     const emptyStyle = vue.computed(() => ({
       top: addUnit(vue.unref(headerHeight)),
-      height: addUnit(props.rowHeight),
-      width: addUnit(vue.unref(effectiveWidth))
+      height: addUnit(Math.max(vue.unref(windowHeight) - vue.unref(effectiveHScrollbarSize), 0)),
+      width: addUnit(vue.unref(availableBodyWidth))
     }));
     return {
       addRowHeight,
@@ -58990,7 +59044,7 @@
     }, null)]);
   };
 
-  const Footer$1 = (props, {
+  const Footer = (props, {
     slots
   }) => {
     var _a;
@@ -58999,7 +59053,7 @@
       "style": props.style
     }, [(_a = slots.default) == null ? void 0 : _a.call(slots)]);
   };
-  Footer$1.displayName = "ElTableV2Footer";
+  Footer.displayName = "ElTableV2Footer";
 
   const FooterDefault = (props) => {
     return vue.createVNode("div", {
@@ -59033,16 +59087,22 @@
   };
   FooterDefault.displayName = "ElTableV2FooterDefault";
 
-  const Footer = (props, {
+  const Empty = (props, {
     slots
   }) => {
-    const defaultSlot = vue.renderSlot(slots, "default", {}, () => [vue.createVNode(ElEmpty, null, null)]);
+    const {
+      t
+    } = useLocale();
+    const ns = useNamespace("table-v2");
+    const defaultSlot = vue.renderSlot(slots, "default", {}, () => [vue.createVNode("span", {
+      "class": ns.e("empty-text")
+    }, [vue.createTextVNode("("), t("el.table.emptyText"), vue.createTextVNode(")")])]);
     return vue.createVNode("div", {
       "class": props.class,
       "style": props.style
     }, [defaultSlot]);
   };
-  Footer.displayName = "ElTableV2Empty";
+  Empty.displayName = "ElTableV2Empty";
 
   const Overlay = (props, {
     slots
@@ -59131,6 +59191,9 @@
         };
       };
       const ghostRowDraft = vue.ref(createGhostRowData());
+      const clearGhostRow = () => {
+        ghostRowDraft.value = createGhostRowData();
+      };
       const isLegacyEditMode = vue.computed(() => props.canEditTable && props.editable);
       const isGhostEditMode = vue.computed(() => props.ghostTable && props.editTable);
       const isGhostRowVisible = vue.computed(() => isGhostEditMode.value && props.showGhostRow);
@@ -59260,7 +59323,8 @@
         scrollToLeft,
         scrollToTop,
         scrollToRow,
-        validateRequiredColumns
+        validateRequiredColumns,
+        clearGhostRow
       });
       vue.provide(TableV2InjectionKey, {
         ns,
@@ -59280,7 +59344,7 @@
           ...params,
           row: getGhostRowPayload(params.row)
         });
-        ghostRowDraft.value = createGhostRowData();
+        clearGhostRow();
       };
       const onHeaderDragend = (newWidth, oldWidth, column, event) => {
         emit("header-dragend", newWidth, oldWidth, column, event);
@@ -59585,11 +59649,11 @@
           "width": rightColumnsWidth
         }), {
           fixed: tableSlots.row
-        })])]), slots.footer ? vue.createVNode(Footer$1, footerProps, {
+        })])]), slots.footer ? vue.createVNode(Footer, footerProps, {
           default: slots.footer
         }) : props.isFooterDefault ? vue.createVNode(FooterDefault, footerProps, {
           default: slots.footer
-        }) : null, vue.unref(showEmpty) && vue.createVNode(Footer, {
+        }) : null, vue.unref(showEmpty) && vue.createVNode(Empty, {
           "class": ns.e("empty"),
           "style": vue.unref(emptyStyle)
         }, {

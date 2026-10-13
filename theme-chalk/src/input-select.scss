@@ -9,20 +9,37 @@
   vertical-align: middle;
 
   @include when(expanded) {
-    height: 94px;
+    height: auto;
 
     @include e(control) {
-      height: 94px;
-      --el-input-height: 94px;
+      display: flex;
+      align-self: stretch;
+      height: auto;
+
+      > .#{$namespace}-select {
+        display: flex;
+        flex: 1;
+        align-self: stretch;
+      }
+
+      &.#{$namespace}-textarea {
+        flex-direction: column;
+
+        .#{$namespace}-textarea__inner {
+          flex: 1 0 auto;
+        }
+      }
 
       .#{$namespace}-input__wrapper,
       .#{$namespace}-select__wrapper {
-        height: 94px;
-        min-height: 94px;
+        height: auto;
+        min-height: 32px;
+        flex: 1;
       }
 
       .#{$namespace}-select__container {
-        height: 94px;
+        height: auto;
+        flex: 1;
       }
     }
   }

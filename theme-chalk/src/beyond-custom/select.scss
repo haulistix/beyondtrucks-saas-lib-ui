@@ -23,8 +23,12 @@
   &.is-expanded {
     align-self: start;
 
+    &.multi-select {
+      position: relative;
+    }
+
     .el-select__container {
-      height: 94px;
+      height: auto;
 
       &:not(.is-multiple) .el-select__input-wrapper {
         position: absolute;
@@ -33,30 +37,23 @@
 
     .el-select__wrapper {
       align-items: flex-start;
-      height: 94px;
+      height: auto;
       padding-top: 6px;
       padding-bottom: 6px;
     }
 
     .el-select__selection {
-      align-self: stretch;
+      align-self: center;
       align-content: flex-start;
       align-items: flex-start;
       box-sizing: border-box;
       flex-wrap: wrap;
-      margin-right: -12px;
       min-height: 0;
-      overflow-y: auto;
-      padding-right: 40px;
+      overflow: visible;
     }
 
     .el-select__suffix {
       align-self: center;
-      position: absolute;
-      top: 50%;
-      right: 16px;
-      z-index: 1;
-      transform: translateY(-50%);
     }
 
     .el-select__placeholder,
@@ -161,24 +158,7 @@
 
     .prefix-label {
       &.float-label {
-        left: 28px;
-        top: 9px;
-      }
-    }
-
-    &.is-focused {
-      .prefix-label {
-        &.float-label {
-          left: 12px;
-        }
-      }
-    }
-
-    &:has(.el-select__placeholder) {
-      .prefix-label {
-        &.float-label {
-          left: 12px;
-        }
+        left: var(--el-float-label-left, 28px);
       }
     }
   }

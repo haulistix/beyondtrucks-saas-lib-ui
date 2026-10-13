@@ -97,6 +97,9 @@ const TableV2 = defineComponent({
       };
     };
     const ghostRowDraft = ref(createGhostRowData());
+    const clearGhostRow = () => {
+      ghostRowDraft.value = createGhostRowData();
+    };
     const isLegacyEditMode = computed(() => props.canEditTable && props.editable);
     const isGhostEditMode = computed(() => props.ghostTable && props.editTable);
     const isGhostRowVisible = computed(() => isGhostEditMode.value && props.showGhostRow);
@@ -226,7 +229,8 @@ const TableV2 = defineComponent({
       scrollToLeft,
       scrollToTop,
       scrollToRow,
-      validateRequiredColumns
+      validateRequiredColumns,
+      clearGhostRow
     });
     provide(TableV2InjectionKey, {
       ns,
@@ -246,7 +250,7 @@ const TableV2 = defineComponent({
         ...params,
         row: getGhostRowPayload(params.row)
       });
-      ghostRowDraft.value = createGhostRowData();
+      clearGhostRow();
     };
     const onHeaderDragend = (newWidth, oldWidth, column, event) => {
       emit("header-dragend", newWidth, oldWidth, column, event);

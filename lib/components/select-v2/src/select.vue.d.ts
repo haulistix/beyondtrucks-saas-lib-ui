@@ -288,7 +288,7 @@ declare const _default: import("vue").DefineComponent<{
     selectionSectionLabel: import("vue").ComputedRef<"Selected" | "Unselected">;
     isAllVisibleOptionsSelected: import("vue").ComputedRef<boolean>;
     isSelectAllIndeterminate: import("vue").ComputedRef<boolean>;
-    selectAllLabel: import("vue").ComputedRef<"Deselect All" | "Select All">;
+    selectAllLabel: string;
     isSelectAllDisabled: import("vue").ComputedRef<boolean>;
     iconComponent: import("vue").ComputedRef<import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component) | ((new (...args: any[]) => (string | import("vue").Component) & {}) | (() => string | import("vue").Component))[], unknown, unknown> | undefined>;
     iconReverse: import("vue").ComputedRef<string | undefined>;

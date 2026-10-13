@@ -15,6 +15,7 @@ export declare const useTooltipContentProps: {
     readonly transition: StringConstructor;
     readonly teleported: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly modal: BooleanConstructor;
+    readonly locked: BooleanConstructor;
     readonly modalClass: StringConstructor;
     readonly closeOnClickModal: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
     readonly disabled: BooleanConstructor;

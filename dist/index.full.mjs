@@ -1,6 +1,6 @@
 /*! Element Plus v0.0.0-dev.1 */
 
-import { unref, readonly, shallowRef, watchEffect, getCurrentScope, onScopeDispose, computed, isRef, reactive, getCurrentInstance, onMounted, nextTick, ref, watch, defineComponent, openBlock, createElementBlock, createElementVNode, warn, isVNode, Fragment, Comment, onBeforeUnmount, inject, onUnmounted, h as h$1, Teleport as Teleport$1, onBeforeMount, provide, triggerRef, renderSlot, normalizeClass, normalizeStyle, mergeProps, useSlots, toRef, createBlock, Transition, withCtx, withDirectives, createCommentVNode, createTextVNode, toDisplayString, createVNode, vShow, toRefs, onUpdated, resolveDynamicComponent, TransitionGroup, cloneVNode, Text as Text$1, onDeactivated, useAttrs as useAttrs$1, withModifiers, onActivated, renderList, createSlots, normalizeProps, guardReactiveProps, toRaw, vModelCheckbox, vModelRadio, onBeforeUpdate, withKeys, vModelText, toHandlers, resolveDirective, resolveComponent, markRaw, effectScope, render, toHandlerKey, createApp, shallowReactive } from 'vue';
+import { unref, readonly, shallowRef, watchEffect, getCurrentScope, onScopeDispose, computed, isRef, reactive, getCurrentInstance, onMounted, nextTick, ref, watch, defineComponent, openBlock, createElementBlock, createElementVNode, warn, isVNode, Fragment, Comment, onBeforeUnmount, inject, onUnmounted, h as h$1, Teleport as Teleport$1, onBeforeMount, provide, triggerRef, renderSlot, normalizeClass, normalizeStyle, mergeProps, useSlots, toRef, createBlock, Transition, withCtx, withDirectives, createCommentVNode, createTextVNode, toDisplayString, createVNode, vShow, toRefs, onUpdated, resolveDynamicComponent, TransitionGroup, cloneVNode, Text as Text$1, withKeys, onDeactivated, useAttrs as useAttrs$1, withModifiers, onActivated, renderList, createSlots, normalizeProps, guardReactiveProps, toRaw, vModelCheckbox, vModelRadio, onBeforeUpdate, vModelText, toHandlers, resolveDirective, resolveComponent, markRaw, effectScope, render, toHandlerKey, createApp, shallowReactive } from 'vue';
 
 const FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex="-1"]),input:not([disabled]),input:not([type="hidden"]),select:not([disabled]),textarea:not([disabled])`;
 const isHTMLElement$2 = (e) => {
@@ -12737,12 +12737,17 @@ const _sfc_main$2E = /* @__PURE__ */ defineComponent({
       };
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("i", mergeProps({
+      return _ctx.$attrs.innerHTML != null ? (openBlock(), createElementBlock("i", mergeProps({
+        key: 0,
+        class: unref(ns).b(),
+        style: unref(style)
+      }, _ctx.$attrs), null, 16)) : (openBlock(), createElementBlock("i", mergeProps({
+        key: 1,
         class: unref(ns).b(),
         style: unref(style)
       }, _ctx.$attrs), [
         renderSlot(_ctx.$slots, "default")
-      ], 16);
+      ], 16));
     };
   }
 });
@@ -15874,6 +15879,7 @@ const useTooltipContentProps = buildProps({
     default: true
   },
   modal: Boolean,
+  locked: Boolean,
   modalClass: String,
   closeOnClickModal: {
     type: Boolean,
@@ -16163,6 +16169,12 @@ const _sfc_main$2t = /* @__PURE__ */ defineComponent({
         return;
       onClose();
     };
+    const onEscape = (event) => {
+      if (!props.locked)
+        return;
+      event.preventDefault();
+      event.stopPropagation();
+    };
     const isFocusInsideContent = (event) => {
       var _a2;
       const popperContent = (_a2 = contentRef.value) == null ? void 0 : _a2.popperContentRef;
@@ -16191,6 +16203,15 @@ const _sfc_main$2t = /* @__PURE__ */ defineComponent({
     });
     watch(() => props.zIndex, () => {
       updateContentZIndex();
+    });
+    watch(() => props.locked, async (locked) => {
+      var _a2;
+      if (!locked || !unref(open))
+        return;
+      await nextTick();
+      if (!isFocusInsideContent()) {
+        (_a2 = popperContentRef.value) == null ? void 0 : _a2.focus({ preventScroll: true });
+      }
     });
     watch(() => props.content, () => {
       var _a2, _b;
@@ -16251,7 +16272,10 @@ const _sfc_main$2t = /* @__PURE__ */ defineComponent({
                   "trigger-target-el": _ctx.triggerTargetEl,
                   visible: unref(shouldShow),
                   "z-index": zIndex.value,
-                  loop: _ctx.loop,
+                  loop: _ctx.locked || _ctx.loop,
+                  "focus-on-show": _ctx.locked,
+                  trapping: _ctx.locked,
+                  onKeydownCapture: withKeys(onEscape, ["esc"]),
                   onMouseenter: unref(onContentEnter),
                   onMouseleave: unref(onContentLeave),
                   onBlur,
@@ -16261,7 +16285,7 @@ const _sfc_main$2t = /* @__PURE__ */ defineComponent({
                     renderSlot(_ctx.$slots, "default")
                   ]),
                   _: 3
-                }, 16, ["id", "aria-label", "aria-hidden", "boundaries-padding", "fallback-placements", "gpu-acceleration", "offset", "placement", "popper-options", "arrow-offset", "strategy", "effect", "enterable", "pure", "popper-class", "popper-style", "reference-el", "trigger-target-el", "visible", "z-index", "loop", "onMouseenter", "onMouseleave", "onClose"]), [
+                }, 16, ["id", "aria-label", "aria-hidden", "boundaries-padding", "fallback-placements", "gpu-acceleration", "offset", "placement", "popper-options", "arrow-offset", "strategy", "effect", "enterable", "pure", "popper-class", "popper-style", "reference-el", "trigger-target-el", "visible", "z-index", "loop", "focus-on-show", "trapping", "onKeydownCapture", "onMouseenter", "onMouseleave", "onClose"]), [
                   [vShow, unref(shouldShow)]
                 ])
               ]),
@@ -16299,10 +16323,19 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
     };
     const open = ref(false);
     const toggleReason = ref();
-    const { show, hide, hasUpdateHandler } = useTooltipModelToggle({
+    const {
+      show,
+      hide: doHide,
+      hasUpdateHandler
+    } = useTooltipModelToggle({
       indicator: open,
       toggleReason
     });
+    const hide = (event) => {
+      if (props.locked && open.value)
+        return;
+      doHide(event);
+    };
     const { onOpen, onClose } = useDelayedToggle({
       showAfter: toRef(props, "showAfter"),
       hideAfter: toRef(props, "hideAfter"),
@@ -16351,7 +16384,13 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
       var _a;
       return (_a = contentRef.value) == null ? void 0 : _a.isFocusInsideContent(event);
     };
-    onDeactivated(() => open.value && hide());
+    onDeactivated(() => {
+      if (!open.value)
+        return;
+      doHide();
+      if (props.locked)
+        open.value = false;
+    });
     expose({
       popperRef,
       contentRef,
@@ -16395,6 +16434,7 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
             "gpu-acceleration": _ctx.gpuAcceleration,
             offset: _ctx.offset,
             modal: _ctx.modal,
+            locked: _ctx.locked,
             "modal-class": _ctx.modalClass,
             "close-on-click-modal": _ctx.closeOnClickModal,
             persistent: _ctx.persistent,
@@ -16426,7 +16466,7 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
               _ctx.showArrow ? (openBlock(), createBlock(unref(ElPopperArrow), { key: 0 })) : createCommentVNode("v-if", true)
             ]),
             _: 3
-          }, 8, ["aria-label", "boundaries-padding", "content", "disabled", "effect", "enterable", "fallback-placements", "hide-after", "gpu-acceleration", "offset", "modal", "modal-class", "close-on-click-modal", "persistent", "popper-class", "popper-style", "placement", "popper-options", "arrow-offset", "pure", "raw-content", "reference-el", "trigger-target-el", "show-after", "strategy", "teleported", "transition", "virtual-triggering", "z-index", "append-to", "loop"])
+          }, 8, ["aria-label", "boundaries-padding", "content", "disabled", "effect", "enterable", "fallback-placements", "hide-after", "gpu-acceleration", "offset", "modal", "locked", "modal-class", "close-on-click-modal", "persistent", "popper-class", "popper-style", "placement", "popper-options", "arrow-offset", "pure", "raw-content", "reference-el", "trigger-target-el", "show-after", "strategy", "teleported", "transition", "virtual-triggering", "z-index", "append-to", "loop"])
         ]),
         _: 3
       }, 8, ["role"]);
@@ -16728,11 +16768,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     const textareaStyle = computed(() => [
       props.inputStyle,
       textareaCalcStyle.value,
-      { resize: props.resize },
-      props.expand ? {
-        height: "94px",
-        overflowY: "auto"
-      } : {}
+      { resize: props.resize }
     ]);
     const nativeInputValue = computed(() => isNil(props.modelValue) ? "" : String(props.modelValue));
     const showEmptyErrorTooltip = computed(() => props.inputType === "error" && isEmpty(nativeInputValue.value));
@@ -16809,7 +16845,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
       (_a = textarea.value) == null ? void 0 : _a.focus();
     };
     const resizeTextarea = () => {
-      const autosize = props.autosize || props.expand;
+      const autosize = props.expand || props.autosize;
       if (!isClient || !isTextarea.value || !textarea.value)
         return;
       if (autosize) {
@@ -28739,7 +28775,7 @@ const _sfc_main$1I = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Footer$2 = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["__file", "footer.vue"]]);
+var Footer$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1I, [["__file", "footer.vue"]]);
 
 const __default__$15 = defineComponent({
   name: "ElHeader"
@@ -28792,12 +28828,12 @@ var Main = /* @__PURE__ */ _export_sfc(_sfc_main$1G, [["__file", "main.vue"]]);
 
 const ElContainer = withInstall(Container, {
   Aside,
-  Footer: Footer$2,
+  Footer: Footer$1,
   Header: Header$1,
   Main
 });
 const ElAside = withNoopInstall(Aside);
-const ElFooter = withNoopInstall(Footer$2);
+const ElFooter = withNoopInstall(Footer$1);
 const ElHeader = withNoopInstall(Header$1);
 const ElMain = withNoopInstall(Main);
 
@@ -36481,9 +36517,9 @@ const _sfc_main$1h = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Empty = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["__file", "empty.vue"]]);
+var Empty$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["__file", "empty.vue"]]);
 
-const ElEmpty = withInstall(Empty);
+const ElEmpty = withInstall(Empty$1);
 
 const imageViewerProps = buildProps({
   urlList: {
@@ -40766,7 +40802,7 @@ const useSelect$2 = (props, emit) => {
   const selectionSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
   const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
   const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
-  const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
+  const selectAllLabel = "Select All";
   const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
   const popupHeight = computed(() => {
     const totalHeight = filteredOptions.value.reduce((height, option, index) => {
@@ -45543,7 +45579,7 @@ const useSelect$1 = (props, emit) => {
   const selectionSectionLabel = computed(() => hasVisibleSelectedOptions.value ? "Selected" : "Unselected");
   const isAllVisibleOptionsSelected = computed(() => selectableMultipleOptions.value.length > 0 && selectableMultipleOptions.value.every(isOptionSelected));
   const isSelectAllIndeterminate = computed(() => selectableMultipleOptions.value.some(isOptionSelected) && !isAllVisibleOptionsSelected.value);
-  const selectAllLabel = computed(() => isAllVisibleOptionsSelected.value ? "Deselect All" : "Select All");
+  const selectAllLabel = "Select All";
   const isSelectAllDisabled = computed(() => selectDisabled.value || selectableMultipleOptions.value.length === 0);
   const toggleSelectAll = async () => {
     if (!props.multiple || selectDisabled.value || selectableMultipleOptions.value.length === 0) {
@@ -47743,6 +47779,7 @@ const popoverProps = buildProps({
   appendTo: useTooltipContentProps.appendTo,
   zIndex: useTooltipContentProps.zIndex,
   modal: useTooltipContentProps.modal,
+  locked: useTooltipContentProps.locked,
   modalClass: useTooltipContentProps.modalClass,
   closeOnClickModal: useTooltipContentProps.closeOnClickModal,
   title: String,
@@ -47793,8 +47830,15 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
   emits: popoverEmits,
   setup(__props, { expose, emit }) {
     const props = __props;
+    const isOpen = ref(false);
+    const isLockedOpen = computed(() => props.locked && isOpen.value);
     const onUpdateVisible = computed(() => {
-      return props[updateEventKeyRaw];
+      const handler = props[updateEventKeyRaw];
+      return handler ? (visible) => {
+        if (!visible && isLockedOpen.value)
+          return;
+        handler(visible);
+      } : void 0;
     });
     const ns = useNamespace("popover");
     const tooltipRef = ref();
@@ -47822,9 +47866,12 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
     };
     const hide = () => {
       var _a;
+      if (isLockedOpen.value)
+        return;
       (_a = tooltipRef.value) == null ? void 0 : _a.hide();
     };
     const beforeEnter = () => {
+      isOpen.value = true;
       emit("before-enter");
     };
     const beforeLeave = () => {
@@ -47834,6 +47881,7 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
       emit("after-enter");
     };
     const afterLeave = () => {
+      isOpen.value = false;
       emit("update:visible", false);
       emit("after-leave");
     };
@@ -47850,8 +47898,8 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
         trigger: _ctx.trigger,
         "trigger-keys": _ctx.triggerKeys,
         placement: _ctx.placement,
-        disabled: _ctx.disabled,
-        visible: _ctx.visible,
+        disabled: unref(isLockedOpen) ? false : _ctx.disabled,
+        visible: unref(isLockedOpen) ? true : _ctx.visible,
         transition: _ctx.transition,
         "popper-options": _ctx.popperOptions,
         tabindex: _ctx.tabindex,
@@ -47866,14 +47914,15 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
         enterable: _ctx.enterable,
         "popper-class": unref(kls),
         "popper-style": unref(style),
-        teleported: _ctx.teleported,
-        "append-to": _ctx.appendTo,
+        teleported: _ctx.locked || _ctx.teleported,
+        "append-to": _ctx.locked ? "body" : _ctx.appendTo,
         persistent: _ctx.persistent,
         "gpu-acceleration": unref(gpuAcceleration),
         "z-index": _ctx.zIndex,
-        modal: _ctx.modal,
+        modal: _ctx.locked || _ctx.modal,
+        locked: _ctx.locked,
         "modal-class": _ctx.modalClass,
-        "close-on-click-modal": _ctx.closeOnClickModal,
+        "close-on-click-modal": _ctx.locked ? false : _ctx.closeOnClickModal,
         "onUpdate:visible": unref(onUpdateVisible),
         onBeforeShow: beforeEnter,
         onBeforeHide: beforeLeave,
@@ -47894,7 +47943,7 @@ const _sfc_main$T = /* @__PURE__ */ defineComponent({
           _ctx.$slots.reference ? renderSlot(_ctx.$slots, "reference", { key: 0 }) : createCommentVNode("v-if", true)
         ]),
         _: 3
-      }, 16, ["trigger", "trigger-keys", "placement", "disabled", "visible", "transition", "popper-options", "tabindex", "content", "offset", "show-after", "hide-after", "auto-close", "show-arrow", "aria-label", "effect", "enterable", "popper-class", "popper-style", "teleported", "append-to", "persistent", "gpu-acceleration", "z-index", "modal", "modal-class", "close-on-click-modal", "onUpdate:visible"]);
+      }, 16, ["trigger", "trigger-keys", "placement", "disabled", "visible", "transition", "popper-options", "tabindex", "content", "offset", "show-after", "hide-after", "auto-close", "show-arrow", "aria-label", "effect", "enterable", "popper-class", "popper-style", "teleported", "append-to", "persistent", "gpu-acceleration", "z-index", "modal", "locked", "modal-class", "close-on-click-modal", "onUpdate:visible"]);
     };
   }
 });
@@ -54525,10 +54574,14 @@ const _sfc_main$C = defineComponent({
     const isGhostRowScrolling = ref(false);
     let previousGhostRowScrollTop = 0;
     let ghostRowScrollTimer;
-    const ghostRowData = ref({
+    const createGhostRowData = () => ({
       [ghostRowSign$1]: true,
       [ghostRowKey$1]: "ghost-row"
     });
+    const ghostRowData = ref(createGhostRowData());
+    const clearGhostRow = () => {
+      ghostRowData.value = createGhostRowData();
+    };
     const addColumnTrigger = shallowRef(null);
     const addRowTrigger = ref(null);
     const startRowEdit = (row, prop, rowIndex, cellIndex) => {
@@ -54720,7 +54773,7 @@ const _sfc_main$C = defineComponent({
     });
     const computedEmptyText = computed(() => {
       var _a;
-      return (_a = props.emptyText) != null ? _a : t("el.table.emptyText");
+      return (_a = props.emptyText) != null ? _a : `(${t("el.table.emptyText")})`;
     });
     const isEmptyRequiredValue = (value) => value === "" || value === null || value === void 0;
     const validateRequiredColumns = () => {
@@ -54832,7 +54885,8 @@ const _sfc_main$C = defineComponent({
       allowDragLastColumn: props.allowDragLastColumn,
       showAddColumnTrigger: effectiveShowAddColumnTrigger,
       showAddRowTrigger: effectiveShowAddRowTrigger,
-      validateRequiredColumns
+      validateRequiredColumns,
+      clearGhostRow
     };
   }
 });
@@ -56996,8 +57050,8 @@ const useStyles = (props, {
   const footerHeight = computed(() => enforceUnit({ height: unref(effectiveFooterHeight) }));
   const emptyStyle = computed(() => ({
     top: addUnit(unref(headerHeight)),
-    height: addUnit(props.rowHeight),
-    width: addUnit(unref(effectiveWidth))
+    height: addUnit(Math.max(unref(windowHeight) - unref(effectiveHScrollbarSize), 0)),
+    width: addUnit(unref(availableBodyWidth))
   }));
   return {
     addRowHeight,
@@ -58986,7 +59040,7 @@ const HeaderCellRenderer = (props, {
   }, null)]);
 };
 
-const Footer$1 = (props, {
+const Footer = (props, {
   slots
 }) => {
   var _a;
@@ -58995,7 +59049,7 @@ const Footer$1 = (props, {
     "style": props.style
   }, [(_a = slots.default) == null ? void 0 : _a.call(slots)]);
 };
-Footer$1.displayName = "ElTableV2Footer";
+Footer.displayName = "ElTableV2Footer";
 
 const FooterDefault = (props) => {
   return createVNode("div", {
@@ -59029,16 +59083,22 @@ const FooterDefault = (props) => {
 };
 FooterDefault.displayName = "ElTableV2FooterDefault";
 
-const Footer = (props, {
+const Empty = (props, {
   slots
 }) => {
-  const defaultSlot = renderSlot(slots, "default", {}, () => [createVNode(ElEmpty, null, null)]);
+  const {
+    t
+  } = useLocale();
+  const ns = useNamespace("table-v2");
+  const defaultSlot = renderSlot(slots, "default", {}, () => [createVNode("span", {
+    "class": ns.e("empty-text")
+  }, [createTextVNode("("), t("el.table.emptyText"), createTextVNode(")")])]);
   return createVNode("div", {
     "class": props.class,
     "style": props.style
   }, [defaultSlot]);
 };
-Footer.displayName = "ElTableV2Empty";
+Empty.displayName = "ElTableV2Empty";
 
 const Overlay = (props, {
   slots
@@ -59127,6 +59187,9 @@ const TableV2 = defineComponent({
       };
     };
     const ghostRowDraft = ref(createGhostRowData());
+    const clearGhostRow = () => {
+      ghostRowDraft.value = createGhostRowData();
+    };
     const isLegacyEditMode = computed(() => props.canEditTable && props.editable);
     const isGhostEditMode = computed(() => props.ghostTable && props.editTable);
     const isGhostRowVisible = computed(() => isGhostEditMode.value && props.showGhostRow);
@@ -59256,7 +59319,8 @@ const TableV2 = defineComponent({
       scrollToLeft,
       scrollToTop,
       scrollToRow,
-      validateRequiredColumns
+      validateRequiredColumns,
+      clearGhostRow
     });
     provide(TableV2InjectionKey, {
       ns,
@@ -59276,7 +59340,7 @@ const TableV2 = defineComponent({
         ...params,
         row: getGhostRowPayload(params.row)
       });
-      ghostRowDraft.value = createGhostRowData();
+      clearGhostRow();
     };
     const onHeaderDragend = (newWidth, oldWidth, column, event) => {
       emit("header-dragend", newWidth, oldWidth, column, event);
@@ -59581,11 +59645,11 @@ const TableV2 = defineComponent({
         "width": rightColumnsWidth
       }), {
         fixed: tableSlots.row
-      })])]), slots.footer ? createVNode(Footer$1, footerProps, {
+      })])]), slots.footer ? createVNode(Footer, footerProps, {
         default: slots.footer
       }) : props.isFooterDefault ? createVNode(FooterDefault, footerProps, {
         default: slots.footer
-      }) : null, unref(showEmpty) && createVNode(Footer, {
+      }) : null, unref(showEmpty) && createVNode(Empty, {
         "class": ns.e("empty"),
         "style": unref(emptyStyle)
       }, {

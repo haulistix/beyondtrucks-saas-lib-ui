@@ -40,11 +40,11 @@
   font-size: getCssVar('font-size', 'small');
   .float-label {
     position: absolute;
-    left: 12px;
+    left: var(#{getCssVarName('float-label', 'left')}, 12px);
     color: getCssVar(
         'input-placeholder-color'
     );
-    background-color: #fff;
+    background-color: transparent;
     display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -97,7 +97,7 @@
       border-color: getCssVar('color-primary') !important;
 
       & ~ .float-label {
-        @include float-label-value
+        @include float-label-value(0)
       }
     }
   }
@@ -238,11 +238,11 @@
     border: 1px solid getCssVar('border-color-light');
     .float-label {
       position: absolute;
-      left: 12px;
+      left: var(#{getCssVarName('float-label', 'left')}, 12px);
       color: getCssVar(
           'input-placeholder-color'
       );
-      background-color: #fff;
+      background-color: transparent;
       display: inline-block;
       overflow: hidden;
       font-size: 14px;
@@ -395,8 +395,6 @@
       background-color: transparent;
 
       &.has-value {
-        background-color: #fff;
-
         @include float-label-value
       }
     }
@@ -454,21 +452,6 @@
         );
       }
     }
-  }
-}
-
-.el-input--large {
-  .el-input__inner:valid ~ .float-label,
-  .el-input__wrapper.is-focus .float-label {
-    transform: translateY(-20px);
-    background: linear-gradient(to bottom, #fff 56%, transparent 44%);
-  }
-}
-
-.el-input--small {
-  .el-input__inner:valid ~ .float-label,
-  .el-input__wrapper.is-focus .float-label {
-    transform: translateY(-11px);
   }
 }
 

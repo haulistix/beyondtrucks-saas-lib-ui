@@ -1,17 +1,24 @@
-import { renderSlot, createVNode } from 'vue';
-import { ElEmpty } from '../../../empty/index.mjs';
+import { renderSlot, createVNode, createTextVNode } from 'vue';
+import { useLocale } from '../../../../hooks/use-locale/index.mjs';
+import { useNamespace } from '../../../../hooks/use-namespace/index.mjs';
 
-const Footer = (props, {
+const Empty = (props, {
   slots
 }) => {
-  const defaultSlot = renderSlot(slots, "default", {}, () => [createVNode(ElEmpty, null, null)]);
+  const {
+    t
+  } = useLocale();
+  const ns = useNamespace("table-v2");
+  const defaultSlot = renderSlot(slots, "default", {}, () => [createVNode("span", {
+    "class": ns.e("empty-text")
+  }, [createTextVNode("("), t("el.table.emptyText"), createTextVNode(")")])]);
   return createVNode("div", {
     "class": props.class,
     "style": props.style
   }, [defaultSlot]);
 };
-Footer.displayName = "ElTableV2Empty";
-var Empty = Footer;
+Empty.displayName = "ElTableV2Empty";
+var Empty$1 = Empty;
 
-export { Empty as default };
+export { Empty$1 as default };
 //# sourceMappingURL=empty.mjs.map

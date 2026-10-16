@@ -1,5 +1,6 @@
-import { defineComponent, reactive, computed, ref, openBlock, createElementBlock, normalizeClass, unref, normalizeStyle, renderSlot, toDisplayString, createCommentVNode, createElementVNode, mergeProps } from 'vue';
+import { defineComponent, reactive, computed, ref, openBlock, createElementBlock, normalizeClass, unref, normalizeStyle, renderSlot, createBlock, createCommentVNode, createElementVNode, mergeProps } from 'vue';
 import { timePickerRangeTriggerProps } from './props.mjs';
+import ElFloatLabel from '../../../tooltip/src/float-label.mjs';
 import _export_sfc from '../../../../_virtual/plugin-vue_export-helper.mjs';
 import { useFormItem, useFormItemInputId } from '../../../form/src/hooks/use-form-item.mjs';
 import { useAttrs } from '../../../../hooks/use-attrs/index.mjs';
@@ -92,12 +93,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         onTouchstartPassive: handleTouchStart
       }, [
         renderSlot(_ctx.$slots, "prefix"),
-        _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
+        _ctx.floatLabel ? (openBlock(), createBlock(ElFloatLabel, {
           key: 0,
           class: normalizeClass(["dateRangeLabel", {
             "range-label-float": _ctx.pickerVisible || _ctx.modelValue && _ctx.modelValue.length > 1 || unref(isError)
-          }])
-        }, toDisplayString(_ctx.floatLabel), 3)) : createCommentVNode("v-if", true),
+          }]),
+          text: _ctx.floatLabel
+        }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
         createElementVNode("input", mergeProps(unref(attrs), {
           id: unref(inputId),
           ref_key: "inputRef",

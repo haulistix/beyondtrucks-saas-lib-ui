@@ -1,10 +1,12 @@
-import { defineComponent, computed, reactive, toRefs, ref, watch, provide, resolveComponent, resolveDirective, withDirectives, openBlock, createElementBlock, normalizeClass, createVNode, withCtx, createElementVNode, withModifiers, toDisplayString, createCommentVNode, renderSlot, Fragment, renderList, normalizeStyle, createTextVNode, createBlock, withKeys, vModelText, vShow, createSlots, normalizeProps, guardReactiveProps } from 'vue';
+import { defineComponent, computed, reactive, toRefs, ref, watch, provide, resolveComponent, resolveDirective, withDirectives, openBlock, createElementBlock, normalizeClass, createVNode, withCtx, createElementVNode, withModifiers, createBlock, createCommentVNode, renderSlot, toDisplayString, Fragment, renderList, normalizeStyle, createTextVNode, withKeys, vModelText, vShow, createSlots, normalizeProps, guardReactiveProps } from 'vue';
 import { ElTooltip } from '../../tooltip/index.mjs';
+import ElFloatLabel from '../../tooltip/src/float-label.mjs';
 import { ElTag } from '../../tag/index.mjs';
 import { ElIcon } from '../../icon/index.mjs';
 import { ElCheckbox } from '../../checkbox/index.mjs';
 import ElSelectMenu from './select-dropdown.mjs';
 import useSelect from './useSelect.mjs';
+import { useSelectionTooltip } from '../../select/src/useSelectionTooltip.mjs';
 import { selectV2Props, selectV2Emits } from './defaults.mjs';
 import { selectV2InjectionKey } from './token.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
@@ -17,6 +19,7 @@ import { useId } from '../../../hooks/use-id/index.mjs';
 const _sfc_main = defineComponent({
   name: "ElSelectV2",
   components: {
+    ElFloatLabel,
     ElSelectMenu,
     ElTag,
     ElTooltip,
@@ -39,6 +42,11 @@ const _sfc_main = defineComponent({
       ...toRefs(props),
       modelValue
     }), emit);
+    const {
+      tooltip: selectionTooltip,
+      handleMouseMove: handleSelectionMouseMove,
+      hide: hideSelectionTooltip
+    } = useSelectionTooltip(API.selectionRef, API.collapseItemRef, computed(() => props.multiple), API.hasModelValue);
     const { calculatorRef, inputStyle } = useCalcInputWidth();
     const contentId = useId();
     const validateError = computed(() => (API == null ? void 0 : API.validateState.value) === "error");
@@ -106,6 +114,9 @@ const _sfc_main = defineComponent({
     });
     return {
       ...API,
+      selectionTooltip,
+      handleSelectionMouseMove,
+      hideSelectionTooltip,
       modelValue,
       selectedLabel,
       calculatorRef,
@@ -125,6 +136,7 @@ const _sfc_main = defineComponent({
   }
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_el_float_label = resolveComponent("el-float-label");
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
@@ -201,15 +213,18 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.nsSelect.is("value", _ctx.hasModelValue),
                     _ctx.nsSelect.is("multiple", _ctx.multiple)
                   ]),
-                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
+                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"]),
+                  onMousemove: _ctx.handleSelectionMouseMove,
+                  onMouseleave: _ctx.hideSelectionTooltip
                 }, [
-                  _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
+                  _ctx.floatLabel ? (openBlock(), createBlock(_component_el_float_label, {
                     key: 0,
                     class: normalizeClass(["float-label", {
                       "prefix-label": _ctx.$slots.prefix,
                       "select-visible": _ctx.dropdownMenuVisible || !!_ctx.states.inputValue
-                    }])
-                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+                    }]),
+                    text: _ctx.placeholder
+                  }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
                   _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
                     key: 1,
                     ref: "prefixRef",
@@ -466,7 +481,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                       _: 1
                     }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true)
                   ], 2)
-                ], 10, ["onClick"])
+                ], 42, ["onClick", "onMousemove", "onMouseleave"])
               ];
             }),
             content: withCtx(() => [
@@ -518,7 +533,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                   name: "empty",
                   fn: withCtx(() => [
                     createElementVNode("div", {
-                      class: normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
+                      class: normalizeClass([
+                        _ctx.nsSelect.be("dropdown", "empty"),
+                        _ctx.nsSelect.is("no-data", !_ctx.loading && !_ctx.$slots.empty)
+                      ])
                     }, [
                       renderSlot(_ctx.$slots, "empty", {}, () => [
                         createElementVNode("span", null, toDisplayString(_ctx.emptyText), 1)
@@ -571,7 +589,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ], 2)
       ]),
       _: 3
-    }, 8, ["placement", "content", "disabled", "visible"])
+    }, 8, ["placement", "content", "disabled", "visible"]),
+    _ctx.selectionTooltip.visible ? (openBlock(), createBlock(_component_el_tooltip, {
+      key: 0,
+      visible: _ctx.selectionTooltip.visible,
+      "virtual-ref": _ctx.selectionTooltip.reference,
+      content: _ctx.selectionTooltip.content,
+      teleported: _ctx.teleported,
+      "append-to": _ctx.appendTo,
+      enterable: false,
+      "virtual-triggering": "",
+      effect: "light",
+      placement: "top"
+    }, null, 8, ["visible", "virtual-ref", "content", "teleported", "append-to"])) : createCommentVNode("v-if", true)
   ], 42, ["onMouseenter", "onMouseleave"])), [
     [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
   ]);

@@ -137,6 +137,13 @@ declare const _default: import("vue").DefineComponent<{
     };
     props: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => import("element-plus/es/components/select-v2/src/useProps").Props) | (() => import("element-plus/es/components/select-v2/src/useProps").Props) | ((new (...args: any[]) => import("element-plus/es/components/select-v2/src/useProps").Props) | (() => import("element-plus/es/components/select-v2/src/useProps").Props))[], unknown, unknown, () => Required<import("element-plus/es/components/select-v2/src/useProps").Props>, boolean>;
 }, {
+    selectionTooltip: {
+        visible: boolean;
+        content: string;
+        reference: HTMLElement | undefined;
+    };
+    handleSelectionMouseMove: (event: MouseEvent) => void;
+    hideSelectionTooltip: () => void;
     modelValue: import("vue").ComputedRef<string | number | boolean | any[] | Record<string, any> | null | undefined>;
     selectedLabel: import("vue").ComputedRef<string | string[]>;
     calculatorRef: import("vue").ShallowRef<HTMLElement | undefined>;

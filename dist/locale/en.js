@@ -98,7 +98,7 @@
       select: {
         loading: "Loading",
         noMatch: "No matching data",
-        noData: "No data",
+        noData: "No Data",
         placeholder: "Select"
       },
       mention: {

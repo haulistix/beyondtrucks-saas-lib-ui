@@ -9330,7 +9330,7 @@
       select: {
         loading: "Loading",
         noMatch: "No matching data",
-        noData: "No data",
+        noData: "No Data",
         placeholder: "Select"
       },
       mention: {
@@ -12588,11 +12588,11 @@
   };
 
   const COMPONENT_NAME$o = "ElAffix";
-  const __default__$1Y = vue.defineComponent({
+  const __default__$1Z = vue.defineComponent({
     name: COMPONENT_NAME$o
   });
-  const _sfc_main$2F = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1Y,
+  const _sfc_main$2G = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1Z,
     props: affixProps,
     emits: affixEmits,
     setup(__props, { expose, emit }) {
@@ -12708,7 +12708,7 @@
       };
     }
   });
-  var Affix = /* @__PURE__ */ _export_sfc(_sfc_main$2F, [["__file", "affix.vue"]]);
+  var Affix = /* @__PURE__ */ _export_sfc(_sfc_main$2G, [["__file", "affix.vue"]]);
 
   const ElAffix = withInstall(Affix);
 
@@ -12721,12 +12721,12 @@
     }
   });
 
-  const __default__$1X = vue.defineComponent({
+  const __default__$1Y = vue.defineComponent({
     name: "ElIcon",
     inheritAttrs: false
   });
-  const _sfc_main$2E = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1X,
+  const _sfc_main$2F = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1Y,
     props: iconProps,
     setup(__props) {
       const props = __props;
@@ -12755,7 +12755,7 @@
       };
     }
   });
-  var ElIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2E, [["__file", "icon.vue"]]);
+  var ElIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2F, [["__file", "icon.vue"]]);
 
   const ElIcon = withInstall(ElIcon$1);
 
@@ -12797,11 +12797,11 @@
     close: (evt) => isUndefined(evt) || evt instanceof Event
   };
 
-  const __default__$1W = vue.defineComponent({
+  const __default__$1X = vue.defineComponent({
     name: "ElAlert"
   });
-  const _sfc_main$2D = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1W,
+  const _sfc_main$2E = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1X,
     props: alertProps,
     emits: alertEmits,
     setup(__props, { emit }) {
@@ -12890,7 +12890,7 @@
       };
     }
   });
-  var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$2D, [["__file", "alert.vue"]]);
+  var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$2E, [["__file", "alert.vue"]]);
 
   const ElAlert = withInstall(Alert);
 
@@ -13070,11 +13070,11 @@
   };
 
   const COMPONENT_NAME$n = "ElForm";
-  const __default__$1V = vue.defineComponent({
+  const __default__$1W = vue.defineComponent({
     name: COMPONENT_NAME$n
   });
-  const _sfc_main$2C = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1V,
+  const _sfc_main$2D = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1W,
     props: formProps,
     emits: formEmits,
     setup(__props, { expose, emit }) {
@@ -13217,7 +13217,7 @@
       };
     }
   });
-  var Form = /* @__PURE__ */ _export_sfc(_sfc_main$2C, [["__file", "form.vue"]]);
+  var Form = /* @__PURE__ */ _export_sfc(_sfc_main$2D, [["__file", "form.vue"]]);
 
   function _extends() {
     _extends = Object.assign ? Object.assign.bind() : function(target) {
@@ -14402,11 +14402,11 @@
     }
   });
 
-  const __default__$1U = vue.defineComponent({
+  const __default__$1V = vue.defineComponent({
     name: "ElFormItem"
   });
-  const _sfc_main$2B = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1U,
+  const _sfc_main$2C = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1V,
     props: formItemProps,
     setup(__props, { expose }) {
       const props = __props;
@@ -14723,7 +14723,7 @@
       };
     }
   });
-  var FormItem = /* @__PURE__ */ _export_sfc(_sfc_main$2B, [["__file", "form-item.vue"]]);
+  var FormItem = /* @__PURE__ */ _export_sfc(_sfc_main$2C, [["__file", "form-item.vue"]]);
 
   const ElForm = withInstall(Form, {
     FormItem
@@ -14756,12 +14756,12 @@
   });
   const usePopperProps = popperProps;
 
-  const __default__$1T = vue.defineComponent({
+  const __default__$1U = vue.defineComponent({
     name: "ElPopper",
     inheritAttrs: false
   });
-  const _sfc_main$2A = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1T,
+  const _sfc_main$2B = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1U,
     props: popperProps,
     setup(__props, { expose }) {
       const props = __props;
@@ -14784,14 +14784,14 @@
       };
     }
   });
-  var Popper = /* @__PURE__ */ _export_sfc(_sfc_main$2A, [["__file", "popper.vue"]]);
+  var Popper = /* @__PURE__ */ _export_sfc(_sfc_main$2B, [["__file", "popper.vue"]]);
 
-  const __default__$1S = vue.defineComponent({
+  const __default__$1T = vue.defineComponent({
     name: "ElPopperArrow",
     inheritAttrs: false
   });
-  const _sfc_main$2z = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1S,
+  const _sfc_main$2A = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1T,
     setup(__props, { expose }) {
       const ns = useNamespace("popper");
       const { arrowRef, arrowStyle } = vue.inject(POPPER_CONTENT_INJECTION_KEY, void 0);
@@ -14812,7 +14812,7 @@
       };
     }
   });
-  var ElPopperArrow = /* @__PURE__ */ _export_sfc(_sfc_main$2z, [["__file", "arrow.vue"]]);
+  var ElPopperArrow = /* @__PURE__ */ _export_sfc(_sfc_main$2A, [["__file", "arrow.vue"]]);
 
   const NAME = "ElOnlyChild";
   const OnlyChild = vue.defineComponent({
@@ -14898,12 +14898,12 @@
   });
   const usePopperTriggerProps = popperTriggerProps;
 
-  const __default__$1R = vue.defineComponent({
+  const __default__$1S = vue.defineComponent({
     name: "ElPopperTrigger",
     inheritAttrs: false
   });
-  const _sfc_main$2y = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1R,
+  const _sfc_main$2z = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1S,
     props: popperTriggerProps,
     setup(__props, { expose }) {
       const props = __props;
@@ -15014,7 +15014,7 @@
       };
     }
   });
-  var ElPopperTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2y, [["__file", "trigger.vue"]]);
+  var ElPopperTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2z, [["__file", "trigger.vue"]]);
 
   const FOCUS_AFTER_TRAPPED = "focus-trap.focus-after-trapped";
   const FOCUS_AFTER_RELEASED = "focus-trap.focus-after-released";
@@ -15164,7 +15164,7 @@
     });
   };
 
-  const _sfc_main$2x = vue.defineComponent({
+  const _sfc_main$2y = vue.defineComponent({
     name: "ElFocusTrap",
     inheritAttrs: false,
     props: {
@@ -15412,7 +15412,7 @@
   function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.renderSlot(_ctx.$slots, "default", { handleKeydown: _ctx.onKeydown });
   }
-  var ElFocusTrap = /* @__PURE__ */ _export_sfc(_sfc_main$2x, [["render", _sfc_render$o], ["__file", "focus-trap.vue"]]);
+  var ElFocusTrap = /* @__PURE__ */ _export_sfc(_sfc_main$2y, [["render", _sfc_render$o], ["__file", "focus-trap.vue"]]);
 
   const popperArrowProps = buildProps({
     arrowOffset: {
@@ -15709,11 +15709,11 @@
     };
   };
 
-  const __default__$1Q = vue.defineComponent({
+  const __default__$1R = vue.defineComponent({
     name: "ElPopperContent"
   });
-  const _sfc_main$2w = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1Q,
+  const _sfc_main$2x = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1R,
     props: popperContentProps,
     emits: popperContentEmits,
     setup(__props, { expose, emit }) {
@@ -15828,7 +15828,7 @@
       };
     }
   });
-  var ElPopperContent = /* @__PURE__ */ _export_sfc(_sfc_main$2w, [["__file", "content.vue"]]);
+  var ElPopperContent = /* @__PURE__ */ _export_sfc(_sfc_main$2x, [["__file", "content.vue"]]);
 
   const ElPopper = withInstall(Popper);
 
@@ -15842,7 +15842,7 @@
     disabled: Boolean
   });
 
-  const _sfc_main$2v = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$2w = /* @__PURE__ */ vue.defineComponent({
     __name: "teleport",
     props: teleportProps,
     setup(__props) {
@@ -15856,7 +15856,7 @@
       };
     }
   });
-  var Teleport = /* @__PURE__ */ _export_sfc(_sfc_main$2v, [["__file", "teleport.vue"]]);
+  var Teleport = /* @__PURE__ */ _export_sfc(_sfc_main$2w, [["__file", "teleport.vue"]]);
 
   const ElTeleport = withInstall(Teleport);
   var ElTeleport$1 = ElTeleport;
@@ -15942,11 +15942,11 @@
     };
   };
 
-  const __default__$1P = vue.defineComponent({
+  const __default__$1Q = vue.defineComponent({
     name: "ElTooltipTrigger"
   });
-  const _sfc_main$2u = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1P,
+  const _sfc_main$2v = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1Q,
     props: useTooltipTriggerProps,
     setup(__props, { expose }) {
       const props = __props;
@@ -16012,7 +16012,7 @@
       };
     }
   });
-  var ElTooltipTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2u, [["__file", "trigger.vue"]]);
+  var ElTooltipTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2v, [["__file", "trigger.vue"]]);
 
   const overlayProps = buildProps({
     mask: {
@@ -16071,12 +16071,12 @@
 
   const ElOverlay = Overlay$1;
 
-  const __default__$1O = vue.defineComponent({
+  const __default__$1P = vue.defineComponent({
     name: "ElTooltipContent",
     inheritAttrs: false
   });
-  const _sfc_main$2t = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1O,
+  const _sfc_main$2u = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1P,
     props: useTooltipContentProps,
     setup(__props, { expose }) {
       var _a;
@@ -16302,13 +16302,13 @@
       };
     }
   });
-  var ElTooltipContent = /* @__PURE__ */ _export_sfc(_sfc_main$2t, [["__file", "content.vue"]]);
+  var ElTooltipContent = /* @__PURE__ */ _export_sfc(_sfc_main$2u, [["__file", "content.vue"]]);
 
-  const __default__$1N = vue.defineComponent({
+  const __default__$1O = vue.defineComponent({
     name: "ElTooltip"
   });
-  const _sfc_main$2s = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1N,
+  const _sfc_main$2t = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1O,
     props: useTooltipProps,
     emits: tooltipEmits,
     setup(__props, { expose, emit }) {
@@ -16477,7 +16477,59 @@
       };
     }
   });
-  var ElTooltip$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2s, [["__file", "tooltip.vue"]]);
+  var ElTooltip$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2t, [["__file", "tooltip.vue"]]);
+
+  const __default__$1N = vue.defineComponent({
+    name: "ElFloatLabel",
+    inheritAttrs: false
+  });
+  const _sfc_main$2s = /* @__PURE__ */ vue.defineComponent({
+    ...__default__$1N,
+    props: {
+      text: null
+    },
+    setup(__props) {
+      const props = __props;
+      const labelRef = vue.ref();
+      const visible = vue.ref(false);
+      let hovering = false;
+      const updateOverflow = () => {
+        const label = labelRef.value;
+        visible.value = Boolean(hovering && label && label.scrollWidth > label.clientWidth);
+      };
+      const handleMouseEnter = () => {
+        hovering = true;
+        updateOverflow();
+      };
+      const handleMouseLeave = () => {
+        hovering = false;
+        visible.value = false;
+      };
+      useResizeObserver(labelRef, updateOverflow);
+      vue.watch(() => props.text, updateOverflow, { flush: "post" });
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createBlock(ElTooltip$1, {
+          content: __props.text,
+          visible: visible.value,
+          enterable: false,
+          "trigger-keys": [],
+          effect: "light",
+          placement: "top"
+        }, {
+          default: vue.withCtx(() => [
+            vue.createElementVNode("span", vue.mergeProps(_ctx.$attrs, {
+              ref_key: "labelRef",
+              ref: labelRef,
+              onMouseenter: handleMouseEnter,
+              onMouseleave: handleMouseLeave
+            }), vue.toDisplayString(__props.text), 17)
+          ]),
+          _: 1
+        }, 8, ["content", "visible"]);
+      };
+    }
+  });
+  var ElFloatLabel = /* @__PURE__ */ _export_sfc(_sfc_main$2s, [["__file", "float-label.vue"]]);
 
   const inputProps = buildProps({
     isHoverSuffix: Boolean,
@@ -17121,13 +17173,14 @@
                       onChange: handleChange,
                       onKeydown: handleKeydown
                     }), null, 16, ["id", "name", "minlength", "maxlength", "type", "disabled", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form", "autofocus", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"]),
-                    _ctx.floatLabel && _ctx.placeholder ? (vue.openBlock(), vue.createElementBlock("span", {
+                    _ctx.floatLabel && _ctx.placeholder ? (vue.openBlock(), vue.createBlock(ElFloatLabel, {
                       key: 1,
                       class: vue.normalizeClass(["float-label", {
                         "prefix-label": _ctx.$slots.prefix || _ctx.prefixIcon,
                         "has-value": !vue.unref(isEmpty)(_ctx.modelValue)
-                      }])
-                    }, vue.toDisplayString(_ctx.placeholder), 3)) : vue.createCommentVNode("v-if", true),
+                      }]),
+                      text: _ctx.placeholder
+                    }, null, 8, ["text", "class"])) : vue.createCommentVNode("v-if", true),
                     vue.createCommentVNode(" suffix slot "),
                     vue.unref(suffixVisible) ? (vue.openBlock(), vue.createElementBlock("span", {
                       key: 2,
@@ -17339,11 +17392,12 @@
             }, [
               vue.renderSlot(_ctx.$slots, "textareaSuffix")
             ])) : vue.createCommentVNode("v-if", true),
-            _ctx.floatLabel && _ctx.placeholder ? (vue.openBlock(), vue.createElementBlock("span", {
+            _ctx.floatLabel && _ctx.placeholder ? (vue.openBlock(), vue.createBlock(ElFloatLabel, {
               key: 2,
               class: vue.normalizeClass(["float-label", { "has-value": !vue.unref(isEmpty)(_ctx.modelValue) }]),
+              text: _ctx.placeholder,
               onClick: handleTextareaFocus
-            }, vue.toDisplayString(_ctx.placeholder), 3)) : vue.createCommentVNode("v-if", true),
+            }, null, 8, ["text", "class"])) : vue.createCommentVNode("v-if", true),
             vue.unref(isWordLimitVisible) ? (vue.openBlock(), vue.createElementBlock("span", {
               key: 3,
               style: vue.normalizeStyle(countStyle.value),
@@ -20811,12 +20865,13 @@
           onTouchstartPassive: handleTouchStart
         }, [
           vue.renderSlot(_ctx.$slots, "prefix"),
-          _ctx.floatLabel ? (vue.openBlock(), vue.createElementBlock("span", {
+          _ctx.floatLabel ? (vue.openBlock(), vue.createBlock(ElFloatLabel, {
             key: 0,
             class: vue.normalizeClass(["dateRangeLabel", {
               "range-label-float": _ctx.pickerVisible || _ctx.modelValue && _ctx.modelValue.length > 1 || vue.unref(isError)
-            }])
-          }, vue.toDisplayString(_ctx.floatLabel), 3)) : vue.createCommentVNode("v-if", true),
+            }]),
+            text: _ctx.floatLabel
+          }, null, 8, ["text", "class"])) : vue.createCommentVNode("v-if", true),
           vue.createElementVNode("input", vue.mergeProps(vue.unref(attrs), {
             id: vue.unref(inputId),
             ref_key: "inputRef",
@@ -40691,7 +40746,7 @@
         return props.loadingText || t("el.select.loading");
       } else {
         if (props.filterable && states.inputValue && hasOptions.value && filteredOptions.value.length === 0) {
-          return props.noMatchText || t("el.select.noMatch");
+          return props.noMatchText || t("el.select.noData");
         }
         if (!hasOptions.value) {
           return props.noDataText || t("el.select.noData");
@@ -41507,9 +41562,67 @@
   };
   var useSelect$3 = useSelect$2;
 
+  const useSelectionTooltip = (selectionRef, collapseItemRef, multiple, hasModelValue) => {
+    const ns = useNamespace("select");
+    const tooltip = vue.reactive({
+      visible: false,
+      content: "",
+      reference: void 0
+    });
+    let hoveredTarget;
+    const hide = () => {
+      hoveredTarget = void 0;
+      tooltip.visible = false;
+    };
+    const update = () => {
+      var _a, _b;
+      const selection = selectionRef.value;
+      if (!hasModelValue.value || !selection || !hoveredTarget || !selection.contains(hoveredTarget)) {
+        hide();
+        return;
+      }
+      let item = null;
+      if (multiple.value) {
+        item = hoveredTarget;
+        while (item !== selection && item.parentElement !== selection) {
+          item = item.parentElement;
+        }
+        if (item === selection || item === collapseItemRef.value || item.classList.contains(ns.e("input-wrapper"))) {
+          tooltip.visible = false;
+          return;
+        }
+      } else {
+        item = selection.querySelector(`.${ns.e("placeholder")}`);
+      }
+      if (!item) {
+        tooltip.visible = false;
+        return;
+      }
+      const overflowing = [item, ...item.querySelectorAll("*")].some((element) => {
+        const style = getComputedStyle(element);
+        return element.clientWidth > 0 && element.scrollWidth > element.clientWidth && style.overflowX !== "visible" || element.clientHeight > 0 && element.scrollHeight > element.clientHeight && style.overflowY !== "visible";
+      });
+      const itemRect = item.getBoundingClientRect();
+      const selectionRect = selection.getBoundingClientRect();
+      const selectionStyle = getComputedStyle(selection);
+      const clipped = selectionStyle.overflowX !== "visible" && (itemRect.left < selectionRect.left - 1 || itemRect.right > selectionRect.right + 1) || selectionStyle.overflowY !== "visible" && (itemRect.top < selectionRect.top - 1 || itemRect.bottom > selectionRect.bottom + 1);
+      tooltip.content = (_b = (_a = item.textContent) == null ? void 0 : _a.trim()) != null ? _b : "";
+      tooltip.reference = item;
+      tooltip.visible = !!tooltip.content && (overflowing || clipped);
+    };
+    const handleMouseMove = (event) => {
+      hoveredTarget = event.target;
+      update();
+    };
+    useResizeObserver(selectionRef, update);
+    vue.onUpdated(update);
+    return { tooltip, handleMouseMove, hide };
+  };
+
   const _sfc_main$1b = vue.defineComponent({
     name: "ElSelectV2",
     components: {
+      ElFloatLabel,
       ElSelectMenu: ElSelectMenu$1,
       ElTag,
       ElTooltip,
@@ -41532,6 +41645,11 @@
         ...vue.toRefs(props),
         modelValue
       }), emit);
+      const {
+        tooltip: selectionTooltip,
+        handleMouseMove: handleSelectionMouseMove,
+        hide: hideSelectionTooltip
+      } = useSelectionTooltip(API.selectionRef, API.collapseItemRef, vue.computed(() => props.multiple), API.hasModelValue);
       const { calculatorRef, inputStyle } = useCalcInputWidth();
       const contentId = useId();
       const validateError = vue.computed(() => (API == null ? void 0 : API.validateState.value) === "error");
@@ -41599,6 +41717,9 @@
       });
       return {
         ...API,
+        selectionTooltip,
+        handleSelectionMouseMove,
+        hideSelectionTooltip,
         modelValue,
         selectedLabel,
         calculatorRef,
@@ -41618,6 +41739,7 @@
     }
   });
   function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_el_float_label = vue.resolveComponent("el-float-label");
     const _component_el_tag = vue.resolveComponent("el-tag");
     const _component_el_tooltip = vue.resolveComponent("el-tooltip");
     const _component_el_icon = vue.resolveComponent("el-icon");
@@ -41694,15 +41816,18 @@
                       _ctx.nsSelect.is("value", _ctx.hasModelValue),
                       _ctx.nsSelect.is("multiple", _ctx.multiple)
                     ]),
-                    onClick: vue.withModifiers(_ctx.handleSelectClick, ["prevent"])
+                    onClick: vue.withModifiers(_ctx.handleSelectClick, ["prevent"]),
+                    onMousemove: _ctx.handleSelectionMouseMove,
+                    onMouseleave: _ctx.hideSelectionTooltip
                   }, [
-                    _ctx.floatLabel ? (vue.openBlock(), vue.createElementBlock("span", {
+                    _ctx.floatLabel ? (vue.openBlock(), vue.createBlock(_component_el_float_label, {
                       key: 0,
                       class: vue.normalizeClass(["float-label", {
                         "prefix-label": _ctx.$slots.prefix,
                         "select-visible": _ctx.dropdownMenuVisible || !!_ctx.states.inputValue
-                      }])
-                    }, vue.toDisplayString(_ctx.placeholder), 3)) : vue.createCommentVNode("v-if", true),
+                      }]),
+                      text: _ctx.placeholder
+                    }, null, 8, ["text", "class"])) : vue.createCommentVNode("v-if", true),
                     _ctx.$slots.prefix ? (vue.openBlock(), vue.createElementBlock("div", {
                       key: 1,
                       ref: "prefixRef",
@@ -41959,7 +42084,7 @@
                         _: 1
                       }, 8, ["class", "onClick"])) : vue.createCommentVNode("v-if", true)
                     ], 2)
-                  ], 10, ["onClick"])
+                  ], 42, ["onClick", "onMousemove", "onMouseleave"])
                 ];
               }),
               content: vue.withCtx(() => [
@@ -42011,7 +42136,10 @@
                     name: "empty",
                     fn: vue.withCtx(() => [
                       vue.createElementVNode("div", {
-                        class: vue.normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
+                        class: vue.normalizeClass([
+                          _ctx.nsSelect.be("dropdown", "empty"),
+                          _ctx.nsSelect.is("no-data", !_ctx.loading && !_ctx.$slots.empty)
+                        ])
                       }, [
                         vue.renderSlot(_ctx.$slots, "empty", {}, () => [
                           vue.createElementVNode("span", null, vue.toDisplayString(_ctx.emptyText), 1)
@@ -42064,7 +42192,19 @@
           ], 2)
         ]),
         _: 3
-      }, 8, ["placement", "content", "disabled", "visible"])
+      }, 8, ["placement", "content", "disabled", "visible"]),
+      _ctx.selectionTooltip.visible ? (vue.openBlock(), vue.createBlock(_component_el_tooltip, {
+        key: 0,
+        visible: _ctx.selectionTooltip.visible,
+        "virtual-ref": _ctx.selectionTooltip.reference,
+        content: _ctx.selectionTooltip.content,
+        teleported: _ctx.teleported,
+        "append-to": _ctx.appendTo,
+        enterable: false,
+        "virtual-triggering": "",
+        effect: "light",
+        placement: "top"
+      }, null, 8, ["visible", "virtual-ref", "content", "teleported", "append-to"])) : vue.createCommentVNode("v-if", true)
     ], 42, ["onMouseenter", "onMouseleave"])), [
       [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
     ]);
@@ -45197,7 +45337,7 @@
         return props.loadingText || t("el.select.loading");
       } else {
         if (props.filterable && states.inputValue && states.options.size > 0 && filteredOptionsCount.value === 0) {
-          return props.noMatchText || t("el.select.noMatch");
+          return props.noMatchText || t("el.select.noData");
         }
         if (states.options.size === 0) {
           return props.noDataText || t("el.select.noData");
@@ -46182,6 +46322,7 @@
     name: COMPONENT_NAME$a,
     componentName: COMPONENT_NAME$a,
     components: {
+      ElFloatLabel,
       ElSelectMenu,
       ElOption: Option,
       ElOptions,
@@ -46229,6 +46370,11 @@
         modelValue
       });
       const API = useSelect$1(_props, emit);
+      const {
+        tooltip: selectionTooltip,
+        handleMouseMove: handleSelectionMouseMove,
+        hide: hideSelectionTooltip
+      } = useSelectionTooltip(API.selectionRef, API.collapseItemRef, vue.computed(() => props.multiple), API.hasModelValue);
       const { calculatorRef, inputStyle } = useCalcInputWidth();
       const { getLabel, getValue, getOptions, getDisabled, getTip } = useProps(props);
       const validateError = vue.computed(() => (API == null ? void 0 : API.validateState.value) === "error");
@@ -46351,6 +46497,9 @@
       });
       return {
         ...API,
+        selectionTooltip,
+        handleSelectionMouseMove,
+        hideSelectionTooltip,
         modelValue,
         selectedLabel,
         calculatorRef,
@@ -46375,6 +46524,7 @@
     }
   });
   function _sfc_render$8(_ctx, _cache) {
+    const _component_el_float_label = vue.resolveComponent("el-float-label");
     const _component_el_tag = vue.resolveComponent("el-tag");
     const _component_el_tooltip = vue.resolveComponent("el-tooltip");
     const _component_el_icon = vue.resolveComponent("el-icon");
@@ -46455,15 +46605,18 @@
                       _ctx.nsSelect.is("value", _ctx.hasModelValue),
                       _ctx.nsSelect.is("multiple", _ctx.multiple)
                     ]),
-                    onClick: vue.withModifiers(_ctx.handleSelectClick, ["prevent"])
+                    onClick: vue.withModifiers(_ctx.handleSelectClick, ["prevent"]),
+                    onMousemove: _ctx.handleSelectionMouseMove,
+                    onMouseleave: _ctx.hideSelectionTooltip
                   }, [
-                    _ctx.floatLabel ? (vue.openBlock(), vue.createElementBlock("span", {
+                    _ctx.floatLabel ? (vue.openBlock(), vue.createBlock(_component_el_float_label, {
                       key: 0,
                       class: vue.normalizeClass(["float-label", {
                         "prefix-label": _ctx.$slots.prefix,
                         "select-visible": _ctx.dropdownMenuVisible || !_ctx.isEmpty(_ctx.states.inputValue)
-                      }])
-                    }, vue.toDisplayString(_ctx.placeholder), 3)) : vue.createCommentVNode("v-if", true),
+                      }]),
+                      text: _ctx.placeholder
+                    }, null, 8, ["text", "class"])) : vue.createCommentVNode("v-if", true),
                     _ctx.$slots.prefix ? (vue.openBlock(), vue.createElementBlock("div", {
                       key: 1,
                       ref: "prefixRef",
@@ -46730,7 +46883,7 @@
                       }, 8, ["class", "onClick"])) : vue.createCommentVNode("v-if", true),
                       _ctx.$slots.suffixAfterIcon ? vue.renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : vue.createCommentVNode("v-if", true)
                     ], 2)
-                  ], 10, ["onClick"])
+                  ], 42, ["onClick", "onMousemove", "onMouseleave"])
                 ];
               }),
               content: vue.withCtx(() => [
@@ -46822,7 +46975,10 @@
                       vue.renderSlot(_ctx.$slots, "loading")
                     ], 2)) : _ctx.loading || _ctx.filteredOptionsCount === 0 ? (vue.openBlock(), vue.createElementBlock("div", {
                       key: 2,
-                      class: vue.normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
+                      class: vue.normalizeClass([
+                        _ctx.nsSelect.be("dropdown", "empty"),
+                        _ctx.nsSelect.is("no-data", !_ctx.loading && !_ctx.$slots.empty && !_ctx.addItem)
+                      ])
                     }, [
                       vue.renderSlot(_ctx.$slots, "empty", {}, () => [
                         !_ctx.addItem ? (vue.openBlock(), vue.createElementBlock("span", { key: 0 }, vue.toDisplayString(_ctx.emptyText), 1)) : (vue.openBlock(), vue.createElementBlock("div", {
@@ -46900,7 +47056,19 @@
           ], 2)
         ]),
         _: 3
-      }, 8, ["placement", "content", "disabled", "visible"])
+      }, 8, ["placement", "content", "disabled", "visible"]),
+      _ctx.selectionTooltip.visible ? (vue.openBlock(), vue.createBlock(_component_el_tooltip, {
+        key: 0,
+        visible: _ctx.selectionTooltip.visible,
+        "virtual-ref": _ctx.selectionTooltip.reference,
+        content: _ctx.selectionTooltip.content,
+        teleported: _ctx.teleported,
+        "append-to": _ctx.appendTo,
+        enterable: false,
+        "virtual-triggering": "",
+        effect: "light",
+        placement: "top"
+      }, null, 8, ["visible", "virtual-ref", "content", "teleported", "append-to"])) : vue.createCommentVNode("v-if", true)
     ], 16, ["onMouseleave"])), [
       [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
     ]);

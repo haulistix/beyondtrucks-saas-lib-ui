@@ -244,6 +244,13 @@ declare const _default: import("vue").DefineComponent<{
         __epPropKey: true;
     };
 }, {
+    selectionTooltip: {
+        visible: boolean;
+        content: string;
+        reference: HTMLElement | undefined;
+    };
+    handleSelectionMouseMove: (event: MouseEvent) => void;
+    hideSelectionTooltip: () => void;
     modelValue: import("vue").ComputedRef<any>;
     selectedLabel: import("vue").ComputedRef<string | string[]>;
     calculatorRef: import("vue").ShallowRef<HTMLElement | undefined>;

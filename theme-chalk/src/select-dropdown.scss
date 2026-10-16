@@ -27,6 +27,19 @@
   text-align: center;
   color: map.get($select-dropdown, 'empty-color');
   font-size: getCssVar('select-font-size');
+
+  @include when(no-data) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 32px;
+    padding: 0 16px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--color-gray-400, #{getCssVar('text-color', 'placeholder')});
+  }
 }
 
 @include b(select-dropdown__wrap) {

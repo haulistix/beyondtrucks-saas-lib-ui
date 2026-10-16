@@ -1,6 +1,7 @@
-import { defineComponent, useAttrs, useSlots, computed, shallowRef, ref, nextTick, watch, onMounted, toRef, openBlock, createElementBlock, normalizeClass, unref, normalizeStyle, createCommentVNode, Fragment, renderSlot, createVNode, withCtx, createElementVNode, createBlock, resolveDynamicComponent, mergeProps, toDisplayString, withModifiers } from 'vue';
+import { defineComponent, useAttrs, useSlots, computed, shallowRef, ref, nextTick, watch, onMounted, toRef, openBlock, createElementBlock, normalizeClass, unref, normalizeStyle, createCommentVNode, Fragment, renderSlot, createVNode, withCtx, createElementVNode, createBlock, resolveDynamicComponent, mergeProps, withModifiers, toDisplayString } from 'vue';
 import { ElIcon } from '../../icon/index.mjs';
 import ElTooltip from '../../tooltip/src/tooltip2.mjs';
+import ElFloatLabel from '../../tooltip/src/float-label.mjs';
 import { useResizeObserver, isClient } from '@vueuse/core';
 import { isNil } from 'lodash-unified';
 import { inputProps, inputEmits } from './input2.mjs';
@@ -443,13 +444,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                     onChange: handleChange,
                     onKeydown: handleKeydown
                   }), null, 16, ["id", "name", "minlength", "maxlength", "type", "disabled", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form", "autofocus", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"]),
-                  _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
+                  _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createBlock(ElFloatLabel, {
                     key: 1,
                     class: normalizeClass(["float-label", {
                       "prefix-label": _ctx.$slots.prefix || _ctx.prefixIcon,
                       "has-value": !unref(isEmpty)(_ctx.modelValue)
-                    }])
-                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+                    }]),
+                    text: _ctx.placeholder
+                  }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
                   createCommentVNode(" suffix slot "),
                   unref(suffixVisible) ? (openBlock(), createElementBlock("span", {
                     key: 2,
@@ -661,11 +663,12 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           }, [
             renderSlot(_ctx.$slots, "textareaSuffix")
           ])) : createCommentVNode("v-if", true),
-          _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
+          _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createBlock(ElFloatLabel, {
             key: 2,
             class: normalizeClass(["float-label", { "has-value": !unref(isEmpty)(_ctx.modelValue) }]),
+            text: _ctx.placeholder,
             onClick: handleTextareaFocus
-          }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+          }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
           unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
             key: 3,
             style: normalizeStyle(countStyle.value),

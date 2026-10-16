@@ -123,7 +123,7 @@ const useSelect = (props, emit) => {
       return props.loadingText || t("el.select.loading");
     } else {
       if (props.filterable && states.inputValue && hasOptions.value && filteredOptions.value.length === 0) {
-        return props.noMatchText || t("el.select.noMatch");
+        return props.noMatchText || t("el.select.noData");
       }
       if (!hasOptions.value) {
         return props.noDataText || t("el.select.noData");

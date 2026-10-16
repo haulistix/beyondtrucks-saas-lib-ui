@@ -17024,6 +17024,13 @@ declare const _default_75: DefineComponent<{
     };
     props: EpPropFinalized<(new (...args: any[]) => Props_2) | (() => Props_2) | ((new (...args: any[]) => Props_2) | (() => Props_2))[], unknown, unknown, () => Required<Props_2>, boolean>;
 }, {
+    selectionTooltip: {
+        visible: boolean;
+        content: string;
+        reference: HTMLElement | undefined;
+    };
+    handleSelectionMouseMove: (event: MouseEvent) => void;
+    hideSelectionTooltip: () => void;
     modelValue: ComputedRef<string | number | boolean | any[] | Record<string, any> | null | undefined>;
     selectedLabel: ComputedRef<string | string[]>;
     calculatorRef: ShallowRef<HTMLElement | undefined>;
@@ -17818,6 +17825,13 @@ declare const _default_78: DefineComponent<{
         __epPropKey: true;
     };
 }, {
+    selectionTooltip: {
+        visible: boolean;
+        content: string;
+        reference: HTMLElement | undefined;
+    };
+    handleSelectionMouseMove: (event: MouseEvent) => void;
+    hideSelectionTooltip: () => void;
     modelValue: ComputedRef<any>;
     selectedLabel: ComputedRef<string | string[]>;
     calculatorRef: ShallowRef<HTMLElement | undefined>;

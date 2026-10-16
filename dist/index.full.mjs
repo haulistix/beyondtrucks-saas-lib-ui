@@ -9326,7 +9326,7 @@ var English = {
     select: {
       loading: "Loading",
       noMatch: "No matching data",
-      noData: "No data",
+      noData: "No Data",
       placeholder: "Select"
     },
     mention: {
@@ -12584,11 +12584,11 @@ var _export_sfc = (sfc, props) => {
 };
 
 const COMPONENT_NAME$o = "ElAffix";
-const __default__$1Y = defineComponent({
+const __default__$1Z = defineComponent({
   name: COMPONENT_NAME$o
 });
-const _sfc_main$2F = /* @__PURE__ */ defineComponent({
-  ...__default__$1Y,
+const _sfc_main$2G = /* @__PURE__ */ defineComponent({
+  ...__default__$1Z,
   props: affixProps,
   emits: affixEmits,
   setup(__props, { expose, emit }) {
@@ -12704,7 +12704,7 @@ const _sfc_main$2F = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Affix = /* @__PURE__ */ _export_sfc(_sfc_main$2F, [["__file", "affix.vue"]]);
+var Affix = /* @__PURE__ */ _export_sfc(_sfc_main$2G, [["__file", "affix.vue"]]);
 
 const ElAffix = withInstall(Affix);
 
@@ -12717,12 +12717,12 @@ const iconProps = buildProps({
   }
 });
 
-const __default__$1X = defineComponent({
+const __default__$1Y = defineComponent({
   name: "ElIcon",
   inheritAttrs: false
 });
-const _sfc_main$2E = /* @__PURE__ */ defineComponent({
-  ...__default__$1X,
+const _sfc_main$2F = /* @__PURE__ */ defineComponent({
+  ...__default__$1Y,
   props: iconProps,
   setup(__props) {
     const props = __props;
@@ -12751,7 +12751,7 @@ const _sfc_main$2E = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2E, [["__file", "icon.vue"]]);
+var ElIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2F, [["__file", "icon.vue"]]);
 
 const ElIcon = withInstall(ElIcon$1);
 
@@ -12793,11 +12793,11 @@ const alertEmits = {
   close: (evt) => isUndefined(evt) || evt instanceof Event
 };
 
-const __default__$1W = defineComponent({
+const __default__$1X = defineComponent({
   name: "ElAlert"
 });
-const _sfc_main$2D = /* @__PURE__ */ defineComponent({
-  ...__default__$1W,
+const _sfc_main$2E = /* @__PURE__ */ defineComponent({
+  ...__default__$1X,
   props: alertProps,
   emits: alertEmits,
   setup(__props, { emit }) {
@@ -12886,7 +12886,7 @@ const _sfc_main$2D = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$2D, [["__file", "alert.vue"]]);
+var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$2E, [["__file", "alert.vue"]]);
 
 const ElAlert = withInstall(Alert);
 
@@ -13066,11 +13066,11 @@ const filterFields = (fields, props) => {
 };
 
 const COMPONENT_NAME$n = "ElForm";
-const __default__$1V = defineComponent({
+const __default__$1W = defineComponent({
   name: COMPONENT_NAME$n
 });
-const _sfc_main$2C = /* @__PURE__ */ defineComponent({
-  ...__default__$1V,
+const _sfc_main$2D = /* @__PURE__ */ defineComponent({
+  ...__default__$1W,
   props: formProps,
   emits: formEmits,
   setup(__props, { expose, emit }) {
@@ -13213,7 +13213,7 @@ const _sfc_main$2C = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Form = /* @__PURE__ */ _export_sfc(_sfc_main$2C, [["__file", "form.vue"]]);
+var Form = /* @__PURE__ */ _export_sfc(_sfc_main$2D, [["__file", "form.vue"]]);
 
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function(target) {
@@ -14398,11 +14398,11 @@ var FormLabelWrap = defineComponent({
   }
 });
 
-const __default__$1U = defineComponent({
+const __default__$1V = defineComponent({
   name: "ElFormItem"
 });
-const _sfc_main$2B = /* @__PURE__ */ defineComponent({
-  ...__default__$1U,
+const _sfc_main$2C = /* @__PURE__ */ defineComponent({
+  ...__default__$1V,
   props: formItemProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -14719,7 +14719,7 @@ const _sfc_main$2B = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var FormItem = /* @__PURE__ */ _export_sfc(_sfc_main$2B, [["__file", "form-item.vue"]]);
+var FormItem = /* @__PURE__ */ _export_sfc(_sfc_main$2C, [["__file", "form-item.vue"]]);
 
 const ElForm = withInstall(Form, {
   FormItem
@@ -14752,12 +14752,12 @@ const popperProps = buildProps({
 });
 const usePopperProps = popperProps;
 
-const __default__$1T = defineComponent({
+const __default__$1U = defineComponent({
   name: "ElPopper",
   inheritAttrs: false
 });
-const _sfc_main$2A = /* @__PURE__ */ defineComponent({
-  ...__default__$1T,
+const _sfc_main$2B = /* @__PURE__ */ defineComponent({
+  ...__default__$1U,
   props: popperProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -14780,14 +14780,14 @@ const _sfc_main$2A = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Popper = /* @__PURE__ */ _export_sfc(_sfc_main$2A, [["__file", "popper.vue"]]);
+var Popper = /* @__PURE__ */ _export_sfc(_sfc_main$2B, [["__file", "popper.vue"]]);
 
-const __default__$1S = defineComponent({
+const __default__$1T = defineComponent({
   name: "ElPopperArrow",
   inheritAttrs: false
 });
-const _sfc_main$2z = /* @__PURE__ */ defineComponent({
-  ...__default__$1S,
+const _sfc_main$2A = /* @__PURE__ */ defineComponent({
+  ...__default__$1T,
   setup(__props, { expose }) {
     const ns = useNamespace("popper");
     const { arrowRef, arrowStyle } = inject(POPPER_CONTENT_INJECTION_KEY, void 0);
@@ -14808,7 +14808,7 @@ const _sfc_main$2z = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElPopperArrow = /* @__PURE__ */ _export_sfc(_sfc_main$2z, [["__file", "arrow.vue"]]);
+var ElPopperArrow = /* @__PURE__ */ _export_sfc(_sfc_main$2A, [["__file", "arrow.vue"]]);
 
 const NAME = "ElOnlyChild";
 const OnlyChild = defineComponent({
@@ -14894,12 +14894,12 @@ const popperTriggerProps = buildProps({
 });
 const usePopperTriggerProps = popperTriggerProps;
 
-const __default__$1R = defineComponent({
+const __default__$1S = defineComponent({
   name: "ElPopperTrigger",
   inheritAttrs: false
 });
-const _sfc_main$2y = /* @__PURE__ */ defineComponent({
-  ...__default__$1R,
+const _sfc_main$2z = /* @__PURE__ */ defineComponent({
+  ...__default__$1S,
   props: popperTriggerProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -15010,7 +15010,7 @@ const _sfc_main$2y = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElPopperTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2y, [["__file", "trigger.vue"]]);
+var ElPopperTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2z, [["__file", "trigger.vue"]]);
 
 const FOCUS_AFTER_TRAPPED = "focus-trap.focus-after-trapped";
 const FOCUS_AFTER_RELEASED = "focus-trap.focus-after-released";
@@ -15160,7 +15160,7 @@ const createFocusOutPreventedEvent = (detail) => {
   });
 };
 
-const _sfc_main$2x = defineComponent({
+const _sfc_main$2y = defineComponent({
   name: "ElFocusTrap",
   inheritAttrs: false,
   props: {
@@ -15408,7 +15408,7 @@ const _sfc_main$2x = defineComponent({
 function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default", { handleKeydown: _ctx.onKeydown });
 }
-var ElFocusTrap = /* @__PURE__ */ _export_sfc(_sfc_main$2x, [["render", _sfc_render$o], ["__file", "focus-trap.vue"]]);
+var ElFocusTrap = /* @__PURE__ */ _export_sfc(_sfc_main$2y, [["render", _sfc_render$o], ["__file", "focus-trap.vue"]]);
 
 const popperArrowProps = buildProps({
   arrowOffset: {
@@ -15705,11 +15705,11 @@ const usePopperContentFocusTrap = (props, emit) => {
   };
 };
 
-const __default__$1Q = defineComponent({
+const __default__$1R = defineComponent({
   name: "ElPopperContent"
 });
-const _sfc_main$2w = /* @__PURE__ */ defineComponent({
-  ...__default__$1Q,
+const _sfc_main$2x = /* @__PURE__ */ defineComponent({
+  ...__default__$1R,
   props: popperContentProps,
   emits: popperContentEmits,
   setup(__props, { expose, emit }) {
@@ -15824,7 +15824,7 @@ const _sfc_main$2w = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElPopperContent = /* @__PURE__ */ _export_sfc(_sfc_main$2w, [["__file", "content.vue"]]);
+var ElPopperContent = /* @__PURE__ */ _export_sfc(_sfc_main$2x, [["__file", "content.vue"]]);
 
 const ElPopper = withInstall(Popper);
 
@@ -15838,7 +15838,7 @@ const teleportProps = buildProps({
   disabled: Boolean
 });
 
-const _sfc_main$2v = /* @__PURE__ */ defineComponent({
+const _sfc_main$2w = /* @__PURE__ */ defineComponent({
   __name: "teleport",
   props: teleportProps,
   setup(__props) {
@@ -15852,7 +15852,7 @@ const _sfc_main$2v = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var Teleport = /* @__PURE__ */ _export_sfc(_sfc_main$2v, [["__file", "teleport.vue"]]);
+var Teleport = /* @__PURE__ */ _export_sfc(_sfc_main$2w, [["__file", "teleport.vue"]]);
 
 const ElTeleport = withInstall(Teleport);
 var ElTeleport$1 = ElTeleport;
@@ -15938,11 +15938,11 @@ const whenTrigger = (trigger, type, handler) => {
   };
 };
 
-const __default__$1P = defineComponent({
+const __default__$1Q = defineComponent({
   name: "ElTooltipTrigger"
 });
-const _sfc_main$2u = /* @__PURE__ */ defineComponent({
-  ...__default__$1P,
+const _sfc_main$2v = /* @__PURE__ */ defineComponent({
+  ...__default__$1Q,
   props: useTooltipTriggerProps,
   setup(__props, { expose }) {
     const props = __props;
@@ -16008,7 +16008,7 @@ const _sfc_main$2u = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElTooltipTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2u, [["__file", "trigger.vue"]]);
+var ElTooltipTrigger = /* @__PURE__ */ _export_sfc(_sfc_main$2v, [["__file", "trigger.vue"]]);
 
 const overlayProps = buildProps({
   mask: {
@@ -16067,12 +16067,12 @@ var Overlay$1 = defineComponent({
 
 const ElOverlay = Overlay$1;
 
-const __default__$1O = defineComponent({
+const __default__$1P = defineComponent({
   name: "ElTooltipContent",
   inheritAttrs: false
 });
-const _sfc_main$2t = /* @__PURE__ */ defineComponent({
-  ...__default__$1O,
+const _sfc_main$2u = /* @__PURE__ */ defineComponent({
+  ...__default__$1P,
   props: useTooltipContentProps,
   setup(__props, { expose }) {
     var _a;
@@ -16298,13 +16298,13 @@ const _sfc_main$2t = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElTooltipContent = /* @__PURE__ */ _export_sfc(_sfc_main$2t, [["__file", "content.vue"]]);
+var ElTooltipContent = /* @__PURE__ */ _export_sfc(_sfc_main$2u, [["__file", "content.vue"]]);
 
-const __default__$1N = defineComponent({
+const __default__$1O = defineComponent({
   name: "ElTooltip"
 });
-const _sfc_main$2s = /* @__PURE__ */ defineComponent({
-  ...__default__$1N,
+const _sfc_main$2t = /* @__PURE__ */ defineComponent({
+  ...__default__$1O,
   props: useTooltipProps,
   emits: tooltipEmits,
   setup(__props, { expose, emit }) {
@@ -16473,7 +16473,59 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var ElTooltip$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2s, [["__file", "tooltip.vue"]]);
+var ElTooltip$1 = /* @__PURE__ */ _export_sfc(_sfc_main$2t, [["__file", "tooltip.vue"]]);
+
+const __default__$1N = defineComponent({
+  name: "ElFloatLabel",
+  inheritAttrs: false
+});
+const _sfc_main$2s = /* @__PURE__ */ defineComponent({
+  ...__default__$1N,
+  props: {
+    text: null
+  },
+  setup(__props) {
+    const props = __props;
+    const labelRef = ref();
+    const visible = ref(false);
+    let hovering = false;
+    const updateOverflow = () => {
+      const label = labelRef.value;
+      visible.value = Boolean(hovering && label && label.scrollWidth > label.clientWidth);
+    };
+    const handleMouseEnter = () => {
+      hovering = true;
+      updateOverflow();
+    };
+    const handleMouseLeave = () => {
+      hovering = false;
+      visible.value = false;
+    };
+    useResizeObserver(labelRef, updateOverflow);
+    watch(() => props.text, updateOverflow, { flush: "post" });
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(ElTooltip$1, {
+        content: __props.text,
+        visible: visible.value,
+        enterable: false,
+        "trigger-keys": [],
+        effect: "light",
+        placement: "top"
+      }, {
+        default: withCtx(() => [
+          createElementVNode("span", mergeProps(_ctx.$attrs, {
+            ref_key: "labelRef",
+            ref: labelRef,
+            onMouseenter: handleMouseEnter,
+            onMouseleave: handleMouseLeave
+          }), toDisplayString(__props.text), 17)
+        ]),
+        _: 1
+      }, 8, ["content", "visible"]);
+    };
+  }
+});
+var ElFloatLabel = /* @__PURE__ */ _export_sfc(_sfc_main$2s, [["__file", "float-label.vue"]]);
 
 const inputProps = buildProps({
   isHoverSuffix: Boolean,
@@ -17117,13 +17169,14 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                     onChange: handleChange,
                     onKeydown: handleKeydown
                   }), null, 16, ["id", "name", "minlength", "maxlength", "type", "disabled", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form", "autofocus", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"]),
-                  _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
+                  _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createBlock(ElFloatLabel, {
                     key: 1,
                     class: normalizeClass(["float-label", {
                       "prefix-label": _ctx.$slots.prefix || _ctx.prefixIcon,
                       "has-value": !unref(isEmpty)(_ctx.modelValue)
-                    }])
-                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+                    }]),
+                    text: _ctx.placeholder
+                  }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
                   createCommentVNode(" suffix slot "),
                   unref(suffixVisible) ? (openBlock(), createElementBlock("span", {
                     key: 2,
@@ -17335,11 +17388,12 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
           }, [
             renderSlot(_ctx.$slots, "textareaSuffix")
           ])) : createCommentVNode("v-if", true),
-          _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createElementBlock("span", {
+          _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createBlock(ElFloatLabel, {
             key: 2,
             class: normalizeClass(["float-label", { "has-value": !unref(isEmpty)(_ctx.modelValue) }]),
+            text: _ctx.placeholder,
             onClick: handleTextareaFocus
-          }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+          }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
           unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
             key: 3,
             style: normalizeStyle(countStyle.value),
@@ -20807,12 +20861,13 @@ const _sfc_main$2f = /* @__PURE__ */ defineComponent({
         onTouchstartPassive: handleTouchStart
       }, [
         renderSlot(_ctx.$slots, "prefix"),
-        _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
+        _ctx.floatLabel ? (openBlock(), createBlock(ElFloatLabel, {
           key: 0,
           class: normalizeClass(["dateRangeLabel", {
             "range-label-float": _ctx.pickerVisible || _ctx.modelValue && _ctx.modelValue.length > 1 || unref(isError)
-          }])
-        }, toDisplayString(_ctx.floatLabel), 3)) : createCommentVNode("v-if", true),
+          }]),
+          text: _ctx.floatLabel
+        }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
         createElementVNode("input", mergeProps(unref(attrs), {
           id: unref(inputId),
           ref_key: "inputRef",
@@ -40687,7 +40742,7 @@ const useSelect$2 = (props, emit) => {
       return props.loadingText || t("el.select.loading");
     } else {
       if (props.filterable && states.inputValue && hasOptions.value && filteredOptions.value.length === 0) {
-        return props.noMatchText || t("el.select.noMatch");
+        return props.noMatchText || t("el.select.noData");
       }
       if (!hasOptions.value) {
         return props.noDataText || t("el.select.noData");
@@ -41503,9 +41558,67 @@ const useSelect$2 = (props, emit) => {
 };
 var useSelect$3 = useSelect$2;
 
+const useSelectionTooltip = (selectionRef, collapseItemRef, multiple, hasModelValue) => {
+  const ns = useNamespace("select");
+  const tooltip = reactive({
+    visible: false,
+    content: "",
+    reference: void 0
+  });
+  let hoveredTarget;
+  const hide = () => {
+    hoveredTarget = void 0;
+    tooltip.visible = false;
+  };
+  const update = () => {
+    var _a, _b;
+    const selection = selectionRef.value;
+    if (!hasModelValue.value || !selection || !hoveredTarget || !selection.contains(hoveredTarget)) {
+      hide();
+      return;
+    }
+    let item = null;
+    if (multiple.value) {
+      item = hoveredTarget;
+      while (item !== selection && item.parentElement !== selection) {
+        item = item.parentElement;
+      }
+      if (item === selection || item === collapseItemRef.value || item.classList.contains(ns.e("input-wrapper"))) {
+        tooltip.visible = false;
+        return;
+      }
+    } else {
+      item = selection.querySelector(`.${ns.e("placeholder")}`);
+    }
+    if (!item) {
+      tooltip.visible = false;
+      return;
+    }
+    const overflowing = [item, ...item.querySelectorAll("*")].some((element) => {
+      const style = getComputedStyle(element);
+      return element.clientWidth > 0 && element.scrollWidth > element.clientWidth && style.overflowX !== "visible" || element.clientHeight > 0 && element.scrollHeight > element.clientHeight && style.overflowY !== "visible";
+    });
+    const itemRect = item.getBoundingClientRect();
+    const selectionRect = selection.getBoundingClientRect();
+    const selectionStyle = getComputedStyle(selection);
+    const clipped = selectionStyle.overflowX !== "visible" && (itemRect.left < selectionRect.left - 1 || itemRect.right > selectionRect.right + 1) || selectionStyle.overflowY !== "visible" && (itemRect.top < selectionRect.top - 1 || itemRect.bottom > selectionRect.bottom + 1);
+    tooltip.content = (_b = (_a = item.textContent) == null ? void 0 : _a.trim()) != null ? _b : "";
+    tooltip.reference = item;
+    tooltip.visible = !!tooltip.content && (overflowing || clipped);
+  };
+  const handleMouseMove = (event) => {
+    hoveredTarget = event.target;
+    update();
+  };
+  useResizeObserver(selectionRef, update);
+  onUpdated(update);
+  return { tooltip, handleMouseMove, hide };
+};
+
 const _sfc_main$1b = defineComponent({
   name: "ElSelectV2",
   components: {
+    ElFloatLabel,
     ElSelectMenu: ElSelectMenu$1,
     ElTag,
     ElTooltip,
@@ -41528,6 +41641,11 @@ const _sfc_main$1b = defineComponent({
       ...toRefs(props),
       modelValue
     }), emit);
+    const {
+      tooltip: selectionTooltip,
+      handleMouseMove: handleSelectionMouseMove,
+      hide: hideSelectionTooltip
+    } = useSelectionTooltip(API.selectionRef, API.collapseItemRef, computed(() => props.multiple), API.hasModelValue);
     const { calculatorRef, inputStyle } = useCalcInputWidth();
     const contentId = useId();
     const validateError = computed(() => (API == null ? void 0 : API.validateState.value) === "error");
@@ -41595,6 +41713,9 @@ const _sfc_main$1b = defineComponent({
     });
     return {
       ...API,
+      selectionTooltip,
+      handleSelectionMouseMove,
+      hideSelectionTooltip,
       modelValue,
       selectedLabel,
       calculatorRef,
@@ -41614,6 +41735,7 @@ const _sfc_main$1b = defineComponent({
   }
 });
 function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_el_float_label = resolveComponent("el-float-label");
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
@@ -41690,15 +41812,18 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.nsSelect.is("value", _ctx.hasModelValue),
                     _ctx.nsSelect.is("multiple", _ctx.multiple)
                   ]),
-                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
+                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"]),
+                  onMousemove: _ctx.handleSelectionMouseMove,
+                  onMouseleave: _ctx.hideSelectionTooltip
                 }, [
-                  _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
+                  _ctx.floatLabel ? (openBlock(), createBlock(_component_el_float_label, {
                     key: 0,
                     class: normalizeClass(["float-label", {
                       "prefix-label": _ctx.$slots.prefix,
                       "select-visible": _ctx.dropdownMenuVisible || !!_ctx.states.inputValue
-                    }])
-                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+                    }]),
+                    text: _ctx.placeholder
+                  }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
                   _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
                     key: 1,
                     ref: "prefixRef",
@@ -41955,7 +42080,7 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
                       _: 1
                     }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true)
                   ], 2)
-                ], 10, ["onClick"])
+                ], 42, ["onClick", "onMousemove", "onMouseleave"])
               ];
             }),
             content: withCtx(() => [
@@ -42007,7 +42132,10 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
                   name: "empty",
                   fn: withCtx(() => [
                     createElementVNode("div", {
-                      class: normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
+                      class: normalizeClass([
+                        _ctx.nsSelect.be("dropdown", "empty"),
+                        _ctx.nsSelect.is("no-data", !_ctx.loading && !_ctx.$slots.empty)
+                      ])
                     }, [
                       renderSlot(_ctx.$slots, "empty", {}, () => [
                         createElementVNode("span", null, toDisplayString(_ctx.emptyText), 1)
@@ -42060,7 +42188,19 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
         ], 2)
       ]),
       _: 3
-    }, 8, ["placement", "content", "disabled", "visible"])
+    }, 8, ["placement", "content", "disabled", "visible"]),
+    _ctx.selectionTooltip.visible ? (openBlock(), createBlock(_component_el_tooltip, {
+      key: 0,
+      visible: _ctx.selectionTooltip.visible,
+      "virtual-ref": _ctx.selectionTooltip.reference,
+      content: _ctx.selectionTooltip.content,
+      teleported: _ctx.teleported,
+      "append-to": _ctx.appendTo,
+      enterable: false,
+      "virtual-triggering": "",
+      effect: "light",
+      placement: "top"
+    }, null, 8, ["visible", "virtual-ref", "content", "teleported", "append-to"])) : createCommentVNode("v-if", true)
   ], 42, ["onMouseenter", "onMouseleave"])), [
     [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
   ]);
@@ -45193,7 +45333,7 @@ const useSelect$1 = (props, emit) => {
       return props.loadingText || t("el.select.loading");
     } else {
       if (props.filterable && states.inputValue && states.options.size > 0 && filteredOptionsCount.value === 0) {
-        return props.noMatchText || t("el.select.noMatch");
+        return props.noMatchText || t("el.select.noData");
       }
       if (states.options.size === 0) {
         return props.noDataText || t("el.select.noData");
@@ -46178,6 +46318,7 @@ const _sfc_main$Z = defineComponent({
   name: COMPONENT_NAME$a,
   componentName: COMPONENT_NAME$a,
   components: {
+    ElFloatLabel,
     ElSelectMenu,
     ElOption: Option,
     ElOptions,
@@ -46225,6 +46366,11 @@ const _sfc_main$Z = defineComponent({
       modelValue
     });
     const API = useSelect$1(_props, emit);
+    const {
+      tooltip: selectionTooltip,
+      handleMouseMove: handleSelectionMouseMove,
+      hide: hideSelectionTooltip
+    } = useSelectionTooltip(API.selectionRef, API.collapseItemRef, computed(() => props.multiple), API.hasModelValue);
     const { calculatorRef, inputStyle } = useCalcInputWidth();
     const { getLabel, getValue, getOptions, getDisabled, getTip } = useProps(props);
     const validateError = computed(() => (API == null ? void 0 : API.validateState.value) === "error");
@@ -46347,6 +46493,9 @@ const _sfc_main$Z = defineComponent({
     });
     return {
       ...API,
+      selectionTooltip,
+      handleSelectionMouseMove,
+      hideSelectionTooltip,
       modelValue,
       selectedLabel,
       calculatorRef,
@@ -46371,6 +46520,7 @@ const _sfc_main$Z = defineComponent({
   }
 });
 function _sfc_render$8(_ctx, _cache) {
+  const _component_el_float_label = resolveComponent("el-float-label");
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
@@ -46451,15 +46601,18 @@ function _sfc_render$8(_ctx, _cache) {
                     _ctx.nsSelect.is("value", _ctx.hasModelValue),
                     _ctx.nsSelect.is("multiple", _ctx.multiple)
                   ]),
-                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"])
+                  onClick: withModifiers(_ctx.handleSelectClick, ["prevent"]),
+                  onMousemove: _ctx.handleSelectionMouseMove,
+                  onMouseleave: _ctx.hideSelectionTooltip
                 }, [
-                  _ctx.floatLabel ? (openBlock(), createElementBlock("span", {
+                  _ctx.floatLabel ? (openBlock(), createBlock(_component_el_float_label, {
                     key: 0,
                     class: normalizeClass(["float-label", {
                       "prefix-label": _ctx.$slots.prefix,
                       "select-visible": _ctx.dropdownMenuVisible || !_ctx.isEmpty(_ctx.states.inputValue)
-                    }])
-                  }, toDisplayString(_ctx.placeholder), 3)) : createCommentVNode("v-if", true),
+                    }]),
+                    text: _ctx.placeholder
+                  }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
                   _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
                     key: 1,
                     ref: "prefixRef",
@@ -46726,7 +46879,7 @@ function _sfc_render$8(_ctx, _cache) {
                     }, 8, ["class", "onClick"])) : createCommentVNode("v-if", true),
                     _ctx.$slots.suffixAfterIcon ? renderSlot(_ctx.$slots, "suffixAfterIcon", { key: 4 }) : createCommentVNode("v-if", true)
                   ], 2)
-                ], 10, ["onClick"])
+                ], 42, ["onClick", "onMousemove", "onMouseleave"])
               ];
             }),
             content: withCtx(() => [
@@ -46818,7 +46971,10 @@ function _sfc_render$8(_ctx, _cache) {
                     renderSlot(_ctx.$slots, "loading")
                   ], 2)) : _ctx.loading || _ctx.filteredOptionsCount === 0 ? (openBlock(), createElementBlock("div", {
                     key: 2,
-                    class: normalizeClass(_ctx.nsSelect.be("dropdown", "empty"))
+                    class: normalizeClass([
+                      _ctx.nsSelect.be("dropdown", "empty"),
+                      _ctx.nsSelect.is("no-data", !_ctx.loading && !_ctx.$slots.empty && !_ctx.addItem)
+                    ])
                   }, [
                     renderSlot(_ctx.$slots, "empty", {}, () => [
                       !_ctx.addItem ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(_ctx.emptyText), 1)) : (openBlock(), createElementBlock("div", {
@@ -46896,7 +47052,19 @@ function _sfc_render$8(_ctx, _cache) {
         ], 2)
       ]),
       _: 3
-    }, 8, ["placement", "content", "disabled", "visible"])
+    }, 8, ["placement", "content", "disabled", "visible"]),
+    _ctx.selectionTooltip.visible ? (openBlock(), createBlock(_component_el_tooltip, {
+      key: 0,
+      visible: _ctx.selectionTooltip.visible,
+      "virtual-ref": _ctx.selectionTooltip.reference,
+      content: _ctx.selectionTooltip.content,
+      teleported: _ctx.teleported,
+      "append-to": _ctx.appendTo,
+      enterable: false,
+      "virtual-triggering": "",
+      effect: "light",
+      placement: "top"
+    }, null, 8, ["visible", "virtual-ref", "content", "teleported", "append-to"])) : createCommentVNode("v-if", true)
   ], 16, ["onMouseleave"])), [
     [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
   ]);

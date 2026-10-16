@@ -1,4 +1,5 @@
 import '../../base/style/css.mjs';
+import '../../tooltip/style/css.mjs';
 import '../../tag/style/css.mjs';
 import '../../radio/style/css.mjs';
 import '../../option/style/css.mjs';

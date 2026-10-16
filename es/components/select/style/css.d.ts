@@ -1,4 +1,5 @@
 import 'element-plus/es/components/base/style/css';
+import 'element-plus/es/components/tooltip/style/css';
 import 'element-plus/es/components/tag/style/css';
 import 'element-plus/es/components/radio/style/css';
 import 'element-plus/es/components/option/style/css';

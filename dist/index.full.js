@@ -13010,6 +13010,7 @@
       default: ""
     },
     inline: Boolean,
+    gapItem: Boolean,
     inlineMessage: Boolean,
     statusIcon: Boolean,
     showMessage: {
@@ -14457,6 +14458,7 @@
         ns.is("no-asterisk", formContext == null ? void 0 : formContext.hideRequiredAsterisk),
         (formContext == null ? void 0 : formContext.requireAsteriskPosition) === "right" ? "asterisk-right" : "asterisk-left",
         {
+          [ns.m("gap-item")]: formContext == null ? void 0 : formContext.gapItem,
           [ns.m("feedback")]: formContext == null ? void 0 : formContext.statusIcon,
           [ns.m(`label-${labelPosition.value}`)]: labelPosition.value
         }

@@ -22,6 +22,7 @@ export declare const formProps: {
     readonly labelWidth: import("element-plus/es/utils").EpPropFinalized<readonly [StringConstructor, NumberConstructor], unknown, unknown, "", boolean>;
     readonly labelSuffix: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly inline: BooleanConstructor;
+    readonly gapItem: BooleanConstructor;
     readonly inlineMessage: BooleanConstructor;
     readonly statusIcon: BooleanConstructor;
     readonly showMessage: import("element-plus/es/utils").EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;

@@ -35,6 +35,7 @@ const formProps = buildProps({
     default: ""
   },
   inline: Boolean,
+  gapItem: Boolean,
   inlineMessage: Boolean,
   statusIcon: Boolean,
   showMessage: {

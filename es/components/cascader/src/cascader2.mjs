@@ -1,11 +1,11 @@
 import { placements } from '@popperjs/core';
 import { CircleClose } from '@element-plus/icons-vue';
 import { CommonProps } from '../../cascader-panel/src/config.mjs';
-import { tagProps } from '../../tag/src/tag.mjs';
+import { tagProps } from '../../tag/src/tag2.mjs';
 import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs';
 import { useSizeProp } from '../../../hooks/use-size/index.mjs';
 import { iconPropType } from '../../../utils/vue/icon.mjs';
-import { useTooltipContentProps } from '../../tooltip/src/content.mjs';
+import { useTooltipContentProps } from '../../tooltip/src/content2.mjs';
 import { useEmptyValuesProps } from '../../../hooks/use-empty-values/index.mjs';
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../constants/event.mjs';
 import { isBoolean } from '../../../utils/types.mjs';

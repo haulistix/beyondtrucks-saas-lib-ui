@@ -106,6 +106,10 @@ $form-item-label-top-margin-bottom: map.merge(
     }
   }
 
+  @include m(gap-item) {
+    margin-bottom: 0;
+  }
+
   @include m(label-left) {
     .#{$namespace}-form-item__label {
       text-align: left;

@@ -3267,6 +3267,7 @@ declare const __VLS_component_43: DefineComponent<{
     ], unknown, unknown, "", boolean>;
     readonly labelSuffix: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly inline: BooleanConstructor;
+    readonly gapItem: BooleanConstructor;
     readonly inlineMessage: BooleanConstructor;
     readonly statusIcon: BooleanConstructor;
     readonly showMessage: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
@@ -3901,6 +3902,7 @@ declare const __VLS_component_43: DefineComponent<{
     ], unknown, unknown, "", boolean>;
     readonly labelSuffix: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly inline: BooleanConstructor;
+    readonly gapItem: BooleanConstructor;
     readonly inlineMessage: BooleanConstructor;
     readonly statusIcon: BooleanConstructor;
     readonly showMessage: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;
@@ -3931,6 +3933,7 @@ declare const __VLS_component_43: DefineComponent<{
     readonly labelSuffix: string;
     readonly validateOnRuleChange: EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly scrollIntoViewOptions: EpPropMergeType<(new (...args: any[]) => boolean | ScrollIntoViewOptions) | (() => boolean | ScrollIntoViewOptions) | ((new (...args: any[]) => boolean | ScrollIntoViewOptions) | (() => boolean | ScrollIntoViewOptions))[], unknown, unknown>;
+    readonly gapItem: boolean;
     readonly statusIcon: boolean;
     readonly hideRequiredAsterisk: boolean;
     readonly scrollToError: boolean;
@@ -23121,6 +23124,7 @@ export declare const formProps: {
     ], unknown, unknown, "", boolean>;
     readonly labelSuffix: EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly inline: BooleanConstructor;
+    readonly gapItem: BooleanConstructor;
     readonly inlineMessage: BooleanConstructor;
     readonly statusIcon: BooleanConstructor;
     readonly showMessage: EpPropFinalized<BooleanConstructor, unknown, unknown, true, boolean>;

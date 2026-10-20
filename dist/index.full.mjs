@@ -70862,6 +70862,14 @@ const message = (options = {}, context) => {
       return instance2.handler;
     }
   }
+  if (isString$1(normalized.message) && normalized.message) {
+    const instance2 = instances.find(({ props, vm, vnode }) => {
+      var _a;
+      return vm.exposed.visible.value && props.message === normalized.message && props.type === normalized.type && props.title === normalized.title && props.dangerouslyUseHTMLString === normalized.dangerouslyUseHTMLString && ((_a = vnode.el) == null ? void 0 : _a.parentNode) === normalized.appendTo;
+    });
+    if (instance2)
+      return instance2.handler;
+  }
   if (isNumber(messageConfig.max) && instances.length >= messageConfig.max) {
     return { close: () => void 0 };
   }

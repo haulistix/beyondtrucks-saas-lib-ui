@@ -4,8 +4,8 @@ import { messageTypes, MESSAGE_DEFAULT_PLACEMENT, messageDefaults, messagePlacem
 import { getOrCreatePlacementInstances, placementInstances } from './instance.mjs';
 import { messageConfig } from '../../config-provider/src/config-provider.mjs';
 import { isClient } from '@vueuse/core';
+import { isString, hasOwn, isFunction } from '@vue/shared';
 import { isNumber, isBoolean, isElement } from '../../../utils/types.mjs';
-import { hasOwn, isString, isFunction } from '@vue/shared';
 import { debugWarn } from '../../../utils/error.mjs';
 
 let seed = 1;
@@ -119,6 +119,14 @@ const message = (options = {}, context) => {
       instance2.props.type = normalized.type;
       return instance2.handler;
     }
+  }
+  if (isString(normalized.message) && normalized.message) {
+    const instance2 = instances.find(({ props, vm, vnode }) => {
+      var _a;
+      return vm.exposed.visible.value && props.message === normalized.message && props.type === normalized.type && props.title === normalized.title && props.dangerouslyUseHTMLString === normalized.dangerouslyUseHTMLString && ((_a = vnode.el) == null ? void 0 : _a.parentNode) === normalized.appendTo;
+    });
+    if (instance2)
+      return instance2.handler;
   }
   if (isNumber(messageConfig.max) && instances.length >= messageConfig.max) {
     return { close: () => void 0 };

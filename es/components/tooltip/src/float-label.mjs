@@ -10,16 +10,21 @@ const __default__ = defineComponent({
 const _sfc_main = /* @__PURE__ */ defineComponent({
   ...__default__,
   props: {
-    text: null
+    text: null,
+    immediate: { type: Boolean }
   },
-  setup(__props) {
+  emits: ["before-show"],
+  setup(__props, { expose, emit }) {
     const props = __props;
     const labelRef = ref();
     const visible = ref(false);
     let hovering = false;
     const updateOverflow = () => {
       const label = labelRef.value;
-      visible.value = Boolean(hovering && label && label.scrollWidth > label.clientWidth);
+      const nextVisible = Boolean(hovering && label && label.scrollWidth > label.clientWidth);
+      if (nextVisible && !visible.value)
+        emit("before-show");
+      visible.value = nextVisible;
     };
     const handleMouseEnter = () => {
       hovering = true;
@@ -31,12 +36,16 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
     useResizeObserver(labelRef, updateOverflow);
     watch(() => props.text, updateOverflow, { flush: "post" });
+    expose({ hide: handleMouseLeave });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(ElTooltip, {
         content: __props.text,
         visible: visible.value,
         enterable: false,
         "trigger-keys": [],
+        "show-after": 0,
+        "hide-after": __props.immediate ? 0 : void 0,
+        transition: __props.immediate ? "none" : void 0,
         effect: "light",
         placement: "top"
       }, {
@@ -49,7 +58,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           }), toDisplayString(__props.text), 17)
         ]),
         _: 1
-      }, 8, ["content", "visible"]);
+      }, 8, ["content", "visible", "hide-after", "transition"]);
     };
   }
 });

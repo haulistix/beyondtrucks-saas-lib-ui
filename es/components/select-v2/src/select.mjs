@@ -42,6 +42,7 @@ const _sfc_main = defineComponent({
       ...toRefs(props),
       modelValue
     }), emit);
+    const floatLabelRef = ref();
     const {
       tooltip: selectionTooltip,
       handleMouseMove: handleSelectionMouseMove,
@@ -115,6 +116,7 @@ const _sfc_main = defineComponent({
     return {
       ...API,
       selectionTooltip,
+      floatLabelRef,
       handleSelectionMouseMove,
       hideSelectionTooltip,
       modelValue,
@@ -166,7 +168,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       offset: 4,
       content: _ctx.errorTooltipContent,
       disabled: _ctx.errorTooltipDisabled,
-      visible: _ctx.errorTooltipVisible
+      visible: _ctx.errorTooltipVisible,
+      "show-after": 0,
+      "hide-after": 0,
+      transition: "none"
     }, {
       default: withCtx(() => [
         createElementVNode("div", {
@@ -219,12 +224,15 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                 }, [
                   _ctx.floatLabel ? (openBlock(), createBlock(_component_el_float_label, {
                     key: 0,
+                    ref: "floatLabelRef",
+                    immediate: "",
                     class: normalizeClass(["float-label", {
                       "prefix-label": _ctx.$slots.prefix,
                       "select-visible": _ctx.dropdownMenuVisible || !!_ctx.states.inputValue
                     }]),
-                    text: _ctx.placeholder
-                  }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
+                    text: _ctx.placeholder,
+                    onBeforeShow: _ctx.hideSelectionTooltip
+                  }, null, 8, ["text", "class", "onBeforeShow"])) : createCommentVNode("v-if", true),
                   _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
                     key: 1,
                     ref: "prefixRef",
@@ -282,6 +290,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                       _ctx.collapseTags && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {
                         key: 1,
                         ref: "tagTooltipRef",
+                        "show-after": 0,
+                        "hide-after": 0,
+                        transition: "none",
                         disabled: _ctx.dropdownMenuVisible || !_ctx.collapseTagsTooltip,
                         "fallback-placements": ["bottom", "top", "right", "left"],
                         effect: _ctx.effect,
@@ -595,13 +606,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       visible: _ctx.selectionTooltip.visible,
       "virtual-ref": _ctx.selectionTooltip.reference,
       content: _ctx.selectionTooltip.content,
+      "show-after": 0,
+      "hide-after": 0,
+      transition: "none",
       teleported: _ctx.teleported,
       "append-to": _ctx.appendTo,
       enterable: false,
       "virtual-triggering": "",
       effect: "light",
-      placement: "top"
-    }, null, 8, ["visible", "virtual-ref", "content", "teleported", "append-to"])) : createCommentVNode("v-if", true)
+      placement: "top",
+      onBeforeShow: ($event) => {
+        var _a;
+        return (_a = _ctx.floatLabelRef) == null ? void 0 : _a.hide();
+      }
+    }, null, 8, ["visible", "virtual-ref", "content", "teleported", "append-to", "onBeforeShow"])) : createCommentVNode("v-if", true)
   ], 42, ["onMouseenter", "onMouseleave"])), [
     [_directive_click_outside, _ctx.handleSelectClickOutside, _ctx.popperRef]
   ]);

@@ -40,7 +40,7 @@ const useSelectionTooltip = (selectionRef, collapseItemRef, multiple, hasModelVa
     }
     const overflowing = [item, ...item.querySelectorAll("*")].some((element) => {
       const style = getComputedStyle(element);
-      return element.clientWidth > 0 && element.scrollWidth > element.clientWidth && style.overflowX !== "visible" || element.clientHeight > 0 && element.scrollHeight > element.clientHeight && style.overflowY !== "visible";
+      return element.clientWidth > 0 && element.scrollWidth > element.clientWidth + 1 && style.overflowX !== "visible" || element.clientHeight > 0 && element.scrollHeight > element.clientHeight + 1 && style.overflowY !== "visible";
     });
     const itemRect = item.getBoundingClientRect();
     const selectionRect = selection.getBoundingClientRect();

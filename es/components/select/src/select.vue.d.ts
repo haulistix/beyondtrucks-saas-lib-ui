@@ -142,6 +142,75 @@ declare const _default: import("vue").DefineComponent<{
         content: string;
         reference: HTMLElement | undefined;
     };
+    floatLabelRef: import("vue").Ref<({
+        $: import("vue").ComponentInternalInstance;
+        $data: {};
+        $props: Partial<{}> & Omit<Readonly<import("vue").ExtractPropTypes<{
+            text: {
+                type: import("vue").PropType<string>;
+            };
+            immediate: {
+                type: import("vue").PropType<boolean>;
+            };
+        }>> & {
+            "onBefore-show"?: ((...args: any[]) => any) | undefined;
+        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, never>;
+        $attrs: {
+            [x: string]: unknown;
+        };
+        $refs: {
+            [x: string]: unknown;
+        };
+        $slots: import("vue").Slots;
+        $root: import("vue").ComponentPublicInstance | null;
+        $parent: import("vue").ComponentPublicInstance | null;
+        $emit: (event: "before-show", ...args: any[]) => void;
+        $el: any;
+        $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
+            text: {
+                type: import("vue").PropType<string>;
+            };
+            immediate: {
+                type: import("vue").PropType<boolean>;
+            };
+        }>> & {
+            "onBefore-show"?: ((...args: any[]) => any) | undefined;
+        }, {
+            hide: () => void;
+        }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+            "before-show": (...args: any[]) => void;
+        }, string, {}> & {
+            beforeCreate?: (() => void) | (() => void)[];
+            created?: (() => void) | (() => void)[];
+            beforeMount?: (() => void) | (() => void)[];
+            mounted?: (() => void) | (() => void)[];
+            beforeUpdate?: (() => void) | (() => void)[];
+            updated?: (() => void) | (() => void)[];
+            activated?: (() => void) | (() => void)[];
+            deactivated?: (() => void) | (() => void)[];
+            beforeDestroy?: (() => void) | (() => void)[];
+            beforeUnmount?: (() => void) | (() => void)[];
+            destroyed?: (() => void) | (() => void)[];
+            unmounted?: (() => void) | (() => void)[];
+            renderTracked?: ((e: import("vue").DebuggerEvent) => void) | ((e: import("vue").DebuggerEvent) => void)[];
+            renderTriggered?: ((e: import("vue").DebuggerEvent) => void) | ((e: import("vue").DebuggerEvent) => void)[];
+            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance | null, info: string) => boolean | void) | ((err: unknown, instance: import("vue").ComponentPublicInstance | null, info: string) => boolean | void)[];
+        };
+        $forceUpdate: () => void;
+        $nextTick: typeof import("vue").nextTick;
+        $watch(source: string | Function, cb: Function, options?: import("vue").WatchOptions): import("vue").WatchStopHandle;
+    } & Readonly<import("vue").ExtractPropTypes<{
+        text: {
+            type: import("vue").PropType<string>;
+        };
+        immediate: {
+            type: import("vue").PropType<boolean>;
+        };
+    }>> & {
+        "onBefore-show"?: ((...args: any[]) => any) | undefined;
+    } & import("vue").ShallowUnwrapRef<{
+        hide: () => void;
+    }> & {} & import("vue").ComponentCustomProperties) | undefined>;
     handleSelectionMouseMove: (event: MouseEvent) => void;
     hideSelectionTooltip: () => void;
     modelValue: import("vue").ComputedRef<string | number | boolean | any[] | Record<string, any> | null | undefined>;

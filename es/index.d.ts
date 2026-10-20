@@ -17032,6 +17032,75 @@ declare const _default_75: DefineComponent<{
         content: string;
         reference: HTMLElement | undefined;
     };
+    floatLabelRef: Ref<({
+        $: ComponentInternalInstance;
+        $data: {};
+        $props: Partial<{}> & Omit<Readonly<ExtractPropTypes<{
+            text: {
+                type: PropType<string>;
+            };
+            immediate: {
+                type: PropType<boolean>;
+            };
+        }>> & {
+            "onBefore-show"?: ((...args: any[]) => any) | undefined;
+        } & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>;
+        $attrs: {
+            [x: string]: unknown;
+        };
+        $refs: {
+            [x: string]: unknown;
+        };
+        $slots: Slots;
+        $root: ComponentPublicInstance | null;
+        $parent: ComponentPublicInstance | null;
+        $emit: (event: "before-show", ...args: any[]) => void;
+        $el: any;
+        $options: ComponentOptionsBase<Readonly<ExtractPropTypes<{
+            text: {
+                type: PropType<string>;
+            };
+            immediate: {
+                type: PropType<boolean>;
+            };
+        }>> & {
+            "onBefore-show"?: ((...args: any[]) => any) | undefined;
+        }, {
+            hide: () => void;
+        }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+            "before-show": (...args: any[]) => void;
+        }, string, {}> & {
+            beforeCreate?: (() => void) | (() => void)[];
+            created?: (() => void) | (() => void)[];
+            beforeMount?: (() => void) | (() => void)[];
+            mounted?: (() => void) | (() => void)[];
+            beforeUpdate?: (() => void) | (() => void)[];
+            updated?: (() => void) | (() => void)[];
+            activated?: (() => void) | (() => void)[];
+            deactivated?: (() => void) | (() => void)[];
+            beforeDestroy?: (() => void) | (() => void)[];
+            beforeUnmount?: (() => void) | (() => void)[];
+            destroyed?: (() => void) | (() => void)[];
+            unmounted?: (() => void) | (() => void)[];
+            renderTracked?: ((e: DebuggerEvent) => void) | ((e: DebuggerEvent) => void)[];
+            renderTriggered?: ((e: DebuggerEvent) => void) | ((e: DebuggerEvent) => void)[];
+            errorCaptured?: ((err: unknown, instance: ComponentPublicInstance | null, info: string) => boolean | void) | ((err: unknown, instance: ComponentPublicInstance | null, info: string) => boolean | void)[];
+        };
+        $forceUpdate: () => void;
+        $nextTick: nextTick;
+        $watch(source: string | Function, cb: Function, options?: WatchOptions): WatchStopHandle;
+    } & Readonly<ExtractPropTypes<{
+        text: {
+            type: PropType<string>;
+        };
+        immediate: {
+            type: PropType<boolean>;
+        };
+    }>> & {
+        "onBefore-show"?: ((...args: any[]) => any) | undefined;
+    } & ShallowUnwrapRef<{
+        hide: () => void;
+    }> & {} & ComponentCustomProperties) | undefined>;
     handleSelectionMouseMove: (event: MouseEvent) => void;
     hideSelectionTooltip: () => void;
     modelValue: ComputedRef<string | number | boolean | any[] | Record<string, any> | null | undefined>;
@@ -17833,6 +17902,75 @@ declare const _default_78: DefineComponent<{
         content: string;
         reference: HTMLElement | undefined;
     };
+    floatLabelRef: Ref<({
+        $: ComponentInternalInstance;
+        $data: {};
+        $props: Partial<{}> & Omit<Readonly<ExtractPropTypes<{
+            text: {
+                type: PropType<string>;
+            };
+            immediate: {
+                type: PropType<boolean>;
+            };
+        }>> & {
+            "onBefore-show"?: ((...args: any[]) => any) | undefined;
+        } & VNodeProps & AllowedComponentProps & ComponentCustomProps, never>;
+        $attrs: {
+            [x: string]: unknown;
+        };
+        $refs: {
+            [x: string]: unknown;
+        };
+        $slots: Slots;
+        $root: ComponentPublicInstance | null;
+        $parent: ComponentPublicInstance | null;
+        $emit: (event: "before-show", ...args: any[]) => void;
+        $el: any;
+        $options: ComponentOptionsBase<Readonly<ExtractPropTypes<{
+            text: {
+                type: PropType<string>;
+            };
+            immediate: {
+                type: PropType<boolean>;
+            };
+        }>> & {
+            "onBefore-show"?: ((...args: any[]) => any) | undefined;
+        }, {
+            hide: () => void;
+        }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+            "before-show": (...args: any[]) => void;
+        }, string, {}> & {
+            beforeCreate?: (() => void) | (() => void)[];
+            created?: (() => void) | (() => void)[];
+            beforeMount?: (() => void) | (() => void)[];
+            mounted?: (() => void) | (() => void)[];
+            beforeUpdate?: (() => void) | (() => void)[];
+            updated?: (() => void) | (() => void)[];
+            activated?: (() => void) | (() => void)[];
+            deactivated?: (() => void) | (() => void)[];
+            beforeDestroy?: (() => void) | (() => void)[];
+            beforeUnmount?: (() => void) | (() => void)[];
+            destroyed?: (() => void) | (() => void)[];
+            unmounted?: (() => void) | (() => void)[];
+            renderTracked?: ((e: DebuggerEvent) => void) | ((e: DebuggerEvent) => void)[];
+            renderTriggered?: ((e: DebuggerEvent) => void) | ((e: DebuggerEvent) => void)[];
+            errorCaptured?: ((err: unknown, instance: ComponentPublicInstance | null, info: string) => boolean | void) | ((err: unknown, instance: ComponentPublicInstance | null, info: string) => boolean | void)[];
+        };
+        $forceUpdate: () => void;
+        $nextTick: nextTick;
+        $watch(source: string | Function, cb: Function, options?: WatchOptions): WatchStopHandle;
+    } & Readonly<ExtractPropTypes<{
+        text: {
+            type: PropType<string>;
+        };
+        immediate: {
+            type: PropType<boolean>;
+        };
+    }>> & {
+        "onBefore-show"?: ((...args: any[]) => any) | undefined;
+    } & ShallowUnwrapRef<{
+        hide: () => void;
+    }> & {} & ComponentCustomProperties) | undefined>;
     handleSelectionMouseMove: (event: MouseEvent) => void;
     hideSelectionTooltip: () => void;
     modelValue: ComputedRef<any>;

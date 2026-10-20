@@ -143,6 +143,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       createVNode(_component_el_tooltip, {
         ref: "tooltipRef",
         effect: "light",
+        "show-after": 0,
+        "hide-after": 0,
+        transition: "none",
         disabled: _ctx.select.props.showOptionTooltip === false || !_ctx.isTextOverflowing,
         placement: "right",
         "popper-class": "tipPopperClass"

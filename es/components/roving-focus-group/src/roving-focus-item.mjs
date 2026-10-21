@@ -1,5 +1,5 @@
 import { defineComponent, inject, ref, computed, unref, provide, resolveComponent, openBlock, createBlock, withCtx, renderSlot } from 'vue';
-import { ElCollectionItem } from './roving-focus-group.mjs';
+import { ElCollectionItem } from './roving-focus-group2.mjs';
 import { ROVING_FOCUS_GROUP_INJECTION_KEY, ROVING_FOCUS_GROUP_ITEM_INJECTION_KEY } from './tokens.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useId } from '../../../hooks/use-id/index.mjs';

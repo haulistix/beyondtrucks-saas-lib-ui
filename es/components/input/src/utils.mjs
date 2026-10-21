@@ -48,11 +48,11 @@ function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
   var _a, _b;
   if (!hiddenTextarea) {
     hiddenTextarea = document.createElement("textarea");
+    Object.entries(HIDDEN_STYLE).forEach(([key, value]) => hiddenTextarea == null ? void 0 : hiddenTextarea.style.setProperty(key, value, "important"));
     ((_a = targetElement.parentNode) != null ? _a : document.body).appendChild(hiddenTextarea);
   }
   const { paddingSize, borderSize, boxSizing, contextStyle } = calculateNodeStyling(targetElement);
   contextStyle.forEach(([key, value]) => hiddenTextarea == null ? void 0 : hiddenTextarea.style.setProperty(key, value));
-  Object.entries(HIDDEN_STYLE).forEach(([key, value]) => hiddenTextarea == null ? void 0 : hiddenTextarea.style.setProperty(key, value, "important"));
   hiddenTextarea.value = targetElement.value || targetElement.placeholder || "";
   let height = hiddenTextarea.scrollHeight;
   const result = {};

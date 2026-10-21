@@ -11555,11 +11555,13 @@ declare function __VLS_template_29(): {
 };
 declare function __VLS_template_3(): {
     prepend?(_: {}): any;
+    textareaPrefix?(_: {}): any;
+    textareaPrefix?(_: {}): any;
     prefix?(_: {}): any;
+    textareaSuffix?(_: {}): any;
+    textareaSuffix?(_: {}): any;
     suffix?(_: {}): any;
     append?(_: {}): any;
-    textareaPrefix?(_: {}): any;
-    textareaSuffix?(_: {}): any;
 };
 declare function __VLS_template_30(): {
     title?(_: {

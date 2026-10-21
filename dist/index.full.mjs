@@ -16720,11 +16720,11 @@ function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
   var _a, _b;
   if (!hiddenTextarea) {
     hiddenTextarea = document.createElement("textarea");
+    Object.entries(HIDDEN_STYLE).forEach(([key, value]) => hiddenTextarea == null ? void 0 : hiddenTextarea.style.setProperty(key, value, "important"));
     ((_a = targetElement.parentNode) != null ? _a : document.body).appendChild(hiddenTextarea);
   }
   const { paddingSize, borderSize, boxSizing, contextStyle } = calculateNodeStyling(targetElement);
   contextStyle.forEach(([key, value]) => hiddenTextarea == null ? void 0 : hiddenTextarea.style.setProperty(key, value));
-  Object.entries(HIDDEN_STYLE).forEach(([key, value]) => hiddenTextarea == null ? void 0 : hiddenTextarea.style.setProperty(key, value, "important"));
   hiddenTextarea.value = targetElement.value || targetElement.placeholder || "";
   let height = hiddenTextarea.scrollHeight;
   const result = {};
@@ -16771,8 +16771,11 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     const attrs = useAttrs();
     const slots = useSlots();
     const isTextarea = computed(() => props.type === "textarea" || props.expand && (props.type === "text" || props.type === "input"));
+    const useInputLayout = computed(() => !isTextarea.value || !!(slots.prefix || slots.suffix || slots.prepend || slots.append || props.prefixIcon || props.suffixIcon || props.clearable || showInfoTipIcon.value));
     const containerKls = computed(() => [
       isTextarea.value ? nsTextarea.b() : nsInput.b(),
+      isTextarea.value && useInputLayout.value ? nsInput.b() : "",
+      nsInput.is("affixed", isTextarea.value && useInputLayout.value),
       nsInput.m(inputSize.value),
       nsInput.is("disabled", inputDisabled.value),
       nsInput.is("exceed", inputExceed.value),
@@ -16888,12 +16891,19 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     const suffixVisible = computed(() => !!slots.suffix || !!props.suffixIcon || showInfoTipIcon.value || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
     const hasModelModifiers = computed(() => !!Object.keys(props.modelModifiers).length);
     const [recordCursor, setCursor] = useCursor(input);
+    let textareaWidth = 0;
     useResizeObserver(textarea, (entries) => {
       onceInitSizeTextarea();
-      if (!isWordLimitVisible.value || props.resize !== "both")
-        return;
       const entry = entries[0];
       const { width } = entry.contentRect;
+      if (width !== textareaWidth) {
+        textareaWidth = width;
+        if (useInputLayout.value && (props.expand || props.autosize)) {
+          nextTick(resizeTextarea);
+        }
+      }
+      if (!isWordLimitVisible.value || props.resize !== "both")
+        return;
       countStyle.value = {
         right: `calc(100% - ${width + 15 + 6}px)`
       };
@@ -17080,7 +17090,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
       }
       setNativeInputValue();
     });
-    watch([() => props.type, () => props.expand], async () => {
+    watch([() => props.type, () => props.expand, useInputLayout], async () => {
       await nextTick();
       setNativeInputValue();
       resizeTextarea();
@@ -17119,7 +17129,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
         onMouseleave: handleMouseLeave
       }, [
         createCommentVNode(" input "),
-        !unref(isTextarea) ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+        unref(useInputLayout) ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
           createCommentVNode(" prepend slot "),
           _ctx.$slots.prepend ? (openBlock(), createElementBlock("div", {
             key: 0,
@@ -17155,16 +17165,16 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                   class: normalizeClass(unref(wrapperKls))
                 }, [
                   createCommentVNode(" prefix slot "),
-                  _ctx.$slots.prefix || _ctx.prefixIcon ? (openBlock(), createElementBlock("span", {
+                  _ctx.$slots.prefix || _ctx.prefixIcon || unref(isTextarea) && _ctx.$slots.textareaPrefix ? (openBlock(), createElementBlock("span", {
                     key: 0,
                     class: normalizeClass(unref(nsInput).e("prefix"))
                   }, [
                     createElementVNode("span", {
                       class: normalizeClass(unref(nsInput).e("prefix-inner"))
                     }, [
-                      renderSlot(_ctx.$slots, "prefix"),
+                      unref(isTextarea) && _ctx.$slots.textareaPrefix ? renderSlot(_ctx.$slots, "textareaPrefix", { key: 0 }) : renderSlot(_ctx.$slots, "prefix", { key: 1 }),
                       _ctx.prefixIcon ? (openBlock(), createBlock(unref(ElIcon), {
-                        key: 0,
+                        key: 2,
                         class: normalizeClass(unref(nsInput).e("icon")),
                         size: "12px"
                       }, {
@@ -17175,7 +17185,8 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                       }, 8, ["class"])) : createCommentVNode("v-if", true)
                     ], 2)
                   ], 2)) : createCommentVNode("v-if", true),
-                  createElementVNode("input", mergeProps({
+                  !unref(isTextarea) ? (openBlock(), createElementBlock("input", mergeProps({
+                    key: 1,
                     id: unref(inputId),
                     ref_key: "input",
                     ref: input,
@@ -17204,9 +17215,38 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                     onChange: handleChange,
                     onKeydown: handleKeydown,
                     onMouseenter: handleContentMouseEnter
-                  }), null, 16, ["id", "name", "minlength", "maxlength", "type", "disabled", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form", "autofocus", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"]),
+                  }), null, 16, ["id", "name", "minlength", "maxlength", "type", "disabled", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form", "autofocus", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"])) : (openBlock(), createElementBlock("textarea", mergeProps({
+                    key: 2,
+                    id: unref(inputId),
+                    ref_key: "textarea",
+                    ref: textarea,
+                    class: unref(nsTextarea).e("inner")
+                  }, unref(attrs), {
+                    name: _ctx.name,
+                    minlength: _ctx.minlength,
+                    maxlength: _ctx.maxlength,
+                    tabindex: _ctx.tabindex,
+                    disabled: unref(inputDisabled),
+                    readonly: _ctx.readonly,
+                    autocomplete: _ctx.autocomplete,
+                    style: unref(textareaStyle),
+                    "aria-label": _ctx.ariaLabel,
+                    placeholder: !_ctx.floatLabel ? _ctx.placeholder : "",
+                    form: _ctx.form,
+                    autofocus: _ctx.autofocus,
+                    rows: _ctx.rows,
+                    role: _ctx.containerRole,
+                    inputmode: _ctx.inputmode,
+                    onCompositionstart: unref(handleCompositionStart),
+                    onCompositionupdate: unref(handleCompositionUpdate),
+                    onCompositionend: unref(handleCompositionEnd),
+                    onInput: handleInput,
+                    onChange: handleChange,
+                    onKeydown: handleKeydown,
+                    onMouseenter: handleContentMouseEnter
+                  }), null, 16, ["id", "name", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"])),
                   _ctx.floatLabel && _ctx.placeholder ? (openBlock(), createBlock(ElFloatLabel, {
-                    key: 1,
+                    key: 3,
                     ref_key: "floatLabelRef",
                     ref: floatLabelRef,
                     class: normalizeClass(["float-label", {
@@ -17218,8 +17258,8 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                     onBeforeShow: hideInputTooltip
                   }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
                   createCommentVNode(" suffix slot "),
-                  unref(suffixVisible) ? (openBlock(), createElementBlock("span", {
-                    key: 2,
+                  unref(suffixVisible) || unref(isTextarea) && _ctx.$slots.textareaSuffix ? (openBlock(), createElementBlock("span", {
+                    key: 4,
                     class: normalizeClass(unref(nsInput).e("suffix"))
                   }, [
                     createElementVNode("span", {
@@ -17294,9 +17334,9 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                         _: 1
                       }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
                       (!unref(showClear) || !unref(showPwdVisible) || !unref(isWordLimitVisible)) && ((_a = _ctx.alwaysShowSuffix) != null ? _a : !unref(validateState)) ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
-                        _ctx.isHoverSuffix && hovering.value || !_ctx.isHoverSuffix ? renderSlot(_ctx.$slots, "suffix", { key: 0 }) : createCommentVNode("v-if", true),
+                        unref(isTextarea) && _ctx.$slots.textareaSuffix ? renderSlot(_ctx.$slots, "textareaSuffix", { key: 0 }) : _ctx.isHoverSuffix && hovering.value || !_ctx.isHoverSuffix ? renderSlot(_ctx.$slots, "suffix", { key: 1 }) : createCommentVNode("v-if", true),
                         _ctx.suffixIcon ? (openBlock(), createBlock(unref(ElIcon), {
-                          key: 1,
+                          key: 2,
                           class: normalizeClass(unref(nsInput).e("icon"))
                         }, {
                           default: withCtx(() => [

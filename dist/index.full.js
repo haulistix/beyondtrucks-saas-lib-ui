@@ -16724,11 +16724,11 @@
     var _a, _b;
     if (!hiddenTextarea) {
       hiddenTextarea = document.createElement("textarea");
+      Object.entries(HIDDEN_STYLE).forEach(([key, value]) => hiddenTextarea == null ? void 0 : hiddenTextarea.style.setProperty(key, value, "important"));
       ((_a = targetElement.parentNode) != null ? _a : document.body).appendChild(hiddenTextarea);
     }
     const { paddingSize, borderSize, boxSizing, contextStyle } = calculateNodeStyling(targetElement);
     contextStyle.forEach(([key, value]) => hiddenTextarea == null ? void 0 : hiddenTextarea.style.setProperty(key, value));
-    Object.entries(HIDDEN_STYLE).forEach(([key, value]) => hiddenTextarea == null ? void 0 : hiddenTextarea.style.setProperty(key, value, "important"));
     hiddenTextarea.value = targetElement.value || targetElement.placeholder || "";
     let height = hiddenTextarea.scrollHeight;
     const result = {};
@@ -16775,8 +16775,11 @@
       const attrs = useAttrs();
       const slots = vue.useSlots();
       const isTextarea = vue.computed(() => props.type === "textarea" || props.expand && (props.type === "text" || props.type === "input"));
+      const useInputLayout = vue.computed(() => !isTextarea.value || !!(slots.prefix || slots.suffix || slots.prepend || slots.append || props.prefixIcon || props.suffixIcon || props.clearable || showInfoTipIcon.value));
       const containerKls = vue.computed(() => [
         isTextarea.value ? nsTextarea.b() : nsInput.b(),
+        isTextarea.value && useInputLayout.value ? nsInput.b() : "",
+        nsInput.is("affixed", isTextarea.value && useInputLayout.value),
         nsInput.m(inputSize.value),
         nsInput.is("disabled", inputDisabled.value),
         nsInput.is("exceed", inputExceed.value),
@@ -16892,12 +16895,19 @@
       const suffixVisible = vue.computed(() => !!slots.suffix || !!props.suffixIcon || showInfoTipIcon.value || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
       const hasModelModifiers = vue.computed(() => !!Object.keys(props.modelModifiers).length);
       const [recordCursor, setCursor] = useCursor(input);
+      let textareaWidth = 0;
       useResizeObserver(textarea, (entries) => {
         onceInitSizeTextarea();
-        if (!isWordLimitVisible.value || props.resize !== "both")
-          return;
         const entry = entries[0];
         const { width } = entry.contentRect;
+        if (width !== textareaWidth) {
+          textareaWidth = width;
+          if (useInputLayout.value && (props.expand || props.autosize)) {
+            vue.nextTick(resizeTextarea);
+          }
+        }
+        if (!isWordLimitVisible.value || props.resize !== "both")
+          return;
         countStyle.value = {
           right: `calc(100% - ${width + 15 + 6}px)`
         };
@@ -17084,7 +17094,7 @@
         }
         setNativeInputValue();
       });
-      vue.watch([() => props.type, () => props.expand], async () => {
+      vue.watch([() => props.type, () => props.expand, useInputLayout], async () => {
         await vue.nextTick();
         setNativeInputValue();
         resizeTextarea();
@@ -17123,7 +17133,7 @@
           onMouseleave: handleMouseLeave
         }, [
           vue.createCommentVNode(" input "),
-          !vue.unref(isTextarea) ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
+          vue.unref(useInputLayout) ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
             vue.createCommentVNode(" prepend slot "),
             _ctx.$slots.prepend ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 0,
@@ -17159,16 +17169,16 @@
                     class: vue.normalizeClass(vue.unref(wrapperKls))
                   }, [
                     vue.createCommentVNode(" prefix slot "),
-                    _ctx.$slots.prefix || _ctx.prefixIcon ? (vue.openBlock(), vue.createElementBlock("span", {
+                    _ctx.$slots.prefix || _ctx.prefixIcon || vue.unref(isTextarea) && _ctx.$slots.textareaPrefix ? (vue.openBlock(), vue.createElementBlock("span", {
                       key: 0,
                       class: vue.normalizeClass(vue.unref(nsInput).e("prefix"))
                     }, [
                       vue.createElementVNode("span", {
                         class: vue.normalizeClass(vue.unref(nsInput).e("prefix-inner"))
                       }, [
-                        vue.renderSlot(_ctx.$slots, "prefix"),
+                        vue.unref(isTextarea) && _ctx.$slots.textareaPrefix ? vue.renderSlot(_ctx.$slots, "textareaPrefix", { key: 0 }) : vue.renderSlot(_ctx.$slots, "prefix", { key: 1 }),
                         _ctx.prefixIcon ? (vue.openBlock(), vue.createBlock(vue.unref(ElIcon), {
-                          key: 0,
+                          key: 2,
                           class: vue.normalizeClass(vue.unref(nsInput).e("icon")),
                           size: "12px"
                         }, {
@@ -17179,7 +17189,8 @@
                         }, 8, ["class"])) : vue.createCommentVNode("v-if", true)
                       ], 2)
                     ], 2)) : vue.createCommentVNode("v-if", true),
-                    vue.createElementVNode("input", vue.mergeProps({
+                    !vue.unref(isTextarea) ? (vue.openBlock(), vue.createElementBlock("input", vue.mergeProps({
+                      key: 1,
                       id: vue.unref(inputId),
                       ref_key: "input",
                       ref: input,
@@ -17208,9 +17219,38 @@
                       onChange: handleChange,
                       onKeydown: handleKeydown,
                       onMouseenter: handleContentMouseEnter
-                    }), null, 16, ["id", "name", "minlength", "maxlength", "type", "disabled", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form", "autofocus", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"]),
+                    }), null, 16, ["id", "name", "minlength", "maxlength", "type", "disabled", "readonly", "autocomplete", "tabindex", "aria-label", "placeholder", "form", "autofocus", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"])) : (vue.openBlock(), vue.createElementBlock("textarea", vue.mergeProps({
+                      key: 2,
+                      id: vue.unref(inputId),
+                      ref_key: "textarea",
+                      ref: textarea,
+                      class: vue.unref(nsTextarea).e("inner")
+                    }, vue.unref(attrs), {
+                      name: _ctx.name,
+                      minlength: _ctx.minlength,
+                      maxlength: _ctx.maxlength,
+                      tabindex: _ctx.tabindex,
+                      disabled: vue.unref(inputDisabled),
+                      readonly: _ctx.readonly,
+                      autocomplete: _ctx.autocomplete,
+                      style: vue.unref(textareaStyle),
+                      "aria-label": _ctx.ariaLabel,
+                      placeholder: !_ctx.floatLabel ? _ctx.placeholder : "",
+                      form: _ctx.form,
+                      autofocus: _ctx.autofocus,
+                      rows: _ctx.rows,
+                      role: _ctx.containerRole,
+                      inputmode: _ctx.inputmode,
+                      onCompositionstart: vue.unref(handleCompositionStart),
+                      onCompositionupdate: vue.unref(handleCompositionUpdate),
+                      onCompositionend: vue.unref(handleCompositionEnd),
+                      onInput: handleInput,
+                      onChange: handleChange,
+                      onKeydown: handleKeydown,
+                      onMouseenter: handleContentMouseEnter
+                    }), null, 16, ["id", "name", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "role", "inputmode", "onCompositionstart", "onCompositionupdate", "onCompositionend"])),
                     _ctx.floatLabel && _ctx.placeholder ? (vue.openBlock(), vue.createBlock(ElFloatLabel, {
-                      key: 1,
+                      key: 3,
                       ref_key: "floatLabelRef",
                       ref: floatLabelRef,
                       class: vue.normalizeClass(["float-label", {
@@ -17222,8 +17262,8 @@
                       onBeforeShow: hideInputTooltip
                     }, null, 8, ["text", "class"])) : vue.createCommentVNode("v-if", true),
                     vue.createCommentVNode(" suffix slot "),
-                    vue.unref(suffixVisible) ? (vue.openBlock(), vue.createElementBlock("span", {
-                      key: 2,
+                    vue.unref(suffixVisible) || vue.unref(isTextarea) && _ctx.$slots.textareaSuffix ? (vue.openBlock(), vue.createElementBlock("span", {
+                      key: 4,
                       class: vue.normalizeClass(vue.unref(nsInput).e("suffix"))
                     }, [
                       vue.createElementVNode("span", {
@@ -17298,9 +17338,9 @@
                           _: 1
                         }, 8, ["class", "onMousedown"])) : vue.createCommentVNode("v-if", true),
                         (!vue.unref(showClear) || !vue.unref(showPwdVisible) || !vue.unref(isWordLimitVisible)) && ((_a = _ctx.alwaysShowSuffix) != null ? _a : !vue.unref(validateState)) ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 2 }, [
-                          _ctx.isHoverSuffix && hovering.value || !_ctx.isHoverSuffix ? vue.renderSlot(_ctx.$slots, "suffix", { key: 0 }) : vue.createCommentVNode("v-if", true),
+                          vue.unref(isTextarea) && _ctx.$slots.textareaSuffix ? vue.renderSlot(_ctx.$slots, "textareaSuffix", { key: 0 }) : _ctx.isHoverSuffix && hovering.value || !_ctx.isHoverSuffix ? vue.renderSlot(_ctx.$slots, "suffix", { key: 1 }) : vue.createCommentVNode("v-if", true),
                           _ctx.suffixIcon ? (vue.openBlock(), vue.createBlock(vue.unref(ElIcon), {
-                            key: 1,
+                            key: 2,
                             class: vue.normalizeClass(vue.unref(nsInput).e("icon"))
                           }, {
                             default: vue.withCtx(() => [

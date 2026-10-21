@@ -1,11 +1,13 @@
 import type { StyleValue } from 'vue';
 declare function __VLS_template(): {
     prepend?(_: {}): any;
+    textareaPrefix?(_: {}): any;
+    textareaPrefix?(_: {}): any;
     prefix?(_: {}): any;
+    textareaSuffix?(_: {}): any;
+    textareaSuffix?(_: {}): any;
     suffix?(_: {}): any;
     append?(_: {}): any;
-    textareaPrefix?(_: {}): any;
-    textareaSuffix?(_: {}): any;
 };
 declare const __VLS_component: import("vue").DefineComponent<{
     readonly inputmode: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined) | ((new (...args: any[]) => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal") | (() => "search" | "text" | "none" | "url" | "email" | "tel" | "numeric" | "decimal" | undefined))[], unknown, unknown, undefined, boolean>;

@@ -455,6 +455,40 @@
   }
 }
 
+@include b(textarea) {
+  @include when(affixed) {
+    .#{$namespace}-input__wrapper {
+      min-width: 0;
+      align-items: flex-start;
+    }
+
+    .#{$namespace}-input__wrapper .#{$namespace}-textarea__inner {
+      min-width: 0;
+      flex: 1;
+      padding: calc((getCssVar('input-inner-height') - 1.5em) / 2) 0;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      background-color: transparent;
+    }
+
+    .#{$namespace}-input__prefix,
+    .#{$namespace}-input__suffix {
+      height: getCssVar('input-inner-height');
+    }
+
+    .#{$namespace}-input__wrapper.is-focus .float-label,
+    .float-label.has-value {
+      @include float-label-value;
+    }
+
+    .#{$namespace}-input-group__prepend,
+    .#{$namespace}-input-group__append {
+      height: auto;
+    }
+  }
+}
+
 @include b(input-group) {
   display: inline-flex;
   width: 100%;

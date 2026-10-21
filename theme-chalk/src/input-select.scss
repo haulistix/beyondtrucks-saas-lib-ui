@@ -22,7 +22,7 @@
         align-self: stretch;
       }
 
-      &.#{$namespace}-textarea {
+      &.#{$namespace}-textarea:not(.is-affixed) {
         flex-direction: column;
 
         .#{$namespace}-textarea__inner {

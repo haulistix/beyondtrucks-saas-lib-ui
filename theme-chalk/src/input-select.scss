@@ -68,6 +68,11 @@
       height: 32px;
     }
 
+    .#{$namespace}-select__wrapper {
+      // Animating flex or padding temporarily narrows the select and rewraps tags.
+      transition-property: border-color, background-color, box-shadow;
+    }
+
     &:focus-within {
       z-index: 1;
     }

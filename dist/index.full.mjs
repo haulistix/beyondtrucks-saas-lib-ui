@@ -16771,7 +16771,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     const attrs = useAttrs();
     const slots = useSlots();
     const isTextarea = computed(() => props.type === "textarea" || props.expand && (props.type === "text" || props.type === "input"));
-    const useInputLayout = computed(() => !isTextarea.value || !!(slots.prefix || slots.suffix || slots.prepend || slots.append || props.prefixIcon || props.suffixIcon || props.clearable || showInfoTipIcon.value));
+    const useInputLayout = computed(() => !isTextarea.value || props.expand || !!(slots.prefix || slots.suffix || slots.prepend || slots.append || props.prefixIcon || props.suffixIcon || props.clearable || showInfoTipIcon.value));
     const containerKls = computed(() => [
       isTextarea.value ? nsTextarea.b() : nsInput.b(),
       isTextarea.value && useInputLayout.value ? nsInput.b() : "",
@@ -17091,10 +17091,21 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
       setNativeInputValue();
     });
     watch([() => props.type, () => props.expand, useInputLayout], async () => {
+      const previousInput = _ref.value;
+      const restoreFocus = isClient && document.activeElement === previousInput;
+      const selectionStart = previousInput == null ? void 0 : previousInput.selectionStart;
+      const selectionEnd = previousInput == null ? void 0 : previousInput.selectionEnd;
+      const selectionDirection = previousInput == null ? void 0 : previousInput.selectionDirection;
       await nextTick();
       setNativeInputValue();
       resizeTextarea();
       syncTextOverflow();
+      if (restoreFocus && _ref.value && _ref.value !== previousInput) {
+        _ref.value.focus({ preventScroll: true });
+        if (_ref.value.selectionStart != null && selectionStart != null && selectionEnd != null) {
+          _ref.value.setSelectionRange(selectionStart, selectionEnd, selectionDirection != null ? selectionDirection : void 0);
+        }
+      }
     });
     onMounted(() => {
       if (!props.formatter && props.parser) ;
@@ -17234,7 +17245,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                     placeholder: !_ctx.floatLabel ? _ctx.placeholder : "",
                     form: _ctx.form,
                     autofocus: _ctx.autofocus,
-                    rows: _ctx.rows,
+                    rows: _ctx.expand ? 1 : _ctx.rows,
                     role: _ctx.containerRole,
                     inputmode: _ctx.inputmode,
                     onCompositionstart: unref(handleCompositionStart),

@@ -477,6 +477,10 @@
       height: getCssVar('input-inner-height');
     }
 
+    .float-label {
+      top: calc((getCssVar('input-inner-height') - 16px) / 2);
+    }
+
     .#{$namespace}-input__wrapper.is-focus .float-label,
     .float-label.has-value {
       @include float-label-value;

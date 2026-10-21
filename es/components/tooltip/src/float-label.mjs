@@ -1,6 +1,6 @@
 import { defineComponent, ref, watch, openBlock, createBlock, withCtx, createElementVNode, mergeProps, toDisplayString } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import ElTooltip from './tooltip.mjs';
+import ElTooltip from './tooltip2.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 
 const __default__ = defineComponent({

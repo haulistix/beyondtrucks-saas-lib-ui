@@ -16494,11 +16494,13 @@
     emits: ["before-show"],
     setup(__props, { expose, emit }) {
       const props = __props;
+      const ns = useNamespace("float-label");
       const labelRef = vue.ref();
+      const textRef = vue.ref();
       const visible = vue.ref(false);
       let hovering = false;
       const updateOverflow = () => {
-        const label = labelRef.value;
+        const label = textRef.value || labelRef.value;
         const nextVisible = Boolean(hovering && label && label.scrollWidth > label.clientWidth);
         if (nextVisible && !visible.value)
           emit("before-show");
@@ -16513,6 +16515,7 @@
         visible.value = false;
       };
       useResizeObserver(labelRef, updateOverflow);
+      useResizeObserver(textRef, updateOverflow);
       vue.watch(() => props.text, updateOverflow, { flush: "post" });
       expose({ hide: handleMouseLeave });
       return (_ctx, _cache) => {
@@ -16531,11 +16534,31 @@
             vue.createElementVNode("span", vue.mergeProps(_ctx.$attrs, {
               ref_key: "labelRef",
               ref: labelRef,
-              onMouseenter: handleMouseEnter,
+              class: _ctx.$slots.labelIcon ? [vue.unref(ns).b(), vue.unref(ns).is("with-icon")] : void 0,
+              onMouseenter: ($event) => !_ctx.$slots.labelIcon && handleMouseEnter(),
               onMouseleave: handleMouseLeave
-            }), vue.toDisplayString(__props.text), 17)
+            }), [
+              _ctx.$slots.labelIcon ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
+                vue.createElementVNode("span", {
+                  ref_key: "textRef",
+                  ref: textRef,
+                  class: vue.normalizeClass(vue.unref(ns).e("text")),
+                  onMouseenter: handleMouseEnter,
+                  onMouseleave: handleMouseLeave
+                }, vue.toDisplayString(__props.text), 35),
+                vue.createElementVNode("span", {
+                  class: vue.normalizeClass(vue.unref(ns).e("icon")),
+                  onClick: vue.withModifiers(() => {
+                  }, ["stop"])
+                }, [
+                  vue.renderSlot(_ctx.$slots, "labelIcon")
+                ], 10, ["onClick"])
+              ], 64)) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
+                vue.createTextVNode(vue.toDisplayString(__props.text), 1)
+              ], 64))
+            ], 16, ["onMouseenter"])
           ]),
-          _: 1
+          _: 3
         }, 8, ["content", "visible", "hide-after", "transition"]);
       };
     }
@@ -17271,7 +17294,16 @@
                       text: _ctx.placeholder,
                       immediate: "",
                       onBeforeShow: hideInputTooltip
-                    }, null, 8, ["text", "class"])) : vue.createCommentVNode("v-if", true),
+                    }, vue.createSlots({
+                      _: 2
+                    }, [
+                      _ctx.$slots.labelIcon ? {
+                        name: "labelIcon",
+                        fn: vue.withCtx(() => [
+                          vue.renderSlot(_ctx.$slots, "labelIcon")
+                        ])
+                      } : void 0
+                    ]), 1032, ["text", "class"])) : vue.createCommentVNode("v-if", true),
                     vue.createCommentVNode(" suffix slot "),
                     vue.unref(suffixVisible) || vue.unref(isTextarea) && _ctx.$slots.textareaSuffix ? (vue.openBlock(), vue.createElementBlock("span", {
                       key: 4,
@@ -17507,7 +17539,16 @@
               immediate: "",
               onBeforeShow: hideInputTooltip,
               onClick: handleTextareaFocus
-            }, null, 8, ["text", "class"])) : vue.createCommentVNode("v-if", true),
+            }, vue.createSlots({
+              _: 2
+            }, [
+              _ctx.$slots.labelIcon ? {
+                name: "labelIcon",
+                fn: vue.withCtx(() => [
+                  vue.renderSlot(_ctx.$slots, "labelIcon")
+                ])
+              } : void 0
+            ]), 1032, ["text", "class"])) : vue.createCommentVNode("v-if", true),
             vue.unref(isWordLimitVisible) ? (vue.openBlock(), vue.createElementBlock("span", {
               key: 3,
               style: vue.normalizeStyle(countStyle.value),
@@ -34161,7 +34202,7 @@
     }
   };
 
-  function _isSlot$7(s) {
+  function _isSlot$8(s) {
     return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
   }
   dayjs.extend(localeData);
@@ -34249,7 +34290,7 @@
               "modelValue": selectType.value,
               "onChange": handleRadioChange,
               "size": "small"
-            }, _isSlot$7(_slot = props.typeList.map((item) => vue.createVNode(ElRadioButton, {
+            }, _isSlot$8(_slot = props.typeList.map((item) => vue.createVNode(ElRadioButton, {
               "key": item.key,
               "value": item.key,
               "label": item.label,
@@ -41948,7 +41989,16 @@
                       }]),
                       text: _ctx.placeholder,
                       onBeforeShow: _ctx.hideSelectionTooltip
-                    }, null, 8, ["text", "class", "onBeforeShow"])) : vue.createCommentVNode("v-if", true),
+                    }, vue.createSlots({
+                      _: 2
+                    }, [
+                      _ctx.$slots.labelIcon ? {
+                        name: "labelIcon",
+                        fn: vue.withCtx(() => [
+                          vue.renderSlot(_ctx.$slots, "labelIcon")
+                        ])
+                      } : void 0
+                    ]), 1032, ["text", "class", "onBeforeShow"])) : vue.createCommentVNode("v-if", true),
                     _ctx.$slots.prefix ? (vue.openBlock(), vue.createElementBlock("div", {
                       key: 1,
                       ref: "prefixRef",
@@ -46758,7 +46808,16 @@
                       }]),
                       text: _ctx.placeholder,
                       onBeforeShow: _ctx.hideSelectionTooltip
-                    }, null, 8, ["text", "class", "onBeforeShow"])) : vue.createCommentVNode("v-if", true),
+                    }, vue.createSlots({
+                      _: 2
+                    }, [
+                      _ctx.$slots.labelIcon ? {
+                        name: "labelIcon",
+                        fn: vue.withCtx(() => [
+                          vue.renderSlot(_ctx.$slots, "labelIcon")
+                        ])
+                      } : void 0
+                    ]), 1032, ["text", "class", "onBeforeShow"])) : vue.createCommentVNode("v-if", true),
                     _ctx.$slots.prefix ? (vue.openBlock(), vue.createElementBlock("div", {
                       key: 1,
                       ref: "prefixRef",
@@ -52714,6 +52773,14 @@
       }
       const summaryHeaderTitle = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-title`) : null;
       const summaryHeaderText = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-summary`) : null;
+      if (column == null ? void 0 : column.hoverTip) {
+        createTablePopper({
+          effect: "light",
+          placement: "top-start",
+          popperClass: "table-header-tooltip"
+        }, column.hoverTip, row, column, cell, table);
+        return;
+      }
       if ((column == null ? void 0 : column.type) === "selection") {
         if (column.showSelectionTooltip) {
           selectionTooltipContext.value = {
@@ -55788,6 +55855,7 @@
     const registerNormalWatchers = () => {
       const props = [
         "label",
+        "hoverTip",
         "summary",
         "filters",
         "filterMultiple",
@@ -56140,6 +56208,7 @@
       default: "default"
     },
     label: String,
+    hoverTip: String,
     summary: [String, Number],
     className: String,
     labelClassName: String,
@@ -56266,6 +56335,7 @@
         const basicProps = [
           "columnKey",
           "label",
+          "hoverTip",
           "summary",
           "className",
           "labelClassName",
@@ -57978,7 +58048,7 @@
     }
   });
 
-  function _isSlot$6(s) {
+  function _isSlot$7(s) {
     return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
   }
   const TableV2Cell = vue.defineComponent({
@@ -58027,7 +58097,7 @@
           "popperClass": popperClass,
           "content": displayText,
           "disabled": !isOverflowing.value
-        }), _isSlot$6(content) ? content : {
+        }), _isSlot$7(content) ? content : {
           default: () => [content]
         });
       };
@@ -58040,17 +58110,20 @@
   }) => {
     var _a, _b;
     const title = (_b = (_a = props.column) == null ? void 0 : _a.title) != null ? _b : "";
-    return vue.renderSlot(slots, "default", props, () => [vue.createVNode(ElTooltip, {
-      "content": title,
-      "disabled": !title,
-      "effect": "light",
-      "placement": "top-start",
-      "popperClass": "text-overflow-tooltip"
-    }, {
-      default: () => [vue.createVNode("div", {
-        "class": props.class
-      }, [title])]
-    })]);
+    return vue.renderSlot(slots, "default", props, () => {
+      var _a2;
+      return [vue.createVNode(ElTooltip, {
+        "content": title,
+        "disabled": !title || !!((_a2 = props.column) == null ? void 0 : _a2.hoverTip),
+        "effect": "light",
+        "placement": "top-start",
+        "popperClass": "text-overflow-tooltip"
+      }, {
+        default: () => [vue.createVNode("div", {
+          "class": props.class
+        }, [title])]
+      })];
+    });
   };
   HeaderCell.displayName = "ElTableV2HeaderCell";
   HeaderCell.inheritAttrs = false;
@@ -58697,7 +58770,7 @@
     }
   });
 
-  function _isSlot$5(s) {
+  function _isSlot$6(s) {
     return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
   }
   const MainTable = (props, {
@@ -58709,12 +58782,12 @@
     } = props;
     return vue.createVNode(TableGrid, vue.mergeProps({
       "ref": mainTableRef
-    }, rest), _isSlot$5(slots) ? slots : {
+    }, rest), _isSlot$6(slots) ? slots : {
       default: () => [slots]
     });
   };
 
-  function _isSlot$4(s) {
+  function _isSlot$5(s) {
     return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
   }
   const LeftTable = (props, {
@@ -58728,12 +58801,12 @@
     } = props;
     return vue.createVNode(TableGrid, vue.mergeProps({
       "ref": leftTableRef
-    }, rest), _isSlot$4(slots) ? slots : {
+    }, rest), _isSlot$5(slots) ? slots : {
       default: () => [slots]
     });
   };
 
-  function _isSlot$3(s) {
+  function _isSlot$4(s) {
     return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
   }
   const RightTable = (props, {
@@ -58747,12 +58820,12 @@
     } = props;
     return vue.createVNode(TableGrid, vue.mergeProps({
       "ref": rightTableRef
-    }, rest), _isSlot$3(slots) ? slots : {
+    }, rest), _isSlot$4(slots) ? slots : {
       default: () => [slots]
     });
   };
 
-  function _isSlot$2(s) {
+  function _isSlot$3(s) {
     return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
   }
   const RowRenderer = (props, {
@@ -58910,7 +58983,7 @@
       "onMouseenter": handlerMouseEnter,
       "onMouseleave": handlerMouseLeave,
       "rowkey": _rowKey
-    }), _isSlot$2(slots) ? slots : {
+    }), _isSlot$3(slots) ? slots : {
       default: () => [slots]
     });
   };
@@ -59160,7 +59233,7 @@
   };
   CellRenderer.inheritAttrs = false;
 
-  function _isSlot$1(s) {
+  function _isSlot$2(s) {
     return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
   }
   const HeaderRenderer = ({
@@ -59187,11 +59260,14 @@
       headerIndex,
       style
     };
-    return vue.createVNode(HeaderRow, extraProps, _isSlot$1(slots) ? slots : {
+    return vue.createVNode(HeaderRow, extraProps, _isSlot$2(slots) ? slots : {
       default: () => [slots]
     });
   };
 
+  function _isSlot$1(s) {
+    return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !vue.isVNode(s);
+  }
   const HeaderCellRenderer = (props, {
     slots
   }) => {
@@ -59354,7 +59430,7 @@
       style: cellStyle,
       ["data-key"]: column.key
     };
-    return vue.createVNode("div", vue.mergeProps(cellWrapperProps, {
+    const headerCell = vue.createVNode("div", vue.mergeProps(cellWrapperProps, {
       "role": "columnheader"
     }), [Cell, sortable && vue.createVNode(SortIcon$1, {
       "class": [ns.e("sort-icon"), sorting && ns.is("sorting")],
@@ -59365,6 +59441,14 @@
       "onClick": (event) => event.stopPropagation(),
       "onMousedown": handleResizeMouseDown
     }, null)]);
+    return column.hoverTip ? vue.createVNode(ElTooltip, {
+      "content": column.hoverTip,
+      "effect": "light",
+      "placement": "top-start",
+      "popperClass": "text-overflow-tooltip"
+    }, _isSlot$1(headerCell) ? headerCell : {
+      default: () => [headerCell]
+    }) : headerCell;
   };
 
   const Footer = (props, {

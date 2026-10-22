@@ -317,7 +317,11 @@ declare const _default: import("vue").DefineComponent<{
         "onBefore-show"?: ((...args: any[]) => any) | undefined;
     } & import("vue").ShallowUnwrapRef<{
         hide: () => void;
-    }> & {} & import("vue").ComponentCustomProperties) | undefined>;
+    }> & {} & import("vue").ComponentCustomProperties & {
+        $slots: {
+            labelIcon?(_: {}): any;
+        };
+    }) | undefined>;
     handleSelectionMouseMove: (event: MouseEvent) => void;
     hideSelectionTooltip: () => void;
     modelValue: import("vue").ComputedRef<any>;

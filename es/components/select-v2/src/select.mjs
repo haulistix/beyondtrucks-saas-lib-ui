@@ -1,4 +1,4 @@
-import { defineComponent, computed, reactive, toRefs, ref, watch, provide, resolveComponent, resolveDirective, withDirectives, openBlock, createElementBlock, normalizeClass, createVNode, withCtx, createElementVNode, withModifiers, createBlock, createCommentVNode, renderSlot, toDisplayString, Fragment, renderList, normalizeStyle, createTextVNode, withKeys, vModelText, vShow, createSlots, normalizeProps, guardReactiveProps } from 'vue';
+import { defineComponent, computed, reactive, toRefs, ref, watch, provide, resolveComponent, resolveDirective, withDirectives, openBlock, createElementBlock, normalizeClass, createVNode, withCtx, createElementVNode, withModifiers, createBlock, createSlots, renderSlot, createCommentVNode, toDisplayString, Fragment, renderList, normalizeStyle, createTextVNode, withKeys, vModelText, vShow, normalizeProps, guardReactiveProps } from 'vue';
 import { ElTooltip } from '../../tooltip/index.mjs';
 import ElFloatLabel from '../../tooltip/src/float-label.mjs';
 import { ElTag } from '../../tag/index.mjs';
@@ -232,7 +232,16 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                     }]),
                     text: _ctx.placeholder,
                     onBeforeShow: _ctx.hideSelectionTooltip
-                  }, null, 8, ["text", "class", "onBeforeShow"])) : createCommentVNode("v-if", true),
+                  }, createSlots({
+                    _: 2
+                  }, [
+                    _ctx.$slots.labelIcon ? {
+                      name: "labelIcon",
+                      fn: withCtx(() => [
+                        renderSlot(_ctx.$slots, "labelIcon")
+                      ])
+                    } : void 0
+                  ]), 1032, ["text", "class", "onBeforeShow"])) : createCommentVNode("v-if", true),
                   _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
                     key: 1,
                     ref: "prefixRef",

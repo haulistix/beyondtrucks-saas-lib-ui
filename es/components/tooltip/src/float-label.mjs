@@ -1,7 +1,8 @@
-import { defineComponent, ref, watch, openBlock, createBlock, withCtx, createElementVNode, mergeProps, toDisplayString } from 'vue';
+import { defineComponent, ref, watch, openBlock, createBlock, withCtx, createElementVNode, mergeProps, unref, createElementBlock, Fragment, normalizeClass, toDisplayString, withModifiers, renderSlot, createTextVNode } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import ElTooltip from './tooltip2.mjs';
+import ElTooltip from './tooltip.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
+import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 
 const __default__ = defineComponent({
   name: "ElFloatLabel",
@@ -16,11 +17,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   emits: ["before-show"],
   setup(__props, { expose, emit }) {
     const props = __props;
+    const ns = useNamespace("float-label");
     const labelRef = ref();
+    const textRef = ref();
     const visible = ref(false);
     let hovering = false;
     const updateOverflow = () => {
-      const label = labelRef.value;
+      const label = textRef.value || labelRef.value;
       const nextVisible = Boolean(hovering && label && label.scrollWidth > label.clientWidth);
       if (nextVisible && !visible.value)
         emit("before-show");
@@ -35,6 +38,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       visible.value = false;
     };
     useResizeObserver(labelRef, updateOverflow);
+    useResizeObserver(textRef, updateOverflow);
     watch(() => props.text, updateOverflow, { flush: "post" });
     expose({ hide: handleMouseLeave });
     return (_ctx, _cache) => {
@@ -53,11 +57,31 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           createElementVNode("span", mergeProps(_ctx.$attrs, {
             ref_key: "labelRef",
             ref: labelRef,
-            onMouseenter: handleMouseEnter,
+            class: _ctx.$slots.labelIcon ? [unref(ns).b(), unref(ns).is("with-icon")] : void 0,
+            onMouseenter: ($event) => !_ctx.$slots.labelIcon && handleMouseEnter(),
             onMouseleave: handleMouseLeave
-          }), toDisplayString(__props.text), 17)
+          }), [
+            _ctx.$slots.labelIcon ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+              createElementVNode("span", {
+                ref_key: "textRef",
+                ref: textRef,
+                class: normalizeClass(unref(ns).e("text")),
+                onMouseenter: handleMouseEnter,
+                onMouseleave: handleMouseLeave
+              }, toDisplayString(__props.text), 35),
+              createElementVNode("span", {
+                class: normalizeClass(unref(ns).e("icon")),
+                onClick: withModifiers(() => {
+                }, ["stop"])
+              }, [
+                renderSlot(_ctx.$slots, "labelIcon")
+              ], 10, ["onClick"])
+            ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+              createTextVNode(toDisplayString(__props.text), 1)
+            ], 64))
+          ], 16, ["onMouseenter"])
         ]),
-        _: 1
+        _: 3
       }, 8, ["content", "visible", "hide-after", "transition"]);
     };
   }

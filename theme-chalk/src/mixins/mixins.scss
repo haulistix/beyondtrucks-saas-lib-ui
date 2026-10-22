@@ -239,6 +239,7 @@ $E: null;
 
 @mixin float-label-value($border-offset: -1px) {
   #{getCssVarName('float-label', 'left')}: 8px;
+  #{getCssVarName('float-label', 'icon-display')}: inline-flex;
   top: $border-offset;
   left: getCssVar('float-label', 'left');
   padding: 0 4px;

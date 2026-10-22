@@ -1,4 +1,7 @@
-declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
+declare function __VLS_template(): {
+    labelIcon?(_: {}): any;
+};
+declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     text?: string;
     immediate?: boolean;
 }>, {
@@ -11,7 +14,13 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
 }>>> & {
     "onBefore-show"?: ((...args: any[]) => any) | undefined;
 }, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
+type __VLS_WithTemplateSlots<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToOption<T> = {
     [K in keyof T]-?: {} extends Pick<T, K> ? {

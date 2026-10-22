@@ -42,6 +42,14 @@ function useEvent(props, emit) {
     }
     const summaryHeaderTitle = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-title`) : null;
     const summaryHeaderText = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-summary`) : null;
+    if (column == null ? void 0 : column.hoverTip) {
+      createTablePopper({
+        effect: "light",
+        placement: "top-start",
+        popperClass: "table-header-tooltip"
+      }, column.hoverTip, row, column, cell, table);
+      return;
+    }
     if ((column == null ? void 0 : column.type) === "selection") {
       if (column.showSelectionTooltip) {
         selectionTooltipContext.value = {

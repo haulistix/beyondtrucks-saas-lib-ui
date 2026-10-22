@@ -64,6 +64,7 @@ export type Column<T = any> = {
     flexGrow?: CSSProperties['flexGrow'];
     flexShrink?: CSSProperties['flexShrink'];
     title?: string;
+    hoverTip?: string;
     hidden?: boolean;
     headerClass?: HeaderClassGetter<T> | string;
     diagonalHeader?: DiagonalHeaderConfig;

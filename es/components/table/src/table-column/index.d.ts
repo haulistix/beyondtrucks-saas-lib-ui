@@ -5,6 +5,7 @@ declare const _default: import("vue").DefineComponent<{
         default: string;
     };
     label: StringConstructor;
+    hoverTip: StringConstructor;
     summary: (NumberConstructor | StringConstructor)[];
     className: StringConstructor;
     labelClassName: StringConstructor;
@@ -69,6 +70,7 @@ declare const _default: import("vue").DefineComponent<{
         default: string;
     };
     label: StringConstructor;
+    hoverTip: StringConstructor;
     summary: (NumberConstructor | StringConstructor)[];
     className: StringConstructor;
     labelClassName: StringConstructor;

@@ -6,17 +6,20 @@ const HeaderCell = (props, {
 }) => {
   var _a, _b;
   const title = (_b = (_a = props.column) == null ? void 0 : _a.title) != null ? _b : "";
-  return renderSlot(slots, "default", props, () => [createVNode(ElTooltip, {
-    "content": title,
-    "disabled": !title,
-    "effect": "light",
-    "placement": "top-start",
-    "popperClass": "text-overflow-tooltip"
-  }, {
-    default: () => [createVNode("div", {
-      "class": props.class
-    }, [title])]
-  })]);
+  return renderSlot(slots, "default", props, () => {
+    var _a2;
+    return [createVNode(ElTooltip, {
+      "content": title,
+      "disabled": !title || !!((_a2 = props.column) == null ? void 0 : _a2.hoverTip),
+      "effect": "light",
+      "placement": "top-start",
+      "popperClass": "text-overflow-tooltip"
+    }, {
+      default: () => [createVNode("div", {
+        "class": props.class
+      }, [title])]
+    })];
+  });
 };
 HeaderCell.displayName = "ElTableV2HeaderCell";
 HeaderCell.inheritAttrs = false;

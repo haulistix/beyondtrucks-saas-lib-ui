@@ -4,6 +4,8 @@ declare function __VLS_template(): {
     textareaPrefix?(_: {}): any;
     textareaPrefix?(_: {}): any;
     prefix?(_: {}): any;
+    labelIcon?(_: {}): any;
+    labelIcon?(_: {}): any;
     textareaSuffix?(_: {}): any;
     textareaSuffix?(_: {}): any;
     suffix?(_: {}): any;

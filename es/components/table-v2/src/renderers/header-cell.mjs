@@ -1,10 +1,14 @@
-import { createVNode, renderSlot, mergeProps } from 'vue';
+import { createVNode, renderSlot, mergeProps, isVNode } from 'vue';
+import { ElTooltip } from '../../../tooltip/index.mjs';
 import { SortOrder, Alignment } from '../constants.mjs';
 import { placeholderSign, rowDeletePlaceholderMergedSign, rowDeleteColumnKey, rowDeleteColumnWidth } from '../private.mjs';
 import { enforceUnit, componentToSlot, tryCall } from '../utils.mjs';
 import HeaderCell$1 from '../components/header-cell.mjs';
 import SortIcon from '../components/sort-icon.mjs';
 
+function _isSlot(s) {
+  return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
+}
 const HeaderCellRenderer = (props, {
   slots
 }) => {
@@ -167,7 +171,7 @@ const HeaderCellRenderer = (props, {
     style: cellStyle,
     ["data-key"]: column.key
   };
-  return createVNode("div", mergeProps(cellWrapperProps, {
+  const headerCell = createVNode("div", mergeProps(cellWrapperProps, {
     "role": "columnheader"
   }), [Cell, sortable && createVNode(SortIcon, {
     "class": [ns.e("sort-icon"), sorting && ns.is("sorting")],
@@ -178,6 +182,14 @@ const HeaderCellRenderer = (props, {
     "onClick": (event) => event.stopPropagation(),
     "onMousedown": handleResizeMouseDown
   }, null)]);
+  return column.hoverTip ? createVNode(ElTooltip, {
+    "content": column.hoverTip,
+    "effect": "light",
+    "placement": "top-start",
+    "popperClass": "text-overflow-tooltip"
+  }, _isSlot(headerCell) ? headerCell : {
+    default: () => [headerCell]
+  }) : headerCell;
 };
 var HeaderCell = HeaderCellRenderer;
 

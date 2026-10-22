@@ -1,6 +1,6 @@
 /*! Element Plus v0.0.0-dev.1 */
 
-import { unref, readonly, shallowRef, watchEffect, getCurrentScope, onScopeDispose, computed, isRef, reactive, getCurrentInstance, onMounted, nextTick, ref, watch, defineComponent, openBlock, createElementBlock, createElementVNode, warn, isVNode, Fragment, Comment, onBeforeUnmount, inject, onUnmounted, h as h$1, Teleport as Teleport$1, onBeforeMount, provide, triggerRef, renderSlot, normalizeClass, normalizeStyle, mergeProps, useSlots, toRef, createBlock, Transition, withCtx, withDirectives, createCommentVNode, createTextVNode, toDisplayString, createVNode, vShow, toRefs, onUpdated, resolveDynamicComponent, TransitionGroup, cloneVNode, Text as Text$1, withKeys, onDeactivated, useAttrs as useAttrs$1, withModifiers, onActivated, renderList, createSlots, normalizeProps, guardReactiveProps, toRaw, vModelCheckbox, vModelRadio, onBeforeUpdate, vModelText, toHandlers, resolveDirective, resolveComponent, markRaw, effectScope, render, toHandlerKey, createApp, shallowReactive } from 'vue';
+import { unref, readonly, shallowRef, watchEffect, getCurrentScope, onScopeDispose, computed, isRef, reactive, getCurrentInstance, onMounted, nextTick, ref, watch, defineComponent, openBlock, createElementBlock, createElementVNode, warn, isVNode, Fragment, Comment, onBeforeUnmount, inject, onUnmounted, h as h$1, Teleport as Teleport$1, onBeforeMount, provide, triggerRef, renderSlot, normalizeClass, normalizeStyle, mergeProps, useSlots, toRef, createBlock, Transition, withCtx, withDirectives, createCommentVNode, createTextVNode, toDisplayString, createVNode, vShow, toRefs, onUpdated, resolveDynamicComponent, TransitionGroup, cloneVNode, Text as Text$1, withKeys, onDeactivated, withModifiers, useAttrs as useAttrs$1, createSlots, onActivated, renderList, normalizeProps, guardReactiveProps, toRaw, vModelCheckbox, vModelRadio, onBeforeUpdate, vModelText, toHandlers, resolveDirective, resolveComponent, markRaw, effectScope, render, toHandlerKey, createApp, shallowReactive } from 'vue';
 
 const FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex="-1"]),input:not([disabled]),input:not([type="hidden"]),select:not([disabled]),textarea:not([disabled])`;
 const isHTMLElement$2 = (e) => {
@@ -16490,11 +16490,13 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
   emits: ["before-show"],
   setup(__props, { expose, emit }) {
     const props = __props;
+    const ns = useNamespace("float-label");
     const labelRef = ref();
+    const textRef = ref();
     const visible = ref(false);
     let hovering = false;
     const updateOverflow = () => {
-      const label = labelRef.value;
+      const label = textRef.value || labelRef.value;
       const nextVisible = Boolean(hovering && label && label.scrollWidth > label.clientWidth);
       if (nextVisible && !visible.value)
         emit("before-show");
@@ -16509,6 +16511,7 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
       visible.value = false;
     };
     useResizeObserver(labelRef, updateOverflow);
+    useResizeObserver(textRef, updateOverflow);
     watch(() => props.text, updateOverflow, { flush: "post" });
     expose({ hide: handleMouseLeave });
     return (_ctx, _cache) => {
@@ -16527,11 +16530,31 @@ const _sfc_main$2s = /* @__PURE__ */ defineComponent({
           createElementVNode("span", mergeProps(_ctx.$attrs, {
             ref_key: "labelRef",
             ref: labelRef,
-            onMouseenter: handleMouseEnter,
+            class: _ctx.$slots.labelIcon ? [unref(ns).b(), unref(ns).is("with-icon")] : void 0,
+            onMouseenter: ($event) => !_ctx.$slots.labelIcon && handleMouseEnter(),
             onMouseleave: handleMouseLeave
-          }), toDisplayString(__props.text), 17)
+          }), [
+            _ctx.$slots.labelIcon ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+              createElementVNode("span", {
+                ref_key: "textRef",
+                ref: textRef,
+                class: normalizeClass(unref(ns).e("text")),
+                onMouseenter: handleMouseEnter,
+                onMouseleave: handleMouseLeave
+              }, toDisplayString(__props.text), 35),
+              createElementVNode("span", {
+                class: normalizeClass(unref(ns).e("icon")),
+                onClick: withModifiers(() => {
+                }, ["stop"])
+              }, [
+                renderSlot(_ctx.$slots, "labelIcon")
+              ], 10, ["onClick"])
+            ], 64)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+              createTextVNode(toDisplayString(__props.text), 1)
+            ], 64))
+          ], 16, ["onMouseenter"])
         ]),
-        _: 1
+        _: 3
       }, 8, ["content", "visible", "hide-after", "transition"]);
     };
   }
@@ -17267,7 +17290,16 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                     text: _ctx.placeholder,
                     immediate: "",
                     onBeforeShow: hideInputTooltip
-                  }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
+                  }, createSlots({
+                    _: 2
+                  }, [
+                    _ctx.$slots.labelIcon ? {
+                      name: "labelIcon",
+                      fn: withCtx(() => [
+                        renderSlot(_ctx.$slots, "labelIcon")
+                      ])
+                    } : void 0
+                  ]), 1032, ["text", "class"])) : createCommentVNode("v-if", true),
                   createCommentVNode(" suffix slot "),
                   unref(suffixVisible) || unref(isTextarea) && _ctx.$slots.textareaSuffix ? (openBlock(), createElementBlock("span", {
                     key: 4,
@@ -17503,7 +17535,16 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
             immediate: "",
             onBeforeShow: hideInputTooltip,
             onClick: handleTextareaFocus
-          }, null, 8, ["text", "class"])) : createCommentVNode("v-if", true),
+          }, createSlots({
+            _: 2
+          }, [
+            _ctx.$slots.labelIcon ? {
+              name: "labelIcon",
+              fn: withCtx(() => [
+                renderSlot(_ctx.$slots, "labelIcon")
+              ])
+            } : void 0
+          ]), 1032, ["text", "class"])) : createCommentVNode("v-if", true),
           unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
             key: 3,
             style: normalizeStyle(countStyle.value),
@@ -34157,7 +34198,7 @@ const getPanel = function(type) {
   }
 };
 
-function _isSlot$7(s) {
+function _isSlot$8(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 dayjs.extend(localeData);
@@ -34245,7 +34286,7 @@ var DatePicker = defineComponent({
             "modelValue": selectType.value,
             "onChange": handleRadioChange,
             "size": "small"
-          }, _isSlot$7(_slot = props.typeList.map((item) => createVNode(ElRadioButton, {
+          }, _isSlot$8(_slot = props.typeList.map((item) => createVNode(ElRadioButton, {
             "key": item.key,
             "value": item.key,
             "label": item.label,
@@ -41944,7 +41985,16 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
                     }]),
                     text: _ctx.placeholder,
                     onBeforeShow: _ctx.hideSelectionTooltip
-                  }, null, 8, ["text", "class", "onBeforeShow"])) : createCommentVNode("v-if", true),
+                  }, createSlots({
+                    _: 2
+                  }, [
+                    _ctx.$slots.labelIcon ? {
+                      name: "labelIcon",
+                      fn: withCtx(() => [
+                        renderSlot(_ctx.$slots, "labelIcon")
+                      ])
+                    } : void 0
+                  ]), 1032, ["text", "class", "onBeforeShow"])) : createCommentVNode("v-if", true),
                   _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
                     key: 1,
                     ref: "prefixRef",
@@ -46754,7 +46804,16 @@ function _sfc_render$8(_ctx, _cache) {
                     }]),
                     text: _ctx.placeholder,
                     onBeforeShow: _ctx.hideSelectionTooltip
-                  }, null, 8, ["text", "class", "onBeforeShow"])) : createCommentVNode("v-if", true),
+                  }, createSlots({
+                    _: 2
+                  }, [
+                    _ctx.$slots.labelIcon ? {
+                      name: "labelIcon",
+                      fn: withCtx(() => [
+                        renderSlot(_ctx.$slots, "labelIcon")
+                      ])
+                    } : void 0
+                  ]), 1032, ["text", "class", "onBeforeShow"])) : createCommentVNode("v-if", true),
                   _ctx.$slots.prefix ? (openBlock(), createElementBlock("div", {
                     key: 1,
                     ref: "prefixRef",
@@ -52710,6 +52769,14 @@ function useEvent(props, emit) {
     }
     const summaryHeaderTitle = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-title`) : null;
     const summaryHeaderText = namespace ? cell == null ? void 0 : cell.querySelector(`.${namespace}-table__header-summary`) : null;
+    if (column == null ? void 0 : column.hoverTip) {
+      createTablePopper({
+        effect: "light",
+        placement: "top-start",
+        popperClass: "table-header-tooltip"
+      }, column.hoverTip, row, column, cell, table);
+      return;
+    }
     if ((column == null ? void 0 : column.type) === "selection") {
       if (column.showSelectionTooltip) {
         selectionTooltipContext.value = {
@@ -55784,6 +55851,7 @@ function useWatcher(owner, props_) {
   const registerNormalWatchers = () => {
     const props = [
       "label",
+      "hoverTip",
       "summary",
       "filters",
       "filterMultiple",
@@ -56136,6 +56204,7 @@ var defaultProps$1 = {
     default: "default"
   },
   label: String,
+  hoverTip: String,
   summary: [String, Number],
   className: String,
   labelClassName: String,
@@ -56262,6 +56331,7 @@ var ElTableColumn$1 = defineComponent({
       const basicProps = [
         "columnKey",
         "label",
+        "hoverTip",
         "summary",
         "className",
         "labelClassName",
@@ -57974,7 +58044,7 @@ const tableV2CellProps = buildProps({
   }
 });
 
-function _isSlot$6(s) {
+function _isSlot$7(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 const TableV2Cell = defineComponent({
@@ -58023,7 +58093,7 @@ const TableV2Cell = defineComponent({
         "popperClass": popperClass,
         "content": displayText,
         "disabled": !isOverflowing.value
-      }), _isSlot$6(content) ? content : {
+      }), _isSlot$7(content) ? content : {
         default: () => [content]
       });
     };
@@ -58036,17 +58106,20 @@ const HeaderCell = (props, {
 }) => {
   var _a, _b;
   const title = (_b = (_a = props.column) == null ? void 0 : _a.title) != null ? _b : "";
-  return renderSlot(slots, "default", props, () => [createVNode(ElTooltip, {
-    "content": title,
-    "disabled": !title,
-    "effect": "light",
-    "placement": "top-start",
-    "popperClass": "text-overflow-tooltip"
-  }, {
-    default: () => [createVNode("div", {
-      "class": props.class
-    }, [title])]
-  })]);
+  return renderSlot(slots, "default", props, () => {
+    var _a2;
+    return [createVNode(ElTooltip, {
+      "content": title,
+      "disabled": !title || !!((_a2 = props.column) == null ? void 0 : _a2.hoverTip),
+      "effect": "light",
+      "placement": "top-start",
+      "popperClass": "text-overflow-tooltip"
+    }, {
+      default: () => [createVNode("div", {
+        "class": props.class
+      }, [title])]
+    })];
+  });
 };
 HeaderCell.displayName = "ElTableV2HeaderCell";
 HeaderCell.inheritAttrs = false;
@@ -58693,7 +58766,7 @@ const TableGrid = defineComponent({
   }
 });
 
-function _isSlot$5(s) {
+function _isSlot$6(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 const MainTable = (props, {
@@ -58705,12 +58778,12 @@ const MainTable = (props, {
   } = props;
   return createVNode(TableGrid, mergeProps({
     "ref": mainTableRef
-  }, rest), _isSlot$5(slots) ? slots : {
+  }, rest), _isSlot$6(slots) ? slots : {
     default: () => [slots]
   });
 };
 
-function _isSlot$4(s) {
+function _isSlot$5(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 const LeftTable = (props, {
@@ -58724,12 +58797,12 @@ const LeftTable = (props, {
   } = props;
   return createVNode(TableGrid, mergeProps({
     "ref": leftTableRef
-  }, rest), _isSlot$4(slots) ? slots : {
+  }, rest), _isSlot$5(slots) ? slots : {
     default: () => [slots]
   });
 };
 
-function _isSlot$3(s) {
+function _isSlot$4(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 const RightTable = (props, {
@@ -58743,12 +58816,12 @@ const RightTable = (props, {
   } = props;
   return createVNode(TableGrid, mergeProps({
     "ref": rightTableRef
-  }, rest), _isSlot$3(slots) ? slots : {
+  }, rest), _isSlot$4(slots) ? slots : {
     default: () => [slots]
   });
 };
 
-function _isSlot$2(s) {
+function _isSlot$3(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 const RowRenderer = (props, {
@@ -58906,7 +58979,7 @@ const RowRenderer = (props, {
     "onMouseenter": handlerMouseEnter,
     "onMouseleave": handlerMouseLeave,
     "rowkey": _rowKey
-  }), _isSlot$2(slots) ? slots : {
+  }), _isSlot$3(slots) ? slots : {
     default: () => [slots]
   });
 };
@@ -59156,7 +59229,7 @@ const CellRenderer = ({
 };
 CellRenderer.inheritAttrs = false;
 
-function _isSlot$1(s) {
+function _isSlot$2(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 const HeaderRenderer = ({
@@ -59183,11 +59256,14 @@ const HeaderRenderer = ({
     headerIndex,
     style
   };
-  return createVNode(HeaderRow, extraProps, _isSlot$1(slots) ? slots : {
+  return createVNode(HeaderRow, extraProps, _isSlot$2(slots) ? slots : {
     default: () => [slots]
   });
 };
 
+function _isSlot$1(s) {
+  return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
+}
 const HeaderCellRenderer = (props, {
   slots
 }) => {
@@ -59350,7 +59426,7 @@ const HeaderCellRenderer = (props, {
     style: cellStyle,
     ["data-key"]: column.key
   };
-  return createVNode("div", mergeProps(cellWrapperProps, {
+  const headerCell = createVNode("div", mergeProps(cellWrapperProps, {
     "role": "columnheader"
   }), [Cell, sortable && createVNode(SortIcon$1, {
     "class": [ns.e("sort-icon"), sorting && ns.is("sorting")],
@@ -59361,6 +59437,14 @@ const HeaderCellRenderer = (props, {
     "onClick": (event) => event.stopPropagation(),
     "onMousedown": handleResizeMouseDown
   }, null)]);
+  return column.hoverTip ? createVNode(ElTooltip, {
+    "content": column.hoverTip,
+    "effect": "light",
+    "placement": "top-start",
+    "popperClass": "text-overflow-tooltip"
+  }, _isSlot$1(headerCell) ? headerCell : {
+    default: () => [headerCell]
+  }) : headerCell;
 };
 
 const Footer = (props, {

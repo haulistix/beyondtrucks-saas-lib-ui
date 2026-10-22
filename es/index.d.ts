@@ -11558,6 +11558,8 @@ declare function __VLS_template_3(): {
     textareaPrefix?(_: {}): any;
     textareaPrefix?(_: {}): any;
     prefix?(_: {}): any;
+    labelIcon?(_: {}): any;
+    labelIcon?(_: {}): any;
     textareaSuffix?(_: {}): any;
     textareaSuffix?(_: {}): any;
     suffix?(_: {}): any;
@@ -13996,6 +13998,7 @@ export declare type Column<T = any> = {
     flexGrow?: CSSProperties["flexGrow"];
     flexShrink?: CSSProperties["flexShrink"];
     title?: string;
+    hoverTip?: string;
     hidden?: boolean;
     headerClass?: HeaderClassGetter<T> | string;
     diagonalHeader?: DiagonalHeaderConfig_2;
@@ -17102,7 +17105,11 @@ declare const _default_75: DefineComponent<{
         "onBefore-show"?: ((...args: any[]) => any) | undefined;
     } & ShallowUnwrapRef<{
         hide: () => void;
-    }> & {} & ComponentCustomProperties) | undefined>;
+    }> & {} & ComponentCustomProperties & {
+        $slots: {
+            labelIcon?(_: {}): any;
+        };
+    }) | undefined>;
     handleSelectionMouseMove: (event: MouseEvent) => void;
     hideSelectionTooltip: () => void;
     modelValue: ComputedRef<string | number | boolean | any[] | Record<string, any> | null | undefined>;
@@ -17972,7 +17979,11 @@ declare const _default_78: DefineComponent<{
         "onBefore-show"?: ((...args: any[]) => any) | undefined;
     } & ShallowUnwrapRef<{
         hide: () => void;
-    }> & {} & ComponentCustomProperties) | undefined>;
+    }> & {} & ComponentCustomProperties & {
+        $slots: {
+            labelIcon?(_: {}): any;
+        };
+    }) | undefined>;
     handleSelectionMouseMove: (event: MouseEvent) => void;
     hideSelectionTooltip: () => void;
     modelValue: ComputedRef<any>;
@@ -19721,6 +19732,7 @@ declare const _default_87: DefineComponent<{
         default: string;
     };
     label: StringConstructor;
+    hoverTip: StringConstructor;
     summary: (NumberConstructor | StringConstructor)[];
     className: StringConstructor;
     labelClassName: StringConstructor;
@@ -19785,6 +19797,7 @@ declare const _default_87: DefineComponent<{
         default: string;
     };
     label: StringConstructor;
+    hoverTip: StringConstructor;
     summary: (NumberConstructor | StringConstructor)[];
     className: StringConstructor;
     labelClassName: StringConstructor;
@@ -27893,6 +27906,7 @@ export declare type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     realWidth: number | null;
     type: string;
     label: string;
+    hoverTip?: string;
     summary?: string | number;
     className: string;
     labelClassName: string;

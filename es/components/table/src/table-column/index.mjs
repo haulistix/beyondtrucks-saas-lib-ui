@@ -70,6 +70,7 @@ var ElTableColumn = defineComponent({
       const basicProps = [
         "columnKey",
         "label",
+        "hoverTip",
         "summary",
         "className",
         "labelClassName",

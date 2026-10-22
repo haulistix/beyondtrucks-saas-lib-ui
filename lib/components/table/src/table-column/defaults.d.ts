@@ -23,6 +23,7 @@ type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
     realWidth: number | null;
     type: string;
     label: string;
+    hoverTip?: string;
     summary?: string | number;
     className: string;
     labelClassName: string;
@@ -95,6 +96,10 @@ declare const _default: {
      * @description column label
      */
     label: StringConstructor;
+    /**
+     * @description custom header tooltip content, taking priority over the default header tooltip
+     */
+    hoverTip: StringConstructor;
     /**
      * @description supplementary text displayed below the column label
      */

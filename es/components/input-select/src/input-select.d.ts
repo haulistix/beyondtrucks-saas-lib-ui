@@ -1,5 +1,6 @@
 import type { DirectiveArguments, ExtractPropTypes, __ExtractPublicPropTypes } from 'vue';
 import type { InputPropsPublic } from 'element-plus/es/components/input';
+import type { FormItemProps } from 'element-plus/es/components/form';
 import type { SelectV2PropsPublic } from 'element-plus/es/components/select-v2/src/defaults';
 export declare const inputSelectControlTypes: readonly ["input", "select"];
 export type InputSelectControl = (typeof inputSelectControlTypes)[number];
@@ -7,6 +8,7 @@ export type InputSelectLayout = ['input', 'select'] | ['select', 'select'] | ['s
 export type InputSelectValue = InputPropsPublic['modelValue'] | SelectV2PropsPublic['modelValue'];
 export type InputSelectControlProps = Partial<Omit<InputPropsPublic, 'modelValue'>> | Partial<Omit<SelectV2PropsPublic, 'modelValue'>>;
 export type InputSelectDirectives = DirectiveArguments;
+export type InputSelectFormItemProps = Partial<Pick<FormItemProps, 'prop' | 'rules' | 'required' | 'error' | 'validateStatus' | 'showMessage' | 'alwaysShowError'>>;
 export declare const inputSelectProps: {
     readonly layout: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => InputSelectLayout) | ((new (...args: any[]) => ["input", "select"] | ["select", "select"] | ["select", "input"] | ["input", "input"]) | (() => InputSelectLayout))[], unknown, InputSelectLayout, () => InputSelectLayout, boolean>;
     readonly leftValue: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => any) | (() => any) | {
@@ -29,6 +31,18 @@ export declare const inputSelectProps: {
     })[], unknown, unknown, undefined, boolean>;
     readonly leftProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly rightProps: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftFormItemProps: {
+        readonly type: import("vue").PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly rightFormItemProps: {
+        readonly type: import("vue").PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly leftDirectives: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
     readonly rightDirectives: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
 };

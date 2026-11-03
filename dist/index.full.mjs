@@ -42426,6 +42426,12 @@ const inputSelectProps = buildProps({
     type: definePropType(Object),
     default: () => ({})
   },
+  leftFormItemProps: {
+    type: definePropType(Object)
+  },
+  rightFormItemProps: {
+    type: definePropType(Object)
+  },
   leftDirectives: {
     type: definePropType(Array),
     default: () => []
@@ -42531,10 +42537,20 @@ const _sfc_main$1a = defineComponent({
         onBlur: (event) => handleBlur(side, event),
         onClear: () => handleClear(side)
       }, getControlSlots(side)), isLeft ? props.leftDirectives : props.rightDirectives);
-      return control === "select" ? h$1("div", {
+      const controlNode = control === "select" ? h$1("div", {
         key: `${side}-${control}`,
         class: [ns.e("control"), ns.is(side)]
       }, [controlVNode]) : controlVNode;
+      if (!props.leftFormItemProps && !props.rightFormItemProps) {
+        return controlNode;
+      }
+      const formItemProps = isLeft ? props.leftFormItemProps : props.rightFormItemProps;
+      return h$1(ElFormItem, {
+        labelWidth: 0,
+        ...formItemProps,
+        key: `${side}-${JSON.stringify(formItemProps == null ? void 0 : formItemProps.prop)}`,
+        class: [ns.e("form-item"), ns.is(side)]
+      }, { default: () => controlNode });
     };
     const focus = (side = "left") => {
       var _a, _b;

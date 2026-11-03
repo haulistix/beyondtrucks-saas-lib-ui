@@ -8,6 +8,17 @@
   height: 32px;
   vertical-align: middle;
 
+  @include e(form-item) {
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 0;
+
+    > .#{$namespace}-form-item__content {
+      min-width: 0;
+      align-items: stretch;
+    }
+  }
+
   @include when(expanded) {
     height: auto;
 

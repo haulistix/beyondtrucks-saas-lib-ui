@@ -16338,6 +16338,18 @@ declare const _default_55: DefineComponent<{
     })[], unknown, unknown, undefined, boolean>;
     readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftFormItemProps: {
+        readonly type: PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly rightFormItemProps: {
+        readonly type: PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly leftDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
     readonly rightDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
 }, () => VNode<RendererNode, RendererElement, {
@@ -16401,6 +16413,18 @@ declare const _default_55: DefineComponent<{
     })[], unknown, unknown, undefined, boolean>;
     readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftFormItemProps: {
+        readonly type: PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly rightFormItemProps: {
+        readonly type: PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly leftDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
     readonly rightDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
 }>> & {
@@ -24648,6 +24672,7 @@ export declare const inputSelectEmits: {
     "left-visible-change": (visible: boolean) => boolean;
     "right-visible-change": (visible: boolean) => boolean;
 };
+export declare type InputSelectFormItemProps = Partial<Pick<FormItemProps, "prop" | "rules" | "required" | "error" | "validateStatus" | "showMessage" | "alwaysShowError">>;
 export declare type InputSelectInstance = InstanceType<typeof _default_55> & unknown;
 export declare type InputSelectLayout = [
     "input",
@@ -24709,6 +24734,18 @@ export declare const inputSelectProps: {
     })[], unknown, unknown, undefined, boolean>;
     readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftFormItemProps: {
+        readonly type: PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
+    readonly rightFormItemProps: {
+        readonly type: PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
+        readonly required: false;
+        readonly validator: ((val: unknown) => boolean) | undefined;
+        __epPropKey: true;
+    };
     readonly leftDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
     readonly rightDirectives: EpPropFinalized<(new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments) | ((new (...args: any[]) => DirectiveArguments) | (() => DirectiveArguments))[], unknown, unknown, () => never[], boolean>;
 };

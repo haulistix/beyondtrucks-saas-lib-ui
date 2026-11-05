@@ -50,6 +50,15 @@ $directions: rtl, ltr, ttb, btt;
     line-height: 24px;
   }
 
+  @include e(content) {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
   @include e(footer) {
     padding: getCssVar('drawer-padding-primary');
     text-align: right;

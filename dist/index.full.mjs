@@ -1,6 +1,6 @@
 /*! Element Plus v0.0.0-dev.1 */
 
-import { unref, readonly, shallowRef, watchEffect, getCurrentScope, onScopeDispose, computed, isRef, reactive, getCurrentInstance, onMounted, nextTick, ref, watch, defineComponent, openBlock, createElementBlock, createElementVNode, warn, isVNode, Fragment, Comment, onBeforeUnmount, inject, onUnmounted, h as h$1, Teleport as Teleport$1, onBeforeMount, provide, triggerRef, renderSlot, normalizeClass, normalizeStyle, mergeProps, useSlots, toRef, createBlock, Transition, withCtx, withDirectives, createCommentVNode, createTextVNode, toDisplayString, createVNode, vShow, toRefs, onUpdated, resolveDynamicComponent, TransitionGroup, cloneVNode, Text as Text$1, withKeys, onDeactivated, withModifiers, useAttrs as useAttrs$1, createSlots, onActivated, renderList, normalizeProps, guardReactiveProps, toRaw, vModelCheckbox, vModelRadio, onBeforeUpdate, vModelText, toHandlers, resolveDirective, resolveComponent, markRaw, effectScope, render, toHandlerKey, createApp, shallowReactive } from 'vue';
+import { unref, readonly, shallowRef, watchEffect, getCurrentScope, onScopeDispose, computed, isRef, reactive, getCurrentInstance, onMounted, nextTick, ref, watch, defineComponent, openBlock, createElementBlock, createElementVNode, warn, isVNode, Fragment, Comment, onBeforeUnmount, inject, onUnmounted, h as h$1, Teleport as Teleport$1, onBeforeMount, provide, triggerRef, renderSlot, normalizeClass, normalizeStyle, mergeProps, useSlots, toRef, createBlock, Transition, withCtx, withDirectives, createCommentVNode, createTextVNode, toDisplayString, createVNode, vShow, toRefs, onUpdated, resolveDynamicComponent, TransitionGroup, cloneVNode, Text as Text$1, withKeys, onDeactivated, withModifiers, useAttrs as useAttrs$1, createSlots, onActivated, renderList, normalizeProps, guardReactiveProps, toRaw, vModelCheckbox, vModelRadio, onBeforeUpdate, vModelText, toHandlers, resolveDirective, createApp, resolveComponent, markRaw, effectScope, render, toHandlerKey, shallowReactive } from 'vue';
 
 const FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex="-1"]),input:not([disabled]),input:not([type="hidden"]),select:not([disabled]),textarea:not([disabled])`;
 const isHTMLElement$2 = (e) => {
@@ -35404,6 +35404,296 @@ var Divider = /* @__PURE__ */ _export_sfc(_sfc_main$1s, [["__file", "divider.vue
 
 const ElDivider = withInstall(Divider);
 
+function createLoadingComponent(options, appContext) {
+  let afterLeaveTimer;
+  const afterLeaveFlag = ref(false);
+  const data = reactive({
+    ...options,
+    originalPosition: "",
+    originalOverflow: "",
+    visible: false
+  });
+  function setText(text) {
+    data.text = text;
+  }
+  function destroySelf() {
+    const target = data.parent;
+    const ns = vm.ns;
+    if (!target.vLoadingAddClassList) {
+      let loadingNumber = target.getAttribute("loading-number");
+      loadingNumber = Number.parseInt(loadingNumber) - 1;
+      if (!loadingNumber) {
+        removeClass(target, ns.bm("parent", "relative"));
+        target.removeAttribute("loading-number");
+      } else {
+        target.setAttribute("loading-number", loadingNumber.toString());
+      }
+      removeClass(target, ns.bm("parent", "hidden"));
+    }
+    removeElLoadingChild();
+    loadingInstance.unmount();
+  }
+  function removeElLoadingChild() {
+    var _a, _b;
+    (_b = (_a = vm.$el) == null ? void 0 : _a.parentNode) == null ? void 0 : _b.removeChild(vm.$el);
+  }
+  function close() {
+    var _a;
+    if (options.beforeClose && !options.beforeClose())
+      return;
+    afterLeaveFlag.value = true;
+    clearTimeout(afterLeaveTimer);
+    afterLeaveTimer = setTimeout(handleAfterLeave, 400);
+    data.visible = false;
+    (_a = options.closed) == null ? void 0 : _a.call(options);
+  }
+  function handleAfterLeave() {
+    if (!afterLeaveFlag.value)
+      return;
+    const target = data.parent;
+    afterLeaveFlag.value = false;
+    target.vLoadingAddClassList = void 0;
+    destroySelf();
+  }
+  const elLoadingComponent = defineComponent({
+    name: "ElLoading",
+    setup(_, { expose }) {
+      const { ns, zIndex } = useGlobalComponentSettings("loading");
+      expose({
+        ns,
+        zIndex
+      });
+      return () => {
+        const svg = data.svg || '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">\n  <path d="M12 5C15.866 5 19 8.13401 19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12L2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2L12 5Z" fill="#7A909E" fill-opacity="0.38"/>\n</svg>';
+        const spinner = h$1("svg", {
+          class: "circular",
+          viewBox: data.svgViewBox ? data.svgViewBox : "0 0 24 24",
+          innerHTML: svg
+        });
+        const spinnerText = data.text ? h$1("p", { class: ns.b("text") }, [data.text]) : void 0;
+        return h$1(Transition, {
+          name: ns.b("fade"),
+          onAfterLeave: handleAfterLeave
+        }, {
+          default: withCtx(() => [
+            withDirectives(createVNode("div", {
+              style: {
+                backgroundColor: data.background || ""
+              },
+              class: [
+                ns.b("mask"),
+                data.customClass,
+                ns.is("fullscreen", data.fullscreen)
+              ]
+            }, [
+              h$1("div", {
+                class: ns.b("spinner")
+              }, [spinner, spinnerText])
+            ]), [[vShow, data.visible]])
+          ])
+        });
+      };
+    }
+  });
+  const loadingInstance = createApp(elLoadingComponent);
+  Object.assign(loadingInstance._context, appContext != null ? appContext : {});
+  const vm = loadingInstance.mount(document.createElement("div"));
+  return {
+    ...toRefs(data),
+    setText,
+    removeElLoadingChild,
+    close,
+    handleAfterLeave,
+    vm,
+    get $el() {
+      return vm.$el;
+    }
+  };
+}
+
+let fullscreenInstance = void 0;
+const Loading = function(options = {}, context) {
+  if (!isClient)
+    return void 0;
+  const resolved = resolveOptions(options);
+  if (resolved.fullscreen && fullscreenInstance) {
+    return fullscreenInstance;
+  }
+  const instance = createLoadingComponent({
+    ...resolved,
+    closed: () => {
+      var _a;
+      (_a = resolved.closed) == null ? void 0 : _a.call(resolved);
+      if (resolved.fullscreen)
+        fullscreenInstance = void 0;
+    }
+  }, context != null ? context : Loading._context);
+  addStyle(resolved, resolved.parent, instance);
+  addClassList(resolved, resolved.parent, instance);
+  resolved.parent.vLoadingAddClassList = () => addClassList(resolved, resolved.parent, instance);
+  let loadingNumber = resolved.parent.getAttribute("loading-number");
+  if (!loadingNumber) {
+    loadingNumber = "1";
+  } else {
+    loadingNumber = `${Number.parseInt(loadingNumber) + 1}`;
+  }
+  resolved.parent.setAttribute("loading-number", loadingNumber);
+  resolved.parent.appendChild(instance.$el);
+  nextTick(() => instance.visible.value = resolved.visible);
+  if (resolved.fullscreen) {
+    fullscreenInstance = instance;
+  }
+  return instance;
+};
+const resolveOptions = (options) => {
+  var _a, _b, _c, _d;
+  let target;
+  if (isString$1(options.target)) {
+    target = (_a = document.querySelector(options.target)) != null ? _a : document.body;
+  } else {
+    target = options.target || document.body;
+  }
+  return {
+    parent: target === document.body || options.body ? document.body : target,
+    background: options.background || "",
+    svg: options.svg || "",
+    svgViewBox: options.svgViewBox || "",
+    spinner: options.spinner || false,
+    text: options.text || "",
+    fullscreen: target === document.body && ((_b = options.fullscreen) != null ? _b : true),
+    lock: (_c = options.lock) != null ? _c : false,
+    customClass: options.customClass || "",
+    visible: (_d = options.visible) != null ? _d : true,
+    beforeClose: options.beforeClose,
+    closed: options.closed,
+    target
+  };
+};
+const addStyle = async (options, parent, instance) => {
+  const { nextZIndex } = instance.vm.zIndex || instance.vm._.exposed.zIndex;
+  const maskStyle = {};
+  if (options.fullscreen) {
+    instance.originalPosition.value = getStyle(document.body, "position");
+    instance.originalOverflow.value = getStyle(document.body, "overflow");
+    maskStyle.zIndex = nextZIndex();
+  } else if (options.parent === document.body) {
+    instance.originalPosition.value = getStyle(document.body, "position");
+    await nextTick();
+    for (const property of ["top", "left"]) {
+      const scroll = property === "top" ? "scrollTop" : "scrollLeft";
+      maskStyle[property] = `${options.target.getBoundingClientRect()[property] + document.body[scroll] + document.documentElement[scroll] - Number.parseInt(getStyle(document.body, `margin-${property}`), 10)}px`;
+    }
+    for (const property of ["height", "width"]) {
+      maskStyle[property] = `${options.target.getBoundingClientRect()[property]}px`;
+    }
+  } else {
+    instance.originalPosition.value = getStyle(parent, "position");
+  }
+  for (const [key, value] of Object.entries(maskStyle)) {
+    instance.$el.style[key] = value;
+  }
+};
+const addClassList = (options, parent, instance) => {
+  const ns = instance.vm.ns || instance.vm._.exposed.ns;
+  if (!["absolute", "fixed", "sticky"].includes(instance.originalPosition.value)) {
+    addClass(parent, ns.bm("parent", "relative"));
+  } else {
+    removeClass(parent, ns.bm("parent", "relative"));
+  }
+  if (options.fullscreen && options.lock) {
+    addClass(parent, ns.bm("parent", "hidden"));
+  } else {
+    removeClass(parent, ns.bm("parent", "hidden"));
+  }
+};
+Loading._context = null;
+var Loading$1 = Loading;
+
+const INSTANCE_KEY = Symbol("ElLoading");
+const getAttributeName = (name) => {
+  return `element-loading-${hyphenate(name)}`;
+};
+const createInstance = (el, binding) => {
+  var _a, _b, _c, _d;
+  const vm = binding.instance;
+  const getBindingProp = (key) => isObject$1(binding.value) ? binding.value[key] : void 0;
+  const resolveExpression = (key) => {
+    const data = isString$1(key) && (vm == null ? void 0 : vm[key]) || key;
+    return ref(data);
+  };
+  const getProp = (name) => resolveExpression(getBindingProp(name) || el.getAttribute(getAttributeName(name)));
+  const fullscreen = (_a = getBindingProp("fullscreen")) != null ? _a : binding.modifiers.fullscreen;
+  const options = {
+    text: getProp("text"),
+    svg: getProp("svg"),
+    svgViewBox: getProp("svgViewBox"),
+    spinner: getProp("spinner"),
+    background: getProp("background"),
+    customClass: getProp("customClass"),
+    fullscreen,
+    target: (_b = getBindingProp("target")) != null ? _b : fullscreen ? void 0 : el,
+    body: (_c = getBindingProp("body")) != null ? _c : binding.modifiers.body,
+    lock: (_d = getBindingProp("lock")) != null ? _d : binding.modifiers.lock
+  };
+  const instance = Loading$1(options);
+  instance._context = vLoading._context;
+  el[INSTANCE_KEY] = {
+    options,
+    instance
+  };
+};
+const updateOptions = (originalOptions, newOptions) => {
+  for (const key of Object.keys(originalOptions)) {
+    if (isRef(originalOptions[key]))
+      originalOptions[key].value = newOptions[key];
+  }
+};
+const vLoading = {
+  mounted(el, binding) {
+    if (binding.value) {
+      createInstance(el, binding);
+    }
+  },
+  updated(el, binding) {
+    const instance = el[INSTANCE_KEY];
+    if (!binding.value) {
+      instance == null ? void 0 : instance.instance.close();
+      el[INSTANCE_KEY] = null;
+      return;
+    }
+    if (!instance)
+      createInstance(el, binding);
+    else {
+      updateOptions(instance.options, isObject$1(binding.value) ? binding.value : {
+        text: el.getAttribute(getAttributeName("text")),
+        svg: el.getAttribute(getAttributeName("svg")),
+        svgViewBox: el.getAttribute(getAttributeName("svgViewBox")),
+        spinner: el.getAttribute(getAttributeName("spinner")),
+        background: el.getAttribute(getAttributeName("background")),
+        customClass: el.getAttribute(getAttributeName("customClass"))
+      });
+    }
+  },
+  unmounted(el) {
+    var _a;
+    (_a = el[INSTANCE_KEY]) == null ? void 0 : _a.instance.close();
+    el[INSTANCE_KEY] = null;
+  }
+};
+vLoading._context = null;
+var vLoading$1 = vLoading;
+
+const ElLoading = {
+  install(app) {
+    Loading$1._context = app._context;
+    vLoading$1._context = app._context;
+    app.directive("loading", vLoading$1);
+    app.config.globalProperties.$loading = Loading$1;
+  },
+  directive: vLoading$1,
+  service: Loading$1
+};
+
 function useResizable(props, target) {
   const { width, height } = useWindowSize();
   const isHorizontal = computed(() => ["ltr", "rtl"].includes(props.direction));
@@ -35546,7 +35836,6 @@ const _sfc_main$1r = /* @__PURE__ */ defineComponent({
       afterLeave
     });
     return (_ctx, _cache) => {
-      const _directive_loading = resolveDirective("loading");
       return openBlock(), createBlock(unref(ElTeleport$1), {
         to: _ctx.appendTo,
         disabled: _ctx.appendTo !== "body" ? false : !_ctx.appendToBody
@@ -35585,7 +35874,7 @@ const _sfc_main$1r = /* @__PURE__ */ defineComponent({
                       onReleaseRequested: unref(onCloseRequested)
                     }, {
                       default: withCtx(() => [
-                        withDirectives((openBlock(), createElementBlock("div", mergeProps({
+                        createElementVNode("div", mergeProps({
                           ref_key: "drawerRef",
                           ref: drawerRef,
                           "aria-modal": "true",
@@ -35654,29 +35943,34 @@ const _sfc_main$1r = /* @__PURE__ */ defineComponent({
                               }, 8, ["class"])
                             ], 10, ["aria-label", "onClick"])) : createCommentVNode("v-if", true)
                           ], 2)) : createCommentVNode("v-if", true),
-                          unref(rendered) ? (openBlock(), createElementBlock("div", {
-                            key: 1,
-                            id: unref(bodyId),
-                            class: normalizeClass([unref(ns).e("body"), _ctx.bodyClass])
+                          withDirectives((openBlock(), createElementBlock("div", {
+                            class: normalizeClass(unref(ns).e("content")),
+                            "aria-busy": _ctx.loading
                           }, [
-                            renderSlot(_ctx.$slots, "default")
-                          ], 10, ["id"])) : createCommentVNode("v-if", true),
-                          _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
-                            key: 2,
-                            class: normalizeClass([unref(ns).e("footer"), _ctx.footerClass])
-                          }, [
-                            renderSlot(_ctx.$slots, "footer")
-                          ], 2)) : createCommentVNode("v-if", true),
+                            unref(rendered) ? (openBlock(), createElementBlock("div", {
+                              key: 0,
+                              id: unref(bodyId),
+                              class: normalizeClass([unref(ns).e("body"), _ctx.bodyClass])
+                            }, [
+                              renderSlot(_ctx.$slots, "default")
+                            ], 10, ["id"])) : createCommentVNode("v-if", true),
+                            _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+                              key: 1,
+                              class: normalizeClass([unref(ns).e("footer"), _ctx.footerClass])
+                            }, [
+                              renderSlot(_ctx.$slots, "footer")
+                            ], 2)) : createCommentVNode("v-if", true)
+                          ], 10, ["aria-busy"])), [
+                            [unref(vLoading$1), _ctx.loading]
+                          ]),
                           _ctx.resizable ? (openBlock(), createElementBlock("div", {
-                            key: 3,
+                            key: 1,
                             ref_key: "draggerRef",
                             ref: draggerRef,
                             style: normalizeStyle({ zIndex: unref(zIndex) }),
                             class: normalizeClass(unref(ns).e("dragger"))
                           }, null, 6)) : createCommentVNode("v-if", true)
-                        ], 16, ["aria-label", "aria-labelledby", "aria-describedby", "onClick"])), [
-                          [_directive_loading, _ctx.loading]
-                        ])
+                        ], 16, ["aria-label", "aria-labelledby", "aria-describedby", "onClick"])
                       ]),
                       _: 3
                     }, 8, ["trapped", "focus-trap-el", "focus-start-el", "onFocusAfterTrapped", "onFocusAfterReleased", "onFocusoutPrevented", "onReleaseRequested"])
@@ -70365,296 +70659,6 @@ _InfiniteScroll.install = (app) => {
   app.directive("InfiniteScroll", _InfiniteScroll);
 };
 const ElInfiniteScroll = _InfiniteScroll;
-
-function createLoadingComponent(options, appContext) {
-  let afterLeaveTimer;
-  const afterLeaveFlag = ref(false);
-  const data = reactive({
-    ...options,
-    originalPosition: "",
-    originalOverflow: "",
-    visible: false
-  });
-  function setText(text) {
-    data.text = text;
-  }
-  function destroySelf() {
-    const target = data.parent;
-    const ns = vm.ns;
-    if (!target.vLoadingAddClassList) {
-      let loadingNumber = target.getAttribute("loading-number");
-      loadingNumber = Number.parseInt(loadingNumber) - 1;
-      if (!loadingNumber) {
-        removeClass(target, ns.bm("parent", "relative"));
-        target.removeAttribute("loading-number");
-      } else {
-        target.setAttribute("loading-number", loadingNumber.toString());
-      }
-      removeClass(target, ns.bm("parent", "hidden"));
-    }
-    removeElLoadingChild();
-    loadingInstance.unmount();
-  }
-  function removeElLoadingChild() {
-    var _a, _b;
-    (_b = (_a = vm.$el) == null ? void 0 : _a.parentNode) == null ? void 0 : _b.removeChild(vm.$el);
-  }
-  function close() {
-    var _a;
-    if (options.beforeClose && !options.beforeClose())
-      return;
-    afterLeaveFlag.value = true;
-    clearTimeout(afterLeaveTimer);
-    afterLeaveTimer = setTimeout(handleAfterLeave, 400);
-    data.visible = false;
-    (_a = options.closed) == null ? void 0 : _a.call(options);
-  }
-  function handleAfterLeave() {
-    if (!afterLeaveFlag.value)
-      return;
-    const target = data.parent;
-    afterLeaveFlag.value = false;
-    target.vLoadingAddClassList = void 0;
-    destroySelf();
-  }
-  const elLoadingComponent = defineComponent({
-    name: "ElLoading",
-    setup(_, { expose }) {
-      const { ns, zIndex } = useGlobalComponentSettings("loading");
-      expose({
-        ns,
-        zIndex
-      });
-      return () => {
-        const svg = data.svg || '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">\n  <path d="M12 5C15.866 5 19 8.13401 19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12L2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2L12 5Z" fill="#7A909E" fill-opacity="0.38"/>\n</svg>';
-        const spinner = h$1("svg", {
-          class: "circular",
-          viewBox: data.svgViewBox ? data.svgViewBox : "0 0 24 24",
-          innerHTML: svg
-        });
-        const spinnerText = data.text ? h$1("p", { class: ns.b("text") }, [data.text]) : void 0;
-        return h$1(Transition, {
-          name: ns.b("fade"),
-          onAfterLeave: handleAfterLeave
-        }, {
-          default: withCtx(() => [
-            withDirectives(createVNode("div", {
-              style: {
-                backgroundColor: data.background || ""
-              },
-              class: [
-                ns.b("mask"),
-                data.customClass,
-                ns.is("fullscreen", data.fullscreen)
-              ]
-            }, [
-              h$1("div", {
-                class: ns.b("spinner")
-              }, [spinner, spinnerText])
-            ]), [[vShow, data.visible]])
-          ])
-        });
-      };
-    }
-  });
-  const loadingInstance = createApp(elLoadingComponent);
-  Object.assign(loadingInstance._context, appContext != null ? appContext : {});
-  const vm = loadingInstance.mount(document.createElement("div"));
-  return {
-    ...toRefs(data),
-    setText,
-    removeElLoadingChild,
-    close,
-    handleAfterLeave,
-    vm,
-    get $el() {
-      return vm.$el;
-    }
-  };
-}
-
-let fullscreenInstance = void 0;
-const Loading = function(options = {}, context) {
-  if (!isClient)
-    return void 0;
-  const resolved = resolveOptions(options);
-  if (resolved.fullscreen && fullscreenInstance) {
-    return fullscreenInstance;
-  }
-  const instance = createLoadingComponent({
-    ...resolved,
-    closed: () => {
-      var _a;
-      (_a = resolved.closed) == null ? void 0 : _a.call(resolved);
-      if (resolved.fullscreen)
-        fullscreenInstance = void 0;
-    }
-  }, context != null ? context : Loading._context);
-  addStyle(resolved, resolved.parent, instance);
-  addClassList(resolved, resolved.parent, instance);
-  resolved.parent.vLoadingAddClassList = () => addClassList(resolved, resolved.parent, instance);
-  let loadingNumber = resolved.parent.getAttribute("loading-number");
-  if (!loadingNumber) {
-    loadingNumber = "1";
-  } else {
-    loadingNumber = `${Number.parseInt(loadingNumber) + 1}`;
-  }
-  resolved.parent.setAttribute("loading-number", loadingNumber);
-  resolved.parent.appendChild(instance.$el);
-  nextTick(() => instance.visible.value = resolved.visible);
-  if (resolved.fullscreen) {
-    fullscreenInstance = instance;
-  }
-  return instance;
-};
-const resolveOptions = (options) => {
-  var _a, _b, _c, _d;
-  let target;
-  if (isString$1(options.target)) {
-    target = (_a = document.querySelector(options.target)) != null ? _a : document.body;
-  } else {
-    target = options.target || document.body;
-  }
-  return {
-    parent: target === document.body || options.body ? document.body : target,
-    background: options.background || "",
-    svg: options.svg || "",
-    svgViewBox: options.svgViewBox || "",
-    spinner: options.spinner || false,
-    text: options.text || "",
-    fullscreen: target === document.body && ((_b = options.fullscreen) != null ? _b : true),
-    lock: (_c = options.lock) != null ? _c : false,
-    customClass: options.customClass || "",
-    visible: (_d = options.visible) != null ? _d : true,
-    beforeClose: options.beforeClose,
-    closed: options.closed,
-    target
-  };
-};
-const addStyle = async (options, parent, instance) => {
-  const { nextZIndex } = instance.vm.zIndex || instance.vm._.exposed.zIndex;
-  const maskStyle = {};
-  if (options.fullscreen) {
-    instance.originalPosition.value = getStyle(document.body, "position");
-    instance.originalOverflow.value = getStyle(document.body, "overflow");
-    maskStyle.zIndex = nextZIndex();
-  } else if (options.parent === document.body) {
-    instance.originalPosition.value = getStyle(document.body, "position");
-    await nextTick();
-    for (const property of ["top", "left"]) {
-      const scroll = property === "top" ? "scrollTop" : "scrollLeft";
-      maskStyle[property] = `${options.target.getBoundingClientRect()[property] + document.body[scroll] + document.documentElement[scroll] - Number.parseInt(getStyle(document.body, `margin-${property}`), 10)}px`;
-    }
-    for (const property of ["height", "width"]) {
-      maskStyle[property] = `${options.target.getBoundingClientRect()[property]}px`;
-    }
-  } else {
-    instance.originalPosition.value = getStyle(parent, "position");
-  }
-  for (const [key, value] of Object.entries(maskStyle)) {
-    instance.$el.style[key] = value;
-  }
-};
-const addClassList = (options, parent, instance) => {
-  const ns = instance.vm.ns || instance.vm._.exposed.ns;
-  if (!["absolute", "fixed", "sticky"].includes(instance.originalPosition.value)) {
-    addClass(parent, ns.bm("parent", "relative"));
-  } else {
-    removeClass(parent, ns.bm("parent", "relative"));
-  }
-  if (options.fullscreen && options.lock) {
-    addClass(parent, ns.bm("parent", "hidden"));
-  } else {
-    removeClass(parent, ns.bm("parent", "hidden"));
-  }
-};
-Loading._context = null;
-var Loading$1 = Loading;
-
-const INSTANCE_KEY = Symbol("ElLoading");
-const getAttributeName = (name) => {
-  return `element-loading-${hyphenate(name)}`;
-};
-const createInstance = (el, binding) => {
-  var _a, _b, _c, _d;
-  const vm = binding.instance;
-  const getBindingProp = (key) => isObject$1(binding.value) ? binding.value[key] : void 0;
-  const resolveExpression = (key) => {
-    const data = isString$1(key) && (vm == null ? void 0 : vm[key]) || key;
-    return ref(data);
-  };
-  const getProp = (name) => resolveExpression(getBindingProp(name) || el.getAttribute(getAttributeName(name)));
-  const fullscreen = (_a = getBindingProp("fullscreen")) != null ? _a : binding.modifiers.fullscreen;
-  const options = {
-    text: getProp("text"),
-    svg: getProp("svg"),
-    svgViewBox: getProp("svgViewBox"),
-    spinner: getProp("spinner"),
-    background: getProp("background"),
-    customClass: getProp("customClass"),
-    fullscreen,
-    target: (_b = getBindingProp("target")) != null ? _b : fullscreen ? void 0 : el,
-    body: (_c = getBindingProp("body")) != null ? _c : binding.modifiers.body,
-    lock: (_d = getBindingProp("lock")) != null ? _d : binding.modifiers.lock
-  };
-  const instance = Loading$1(options);
-  instance._context = vLoading._context;
-  el[INSTANCE_KEY] = {
-    options,
-    instance
-  };
-};
-const updateOptions = (originalOptions, newOptions) => {
-  for (const key of Object.keys(originalOptions)) {
-    if (isRef(originalOptions[key]))
-      originalOptions[key].value = newOptions[key];
-  }
-};
-const vLoading = {
-  mounted(el, binding) {
-    if (binding.value) {
-      createInstance(el, binding);
-    }
-  },
-  updated(el, binding) {
-    const instance = el[INSTANCE_KEY];
-    if (!binding.value) {
-      instance == null ? void 0 : instance.instance.close();
-      el[INSTANCE_KEY] = null;
-      return;
-    }
-    if (!instance)
-      createInstance(el, binding);
-    else {
-      updateOptions(instance.options, isObject$1(binding.value) ? binding.value : {
-        text: el.getAttribute(getAttributeName("text")),
-        svg: el.getAttribute(getAttributeName("svg")),
-        svgViewBox: el.getAttribute(getAttributeName("svgViewBox")),
-        spinner: el.getAttribute(getAttributeName("spinner")),
-        background: el.getAttribute(getAttributeName("background")),
-        customClass: el.getAttribute(getAttributeName("customClass"))
-      });
-    }
-  },
-  unmounted(el) {
-    var _a;
-    (_a = el[INSTANCE_KEY]) == null ? void 0 : _a.instance.close();
-    el[INSTANCE_KEY] = null;
-  }
-};
-vLoading._context = null;
-var vLoading$1 = vLoading;
-
-const ElLoading = {
-  install(app) {
-    Loading$1._context = app._context;
-    vLoading$1._context = app._context;
-    app.directive("loading", vLoading$1);
-    app.config.globalProperties.$loading = Loading$1;
-  },
-  directive: vLoading$1,
-  service: Loading$1
-};
 
 const messageTypes = [
   "primary",

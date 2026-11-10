@@ -60907,7 +60907,8 @@ const tabsProps = buildProps({
     type: definePropType(Function),
     default: () => true
   },
-  stretch: Boolean
+  stretch: Boolean,
+  headerMarginZero: Boolean
 });
 const isPaneName = (value) => isString$1(value) || isNumber(value);
 const tabsEmits = {
@@ -61036,6 +61037,9 @@ const Tabs = defineComponent({
         "onTabRemove": handleTabRemove
       }, null);
       const header = createVNode("div", {
+        "style": props.headerMarginZero ? {
+          margin: 0
+        } : void 0,
         "class": [ns.e("header"), isVertical.value && ns.e("header-vertical"), ns.is(props.tabPosition)]
       }, [createVNode(PanesSorter, null, {
         default: tabNav,

@@ -119,7 +119,9 @@
     }
   }
   @include e(item) {
-    width: 148px;
+    max-width: 180px;
+    min-width: 120px;
+    width: auto;
     padding: 6px 12px;
     height: getCssVar('tabs', 'header-height');
     box-sizing: border-box;

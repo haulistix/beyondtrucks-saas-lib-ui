@@ -29475,6 +29475,7 @@ declare const Tabs: DefineComponent<{
         readonly prototype: any;
     })[], unknown, unknown, () => true, boolean>;
     readonly stretch: BooleanConstructor;
+    readonly headerMarginZero: BooleanConstructor;
 }, () => JSX.Element, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
     "update:modelValue": (name: TabPaneName) => name is string | number;
     tabClick: (pane: TabsPaneContext, ev: Event) => boolean;
@@ -29507,6 +29508,7 @@ declare const Tabs: DefineComponent<{
         readonly prototype: any;
     })[], unknown, unknown, () => true, boolean>;
     readonly stretch: BooleanConstructor;
+    readonly headerMarginZero: BooleanConstructor;
 }>> & {
     "onUpdate:modelValue"?: ((name: TabPaneName) => any) | undefined;
     onTabClick?: ((pane: {
@@ -29542,6 +29544,7 @@ declare const Tabs: DefineComponent<{
     readonly editable: boolean;
     readonly tabPosition: EpPropMergeType<StringConstructor, "left" | "right" | "top" | "bottom", unknown>;
     readonly addable: boolean;
+    readonly headerMarginZero: boolean;
 }>;
 export declare type TabsEmits = typeof tabsEmits;
 export declare const tabsEmits: {
@@ -29594,6 +29597,7 @@ export declare const tabsProps: {
         readonly prototype: any;
     })[], unknown, unknown, () => true, boolean>;
     readonly stretch: BooleanConstructor;
+    readonly headerMarginZero: BooleanConstructor;
 };
 export declare type TabsPropsPublic = __ExtractPublicPropTypes<typeof tabsProps>;
 export declare interface TabsRootContext {

@@ -24,6 +24,7 @@ export declare const tabsProps: {
         readonly prototype: any;
     })[], unknown, unknown, () => true, boolean>;
     readonly stretch: BooleanConstructor;
+    readonly headerMarginZero: BooleanConstructor;
 };
 export type TabsProps = ExtractPropTypes<typeof tabsProps>;
 export type TabsPropsPublic = __ExtractPublicPropTypes<typeof tabsProps>;
@@ -59,6 +60,7 @@ declare const Tabs: import("vue").DefineComponent<{
         readonly prototype: any;
     })[], unknown, unknown, () => true, boolean>;
     readonly stretch: BooleanConstructor;
+    readonly headerMarginZero: BooleanConstructor;
 }, () => JSX.Element, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (name: TabPaneName) => name is string | number;
     tabClick: (pane: TabsPaneContext, ev: Event) => boolean;
@@ -88,6 +90,7 @@ declare const Tabs: import("vue").DefineComponent<{
         readonly prototype: any;
     })[], unknown, unknown, () => true, boolean>;
     readonly stretch: BooleanConstructor;
+    readonly headerMarginZero: BooleanConstructor;
 }>> & {
     "onUpdate:modelValue"?: ((name: TabPaneName) => any) | undefined;
     onTabClick?: ((pane: {
@@ -120,6 +123,7 @@ declare const Tabs: import("vue").DefineComponent<{
     readonly editable: boolean;
     readonly tabPosition: import("element-plus/es/utils").EpPropMergeType<StringConstructor, "left" | "right" | "top" | "bottom", unknown>;
     readonly addable: boolean;
+    readonly headerMarginZero: boolean;
 }>;
 export type TabsInstance = InstanceType<typeof Tabs> & {
     currentName: TabPaneName;

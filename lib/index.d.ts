@@ -16336,8 +16336,8 @@ declare const _default_55: DefineComponent<{
         new (): any;
         readonly prototype: any;
     })[], unknown, unknown, undefined, boolean>;
-    readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
-    readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftProps: EpPropFinalized<(new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps) | ((new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: EpPropFinalized<(new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps) | ((new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly leftFormItemProps: {
         readonly type: PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
         readonly required: false;
@@ -16411,8 +16411,8 @@ declare const _default_55: DefineComponent<{
         new (): any;
         readonly prototype: any;
     })[], unknown, unknown, undefined, boolean>;
-    readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
-    readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftProps: EpPropFinalized<(new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps) | ((new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: EpPropFinalized<(new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps) | ((new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly leftFormItemProps: {
         readonly type: PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
         readonly required: false;
@@ -16468,8 +16468,8 @@ declare const _default_55: DefineComponent<{
     ]) | (() => InputSelectLayout))[], unknown, InputSelectLayout>;
     readonly leftValue: any;
     readonly rightValue: any;
-    readonly leftProps: EpPropMergeType<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown>;
-    readonly rightProps: EpPropMergeType<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown>;
+    readonly leftProps: InputSelectControlProps;
+    readonly rightProps: InputSelectControlProps;
     readonly leftDirectives: DirectiveArguments;
     readonly rightDirectives: DirectiveArguments;
 }>;
@@ -24651,7 +24651,9 @@ export declare const inputProps: {
 };
 export declare type InputPropsPublic = __ExtractPublicPropTypes<typeof inputProps>;
 export declare type InputSelectControl = (typeof inputSelectControlTypes)[number];
-export declare type InputSelectControlProps = Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>;
+export declare type InputSelectControlProps = (Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) & {
+    flex?: CSSProperties["flex"];
+};
 export declare const inputSelectControlTypes: readonly [
     "input",
     "select"
@@ -24732,8 +24734,8 @@ export declare const inputSelectProps: {
         new (): any;
         readonly prototype: any;
     })[], unknown, unknown, undefined, boolean>;
-    readonly leftProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
-    readonly rightProps: EpPropFinalized<(new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps) | ((new (...args: any[]) => Partial<Omit<InputPropsPublic, "modelValue">> | Partial<Omit<SelectV2PropsPublic, "modelValue">>) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly leftProps: EpPropFinalized<(new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps) | ((new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
+    readonly rightProps: EpPropFinalized<(new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps) | ((new (...args: any[]) => InputSelectControlProps & {}) | (() => InputSelectControlProps))[], unknown, unknown, () => {}, boolean>;
     readonly leftFormItemProps: {
         readonly type: PropType<Partial<Pick<FormItemProps, "prop" | "required" | "error" | "alwaysShowError" | "rules" | "validateStatus" | "showMessage">>>;
         readonly required: false;

@@ -42815,7 +42815,7 @@ const _sfc_main$1a = defineComponent({
       } : {};
       const controlVNode = withDirectives(createVNode(component, {
         ...control === "select" ? { options: [] } : {},
-        ...controlProps,
+        ...omit(controlProps, ["flex"]),
         ...listeners,
         key: `${side}-${control}`,
         ref: controlRef,
@@ -42863,12 +42863,21 @@ const _sfc_main$1a = defineComponent({
       blur
     });
     return () => {
-      var _a, _b;
+      var _a, _b, _c, _d;
       return h$1("div", {
         ...attrs,
+        style: [
+          attrs.style,
+          ((_a = props.leftProps) == null ? void 0 : _a.flex) !== void 0 && {
+            [ns.cssVarBlockName("left-flex")]: props.leftProps.flex
+          },
+          ((_b = props.rightProps) == null ? void 0 : _b.flex) !== void 0 && {
+            [ns.cssVarBlockName("right-flex")]: props.rightProps.flex
+          }
+        ],
         class: [
           ns.b(),
-          ns.is("expanded", Boolean(((_a = props.leftProps) == null ? void 0 : _a.expand) || ((_b = props.rightProps) == null ? void 0 : _b.expand))),
+          ns.is("expanded", Boolean(((_c = props.leftProps) == null ? void 0 : _c.expand) || ((_d = props.rightProps) == null ? void 0 : _d.expand))),
           attrs.class
         ],
         "data-layout": props.layout.join("-")

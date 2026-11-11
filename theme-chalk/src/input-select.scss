@@ -8,6 +8,13 @@
   height: 32px;
   vertical-align: middle;
 
+  @each $side in (left, right) {
+    > .#{$namespace}-input-select__control.is-#{$side},
+    > .#{$namespace}-input-select__form-item.is-#{$side} {
+      flex: var(#{getCssVarName('input-select', $side, 'flex')}, 1 1 0);
+    }
+  }
+
   @include e(form-item) {
     flex: 1 1 0;
     min-width: 0;

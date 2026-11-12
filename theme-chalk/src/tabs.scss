@@ -193,9 +193,14 @@
     > .#{$namespace}-tabs__header .#{$namespace}-tabs__nav-wrap::after {
       content: none;
     }
-    > .#{$namespace}-tabs__header .#{$namespace}-tabs__nav-wrap.is-top::after {
+    > .#{$namespace}-tabs__header .#{$namespace}-tabs__nav.is-top::after {
       content: '';
+      position: absolute;
+      left: 100%;
+      bottom: 0;
+      width: 100vw;
       height: 1px;
+      background-color: getCssVar('border-color-light');
     }
     > .#{$namespace}-tabs__header .#{$namespace}-tabs__item.is-top:not(.is-active) {
       border-bottom-color: getCssVar('border-color-light');

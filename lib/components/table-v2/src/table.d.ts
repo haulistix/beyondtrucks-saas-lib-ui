@@ -154,6 +154,7 @@ export declare const tableV2Props: {
     };
     readonly expandColumnKey: StringConstructor;
     readonly expandedRowKeys: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => KeyType[]) | (() => KeyType[]) | ((new (...args: any[]) => KeyType[]) | (() => KeyType[]))[], unknown, unknown, () => never[], boolean>;
+    readonly selectedRowKeys: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => KeyType[]) | (() => KeyType[]) | ((new (...args: any[]) => KeyType[]) | (() => KeyType[]))[], unknown, unknown, () => never[], boolean>;
     readonly defaultExpandedRowKeys: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => KeyType[]) | (() => KeyType[]) | ((new (...args: any[]) => KeyType[]) | (() => KeyType[]))[], unknown, unknown, () => never[], boolean>;
     readonly class: StringConstructor;
     readonly fixed: BooleanConstructor;

@@ -163,6 +163,7 @@ export declare const autocompleteProps: {
         __epPropKey: true;
     };
     readonly type: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly unit: StringConstructor;
     readonly inputType: {
         readonly type: import("vue").PropType<import("element-plus/es/utils").EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;

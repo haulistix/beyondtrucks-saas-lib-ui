@@ -29,6 +29,7 @@ const RowRenderer = (props, {
     rowProps,
     rowClass,
     rowKey,
+    selectedRowKeys,
     rowEventHandlers,
     onRowAdd,
     onAddRowTriggerChange,
@@ -53,7 +54,7 @@ const RowRenderer = (props, {
   const isFixedRow = rowIndex < 0;
   const isAddRow = Boolean(rowData[rowAddSign]);
   const isGhostRow = Boolean(rowData[ghostRowSign]);
-  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("hovered", rowIndex === hoveredRowIndex), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
+  const kls = [ns.e("row"), rowKls, ns.is("selected", !isAddRow && !isGhostRow && selectedRowKeys.includes(_rowKey)), isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("hovered", rowIndex === hoveredRowIndex), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
     [ns.e(`row-depth-${depth}`)]: canExpand && rowIndex >= 0
   }];
   const onRowHover = hasFixedColumns ? onRowHovered : void 0;

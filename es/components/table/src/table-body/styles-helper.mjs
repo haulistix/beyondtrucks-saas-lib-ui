@@ -18,9 +18,12 @@ function useStyles(props) {
     return rowStyle || null;
   };
   const getRowClass = (row, rowIndex, displayIndex) => {
-    var _a;
+    var _a, _b;
     const classes = [ns.e("row")];
-    if ((parent == null ? void 0 : parent.props.highlightCurrentRow) && row === ((_a = props.store) == null ? void 0 : _a.states.currentRow.value)) {
+    if ((_a = props.store) == null ? void 0 : _a.isSelected(row)) {
+      classes.push(ns.is("selected"));
+    }
+    if ((parent == null ? void 0 : parent.props.highlightCurrentRow) && row === ((_b = props.store) == null ? void 0 : _b.states.currentRow.value)) {
       classes.push("current-row");
     }
     if (props.stripe && displayIndex % 2 === 1) {

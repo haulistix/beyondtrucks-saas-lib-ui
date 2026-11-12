@@ -99,6 +99,7 @@ const tableV2Props = buildProps({
   fixedData: fixedDataType,
   expandColumnKey: tableV2RowProps.expandColumnKey,
   expandedRowKeys: expandKeys,
+  selectedRowKeys: expandKeys,
   defaultExpandedRowKeys: expandKeys,
   class: classType,
   fixed: Boolean,

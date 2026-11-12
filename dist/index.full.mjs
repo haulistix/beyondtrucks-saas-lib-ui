@@ -16596,6 +16596,7 @@ const inputProps = buildProps({
     type: String,
     default: "text"
   },
+  unit: String,
   inputType: {
     type: String,
     values: ["error", "info", "warning"]
@@ -16794,6 +16795,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     const attrs = useAttrs();
     const slots = useSlots();
     const isTextarea = computed(() => props.type === "textarea" || props.expand && (props.type === "text" || props.type === "input"));
+    const hasUnit = computed(() => props.unit !== void 0 && !isTextarea.value);
     const useInputLayout = computed(() => !isTextarea.value || props.expand || !!(slots.prefix || slots.suffix || slots.prepend || slots.append || props.prefixIcon || props.suffixIcon || props.clearable || showInfoTipIcon.value));
     const containerKls = computed(() => [
       isTextarea.value ? nsTextarea.b() : nsInput.b(),
@@ -16806,7 +16808,8 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
       {
         [nsInput.b("group")]: slots.prepend || slots.append,
         [nsInput.m("prefix")]: slots.prefix || props.prefixIcon,
-        [nsInput.m("suffix")]: slots.suffix || props.suffixIcon || props.clearable || props.showPassword,
+        [nsInput.m("suffix")]: slots.suffix || props.suffixIcon || props.clearable || props.showPassword || hasUnit.value,
+        [nsInput.m("unit")]: hasUnit.value,
         [nsInput.bm("suffix", "password-clear")]: showClear.value && showPwdVisible.value,
         [nsInput.b("hidden")]: props.type === "hidden",
         [nsInput.m(props.inputType)]: !!props.inputType,
@@ -16863,6 +16866,10 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     const showErrorTooltip = computed(() => props.inputType === "error" && (isEmpty(nativeInputValue.value) || !isEmpty(props.infoTip)));
     const isTextOverflowing = ref(false);
     const inputTooltipRef = ref();
+    const unitTooltipRef = ref();
+    const unitRef = ref();
+    const isUnitOverflowing = ref(false);
+    const isUnitHovering = ref(false);
     const floatLabelRef = ref();
     const hideInputTooltip = () => {
       var _a, _b;
@@ -16870,11 +16877,25 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
       (_b = inputTooltipRef.value) == null ? void 0 : _b.hide();
     };
     const handleContentMouseEnter = (event) => {
-      var _a;
+      var _a, _b, _c;
+      isUnitHovering.value = false;
+      (_a = unitTooltipRef.value) == null ? void 0 : _a.onClose();
+      (_b = unitTooltipRef.value) == null ? void 0 : _b.hide();
       syncTextOverflow();
       if (inputTooltipSource.value === "overflow") {
-        (_a = inputTooltipRef.value) == null ? void 0 : _a.onOpen(event);
+        (_c = inputTooltipRef.value) == null ? void 0 : _c.onOpen(event);
       }
+    };
+    const syncUnitOverflow = () => {
+      const target = unitRef.value;
+      isUnitOverflowing.value = !!target && target.scrollWidth > target.clientWidth;
+    };
+    const handleUnitMouseEnter = () => {
+      var _a;
+      isUnitHovering.value = true;
+      hideInputTooltip();
+      (_a = floatLabelRef.value) == null ? void 0 : _a.hide();
+      syncUnitOverflow();
     };
     const inputTooltipSource = computed(() => {
       if (validateError.value && !isEmpty(validateMsg.value))
@@ -16898,7 +16919,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
       }
       return "";
     });
-    const inputTooltipDisabled = computed(() => inputTooltipSource.value === "none");
+    const inputTooltipDisabled = computed(() => isUnitHovering.value || inputTooltipSource.value === "none");
     const inputTooltipPopperClass = computed(() => [
       nsInput.e("tooltip"),
       inputTooltipSource.value === "overflow" ? "text-overflow-tooltip" : ""
@@ -16911,7 +16932,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     const isWordLimitVisible = computed(() => props.showWordLimit && !!props.maxlength && (props.type === "text" || isTextarea.value) && !inputDisabled.value && !props.readonly && !props.showPassword);
     const textLength = computed(() => nativeInputValue.value.length);
     const inputExceed = computed(() => !!isWordLimitVisible.value && textLength.value > Number(props.maxlength));
-    const suffixVisible = computed(() => !!slots.suffix || !!props.suffixIcon || showInfoTipIcon.value || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
+    const suffixVisible = computed(() => hasUnit.value || !!slots.suffix || !!props.suffixIcon || showInfoTipIcon.value || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
     const hasModelModifiers = computed(() => !!Object.keys(props.modelModifiers).length);
     const [recordCursor, setCursor] = useCursor(input);
     let textareaWidth = 0;
@@ -16934,6 +16955,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
     useResizeObserver(wrapperRef, () => {
       nextTick(syncTextOverflow);
     });
+    useResizeObserver(unitRef, syncUnitOverflow);
     const syncTextOverflow = () => {
       const target = _ref.value;
       if (!target || isEmpty(nativeInputValue.value)) {
@@ -17376,7 +17398,35 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                         ]),
                         _: 1
                       }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
-                      (!unref(showClear) || !unref(showPwdVisible) || !unref(isWordLimitVisible)) && ((_a = _ctx.alwaysShowSuffix) != null ? _a : !unref(validateState)) ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                      unref(hasUnit) ? (openBlock(), createBlock(ElTooltip$1, {
+                        key: 2,
+                        ref_key: "unitTooltipRef",
+                        ref: unitTooltipRef,
+                        content: _ctx.unit,
+                        disabled: !isUnitOverflowing.value,
+                        "popper-class": `${unref(nsInput).e("tooltip")} text-overflow-tooltip`,
+                        placement: "top-end",
+                        offset: 12,
+                        "show-after": 0,
+                        "hide-after": 0,
+                        enterable: false,
+                        transition: "none",
+                        onBeforeShow: hideInputTooltip
+                      }, {
+                        default: withCtx(() => [
+                          createElementVNode("span", {
+                            ref_key: "unitRef",
+                            ref: unitRef,
+                            class: normalizeClass(unref(nsInput).e("unit")),
+                            onMouseenter: handleUnitMouseEnter,
+                            onMouseleave: ($event) => isUnitHovering.value = false,
+                            onClick: withModifiers(() => {
+                            }, ["stop"])
+                          }, toDisplayString(_ctx.unit), 43, ["onMouseleave", "onClick"])
+                        ]),
+                        _: 1
+                      }, 8, ["content", "disabled", "popper-class"])) : createCommentVNode("v-if", true),
+                      (!unref(showClear) || !unref(showPwdVisible) || !unref(isWordLimitVisible)) && ((_a = _ctx.alwaysShowSuffix) != null ? _a : !unref(validateState)) ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
                         unref(isTextarea) && _ctx.$slots.textareaSuffix ? renderSlot(_ctx.$slots, "textareaSuffix", { key: 0 }) : _ctx.isHoverSuffix && hovering.value || !_ctx.isHoverSuffix ? renderSlot(_ctx.$slots, "suffix", { key: 1 }) : createCommentVNode("v-if", true),
                         _ctx.suffixIcon ? (openBlock(), createBlock(unref(ElIcon), {
                           key: 2,
@@ -17389,7 +17439,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                         }, 8, ["class"])) : createCommentVNode("v-if", true)
                       ], 64)) : createCommentVNode("v-if", true),
                       unref(showPwdVisible) ? (openBlock(), createBlock(unref(ElIcon), {
-                        key: 3,
+                        key: 4,
                         class: normalizeClass([unref(nsInput).e("icon"), unref(nsInput).e("password")]),
                         onClick: handlePasswordVisible,
                         onMousedown: withModifiers(unref(NOOP), ["prevent"]),
@@ -17427,7 +17477,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                         _: 1
                       }, 8, ["class", "onMousedown", "onMouseup"])) : createCommentVNode("v-if", true),
                       unref(isWordLimitVisible) ? (openBlock(), createElementBlock("span", {
-                        key: 4,
+                        key: 5,
                         class: normalizeClass([
                           unref(nsInput).e("count"),
                           unref(nsInput).is("outside", _ctx.wordLimitPosition === "outside")
@@ -17438,7 +17488,7 @@ const _sfc_main$2r = /* @__PURE__ */ defineComponent({
                         }, toDisplayString(unref(textLength)) + " / " + toDisplayString(_ctx.maxlength), 3)
                       ], 2)) : createCommentVNode("v-if", true),
                       unref(validateState) && unref(validateIcon) && unref(needStatusIcon) ? (openBlock(), createBlock(unref(ElIcon), {
-                        key: 5,
+                        key: 6,
                         class: normalizeClass([
                           unref(nsInput).e("icon"),
                           unref(nsInput).e("validateIcon"),
@@ -54043,9 +54093,12 @@ function useStyles$1(props) {
     return rowStyle || null;
   };
   const getRowClass = (row, rowIndex, displayIndex) => {
-    var _a;
+    var _a, _b;
     const classes = [ns.e("row")];
-    if ((parent == null ? void 0 : parent.props.highlightCurrentRow) && row === ((_a = props.store) == null ? void 0 : _a.states.currentRow.value)) {
+    if ((_a = props.store) == null ? void 0 : _a.isSelected(row)) {
+      classes.push(ns.is("selected"));
+    }
+    if ((parent == null ? void 0 : parent.props.highlightCurrentRow) && row === ((_b = props.store) == null ? void 0 : _b.states.currentRow.value)) {
       classes.push("current-row");
     }
     if (props.stripe && displayIndex % 2 === 1) {
@@ -58296,6 +58349,7 @@ const tableV2Props = buildProps({
   fixedData: fixedDataType,
   expandColumnKey: tableV2RowProps.expandColumnKey,
   expandedRowKeys: expandKeys,
+  selectedRowKeys: expandKeys,
   defaultExpandedRowKeys: expandKeys,
   class: classType,
   fixed: Boolean,
@@ -59166,6 +59220,7 @@ const RowRenderer = (props, {
     rowProps,
     rowClass,
     rowKey,
+    selectedRowKeys,
     rowEventHandlers,
     onRowAdd,
     onAddRowTriggerChange,
@@ -59190,7 +59245,7 @@ const RowRenderer = (props, {
   const isFixedRow = rowIndex < 0;
   const isAddRow = Boolean(rowData[rowAddSign]);
   const isGhostRow = Boolean(rowData[ghostRowSign]);
-  const kls = [ns.e("row"), rowKls, isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("hovered", rowIndex === hoveredRowIndex), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
+  const kls = [ns.e("row"), rowKls, ns.is("selected", !isAddRow && !isGhostRow && selectedRowKeys.includes(_rowKey)), isAddRow && ns.is("add-row"), isGhostRow && ns.is("ghost-row"), ns.is("hovered", rowIndex === hoveredRowIndex), ns.is("expanded", canExpand && expandedRowKeys.includes(_rowKey)), ns.is("fixed", !depth && isFixedRow), ns.is("customized", Boolean(slots.row)), {
     [ns.e(`row-depth-${depth}`)]: canExpand && rowIndex >= 0
   }];
   const onRowHover = hasFixedColumns ? onRowHovered : void 0;
@@ -60175,6 +60230,7 @@ const TableV2 = defineComponent({
         columnsStyles: _columnsStyles,
         expandColumnKey,
         expandedRowKeys: unref(expandedRowKeys),
+        selectedRowKeys: props.selectedRowKeys,
         estimatedRowHeight,
         hasFixedColumns: unref(hasFixedColumns),
         hoveredRowIndex: unref(hoveredRowIndex),

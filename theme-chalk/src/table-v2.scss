@@ -375,6 +375,14 @@
     &.is-ghost-row:hover {
       background-color: #fff;
     }
+    @include when('selected') {
+      #{getCssVarName('table-row-hover-bg-color')}: var(--color-gray-300);
+      background-color: var(--color-gray-300);
+
+      > .#{$namespace}-table-v2__row-cell {
+        background-color: inherit;
+      }
+    }
 
     @include e('row-cell') {
       height: 100%;

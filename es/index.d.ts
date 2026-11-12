@@ -1929,6 +1929,7 @@ declare const __VLS_component_3: DefineComponent<{
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly unit: StringConstructor;
     readonly inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -2216,6 +2217,7 @@ declare const __VLS_component_3: DefineComponent<{
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly unit: StringConstructor;
     readonly inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -2747,6 +2749,7 @@ declare const __VLS_component_4: DefineComponent<{
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly unit: StringConstructor;
     readonly inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -2902,6 +2905,7 @@ declare const __VLS_component_4: DefineComponent<{
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly unit: StringConstructor;
     readonly inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -4419,6 +4423,7 @@ declare const __VLS_component_48: DefineComponent<{
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly unit: StringConstructor;
     readonly inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -4670,6 +4675,7 @@ declare const __VLS_component_48: DefineComponent<{
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly unit: StringConstructor;
     readonly inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -10176,6 +10182,7 @@ declare const __VLS_component_89: DefineComponent<{
         __epPropKey: true;
     };
     type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    unit: StringConstructor;
     inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -10432,6 +10439,7 @@ declare const __VLS_component_89: DefineComponent<{
         __epPropKey: true;
     };
     type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    unit: StringConstructor;
     inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -12740,6 +12748,7 @@ export declare const autocompleteProps: {
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly unit: StringConstructor;
     readonly inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -24369,6 +24378,7 @@ export declare const inputDownProps: {
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly unit: StringConstructor;
     readonly inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -24565,6 +24575,7 @@ export declare const inputProps: {
         __epPropKey: true;
     };
     readonly type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    readonly unit: StringConstructor;
     readonly inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -25186,6 +25197,7 @@ export declare const mentionProps: {
         __epPropKey: true;
     };
     type: EpPropFinalized<StringConstructor, unknown, unknown, "text", boolean>;
+    unit: StringConstructor;
     inputType: {
         readonly type: PropType<EpPropMergeType<StringConstructor, "error" | "warning" | "info", unknown>>;
         readonly required: false;
@@ -28449,6 +28461,7 @@ export declare const TableV2: DefineComponent<{
     };
     readonly expandColumnKey: StringConstructor;
     readonly expandedRowKeys: EpPropFinalized<(new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]) | ((new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]))[], unknown, unknown, () => never[], boolean>;
+    readonly selectedRowKeys: EpPropFinalized<(new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]) | ((new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]))[], unknown, unknown, () => never[], boolean>;
     readonly defaultExpandedRowKeys: EpPropFinalized<(new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]) | ((new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]))[], unknown, unknown, () => never[], boolean>;
     readonly class: StringConstructor;
     readonly fixed: BooleanConstructor;
@@ -28620,6 +28633,7 @@ export declare const TableV2: DefineComponent<{
     };
     readonly expandColumnKey: StringConstructor;
     readonly expandedRowKeys: EpPropFinalized<(new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]) | ((new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]))[], unknown, unknown, () => never[], boolean>;
+    readonly selectedRowKeys: EpPropFinalized<(new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]) | ((new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]))[], unknown, unknown, () => never[], boolean>;
     readonly defaultExpandedRowKeys: EpPropFinalized<(new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]) | ((new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]))[], unknown, unknown, () => never[], boolean>;
     readonly class: StringConstructor;
     readonly fixed: BooleanConstructor;
@@ -28733,6 +28747,7 @@ export declare const TableV2: DefineComponent<{
     readonly sortState: SortState;
     readonly canEditTable: boolean;
     readonly expandedRowKeys: KeyType_2[];
+    readonly selectedRowKeys: KeyType_2[];
     readonly defaultExpandedRowKeys: KeyType_2[];
 }>;
 export declare enum TableV2Alignment {
@@ -28913,6 +28928,7 @@ export declare const tableV2Props: {
     };
     readonly expandColumnKey: StringConstructor;
     readonly expandedRowKeys: EpPropFinalized<(new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]) | ((new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]))[], unknown, unknown, () => never[], boolean>;
+    readonly selectedRowKeys: EpPropFinalized<(new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]) | ((new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]))[], unknown, unknown, () => never[], boolean>;
     readonly defaultExpandedRowKeys: EpPropFinalized<(new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]) | ((new (...args: any[]) => KeyType_2[]) | (() => KeyType_2[]))[], unknown, unknown, () => never[], boolean>;
     readonly class: StringConstructor;
     readonly fixed: BooleanConstructor;

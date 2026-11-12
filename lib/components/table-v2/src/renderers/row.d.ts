@@ -8,7 +8,7 @@ type RowTriggerState = Omit<RowInsertParams<any>, 'event'> & {
     top: number;
     placement: 'above' | 'below';
 };
-type RowRendererProps = TableGridRowSlotParams & Pick<TableV2Props, 'expandColumnKey' | 'estimatedRowHeight' | 'canEditTable' | 'editable' | 'editTable' | 'ghostTable' | 'rowProps' | 'rowClass' | 'rowKey' | 'rowEventHandlers' | 'showAddRowTrigger'> & UnwrapNestedRefs<Pick<UseTableReturn, 'depthMap' | 'expandedRowKeys' | 'hasFixedColumns' | 'hoveredRowIndex' | 'onRowHovered' | 'onRowExpanded' | 'columnsStyles'>> & {
+type RowRendererProps = TableGridRowSlotParams & Pick<TableV2Props, 'expandColumnKey' | 'estimatedRowHeight' | 'canEditTable' | 'editable' | 'editTable' | 'ghostTable' | 'rowProps' | 'rowClass' | 'rowKey' | 'selectedRowKeys' | 'rowEventHandlers' | 'showAddRowTrigger'> & UnwrapNestedRefs<Pick<UseTableReturn, 'depthMap' | 'expandedRowKeys' | 'hasFixedColumns' | 'hoveredRowIndex' | 'onRowHovered' | 'onRowExpanded' | 'columnsStyles'>> & {
     onRowAdd?: RowAddHandler;
     onAddRowTriggerChange?: (payload: RowTriggerState | null) => void;
     ns: UseNamespaceReturn;

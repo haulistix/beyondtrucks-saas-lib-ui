@@ -359,6 +359,7 @@ const TableV2 = defineComponent({
         columnsStyles: _columnsStyles,
         expandColumnKey,
         expandedRowKeys: unref(expandedRowKeys),
+        selectedRowKeys: props.selectedRowKeys,
         estimatedRowHeight,
         hasFixedColumns: unref(hasFixedColumns),
         hoveredRowIndex: unref(hoveredRowIndex),

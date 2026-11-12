@@ -18,6 +18,41 @@
     color: var(--color-gray-800);
   }
 
+  &.el-input--unit {
+    .el-input__wrapper {
+      padding-right: 8px;
+    }
+
+    .el-input__inner {
+      flex: 1 1 0;
+      width: 0;
+      min-width: 0;
+      text-overflow: ellipsis;
+    }
+
+    .el-input__suffix {
+      flex: 0 1 auto;
+      min-width: 0;
+      max-width: 50%;
+      padding-right: 0;
+    }
+
+    .el-input__suffix-inner {
+      width: 100%;
+      min-width: 0;
+      justify-content: flex-end;
+    }
+
+    .el-input__unit {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-align: right;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
   &.is-disabled {
     border-color: var(--color-gray-100);
 
@@ -53,6 +88,11 @@
     .float-label {
       background-color: transparent;
     }
+  }
+
+  &.el-input--unit.el-input--error .el-input__wrapper.is-focus,
+  .el-form-item.is-error &.el-input--unit .el-input__wrapper.is-focus {
+    background-color: var(--color-red-200);
   }
 }
 

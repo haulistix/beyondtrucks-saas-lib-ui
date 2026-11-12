@@ -774,6 +774,14 @@
     tr.current-row > td.#{$namespace}-table__cell {
       background-color: getCssVar('table-current-row-bg-color');
     }
+    tr.#{$namespace}-table__row.is-selected {
+      #{getCssVarName('table-row-hover-bg-color')}: var(--color-gray-300);
+      #{getCssVarName('table-current-row-bg-color')}: var(--color-gray-300);
+
+      > td.#{$namespace}-table__cell {
+        background-color: var(--color-gray-300);
+      }
+    }
   }
 
   &.#{$namespace}-table--scrollable-y {

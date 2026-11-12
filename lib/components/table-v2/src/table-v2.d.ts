@@ -90,6 +90,7 @@ declare const TableV2: import("vue").DefineComponent<{
     };
     readonly expandColumnKey: StringConstructor;
     readonly expandedRowKeys: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => KeyType[]) | (() => KeyType[]) | ((new (...args: any[]) => KeyType[]) | (() => KeyType[]))[], unknown, unknown, () => never[], boolean>;
+    readonly selectedRowKeys: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => KeyType[]) | (() => KeyType[]) | ((new (...args: any[]) => KeyType[]) | (() => KeyType[]))[], unknown, unknown, () => never[], boolean>;
     readonly defaultExpandedRowKeys: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => KeyType[]) | (() => KeyType[]) | ((new (...args: any[]) => KeyType[]) | (() => KeyType[]))[], unknown, unknown, () => never[], boolean>;
     readonly class: StringConstructor;
     readonly fixed: BooleanConstructor;
@@ -261,6 +262,7 @@ declare const TableV2: import("vue").DefineComponent<{
     };
     readonly expandColumnKey: StringConstructor;
     readonly expandedRowKeys: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => KeyType[]) | (() => KeyType[]) | ((new (...args: any[]) => KeyType[]) | (() => KeyType[]))[], unknown, unknown, () => never[], boolean>;
+    readonly selectedRowKeys: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => KeyType[]) | (() => KeyType[]) | ((new (...args: any[]) => KeyType[]) | (() => KeyType[]))[], unknown, unknown, () => never[], boolean>;
     readonly defaultExpandedRowKeys: import("element-plus/es/utils").EpPropFinalized<(new (...args: any[]) => KeyType[]) | (() => KeyType[]) | ((new (...args: any[]) => KeyType[]) | (() => KeyType[]))[], unknown, unknown, () => never[], boolean>;
     readonly class: StringConstructor;
     readonly fixed: BooleanConstructor;
@@ -374,6 +376,7 @@ declare const TableV2: import("vue").DefineComponent<{
     readonly sortState: import("./types").SortState;
     readonly canEditTable: boolean;
     readonly expandedRowKeys: KeyType[];
+    readonly selectedRowKeys: KeyType[];
     readonly defaultExpandedRowKeys: KeyType[];
 }>;
 export default TableV2;

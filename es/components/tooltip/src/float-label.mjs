@@ -1,6 +1,6 @@
 import { defineComponent, ref, watch, openBlock, createBlock, withCtx, createElementVNode, mergeProps, unref, createElementBlock, Fragment, normalizeClass, toDisplayString, withModifiers, renderSlot, createTextVNode } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import ElTooltip from './tooltip2.mjs';
+import ElTooltip from './tooltip.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
 

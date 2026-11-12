@@ -1,5 +1,5 @@
-import ElIcon$1 from './src/icon.mjs';
-export { iconProps } from './src/icon2.mjs';
+import ElIcon$1 from './src/icon2.mjs';
+export { iconProps } from './src/icon.mjs';
 import { withInstall } from '../../utils/vue/install.mjs';
 
 const ElIcon = withInstall(ElIcon$1);

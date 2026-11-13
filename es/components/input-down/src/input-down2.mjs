@@ -5,7 +5,7 @@ import { ElRadio } from '../../radio/index.mjs';
 import { inputDownProps, inputDownEmits } from './input-down.mjs';
 import _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';
 import { useNamespace } from '../../../hooks/use-namespace/index.mjs';
-import { inputProps } from '../../input/src/input.mjs';
+import { inputProps } from '../../input/src/input2.mjs';
 
 const __default__ = defineComponent({
   name: "ElInputDown",

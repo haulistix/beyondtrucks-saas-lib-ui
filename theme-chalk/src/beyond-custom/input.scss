@@ -33,7 +33,6 @@
     .el-input__suffix {
       flex: 0 1 auto;
       min-width: 0;
-      max-width: 50%;
       padding-right: 0;
     }
 
@@ -44,8 +43,9 @@
     }
 
     .el-input__unit {
-      flex: 1;
+      flex: 0 1 auto;
       min-width: 0;
+      max-width: 60px;
       overflow: hidden;
       text-align: right;
       text-overflow: ellipsis;

@@ -20,11 +20,13 @@ const _sfc_main = defineComponent({
     const dropdownStyle = computed(() => {
       if (!isFitInputWidth.value && optionWidth.value) {
         return {
-          width: optionWidth.value
+          width: optionWidth.value,
+          minWidth: isMultiple.value ? void 0 : `${240 - BORDER_HORIZONTAL_WIDTH}px`
         };
       }
+      const width = isMultiple.value ? minWidth.value : `${Math.max(Number.parseFloat(minWidth.value) || 0, 240 - BORDER_HORIZONTAL_WIDTH)}px`;
       return {
-        [isFitInputWidth.value ? "width" : "minWidth"]: minWidth.value
+        [isFitInputWidth.value ? "width" : "minWidth"]: width
       };
     });
     function updateMinWidth() {

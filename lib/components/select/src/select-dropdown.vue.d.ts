@@ -20,9 +20,11 @@ declare const _default: import("vue").DefineComponent<{}, {
     minWidth: import("vue").Ref<string>;
     dropdownStyle: import("vue").ComputedRef<{
         width: string;
+        minWidth: string | undefined;
     } | {
         [x: string]: string;
         width?: undefined;
+        minWidth?: undefined;
     }>;
     popperClass: import("vue").ComputedRef<string>;
     isMultiple: import("vue").ComputedRef<boolean>;

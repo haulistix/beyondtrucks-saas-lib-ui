@@ -423,7 +423,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
                         textContent: toDisplayString(_ctx.states.inputValue)
                       }, null, 10, ["textContent"])) : createCommentVNode("v-if", true)
                     ], 2),
-                    _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (openBlock(), createElementBlock("div", {
+                    _ctx.shouldShowPlaceholder && (_ctx.hasModelValue || !_ctx.floatLabel) ? (openBlock(), createElementBlock("div", {
                       key: 1,
                       class: normalizeClass([
                         _ctx.nsSelect.e("selected-item"),

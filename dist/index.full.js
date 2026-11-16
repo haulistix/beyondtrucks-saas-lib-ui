@@ -41382,10 +41382,10 @@
     const calculatePopperSize = () => {
       var _a;
       if (isNumber(props.fitInputWidth)) {
-        popperSize.value = props.fitInputWidth;
+        popperSize.value = Math.max(props.fitInputWidth, props.multiple ? 0 : 240);
         return;
       }
-      const width = ((_a = selectRef.value) == null ? void 0 : _a.offsetWidth) || 200;
+      const width = Math.max(((_a = selectRef.value) == null ? void 0 : _a.offsetWidth) || 200, props.multiple ? 0 : 240);
       if (!props.fitInputWidth && hasOptions.value) {
         vue.nextTick(() => {
           popperSize.value = Math.max(width, calculateLabelMaxWidth());
@@ -42524,7 +42524,7 @@
                           textContent: vue.toDisplayString(_ctx.states.inputValue)
                         }, null, 10, ["textContent"])) : vue.createCommentVNode("v-if", true)
                       ], 2),
-                      _ctx.shouldShowPlaceholder && _ctx.hasModelValue ? (vue.openBlock(), vue.createElementBlock("div", {
+                      _ctx.shouldShowPlaceholder && (_ctx.hasModelValue || !_ctx.floatLabel) ? (vue.openBlock(), vue.createElementBlock("div", {
                         key: 1,
                         class: vue.normalizeClass([
                           _ctx.nsSelect.e("selected-item"),
@@ -45747,11 +45747,13 @@
       const dropdownStyle = vue.computed(() => {
         if (!isFitInputWidth.value && optionWidth.value) {
           return {
-            width: optionWidth.value
+            width: optionWidth.value,
+            minWidth: isMultiple.value ? void 0 : `${240 - BORDER_HORIZONTAL_WIDTH}px`
           };
         }
+        const width = isMultiple.value ? minWidth.value : `${Math.max(Number.parseFloat(minWidth.value) || 0, 240 - BORDER_HORIZONTAL_WIDTH)}px`;
         return {
-          [isFitInputWidth.value ? "width" : "minWidth"]: minWidth.value
+          [isFitInputWidth.value ? "width" : "minWidth"]: width
         };
       });
       function updateMinWidth() {

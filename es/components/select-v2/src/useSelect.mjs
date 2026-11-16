@@ -261,10 +261,10 @@ const useSelect = (props, emit) => {
   const calculatePopperSize = () => {
     var _a;
     if (isNumber(props.fitInputWidth)) {
-      popperSize.value = props.fitInputWidth;
+      popperSize.value = Math.max(props.fitInputWidth, props.multiple ? 0 : 240);
       return;
     }
-    const width = ((_a = selectRef.value) == null ? void 0 : _a.offsetWidth) || 200;
+    const width = Math.max(((_a = selectRef.value) == null ? void 0 : _a.offsetWidth) || 200, props.multiple ? 0 : 240);
     if (!props.fitInputWidth && hasOptions.value) {
       nextTick(() => {
         popperSize.value = Math.max(width, calculateLabelMaxWidth());

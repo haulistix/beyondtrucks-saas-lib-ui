@@ -54084,6 +54084,10 @@ function useEvents(props, emit) {
 function useStyles$1(props) {
   const parent = inject(TABLE_INJECTION_KEY);
   const ns = useNamespace("table");
+  const hasSelectionColumn = computed(() => {
+    var _a;
+    return (_a = props.store) == null ? void 0 : _a.states.columns.value.some((column) => column.type === "selection");
+  });
   const getRowStyle = (row, rowIndex) => {
     const rowStyle = parent == null ? void 0 : parent.props.rowStyle;
     if (isFunction$1(rowStyle)) {
@@ -54097,7 +54101,7 @@ function useStyles$1(props) {
   const getRowClass = (row, rowIndex, displayIndex) => {
     var _a, _b;
     const classes = [ns.e("row")];
-    if ((_a = props.store) == null ? void 0 : _a.isSelected(row)) {
+    if (hasSelectionColumn.value && ((_a = props.store) == null ? void 0 : _a.isSelected(row))) {
       classes.push(ns.is("selected"));
     }
     if ((parent == null ? void 0 : parent.props.highlightCurrentRow) && row === ((_b = props.store) == null ? void 0 : _b.states.currentRow.value)) {

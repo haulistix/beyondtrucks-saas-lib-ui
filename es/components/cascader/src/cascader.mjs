@@ -1,7 +1,7 @@
 import { placements } from '@popperjs/core';
 import { CircleClose } from '@element-plus/icons-vue';
 import { CommonProps } from '../../cascader-panel/src/config.mjs';
-import { tagProps } from '../../tag/src/tag2.mjs';
+import { tagProps } from '../../tag/src/tag.mjs';
 import { buildProps, definePropType } from '../../../utils/vue/props/runtime.mjs';
 import { useSizeProp } from '../../../hooks/use-size/index.mjs';
 import { iconPropType } from '../../../utils/vue/icon.mjs';

@@ -56,6 +56,10 @@
   &.is-disabled {
     border-color: var(--color-gray-100);
 
+    .el-input__unit {
+      pointer-events: auto;
+    }
+
     .el-input__wrapper {
       box-shadow: none;
       border-color: var(--color-gray-100);

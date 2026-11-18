@@ -1,4 +1,4 @@
-import { dropdownProps } from '../../dropdown/src/dropdown.mjs';
+import { dropdownProps } from '../../dropdown/src/dropdown2.mjs';
 import { buildProps } from '../../../utils/vue/props/runtime.mjs';
 import { useTooltipTriggerProps } from '../../tooltip/src/trigger.mjs';
 import { useTooltipContentProps } from '../../tooltip/src/content.mjs';

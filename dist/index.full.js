@@ -58754,6 +58754,16 @@
         rowKey
       });
     };
+    vue.watch(() => [props.rowData, props.columnsStyles], async () => {
+      if (!vue.unref(measurable))
+        return;
+      measured.value = false;
+      await vue.nextTick();
+      doMeasure();
+    }, {
+      deep: true,
+      flush: "post"
+    });
     vue.onMounted(() => {
       if (vue.unref(measurable)) {
         doMeasure(true);

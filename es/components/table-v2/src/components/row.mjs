@@ -1,4 +1,4 @@
-import { defineComponent, unref, createVNode, mergeProps, inject, ref, computed, onMounted, nextTick } from 'vue';
+import { defineComponent, unref, createVNode, mergeProps, inject, ref, computed, watch, nextTick, onMounted } from 'vue';
 import { tableV2RowProps } from '../row.mjs';
 import { TableV2InjectionKey } from '../tokens.mjs';
 import { placeholderSign } from '../private.mjs';
@@ -102,6 +102,16 @@ const useTableRow = (props) => {
       rowKey
     });
   };
+  watch(() => [props.rowData, props.columnsStyles], async () => {
+    if (!unref(measurable))
+      return;
+    measured.value = false;
+    await nextTick();
+    doMeasure();
+  }, {
+    deep: true,
+    flush: "post"
+  });
   onMounted(() => {
     if (unref(measurable)) {
       doMeasure(true);

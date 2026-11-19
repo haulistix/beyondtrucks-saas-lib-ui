@@ -58750,6 +58750,16 @@ const useTableRow = (props) => {
       rowKey
     });
   };
+  watch(() => [props.rowData, props.columnsStyles], async () => {
+    if (!unref(measurable))
+      return;
+    measured.value = false;
+    await nextTick();
+    doMeasure();
+  }, {
+    deep: true,
+    flush: "post"
+  });
   onMounted(() => {
     if (unref(measurable)) {
       doMeasure(true);

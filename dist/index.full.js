@@ -58663,6 +58663,8 @@
     } = vue.inject(TableV2InjectionKey);
     const measured = vue.ref(false);
     const rowRef = vue.ref();
+    let rowContents = [];
+    let resizeObserver;
     const measurable = vue.computed(() => {
       return isNumber(props.estimatedRowHeight) && props.rowIndex >= 0;
     });
@@ -58754,17 +58756,33 @@
         rowKey
       });
     };
-    vue.watch(() => [props.rowData, props.columnsStyles], async () => {
+    const remeasure = async () => {
       if (!vue.unref(measurable))
         return;
       measured.value = false;
       await vue.nextTick();
       doMeasure();
-    }, {
+    };
+    const observeContents = () => {
+      var _a;
+      const contents = vue.unref(measurable) ? Array.from(((_a = vue.unref(rowRef)) == null ? void 0 : _a.children) || []).reduce((elements, cell) => elements.concat(Array.from(cell.children)), []) : [];
+      if (contents.length !== rowContents.length || contents.some((element, index) => element !== rowContents[index])) {
+        resizeObserver == null ? void 0 : resizeObserver.disconnect();
+        rowContents = contents;
+        if (contents.length && typeof ResizeObserver !== "undefined") {
+          resizeObserver || (resizeObserver = new ResizeObserver(remeasure));
+          contents.forEach((element) => resizeObserver.observe(element));
+        }
+      }
+    };
+    vue.onBeforeUnmount(() => resizeObserver == null ? void 0 : resizeObserver.disconnect());
+    vue.watch(() => [props.rowData, props.columnsStyles], remeasure, {
       deep: true,
       flush: "post"
     });
+    vue.onUpdated(observeContents);
     vue.onMounted(() => {
+      observeContents();
       if (vue.unref(measurable)) {
         doMeasure(true);
       }

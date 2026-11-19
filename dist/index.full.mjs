@@ -58659,6 +58659,8 @@ const useTableRow = (props) => {
   } = inject(TableV2InjectionKey);
   const measured = ref(false);
   const rowRef = ref();
+  let rowContents = [];
+  let resizeObserver;
   const measurable = computed(() => {
     return isNumber(props.estimatedRowHeight) && props.rowIndex >= 0;
   });
@@ -58750,17 +58752,33 @@ const useTableRow = (props) => {
       rowKey
     });
   };
-  watch(() => [props.rowData, props.columnsStyles], async () => {
+  const remeasure = async () => {
     if (!unref(measurable))
       return;
     measured.value = false;
     await nextTick();
     doMeasure();
-  }, {
+  };
+  const observeContents = () => {
+    var _a;
+    const contents = unref(measurable) ? Array.from(((_a = unref(rowRef)) == null ? void 0 : _a.children) || []).reduce((elements, cell) => elements.concat(Array.from(cell.children)), []) : [];
+    if (contents.length !== rowContents.length || contents.some((element, index) => element !== rowContents[index])) {
+      resizeObserver == null ? void 0 : resizeObserver.disconnect();
+      rowContents = contents;
+      if (contents.length && typeof ResizeObserver !== "undefined") {
+        resizeObserver || (resizeObserver = new ResizeObserver(remeasure));
+        contents.forEach((element) => resizeObserver.observe(element));
+      }
+    }
+  };
+  onBeforeUnmount(() => resizeObserver == null ? void 0 : resizeObserver.disconnect());
+  watch(() => [props.rowData, props.columnsStyles], remeasure, {
     deep: true,
     flush: "post"
   });
+  onUpdated(observeContents);
   onMounted(() => {
+    observeContents();
     if (unref(measurable)) {
       doMeasure(true);
     }

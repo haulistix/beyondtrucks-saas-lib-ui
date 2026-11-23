@@ -80,10 +80,14 @@ function useTable(props) {
     return isArray(props.fixedData) ? props.fixedData.length === 0 && noData : noData;
   });
   const rowsHeight = computed(() => {
-    const { estimatedRowHeight, rowHeight } = props;
+    const { estimatedRowHeight, rowHeight, rowKey } = props;
     const _data = unref(data);
     if (isNumber(estimatedRowHeight)) {
-      return Object.values(unref(rowHeights)).reduce((acc, curr) => acc + curr, 0);
+      const heights = unref(rowHeights);
+      return _data.reduce((height, row) => {
+        var _a;
+        return height + ((_a = heights[row[rowKey]]) != null ? _a : estimatedRowHeight);
+      }, 0);
     }
     return _data.length * rowHeight;
   });

@@ -57954,10 +57954,14 @@
       return isArray$1(props.fixedData) ? props.fixedData.length === 0 && noData : noData;
     });
     const rowsHeight = vue.computed(() => {
-      const { estimatedRowHeight, rowHeight } = props;
+      const { estimatedRowHeight, rowHeight, rowKey } = props;
       const _data = vue.unref(data);
       if (isNumber(estimatedRowHeight)) {
-        return Object.values(vue.unref(rowHeights)).reduce((acc, curr) => acc + curr, 0);
+        const heights = vue.unref(rowHeights);
+        return _data.reduce((height, row) => {
+          var _a;
+          return height + ((_a = heights[row[rowKey]]) != null ? _a : estimatedRowHeight);
+        }, 0);
       }
       return _data.length * rowHeight;
     });

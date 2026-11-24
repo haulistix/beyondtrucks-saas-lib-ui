@@ -264,7 +264,7 @@ const useSelect = (props, emit) => {
     const selectedValues = isUndefined(props.modelValue) ? [] : castArray(props.modelValue);
     const result = [];
     optionsArray.value.forEach((option) => {
-      if (getValueIndex(selectedValues, option) > -1) {
+      if (getValueIndex(selectedValues, option) > -1 && !result.some((selected) => getValueKey(selected) === getValueKey(option))) {
         result.push(getOption(option.value));
       }
     });

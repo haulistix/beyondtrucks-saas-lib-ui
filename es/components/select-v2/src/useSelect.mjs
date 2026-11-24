@@ -416,7 +416,7 @@ const useSelect = (props, emit) => {
     allOptions.value.forEach((option) => {
       if (option.type === "Group")
         return;
-      if (getValueIndex(values, getValue(option)) > -1) {
+      if (getValueIndex(values, getValue(option)) > -1 && !orderedOptions.some((selected) => getValueKey(getValue(selected)) === getValueKey(getValue(option)))) {
         orderedOptions.push(option);
       }
     });

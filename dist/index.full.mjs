@@ -41533,7 +41533,7 @@ const useSelect$2 = (props, emit) => {
     allOptions.value.forEach((option) => {
       if (option.type === "Group")
         return;
-      if (getValueIndex(values, getValue(option)) > -1) {
+      if (getValueIndex(values, getValue(option)) > -1 && !orderedOptions.some((selected) => getValueKey(getValue(selected)) === getValueKey(getValue(option)))) {
         orderedOptions.push(option);
       }
     });
@@ -46042,7 +46042,7 @@ const useSelect$1 = (props, emit) => {
     const selectedValues = isUndefined(props.modelValue) ? [] : castArray$1(props.modelValue);
     const result = [];
     optionsArray.value.forEach((option) => {
-      if (getValueIndex(selectedValues, option) > -1) {
+      if (getValueIndex(selectedValues, option) > -1 && !result.some((selected) => getValueKey(selected) === getValueKey(option))) {
         result.push(getOption(option.value));
       }
     });

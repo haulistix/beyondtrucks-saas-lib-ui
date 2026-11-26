@@ -35928,10 +35928,11 @@
                         onReleaseRequested: vue.unref(onCloseRequested)
                       }, {
                         default: vue.withCtx(() => [
-                          vue.createElementVNode("div", vue.mergeProps({
+                          vue.withDirectives((vue.openBlock(), vue.createElementBlock("div", vue.mergeProps({
                             ref_key: "drawerRef",
                             ref: drawerRef,
                             "aria-modal": "true",
+                            "aria-busy": _ctx.loading,
                             "aria-label": _ctx.title || void 0,
                             "aria-labelledby": !_ctx.title ? vue.unref(titleId) : void 0,
                             "aria-describedby": vue.unref(bodyId)
@@ -35997,9 +35998,8 @@
                                 }, 8, ["class"])
                               ], 10, ["aria-label", "onClick"])) : vue.createCommentVNode("v-if", true)
                             ], 2)) : vue.createCommentVNode("v-if", true),
-                            vue.withDirectives((vue.openBlock(), vue.createElementBlock("div", {
-                              class: vue.normalizeClass(vue.unref(ns).e("content")),
-                              "aria-busy": _ctx.loading
+                            vue.createElementVNode("div", {
+                              class: vue.normalizeClass(vue.unref(ns).e("content"))
                             }, [
                               vue.unref(rendered) ? (vue.openBlock(), vue.createElementBlock("div", {
                                 key: 0,
@@ -36014,17 +36014,17 @@
                               }, [
                                 vue.renderSlot(_ctx.$slots, "footer")
                               ], 2)) : vue.createCommentVNode("v-if", true)
-                            ], 10, ["aria-busy"])), [
-                              [vue.unref(vLoading$1), _ctx.loading]
-                            ]),
+                            ], 2),
                             _ctx.resizable ? (vue.openBlock(), vue.createElementBlock("div", {
                               key: 1,
                               ref_key: "draggerRef",
                               ref: draggerRef,
-                              style: vue.normalizeStyle({ zIndex: vue.unref(zIndex) }),
+                              style: vue.normalizeStyle({ zIndex: _ctx.loading ? 0 : vue.unref(zIndex) }),
                               class: vue.normalizeClass(vue.unref(ns).e("dragger"))
                             }, null, 6)) : vue.createCommentVNode("v-if", true)
-                          ], 16, ["aria-label", "aria-labelledby", "aria-describedby", "onClick"])
+                          ], 16, ["aria-busy", "aria-label", "aria-labelledby", "aria-describedby", "onClick"])), [
+                            [vue.unref(vLoading$1), _ctx.loading]
+                          ])
                         ]),
                         _: 3
                       }, 8, ["trapped", "focus-trap-el", "focus-start-el", "onFocusAfterTrapped", "onFocusAfterReleased", "onFocusoutPrevented", "onReleaseRequested"])

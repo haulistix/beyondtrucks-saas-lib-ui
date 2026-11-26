@@ -35924,10 +35924,11 @@ const _sfc_main$1r = /* @__PURE__ */ defineComponent({
                       onReleaseRequested: unref(onCloseRequested)
                     }, {
                       default: withCtx(() => [
-                        createElementVNode("div", mergeProps({
+                        withDirectives((openBlock(), createElementBlock("div", mergeProps({
                           ref_key: "drawerRef",
                           ref: drawerRef,
                           "aria-modal": "true",
+                          "aria-busy": _ctx.loading,
                           "aria-label": _ctx.title || void 0,
                           "aria-labelledby": !_ctx.title ? unref(titleId) : void 0,
                           "aria-describedby": unref(bodyId)
@@ -35993,9 +35994,8 @@ const _sfc_main$1r = /* @__PURE__ */ defineComponent({
                               }, 8, ["class"])
                             ], 10, ["aria-label", "onClick"])) : createCommentVNode("v-if", true)
                           ], 2)) : createCommentVNode("v-if", true),
-                          withDirectives((openBlock(), createElementBlock("div", {
-                            class: normalizeClass(unref(ns).e("content")),
-                            "aria-busy": _ctx.loading
+                          createElementVNode("div", {
+                            class: normalizeClass(unref(ns).e("content"))
                           }, [
                             unref(rendered) ? (openBlock(), createElementBlock("div", {
                               key: 0,
@@ -36010,17 +36010,17 @@ const _sfc_main$1r = /* @__PURE__ */ defineComponent({
                             }, [
                               renderSlot(_ctx.$slots, "footer")
                             ], 2)) : createCommentVNode("v-if", true)
-                          ], 10, ["aria-busy"])), [
-                            [unref(vLoading$1), _ctx.loading]
-                          ]),
+                          ], 2),
                           _ctx.resizable ? (openBlock(), createElementBlock("div", {
                             key: 1,
                             ref_key: "draggerRef",
                             ref: draggerRef,
-                            style: normalizeStyle({ zIndex: unref(zIndex) }),
+                            style: normalizeStyle({ zIndex: _ctx.loading ? 0 : unref(zIndex) }),
                             class: normalizeClass(unref(ns).e("dragger"))
                           }, null, 6)) : createCommentVNode("v-if", true)
-                        ], 16, ["aria-label", "aria-labelledby", "aria-describedby", "onClick"])
+                        ], 16, ["aria-busy", "aria-label", "aria-labelledby", "aria-describedby", "onClick"])), [
+                          [unref(vLoading$1), _ctx.loading]
+                        ])
                       ]),
                       _: 3
                     }, 8, ["trapped", "focus-trap-el", "focus-start-el", "onFocusAfterTrapped", "onFocusAfterReleased", "onFocusoutPrevented", "onReleaseRequested"])
